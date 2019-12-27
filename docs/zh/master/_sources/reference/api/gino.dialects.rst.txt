@@ -1,0 +1,18 @@
+gino.dialects package
+=====================
+
+Submodules
+----------
+
+.. toctree::
+
+   gino.dialects.asyncpg
+   gino.dialects.base
+
+Module contents
+---------------
+
+.. automodule:: gino.dialects
+   :members:
+   :undoc-members:
+   :show-inheritance:

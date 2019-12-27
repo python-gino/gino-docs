@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="../_static/favicon.ico">
+    <title>Loaders and Relationship - GINO 1.0.0a0 documentation</title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async
+            src="https://www.googletagmanager.com/gtag/js?id=UA-3759436-10"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag () {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'UA-3759436-10');
+    </script>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css">
+    <link type="text/css" rel="stylesheet"
+          href="../_static/css/materialize.min.css"
+          media="screen,projection"/>
+    <link rel="stylesheet" href="../_static/pygments.css"
+          type="text/css"/>
+    <link type="text/css" rel="stylesheet"
+          href="../_static/css/gino.css"/>
+</head>
+<body>
+
+<header>
+    <div class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper">
+                <a href="../index.html" class="brand-logo">
+                    <div class="img"
+                         style="background-image: url(../_static/logo.png); width: 40px; height: 40px; margin-right: 8px"></div>
+                    <div class="img"
+                         style="background-image: url(../_static/logo-name.png); width: 100px; height: 32.5px; margin-top: 4px"></div>
+                </a>
+                <div class="breadcrumbs">
+                    <a class="breadcrumb" style="display: none"></a>
+                    
+                        <a href="../how-to.html"
+                           class="breadcrumb">How-to Guides</a>
+                    
+                    
+                        <a class="breadcrumb" style="color: #FFFFFF">Loaders and Relationship</a>
+                    
+                </div>
+                <div class="spacer"></div>
+                <div class="search">
+                    <input type="text" id="search" placeholder="Search">
+                    <i class="mdi mdi-magnify"></i>
+                </div>
+                <a class="waves-effect waves-light btn-flat theme-dark" href="/">
+                    <i class="mdi mdi-home"></i>
+                    Home
+                </a>
+                <a class="waves-effect waves-light btn-flat theme-dark"
+                   href="/authors.html">
+                    <i class="mdi mdi-account-group"></i>
+                    Authors
+                </a>
+                <a href="https://github.com/python-gino/gino" target="_blank"
+                   class="github">
+                    <i class="mdi mdi-github-circle"></i>
+                </a>
+            </div>
+        </nav>
+    </div>
+
+    <div id="sidenav" class="sidenav sidenav-fixed">
+        <p class="caption"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/tutorial.html">Tutorial</a></li>
+</ul>
+<p class="caption"><span class="caption-text">How-to Guides</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../how-to.html">How-to Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="crud.html">CRUD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Loaders and Relationship</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pool.html">Connection Pool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sanic.html">Sanic Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="schema.html">Schema Declaration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tornado.html">Tornado Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="transaction.html">Transaction</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Explanation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../explanation.html">Explanation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../explanation/engine.html">Engine and Connection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../explanation/why.html">Why Asynchronous ORM?</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../reference.html">Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/api.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/authors.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/history.html">History</a></li>
+</ul>
+
+    </div>
+</header>
+
+<main>
+    <div class="row">
+        <div class="col s12 m9 body">
+            
+    <div class="section" id="loaders-and-relationship">
+<h1>Loaders and Relationship<a class="headerlink" href="#loaders-and-relationship" title="Permalink to this headline">¶</a></h1>
+<p>Loaders are used to load database row results into objects.</p>
+<p>GINO doesn’t support automated relationship. We insist explicit code style in
+asynchronous programming and that conflicts with some usual ORM relationship
+patterns. Instead, GINO provides a rich loader system to assist you with manual
+relationships through foreign keys or whatever magic. That means, you are
+responsible for writing the queries, and GINO could assemble objects for you
+from the database result with loaders you defined.</p>
+<div class="section" id="model-loader">
+<h2>Model Loader<a class="headerlink" href="#model-loader" title="Permalink to this headline">¶</a></h2>
+<p>The Model Loader is the magic behind GINO CRUD to translate database rows into
+model objects. Through CRUD, Model Loaders are assembled internally for you,
+you can still use it directly. For example, an ordinary query that returns rows
+may look like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">query</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">select</span><span class="p">([</span><span class="n">User</span><span class="p">])</span>
+<span class="n">rows</span> <span class="o">=</span> <span class="k">await</span> <span class="n">query</span><span class="o">.</span><span class="n">gino</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>In order to load rows into <code class="docutils literal notranslate"><span class="pre">User</span></code> objects, you can provide an execution
+option <code class="docutils literal notranslate"><span class="pre">loader</span></code> with a new <a class="reference internal" href="../reference/api/gino.loader.html#gino.loader.ModelLoader" title="gino.loader.ModelLoader"><code class="xref py py-class docutils literal notranslate"><span class="pre">ModelLoader</span></code></a> instance:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gino.loader</span> <span class="kn">import</span> <span class="n">ModelLoader</span>
+
+<span class="n">query</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">select</span><span class="p">([</span><span class="n">User</span><span class="p">])</span>
+<span class="n">query</span> <span class="o">=</span> <span class="n">query</span><span class="o">.</span><span class="n">execution_options</span><span class="p">(</span><span class="n">loader</span><span class="o">=</span><span class="n">ModelLoader</span><span class="p">(</span><span class="n">User</span><span class="p">))</span>
+<span class="n">users</span> <span class="o">=</span> <span class="k">await</span> <span class="n">query</span><span class="o">.</span><span class="n">gino</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The <a class="reference internal" href="../reference/api/gino.loader.html#gino.loader.ModelLoader" title="gino.loader.ModelLoader"><code class="xref py py-class docutils literal notranslate"><span class="pre">ModelLoader</span></code></a> would then load each database row into a
+<code class="docutils literal notranslate"><span class="pre">User</span></code> object. As this is frequently used, GINO made it a shortcut:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">query</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">select</span><span class="p">([</span><span class="n">User</span><span class="p">])</span>
+<span class="n">query</span> <span class="o">=</span> <span class="n">query</span><span class="o">.</span><span class="n">execution_options</span><span class="p">(</span><span class="n">loader</span><span class="o">=</span><span class="n">User</span><span class="o">.</span><span class="n">load</span><span class="p">())</span>
+<span class="n">users</span> <span class="o">=</span> <span class="k">await</span> <span class="n">query</span><span class="o">.</span><span class="n">gino</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>And another shortcut:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">query</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">select</span><span class="p">([</span><span class="n">User</span><span class="p">])</span>
+<span class="n">query</span> <span class="o">=</span> <span class="n">query</span><span class="o">.</span><span class="n">execution_options</span><span class="p">(</span><span class="n">loader</span><span class="o">=</span><span class="n">User</span><span class="p">)</span>
+<span class="n">users</span> <span class="o">=</span> <span class="k">await</span> <span class="n">query</span><span class="o">.</span><span class="n">gino</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><code class="docutils literal notranslate"><span class="pre">User</span></code> as <code class="docutils literal notranslate"><span class="pre">loader</span></code> is transformed into <code class="docutils literal notranslate"><span class="pre">ModelLoader(User)</span></code> by
+<a class="reference internal" href="../reference/api/gino.loader.html#gino.loader.Loader.get" title="gino.loader.Loader.get"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Loader.get()</span></code></a>, explained later in “Loader
+Expression”.</p>
+</div>
+<p>And again:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">query</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">select</span><span class="p">([</span><span class="n">User</span><span class="p">])</span>
+<span class="n">users</span> <span class="o">=</span> <span class="k">await</span> <span class="n">query</span><span class="o">.</span><span class="n">gino</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">User</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This is identical to the normal CRUD query:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">users</span> <span class="o">=</span> <span class="k">await</span> <span class="n">User</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">gino</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="loader-expression">
+<h2>Loader Expression<a class="headerlink" href="#loader-expression" title="Permalink to this headline">¶</a></h2>
+<p>So Loaders are actually row post-processors, they define how the database rows
+should be processed and returned. Other than <a class="reference internal" href="../reference/api/gino.loader.html#gino.loader.ModelLoader" title="gino.loader.ModelLoader"><code class="xref py py-class docutils literal notranslate"><span class="pre">ModelLoader</span></code></a>,
+there’re also other loaders that could turn the database rows into different
+results like based on your definition. GINO provides the Loader Expression
+feature for you to easily assemble complex loaders.</p>
+<p>Here is an example using all loaders at once:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">uid</span><span class="p">,</span> <span class="n">user</span><span class="p">,</span> <span class="n">sep</span><span class="p">,</span> <span class="n">cols</span> <span class="o">=</span> <span class="k">await</span> <span class="n">db</span><span class="o">.</span><span class="n">select</span><span class="p">([</span><span class="n">User</span><span class="p">])</span><span class="o">.</span><span class="n">gino</span><span class="o">.</span><span class="n">load</span><span class="p">(</span>
+    <span class="p">(</span>
+        <span class="n">User</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
+        <span class="n">User</span><span class="p">,</span>
+        <span class="s1">&#39;|&#39;</span><span class="p">,</span>
+        <span class="k">lambda</span> <span class="n">row</span><span class="p">,</span> <span class="n">ctx</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">row</span><span class="p">),</span>
+    <span class="p">)</span>
+<span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Let’s check this piece by piece. Overall, the argument of
+<a class="reference internal" href="../reference/api/gino.api.html#gino.api.GinoExecutor.load" title="gino.api.GinoExecutor.load"><code class="xref py py-meth docutils literal notranslate"><span class="pre">load()</span></code></a> is a tuple. This is interpreted into a
+<a class="reference internal" href="../reference/api/gino.loader.html#gino.loader.TupleLoader" title="gino.loader.TupleLoader"><code class="xref py py-class docutils literal notranslate"><span class="pre">TupleLoader</span></code></a>, with each item of the tuple interpreted as a
+Loader Expression recursively. That means, it is possible to nest tuples. The
+result of a <a class="reference internal" href="../reference/api/gino.loader.html#gino.loader.TupleLoader" title="gino.loader.TupleLoader"><code class="xref py py-class docutils literal notranslate"><span class="pre">TupleLoader</span></code></a> is a tuple.</p>
+<p><a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/metadata.html#sqlalchemy.schema.Column" title="(in SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Column</span></code></a> in Loader Expressions are interpreted as
+<a class="reference internal" href="../reference/api/gino.loader.html#gino.loader.ColumnLoader" title="gino.loader.ColumnLoader"><code class="xref py py-class docutils literal notranslate"><span class="pre">ColumnLoader</span></code></a>. It simply outputs the value of the given
+column in the database row. It is your responsibility to select the column in
+the query. Please note, <a class="reference internal" href="../reference/api/gino.loader.html#gino.loader.ColumnLoader" title="gino.loader.ColumnLoader"><code class="xref py py-class docutils literal notranslate"><span class="pre">ColumnLoader</span></code></a> uses the given
+column as index to look for the value, not the name of the column. This is a
+SQLAlchemy feature to support selecting multiple columns with the same name
+from different tables in the same query, especially for ORM. So if you are
+using raw textual SQL and wishing to use <a class="reference internal" href="../reference/api/gino.loader.html#gino.loader.ColumnLoader" title="gino.loader.ColumnLoader"><code class="xref py py-class docutils literal notranslate"><span class="pre">ColumnLoader</span></code></a>,
+you’ll have to declare columns for the query:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">now</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="n">db</span><span class="o">.</span><span class="n">DateTime</span><span class="p">())</span>
+<span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">db</span><span class="o">.</span><span class="n">first</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">text</span><span class="p">(</span>
+    <span class="s1">&#39;SELECT now() AT TIME ZONE </span><span class="se">\&#39;</span><span class="s1">UTC</span><span class="se">\&#39;</span><span class="s1">&#39;</span>
+<span class="p">)</span><span class="o">.</span><span class="n">columns</span><span class="p">(</span>
+    <span class="n">now</span><span class="p">,</span>
+<span class="p">)</span><span class="o">.</span><span class="n">gino</span><span class="o">.</span><span class="n">load</span><span class="p">(</span>
+    <span class="p">(</span><span class="s1">&#39;now:&#39;</span><span class="p">,</span> <span class="n">now</span><span class="p">)</span>
+<span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># now: 2018-04-08 08:23:02.431847</span>
+</pre></div>
+</div>
+<p>Let’s get back to previous example. The second item in the tuple is a GINO
+model class. As we’ve presented previously, it is interpreted into a
+<a class="reference internal" href="../reference/api/gino.loader.html#gino.loader.ModelLoader" title="gino.loader.ModelLoader"><code class="xref py py-class docutils literal notranslate"><span class="pre">ModelLoader</span></code></a>. By default, it loads the values of all the
+columns of the give model, and create a new model instance with the values.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>For a complex loader expression, the same row is given to all loaders, so
+it doesn’t matter <code class="docutils literal notranslate"><span class="pre">User.id</span></code> is already used before the model loader.</p>
+</div>
+<p>The last item in the tuple is a callable, it will be called for each row with
+two arguments: the first argument is the row itself, while the second is a
+contextual value provided by outer loader, we’ll get to that later. Similar to
+<a class="reference external" href="https://docs.python.org/3/library/functions.html#map" title="(in Python v3.8)"><code class="xref py py-func docutils literal notranslate"><span class="pre">map()</span></code></a>, the return value of the call will be the loaded result.</p>
+<p>At last, if none of the above types matches a Loader Expression, it will be
+treated as is. Like the <code class="docutils literal notranslate"><span class="pre">'|'</span></code> separator, it will show up as the third item
+in every result returned by the query.</p>
+</div>
+<div class="section" id="many-to-one-relationship">
+<h2>Many-to-One Relationship<a class="headerlink" href="#many-to-one-relationship" title="Permalink to this headline">¶</a></h2>
+<p>A classic many-to-one relationship is also known as referencing - the model on
+the “many” end keeps a single reference to the model on the “one” end. Although
+GINO does not enforce it, usually people use a foreign key for the reference:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Parent</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s1">&#39;parents&#39;</span>
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s1">&#39;children&#39;</span>
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">parent_id</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Integer</span><span class="p">,</span> <span class="n">db</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="s1">&#39;parents.id&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>So every child has a single parent (or no parent at all), while one parent may
+have multiple children. GINO provides an easy way to load children with their
+parents:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">Child</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">Parent</span><span class="p">)</span><span class="o">.</span><span class="n">gino</span><span class="o">.</span><span class="n">iterate</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Parent of </span><span class="si">{child.id}</span><span class="s1"> is </span><span class="si">{child.parent.id}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>As you may have noticed, <code class="docutils literal notranslate"><span class="pre">Child.load</span></code> is exactly the shortcut to create
+<a class="reference internal" href="../reference/api/gino.loader.html#gino.loader.ModelLoader" title="gino.loader.ModelLoader"><code class="xref py py-class docutils literal notranslate"><span class="pre">ModelLoader</span></code></a> in the very first example. With some
+additional keyword arguments, <code class="docutils literal notranslate"><span class="pre">Child.load(parent=Parent)</span></code> is still a
+<a class="reference internal" href="../reference/api/gino.loader.html#gino.loader.ModelLoader" title="gino.loader.ModelLoader"><code class="xref py py-class docutils literal notranslate"><span class="pre">ModelLoader</span></code></a> for <code class="docutils literal notranslate"><span class="pre">Child</span></code>, the model loader is at the
+same time a <strong>query builder</strong>. It is identical to do this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">Child</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">Parent</span><span class="p">)</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">gino</span><span class="o">.</span><span class="n">iterate</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Parent of </span><span class="si">{child.id}</span><span class="s1"> is </span><span class="si">{child.parent.id}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The <a class="reference internal" href="../reference/api/gino.loader.html#gino.loader.Loader.query" title="gino.loader.Loader.query"><code class="xref py py-attr docutils literal notranslate"><span class="pre">query</span></code></a> dynamically generates a SQLAlchemy query
+based on the knowledge of the loader, and set the loader as execution option at
+the same time. The <a class="reference internal" href="../reference/api/gino.loader.html#gino.loader.Loader" title="gino.loader.Loader"><code class="xref py py-class docutils literal notranslate"><span class="pre">Loader</span></code></a> simply forwarded unknown
+attributes to its <a class="reference internal" href="../reference/api/gino.loader.html#gino.loader.Loader.query" title="gino.loader.Loader.query"><code class="xref py py-attr docutils literal notranslate"><span class="pre">query</span></code></a>, that’s why <code class="docutils literal notranslate"><span class="pre">.query</span></code> can
+be omitted.</p>
+<p>For <a class="reference internal" href="../reference/api/gino.loader.html#gino.loader.ModelLoader" title="gino.loader.ModelLoader"><code class="xref py py-class docutils literal notranslate"><span class="pre">ModelLoader</span></code></a>, all keyword arguments are interpreted as
+subloaders, their results will be set to the attributes of the result model
+under the corresponding keys using <a class="reference external" href="https://docs.python.org/3/library/functions.html#setattr" title="(in Python v3.8)"><code class="xref py py-func docutils literal notranslate"><span class="pre">setattr()</span></code></a>. For example, <code class="docutils literal notranslate"><span class="pre">Parent</span></code> is
+interpreted as <code class="docutils literal notranslate"><span class="pre">ModelLoader(Parent)</span></code> which loads <code class="docutils literal notranslate"><span class="pre">Parent</span></code> instances, and
+<code class="docutils literal notranslate"><span class="pre">Parent</span></code> instances are set as the <code class="docutils literal notranslate"><span class="pre">parent</span></code> attribute of the outer <code class="docutils literal notranslate"><span class="pre">Child</span></code>
+instance.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If multiple children references the same parent, then each child owns a
+unique parent instance with identical values.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You don’t have to define <code class="docutils literal notranslate"><span class="pre">parent</span></code> attribute on <code class="docutils literal notranslate"><span class="pre">Child</span></code>. But if you do,
+you gain the ability to customize how parent is stored or retrieved. For
+example, let’s store the parent instance as <code class="docutils literal notranslate"><span class="pre">_parent</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s1">&#39;children&#39;</span>
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">parent_id</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Integer</span><span class="p">,</span> <span class="n">db</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="s1">&#39;parents.id&#39;</span><span class="p">))</span>
+    <span class="n">_parent</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">parent</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span>
+
+    <span class="nd">@parent</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">parent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span> <span class="o">=</span> <span class="n">value</span>
+</pre></div>
+</div>
+</div>
+<p>The query builder works recursively. For <a class="reference internal" href="../reference/api/gino.loader.html#gino.loader.ModelLoader" title="gino.loader.ModelLoader"><code class="xref py py-class docutils literal notranslate"><span class="pre">ModelLoader</span></code></a>, it
+uses <code class="docutils literal notranslate"><span class="pre">LEFT</span> <span class="pre">OUTER</span> <span class="pre">JOIN</span></code> to connect the <code class="docutils literal notranslate"><span class="pre">FROM</span></code> clauses, in order to achieve
+many-to-one scenario. The <code class="docutils literal notranslate"><span class="pre">ON</span></code> clause is determined automatically by foreign
+keys. You can also customize the <code class="docutils literal notranslate"><span class="pre">ON</span></code> clause in case there is no foreign key
+(a promise is a promise):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">loader</span> <span class="o">=</span> <span class="n">Child</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">Parent</span><span class="o">.</span><span class="n">on</span><span class="p">(</span><span class="n">Child</span><span class="o">.</span><span class="n">parent_id</span> <span class="o">==</span> <span class="n">Parent</span><span class="o">.</span><span class="n">id</span><span class="p">))</span>
+<span class="k">async</span> <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">loader</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">gino</span><span class="o">.</span><span class="n">iterate</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Parent of </span><span class="si">{child.id}</span><span class="s1"> is </span><span class="si">{child.parent.id}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>And subloaders can be nested:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">subloader</span> <span class="o">=</span> <span class="n">Child</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">Parent</span><span class="o">.</span><span class="n">on</span><span class="p">(</span><span class="n">Child</span><span class="o">.</span><span class="n">parent_id</span> <span class="o">==</span> <span class="n">Parent</span><span class="o">.</span><span class="n">id</span><span class="p">))</span>
+<span class="n">loader</span> <span class="o">=</span> <span class="n">Grandson</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">subloader</span><span class="o">.</span><span class="n">on</span><span class="p">(</span><span class="n">Grandson</span><span class="o">.</span><span class="n">parent_id</span> <span class="o">==</span> <span class="n">Child</span><span class="o">.</span><span class="n">id</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>By now, GINO supports only loading many-to-one joined query. To modify a
+relationship, just modify the reference column values.</p>
+</div>
+<div class="section" id="self-referencing">
+<h2>Self Referencing<a class="headerlink" href="#self-referencing" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Experimental feature.</p>
+</div>
+<p>Self referencing is usually used to create a tree-like structure. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Category</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s1">&#39;categories&#39;</span>
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">parent_id</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Integer</span><span class="p">,</span> <span class="n">db</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="s1">&#39;categories.id&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>In order to load leaf categories with their parents, an alias is needed:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Parent</span> <span class="o">=</span> <span class="n">Category</span><span class="o">.</span><span class="n">alias</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Then the query would be something like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">parents</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">select</span><span class="p">([</span><span class="n">Category</span><span class="o">.</span><span class="n">parent_id</span><span class="p">])</span>
+<span class="n">query</span> <span class="o">=</span> <span class="n">Category</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">Parent</span><span class="o">.</span><span class="n">on</span><span class="p">(</span>
+    <span class="n">Category</span><span class="o">.</span><span class="n">parent_id</span> <span class="o">==</span> <span class="n">Parent</span><span class="o">.</span><span class="n">id</span>
+<span class="p">))</span><span class="o">.</span><span class="n">where</span><span class="p">(</span>
+    <span class="o">~</span><span class="n">Category</span><span class="o">.</span><span class="n">id</span><span class="o">.</span><span class="n">in_</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">select</span><span class="p">([</span><span class="n">Category</span><span class="o">.</span><span class="n">alias</span><span class="p">()</span><span class="o">.</span><span class="n">parent_id</span><span class="p">]))</span>
+<span class="p">)</span>
+<span class="k">async</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">query</span><span class="o">.</span><span class="n">gino</span><span class="o">.</span><span class="n">iterate</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Leaf: </span><span class="si">{c.id}</span><span class="s1">, Parent: </span><span class="si">{c.parent.id}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The generated SQL looks like this:</p>
+<div class="highlight-SQL notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">categories</span><span class="p">.</span><span class="n">id</span><span class="p">,</span> <span class="n">categories</span><span class="p">.</span><span class="n">parent_id</span><span class="p">,</span> <span class="n">categories_1</span><span class="p">.</span><span class="n">id</span><span class="p">,</span> <span class="n">categories_1</span><span class="p">.</span><span class="n">parent_id</span>
+  <span class="k">FROM</span> <span class="n">categories</span> <span class="k">LEFT</span> <span class="k">OUTER</span> <span class="k">JOIN</span> <span class="n">categories</span> <span class="k">AS</span> <span class="n">categories_1</span>
+    <span class="k">ON</span> <span class="n">categories</span><span class="p">.</span><span class="n">parent_id</span> <span class="o">=</span> <span class="n">categories_1</span><span class="p">.</span><span class="n">id</span>
+ <span class="k">WHERE</span> <span class="n">categories</span><span class="p">.</span><span class="n">id</span> <span class="k">NOT</span> <span class="k">IN</span> <span class="p">(</span>
+           <span class="k">SELECT</span> <span class="n">categories_2</span><span class="p">.</span><span class="n">parent_id</span>
+             <span class="k">FROM</span> <span class="n">categories</span> <span class="k">AS</span> <span class="n">categories_2</span>
+       <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="other-relationships">
+<h2>Other Relationships<a class="headerlink" href="#other-relationships" title="Permalink to this headline">¶</a></h2>
+<p>GINO 0.7.4 introduced an experimental distinct feature to reduce a result set
+with loaders, combining rows under specified conditions. This made it possible
+to build one-to-many relationships. Using the same parent-child example above,
+we could load distinct parents with all their children:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Parent</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s1">&#39;parents&#39;</span>
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kw</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_children</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">children</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_children</span>
+
+    <span class="nd">@children</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">add_child</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">child</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_children</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">child</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s1">&#39;children&#39;</span>
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">parent_id</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Integer</span><span class="p">,</span> <span class="n">db</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="s1">&#39;parents.id&#39;</span><span class="p">))</span>
+
+
+<span class="n">query</span> <span class="o">=</span> <span class="n">Child</span><span class="o">.</span><span class="n">outerjoin</span><span class="p">(</span><span class="n">Parent</span><span class="p">)</span><span class="o">.</span><span class="n">select</span><span class="p">()</span>
+<span class="n">parents</span> <span class="o">=</span> <span class="k">await</span> <span class="n">query</span><span class="o">.</span><span class="n">gino</span><span class="o">.</span><span class="n">load</span><span class="p">(</span>
+    <span class="n">Parent</span><span class="o">.</span><span class="n">distinct</span><span class="p">(</span><span class="n">Parent</span><span class="o">.</span><span class="n">id</span><span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">add_child</span><span class="o">=</span><span class="n">Child</span><span class="p">))</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Here the query is still child outer-joining parent, but the loader is loading
+parent instances with distinct IDs only, while storing all their children
+through the <code class="docutils literal notranslate"><span class="pre">add_child</span></code> setter property. In detail for each row, a parent
+instance is firstly loaded if no parent instance with the same ID was loaded
+previously, or the same parent instance will be reused. Then a child instance
+is loaded from the same row, and fed to the possibly reused parent instance by
+<code class="docutils literal notranslate"><span class="pre">parent.add_child</span> <span class="pre">=</span> <span class="pre">new_child</span></code>.</p>
+<p>Distinct loaders can be nested to load hierarchical data, but it cannot be used
+as a query builder to automatically generate queries.</p>
+<p>GINO provides no additional support for one-to-one relationship - the user
+should make sure that the query produces rows of distinct instance pairs, and
+load them with regular GINO model loaders. When in doubt, the distinct feature
+can be used on both sides, but you’ll have to manually deal with the conflict
+if more than one related instances are found. For example, we could keep only
+the last child for each parent:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Parent</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s1">&#39;parents&#39;</span>
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kw</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_child</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">child</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_child</span>
+
+    <span class="nd">@child</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">child</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">child</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_child</span> <span class="o">=</span> <span class="n">child</span>
+
+
+<span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s1">&#39;children&#39;</span>
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">parent_id</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Integer</span><span class="p">,</span> <span class="n">db</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="s1">&#39;parents.id&#39;</span><span class="p">))</span>
+
+
+<span class="n">query</span> <span class="o">=</span> <span class="n">Child</span><span class="o">.</span><span class="n">outerjoin</span><span class="p">(</span><span class="n">Parent</span><span class="p">)</span><span class="o">.</span><span class="n">select</span><span class="p">()</span>
+<span class="n">parents</span> <span class="o">=</span> <span class="k">await</span> <span class="n">query</span><span class="o">.</span><span class="n">gino</span><span class="o">.</span><span class="n">load</span><span class="p">(</span>
+    <span class="n">Parent</span><span class="o">.</span><span class="n">distinct</span><span class="p">(</span><span class="n">Parent</span><span class="o">.</span><span class="n">id</span><span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">child</span><span class="o">=</span><span class="n">Child</span><span class="o">.</span><span class="n">distinct</span><span class="p">(</span><span class="n">Child</span><span class="o">.</span><span class="n">id</span><span class="p">)))</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Similarly, you can build many-to-many relationships in the same way:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Parent</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s1">&#39;parents&#39;</span>
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kw</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_children</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">children</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_children</span>
+
+    <span class="nd">@children</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">add_child</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">child</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_children</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">child</span><span class="p">)</span>
+        <span class="n">child</span><span class="o">.</span><span class="n">_parents</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s1">&#39;children&#39;</span>
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kw</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_parents</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">parents</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parents</span>
+
+
+<span class="k">class</span> <span class="nc">ParentXChild</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s1">&#39;parents_x_children&#39;</span>
+
+    <span class="n">parent_id</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Integer</span><span class="p">,</span> <span class="n">db</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="s1">&#39;parents.id&#39;</span><span class="p">))</span>
+    <span class="n">child_id</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Integer</span><span class="p">,</span> <span class="n">db</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="s1">&#39;children.id&#39;</span><span class="p">))</span>
+
+
+<span class="n">query</span> <span class="o">=</span> <span class="n">Parent</span><span class="o">.</span><span class="n">outerjoin</span><span class="p">(</span><span class="n">ParentXChild</span><span class="p">)</span><span class="o">.</span><span class="n">outerjoin</span><span class="p">(</span><span class="n">Child</span><span class="p">)</span><span class="o">.</span><span class="n">select</span><span class="p">()</span>
+<span class="n">parents</span> <span class="o">=</span> <span class="k">await</span> <span class="n">query</span><span class="o">.</span><span class="n">gino</span><span class="o">.</span><span class="n">load</span><span class="p">(</span>
+    <span class="n">Parent</span><span class="o">.</span><span class="n">distinct</span><span class="p">(</span><span class="n">Parent</span><span class="o">.</span><span class="n">id</span><span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">add_child</span><span class="o">=</span><span class="n">Child</span><span class="o">.</span><span class="n">distinct</span><span class="p">(</span><span class="n">Child</span><span class="o">.</span><span class="n">id</span><span class="p">)))</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Likewise, there is for now no way to modify the relationships automatically,
+you’ll have to manually create, delete or modify <code class="docutils literal notranslate"><span class="pre">ParentXChild</span></code> instances.</p>
+</div>
+<div class="section" id="advanced-usage-of-loaders">
+<h2>Advanced Usage of Loaders<a class="headerlink" href="#advanced-usage-of-loaders" title="Permalink to this headline">¶</a></h2>
+<p>You could use combined loaders flexibly in complex queries - loading
+relationships is just one special use case. For <a class="reference external" href="https://github.com/fantix/gino/issues/308">example</a>, you could load the count of
+visits at the same time of loading each user, by using a tuple loader with two
+items - model loader for the user, and column loader for the count:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">asyncio</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">string</span>
+
+<span class="kn">import</span> <span class="nn">gino</span>
+<span class="kn">from</span> <span class="nn">gino.loader</span> <span class="kn">import</span> <span class="n">ColumnLoader</span>
+
+<span class="n">db</span> <span class="o">=</span> <span class="n">gino</span><span class="o">.</span><span class="n">Gino</span><span class="p">()</span>
+
+
+<span class="k">class</span> <span class="nc">User</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s1">&#39;users&#39;</span>
+
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Integer</span><span class="p">(),</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Unicode</span><span class="p">())</span>
+
+
+<span class="k">class</span> <span class="nc">Visit</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s1">&#39;visits&#39;</span>
+
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Integer</span><span class="p">(),</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">time</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">DateTime</span><span class="p">(),</span> <span class="n">server_default</span><span class="o">=</span><span class="s1">&#39;now()&#39;</span><span class="p">)</span>
+    <span class="n">user_id</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="s1">&#39;users.id&#39;</span><span class="p">))</span>
+
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="k">async</span> <span class="k">with</span> <span class="n">db</span><span class="o">.</span><span class="n">with_bind</span><span class="p">(</span><span class="s1">&#39;postgresql://localhost/gino&#39;</span><span class="p">):</span>
+        <span class="k">await</span> <span class="n">db</span><span class="o">.</span><span class="n">gino</span><span class="o">.</span><span class="n">create_all</span><span class="p">()</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">)):</span>
+            <span class="n">u</span> <span class="o">=</span> <span class="k">await</span> <span class="n">User</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+                <span class="n">name</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">choices</span><span class="p">(</span><span class="n">string</span><span class="o">.</span><span class="n">ascii_letters</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">10</span><span class="p">)))</span>
+            <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">)):</span>
+                <span class="k">await</span> <span class="n">Visit</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">user_id</span><span class="o">=</span><span class="n">u</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+
+        <span class="n">visits</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">func</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">Visit</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+        <span class="n">q</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">select</span><span class="p">([</span>
+            <span class="n">User</span><span class="p">,</span>
+            <span class="n">visits</span><span class="p">,</span>
+        <span class="p">])</span><span class="o">.</span><span class="n">select_from</span><span class="p">(</span>
+            <span class="n">User</span><span class="o">.</span><span class="n">outerjoin</span><span class="p">(</span><span class="n">Visit</span><span class="p">)</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">group_by</span><span class="p">(</span>
+            <span class="o">*</span><span class="n">User</span><span class="p">,</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">gino</span><span class="o">.</span><span class="n">load</span><span class="p">((</span><span class="n">User</span><span class="p">,</span> <span class="n">ColumnLoader</span><span class="p">(</span><span class="n">visits</span><span class="p">)))</span>
+        <span class="k">async</span> <span class="k">with</span> <span class="n">db</span><span class="o">.</span><span class="n">transaction</span><span class="p">():</span>
+            <span class="k">async</span> <span class="k">for</span> <span class="n">user</span><span class="p">,</span> <span class="n">visits</span> <span class="ow">in</span> <span class="n">q</span><span class="o">.</span><span class="n">iterate</span><span class="p">():</span>
+                <span class="nb">print</span><span class="p">(</span><span class="n">user</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">visits</span><span class="p">)</span>
+
+        <span class="k">await</span> <span class="n">db</span><span class="o">.</span><span class="n">gino</span><span class="o">.</span><span class="n">drop_all</span><span class="p">()</span>
+
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>Using alias to get ID-ascending pairs from the same table:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ua1</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">alias</span><span class="p">()</span>
+<span class="n">ua2</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">alias</span><span class="p">()</span>
+<span class="n">join_query</span> <span class="o">=</span> <span class="n">select</span><span class="p">([</span><span class="n">ua1</span><span class="p">,</span> <span class="n">ua2</span><span class="p">])</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">ua1</span><span class="o">.</span><span class="n">id</span> <span class="o">&lt;</span> <span class="n">ua2</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+<span class="n">loader</span> <span class="o">=</span> <span class="n">ua1</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">),</span> <span class="n">ua2</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">join_query</span><span class="o">.</span><span class="n">gino</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">loader</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># e.g. [(1, 2), (1, 3), (2, 3)]</span>
+</pre></div>
+</div>
+<p>Potentially there could be a lot of different use cases of loaders. We’ll add
+more inspiration here in the future.</p>
+</div>
+</div>
+
+
+        </div>
+
+        <div class="col hide-on-small-only m3 right-nav">
+            <div class="table-of-contents fixed">
+                
+                    <ul>
+<li><a class="reference internal" href="#">Loaders and Relationship</a><ul>
+<li><a class="reference internal" href="#model-loader">Model Loader</a></li>
+<li><a class="reference internal" href="#loader-expression">Loader Expression</a></li>
+<li><a class="reference internal" href="#many-to-one-relationship">Many-to-One Relationship</a></li>
+<li><a class="reference internal" href="#self-referencing">Self Referencing</a></li>
+<li><a class="reference internal" href="#other-relationships">Other Relationships</a></li>
+<li><a class="reference internal" href="#advanced-usage-of-loaders">Advanced Usage of Loaders</a></li>
+</ul>
+</li>
+</ul>
+
+                
+            </div>
+        </div>
+
+    </div>
+    <div class="fixed-action-btn click-to-toggle">
+        <a class="btn-floating btn-large blue">
+            <i class="mdi mdi-translate"></i>
+        </a>
+        <ul>
+            <li><a href="/docs/en/master" class="btn-floating blue">EN</a></li>
+            <li><a href="/docs/zh/master" class="btn-floating red">ZH</a></li>
+        </ul>
+    </div>
+</main>
+
+<script type="text/javascript"
+        src="../_static/js/materialize.min.js"></script>
+<script type="text/javascript"
+        src="../_static/js/gino.js"></script>
+</body>
+</html>
