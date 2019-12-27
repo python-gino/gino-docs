@@ -1,4 +1,4 @@
-# src
+# python-gino.org
 
 ## Project setup
 ```
