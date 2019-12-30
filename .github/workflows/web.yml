@@ -11,18 +11,24 @@ jobs:
     steps:
     - name: Checkout source code
       uses: actions/checkout@v1
+    - name: Check if /src is updated
+      id: check
+      run: echo ::set-output name=diff::$(git show -- src | head -n1)
     - name: Use Node.js
       uses: actions/setup-node@v1
+      if: steps.check.outputs.diff != ''
       with:
         node-version: 12.x
     - name: Yarn cache
       uses: actions/cache@preview
+      if: steps.check.outputs.diff != ''
       with:
         path: ~/.cache/yarn
         key: ${{ runner.os }}-yarn-${{ hashFiles(format('{0}{1}', github.workspace, '/src/yarn.lock')) }}
         restore-keys: |
           ${{ runner.os }}-yarn-
     - name: Build the website
+      if: steps.check.outputs.diff != ''
       run: |
         npm install -g yarn
         cd src
