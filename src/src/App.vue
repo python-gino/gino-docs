@@ -41,6 +41,10 @@
         </v-btn>
       </router-link>
 
+      <a class="github" target="_blank" href="https://github.com/python-gino/gino">
+        <v-icon>mdi-github-circle</v-icon>
+      </a>
+
     </v-app-bar>
 
     <v-content>
@@ -48,6 +52,21 @@
     </v-content>
   </v-app>
 </template>
+
+<style scoped>
+.github {
+  margin-left: 16px;
+  text-decoration: none;
+}
+
+.github:hover {
+  text-shadow: #FFFFFF 0 0 5px;
+}
+
+.github i {
+  font-size: 40px;
+}
+</style>
 
 <script>
 export default {
