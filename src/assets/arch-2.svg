@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="514px" height="113px" viewBox="0 0 514 113" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61.2 (89653) - https://sketch.com -->
+    <title>dialect</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="494" height="93" rx="12"></rect>
+        <linearGradient x1="52.7051221%" y1="409.314697%" x2="52.7051221%" y2="-100.449648%" id="linearGradient-3">
+            <stop stop-color="#4360CE" offset="0.0765413851%"></stop>
+            <stop stop-color="#FFFFFF" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="V3-最新稿件" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="HOME-v3.1" transform="translate(-1102.000000, -2686.000000)">
+            <g id="artchiture" transform="translate(507.000000, 2281.000000)">
+                <g id="dialect" transform="translate(595.000000, 405.000000)">
+                    <rect id="dialet-bg" fill="#FFFFFF" x="0" y="0" width="514" height="113" rx="12"></rect>
+                    <g id="Path" transform="translate(10.000000, 10.000000)">
+                        <mask id="mask-2" fill="white">
+                            <use xlink:href="#path-1"></use>
+                        </mask>
+                        <use id="Mask" fill="#4360CE" xlink:href="#path-1"></use>
+                        <path d="M-12.1544544,-16.1250987 C8.08938144,-12.2735123 38.2897871,9.34707841 53.8389368,5.84534715 C69.3880865,2.34361588 82.213747,9.34550975 96.14,5.84534715 C110.066253,2.34518455 117.485145,1.2542631 137.214837,1.2542631 C156.944529,1.2542631 172.720328,15.4879386 188.697696,13.0108378 C204.675063,10.5337369 207.995793,-3.33682096 232.037657,1.2542631 C256.079522,5.84534715 263.831715,13.0108378 281.902623,13.0108378 C299.97353,13.0108378 311.009743,-6.02658093 328.393399,1.2542631 C345.777055,8.53510712 356.61304,8.75332995 368.284899,3.27882785 C379.956759,-2.19567424 377.006985,-3.33682096 392.904375,1.2542631 C403.502634,4.3149858 417.694509,-1.47813479 435.48,-16.1250987 L20.8363424,-16.1250987 C-10.1720051,-15.2709752 -21.1689374,-8.80299967 -12.1544544,3.27882785 C1.36726991,21.4015691 -32.3982903,-19.976685 -12.1544544,-16.1250987 Z" fill="url(#linearGradient-3)" mask="url(#mask-2)"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="54px" height="74px" viewBox="0 0 54 74" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61.2 (89653) - https://sketch.com -->
+    <title>light-on</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <radialGradient cx="50%" cy="50%" fx="50%" fy="50%" r="106.625769%" gradientTransform="translate(0.500000,0.500000),scale(1.000000,0.695652),rotate(90.000000),translate(-0.500000,-0.500000)" id="radialGradient-1">
+            <stop stop-color="#FFFFFF" offset="0%"></stop>
+            <stop stop-color="#F2EDD1" offset="100%"></stop>
+        </radialGradient>
+        <path d="M22.9787234,-1.42108547e-14 C35.6695219,-1.65421166e-14 45.9574468,10.2879249 45.9574468,22.9787234 L45.9574468,60.0638298 C45.9574468,63.3775383 43.2711553,66.0638298 39.9574468,66.0638298 L6,66.0638298 C2.6862915,66.0638298 6.86053407e-13,63.3775383 6.82121026e-13,60.0638298 L6.82121026e-13,22.9787234 C6.80566852e-13,10.2879249 10.2879249,-1.18795928e-14 22.9787234,-1.42108547e-14 Z" id="path-2"></path>
+        <filter x="-13.1%" y="-9.1%" width="126.1%" height="118.2%" filterUnits="objectBoundingBox" id="filter-3">
+            <feOffset dx="0" dy="0" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.94838649   0 0 0 0 0.829006732   0 0 0 0 0.331143737  0 0 0 1 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <radialGradient cx="46.3977978%" cy="54.9012852%" fx="46.3977978%" fy="54.9012852%" r="189.394268%" gradientTransform="translate(0.463978,0.549013),scale(0.808496,1.000000),rotate(97.299559),translate(-0.463978,-0.549013)" id="radialGradient-4">
+            <stop stop-color="#131B53" offset="0%"></stop>
+            <stop stop-color="#131B53" offset="30.8940973%"></stop>
+            <stop stop-color="#F2EDD1" offset="100%"></stop>
+        </radialGradient>
+    </defs>
+    <g id="V3-最新稿件" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="submarine" transform="translate(-257.000000, -393.000000)">
+            <g id="light-on" transform="translate(261.000000, 397.000000)">
+                <g id="Rectangle-Copy-75">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-2"></use>
+                    <use fill="url(#radialGradient-1)" fill-rule="evenodd" xlink:href="#path-2"></use>
+                </g>
+                <path d="M12.0164521,38.5639028 C13.9392195,39.2050139 14.5672956,42.2237809 14.6153263,43.2437666 C16.9866388,42.1398293 19.6835476,41.5234654 22.4356721,41.6474026 C21.8457488,40.8953782 21.0466031,39.6600852 21.5674626,39.0315044 C22.3492727,38.090116 23.3116908,39.7731107 23.39148,40.3743128 C23.4718877,40.9755149 23.4916803,39.1119121 24.45348,39.5925027 C25.0188637,39.8757399 24.5664508,40.9685978 24.097472,41.8213484 C26.8227421,42.2803321 29.423478,43.5981714 31.5761189,45.4061814 C31.6580251,45.1098862 31.7824038,44.7289786 31.9650423,44.3247424 C32.3738844,43.4192282 33.2194022,41.814167 34.7384889,41.8135485 C37.0925785,41.81293 40.8105062,45.0830487 40.6354649,48.4700679 C40.4893257,51.2968022 37.383493,51.8247622 36.3618302,51.9220455 C37.3353164,54.4421149 37.4722622,57.0954043 36.4068247,59.4662518 C34.5166255,63.6728109 29.0340584,68.0655446 21.8295298,67.523102 C11.359212,66.7351066 6.89905957,60.0625058 6.45496174,54.1680039 C6.30961335,52.2392924 6.96919421,50.2707875 8.20051595,48.4824341 C7.91247991,48.3855601 4.29517917,47.1033958 4.65914886,43.9648252 C5.03892054,40.6947065 9.91410038,37.8631189 12.0164521,38.5639028 Z" id="Combined-Shape" fill="url(#radialGradient-4)"></path>
+            </g>
+        </g>
+    </g>
+</svg>

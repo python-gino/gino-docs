@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="514px" height="116px" viewBox="0 0 514 116" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61.2 (89653) - https://sketch.com -->
+    <title>asyncpg</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="10" y="12" width="494" height="93" rx="12"></rect>
+        <linearGradient x1="50%" y1="76.3219138%" x2="50%" y2="112.384473%" id="linearGradient-3">
+            <stop stop-color="#FFFFFF" offset="0%"></stop>
+            <stop stop-color="#4E40AA" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="V3-最新稿件" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="HOME-v3.1" transform="translate(-1102.000000, -2819.000000)">
+            <g id="artchiture" transform="translate(507.000000, 2281.000000)">
+                <g id="asyncpg" transform="translate(595.000000, 538.000000)">
+                    <rect id="asyncpg-bg" fill="#FFFFFF" x="0" y="0" width="514" height="116" rx="12"></rect>
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <use id="Mask" fill="#4E40A9" xlink:href="#path-1"></use>
+                    <path d="M-45.4403969,72 C-16.410025,44.3700647 0.403986211,27.5048986 5.00163668,21.4045018 C11.8981124,12.2539065 36.0082274,12.2539065 74.6591983,21.4045018 C113.310169,30.5550971 204.400165,25.1035073 219.34096,21.4045018 C234.281755,17.7054963 264.954858,6.96841185 268.91077,15.8818607 C272.866681,24.7953095 308.085953,29.2699955 337.687482,21.4045018 C367.289012,13.5390081 382.219577,0.112434538 390.398905,10.7584682 C398.578234,21.4045018 464.350974,21.0052532 464.350974,15.8818607 C464.350974,10.7584682 523.98435,27.929086 520.333622,10.7584682 C519.430699,6.51171507 535.420033,23.484234 517.343594,3.36030197 C492.944842,-23.8020633 406.899231,-113.255497 259.206763,-265 C104.507143,-210.902806 25.0964414,-183.854209 20.9746573,-183.854209 C14.7919812,-183.854209 -209.154111,-48.598793 -199.709503,-35.7855145 C-193.413097,-27.2433289 -141.990062,8.68517594 -45.4403969,72 Z" id="Path-124" fill="url(#linearGradient-3)" mask="url(#mask-2)"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

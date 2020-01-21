@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="256px" height="230px" viewBox="0 0 256 230" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61.2 (89653) - https://sketch.com -->
+    <title>Group 9</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="236" height="210" rx="12"></rect>
+        <linearGradient x1="50%" y1="-66.744057%" x2="50%" y2="356.095056%" id="linearGradient-3">
+            <stop stop-color="#FFFFFF" offset="0%"></stop>
+            <stop stop-color="#3F59B0" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="V3-最新稿件" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="HOME-v3.1" transform="translate(-328.000000, -1308.000000)">
+            <g id="highlights" transform="translate(328.000000, 1308.000000)">
+                <g id="Group-9">
+                    <rect id="Rectangle-Copy-72" fill="#FFFFFF" x="0" y="0" width="256" height="230" rx="12"></rect>
+                    <g id="Group-15-Copy" transform="translate(10.000000, 10.000000)">
+                        <g id="Path-135">
+                            <mask id="mask-2" fill="white">
+                                <use xlink:href="#path-1"></use>
+                            </mask>
+                            <use id="Mask" fill="#4360CE" xlink:href="#path-1"></use>
+                            <path d="M10.9293079,31.1689762 C18.8460442,24.8316712 20.0964279,12.8281708 33.8071146,10.9084058 C47.5178013,8.98864076 61.7748972,18.6628673 69.1270677,18.6628673 C76.4792382,18.6628673 75.0554787,13.5200482 81.1906405,13.5200482 C87.3258024,13.5200482 99.1646769,22.9219646 106.562878,21.6499588 C113.961079,20.3779531 114.798279,13.5200482 123.586454,13.5200482 C141.43144,13.5200482 151.593715,25.9797353 163.989335,25.9797353 C176.384955,25.9797353 176.258097,6.09552094 186.425621,6.09552094 C196.593146,6.09552094 227.401989,25.9797353 237.629375,19.495709 C244.447633,15.1730249 246.137861,5.87445519 242.70006,-8.4 L-1.07712183,-4.21916555 C-8.37190123,16.5066356 -10.2377711,27.5634944 -6.67473141,28.9514109 C-1.3301719,31.0332857 3.01257164,37.5062812 10.9293079,31.1689762 Z" fill="url(#linearGradient-3)" mask="url(#mask-2)"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

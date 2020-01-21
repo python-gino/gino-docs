@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="119px" height="150px" viewBox="0 0 119 150" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61.2 (89653) - https://sketch.com -->
+    <title>Oval</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#D8D8D8" stop-opacity="0" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="V3-最新稿件" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.5">
+        <g id="HOME-v3" transform="translate(-1582.000000, -400.000000)" fill="url(#linearGradient-1)">
+            <g id="banner-bg" transform="translate(-379.000000, -187.000000)">
+                <g id="Group-25" transform="translate(699.000000, 587.000000)">
+                    <path d="M1266.99573,149.977339 C1269.7548,149.977339 1271.99146,147.740674 1271.99146,144.981609 C1271.99146,142.222543 1382.8299,-2.84217094e-14 1380.07084,-2.84217094e-14 C1377.31177,-2.84217094e-14 1262,142.222543 1262,144.981609 C1262,147.740674 1264.23666,149.977339 1266.99573,149.977339 Z" id="Oval"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
