@@ -34,7 +34,6 @@
 
     h1 {
       color: #212B73;
-      margin-bottom: 0.5rem;
     }
 
     .cases {
@@ -42,7 +41,7 @@
       align-items: center;
       justify-content: space-evenly;
       width: var(--bg-width);
-      height: 9rem;
+      height: 8rem;
       transition: 0.5s;
 
       .case {
@@ -62,7 +61,8 @@
           line-height: 0.2rem;
           border-radius: 0.12rem;
           margin: 0;
-          overflow: scroll;
+          overflow-y: scroll;
+          overflow-x: hidden;
           height: 6.6rem;
           padding: 0.24rem;
           transform: scale(0.4);
@@ -135,7 +135,7 @@
 
         &.current {
           display: block;
-          width: 7.64rem;
+          width: 8.3rem;
           height: 8rem;
           background-color: #fff;
           border-radius: 0.12rem;
@@ -177,6 +177,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      margin-top: 0.5rem;
 
       div {
         background-color: #212B73;

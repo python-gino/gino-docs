@@ -46,9 +46,7 @@
     }
 
     .sig {
-      width: 1.77rem;
-      margin-left: -0.45rem;
-      margin-top: -0.5rem;
+      width: 2rem;
     }
   }
 </style>

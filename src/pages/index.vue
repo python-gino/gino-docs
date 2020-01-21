@@ -50,14 +50,14 @@
 
     > div {
       position: relative;
-      width: calc(var(--bg-width) * 0.66)
+      width: calc(var(--bg-width) * 0.55);
     }
 
     .section {
       h1 {
         display: inline-block;
         font-size: 0.30rem;
-        font-weight: 500;
+        font-weight: 700;
         padding: 0.48rem 0 0.30rem;
         border-bottom: 0.04rem solid #3E6CDE;
       }

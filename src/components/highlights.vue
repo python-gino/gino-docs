@@ -27,7 +27,7 @@
       <p>
         GINO is an engineering product, <br>
         built on top of popular tools, <br>
-        tailored for asyncio<br>
+        tailored for asyncio.<br>
       </p>
       <a href="https://python-gino.org/docs/en/master/index.html">
         <div class="button small">Read More</div>
@@ -100,7 +100,7 @@
 
     .section {
       text-align: right;
-      margin-left: 1.80rem;
+      margin-left: 1.3rem;
     }
   }
 </style>

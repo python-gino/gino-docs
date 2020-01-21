@@ -40,7 +40,7 @@
     .title {
       position: absolute;
       top: 38.6%;
-      left: calc(328px * var(--factor) - var(--bg-width) / 2 + 50vw);
+      left: calc(328px * var(--factor) - var(--bg-width) / 2 + 52vw);
 
       span {
         display: inline-block;

@@ -252,7 +252,7 @@
         justify-content: space-between;
 
         .logo {
-          width: 1.28rem;
+          width: 1.5rem;
         }
 
         .license {
@@ -260,14 +260,14 @@
           background-color: #F2D354;
           border-radius: 0.02rem;
           color: #212B73;
-          font-size: 0.14rem;
-          line-height: 0.14rem;
-          padding: 0.12rem;
+          font-size: 0.16rem;
+          line-height: 0.16rem;
+          padding: 0.14rem;
           margin-top: 0.17rem;
 
           div {
             position: absolute;
-            left: 45%;
+            left: 50%;
             top: -0.14rem;
             border: 0.14rem solid transparent;
             border-bottom: none;
@@ -286,11 +286,11 @@
           justify-content: space-between;
 
           h2 {
-            font-size: 0.16rem;
+            font-size: 0.2rem;
           }
 
           p {
-            font-size: 0.13rem;
+            font-size: 0.16rem;
           }
 
           a, a:visited {

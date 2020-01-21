@@ -33,7 +33,7 @@
     background-position-y: bottom;
     background-size: var(--bg-width);
     width: 100%;
-    height: 12rem;
+    height: 10.5rem;
     margin-top: 0.5rem;
     position: relative;
     display: flex;
