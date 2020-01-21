@@ -31,7 +31,8 @@
             <h2>Fantix King</h2>
             <p style="display: flex">
               <img class="icon" src="~/assets/title.svg">
-              Lead Architect at The University of Chicago Center for Translational Data Science
+              Lead Architect at The University of Chicago Center for Translational Data
+              Science
             </p>
             <p style="display: flex">
               <img class="icon" src="~/assets/location.svg">
@@ -105,9 +106,10 @@
           <div>
             <p>
               Special thanks to my wife Daisy and her outsourcing company <a
-              href="https://decentfox.com/" target="_blank">DecentFoX Studio</a>,
-              for offering me the opportunity to build this project. We are open for global
-              software project outsourcing on Python, iOS and Android development.
+              href="https://decentfox.com/" target="_blank">DecentFoX Studio</a>, for
+              offering me the opportunity to build this project. They are open for
+              global software project outsourcing on Python, iOS and Android
+              development.
             </p>
             <p>
               Much thanks to Mico Liu from DecentFox for designing this awesome website!

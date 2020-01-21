@@ -4,7 +4,9 @@
       <h1>ROADMAP</h1>
     </div>
     <div class="container">
-      <div class="shadow"><div class="spinning"></div></div>
+      <div class="shadow">
+        <div class="spinning"></div>
+      </div>
       <div class="milestone">
         <img src="~/assets/logo-icon-light.svg">
         <h1>1.0 Release</h1>
@@ -14,7 +16,9 @@
            :class="{up: i % 2 === 0, down: i % 2 === 1, on: i <= progress, tall: i % 5 === 2}">
         <h1>{{ item.title }}</h1>
         <hr>
-        <div class="window"></div>
+        <div class="window">
+          <img src="~/assets/submarine-window.svg">
+        </div>
       </div>
     </div>
   </div>
@@ -22,9 +26,13 @@
 
 <style lang="scss">
   @keyframes spin {
-    from {transform:rotate(0deg);}
-    to {transform:rotate(360deg);}
-}
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
 
   #roadmap {
     margin-bottom: -1rem;
@@ -78,7 +86,7 @@
         flex-direction: column;
         align-items: center;
         left: 9.2rem;
-      top: 0.2rem;
+        top: 0.2rem;
       }
 
       .item {
@@ -100,6 +108,24 @@
 
         .window {
           height: 0.74rem;
+          position: relative;
+
+          img {
+            position: absolute;
+            display: none;
+            top: 0;
+            left: -0.27rem;
+            height: 100%;
+            transform: scaleY(-0.8) skewX(-15deg);
+            transform-origin: 50% 95%;
+            filter: brightness(20%);
+            opacity: 0.2;
+            -webkit-mask-image: -webkit-gradient(
+                linear, 50% top, 50% bottom,
+                color-stop(1.00, rgba(0, 0, 0, 1)),
+                color-stop(0.60, rgba(0, 0, 0, 0))
+            )
+          }
         }
 
         &.up {
@@ -128,6 +154,10 @@
           background-position-x: center;
           background-size: 0.54rem;
           color: rgba(255, 255, 255, 1);
+
+          .window img {
+            display: block;
+          }
 
           &.up hr {
             background: linear-gradient(rgba(216, 216, 216, 0.2), #d8d8d8);

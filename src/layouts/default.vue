@@ -121,6 +121,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-size: 0.2rem;
+    position: relative;
   }
 
   nav {
@@ -269,7 +271,7 @@
             position: absolute;
             left: 50%;
             top: -0.14rem;
-            border: 0.14rem solid transparent;
+            border: 0.15rem solid transparent;
             border-bottom: none;
             border-left-color: #F2D354;
           }
@@ -306,6 +308,7 @@
         .badges {
           display: flex;
           justify-content: space-between;
+          height: 20px;
 
           a:not(:first-of-type) {
             margin-left: 8px;
@@ -322,11 +325,11 @@
       height: 100%;
       width: 100%;
       background-image: url('~assets/bg.svg');
-      background-repeat: no-repeat;
-      background-position-x: center;
+      background-repeat: repeat;
+      background-position-x: 0;
       background-position-y: top;
-      background-size: cover;
-      filter: blur(10px);
+      background-size: var(--bg-width);
+      filter: blur(16px);
       z-index: -1;
     }
   }

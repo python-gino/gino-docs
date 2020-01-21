@@ -31,7 +31,7 @@
     }
 
     p {
-      margin: 0.3rem 20%;
+      margin: 0.3rem 14%;
       font-size: 0.24rem;
       line-height: 0.30rem;
       text-align: center;
