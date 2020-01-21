@@ -139,10 +139,9 @@
     justify-content: center;
 
     .avatar {
-      width: 0.64rem;
-      height: 0.64rem;
       border: 0.02rem solid #F8D230;
       border-radius: 0.64rem;
+      flex: 0 0 0.64rem;
     }
 
     a {
@@ -187,7 +186,6 @@
         width: 0.64rem;
         height: 0.64rem;
         margin-right: 0.32rem;
-        vertical-align: middle;
 
         &.icon {
           width: 0.24rem;
