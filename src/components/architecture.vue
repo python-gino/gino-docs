@@ -32,7 +32,7 @@
         easier data access.
       </p>
 
-      <a href="/docs/en/master/how-to/schema.html" target="_blank">
+      <a href="/docs/en/master/how-to/schema.html">
         <div class="button small">Read More</div>
       </a>
     </div>

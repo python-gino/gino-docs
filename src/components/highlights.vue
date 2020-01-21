@@ -29,7 +29,7 @@
         built on top of popular tools, <br>
         tailored for asyncio<br>
       </p>
-      <a href="https://github.com/python-gino/gino" target="_blank">
+      <a href="https://python-gino.org/docs/en/master/index.html">
         <div class="button small">Read More</div>
       </a>
     </div>

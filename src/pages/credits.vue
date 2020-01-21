@@ -82,7 +82,7 @@
             <h2>Sergey Bershadsky</h2>
             <p>
               <a href="https://www.patreon.com/user/creators?u=11152292"
-                 target="_blank">Pateron</a>
+                 target="_blank">Patreon</a>
             </p>
           </div>
         </li>
@@ -92,7 +92,7 @@
             <h2>Dima Veselov</h2>
             <p>
               Former
-              <a href="https://www.patreon.com/dveselov" target="_blank">Pateron</a>
+              <a href="https://www.patreon.com/dveselov" target="_blank">Patreon</a>
             </p>
           </div>
         </li>
