@@ -27,6 +27,7 @@
 }
 
   #roadmap {
+    margin-bottom: -1rem;
     background-image: url('~assets/submarine.svg');
     background-repeat: no-repeat;
     background-position-x: center;
@@ -48,7 +49,7 @@
       height: 8.99rem;
 
       h1 {
-        font-size: 0.18rem;
+        font-size: 0.2rem;
         line-height: 0.22rem;
         padding: 0.1rem 0.75rem;
         text-align: center;

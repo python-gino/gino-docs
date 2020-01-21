@@ -258,11 +258,11 @@
         .license {
           position: absolute;
           background-color: #F2D354;
-          border-radius: 0.02rem;
+          border-radius: 2rem;
           color: #212B73;
-          font-size: 0.16rem;
+          font-size: 0.18rem;
           line-height: 0.16rem;
-          padding: 0.14rem;
+          padding: 0.14rem 0.3rem;
           margin-top: 0.17rem;
 
           div {
@@ -276,8 +276,8 @@
         }
 
         .copyright {
-          font-size: 12px;
-          line-height: 20px;
+          font-size: 0.16rem;
+          line-height: 0.16rem;
           margin: 0;
         }
 
@@ -290,7 +290,7 @@
           }
 
           p {
-            font-size: 0.16rem;
+            font-size: 0.18rem;
           }
 
           a, a:visited {
