@@ -43,11 +43,15 @@
     background-size: var(--bg-width);
     width: 100%;
     height: 10.5rem;
-    margin-top: 0.5rem;
+    margin-top: 0.6rem;
     position: relative;
     display: flex;
     justify-content: center;
     overflow: hidden;
+
+    h1 {
+      padding-top: 0.48rem;
+    }
 
     .container {
       position: absolute;

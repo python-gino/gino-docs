@@ -83,7 +83,6 @@
           font-size: 0.20rem;
           line-height: 0.20rem;
           color: #fff;
-          font-weight: 400;
         }
 
         &.hidden {
@@ -102,6 +101,7 @@
 
           h2 {
             opacity: 1;
+            font-weight: 700;
           }
 
           img {
@@ -153,18 +153,17 @@
             position: absolute;
             opacity: 1;
             text-align: center;
-            font-size: 0.24rem;
+            font-size: 0.2rem;
             line-height: 0.24rem;
             color: #212B73;
             bottom: 0.25rem;
             width: 100%;
-            font-weight: 600;
           }
 
           p {
             position: absolute;
             text-align: center;
-            font-size: 0.2rem;
+            font-size: 0.16rem;
             color: #212B73;
             bottom: 0.01rem;
             width: 100%;

@@ -56,6 +56,7 @@
 
     h2 {
       position: relative;
+      font-weight: 700;
 
       .arch-icon {
         display: block;

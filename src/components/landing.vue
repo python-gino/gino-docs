@@ -39,7 +39,7 @@
 
     .title {
       position: absolute;
-      top: 38.6%;
+      top: 36.6%;
       left: calc(328px * var(--factor) - var(--bg-width) / 2 + 52vw);
 
       span {

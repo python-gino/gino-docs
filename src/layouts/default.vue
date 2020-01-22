@@ -150,6 +150,7 @@
       .nav-links {
         display: flex;
         align-items: center;
+        font-weight: 500;
 
         a {
           margin-left: 0.36rem;
@@ -266,6 +267,7 @@
           line-height: 0.16rem;
           padding: 0.14rem 0.3rem;
           margin-top: 0.17rem;
+          font-weight: 500;
 
           div {
             position: absolute;

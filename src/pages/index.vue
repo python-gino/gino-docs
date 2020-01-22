@@ -58,7 +58,7 @@
         display: inline-block;
         font-size: 0.30rem;
         font-weight: 700;
-        padding: 0.48rem 0 0.30rem;
+        padding: 0.8rem 0 0.3rem;
         border-bottom: 0.04rem solid #3E6CDE;
       }
 
