@@ -44,10 +44,10 @@
 
       span {
         display: inline-block;
-        font-family: 'Muli', sans-serif;
+        font-family: 'Raleway', sans-serif;
         font-size: 0.45rem;
-        line-height: 0.45rem;
-        transform: scaleY(0.9);
+        line-height: 0.5rem;
+        font-weight: 700;
       }
 
       .button {
