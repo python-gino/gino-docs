@@ -107,12 +107,16 @@
             <p>
               Special thanks to my wife Daisy and her outsourcing company <a
               href="https://decentfox.com/" target="_blank">DecentFoX Studio</a>, for
-              offering me the opportunity to build this project. They are open for
-              global software project outsourcing on Python, iOS and Android
+              offering me the opportunity to build this project in 2018. They are open
+              for global software project outsourcing on Python, iOS and Android
               development.
             </p>
             <p>
-              Much thanks to Mico Liu from DecentFox for designing this awesome website!
+              Much thanks to <a href="https://www.behance.net/momo568007544"
+                                target="_blank">Mico Liu</a> from DecentFox for
+              designing this awesome website, and <a href="https://github.com/YUMEYA"
+                                                     target="_blank">Aobo Shi</a> for
+              maintaining the extensions!
             </p>
           </div>
         </li>
@@ -120,7 +124,7 @@
 
       <h1>CONTRIBUTORS</h1>
       <ul class="name-cards wrap">
-        <li v-for="author in authors">
+        <li v-for="author in authors" class="one-third">
           <div>
             <h2>{{ author.name }}</h2>
             <p>{{ author.email }}</p>
@@ -182,6 +186,10 @@
         display: flex;
         flex: 1 1 auto;
         align-items: top;
+
+        &.one-third {
+          flex: 0 1 auto;
+        }
       }
 
       img {
