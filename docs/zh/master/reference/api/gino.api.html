@@ -98,6 +98,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../how-to/pool.html">Connection Pool</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../how-to/sanic.html">Sanic Support</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../how-to/schema.html">Schema Declaration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to/starlette.html">Starlette Support</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../how-to/tornado.html">Tornado Support</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../how-to/transaction.html">Transaction</a></li>
 </ul>
@@ -196,7 +197,7 @@ doing so:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">metadata</span><span class="o">.</span><span class="n">bind</span> <span class="o">=</span> <span class="s1">&#39;postgresql://...&#39;</span>
 </pre></div>
 </div>
-<p>While in GINO this only sets a string to <code class="xref py py-attr docutils literal notranslate"><span class="pre">bind</span></code>, because
+<p>While in GINO this only sets a string to <a class="reference internal" href="#gino.api.Gino.bind" title="gino.api.Gino.bind"><code class="xref py py-attr docutils literal notranslate"><span class="pre">bind</span></code></a>, because
 creating an engine requires <code class="docutils literal notranslate"><span class="pre">await</span></code>, which is exactly what
 <a class="reference internal" href="#gino.api.Gino.set_bind" title="gino.api.Gino.set_bind"><code class="xref py py-meth docutils literal notranslate"><span class="pre">set_bind()</span></code></a> does.</p>
 </div>
