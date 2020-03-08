@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="../../_static/favicon.ico">
+    <title>gino.dialects.base module - GINO 1.0.0rc2 文档</title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async
+            src="https://www.googletagmanager.com/gtag/js?id=UA-3759436-10"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag () {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'UA-3759436-10');
+    </script>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css">
+    <link type="text/css" rel="stylesheet"
+          href="../../_static/css/materialize.min.css"
+          media="screen,projection"/>
+    <link rel="stylesheet" href="../../_static/pygments.css"
+          type="text/css"/>
+    <link type="text/css" rel="stylesheet"
+          href="../../_static/css/gino.css"/>
+</head>
+<body>
+
+<header>
+    <div class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper">
+                <a href="../../index.html" class="brand-logo">
+                    <div class="img"
+                         style="background-image: url(../../_static/logo.png); width: 40px; height: 40px; margin-right: 8px"></div>
+                    <div class="img"
+                         style="background-image: url(../../_static/logo-name.png); width: 100px; height: 32.5px; margin-top: 4px"></div>
+                </a>
+                <div class="breadcrumbs">
+                    <a class="breadcrumb" style="display: none"></a>
+                    
+                        <a href="../../reference.html"
+                           class="breadcrumb">参考手册</a>
+                    
+                        <a href="../api.html"
+                           class="breadcrumb">API 参考</a>
+                    
+                        <a href="gino.html"
+                           class="breadcrumb">gino package</a>
+                    
+                        <a href="gino.dialects.html"
+                           class="breadcrumb">gino.dialects package</a>
+                    
+                    
+                        <a class="breadcrumb" style="color: #FFFFFF">gino.dialects.base module</a>
+                    
+                </div>
+                <div class="spacer"></div>
+                <div class="search">
+                    <input type="text" id="search" placeholder="Search">
+                    <i class="mdi mdi-magnify"></i>
+                </div>
+                <a class="waves-effect waves-light btn-flat theme-dark" href="/">
+                    <i class="mdi mdi-home"></i>
+                    Home
+                </a>
+                <a class="waves-effect waves-light btn-flat theme-dark"
+                   href="/authors.html">
+                    <i class="mdi mdi-account-group"></i>
+                    Authors
+                </a>
+                <a href="https://github.com/python-gino/gino" target="_blank"
+                   class="github">
+                    <i class="mdi mdi-github-circle"></i>
+                </a>
+            </div>
+        </nav>
+    </div>
+
+    <div id="sidenav" class="sidenav sidenav-fixed">
+        <p class="caption"><span class="caption-text">上手教程</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials.html">上手教程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/tutorial.html">上手教程</a></li>
+</ul>
+<p class="caption"><span class="caption-text">进阶用法</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to.html">进阶用法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to/contributing.html">贡献</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to/crud.html">CRUD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to/faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to/loaders.html">Loaders and Relationship</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to/pool.html">Connection Pool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to/sanic.html">Sanic Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to/schema.html">Schema Declaration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to/starlette.html">Starlette Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to/tornado.html">Tornado Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to/transaction.html">Transaction</a></li>
+</ul>
+<p class="caption"><span class="caption-text">原理说明</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../explanation.html">原理说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../explanation/engine.html">Engine and Connection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../explanation/why.html">Why Asynchronous ORM?</a></li>
+</ul>
+<p class="caption"><span class="caption-text">参考手册</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../reference.html">参考手册</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../api.html">API 参考</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../authors.html">制作人员</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../history.html">History</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API 参考</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="gino.html">gino package</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../authors.html">制作人员</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../history.html">History</a></li>
+</ul>
+
+    </div>
+</header>
+
+<main>
+    <div class="row">
+        <div class="col s12 m9 body">
+            
+    <div class="section" id="module-gino.dialects.base">
+<span id="gino-dialects-base-module"></span><h1>gino.dialects.base module<a class="headerlink" href="#module-gino.dialects.base" title="永久链接至标题">¶</a></h1>
+<dl class="class">
+<dt id="gino.dialects.base.AsyncDialectMixin">
+<em class="property">class </em><code class="sig-prename descclassname">gino.dialects.base.</code><code class="sig-name descname">AsyncDialectMixin</code><a class="headerlink" href="#gino.dialects.base.AsyncDialectMixin" title="永久链接至目标">¶</a></dt>
+<dd><p>基类：<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(在 Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dl class="method">
+<dt id="gino.dialects.base.AsyncDialectMixin.compile">
+<code class="sig-name descname">compile</code><span class="sig-paren">(</span><em class="sig-param">elem</em>, <em class="sig-param">*multiparams</em>, <em class="sig-param">**params</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.AsyncDialectMixin.compile" title="永久链接至目标">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gino.dialects.base.AsyncDialectMixin.cursor_cls">
+<code class="sig-name descname">cursor_cls</code><a class="headerlink" href="#gino.dialects.base.AsyncDialectMixin.cursor_cls" title="永久链接至目标">¶</a></dt>
+<dd><p><a class="reference internal" href="#gino.dialects.base.DBAPICursor" title="gino.dialects.base.DBAPICursor"><code class="xref py py-class docutils literal notranslate"><span class="pre">DBAPICursor</span></code></a> 的别名</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="gino.dialects.base.AsyncDialectMixin.dbapi">
+<em class="property">classmethod </em><code class="sig-name descname">dbapi</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.AsyncDialectMixin.dbapi" title="永久链接至目标">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gino.dialects.base.AsyncDialectMixin.dbapi_class">
+<code class="sig-name descname">dbapi_class</code><a class="headerlink" href="#gino.dialects.base.AsyncDialectMixin.dbapi_class" title="永久链接至目标">¶</a></dt>
+<dd><p><a class="reference internal" href="#gino.dialects.base.BaseDBAPI" title="gino.dialects.base.BaseDBAPI"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseDBAPI</span></code></a> 的别名</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="gino.dialects.base.AsyncDialectMixin.init_pool">
+<em class="property">async </em><code class="sig-name descname">init_pool</code><span class="sig-paren">(</span><em class="sig-param">url</em>, <em class="sig-param">loop</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.AsyncDialectMixin.init_pool" title="永久链接至目标">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="gino.dialects.base.AsyncDialectMixin.transaction">
+<code class="sig-name descname">transaction</code><span class="sig-paren">(</span><em class="sig-param">raw_conn</em>, <em class="sig-param">args</em>, <em class="sig-param">kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.AsyncDialectMixin.transaction" title="永久链接至目标">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="gino.dialects.base.BaseDBAPI">
+<em class="property">class </em><code class="sig-prename descclassname">gino.dialects.base.</code><code class="sig-name descname">BaseDBAPI</code><a class="headerlink" href="#gino.dialects.base.BaseDBAPI" title="永久链接至目标">¶</a></dt>
+<dd><p>基类：<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(在 Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dl class="method">
+<dt id="gino.dialects.base.BaseDBAPI.Binary">
+<em class="property">static </em><code class="sig-name descname">Binary</code><span class="sig-paren">(</span><em class="sig-param">x</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.BaseDBAPI.Binary" title="永久链接至目标">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gino.dialects.base.BaseDBAPI.Error">
+<code class="sig-name descname">Error</code><a class="headerlink" href="#gino.dialects.base.BaseDBAPI.Error" title="永久链接至目标">¶</a></dt>
+<dd><p><code class="xref py py-class docutils literal notranslate"><span class="pre">builtins.Exception</span></code> 的别名</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="gino.dialects.base.BaseDBAPI.paramstyle">
+<code class="sig-name descname">paramstyle</code><em class="property"> = 'numeric'</em><a class="headerlink" href="#gino.dialects.base.BaseDBAPI.paramstyle" title="永久链接至目标">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="gino.dialects.base.Cursor">
+<em class="property">class </em><code class="sig-prename descclassname">gino.dialects.base.</code><code class="sig-name descname">Cursor</code><a class="headerlink" href="#gino.dialects.base.Cursor" title="永久链接至目标">¶</a></dt>
+<dd><p>基类：<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(在 Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dl class="method">
+<dt id="gino.dialects.base.Cursor.forward">
+<em class="property">async </em><code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param">n</em>, <em class="sig-param">*</em>, <em class="sig-param">timeout=&lt;object object&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.Cursor.forward" title="永久链接至目标">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="gino.dialects.base.Cursor.many">
+<em class="property">async </em><code class="sig-name descname">many</code><span class="sig-paren">(</span><em class="sig-param">n</em>, <em class="sig-param">*</em>, <em class="sig-param">timeout=&lt;object object&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.Cursor.many" title="永久链接至目标">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="gino.dialects.base.Cursor.next">
+<em class="property">async </em><code class="sig-name descname">next</code><span class="sig-paren">(</span><em class="sig-param">*</em>, <em class="sig-param">timeout=&lt;object object&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.Cursor.next" title="永久链接至目标">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="gino.dialects.base.DBAPICursor">
+<em class="property">class </em><code class="sig-prename descclassname">gino.dialects.base.</code><code class="sig-name descname">DBAPICursor</code><a class="headerlink" href="#gino.dialects.base.DBAPICursor" title="永久链接至目标">¶</a></dt>
+<dd><p>基类：<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(在 Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dl class="method">
+<dt id="gino.dialects.base.DBAPICursor.async_execute">
+<em class="property">async </em><code class="sig-name descname">async_execute</code><span class="sig-paren">(</span><em class="sig-param">query</em>, <em class="sig-param">timeout</em>, <em class="sig-param">args</em>, <em class="sig-param">limit=0</em>, <em class="sig-param">many=False</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.DBAPICursor.async_execute" title="永久链接至目标">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="gino.dialects.base.DBAPICursor.description">
+<em class="property">property </em><code class="sig-name descname">description</code><a class="headerlink" href="#gino.dialects.base.DBAPICursor.description" title="永久链接至目标">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="gino.dialects.base.DBAPICursor.execute">
+<code class="sig-name descname">execute</code><span class="sig-paren">(</span><em class="sig-param">statement</em>, <em class="sig-param">parameters</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.DBAPICursor.execute" title="永久链接至目标">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="gino.dialects.base.DBAPICursor.executemany">
+<code class="sig-name descname">executemany</code><span class="sig-paren">(</span><em class="sig-param">statement</em>, <em class="sig-param">parameters</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.DBAPICursor.executemany" title="永久链接至目标">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="gino.dialects.base.DBAPICursor.get_statusmsg">
+<code class="sig-name descname">get_statusmsg</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.DBAPICursor.get_statusmsg" title="永久链接至目标">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="gino.dialects.base.DBAPICursor.prepare">
+<em class="property">async </em><code class="sig-name descname">prepare</code><span class="sig-paren">(</span><em class="sig-param">context</em>, <em class="sig-param">clause=None</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.DBAPICursor.prepare" title="永久链接至目标">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="gino.dialects.base.ExecutionContextOverride">
+<em class="property">class </em><code class="sig-prename descclassname">gino.dialects.base.</code><code class="sig-name descname">ExecutionContextOverride</code><a class="headerlink" href="#gino.dialects.base.ExecutionContextOverride" title="永久链接至目标">¶</a></dt>
+<dd><p>基类：<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(在 Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dl class="method">
+<dt id="gino.dialects.base.ExecutionContextOverride.get_result_proxy">
+<code class="sig-name descname">get_result_proxy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.ExecutionContextOverride.get_result_proxy" title="永久链接至目标">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gino.dialects.base.ExecutionContextOverride.loader">
+<code class="sig-name descname">loader</code><a class="headerlink" href="#gino.dialects.base.ExecutionContextOverride.loader" title="永久链接至目标">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gino.dialects.base.ExecutionContextOverride.model">
+<code class="sig-name descname">model</code><a class="headerlink" href="#gino.dialects.base.ExecutionContextOverride.model" title="永久链接至目标">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="gino.dialects.base.ExecutionContextOverride.process_rows">
+<code class="sig-name descname">process_rows</code><span class="sig-paren">(</span><em class="sig-param">rows</em>, <em class="sig-param">return_model=True</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.ExecutionContextOverride.process_rows" title="永久链接至目标">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gino.dialects.base.ExecutionContextOverride.return_model">
+<code class="sig-name descname">return_model</code><a class="headerlink" href="#gino.dialects.base.ExecutionContextOverride.return_model" title="永久链接至目标">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gino.dialects.base.ExecutionContextOverride.timeout">
+<code class="sig-name descname">timeout</code><a class="headerlink" href="#gino.dialects.base.ExecutionContextOverride.timeout" title="永久链接至目标">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="gino.dialects.base.Pool">
+<em class="property">class </em><code class="sig-prename descclassname">gino.dialects.base.</code><code class="sig-name descname">Pool</code><a class="headerlink" href="#gino.dialects.base.Pool" title="永久链接至目标">¶</a></dt>
+<dd><p>基类：<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(在 Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dl class="method">
+<dt id="gino.dialects.base.Pool.acquire">
+<em class="property">async </em><code class="sig-name descname">acquire</code><span class="sig-paren">(</span><em class="sig-param">*</em>, <em class="sig-param">timeout=None</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.Pool.acquire" title="永久链接至目标">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="gino.dialects.base.Pool.close">
+<em class="property">async </em><code class="sig-name descname">close</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.Pool.close" title="永久链接至目标">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="gino.dialects.base.Pool.raw_pool">
+<em class="property">property </em><code class="sig-name descname">raw_pool</code><a class="headerlink" href="#gino.dialects.base.Pool.raw_pool" title="永久链接至目标">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="gino.dialects.base.Pool.release">
+<em class="property">async </em><code class="sig-name descname">release</code><span class="sig-paren">(</span><em class="sig-param">conn</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.Pool.release" title="永久链接至目标">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="gino.dialects.base.Pool.repr">
+<code class="sig-name descname">repr</code><span class="sig-paren">(</span><em class="sig-param">color</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.Pool.repr" title="永久链接至目标">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="gino.dialects.base.PreparedStatement">
+<em class="property">class </em><code class="sig-prename descclassname">gino.dialects.base.</code><code class="sig-name descname">PreparedStatement</code><span class="sig-paren">(</span><em class="sig-param">clause=None</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.PreparedStatement" title="永久链接至目标">¶</a></dt>
+<dd><p>基类：<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(在 Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dl class="method">
+<dt id="gino.dialects.base.PreparedStatement.all">
+<em class="property">async </em><code class="sig-name descname">all</code><span class="sig-paren">(</span><em class="sig-param">*multiparams</em>, <em class="sig-param">**params</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.PreparedStatement.all" title="永久链接至目标">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="gino.dialects.base.PreparedStatement.first">
+<em class="property">async </em><code class="sig-name descname">first</code><span class="sig-paren">(</span><em class="sig-param">*multiparams</em>, <em class="sig-param">**params</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.PreparedStatement.first" title="永久链接至目标">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="gino.dialects.base.PreparedStatement.iterate">
+<code class="sig-name descname">iterate</code><span class="sig-paren">(</span><em class="sig-param">*params</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.PreparedStatement.iterate" title="永久链接至目标">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="gino.dialects.base.PreparedStatement.scalar">
+<em class="property">async </em><code class="sig-name descname">scalar</code><span class="sig-paren">(</span><em class="sig-param">*multiparams</em>, <em class="sig-param">**params</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.PreparedStatement.scalar" title="永久链接至目标">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="gino.dialects.base.PreparedStatement.status">
+<em class="property">async </em><code class="sig-name descname">status</code><span class="sig-paren">(</span><em class="sig-param">*multiparams</em>, <em class="sig-param">**params</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.PreparedStatement.status" title="永久链接至目标">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="gino.dialects.base.Transaction">
+<em class="property">class </em><code class="sig-prename descclassname">gino.dialects.base.</code><code class="sig-name descname">Transaction</code><a class="headerlink" href="#gino.dialects.base.Transaction" title="永久链接至目标">¶</a></dt>
+<dd><p>基类：<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(在 Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dl class="method">
+<dt id="gino.dialects.base.Transaction.begin">
+<em class="property">async </em><code class="sig-name descname">begin</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.Transaction.begin" title="永久链接至目标">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="gino.dialects.base.Transaction.commit">
+<em class="property">async </em><code class="sig-name descname">commit</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.Transaction.commit" title="永久链接至目标">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="gino.dialects.base.Transaction.raw_transaction">
+<em class="property">property </em><code class="sig-name descname">raw_transaction</code><a class="headerlink" href="#gino.dialects.base.Transaction.raw_transaction" title="永久链接至目标">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="gino.dialects.base.Transaction.rollback">
+<em class="property">async </em><code class="sig-name descname">rollback</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.Transaction.rollback" title="永久链接至目标">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+        </div>
+
+        <div class="col hide-on-small-only m3 right-nav">
+            <div class="table-of-contents fixed">
+                
+                    <ul>
+<li><a class="reference internal" href="#">gino.dialects.base module</a></li>
+</ul>
+
+                
+            </div>
+        </div>
+
+    </div>
+    <div class="fixed-action-btn click-to-toggle">
+        <a class="btn-floating btn-large blue">
+            <i class="mdi mdi-translate"></i>
+        </a>
+        <ul>
+            <li><a href="/docs/en/v1.0.0rc2" class="btn-floating blue">EN</a></li>
+            <li><a href="/docs/zh/v1.0.0rc2" class="btn-floating red">ZH</a></li>
+        </ul>
+    </div>
+</main>
+
+<script type="text/javascript"
+        src="../../_static/js/materialize.min.js"></script>
+<script type="text/javascript"
+        src="../../_static/js/gino.js"></script>
+</body>
+</html>
