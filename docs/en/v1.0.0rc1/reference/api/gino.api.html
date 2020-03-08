@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="../../_static/favicon.ico">
+    <title>gino.api module - GINO 1.0.0rc1 documentation</title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async
+            src="https://www.googletagmanager.com/gtag/js?id=UA-3759436-10"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag () {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'UA-3759436-10');
+    </script>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css">
+    <link type="text/css" rel="stylesheet"
+          href="../../_static/css/materialize.min.css"
+          media="screen,projection"/>
+    <link rel="stylesheet" href="../../_static/pygments.css"
+          type="text/css"/>
+    <link type="text/css" rel="stylesheet"
+          href="../../_static/css/gino.css"/>
+</head>
+<body>
+
+<header>
+    <div class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper">
+                <a href="../../index.html" class="brand-logo">
+                    <div class="img"
+                         style="background-image: url(../../_static/logo.png); width: 40px; height: 40px; margin-right: 8px"></div>
+                    <div class="img"
+                         style="background-image: url(../../_static/logo-name.png); width: 100px; height: 32.5px; margin-top: 4px"></div>
+                </a>
+                <div class="breadcrumbs">
+                    <a class="breadcrumb" style="display: none"></a>
+                    
+                        <a href="../../reference.html"
+                           class="breadcrumb">Reference</a>
+                    
+                        <a href="../api.html"
+                           class="breadcrumb">API Reference</a>
+                    
+                        <a href="gino.html"
+                           class="breadcrumb">gino package</a>
+                    
+                    
+                        <a class="breadcrumb" style="color: #FFFFFF">gino.api module</a>
+                    
+                </div>
+                <div class="spacer"></div>
+                <div class="search">
+                    <input type="text" id="search" placeholder="Search">
+                    <i class="mdi mdi-magnify"></i>
+                </div>
+                <a class="waves-effect waves-light btn-flat theme-dark" href="/">
+                    <i class="mdi mdi-home"></i>
+                    Home
+                </a>
+                <a class="waves-effect waves-light btn-flat theme-dark"
+                   href="/authors.html">
+                    <i class="mdi mdi-account-group"></i>
+                    Authors
+                </a>
+                <a href="https://github.com/python-gino/gino" target="_blank"
+                   class="github">
+                    <i class="mdi mdi-github-circle"></i>
+                </a>
+            </div>
+        </nav>
+    </div>
+
+    <div id="sidenav" class="sidenav sidenav-fixed">
+        <p class="caption"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/tutorial.html">Tutorial</a></li>
+</ul>
+<p class="caption"><span class="caption-text">How-to Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to.html">How-to Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to/contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to/crud.html">CRUD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to/faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to/loaders.html">Loaders and Relationship</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to/pool.html">Connection Pool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to/sanic.html">Sanic Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to/schema.html">Schema Declaration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to/starlette.html">Starlette Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to/tornado.html">Tornado Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to/transaction.html">Transaction</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Explanation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../explanation.html">Explanation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../explanation/engine.html">Engine and Connection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../explanation/why.html">Why Asynchronous ORM?</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../reference.html">Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../api.html">API Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../authors.html">Credits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../history.html">History</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="gino.html">gino package</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../authors.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../history.html">History</a></li>
+</ul>
+
+    </div>
+</header>
+
+<main>
+    <div class="row">
+        <div class="col s12 m9 body">
+            
+    <div class="section" id="module-gino.api">
+<span id="gino-api-module"></span><h1>gino.api module<a class="headerlink" href="#module-gino.api" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="gino.api.Gino">
+<em class="property">class </em><code class="sig-prename descclassname">gino.api.</code><code class="sig-name descname">Gino</code><span class="sig-paren">(</span><em class="sig-param">bind=None</em>, <em class="sig-param">model_classes=None</em>, <em class="sig-param">query_ext=True</em>, <em class="sig-param">schema_ext=True</em>, <em class="sig-param">ext=True</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.Gino" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sqlalchemy.sql.schema.MetaData</span></code></p>
+<p>All-in-one API class of GINO, providing several shortcuts.</p>
+<p>This class is a subclass of SQLAlchemy
+<a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/metadata.html#sqlalchemy.schema.MetaData" title="(in SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetaData</span></code></a>, therefore its instances can be used
+as a normal <a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/metadata.html#sqlalchemy.schema.MetaData" title="(in SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetaData</span></code></a> object, e.g. used in
+<a class="reference external" href="http://alembic.zzzcomputing.com/">Alembic</a>. In usual cases, you would
+want to define one global <a class="reference internal" href="#gino.api.Gino" title="gino.api.Gino"><code class="xref py py-class docutils literal notranslate"><span class="pre">Gino</span></code></a> instance, usually under the name
+of <code class="docutils literal notranslate"><span class="pre">db</span></code>, representing the database used in your application.</p>
+<p>You may define tables in <a class="reference external" href="http://bit.ly/2G25fdc">the official way</a>
+SQLAlchemy core recommended, but more often in GINO we define model classes
+with <code class="docutils literal notranslate"><span class="pre">db.Model</span></code> as their parent class to represent tables, for its
+objective interface and CRUD operations. Please read <a class="reference internal" href="../../how-to/crud.html"><span class="doc">CRUD</span></a>
+for more information.</p>
+<p>For convenience, <a class="reference internal" href="#gino.api.Gino" title="gino.api.Gino"><code class="xref py py-class docutils literal notranslate"><span class="pre">Gino</span></code></a> instance delegated all properties publicly
+exposed by <code class="xref py py-mod docutils literal notranslate"><span class="pre">sqlalchemy</span></code>, so that you can define tables / models
+without importing <code class="xref py py-mod docutils literal notranslate"><span class="pre">sqlalchemy</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">id</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">BigInteger</span><span class="p">(),</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Similar to <a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/metadata.html#sqlalchemy.schema.MetaData" title="(in SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetaData</span></code></a>, a <a class="reference internal" href="#gino.api.Gino" title="gino.api.Gino"><code class="xref py py-class docutils literal notranslate"><span class="pre">Gino</span></code></a> object
+can bind to a <a class="reference internal" href="gino.engine.html#gino.engine.GinoEngine" title="gino.engine.GinoEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">GinoEngine</span></code></a> instance, hereby allowing
+<a class="reference external" href="http://bit.ly/2oTUcKY">“implicit execution”</a> through the <code class="docutils literal notranslate"><span class="pre">gino</span></code>
+extension on <a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/selectable.html#sqlalchemy.sql.expression.Executable" title="(in SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Executable</span></code></a> or
+<a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/metadata.html#sqlalchemy.schema.SchemaItem" title="(in SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">SchemaItem</span></code></a> constructs:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">await</span> <span class="n">User</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">gino</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+<span class="k">await</span> <span class="n">db</span><span class="o">.</span><span class="n">gino</span><span class="o">.</span><span class="n">create_all</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Differently, GINO encourages the use of implicit execution and manages
+transactional context correctly.</p>
+<p>Binding to a connection object is not supported.</p>
+<p>To set a bind property, you can simply set your
+<a class="reference internal" href="gino.engine.html#gino.engine.GinoEngine" title="gino.engine.GinoEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">GinoEngine</span></code></a> object on <a class="reference internal" href="#gino.api.Gino.bind" title="gino.api.Gino.bind"><code class="xref py py-attr docutils literal notranslate"><span class="pre">db.bind</span></code></a>, or
+set it to <code class="docutils literal notranslate"><span class="pre">None</span></code> to unbind. However, the creation of engine usually
+happens at the same time. Therefore, GINO provided several convenient ways
+doing so:</p>
+<ol class="arabic">
+<li><p><a class="reference internal" href="#gino.api.Gino.with_bind" title="gino.api.Gino.with_bind"><code class="xref py py-meth docutils literal notranslate"><span class="pre">with_bind()</span></code></a> returning an asynchronous context manager:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">with</span> <span class="n">db</span><span class="o">.</span><span class="n">with_bind</span><span class="p">(</span><span class="s1">&#39;postgresql://...&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">engine</span><span class="p">:</span>
+</pre></div>
+</div>
+</li>
+<li><p><a class="reference internal" href="#gino.api.Gino.set_bind" title="gino.api.Gino.set_bind"><code class="xref py py-meth docutils literal notranslate"><span class="pre">set_bind()</span></code></a> and <a class="reference internal" href="#gino.api.Gino.pop_bind" title="gino.api.Gino.pop_bind"><code class="xref py py-meth docutils literal notranslate"><span class="pre">pop_bind()</span></code></a>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">engine</span> <span class="o">=</span> <span class="k">await</span> <span class="n">db</span><span class="o">.</span><span class="n">set_bind</span><span class="p">(</span><span class="s1">&#39;postgresql://...&#39;</span><span class="p">)</span>
+<span class="k">await</span> <span class="n">db</span><span class="o">.</span><span class="n">pop_bind</span><span class="p">()</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</li>
+<li><p>Directly <code class="docutils literal notranslate"><span class="pre">await</span></code> on <a class="reference internal" href="#gino.api.Gino" title="gino.api.Gino"><code class="xref py py-class docutils literal notranslate"><span class="pre">Gino</span></code></a> instance:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">db</span> <span class="o">=</span> <span class="k">await</span> <span class="n">gino</span><span class="o">.</span><span class="n">Gino</span><span class="p">(</span><span class="s1">&#39;postgresql://...&#39;</span><span class="p">)</span>
+<span class="k">await</span> <span class="n">db</span><span class="o">.</span><span class="n">pop_bind</span><span class="p">()</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>SQLAlchemy allows creating the engine by:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">metadata</span><span class="o">.</span><span class="n">bind</span> <span class="o">=</span> <span class="s1">&#39;postgresql://...&#39;</span>
+</pre></div>
+</div>
+<p>While in GINO this only sets a string to <a class="reference internal" href="#gino.api.Gino.bind" title="gino.api.Gino.bind"><code class="xref py py-attr docutils literal notranslate"><span class="pre">bind</span></code></a>, because
+creating an engine requires <code class="docutils literal notranslate"><span class="pre">await</span></code>, which is exactly what
+<a class="reference internal" href="#gino.api.Gino.set_bind" title="gino.api.Gino.set_bind"><code class="xref py py-meth docutils literal notranslate"><span class="pre">set_bind()</span></code></a> does.</p>
+</div>
+<p>At last, <a class="reference internal" href="#gino.api.Gino" title="gino.api.Gino"><code class="xref py py-class docutils literal notranslate"><span class="pre">Gino</span></code></a> delegates all query APIs on the bound
+<a class="reference internal" href="gino.engine.html#gino.engine.GinoEngine" title="gino.engine.GinoEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">GinoEngine</span></code></a>.</p>
+<dl class="method">
+<dt id="gino.api.Gino.Model">
+<em class="property">property </em><code class="sig-name descname">Model</code><a class="headerlink" href="#gino.api.Gino.Model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Declarative base class for models, subclass of
+<a class="reference internal" href="gino.declarative.html#gino.declarative.Model" title="gino.declarative.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">gino.declarative.Model</span></code></a>. Defining subclasses of this class will
+result new tables added to this <a class="reference internal" href="#gino.api.Gino" title="gino.api.Gino"><code class="xref py py-class docutils literal notranslate"><span class="pre">Gino</span></code></a> metadata.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="gino.api.Gino.acquire">
+<code class="sig-name descname">acquire</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.Gino.acquire" title="Permalink to this definition">¶</a></dt>
+<dd><p>A delegate of <a class="reference internal" href="gino.engine.html#gino.engine.GinoEngine.acquire" title="gino.engine.GinoEngine.acquire"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GinoEngine.acquire()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="gino.api.Gino.all">
+<em class="property">async </em><code class="sig-name descname">all</code><span class="sig-paren">(</span><em class="sig-param">clause</em>, <em class="sig-param">*multiparams</em>, <em class="sig-param">**params</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.Gino.all" title="Permalink to this definition">¶</a></dt>
+<dd><p>A delegate of <a class="reference internal" href="gino.engine.html#gino.engine.GinoEngine.all" title="gino.engine.GinoEngine.all"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GinoEngine.all()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="gino.api.Gino.bind">
+<em class="property">property </em><code class="sig-name descname">bind</code><a class="headerlink" href="#gino.api.Gino.bind" title="Permalink to this definition">¶</a></dt>
+<dd><p>An <a class="reference internal" href="gino.engine.html#gino.engine.GinoEngine" title="gino.engine.GinoEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">GinoEngine</span></code></a> to which this <a class="reference internal" href="#gino.api.Gino" title="gino.api.Gino"><code class="xref py py-class docutils literal notranslate"><span class="pre">Gino</span></code></a> is bound.</p>
+<p>This is a simple property with no getter or setter hook - what you set
+is what you get. To achieve the same result as it is in SQLAlchemy -
+setting a string or <a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/engines.html#sqlalchemy.engine.url.URL" title="(in SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">URL</span></code></a> and getting an
+engine instance, use <a class="reference internal" href="#gino.api.Gino.set_bind" title="gino.api.Gino.set_bind"><code class="xref py py-meth docutils literal notranslate"><span class="pre">set_bind()</span></code></a> (or <code class="docutils literal notranslate"><span class="pre">await</span></code> on this
+<a class="reference internal" href="#gino.api.Gino" title="gino.api.Gino"><code class="xref py py-class docutils literal notranslate"><span class="pre">Gino</span></code></a> object after setting a string or
+<a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/engines.html#sqlalchemy.engine.url.URL" title="(in SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">URL</span></code></a>).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="gino.api.Gino.compile">
+<code class="sig-name descname">compile</code><span class="sig-paren">(</span><em class="sig-param">elem</em>, <em class="sig-param">*multiparams</em>, <em class="sig-param">**params</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.Gino.compile" title="Permalink to this definition">¶</a></dt>
+<dd><p>A delegate of <a class="reference internal" href="gino.engine.html#gino.engine.GinoEngine.compile" title="gino.engine.GinoEngine.compile"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GinoEngine.compile()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="gino.api.Gino.first">
+<em class="property">async </em><code class="sig-name descname">first</code><span class="sig-paren">(</span><em class="sig-param">clause</em>, <em class="sig-param">*multiparams</em>, <em class="sig-param">**params</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.Gino.first" title="Permalink to this definition">¶</a></dt>
+<dd><p>A delegate of <a class="reference internal" href="gino.engine.html#gino.engine.GinoEngine.first" title="gino.engine.GinoEngine.first"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GinoEngine.first()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="gino.api.Gino.iterate">
+<code class="sig-name descname">iterate</code><span class="sig-paren">(</span><em class="sig-param">clause</em>, <em class="sig-param">*multiparams</em>, <em class="sig-param">**params</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.Gino.iterate" title="Permalink to this definition">¶</a></dt>
+<dd><p>A delegate of <a class="reference internal" href="gino.engine.html#gino.engine.GinoEngine.iterate" title="gino.engine.GinoEngine.iterate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GinoEngine.iterate()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="gino.api.Gino.model_base_classes">
+<code class="sig-name descname">model_base_classes</code><em class="property"> = (&lt;class 'gino.crud.CRUDModel'&gt;,)</em><a class="headerlink" href="#gino.api.Gino.model_base_classes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overridable default model classes to build the <a class="reference internal" href="#gino.api.Gino.Model" title="gino.api.Gino.Model"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Model</span></code></a>.</p>
+<p>Default is <a class="reference internal" href="gino.crud.html#gino.crud.CRUDModel" title="gino.crud.CRUDModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">(CRUDModel,</span> <span class="pre">)</span></code></a>.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="gino.api.Gino.no_delegate">
+<code class="sig-name descname">no_delegate</code><em class="property"> = {'create_engine', 'engine_from_config'}</em><a class="headerlink" href="#gino.api.Gino.no_delegate" title="Permalink to this definition">¶</a></dt>
+<dd><p>A set of symbols from <code class="xref py py-mod docutils literal notranslate"><span class="pre">sqlalchemy</span></code> which is not delegated by
+<a class="reference internal" href="#gino.api.Gino" title="gino.api.Gino"><code class="xref py py-class docutils literal notranslate"><span class="pre">Gino</span></code></a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="gino.api.Gino.one">
+<em class="property">async </em><code class="sig-name descname">one</code><span class="sig-paren">(</span><em class="sig-param">clause</em>, <em class="sig-param">*multiparams</em>, <em class="sig-param">**params</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.Gino.one" title="Permalink to this definition">¶</a></dt>
+<dd><p>A delegate of <a class="reference internal" href="gino.engine.html#gino.engine.GinoEngine.first" title="gino.engine.GinoEngine.first"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GinoEngine.one()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="gino.api.Gino.one_or_none">
+<em class="property">async </em><code class="sig-name descname">one_or_none</code><span class="sig-paren">(</span><em class="sig-param">clause</em>, <em class="sig-param">*multiparams</em>, <em class="sig-param">**params</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.Gino.one_or_none" title="Permalink to this definition">¶</a></dt>
+<dd><p>A delegate of <a class="reference internal" href="gino.engine.html#gino.engine.GinoEngine.one_or_none" title="gino.engine.GinoEngine.one_or_none"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GinoEngine.one_or_none()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="gino.api.Gino.pop_bind">
+<code class="sig-name descname">pop_bind</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.Gino.pop_bind" title="Permalink to this definition">¶</a></dt>
+<dd><p>Unbind self, and return the bound engine.</p>
+<p>This is usually used in a chained call to close the engine:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">await</span> <span class="n">db</span><span class="o">.</span><span class="n">pop_bind</span><span class="p">()</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><a class="reference internal" href="gino.engine.html#gino.engine.GinoEngine" title="gino.engine.GinoEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">GinoEngine</span></code></a> or <code class="docutils literal notranslate"><span class="pre">None</span></code> if self is not bound.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="gino.api.Gino.query_executor">
+<code class="sig-name descname">query_executor</code><a class="headerlink" href="#gino.api.Gino.query_executor" title="Permalink to this definition">¶</a></dt>
+<dd><p>The overridable <code class="docutils literal notranslate"><span class="pre">gino</span></code> extension class on
+<a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/selectable.html#sqlalchemy.sql.expression.Executable" title="(in SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Executable</span></code></a>.</p>
+<p>This class will be set as the getter method of the property <code class="docutils literal notranslate"><span class="pre">gino</span></code> on
+<a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/selectable.html#sqlalchemy.sql.expression.Executable" title="(in SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Executable</span></code></a> and its subclasses, if
+<code class="docutils literal notranslate"><span class="pre">ext</span></code> and <code class="docutils literal notranslate"><span class="pre">query_ext</span></code> arguments are both <code class="docutils literal notranslate"><span class="pre">True</span></code>. Default is
+<a class="reference internal" href="#gino.api.GinoExecutor" title="gino.api.GinoExecutor"><code class="xref py py-class docutils literal notranslate"><span class="pre">GinoExecutor</span></code></a>.</p>
+<p>alias of <a class="reference internal" href="#gino.api.GinoExecutor" title="gino.api.GinoExecutor"><code class="xref py py-class docutils literal notranslate"><span class="pre">GinoExecutor</span></code></a></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="gino.api.Gino.scalar">
+<em class="property">async </em><code class="sig-name descname">scalar</code><span class="sig-paren">(</span><em class="sig-param">clause</em>, <em class="sig-param">*multiparams</em>, <em class="sig-param">**params</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.Gino.scalar" title="Permalink to this definition">¶</a></dt>
+<dd><p>A delegate of <a class="reference internal" href="gino.engine.html#gino.engine.GinoEngine.scalar" title="gino.engine.GinoEngine.scalar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GinoEngine.scalar()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="gino.api.Gino.schema_visitor">
+<code class="sig-name descname">schema_visitor</code><a class="headerlink" href="#gino.api.Gino.schema_visitor" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="gino.schema.html#gino.schema.GinoSchemaVisitor" title="gino.schema.GinoSchemaVisitor"><code class="xref py py-class docutils literal notranslate"><span class="pre">gino.schema.GinoSchemaVisitor</span></code></a></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="gino.api.Gino.set_bind">
+<em class="property">async </em><code class="sig-name descname">set_bind</code><span class="sig-paren">(</span><em class="sig-param">bind</em>, <em class="sig-param">loop=None</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.Gino.set_bind" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bind self to the given <a class="reference internal" href="gino.engine.html#gino.engine.GinoEngine" title="gino.engine.GinoEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">GinoEngine</span></code></a> and return it.</p>
+<p>If the given <code class="docutils literal notranslate"><span class="pre">bind</span></code> is a string or
+<a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/engines.html#sqlalchemy.engine.url.URL" title="(in SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">URL</span></code></a>, all arguments will be sent to
+<a class="reference internal" href="gino.html#gino.create_engine" title="gino.create_engine"><code class="xref py py-func docutils literal notranslate"><span class="pre">create_engine()</span></code></a> to create a new engine, and return it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><a class="reference internal" href="gino.engine.html#gino.engine.GinoEngine" title="gino.engine.GinoEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">GinoEngine</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="gino.api.Gino.status">
+<em class="property">async </em><code class="sig-name descname">status</code><span class="sig-paren">(</span><em class="sig-param">clause</em>, <em class="sig-param">*multiparams</em>, <em class="sig-param">**params</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.Gino.status" title="Permalink to this definition">¶</a></dt>
+<dd><p>A delegate of <a class="reference internal" href="gino.engine.html#gino.engine.GinoEngine.status" title="gino.engine.GinoEngine.status"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GinoEngine.status()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="gino.api.Gino.transaction">
+<code class="sig-name descname">transaction</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.Gino.transaction" title="Permalink to this definition">¶</a></dt>
+<dd><p>A delegate of <a class="reference internal" href="gino.engine.html#gino.engine.GinoEngine.transaction" title="gino.engine.GinoEngine.transaction"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GinoEngine.transaction()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="gino.api.Gino.with_bind">
+<code class="sig-name descname">with_bind</code><span class="sig-paren">(</span><em class="sig-param">bind</em>, <em class="sig-param">loop=None</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.Gino.with_bind" title="Permalink to this definition">¶</a></dt>
+<dd><p>Shortcut for <a class="reference internal" href="#gino.api.Gino.set_bind" title="gino.api.Gino.set_bind"><code class="xref py py-meth docutils literal notranslate"><span class="pre">set_bind()</span></code></a> and <a class="reference internal" href="#gino.api.Gino.pop_bind" title="gino.api.Gino.pop_bind"><code class="xref py py-meth docutils literal notranslate"><span class="pre">pop_bind()</span></code></a> plus closing engine.</p>
+<p>This method accepts the same arguments of
+<a class="reference internal" href="gino.html#gino.create_engine" title="gino.create_engine"><code class="xref py py-func docutils literal notranslate"><span class="pre">create_engine()</span></code></a>. This allows inline creating an engine and
+binding self on enter, and unbinding self and closing the engine on
+exit:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">with</span> <span class="n">db</span><span class="o">.</span><span class="n">with_bind</span><span class="p">(</span><span class="s1">&#39;postgresql://...&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">engine</span><span class="p">:</span>
+    <span class="c1"># play with engine</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>An asynchronous context manager.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="gino.api.GinoExecutor">
+<em class="property">class </em><code class="sig-prename descclassname">gino.api.</code><code class="sig-name descname">GinoExecutor</code><span class="sig-paren">(</span><em class="sig-param">query</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.GinoExecutor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>The default <code class="docutils literal notranslate"><span class="pre">gino</span></code> extension on
+<a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/selectable.html#sqlalchemy.sql.expression.Executable" title="(in SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Executable</span></code></a> constructs for implicit
+execution.</p>
+<p>Instances of this class are created when visiting the <code class="docutils literal notranslate"><span class="pre">gino</span></code> property of
+<a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/selectable.html#sqlalchemy.sql.expression.Executable" title="(in SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Executable</span></code></a> instances (also referred as
+queries or clause elements), for example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">await</span> <span class="n">User</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">gino</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This allows GINO to add the asynchronous query APIs (<a class="reference internal" href="#gino.api.GinoExecutor.all" title="gino.api.GinoExecutor.all"><code class="xref py py-meth docutils literal notranslate"><span class="pre">all()</span></code></a>,
+<a class="reference internal" href="#gino.api.GinoExecutor.first" title="gino.api.GinoExecutor.first"><code class="xref py py-meth docutils literal notranslate"><span class="pre">first()</span></code></a>, <a class="reference internal" href="#gino.api.GinoExecutor.one" title="gino.api.GinoExecutor.one"><code class="xref py py-meth docutils literal notranslate"><span class="pre">one()</span></code></a>, <a class="reference internal" href="#gino.api.GinoExecutor.one_or_none" title="gino.api.GinoExecutor.one_or_none"><code class="xref py py-meth docutils literal notranslate"><span class="pre">one_or_none()</span></code></a>, <a class="reference internal" href="#gino.api.GinoExecutor.scalar" title="gino.api.GinoExecutor.scalar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">scalar()</span></code></a>,
+<a class="reference internal" href="#gino.api.GinoExecutor.status" title="gino.api.GinoExecutor.status"><code class="xref py py-meth docutils literal notranslate"><span class="pre">status()</span></code></a>, <a class="reference internal" href="#gino.api.GinoExecutor.iterate" title="gino.api.GinoExecutor.iterate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">iterate()</span></code></a>) to SQLAlchemy query clauses without
+messing up with existing synchronous ones.
+Calling these asynchronous query APIs has the same restriction - the
+relevant metadata (the <a class="reference internal" href="#gino.api.Gino" title="gino.api.Gino"><code class="xref py py-class docutils literal notranslate"><span class="pre">Gino</span></code></a> instance) must be bound to an engine,
+or an <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#AttributeError" title="(in Python v3.8)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">AttributeError</span></code></a> will be raised.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Executable clause elements that are completely irrelevant with any
+table - for example <code class="docutils literal notranslate"><span class="pre">db.select([db.text('now()')])</span></code> - has no
+metadata, hence no engine. Therefore, this will always fail:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">await</span> <span class="n">db</span><span class="o">.</span><span class="n">select</span><span class="p">([</span><span class="n">db</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s1">&#39;now()&#39;</span><span class="p">)])</span><span class="o">.</span><span class="n">gino</span><span class="o">.</span><span class="n">scalar</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>You should use <a class="reference internal" href="gino.engine.html#gino.engine.GinoConnection.scalar" title="gino.engine.GinoConnection.scalar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">conn.scalar()</span></code></a>,
+<a class="reference internal" href="gino.engine.html#gino.engine.GinoEngine.scalar" title="gino.engine.GinoEngine.scalar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">engine.scalar()</span></code></a> or even
+<a class="reference internal" href="#gino.api.Gino.scalar" title="gino.api.Gino.scalar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">db.scalar()</span></code></a> in this case.</p>
+</div>
+<dl class="method">
+<dt id="gino.api.GinoExecutor.all">
+<em class="property">async </em><code class="sig-name descname">all</code><span class="sig-paren">(</span><em class="sig-param">*multiparams</em>, <em class="sig-param">**params</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.GinoExecutor.all" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <a class="reference internal" href="gino.engine.html#gino.engine.GinoEngine.all" title="gino.engine.GinoEngine.all"><code class="xref py py-meth docutils literal notranslate"><span class="pre">engine.all()</span></code></a> with this query
+as the first argument, and other arguments followed, where <code class="docutils literal notranslate"><span class="pre">engine</span></code>
+is the <a class="reference internal" href="gino.engine.html#gino.engine.GinoEngine" title="gino.engine.GinoEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">GinoEngine</span></code></a> to which the metadata
+(<a class="reference internal" href="#gino.api.Gino" title="gino.api.Gino"><code class="xref py py-class docutils literal notranslate"><span class="pre">Gino</span></code></a>) is bound, while metadata is found in this query.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="gino.api.GinoExecutor.first">
+<em class="property">async </em><code class="sig-name descname">first</code><span class="sig-paren">(</span><em class="sig-param">*multiparams</em>, <em class="sig-param">**params</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.GinoExecutor.first" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <a class="reference internal" href="gino.engine.html#gino.engine.GinoEngine.first" title="gino.engine.GinoEngine.first"><code class="xref py py-meth docutils literal notranslate"><span class="pre">engine.first()</span></code></a> with this
+query as the first argument, and other arguments followed, where
+<code class="docutils literal notranslate"><span class="pre">engine</span></code> is the <a class="reference internal" href="gino.engine.html#gino.engine.GinoEngine" title="gino.engine.GinoEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">GinoEngine</span></code></a> to which the metadata
+(<a class="reference internal" href="#gino.api.Gino" title="gino.api.Gino"><code class="xref py py-class docutils literal notranslate"><span class="pre">Gino</span></code></a>) is bound, while metadata is found in this query.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="gino.api.GinoExecutor.iterate">
+<code class="sig-name descname">iterate</code><span class="sig-paren">(</span><em class="sig-param">*multiparams</em>, <em class="sig-param">**params</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.GinoExecutor.iterate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <a class="reference internal" href="gino.engine.html#gino.engine.GinoEngine.iterate" title="gino.engine.GinoEngine.iterate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">engine.iterate()</span></code></a> with this
+query as the first argument, and other arguments followed, where
+<code class="docutils literal notranslate"><span class="pre">engine</span></code> is the <a class="reference internal" href="gino.engine.html#gino.engine.GinoEngine" title="gino.engine.GinoEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">GinoEngine</span></code></a> to which the metadata
+(<a class="reference internal" href="#gino.api.Gino" title="gino.api.Gino"><code class="xref py py-class docutils literal notranslate"><span class="pre">Gino</span></code></a>) is bound, while metadata is found in this query.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="gino.api.GinoExecutor.load">
+<code class="sig-name descname">load</code><span class="sig-paren">(</span><em class="sig-param">value</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.GinoExecutor.load" title="Permalink to this definition">¶</a></dt>
+<dd><p>Shortcut to set execution option <code class="docutils literal notranslate"><span class="pre">loader</span></code> in a chaining call.</p>
+<p>For example to load <code class="docutils literal notranslate"><span class="pre">Book</span></code> instances with their authors:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">query</span> <span class="o">=</span> <span class="n">Book</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">User</span><span class="p">)</span><span class="o">.</span><span class="n">select</span><span class="p">()</span>
+<span class="n">books</span> <span class="o">=</span> <span class="k">await</span> <span class="n">query</span><span class="o">.</span><span class="n">gino</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">Book</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">author</span><span class="o">=</span><span class="n">User</span><span class="p">))</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Read <a class="reference internal" href="gino.engine.html#gino.engine.GinoConnection.execution_options" title="gino.engine.GinoConnection.execution_options"><code class="xref py py-meth docutils literal notranslate"><span class="pre">execution_options()</span></code></a> for more
+information.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="gino.api.GinoExecutor.model">
+<code class="sig-name descname">model</code><span class="sig-paren">(</span><em class="sig-param">model</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.GinoExecutor.model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Shortcut to set execution option <code class="docutils literal notranslate"><span class="pre">model</span></code> in a chaining call.</p>
+<p>Read <a class="reference internal" href="gino.engine.html#gino.engine.GinoConnection.execution_options" title="gino.engine.GinoConnection.execution_options"><code class="xref py py-meth docutils literal notranslate"><span class="pre">execution_options()</span></code></a> for more
+information.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="gino.api.GinoExecutor.one">
+<em class="property">async </em><code class="sig-name descname">one</code><span class="sig-paren">(</span><em class="sig-param">*multiparams</em>, <em class="sig-param">**params</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.GinoExecutor.one" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <a class="reference internal" href="gino.engine.html#gino.engine.GinoEngine.one" title="gino.engine.GinoEngine.one"><code class="xref py py-meth docutils literal notranslate"><span class="pre">engine.one()</span></code></a> with this query
+as the first argument, and other arguments followed, where <code class="docutils literal notranslate"><span class="pre">engine</span></code>
+is the <a class="reference internal" href="gino.engine.html#gino.engine.GinoEngine" title="gino.engine.GinoEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">GinoEngine</span></code></a> to which the metadata
+(<a class="reference internal" href="#gino.api.Gino" title="gino.api.Gino"><code class="xref py py-class docutils literal notranslate"><span class="pre">Gino</span></code></a>) is bound, while metadata is found in this query.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="gino.api.GinoExecutor.one_or_none">
+<em class="property">async </em><code class="sig-name descname">one_or_none</code><span class="sig-paren">(</span><em class="sig-param">*multiparams</em>, <em class="sig-param">**params</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.GinoExecutor.one_or_none" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <a class="reference internal" href="gino.engine.html#gino.engine.GinoEngine.one_or_none" title="gino.engine.GinoEngine.one_or_none"><code class="xref py py-meth docutils literal notranslate"><span class="pre">engine.one_or_none()</span></code></a>
+with this query as the first argument, and other arguments followed,
+where <code class="docutils literal notranslate"><span class="pre">engine</span></code> is the <a class="reference internal" href="gino.engine.html#gino.engine.GinoEngine" title="gino.engine.GinoEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">GinoEngine</span></code></a> to which the
+metadata (<a class="reference internal" href="#gino.api.Gino" title="gino.api.Gino"><code class="xref py py-class docutils literal notranslate"><span class="pre">Gino</span></code></a>) is bound, while metadata is found in this
+query.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="gino.api.GinoExecutor.query">
+<em class="property">property </em><code class="sig-name descname">query</code><a class="headerlink" href="#gino.api.GinoExecutor.query" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get back the chained <a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/selectable.html#sqlalchemy.sql.expression.Executable" title="(in SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Executable</span></code></a>.</p>
+<p>In a chained query calls, occasionally the previous query clause is
+needed after a <code class="docutils literal notranslate"><span class="pre">.gino.</span></code> chain, you can use <code class="docutils literal notranslate"><span class="pre">.query.</span></code> to resume the
+chain back. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">await</span> <span class="n">User</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">gino</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">FOUser</span><span class="p">)</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="o">...</span><span class="p">)</span><span class="o">.</span><span class="n">gino</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="gino.api.GinoExecutor.return_model">
+<code class="sig-name descname">return_model</code><span class="sig-paren">(</span><em class="sig-param">switch</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.GinoExecutor.return_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Shortcut to set execution option <code class="docutils literal notranslate"><span class="pre">return_model</span></code> in a chaining call.</p>
+<p>Read <a class="reference internal" href="gino.engine.html#gino.engine.GinoConnection.execution_options" title="gino.engine.GinoConnection.execution_options"><code class="xref py py-meth docutils literal notranslate"><span class="pre">execution_options()</span></code></a> for more
+information.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="gino.api.GinoExecutor.scalar">
+<em class="property">async </em><code class="sig-name descname">scalar</code><span class="sig-paren">(</span><em class="sig-param">*multiparams</em>, <em class="sig-param">**params</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.GinoExecutor.scalar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <a class="reference internal" href="gino.engine.html#gino.engine.GinoEngine.scalar" title="gino.engine.GinoEngine.scalar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">engine.scalar()</span></code></a> with this
+query as the first argument, and other arguments followed, where
+<code class="docutils literal notranslate"><span class="pre">engine</span></code> is the <a class="reference internal" href="gino.engine.html#gino.engine.GinoEngine" title="gino.engine.GinoEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">GinoEngine</span></code></a> to which the metadata
+(<a class="reference internal" href="#gino.api.Gino" title="gino.api.Gino"><code class="xref py py-class docutils literal notranslate"><span class="pre">Gino</span></code></a>) is bound, while metadata is found in this query.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="gino.api.GinoExecutor.status">
+<em class="property">async </em><code class="sig-name descname">status</code><span class="sig-paren">(</span><em class="sig-param">*multiparams</em>, <em class="sig-param">**params</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.GinoExecutor.status" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <a class="reference internal" href="gino.engine.html#gino.engine.GinoEngine.status" title="gino.engine.GinoEngine.status"><code class="xref py py-meth docutils literal notranslate"><span class="pre">engine.status()</span></code></a> with this
+query as the first argument, and other arguments followed, where
+<code class="docutils literal notranslate"><span class="pre">engine</span></code> is the <a class="reference internal" href="gino.engine.html#gino.engine.GinoEngine" title="gino.engine.GinoEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">GinoEngine</span></code></a> to which the metadata
+(<a class="reference internal" href="#gino.api.Gino" title="gino.api.Gino"><code class="xref py py-class docutils literal notranslate"><span class="pre">Gino</span></code></a>) is bound, while metadata is found in this query.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="gino.api.GinoExecutor.timeout">
+<code class="sig-name descname">timeout</code><span class="sig-paren">(</span><em class="sig-param">timeout</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.GinoExecutor.timeout" title="Permalink to this definition">¶</a></dt>
+<dd><p>Shortcut to set execution option <code class="docutils literal notranslate"><span class="pre">timeout</span></code> in a chaining call.</p>
+<p>Read <a class="reference internal" href="gino.engine.html#gino.engine.GinoConnection.execution_options" title="gino.engine.GinoConnection.execution_options"><code class="xref py py-meth docutils literal notranslate"><span class="pre">execution_options()</span></code></a> for more
+information.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+        </div>
+
+        <div class="col hide-on-small-only m3 right-nav">
+            <div class="table-of-contents fixed">
+                
+                    <ul>
+<li><a class="reference internal" href="#">gino.api module</a></li>
+</ul>
+
+                
+            </div>
+        </div>
+
+    </div>
+    <div class="fixed-action-btn click-to-toggle">
+        <a class="btn-floating btn-large blue">
+            <i class="mdi mdi-translate"></i>
+        </a>
+        <ul>
+            <li><a href="/docs/en/v1.0.0rc1" class="btn-floating blue">EN</a></li>
+            <li><a href="/docs/zh/v1.0.0rc1" class="btn-floating red">ZH</a></li>
+        </ul>
+    </div>
+</main>
+
+<script type="text/javascript"
+        src="../../_static/js/materialize.min.js"></script>
+<script type="text/javascript"
+        src="../../_static/js/gino.js"></script>
+</body>
+</html>

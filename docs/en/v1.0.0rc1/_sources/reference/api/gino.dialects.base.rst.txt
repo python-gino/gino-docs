@@ -1,0 +1,7 @@
+gino.dialects.base module
+=========================
+
+.. automodule:: gino.dialects.base
+   :members:
+   :undoc-members:
+   :show-inheritance:

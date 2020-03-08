@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="../../_static/favicon.ico">
+    <title>gino.transaction module - GINO 1.0.0rc1 documentation</title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async
+            src="https://www.googletagmanager.com/gtag/js?id=UA-3759436-10"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag () {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'UA-3759436-10');
+    </script>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css">
+    <link type="text/css" rel="stylesheet"
+          href="../../_static/css/materialize.min.css"
+          media="screen,projection"/>
+    <link rel="stylesheet" href="../../_static/pygments.css"
+          type="text/css"/>
+    <link type="text/css" rel="stylesheet"
+          href="../../_static/css/gino.css"/>
+</head>
+<body>
+
+<header>
+    <div class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper">
+                <a href="../../index.html" class="brand-logo">
+                    <div class="img"
+                         style="background-image: url(../../_static/logo.png); width: 40px; height: 40px; margin-right: 8px"></div>
+                    <div class="img"
+                         style="background-image: url(../../_static/logo-name.png); width: 100px; height: 32.5px; margin-top: 4px"></div>
+                </a>
+                <div class="breadcrumbs">
+                    <a class="breadcrumb" style="display: none"></a>
+                    
+                        <a href="../../reference.html"
+                           class="breadcrumb">Reference</a>
+                    
+                        <a href="../api.html"
+                           class="breadcrumb">API Reference</a>
+                    
+                        <a href="gino.html"
+                           class="breadcrumb">gino package</a>
+                    
+                    
+                        <a class="breadcrumb" style="color: #FFFFFF">gino.transaction module</a>
+                    
+                </div>
+                <div class="spacer"></div>
+                <div class="search">
+                    <input type="text" id="search" placeholder="Search">
+                    <i class="mdi mdi-magnify"></i>
+                </div>
+                <a class="waves-effect waves-light btn-flat theme-dark" href="/">
+                    <i class="mdi mdi-home"></i>
+                    Home
+                </a>
+                <a class="waves-effect waves-light btn-flat theme-dark"
+                   href="/authors.html">
+                    <i class="mdi mdi-account-group"></i>
+                    Authors
+                </a>
+                <a href="https://github.com/python-gino/gino" target="_blank"
+                   class="github">
+                    <i class="mdi mdi-github-circle"></i>
+                </a>
+            </div>
+        </nav>
+    </div>
+
+    <div id="sidenav" class="sidenav sidenav-fixed">
+        <p class="caption"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/tutorial.html">Tutorial</a></li>
+</ul>
+<p class="caption"><span class="caption-text">How-to Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to.html">How-to Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to/contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to/crud.html">CRUD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to/faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to/loaders.html">Loaders and Relationship</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to/pool.html">Connection Pool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to/sanic.html">Sanic Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to/schema.html">Schema Declaration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to/starlette.html">Starlette Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to/tornado.html">Tornado Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to/transaction.html">Transaction</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Explanation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../explanation.html">Explanation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../explanation/engine.html">Engine and Connection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../explanation/why.html">Why Asynchronous ORM?</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../reference.html">Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../api.html">API Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../authors.html">Credits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../history.html">History</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="gino.html">gino package</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../authors.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../history.html">History</a></li>
+</ul>
+
+    </div>
+</header>
+
+<main>
+    <div class="row">
+        <div class="col s12 m9 body">
+            
+    <div class="section" id="module-gino.transaction">
+<span id="gino-transaction-module"></span><h1>gino.transaction module<a class="headerlink" href="#module-gino.transaction" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="gino.transaction.GinoTransaction">
+<em class="property">class </em><code class="sig-prename descclassname">gino.transaction.</code><code class="sig-name descname">GinoTransaction</code><span class="sig-paren">(</span><em class="sig-param">conn</em>, <em class="sig-param">args</em>, <em class="sig-param">kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.transaction.GinoTransaction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Represents an underlying database transaction and its connection, offering
+methods to manage this transaction.</p>
+<p><a class="reference internal" href="#gino.transaction.GinoTransaction" title="gino.transaction.GinoTransaction"><code class="xref py py-class docutils literal notranslate"><span class="pre">GinoTransaction</span></code></a> is supposed to be created by either
+<a class="reference internal" href="gino.engine.html#gino.engine.GinoConnection.transaction" title="gino.engine.GinoConnection.transaction"><code class="xref py py-meth docutils literal notranslate"><span class="pre">gino.engine.GinoConnection.transaction()</span></code></a>, or
+<a class="reference internal" href="gino.engine.html#gino.engine.GinoEngine.transaction" title="gino.engine.GinoEngine.transaction"><code class="xref py py-meth docutils literal notranslate"><span class="pre">gino.engine.GinoEngine.transaction()</span></code></a>, or
+<a class="reference internal" href="gino.api.html#gino.api.Gino.transaction" title="gino.api.Gino.transaction"><code class="xref py py-meth docutils literal notranslate"><span class="pre">gino.api.Gino.transaction()</span></code></a>, shown as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">with</span> <span class="n">db</span><span class="o">.</span><span class="n">transaction</span><span class="p">()</span> <span class="k">as</span> <span class="n">tx</span><span class="p">:</span>
+    <span class="o">...</span>
+
+<span class="k">async</span> <span class="k">with</span> <span class="n">engine</span><span class="o">.</span><span class="n">transaction</span><span class="p">()</span> <span class="k">as</span> <span class="n">tx</span><span class="p">:</span>
+    <span class="o">...</span>
+
+<span class="k">async</span> <span class="k">with</span> <span class="n">conn</span><span class="o">.</span><span class="n">transaction</span><span class="p">()</span> <span class="k">as</span> <span class="n">tx</span><span class="p">:</span>
+    <span class="o">...</span>
+
+<span class="n">tx</span> <span class="o">=</span> <span class="k">await</span> <span class="n">conn</span><span class="o">.</span><span class="n">transaction</span><span class="p">()</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="o">...</span>
+    <span class="k">await</span> <span class="n">tx</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+<span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+    <span class="k">await</span> <span class="n">tx</span><span class="o">.</span><span class="n">rollback</span><span class="p">()</span>
+    <span class="k">raise</span>
+</pre></div>
+</div>
+<p>When in use with asynchronous context manager, <a class="reference internal" href="#gino.transaction.GinoTransaction" title="gino.transaction.GinoTransaction"><code class="xref py py-class docutils literal notranslate"><span class="pre">GinoTransaction</span></code></a>
+will be in <strong>managed</strong> mode, while the last example with <code class="docutils literal notranslate"><span class="pre">await</span></code> will put
+the <a class="reference internal" href="#gino.transaction.GinoTransaction" title="gino.transaction.GinoTransaction"><code class="xref py py-class docutils literal notranslate"><span class="pre">GinoTransaction</span></code></a> in <strong>manual</strong> mode where you have to call
+the <a class="reference internal" href="#gino.transaction.GinoTransaction.commit" title="gino.transaction.GinoTransaction.commit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">commit()</span></code></a> or <a class="reference internal" href="#gino.transaction.GinoTransaction.rollback" title="gino.transaction.GinoTransaction.rollback"><code class="xref py py-meth docutils literal notranslate"><span class="pre">rollback()</span></code></a> to manually close the transaction.</p>
+<p>In <strong>managed</strong> mode the transaction will be automatically committed or
+rolled back on exiting the <code class="docutils literal notranslate"><span class="pre">async</span> <span class="pre">with</span></code> block depending on whether there
+is an exception or not. Meanwhile, you can explicitly exit the transaction
+early by <a class="reference internal" href="#gino.transaction.GinoTransaction.raise_commit" title="gino.transaction.GinoTransaction.raise_commit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">raise_commit()</span></code></a> or <a class="reference internal" href="#gino.transaction.GinoTransaction.raise_rollback" title="gino.transaction.GinoTransaction.raise_rollback"><code class="xref py py-meth docutils literal notranslate"><span class="pre">raise_rollback()</span></code></a> which will raise
+an internal exception managed by the asynchronous context manager and
+interpreted as a commit or rollback action. In a nested transaction
+situation, the two exit-early methods always close up the very transaction
+which the two methods are referenced upon - all children transactions are
+either committed or rolled back correspondingly, while no parent
+transaction was ever touched. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">with</span> <span class="n">db</span><span class="o">.</span><span class="n">transaction</span><span class="p">()</span> <span class="k">as</span> <span class="n">tx1</span><span class="p">:</span>
+    <span class="k">async</span> <span class="k">with</span> <span class="n">db</span><span class="o">.</span><span class="n">transaction</span><span class="p">()</span> <span class="k">as</span> <span class="n">tx2</span><span class="p">:</span>
+        <span class="k">async</span> <span class="k">with</span> <span class="n">db</span><span class="o">.</span><span class="n">transaction</span><span class="p">()</span> <span class="k">as</span> <span class="n">tx3</span><span class="p">:</span>
+            <span class="n">tx2</span><span class="o">.</span><span class="n">raise_rollback</span><span class="p">()</span>
+            <span class="c1"># Won&#39;t reach here</span>
+        <span class="c1"># Won&#39;t reach here</span>
+    <span class="c1"># Continues here with tx1, with both tx2 and tx3 rolled back.</span>
+
+    <span class="c1"># For PostgreSQL, tx1 can still be committed successfully because</span>
+    <span class="c1"># tx2 and tx3 are just SAVEPOINTs in transaction tx1</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The internal exception raised from <a class="reference internal" href="#gino.transaction.GinoTransaction.raise_commit" title="gino.transaction.GinoTransaction.raise_commit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">raise_commit()</span></code></a> and
+<a class="reference internal" href="#gino.transaction.GinoTransaction.raise_rollback" title="gino.transaction.GinoTransaction.raise_rollback"><code class="xref py py-meth docutils literal notranslate"><span class="pre">raise_rollback()</span></code></a> is a subclass of <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#BaseException" title="(in Python v3.8)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">BaseException</span></code></a>, so
+normal <code class="docutils literal notranslate"><span class="pre">try</span> <span class="pre">...</span> <span class="pre">except</span> <span class="pre">Exception:</span></code> can’t trap the commit or rollback.</p>
+</div>
+<dl class="method">
+<dt id="gino.transaction.GinoTransaction.commit">
+<em class="property">async </em><code class="sig-name descname">commit</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.transaction.GinoTransaction.commit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Only available in manual mode: manually commit this transaction.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="gino.transaction.GinoTransaction.connection">
+<em class="property">property </em><code class="sig-name descname">connection</code><a class="headerlink" href="#gino.transaction.GinoTransaction.connection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Accesses to the <a class="reference internal" href="gino.engine.html#gino.engine.GinoConnection" title="gino.engine.GinoConnection"><code class="xref py py-class docutils literal notranslate"><span class="pre">GinoConnection</span></code></a> of this
+transaction. This is useful if when the transaction is started from
+<code class="docutils literal notranslate"><span class="pre">db</span></code> or <code class="docutils literal notranslate"><span class="pre">engine</span></code> where the connection is implicitly acquired for
+you together with the transaction.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="gino.transaction.GinoTransaction.raise_commit">
+<code class="sig-name descname">raise_commit</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.transaction.GinoTransaction.raise_commit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Only available in managed mode: skip rest of the code in this
+transaction and commit immediately by raising an internal exception,
+which will be caught and handled by the asynchronous context manager:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">with</span> <span class="n">db</span><span class="o">.</span><span class="n">transaction</span><span class="p">()</span> <span class="k">as</span> <span class="n">tx</span><span class="p">:</span>
+    <span class="k">await</span> <span class="n">user</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">age</span><span class="o">=</span><span class="mi">64</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">()</span>
+    <span class="n">tx</span><span class="o">.</span><span class="n">raise_commit</span><span class="p">()</span>
+    <span class="k">await</span> <span class="n">user</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">age</span><span class="o">=</span><span class="mi">32</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">()</span>  <span class="c1"># won&#39;t reach here</span>
+
+<span class="k">assert</span> <span class="n">user</span><span class="o">.</span><span class="n">age</span> <span class="o">==</span> <span class="mi">64</span>  <span class="c1"># no exception raised before</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="gino.transaction.GinoTransaction.raise_rollback">
+<code class="sig-name descname">raise_rollback</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.transaction.GinoTransaction.raise_rollback" title="Permalink to this definition">¶</a></dt>
+<dd><p>Only available in managed mode: skip rest of the code in this
+transaction and rollback immediately by raising an internal exception,
+which will be caught and handled by the asynchronous context manager:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span> <span class="n">user</span><span class="o">.</span><span class="n">age</span> <span class="o">==</span> <span class="mi">64</span>  <span class="c1"># assumption</span>
+
+<span class="k">async</span> <span class="k">with</span> <span class="n">db</span><span class="o">.</span><span class="n">transaction</span><span class="p">()</span> <span class="k">as</span> <span class="n">tx</span><span class="p">:</span>
+    <span class="k">await</span> <span class="n">user</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">age</span><span class="o">=</span><span class="mi">32</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">()</span>
+    <span class="n">tx</span><span class="o">.</span><span class="n">raise_rollback</span><span class="p">()</span>
+    <span class="k">await</span> <span class="n">user</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">age</span><span class="o">=</span><span class="mi">128</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">()</span>  <span class="c1"># won&#39;t reach here</span>
+
+<span class="k">assert</span> <span class="n">user</span><span class="o">.</span><span class="n">age</span> <span class="o">==</span> <span class="mi">64</span>  <span class="c1"># no exception raised before</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="gino.transaction.GinoTransaction.raw_transaction">
+<em class="property">property </em><code class="sig-name descname">raw_transaction</code><a class="headerlink" href="#gino.transaction.GinoTransaction.raw_transaction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Accesses to the underlying transaction object, whose type depends on
+the dialect in use.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="gino.transaction.GinoTransaction.rollback">
+<em class="property">async </em><code class="sig-name descname">rollback</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.transaction.GinoTransaction.rollback" title="Permalink to this definition">¶</a></dt>
+<dd><p>Only available in manual mode: manually rollback this transaction.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+        </div>
+
+        <div class="col hide-on-small-only m3 right-nav">
+            <div class="table-of-contents fixed">
+                
+                    <ul>
+<li><a class="reference internal" href="#">gino.transaction module</a></li>
+</ul>
+
+                
+            </div>
+        </div>
+
+    </div>
+    <div class="fixed-action-btn click-to-toggle">
+        <a class="btn-floating btn-large blue">
+            <i class="mdi mdi-translate"></i>
+        </a>
+        <ul>
+            <li><a href="/docs/en/v1.0.0rc1" class="btn-floating blue">EN</a></li>
+            <li><a href="/docs/zh/v1.0.0rc1" class="btn-floating red">ZH</a></li>
+        </ul>
+    </div>
+</main>
+
+<script type="text/javascript"
+        src="../../_static/js/materialize.min.js"></script>
+<script type="text/javascript"
+        src="../../_static/js/gino.js"></script>
+</body>
+</html>
