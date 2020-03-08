@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="../_static/favicon.ico">
-    <title>上手教程 - GINO 1.0.0rc1 文档</title>
+    <title>上手教程 - GINO 1.0.0rc2 文档</title>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async
             src="https://www.googletagmanager.com/gtag/js?id=UA-3759436-10"></script>
@@ -287,8 +287,8 @@ information about how to compose this database URL.</p>
 </pre></div>
 </div>
 <p>正如之前所说，<code class="docutils literal notranslate"><span class="pre">user</span></code> 对象代表了数据库中新插入的这一行数据。您可以通过 <code class="docutils literal notranslate"><span class="pre">user</span></code> 对象上的之前定义的列属性来访问每一列的值：</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;ID:       </span><span class="si">{user.id}</span><span class="s1">&#39;</span><span class="p">)</span>           <span class="c1"># 1</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Nickname: </span><span class="si">{user.nickname}</span><span class="s1">&#39;</span><span class="p">)</span>     <span class="c1"># fantix</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;ID:       </span><span class="si">{</span><span class="n">user</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>           <span class="c1"># 1</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Nickname: </span><span class="si">{</span><span class="n">user</span><span class="o">.</span><span class="n">nickname</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>     <span class="c1"># fantix</span>
 </pre></div>
 </div>
 <p>另外，您也可以先在内存中创建一个 <code class="docutils literal notranslate"><span class="pre">user</span></code> 对象，然后再将其插入到数据库中：</p>
