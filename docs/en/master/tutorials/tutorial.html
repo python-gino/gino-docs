@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="../_static/favicon.ico">
-    <title>Tutorial - GINO 1.0.0rc1 documentation</title>
+    <title>Tutorial - GINO 1.0.0rc2 documentation</title>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async
             src="https://www.googletagmanager.com/gtag/js?id=UA-3759436-10"></script>
@@ -331,8 +331,8 @@ Retrieve, Update or Delete model objects, also known as the CRUD operations.</p>
 <p>As mentioned previously, <code class="docutils literal notranslate"><span class="pre">user</span></code> object represents the newly created row in
 the database. You can get the value of each columns by the declared column
 properties on the object:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;ID:       </span><span class="si">{user.id}</span><span class="s1">&#39;</span><span class="p">)</span>           <span class="c1"># 1</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Nickname: </span><span class="si">{user.nickname}</span><span class="s1">&#39;</span><span class="p">)</span>     <span class="c1"># fantix</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;ID:       </span><span class="si">{</span><span class="n">user</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>           <span class="c1"># 1</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Nickname: </span><span class="si">{</span><span class="n">user</span><span class="o">.</span><span class="n">nickname</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>     <span class="c1"># fantix</span>
 </pre></div>
 </div>
 <p>It is also possible to create a model instance in-memory first, modify it, then

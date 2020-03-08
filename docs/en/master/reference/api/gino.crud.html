@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="../../_static/favicon.ico">
-    <title>gino.crud module - GINO 1.0.0rc1 documentation</title>
+    <title>gino.crud module - GINO 1.0.0rc2 documentation</title>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async
             src="https://www.googletagmanager.com/gtag/js?id=UA-3759436-10"></script>
@@ -270,7 +270,7 @@ columns.</p>
 
 <dl class="method">
 <dt id="gino.crud.CRUDModel.get">
-<em class="property">classmethod </em><code class="sig-name descname">get</code><span class="sig-paren">(</span><em class="sig-param">ident</em>, <em class="sig-param">bind=None</em>, <em class="sig-param">timeout=&lt;object object&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.crud.CRUDModel.get" title="Permalink to this definition">¶</a></dt>
+<em class="property">async classmethod </em><code class="sig-name descname">get</code><span class="sig-paren">(</span><em class="sig-param">ident</em>, <em class="sig-param">bind=None</em>, <em class="sig-param">timeout=&lt;object object&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.crud.CRUDModel.get" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get an instance of this model class by primary key.</p>
 <p>For example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">user</span> <span class="o">=</span> <span class="k">await</span> <span class="n">User</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;user_id&#39;</span><span class="p">))</span>

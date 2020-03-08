@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="../_static/favicon.ico">
-    <title>Loaders and Relationship - GINO 1.0.0rc1 documentation</title>
+    <title>Loaders and Relationship - GINO 1.0.0rc2 documentation</title>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async
             src="https://www.googletagmanager.com/gtag/js?id=UA-3759436-10"></script>
@@ -253,7 +253,7 @@ GINO does not enforce it, usually people use a foreign key for the reference:</p
 have multiple children. GINO provides an easy way to load children with their
 parents:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">Child</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">Parent</span><span class="p">)</span><span class="o">.</span><span class="n">gino</span><span class="o">.</span><span class="n">iterate</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Parent of </span><span class="si">{child.id}</span><span class="s1"> is </span><span class="si">{child.parent.id}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Parent of </span><span class="si">{</span><span class="n">child</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s1"> is </span><span class="si">{</span><span class="n">child</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>As you may have noticed, <code class="docutils literal notranslate"><span class="pre">Child.load</span></code> is exactly the shortcut to create
@@ -262,7 +262,7 @@ additional keyword arguments, <code class="docutils literal notranslate"><span c
 <a class="reference internal" href="../reference/api/gino.loader.html#gino.loader.ModelLoader" title="gino.loader.ModelLoader"><code class="xref py py-class docutils literal notranslate"><span class="pre">ModelLoader</span></code></a> for <code class="docutils literal notranslate"><span class="pre">Child</span></code>, the model loader is at the
 same time a <strong>query builder</strong>. It is identical to do this:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">Child</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">Parent</span><span class="p">)</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">gino</span><span class="o">.</span><span class="n">iterate</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Parent of </span><span class="si">{child.id}</span><span class="s1"> is </span><span class="si">{child.parent.id}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Parent of </span><span class="si">{</span><span class="n">child</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s1"> is </span><span class="si">{</span><span class="n">child</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The <a class="reference internal" href="../reference/api/gino.loader.html#gino.loader.Loader.query" title="gino.loader.Loader.query"><code class="xref py py-attr docutils literal notranslate"><span class="pre">query</span></code></a> dynamically generates a SQLAlchemy query
@@ -309,7 +309,7 @@ keys. You can also customize the <code class="docutils literal notranslate"><spa
 (a promise is a promise):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">loader</span> <span class="o">=</span> <span class="n">Child</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">Parent</span><span class="o">.</span><span class="n">on</span><span class="p">(</span><span class="n">Child</span><span class="o">.</span><span class="n">parent_id</span> <span class="o">==</span> <span class="n">Parent</span><span class="o">.</span><span class="n">id</span><span class="p">))</span>
 <span class="k">async</span> <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">loader</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">gino</span><span class="o">.</span><span class="n">iterate</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Parent of </span><span class="si">{child.id}</span><span class="s1"> is </span><span class="si">{child.parent.id}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Parent of </span><span class="si">{</span><span class="n">child</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s1"> is </span><span class="si">{</span><span class="n">child</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>And subloaders can be nested:</p>
@@ -345,7 +345,7 @@ relationship, just modify the reference column values.</p>
     <span class="o">~</span><span class="n">Category</span><span class="o">.</span><span class="n">id</span><span class="o">.</span><span class="n">in_</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">select</span><span class="p">([</span><span class="n">Category</span><span class="o">.</span><span class="n">alias</span><span class="p">()</span><span class="o">.</span><span class="n">parent_id</span><span class="p">]))</span>
 <span class="p">)</span>
 <span class="k">async</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">query</span><span class="o">.</span><span class="n">gino</span><span class="o">.</span><span class="n">iterate</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Leaf: </span><span class="si">{c.id}</span><span class="s1">, Parent: </span><span class="si">{c.parent.id}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Leaf: </span><span class="si">{</span><span class="n">c</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s1">, Parent: </span><span class="si">{</span><span class="n">c</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The generated SQL looks like this:</p>
