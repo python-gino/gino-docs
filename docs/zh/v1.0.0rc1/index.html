@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="_static/favicon.ico">
+    <title>欢迎来到 GINO 的文档！ - GINO 1.0.0rc1 文档</title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async
+            src="https://www.googletagmanager.com/gtag/js?id=UA-3759436-10"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag () {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'UA-3759436-10');
+    </script>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css">
+    <link type="text/css" rel="stylesheet"
+          href="_static/css/materialize.min.css"
+          media="screen,projection"/>
+    <link rel="stylesheet" href="_static/pygments.css"
+          type="text/css"/>
+    <link type="text/css" rel="stylesheet"
+          href="_static/css/gino.css"/>
+</head>
+<body>
+
+<header>
+    <div class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper">
+                <a href="#" class="brand-logo">
+                    <div class="img"
+                         style="background-image: url(_static/logo.png); width: 40px; height: 40px; margin-right: 8px"></div>
+                    <div class="img"
+                         style="background-image: url(_static/logo-name.png); width: 100px; height: 32.5px; margin-top: 4px"></div>
+                </a>
+                <div class="breadcrumbs">
+                    <a class="breadcrumb" style="display: none"></a>
+                    
+                    
+                </div>
+                <div class="spacer"></div>
+                <div class="search">
+                    <input type="text" id="search" placeholder="Search">
+                    <i class="mdi mdi-magnify"></i>
+                </div>
+                <a class="waves-effect waves-light btn-flat theme-dark" href="/">
+                    <i class="mdi mdi-home"></i>
+                    Home
+                </a>
+                <a class="waves-effect waves-light btn-flat theme-dark"
+                   href="/authors.html">
+                    <i class="mdi mdi-account-group"></i>
+                    Authors
+                </a>
+                <a href="https://github.com/python-gino/gino" target="_blank"
+                   class="github">
+                    <i class="mdi mdi-github-circle"></i>
+                </a>
+            </div>
+        </nav>
+    </div>
+
+    <div id="sidenav" class="sidenav sidenav-fixed">
+        <p class="caption"><span class="caption-text">上手教程</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">上手教程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/tutorial.html">上手教程</a></li>
+</ul>
+<p class="caption"><span class="caption-text">进阶用法</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="how-to.html">进阶用法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-to/contributing.html">贡献</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-to/crud.html">CRUD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-to/faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-to/loaders.html">Loaders and Relationship</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-to/pool.html">Connection Pool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-to/sanic.html">Sanic Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-to/schema.html">Schema Declaration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-to/starlette.html">Starlette Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-to/tornado.html">Tornado Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-to/transaction.html">Transaction</a></li>
+</ul>
+<p class="caption"><span class="caption-text">原理说明</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="explanation.html">原理说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="explanation/engine.html">Engine and Connection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="explanation/why.html">Why Asynchronous ORM?</a></li>
+</ul>
+<p class="caption"><span class="caption-text">参考手册</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">参考手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/api.html">API 参考</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/authors.html">制作人员</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/history.html">History</a></li>
+</ul>
+
+    </div>
+</header>
+
+<main>
+    <div class="row">
+        <div class="col s12 m9 body">
+            
+    <div class="section" id="welcome-to-gino-s-documentation">
+<h1>欢迎来到 GINO 的文档！<a class="headerlink" href="#welcome-to-gino-s-documentation" title="永久链接至标题">¶</a></h1>
+<a class="reference external image-reference" href="https://pypi.python.org/pypi/gino"><img alt="PyPI Release Version" src="https://img.shields.io/pypi/v/gino?logo=python&amp;logoColor=white" /></a>
+<a class="reference external image-reference" href="https://github.com/python-gino/gino/actions?query=workflow%3Atest"><img alt="GitHub Workflow Status for tests" src="https://img.shields.io/github/workflow/status/python-gino/gino/test?label=test&amp;logo=github" /></a>
+<a class="reference external image-reference" href="https://python-gino.org/docs/"><img alt="GitHub Workflow Status for docs" src="https://img.shields.io/github/workflow/status/python-gino/gino/docs?label=docs&amp;logo=github" /></a>
+<a class="reference external image-reference" href="https://app.codacy.com/gh/python-gino/gino/dashboard"><img alt="Codacy coverage" src="https://img.shields.io/codacy/coverage/b6a59cdf5ca64eab9104928d4f9bbb97?logo=codacy" /></a>
+<a class="reference external image-reference" href="https://app.dependabot.com/accounts/python-gino/projects/129260"><img alt="Dependabot" src="https://img.shields.io/badge/Dependabot-active-brightgreen?logo=dependabot" /></a>
+<a class="reference external image-reference" href="https://gitter.im/python-gino/Lobby"><img alt="Gitter chat" src="https://img.shields.io/gitter/room/python-gino/Lobby?logo=gitter" /></a>
+<p>GINO 递归定义为 GINO Is Not ORM，是一个基于 <a class="reference external" href="https://docs.python.org/3/library/asyncio.html">asyncio</a> 和 <a class="reference external" href="https://www.sqlalchemy.org/">SQLAlchemy</a> core 的轻量级异步 Python ORM 框架，目前（2020 年初）仅支持 <a class="reference external" href="https://github.com/MagicStack/asyncpg">asyncpg</a> 一种引擎。</p>
+<ul class="boxed-nav">
+<li><a class="reference external image-reference" href="tutorials/tutorial.html"><img alt="_images/tutorials.png" src="_images/tutorials.png" /></a>
+<p><a class="reference internal" href="tutorials/tutorial.html"><span class="doc">上手教程</span></a></p>
+<p>为新手上手准备的一系列教程</p>
+</li>
+<li><a class="reference external image-reference" href="how-to.html"><img alt="_images/how-to.png" src="_images/how-to.png" /></a>
+<p><a class="reference internal" href="how-to.html"><span class="doc">进阶用法</span></a></p>
+<p>解决各种具体问题的方法</p>
+</li>
+<li><a class="reference external image-reference" href="explanation.html"><img alt="_images/explanation.png" src="_images/explanation.png" /></a>
+<p><a class="reference internal" href="explanation.html"><span class="doc">原理说明</span></a></p>
+<p>背景及上下文知识的解释</p>
+</li>
+<li><a class="reference external image-reference" href="reference.html"><img alt="_images/reference.png" src="_images/reference.png" /></a>
+<p><a class="reference internal" href="reference.html"><span class="doc">参考手册</span></a></p>
+<p>软件本身一五一十的描述</p>
+</li>
+<li><a class="reference external image-reference" href="https://github.com/python-gino/gino"><img alt="_images/github.png" src="_images/github.png" /></a>
+<p><a class="reference external" href="https://github.com/python-gino/gino">源码仓库</a></p>
+<p><a class="reference external" href="https://github.com/python-gino/gino">https://github.com/python-gino/gino</a></p>
+</li>
+<li><a class="reference external image-reference" href="https://gitter.im/python-gino/Lobby"><img alt="_images/community.png" src="_images/community.png" /></a>
+<p><a class="reference external" href="https://gitter.im/python-gino/Lobby">社区讨论</a></p>
+<p><a class="reference external" href="https://gitter.im/python-gino/Lobby">https://gitter.im/python-gino/Lobby</a></p>
+</li>
+<li><a class="reference external image-reference" href="https://github.com/python-gino/gino/blob/master/LICENSE"><img alt="_images/open-source.png" src="_images/open-source.png" /></a>
+<p><a class="reference external" href="https://github.com/python-gino/gino/blob/master/LICENSE">BSD 许可证</a></p>
+<p>GINO 是一款自由软件</p>
+</li>
+<li><a class="reference external image-reference" href="https://www.python.org/"><img alt="_images/python.png" src="_images/python.png" /></a>
+<p><a class="reference external" href="https://www.python.org/">Python 3.5</a></p>
+<p>支持 Python 3.5 及以上版本</p>
+</li>
+</ul>
+<p class="icons8">图标由 <a class="reference external" href="https://icons8.com/">icons8</a> 提供，文档结构参考了 <a class="reference external" href="https://www.divio.com/blog/documentation/">Divio</a>。</p>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+
+
+        </div>
+
+        <div class="col hide-on-small-only m3 right-nav">
+            <div class="table-of-contents fixed">
+                
+            </div>
+        </div>
+
+    </div>
+    <div class="fixed-action-btn click-to-toggle">
+        <a class="btn-floating btn-large blue">
+            <i class="mdi mdi-translate"></i>
+        </a>
+        <ul>
+            <li><a href="/docs/en/v1.0.0rc1" class="btn-floating blue">EN</a></li>
+            <li><a href="/docs/zh/v1.0.0rc1" class="btn-floating red">ZH</a></li>
+        </ul>
+    </div>
+</main>
+
+<script type="text/javascript"
+        src="_static/js/materialize.min.js"></script>
+<script type="text/javascript"
+        src="_static/js/gino.js"></script>
+</body>
+</html>

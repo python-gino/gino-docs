@@ -1,0 +1,7 @@
+gino.exceptions module
+======================
+
+.. automodule:: gino.exceptions
+   :members:
+   :undoc-members:
+   :show-inheritance:
