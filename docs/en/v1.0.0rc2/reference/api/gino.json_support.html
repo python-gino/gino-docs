@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="../../_static/favicon.ico">
+    <title>gino.json_support module - GINO 1.0.0rc2 documentation</title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async
+            src="https://www.googletagmanager.com/gtag/js?id=UA-3759436-10"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag () {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'UA-3759436-10');
+    </script>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css">
+    <link type="text/css" rel="stylesheet"
+          href="../../_static/css/materialize.min.css"
+          media="screen,projection"/>
+    <link rel="stylesheet" href="../../_static/pygments.css"
+          type="text/css"/>
+    <link type="text/css" rel="stylesheet"
+          href="../../_static/css/gino.css"/>
+</head>
+<body>
+
+<header>
+    <div class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper">
+                <a href="../../index.html" class="brand-logo">
+                    <div class="img"
+                         style="background-image: url(../../_static/logo.png); width: 40px; height: 40px; margin-right: 8px"></div>
+                    <div class="img"
+                         style="background-image: url(../../_static/logo-name.png); width: 100px; height: 32.5px; margin-top: 4px"></div>
+                </a>
+                <div class="breadcrumbs">
+                    <a class="breadcrumb" style="display: none"></a>
+                    
+                        <a href="../../reference.html"
+                           class="breadcrumb">Reference</a>
+                    
+                        <a href="../api.html"
+                           class="breadcrumb">API Reference</a>
+                    
+                        <a href="gino.html"
+                           class="breadcrumb">gino package</a>
+                    
+                    
+                        <a class="breadcrumb" style="color: #FFFFFF">gino.json_support module</a>
+                    
+                </div>
+                <div class="spacer"></div>
+                <div class="search">
+                    <input type="text" id="search" placeholder="Search">
+                    <i class="mdi mdi-magnify"></i>
+                </div>
+                <a class="waves-effect waves-light btn-flat theme-dark" href="/">
+                    <i class="mdi mdi-home"></i>
+                    Home
+                </a>
+                <a class="waves-effect waves-light btn-flat theme-dark"
+                   href="/authors.html">
+                    <i class="mdi mdi-account-group"></i>
+                    Authors
+                </a>
+                <a href="https://github.com/python-gino/gino" target="_blank"
+                   class="github">
+                    <i class="mdi mdi-github-circle"></i>
+                </a>
+            </div>
+        </nav>
+    </div>
+
+    <div id="sidenav" class="sidenav sidenav-fixed">
+        <p class="caption"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/tutorial.html">Tutorial</a></li>
+</ul>
+<p class="caption"><span class="caption-text">How-to Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to.html">How-to Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to/contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to/crud.html">CRUD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to/faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to/loaders.html">Loaders and Relationship</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to/pool.html">Connection Pool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to/sanic.html">Sanic Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to/schema.html">Schema Declaration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to/starlette.html">Starlette Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to/tornado.html">Tornado Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to/transaction.html">Transaction</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Explanation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../explanation.html">Explanation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../explanation/engine.html">Engine and Connection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../explanation/why.html">Why Asynchronous ORM?</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../reference.html">Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../api.html">API Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../authors.html">Credits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../history.html">History</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="gino.html">gino package</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../authors.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../history.html">History</a></li>
+</ul>
+
+    </div>
+</header>
+
+<main>
+    <div class="row">
+        <div class="col s12 m9 body">
+            
+    <div class="section" id="module-gino.json_support">
+<span id="gino-json-support-module"></span><h1>gino.json_support module<a class="headerlink" href="#module-gino.json_support" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="gino.json_support.JSONProperty">
+<em class="property">class </em><code class="sig-prename descclassname">gino.json_support.</code><code class="sig-name descname">JSONProperty</code><span class="sig-paren">(</span><em class="sig-param">default=None</em>, <em class="sig-param">prop_name='profile'</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.json_support.JSONProperty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dl class="method">
+<dt id="gino.json_support.JSONProperty.decode">
+<code class="sig-name descname">decode</code><span class="sig-paren">(</span><em class="sig-param">val</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.json_support.JSONProperty.decode" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="gino.json_support.JSONProperty.encode">
+<code class="sig-name descname">encode</code><span class="sig-paren">(</span><em class="sig-param">val</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.json_support.JSONProperty.encode" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="gino.json_support.JSONProperty.get_profile">
+<code class="sig-name descname">get_profile</code><span class="sig-paren">(</span><em class="sig-param">instance</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.json_support.JSONProperty.get_profile" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="gino.json_support.JSONProperty.make_expression">
+<code class="sig-name descname">make_expression</code><span class="sig-paren">(</span><em class="sig-param">base_exp</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.json_support.JSONProperty.make_expression" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="gino.json_support.JSONProperty.reload">
+<code class="sig-name descname">reload</code><span class="sig-paren">(</span><em class="sig-param">instance</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.json_support.JSONProperty.reload" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="gino.json_support.JSONProperty.save">
+<code class="sig-name descname">save</code><span class="sig-paren">(</span><em class="sig-param">instance</em>, <em class="sig-param">value=&lt;object object&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.json_support.JSONProperty.save" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="gino.json_support.StringProperty">
+<em class="property">class </em><code class="sig-prename descclassname">gino.json_support.</code><code class="sig-name descname">StringProperty</code><span class="sig-paren">(</span><em class="sig-param">default=None</em>, <em class="sig-param">prop_name='profile'</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.json_support.StringProperty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#gino.json_support.JSONProperty" title="gino.json_support.JSONProperty"><code class="xref py py-class docutils literal notranslate"><span class="pre">gino.json_support.JSONProperty</span></code></a></p>
+<dl class="method">
+<dt id="gino.json_support.StringProperty.make_expression">
+<code class="sig-name descname">make_expression</code><span class="sig-paren">(</span><em class="sig-param">base_exp</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.json_support.StringProperty.make_expression" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="gino.json_support.DateTimeProperty">
+<em class="property">class </em><code class="sig-prename descclassname">gino.json_support.</code><code class="sig-name descname">DateTimeProperty</code><span class="sig-paren">(</span><em class="sig-param">default=None</em>, <em class="sig-param">prop_name='profile'</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.json_support.DateTimeProperty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#gino.json_support.JSONProperty" title="gino.json_support.JSONProperty"><code class="xref py py-class docutils literal notranslate"><span class="pre">gino.json_support.JSONProperty</span></code></a></p>
+<dl class="method">
+<dt id="gino.json_support.DateTimeProperty.decode">
+<code class="sig-name descname">decode</code><span class="sig-paren">(</span><em class="sig-param">val</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.json_support.DateTimeProperty.decode" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="gino.json_support.DateTimeProperty.encode">
+<code class="sig-name descname">encode</code><span class="sig-paren">(</span><em class="sig-param">val</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.json_support.DateTimeProperty.encode" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="gino.json_support.DateTimeProperty.make_expression">
+<code class="sig-name descname">make_expression</code><span class="sig-paren">(</span><em class="sig-param">base_exp</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.json_support.DateTimeProperty.make_expression" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="gino.json_support.IntegerProperty">
+<em class="property">class </em><code class="sig-prename descclassname">gino.json_support.</code><code class="sig-name descname">IntegerProperty</code><span class="sig-paren">(</span><em class="sig-param">default=None</em>, <em class="sig-param">prop_name='profile'</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.json_support.IntegerProperty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#gino.json_support.JSONProperty" title="gino.json_support.JSONProperty"><code class="xref py py-class docutils literal notranslate"><span class="pre">gino.json_support.JSONProperty</span></code></a></p>
+<dl class="method">
+<dt id="gino.json_support.IntegerProperty.decode">
+<code class="sig-name descname">decode</code><span class="sig-paren">(</span><em class="sig-param">val</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.json_support.IntegerProperty.decode" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="gino.json_support.IntegerProperty.encode">
+<code class="sig-name descname">encode</code><span class="sig-paren">(</span><em class="sig-param">val</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.json_support.IntegerProperty.encode" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="gino.json_support.IntegerProperty.make_expression">
+<code class="sig-name descname">make_expression</code><span class="sig-paren">(</span><em class="sig-param">base_exp</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.json_support.IntegerProperty.make_expression" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="gino.json_support.BooleanProperty">
+<em class="property">class </em><code class="sig-prename descclassname">gino.json_support.</code><code class="sig-name descname">BooleanProperty</code><span class="sig-paren">(</span><em class="sig-param">default=None</em>, <em class="sig-param">prop_name='profile'</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.json_support.BooleanProperty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#gino.json_support.JSONProperty" title="gino.json_support.JSONProperty"><code class="xref py py-class docutils literal notranslate"><span class="pre">gino.json_support.JSONProperty</span></code></a></p>
+<dl class="method">
+<dt id="gino.json_support.BooleanProperty.decode">
+<code class="sig-name descname">decode</code><span class="sig-paren">(</span><em class="sig-param">val</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.json_support.BooleanProperty.decode" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="gino.json_support.BooleanProperty.encode">
+<code class="sig-name descname">encode</code><span class="sig-paren">(</span><em class="sig-param">val</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.json_support.BooleanProperty.encode" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="gino.json_support.BooleanProperty.make_expression">
+<code class="sig-name descname">make_expression</code><span class="sig-paren">(</span><em class="sig-param">base_exp</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.json_support.BooleanProperty.make_expression" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="gino.json_support.ObjectProperty">
+<em class="property">class </em><code class="sig-prename descclassname">gino.json_support.</code><code class="sig-name descname">ObjectProperty</code><span class="sig-paren">(</span><em class="sig-param">default=None</em>, <em class="sig-param">prop_name='profile'</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.json_support.ObjectProperty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#gino.json_support.JSONProperty" title="gino.json_support.JSONProperty"><code class="xref py py-class docutils literal notranslate"><span class="pre">gino.json_support.JSONProperty</span></code></a></p>
+<dl class="method">
+<dt id="gino.json_support.ObjectProperty.decode">
+<code class="sig-name descname">decode</code><span class="sig-paren">(</span><em class="sig-param">val</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.json_support.ObjectProperty.decode" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="gino.json_support.ObjectProperty.encode">
+<code class="sig-name descname">encode</code><span class="sig-paren">(</span><em class="sig-param">val</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.json_support.ObjectProperty.encode" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="gino.json_support.ArrayProperty">
+<em class="property">class </em><code class="sig-prename descclassname">gino.json_support.</code><code class="sig-name descname">ArrayProperty</code><span class="sig-paren">(</span><em class="sig-param">default=None</em>, <em class="sig-param">prop_name='profile'</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.json_support.ArrayProperty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#gino.json_support.JSONProperty" title="gino.json_support.JSONProperty"><code class="xref py py-class docutils literal notranslate"><span class="pre">gino.json_support.JSONProperty</span></code></a></p>
+<dl class="method">
+<dt id="gino.json_support.ArrayProperty.decode">
+<code class="sig-name descname">decode</code><span class="sig-paren">(</span><em class="sig-param">val</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.json_support.ArrayProperty.decode" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="gino.json_support.ArrayProperty.encode">
+<code class="sig-name descname">encode</code><span class="sig-paren">(</span><em class="sig-param">val</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.json_support.ArrayProperty.encode" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+        </div>
+
+        <div class="col hide-on-small-only m3 right-nav">
+            <div class="table-of-contents fixed">
+                
+                    <ul>
+<li><a class="reference internal" href="#">gino.json_support module</a></li>
+</ul>
+
+                
+            </div>
+        </div>
+
+    </div>
+    <div class="fixed-action-btn click-to-toggle">
+        <a class="btn-floating btn-large blue">
+            <i class="mdi mdi-translate"></i>
+        </a>
+        <ul>
+            <li><a href="/docs/en/v1.0.0rc2" class="btn-floating blue">EN</a></li>
+            <li><a href="/docs/zh/v1.0.0rc2" class="btn-floating red">ZH</a></li>
+        </ul>
+    </div>
+</main>
+
+<script type="text/javascript"
+        src="../../_static/js/materialize.min.js"></script>
+<script type="text/javascript"
+        src="../../_static/js/gino.js"></script>
+</body>
+</html>

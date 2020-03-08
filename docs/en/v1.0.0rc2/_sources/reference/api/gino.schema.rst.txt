@@ -1,0 +1,7 @@
+gino.schema module
+==================
+
+.. automodule:: gino.schema
+   :members:
+   :undoc-members:
+   :show-inheritance:
