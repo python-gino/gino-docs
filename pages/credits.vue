@@ -24,7 +24,7 @@
 
       <h1>CORE TEAM</h1>
 
-      <ul class="name-cards">
+      <ul class="name-cards grow">
         <li>
           <img class="avatar" src="~/assets/fantix.jpg">
           <div>
@@ -66,7 +66,7 @@
 
       <h1>ACKNOWLEDGEMENTS</h1>
 
-      <ul class="name-cards">
+      <ul class="name-cards wrap">
         <li>
           <img src="~/assets/pycharm.svg">
           <div>
@@ -88,6 +88,15 @@
           </div>
         </li>
         <li>
+          <img class="avatar" src="~/assets/avatars/Venky Iyer.jpeg">
+          <div>
+            <h2>Venky Iyer</h2>
+            <p>
+              <a href="https://www.patreon.com/user/creators?u=9555446" target="_blank">Patreon</a>
+            </p>
+          </div>
+        </li>
+        <li>
           <img class="avatar" src="~/assets/avatars/Dima Veselov.png">
           <div>
             <h2>Dima Veselov</h2>
@@ -100,7 +109,7 @@
       </ul>
 
       <h1>DECENTFOX</h1>
-      <ul class="name-cards">
+      <ul class="name-cards grow">
         <li>
           <img src="~/assets/decentfox.png" style="width: auto; margin-top: 0.24rem;">
           <div>
@@ -124,7 +133,7 @@
 
       <h1>CONTRIBUTORS</h1>
       <ul class="name-cards wrap">
-        <li v-for="author in authors" class="one-third">
+        <li v-for="author in authors">
           <div>
             <h2>{{ author.name }}</h2>
             <p>{{ author.email }}</p>
@@ -145,7 +154,7 @@
     justify-content: center;
 
     .avatar {
-      border: 0.02rem solid #F8D230;
+      border: 2px solid #F8D230;
       border-radius: 0.64rem;
       flex: 0 0 0.64rem;
     }
@@ -178,18 +187,18 @@
 
       li {
         list-style: none;
-        width: 4rem;
+        width: 3.2rem;
         background-color: rgba(255, 255, 255, 0.2);
         border-radius: 0.16rem;
         padding: 0.32rem;
         margin: 0 0.32rem 0.32rem 0;
         display: flex;
-        flex: 1 1 auto;
+        flex: 0 1 auto;
         align-items: top;
+      }
 
-        &.one-third {
-          flex: 0 1 auto;
-        }
+      &.grow li {
+        flex: 1 1 auto;
       }
 
       img {
@@ -207,10 +216,6 @@
 
       &.wrap {
         flex-wrap: wrap;
-
-        li {
-          width: 3rem;
-        }
       }
     }
 
