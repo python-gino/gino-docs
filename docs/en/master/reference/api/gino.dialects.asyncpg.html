@@ -276,11 +276,43 @@ otherwise.</p>
 <dt id="gino.dialects.asyncpg.AsyncpgDialect.on_connect">
 <code class="sig-name descname">on_connect</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.asyncpg.AsyncpgDialect.on_connect" title="Permalink to this definition">¶</a></dt>
 <dd><p>return a callable which sets up a newly created DBAPI connection.</p>
+<p>The callable should accept a single argument “conn” which is the
+DBAPI connection itself.  The inner callable has no
+return value.</p>
+<p>E.g.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyDialect</span><span class="p">(</span><span class="n">default</span><span class="o">.</span><span class="n">DefaultDialect</span><span class="p">):</span>
+    <span class="c1"># ...</span>
+
+    <span class="k">def</span> <span class="nf">on_connect</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">def</span> <span class="nf">do_on_connect</span><span class="p">(</span><span class="n">connection</span><span class="p">):</span>
+            <span class="n">connection</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SET SPECIAL FLAGS etc&quot;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">do_on_connect</span>
+</pre></div>
+</div>
 <p>This is used to set dialect-wide per-connection options such as
-isolation modes, unicode modes, etc.</p>
-<p>If a callable is returned, it will be assembled into a pool listener
-that receives the direct DBAPI connection, with all wrappers removed.</p>
-<p>If None is returned, no listener will be generated.</p>
+isolation modes, Unicode modes, etc.</p>
+<p>The “do_on_connect” callable is invoked by using the
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">PoolEvents.first_connect()</span></code> and <code class="xref py py-meth docutils literal notranslate"><span class="pre">PoolEvents.connect()</span></code> event
+hooks, then unwrapping the DBAPI connection and passing it into the
+callable.  The reason it is invoked for both events is so that any
+dialect-level initialization that occurs upon first connection, which
+also makes use of the <code class="xref py py-meth docutils literal notranslate"><span class="pre">PoolEvents.first_connect()</span></code> method, will
+proceed after this hook has been called. This currently means the
+hook is in fact called twice for the very first  connection in which a
+dialect creates; and once per connection afterwards.</p>
+<p>If None is returned, no event listener is generated.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a callable that accepts a single DBAPI connection as an
+argument, or None.</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><code class="xref py py-meth docutils literal notranslate"><span class="pre">Dialect.connect()</span></code> - allows the DBAPI <code class="docutils literal notranslate"><span class="pre">connect()</span></code> sequence
+itself to be controlled.</p>
+</div>
 </dd></dl>
 
 <dl class="method">
