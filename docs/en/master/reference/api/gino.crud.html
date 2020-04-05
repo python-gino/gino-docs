@@ -133,44 +133,44 @@
             
     <div class="section" id="module-gino.crud">
 <span id="gino-crud-module"></span><h1>gino.crud module<a class="headerlink" href="#module-gino.crud" title="Permalink to this headline">¶</a></h1>
-<dl class="class">
+<dl class="py class">
 <dt id="gino.crud.Alias">
-<em class="property">class </em><code class="sig-prename descclassname">gino.crud.</code><code class="sig-name descname">Alias</code><span class="sig-paren">(</span><em class="sig-param">model</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.crud.Alias" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">gino.crud.</code><code class="sig-name descname">Alias</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">model</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.crud.Alias" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Experimental proxy for table alias on model.</p>
-<dl class="method">
+<dl class="py method">
 <dt id="gino.crud.Alias.distinct">
-<code class="sig-name descname">distinct</code><span class="sig-paren">(</span><em class="sig-param">*columns</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.crud.Alias.distinct" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">distinct</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">columns</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.crud.Alias.distinct" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="gino.crud.Alias.load">
-<code class="sig-name descname">load</code><span class="sig-paren">(</span><em class="sig-param">*column_names</em>, <em class="sig-param">**relationships</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.crud.Alias.load" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">load</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">column_names</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">relationships</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.crud.Alias.load" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="gino.crud.Alias.on">
-<code class="sig-name descname">on</code><span class="sig-paren">(</span><em class="sig-param">on_clause</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.crud.Alias.on" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">on</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">on_clause</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.crud.Alias.on" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
-<dl class="class">
+<dl class="py class">
 <dt id="gino.crud.CRUDModel">
-<em class="property">class </em><code class="sig-prename descclassname">gino.crud.</code><code class="sig-name descname">CRUDModel</code><span class="sig-paren">(</span><em class="sig-param">**values</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.crud.CRUDModel" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">gino.crud.</code><code class="sig-name descname">CRUDModel</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">values</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.crud.CRUDModel" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="gino.declarative.html#gino.declarative.Model" title="gino.declarative.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">gino.declarative.Model</span></code></a></p>
 <p>The base class for models with CRUD support.</p>
 <p>Don’t inherit from this class directly, because it has no metadata. Use
 <a class="reference internal" href="gino.api.html#gino.api.Gino.Model" title="gino.api.Gino.Model"><code class="xref py py-attr docutils literal notranslate"><span class="pre">db.Model</span></code></a> instead.</p>
-<dl class="method">
+<dl class="py method">
 <dt id="gino.crud.CRUDModel.alias">
-<em class="property">classmethod </em><code class="sig-name descname">alias</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.crud.CRUDModel.alias" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="sig-name descname">alias</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.crud.CRUDModel.alias" title="Permalink to this definition">¶</a></dt>
 <dd><p>Experimental proxy for table alias on model.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="gino.crud.CRUDModel.append_where_primary_key">
-<code class="sig-name descname">append_where_primary_key</code><span class="sig-paren">(</span><em class="sig-param">q</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.crud.CRUDModel.append_where_primary_key" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">append_where_primary_key</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">q</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.crud.CRUDModel.append_where_primary_key" title="Permalink to this definition">¶</a></dt>
 <dd><p>Append where clause to locate this model instance by primary on the
 given query, and return the new query.</p>
 <p>This is mostly used internally in GINO, but also available for such
@@ -187,7 +187,7 @@ usage:</p>
 </div>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="gino.crud.CRUDModel.create">
 <code class="sig-name descname">create</code><span class="sig-paren">(</span><em class="sig-param">bind=None</em>, <em class="sig-param">timeout=&lt;object object&gt;</em>, <em class="sig-param">**values</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.crud.CRUDModel.create" title="Permalink to this definition">¶</a></dt>
 <dd><p>This <code class="docutils literal notranslate"><span class="pre">create</span></code> behaves a bit different on model classes compared to model
@@ -223,7 +223,7 @@ initial values. Only available when called on a model class.</p></li>
 </dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="gino.crud.CRUDModel.delete">
 <code class="sig-name descname">delete</code><a class="headerlink" href="#gino.crud.CRUDModel.delete" title="Permalink to this definition">¶</a></dt>
 <dd><p>Similar to <a class="reference internal" href="#gino.crud.UpdateRequest.update" title="gino.crud.UpdateRequest.update"><code class="xref py py-meth docutils literal notranslate"><span class="pre">update()</span></code></a>, this <code class="docutils literal notranslate"><span class="pre">delete</span></code> is also different on model
@@ -261,14 +261,14 @@ execution option value if unspecified.</p></li>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="gino.crud.CRUDModel.distinct">
-<em class="property">classmethod </em><code class="sig-name descname">distinct</code><span class="sig-paren">(</span><em class="sig-param">*columns</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.crud.CRUDModel.distinct" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="sig-name descname">distinct</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">columns</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.crud.CRUDModel.distinct" title="Permalink to this definition">¶</a></dt>
 <dd><p>Experimental loader feature to yield only distinct instances by given
 columns.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="gino.crud.CRUDModel.get">
 <em class="property">async classmethod </em><code class="sig-name descname">get</code><span class="sig-paren">(</span><em class="sig-param">ident</em>, <em class="sig-param">bind=None</em>, <em class="sig-param">timeout=&lt;object object&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.crud.CRUDModel.get" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get an instance of this model class by primary key.</p>
@@ -297,9 +297,9 @@ execution option value if unspecified.</p></li>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="gino.crud.CRUDModel.in_query">
-<em class="property">classmethod </em><code class="sig-name descname">in_query</code><span class="sig-paren">(</span><em class="sig-param">query</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.crud.CRUDModel.in_query" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="sig-name descname">in_query</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">query</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.crud.CRUDModel.in_query" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convenient method to get a Model object when using subqueries.</p>
 <p>Though with filters and aggregations, subqueries often return same
 columns as the original table, but SQLAlchemy could not recognize them
@@ -316,9 +316,9 @@ being used in subquries. For example:</p>
 </div>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="gino.crud.CRUDModel.load">
-<em class="property">classmethod </em><code class="sig-name descname">load</code><span class="sig-paren">(</span><em class="sig-param">*column_names</em>, <em class="sig-param">**relationships</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.crud.CRUDModel.load" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="sig-name descname">load</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">column_names</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">relationships</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.crud.CRUDModel.load" title="Permalink to this definition">¶</a></dt>
 <dd><p>Populates a <a class="reference internal" href="gino.loader.html#gino.loader.Loader" title="gino.loader.Loader"><code class="xref py py-class docutils literal notranslate"><span class="pre">loader.Loader</span></code></a> instance to be used by the
 <code class="docutils literal notranslate"><span class="pre">loader</span></code> execution option in order to customize the loading behavior
 to load specified fields into instances of this model.</p>
@@ -380,7 +380,7 @@ in a chain, in whatever order suits you.</p>
 </div>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="gino.crud.CRUDModel.lookup">
 <code class="sig-name descname">lookup</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.crud.CRUDModel.lookup" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate where-clause expression to locate this model instance.</p>
@@ -400,14 +400,14 @@ used in <a class="reference internal" href="#gino.crud.UpdateRequest.apply" titl
 </div>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="gino.crud.CRUDModel.none_as_none">
-<em class="property">classmethod </em><code class="sig-name descname">none_as_none</code><span class="sig-paren">(</span><em class="sig-param">enabled=True</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.crud.CRUDModel.none_as_none" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="sig-name descname">none_as_none</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">enabled</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.crud.CRUDModel.none_as_none" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="gino.crud.CRUDModel.on">
-<em class="property">classmethod </em><code class="sig-name descname">on</code><span class="sig-paren">(</span><em class="sig-param">on_clause</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.crud.CRUDModel.on" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="sig-name descname">on</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">on_clause</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.crud.CRUDModel.on" title="Permalink to this definition">¶</a></dt>
 <dd><p>Customize the on-clause for the auto-generated outer join query.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -420,7 +420,7 @@ for a given query.</p>
 </div>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="gino.crud.CRUDModel.query">
 <code class="sig-name descname">query</code><a class="headerlink" href="#gino.crud.CRUDModel.query" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get a SQLAlchemy query clause of the table behind this model. This equals
@@ -431,7 +431,7 @@ the execution option <code class="docutils literal notranslate"><span class="pre
 query yields instances of this model instead of database rows.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="gino.crud.CRUDModel.select">
 <code class="sig-name descname">select</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.crud.CRUDModel.select" title="Permalink to this definition">¶</a></dt>
 <dd><p>Build a query to retrieve only specified columns from this table.</p>
@@ -462,7 +462,7 @@ field on current model instance from database:</p>
 </div>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="gino.crud.CRUDModel.to_dict">
 <code class="sig-name descname">to_dict</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.crud.CRUDModel.to_dict" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convenient method to generate a dict from this model instance.</p>
@@ -476,7 +476,7 @@ in the returning dict - instead the JSON attributes will be.</p>
 </div>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="gino.crud.CRUDModel.update">
 <code class="sig-name descname">update</code><a class="headerlink" href="#gino.crud.CRUDModel.update" title="Permalink to this definition">¶</a></dt>
 <dd><p>This <code class="docutils literal notranslate"><span class="pre">update</span></code> behaves quite different on model classes rather than model
@@ -507,16 +507,16 @@ changes in the memory, and collect all changes into an
 
 </dd></dl>
 
-<dl class="class">
+<dl class="py class">
 <dt id="gino.crud.QueryModel">
 <em class="property">class </em><code class="sig-prename descclassname">gino.crud.</code><code class="sig-name descname">QueryModel</code><a class="headerlink" href="#gino.crud.QueryModel" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">type</span></code></a></p>
 <p>Metaclass of Model classes used for subqueries.</p>
 </dd></dl>
 
-<dl class="class">
+<dl class="py class">
 <dt id="gino.crud.UpdateRequest">
-<em class="property">class </em><code class="sig-prename descclassname">gino.crud.</code><code class="sig-name descname">UpdateRequest</code><span class="sig-paren">(</span><em class="sig-param">instance: gino.crud.CRUDModel</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.crud.UpdateRequest" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">gino.crud.</code><code class="sig-name descname">UpdateRequest</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">instance</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#gino.crud.CRUDModel" title="gino.crud.CRUDModel">gino.crud.CRUDModel</a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.crud.UpdateRequest" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>A collection of attributes and their new values to update on one model
 instance.</p>
@@ -524,7 +524,7 @@ instance.</p>
 don’t instantiate manually unless required. Every <a class="reference internal" href="#gino.crud.UpdateRequest" title="gino.crud.UpdateRequest"><code class="xref py py-class docutils literal notranslate"><span class="pre">UpdateRequest</span></code></a>
 instance is bound to one model instance, all updates are for that one
 specific model instance and its database row.</p>
-<dl class="method">
+<dl class="py method">
 <dt id="gino.crud.UpdateRequest.apply">
 <em class="property">async </em><code class="sig-name descname">apply</code><span class="sig-paren">(</span><em class="sig-param">bind=None</em>, <em class="sig-param">timeout=&lt;object object&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.crud.UpdateRequest.apply" title="Permalink to this definition">¶</a></dt>
 <dd><p>Apply pending updates into database by executing an <code class="docutils literal notranslate"><span class="pre">UPDATE</span></code> SQL.</p>
@@ -544,9 +544,9 @@ execution option value if unspecified.</p></li>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="gino.crud.UpdateRequest.update">
-<code class="sig-name descname">update</code><span class="sig-paren">(</span><em class="sig-param">**values</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.crud.UpdateRequest.update" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">update</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">values</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.crud.UpdateRequest.update" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set given attributes on the bound model instance, and add them into
 the update collections for <a class="reference internal" href="#gino.crud.UpdateRequest.apply" title="gino.crud.UpdateRequest.apply"><code class="xref py py-meth docutils literal notranslate"><span class="pre">apply()</span></code></a>.</p>
 <p>Given keyword-only arguments are pairs of attribute names and values to
