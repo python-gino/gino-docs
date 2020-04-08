@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="../_static/favicon.ico">
+    <title>Transaction - GINO 1.0.0rc3 文档</title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async
+            src="https://www.googletagmanager.com/gtag/js?id=UA-3759436-10"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag () {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'UA-3759436-10');
+    </script>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css">
+    <link type="text/css" rel="stylesheet"
+          href="../_static/css/materialize.min.css"
+          media="screen,projection"/>
+    <link rel="stylesheet" href="../_static/pygments.css"
+          type="text/css"/>
+    <link type="text/css" rel="stylesheet"
+          href="../_static/css/gino.css"/>
+</head>
+<body>
+
+<header>
+    <div class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper">
+                <a href="../index.html" class="brand-logo">
+                    <div class="img"
+                         style="background-image: url(../_static/logo.png); width: 40px; height: 40px; margin-right: 8px"></div>
+                    <div class="img"
+                         style="background-image: url(../_static/logo-name.png); width: 100px; height: 32.5px; margin-top: 4px"></div>
+                </a>
+                <div class="breadcrumbs">
+                    <a class="breadcrumb" style="display: none"></a>
+                    
+                        <a href="../how-to.html"
+                           class="breadcrumb">进阶用法</a>
+                    
+                    
+                        <a class="breadcrumb" style="color: #FFFFFF">Transaction</a>
+                    
+                </div>
+                <div class="spacer"></div>
+                <div class="search">
+                    <input type="text" id="search" placeholder="Search">
+                    <i class="mdi mdi-magnify"></i>
+                </div>
+                <a class="waves-effect waves-light btn-flat theme-dark" href="/">
+                    <i class="mdi mdi-home"></i>
+                    Home
+                </a>
+                <a class="waves-effect waves-light btn-flat theme-dark"
+                   href="/authors.html">
+                    <i class="mdi mdi-account-group"></i>
+                    Authors
+                </a>
+                <a href="https://github.com/python-gino/gino" target="_blank"
+                   class="github">
+                    <i class="mdi mdi-github-circle"></i>
+                </a>
+            </div>
+        </nav>
+    </div>
+
+    <div id="sidenav" class="sidenav sidenav-fixed">
+        <p class="caption"><span class="caption-text">上手教程</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">上手教程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/tutorial.html">上手教程</a></li>
+</ul>
+<p class="caption"><span class="caption-text">进阶用法</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../how-to.html">进阶用法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">贡献</a></li>
+<li class="toctree-l1"><a class="reference internal" href="crud.html">CRUD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="loaders.html">Loaders and Relationship</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pool.html">Connection Pool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sanic.html">Sanic Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="schema.html">Schema Declaration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="starlette.html">Starlette Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tornado.html">Tornado Support</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Transaction</a></li>
+</ul>
+<p class="caption"><span class="caption-text">原理说明</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../explanation.html">原理说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../explanation/engine.html">Engine and Connection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../explanation/why.html">Why Asynchronous ORM?</a></li>
+</ul>
+<p class="caption"><span class="caption-text">参考手册</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../reference.html">参考手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/api.html">API 参考</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/authors.html">制作人员</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/history.html">History</a></li>
+</ul>
+
+    </div>
+</header>
+
+<main>
+    <div class="row">
+        <div class="col s12 m9 body">
+            
+    <div class="section" id="transaction">
+<h1>Transaction<a class="headerlink" href="#transaction" title="永久链接至标题">¶</a></h1>
+<p>It is crucial to correctly manage transactions in an asynchronous program,
+because you never know how much time an <code class="docutils literal notranslate"><span class="pre">await</span></code> will actually wait for, it
+will cause disasters if transactions are on hold for too long. GINO enforces
+explicit transaction management to help dealing with it.</p>
+<div class="section" id="basic-usage">
+<h2>Basic usage<a class="headerlink" href="#basic-usage" title="永久链接至标题">¶</a></h2>
+<p>Transactions belong to <a class="reference internal" href="../reference/api/gino.engine.html#gino.engine.GinoConnection" title="gino.engine.GinoConnection"><code class="xref py py-class docutils literal notranslate"><span class="pre">GinoConnection</span></code></a>. The most common
+way to use transactions is through an <code class="docutils literal notranslate"><span class="pre">async</span> <span class="pre">with</span></code> statement:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">with</span> <span class="n">connection</span><span class="o">.</span><span class="n">transaction</span><span class="p">()</span> <span class="k">as</span> <span class="n">tx</span><span class="p">:</span>
+    <span class="k">await</span> <span class="n">connection</span><span class="o">.</span><span class="n">status</span><span class="p">(</span><span class="s1">&#39;INSERT INTO mytable VALUES(1, 2, 3)&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This guarantees a transaction is opened when entering the <code class="docutils literal notranslate"><span class="pre">async</span> <span class="pre">with</span></code> block,
+and closed when exiting the block - committed if exits normally, or rolled back
+by exception. The underlying transaction instance from the database driver is
+available at <a class="reference internal" href="../reference/api/gino.transaction.html#gino.transaction.GinoTransaction.raw_transaction" title="gino.transaction.GinoTransaction.raw_transaction"><code class="xref py py-attr docutils literal notranslate"><span class="pre">raw_transaction</span></code></a>, but in
+most cases you don't need to touch it.</p>
+<p>GINO provides two convenient shortcuts to end the transaction early:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../reference/api/gino.transaction.html#gino.transaction.GinoTransaction.raise_commit" title="gino.transaction.GinoTransaction.raise_commit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">tx.raise_commit()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../reference/api/gino.transaction.html#gino.transaction.GinoTransaction.raise_rollback" title="gino.transaction.GinoTransaction.raise_rollback"><code class="xref py py-meth docutils literal notranslate"><span class="pre">tx.raise_rollback()</span></code></a></p></li>
+</ul>
+<p>They will raise an internal exception to correspondingly commit or rollback the
+transaction, thus the code within the <code class="docutils literal notranslate"><span class="pre">async</span> <span class="pre">with</span></code> block after
+<a class="reference internal" href="../reference/api/gino.transaction.html#gino.transaction.GinoTransaction.raise_commit" title="gino.transaction.GinoTransaction.raise_commit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">raise_commit()</span></code></a> or
+<a class="reference internal" href="../reference/api/gino.transaction.html#gino.transaction.GinoTransaction.raise_rollback" title="gino.transaction.GinoTransaction.raise_rollback"><code class="xref py py-meth docutils literal notranslate"><span class="pre">raise_rollback()</span></code></a> is skipped. The
+internal exception is inherited from <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#BaseException" title="(在 Python v3.8)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">BaseException</span></code></a> so that normal <code class="docutils literal notranslate"><span class="pre">try</span>
+<span class="pre">...</span> <span class="pre">except</span> <span class="pre">Exception</span></code> block can't trap it. This exception stops propagating at
+the end of <code class="docutils literal notranslate"><span class="pre">async</span> <span class="pre">with</span></code> block, so you don't need to worry about handling it.</p>
+<p>Transactions can also be started on a <a class="reference internal" href="../reference/api/gino.engine.html#gino.engine.GinoEngine" title="gino.engine.GinoEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">GinoEngine</span></code></a>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">with</span> <span class="n">engine</span><span class="o">.</span><span class="n">transaction</span><span class="p">()</span> <span class="k">as</span> <span class="n">tx</span><span class="p">:</span>
+    <span class="k">await</span> <span class="n">engine</span><span class="o">.</span><span class="n">status</span><span class="p">(</span><span class="s1">&#39;INSERT INTO mytable VALUES(1, 2, 3)&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Here a <a class="reference internal" href="../reference/api/gino.engine.html#gino.engine.GinoConnection" title="gino.engine.GinoConnection"><code class="xref py py-class docutils literal notranslate"><span class="pre">GinoConnection</span></code></a> is borrowed implicitly before
+entering the transaction, and guaranteed to be returned after transaction is
+done. The <a class="reference internal" href="../reference/api/gino.engine.html#gino.engine.GinoConnection" title="gino.engine.GinoConnection"><code class="xref py py-class docutils literal notranslate"><span class="pre">GinoConnection</span></code></a> instance is accessible at
+<a class="reference internal" href="../reference/api/gino.transaction.html#gino.transaction.GinoTransaction.connection" title="gino.transaction.GinoTransaction.connection"><code class="xref py py-attr docutils literal notranslate"><span class="pre">tx.connection</span></code></a>. Other than
+that, everything else is the same.</p>
+<div class="admonition important">
+<p class="admonition-title">重要</p>
+<p>The implicit connection is by default borrowed with <code class="docutils literal notranslate"><span class="pre">reuse=True</span></code>. That
+means using <a class="reference internal" href="../reference/api/gino.engine.html#gino.engine.GinoEngine.transaction" title="gino.engine.GinoEngine.transaction"><code class="xref py py-meth docutils literal notranslate"><span class="pre">transaction()</span></code></a> of
+<a class="reference internal" href="../reference/api/gino.engine.html#gino.engine.GinoEngine" title="gino.engine.GinoEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">GinoEngine</span></code></a> within a connection context is the same as
+calling <a class="reference internal" href="../reference/api/gino.engine.html#gino.engine.GinoConnection.transaction" title="gino.engine.GinoConnection.transaction"><code class="xref py py-meth docutils literal notranslate"><span class="pre">transaction()</span></code></a> of the current
+connection without having to reference it, no separate connection shall be
+created.</p>
+</div>
+<p>Similarly, if your <a class="reference internal" href="../reference/api/gino.api.html#gino.api.Gino" title="gino.api.Gino"><code class="xref py py-class docutils literal notranslate"><span class="pre">Gino</span></code></a> instance has a bind, you may also do
+the same on it:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">with</span> <span class="n">db</span><span class="o">.</span><span class="n">transaction</span><span class="p">()</span> <span class="k">as</span> <span class="n">tx</span><span class="p">:</span>
+    <span class="k">await</span> <span class="n">db</span><span class="o">.</span><span class="n">status</span><span class="p">(</span><span class="s1">&#39;INSERT INTO mytable VALUES(1, 2, 3)&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="nested-transactions">
+<h2>Nested Transactions<a class="headerlink" href="#nested-transactions" title="永久链接至标题">¶</a></h2>
+<p>Transactions can be nested, nested transaction will create a <a class="reference external" href="https://www.postgresql.org/docs/current/static/sql-savepoint.html">savepoint</a> as for
+now on asyncpg. A similar example from asyncpg doc:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">with</span> <span class="n">connection</span><span class="o">.</span><span class="n">transaction</span><span class="p">()</span> <span class="k">as</span> <span class="n">tx1</span><span class="p">:</span>
+    <span class="k">await</span> <span class="n">connection</span><span class="o">.</span><span class="n">status</span><span class="p">(</span><span class="s1">&#39;CREATE TABLE mytab (a int)&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Create a nested transaction:</span>
+    <span class="k">async</span> <span class="k">with</span> <span class="n">connection</span><span class="o">.</span><span class="n">transaction</span><span class="p">()</span> <span class="k">as</span> <span class="n">tx2</span><span class="p">:</span>
+        <span class="k">await</span> <span class="n">connection</span><span class="o">.</span><span class="n">status</span><span class="p">(</span><span class="s1">&#39;INSERT INTO mytab (a) VALUES (1), (2)&#39;</span><span class="p">)</span>
+        <span class="c1"># Rollback the nested transaction:</span>
+        <span class="n">tx2</span><span class="o">.</span><span class="n">raise_rollback</span><span class="p">()</span>
+
+    <span class="c1"># Because the nested transaction was rolled back, there</span>
+    <span class="c1"># will be nothing in `mytab`.</span>
+    <span class="k">assert</span> <span class="k">await</span> <span class="n">connection</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="s1">&#39;SELECT a FROM mytab&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="p">[]</span>
+</pre></div>
+</div>
+<p>As you can see, the <a class="reference internal" href="../reference/api/gino.transaction.html#gino.transaction.GinoTransaction.raise_rollback" title="gino.transaction.GinoTransaction.raise_rollback"><code class="xref py py-meth docutils literal notranslate"><span class="pre">raise_rollback()</span></code></a>
+breaks only the <code class="docutils literal notranslate"><span class="pre">async</span> <span class="pre">with</span></code> block of the specified <code class="docutils literal notranslate"><span class="pre">tx2</span></code>, the outer
+transaction <code class="docutils literal notranslate"><span class="pre">tx1</span></code> just continued. What if we break the outer transaction from
+within the inner transaction? The inner transaction context won't trap the
+internal exception because it recognizes the exception is not created upon
+itself. Instead, the inner transaction context only follows the behavior to
+either commit or rollback, and lets the exception propagate.</p>
+<p>Because of the default reusing behavior, transactions on engine or <code class="docutils literal notranslate"><span class="pre">db</span></code>
+follows the same nesting rules. Please see
+<code class="xref py py-class docutils literal notranslate"><span class="pre">GinoTransaction</span></code> for more information.</p>
+</div>
+<div class="section" id="manual-control">
+<h2>Manual Control<a class="headerlink" href="#manual-control" title="永久链接至标题">¶</a></h2>
+<p>Other than using <code class="docutils literal notranslate"><span class="pre">async</span> <span class="pre">with</span></code>, you can also manually control the
+transaction:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tx</span> <span class="o">=</span> <span class="k">await</span> <span class="n">connection</span><span class="o">.</span><span class="n">transaction</span><span class="p">()</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">await</span> <span class="n">db</span><span class="o">.</span><span class="n">status</span><span class="p">(</span><span class="s1">&#39;INSERT INTO mytable VALUES(1, 2, 3)&#39;</span><span class="p">)</span>
+    <span class="k">await</span> <span class="n">tx</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+<span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+    <span class="k">await</span> <span class="n">tx</span><span class="o">.</span><span class="n">rollback</span><span class="p">()</span>
+    <span class="k">raise</span>
+</pre></div>
+</div>
+<p>You can't use <a class="reference internal" href="../reference/api/gino.transaction.html#gino.transaction.GinoTransaction.raise_commit" title="gino.transaction.GinoTransaction.raise_commit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">raise_commit()</span></code></a> or
+<a class="reference internal" href="../reference/api/gino.transaction.html#gino.transaction.GinoTransaction.raise_rollback" title="gino.transaction.GinoTransaction.raise_rollback"><code class="xref py py-meth docutils literal notranslate"><span class="pre">raise_rollback()</span></code></a> here, similarly it is
+prohibited to use <a class="reference internal" href="../reference/api/gino.transaction.html#gino.transaction.GinoTransaction.commit" title="gino.transaction.GinoTransaction.commit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">commit()</span></code></a> and
+<a class="reference internal" href="../reference/api/gino.transaction.html#gino.transaction.GinoTransaction.rollback" title="gino.transaction.GinoTransaction.rollback"><code class="xref py py-meth docutils literal notranslate"><span class="pre">rollback()</span></code></a> in an <code class="docutils literal notranslate"><span class="pre">async</span> <span class="pre">with</span></code> block.</p>
+</div>
+</div>
+
+
+        </div>
+
+        <div class="col hide-on-small-only m3 right-nav">
+            <div class="table-of-contents fixed">
+                
+                    <ul>
+<li><a class="reference internal" href="#">Transaction</a><ul>
+<li><a class="reference internal" href="#basic-usage">Basic usage</a></li>
+<li><a class="reference internal" href="#nested-transactions">Nested Transactions</a></li>
+<li><a class="reference internal" href="#manual-control">Manual Control</a></li>
+</ul>
+</li>
+</ul>
+
+                
+            </div>
+        </div>
+
+    </div>
+    <div class="fixed-action-btn click-to-toggle">
+        <a class="btn-floating btn-large blue">
+            <i class="mdi mdi-translate"></i>
+        </a>
+        <ul>
+            <li><a href="/docs/en/v1.0.0rc3" class="btn-floating blue">EN</a></li>
+            <li><a href="/docs/zh/v1.0.0rc3" class="btn-floating red">ZH</a></li>
+        </ul>
+    </div>
+</main>
+
+<script type="text/javascript"
+        src="../_static/js/materialize.min.js"></script>
+<script type="text/javascript"
+        src="../_static/js/gino.js"></script>
+</body>
+</html>
