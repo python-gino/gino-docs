@@ -25,7 +25,7 @@ jobs:
     - name: Build the website
       run: |
         npm install -g yarn
-        yarn
+        yarn --frozen-lockfile
         yarn generate
         git checkout master
         rm -rf favicon.ico _nuxt robots.txt sw.js index.html credits
