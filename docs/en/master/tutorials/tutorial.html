@@ -53,9 +53,10 @@
                     
                 </div>
                 <div class="spacer"></div>
-                <div class="search">
+                <div id="search-container" class="search">
                     <input type="text" id="search" placeholder="Search">
                     <i class="mdi mdi-magnify"></i>
+                    <div id="search-results" style="display: none"></div>
                 </div>
                 <a class="btn-flat theme-dark" href="/">
                     HOME
@@ -93,13 +94,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../how-to.html">How-to Guides</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../how-to/contributing.html">Contributing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../how-to/crud.html">CRUD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to/extensions.html">Extensions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../how-to/faq.html">Frequently Asked Questions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../how-to/loaders.html">Loaders and Relationship</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../how-to/pool.html">Connection Pool</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../how-to/sanic.html">Sanic Support</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../how-to/schema.html">Schema Declaration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../how-to/starlette.html">Starlette Support</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../how-to/tornado.html">Tornado Support</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../how-to/transaction.html">Transaction</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Explanation</span></p>
@@ -122,7 +121,7 @@
 <main>
     <div class="row">
         <div class="col s12 m9 body">
-            <div id="main-content">
+            <div id="main-content" role="main">
                 
     <div class="section" id="tutorial">
 <h1>Tutorial<a class="headerlink" href="#tutorial" title="Permalink to this headline">¶</a></h1>
@@ -158,13 +157,13 @@ you through the process.</p>
 </div>
 <div class="section" id="from-sources">
 <h3>From sources<a class="headerlink" href="#from-sources" title="Permalink to this headline">¶</a></h3>
-<p>The sources for GINO can be downloaded from the <a class="reference external" href="https://github.com/fantix/gino">Github repo</a>.</p>
+<p>The sources for GINO can be downloaded from the <a class="reference external" href="https://github.com/python-gino/gino">Github repo</a>.</p>
 <p>You can either clone the public repository:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> git clone git://github.com/fantix/gino
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> git clone git://github.com/python-gino/gino
 </pre></div>
 </div>
-<p>Or download the <a class="reference external" href="https://github.com/fantix/gino/tarball/master">tarball</a>:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> curl  -OL https://github.com/fantix/gino/tarball/master
+<p>Or download the <a class="reference external" href="https://github.com/python-gino/gino/tarball/master">tarball</a>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> curl  -OL https://github.com/python-gino/gino/tarball/master
 </pre></div>
 </div>
 <p>Once you have a copy of the source, you can install it with:</p>
@@ -562,19 +561,25 @@ this documentation, and have fun hacking!</p>
 
     </div>
     <div class="fixed-action-btn click-to-toggle">
-        <a class="btn-floating btn-large blue">
-            <i class="mdi mdi-translate"></i>
+        <a class="btn-floating btn-large white">
+            <img src="../_static/images/language.svg">
+            <div>
+              EN
+            </div>
         </a>
         <ul>
-            <li><a href="/docs/en/master" class="btn-floating blue">EN</a></li>
-            <li><a href="/docs/zh/master" class="btn-floating red">ZH</a></li>
+            <li><a href="/docs/en/master/tutorials/tutorial.html" class="btn-floating blue">EN</a></li>
+            <li><a href="/docs/zh/master/tutorials/tutorial.html" class="btn-floating red">ZH</a></li>
         </ul>
     </div>
 </main>
 
-<script type="text/javascript"
-        src="../_static/js/materialize.min.js"></script>
-<script type="text/javascript"
-        src="../_static/js/gino.js"></script>
+<script type="text/javascript" src="../_static/js/materialize.min.js"></script>
+<script type="text/javascript" src="../_static/js/language_data.js"></script>
+<script id="documentation_options" data-url_root="../" src="../_static/js/documentation_options.js"></script>
+<script type="text/javascript" src="../_static/js/underscore.js"></script>
+<script type="text/javascript" src="../_static/js/jquery.js"></script>
+<script type="text/javascript" src="../_static/js/gino.js"></script>
+<script type="text/javascript" src="../searchindex.js"></script>
 </body>
 </html>

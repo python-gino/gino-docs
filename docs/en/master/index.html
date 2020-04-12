@@ -48,9 +48,10 @@
                     
                 </div>
                 <div class="spacer"></div>
-                <div class="search">
+                <div id="search-container" class="search">
                     <input type="text" id="search" placeholder="Search">
                     <i class="mdi mdi-magnify"></i>
+                    <div id="search-results" style="display: none"></div>
                 </div>
                 <a class="btn-flat theme-dark" href="/">
                     HOME
@@ -85,13 +86,11 @@
 <li class="toctree-l1"><a class="reference internal" href="how-to.html">How-to Guides</a></li>
 <li class="toctree-l1"><a class="reference internal" href="how-to/contributing.html">Contributing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="how-to/crud.html">CRUD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-to/extensions.html">Extensions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="how-to/faq.html">Frequently Asked Questions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="how-to/loaders.html">Loaders and Relationship</a></li>
 <li class="toctree-l1"><a class="reference internal" href="how-to/pool.html">Connection Pool</a></li>
-<li class="toctree-l1"><a class="reference internal" href="how-to/sanic.html">Sanic Support</a></li>
 <li class="toctree-l1"><a class="reference internal" href="how-to/schema.html">Schema Declaration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="how-to/starlette.html">Starlette Support</a></li>
-<li class="toctree-l1"><a class="reference internal" href="how-to/tornado.html">Tornado Support</a></li>
 <li class="toctree-l1"><a class="reference internal" href="how-to/transaction.html">Transaction</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Explanation</span></p>
@@ -114,54 +113,52 @@
 <main>
     <div class="row">
         <div class="col s12 m9 body">
-            <div id="main-content">
+            <div id="main-content" role="main">
                 
     <div class="section" id="welcome-to-gino-s-documentation">
 <h1>Welcome to GINO’s documentation!<a class="headerlink" href="#welcome-to-gino-s-documentation" title="Permalink to this headline">¶</a></h1>
-<a class="reference external image-reference" href="https://pypi.python.org/pypi/gino"><img alt="PyPI Release Version" src="https://img.shields.io/pypi/v/gino?logo=python&amp;logoColor=white" /></a>
-<a class="reference external image-reference" href="https://github.com/python-gino/gino/actions?query=workflow%3Atest"><img alt="GitHub Workflow Status for tests" src="https://img.shields.io/github/workflow/status/python-gino/gino/test?label=test&amp;logo=github" /></a>
-<a class="reference external image-reference" href="https://python-gino.org/docs/"><img alt="GitHub Workflow Status for docs" src="https://img.shields.io/github/workflow/status/python-gino/gino/docs?label=docs&amp;logo=github" /></a>
-<a class="reference external image-reference" href="https://app.codacy.com/gh/python-gino/gino/dashboard"><img alt="Codacy coverage" src="https://img.shields.io/codacy/coverage/b6a59cdf5ca64eab9104928d4f9bbb97?logo=codacy" /></a>
-<a class="reference external image-reference" href="https://app.dependabot.com/accounts/python-gino/projects/129260"><img alt="Dependabot" src="https://img.shields.io/badge/Dependabot-active-brightgreen?logo=dependabot" /></a>
-<a class="reference external image-reference" href="https://gitter.im/python-gino/Lobby"><img alt="Gitter chat" src="https://img.shields.io/gitter/room/python-gino/Lobby?logo=gitter" /></a>
+<a class="reference external image-reference" href="https://pypi.python.org/pypi/gino"><img alt="PyPI Release Version" src="https://img.shields.io/pypi/v/gino?logo=python&amp;logoColor=white&amp;color=3E6CDE&amp;style=flat-square" /></a>
+<a class="reference external image-reference" href="https://github.com/python-gino/gino/actions?query=workflow%3Atest"><img alt="GitHub Workflow Status for tests" src="https://img.shields.io/github/workflow/status/python-gino/gino/test?label=test&amp;logo=github&amp;color=3E6CDE&amp;style=flat-square" /></a>
+<a class="reference external image-reference" href="https://app.codacy.com/gh/python-gino/gino/dashboard"><img alt="Codacy coverage" src="https://img.shields.io/codacy/coverage/b6a59cdf5ca64eab9104928d4f9bbb97?logo=codacy&amp;color=3E6CDE&amp;style=flat-square" /></a>
+<a class="reference external image-reference" href="https://app.dependabot.com/accounts/python-gino/projects/129260"><img alt="Dependabot" src="https://img.shields.io/badge/Dependabot-active-brightgreen?logo=dependabot&amp;color=3E6CDE&amp;style=flat-square" /></a>
 <p>GINO - GINO Is Not ORM - is a lightweight asynchronous ORM built on top of
 <a class="reference external" href="https://www.sqlalchemy.org/">SQLAlchemy</a> core for Python <a class="reference external" href="https://docs.python.org/3/library/asyncio.html">asyncio</a>. Now (early 2020) GINO supports only one
 dialect <a class="reference external" href="https://github.com/MagicStack/asyncpg">asyncpg</a>.</p>
 <ul class="boxed-nav">
-<li><a class="reference external image-reference" href="tutorials/tutorial.html"><img alt="_images/tutorials.png" src="_images/tutorials.png" /></a>
+<li><a class="reference external image-reference" href="tutorials/tutorial.html"><img alt="_images/tutorials.svg" src="_images/tutorials.svg" /></a>
 <p><a class="reference internal" href="tutorials/tutorial.html"><span class="doc">Tutorial</span></a></p>
 <p>Lessons for the newcomer to get started</p>
 </li>
-<li><a class="reference external image-reference" href="how-to.html"><img alt="_images/how-to.png" src="_images/how-to.png" /></a>
+<li><a class="reference external image-reference" href="how-to.html"><img alt="_images/how-to.svg" src="_images/how-to.svg" /></a>
 <p><a class="reference internal" href="how-to.html"><span class="doc">How-to Guides</span></a></p>
 <p>Solve specific problems by steps</p>
 </li>
-<li><a class="reference external image-reference" href="explanation.html"><img alt="_images/explanation.png" src="_images/explanation.png" /></a>
+<li><a class="reference external image-reference" href="explanation.html"><img alt="_images/explanation.svg" src="_images/explanation.svg" /></a>
 <p><a class="reference internal" href="explanation.html"><span class="doc">Explanation</span></a></p>
 <p>Explains the background and context</p>
 </li>
-<li><a class="reference external image-reference" href="reference.html"><img alt="_images/reference.png" src="_images/reference.png" /></a>
+<li><a class="reference external image-reference" href="reference.html"><img alt="_images/reference.svg" src="_images/reference.svg" /></a>
 <p><a class="reference internal" href="reference.html"><span class="doc">Reference</span></a></p>
 <p>Describes the software as it is</p>
 </li>
-<li><a class="reference external image-reference" href="https://github.com/python-gino/gino"><img alt="_images/github.png" src="_images/github.png" /></a>
+<li><a class="reference external image-reference" href="https://github.com/python-gino/gino"><img alt="_images/github.svg" src="_images/github.svg" /></a>
 <p><a class="reference external" href="https://github.com/python-gino/gino">Source Code</a></p>
 <p><a class="reference external" href="https://github.com/python-gino/gino">https://github.com/python-gino/gino</a></p>
 </li>
-<li><a class="reference external image-reference" href="https://gitter.im/python-gino/Lobby"><img alt="_images/community.png" src="_images/community.png" /></a>
+<li><a class="reference external image-reference" href="https://gitter.im/python-gino/Lobby"><img alt="_images/community.svg" src="_images/community.svg" /></a>
 <p><a class="reference external" href="https://gitter.im/python-gino/Lobby">Community</a></p>
 <p><a class="reference external" href="https://gitter.im/python-gino/Lobby">https://gitter.im/python-gino/Lobby</a></p>
 </li>
-<li><a class="reference external image-reference" href="https://github.com/python-gino/gino/blob/master/LICENSE"><img alt="_images/open-source.png" src="_images/open-source.png" /></a>
+<li><a class="reference external image-reference" href="https://github.com/python-gino/gino/blob/master/LICENSE"><img alt="_images/open-source.svg" src="_images/open-source.svg" /></a>
 <p><a class="reference external" href="https://github.com/python-gino/gino/blob/master/LICENSE">BSD license</a></p>
 <p>GINO is free software</p>
 </li>
-<li><a class="reference external image-reference" href="https://www.python.org/"><img alt="_images/python.png" src="_images/python.png" /></a>
+<li><a class="reference external image-reference" href="https://www.python.org/"><img alt="_images/python.svg" src="_images/python.svg" /></a>
 <p><a class="reference external" href="https://www.python.org/">Python 3.5</a></p>
 <p>Requires Python 3.5 or above</p>
 </li>
 </ul>
-<p class="icons8">Icons by <a class="reference external" href="https://icons8.com/">icons8</a>. Sections by <a class="reference external" href="https://www.divio.com/blog/documentation/">Divio</a>.</p>
+<p class="divio">Sections by <a class="reference external" href="https://www.divio.com/blog/documentation/">Divio</a>.</p>
 <div class="toctree-wrapper compound">
 </div>
 <div class="toctree-wrapper compound">
@@ -184,19 +181,25 @@ dialect <a class="reference external" href="https://github.com/MagicStack/asyncp
 
     </div>
     <div class="fixed-action-btn click-to-toggle">
-        <a class="btn-floating btn-large blue">
-            <i class="mdi mdi-translate"></i>
+        <a class="btn-floating btn-large white">
+            <img src="_static/images/language.svg">
+            <div>
+              EN
+            </div>
         </a>
         <ul>
-            <li><a href="/docs/en/master" class="btn-floating blue">EN</a></li>
-            <li><a href="/docs/zh/master" class="btn-floating red">ZH</a></li>
+            <li><a href="/docs/en/master/index.html" class="btn-floating blue">EN</a></li>
+            <li><a href="/docs/zh/master/index.html" class="btn-floating red">ZH</a></li>
         </ul>
     </div>
 </main>
 
-<script type="text/javascript"
-        src="_static/js/materialize.min.js"></script>
-<script type="text/javascript"
-        src="_static/js/gino.js"></script>
+<script type="text/javascript" src="_static/js/materialize.min.js"></script>
+<script type="text/javascript" src="_static/js/language_data.js"></script>
+<script id="documentation_options" data-url_root="./" src="_static/js/documentation_options.js"></script>
+<script type="text/javascript" src="_static/js/underscore.js"></script>
+<script type="text/javascript" src="_static/js/jquery.js"></script>
+<script type="text/javascript" src="_static/js/gino.js"></script>
+<script type="text/javascript" src="searchindex.js"></script>
 </body>
 </html>
