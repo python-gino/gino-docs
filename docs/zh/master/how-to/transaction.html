@@ -53,9 +53,10 @@
                     
                 </div>
                 <div class="spacer"></div>
-                <div class="search">
+                <div id="search-container" class="search">
                     <input type="text" id="search" placeholder="Search">
                     <i class="mdi mdi-magnify"></i>
+                    <div id="search-results" style="display: none"></div>
                 </div>
                 <a class="btn-flat theme-dark" href="/">
                     HOME
@@ -90,13 +91,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../how-to.html">进阶用法</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contributing.html">贡献</a></li>
 <li class="toctree-l1"><a class="reference internal" href="crud.html">CRUD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extensions.html">Extensions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="loaders.html">Loaders and Relationship</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pool.html">Connection Pool</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sanic.html">Sanic Support</a></li>
 <li class="toctree-l1"><a class="reference internal" href="schema.html">Schema Declaration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="starlette.html">Starlette Support</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tornado.html">Tornado Support</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Transaction</a></li>
 </ul>
 <p class="caption"><span class="caption-text">原理说明</span></p>
@@ -119,7 +118,7 @@
 <main>
     <div class="row">
         <div class="col s12 m9 body">
-            <div id="main-content">
+            <div id="main-content" role="main">
                 
     <div class="section" id="transaction">
 <h1>Transaction<a class="headerlink" href="#transaction" title="永久链接至标题">¶</a></h1>
@@ -249,19 +248,25 @@ prohibited to use <a class="reference internal" href="../reference/api/gino.tran
 
     </div>
     <div class="fixed-action-btn click-to-toggle">
-        <a class="btn-floating btn-large blue">
-            <i class="mdi mdi-translate"></i>
+        <a class="btn-floating btn-large white">
+            <img src="../_static/images/language.svg">
+            <div>
+              ZH
+            </div>
         </a>
         <ul>
-            <li><a href="/docs/en/master" class="btn-floating blue">EN</a></li>
-            <li><a href="/docs/zh/master" class="btn-floating red">ZH</a></li>
+            <li><a href="/docs/en/master/how-to/transaction.html" class="btn-floating blue">EN</a></li>
+            <li><a href="/docs/zh/master/how-to/transaction.html" class="btn-floating red">ZH</a></li>
         </ul>
     </div>
 </main>
 
-<script type="text/javascript"
-        src="../_static/js/materialize.min.js"></script>
-<script type="text/javascript"
-        src="../_static/js/gino.js"></script>
+<script type="text/javascript" src="../_static/js/materialize.min.js"></script>
+<script type="text/javascript" src="../_static/js/language_data.js"></script>
+<script id="documentation_options" data-url_root="../" src="../_static/js/documentation_options.js"></script>
+<script type="text/javascript" src="../_static/js/underscore.js"></script>
+<script type="text/javascript" src="../_static/js/jquery.js"></script>
+<script type="text/javascript" src="../_static/js/gino.js"></script>
+<script type="text/javascript" src="../searchindex.js"></script>
 </body>
 </html>
