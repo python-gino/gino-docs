@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="../_static/favicon.ico">
-    <title>Connection Pool - GINO 1.0.0rc3 documentation</title>
+    <title>Use Alembic - GINO 1.0.0rc3 documentation</title>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async
             src="https://www.googletagmanager.com/gtag/js?id=UA-3759436-10"></script>
@@ -49,7 +49,7 @@
                            class="breadcrumb">How-to Guides</a>
                     
                     
-                        <a class="breadcrumb" style="color: #FFFFFF">Connection Pool</a>
+                        <a class="breadcrumb" style="color: #FFFFFF">Use Alembic</a>
                     
                 </div>
                 <div class="spacer"></div>
@@ -89,13 +89,13 @@
 <p class="caption"><span class="caption-text">How-to Guides</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../how-to.html">How-to Guides</a></li>
-<li class="toctree-l1"><a class="reference internal" href="alembic.html">Use Alembic</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Use Alembic</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="crud.html">CRUD</a></li>
 <li class="toctree-l1"><a class="reference internal" href="extensions.html">Extensions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="loaders.html">Loaders and Relationship</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Connection Pool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pool.html">Connection Pool</a></li>
 <li class="toctree-l1"><a class="reference internal" href="schema.html">Schema Declaration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="transaction.html">Transaction</a></li>
 </ul>
@@ -121,31 +121,9 @@
         <div class="col s12 m9 body">
             <div id="main-content" role="main">
                 
-    <div class="section" id="connection-pool">
-<h1>Connection Pool<a class="headerlink" href="#connection-pool" title="Permalink to this headline">¶</a></h1>
-<p>Other than the default connection pool, alternative pools can be used in
-their own use cases.
-There are options from dialects (currently only
-<a class="reference internal" href="../reference/api/gino.dialects.asyncpg.html#gino.dialects.asyncpg.NullPool" title="gino.dialects.asyncpg.NullPool"><code class="xref py py-class docutils literal notranslate"><span class="pre">NullPool</span></code></a>), and users can define their own pools.
-The base class should be <a class="reference internal" href="../reference/api/gino.dialects.base.html#gino.dialects.base.Pool" title="gino.dialects.base.Pool"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pool</span></code></a>.</p>
-<p>To use non-default pools in raw GINO:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gino.dialects.asyncpg</span> <span class="kn">import</span> <span class="n">NullPool</span>
-<span class="n">create_engine</span><span class="p">(</span><span class="s1">&#39;postgresql://...&#39;</span><span class="p">,</span> <span class="n">pool_class</span><span class="o">=</span><span class="n">NullPool</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>To use non-default pools in extensions (taking Sanic as an example):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gino.dialects.asyncpg</span> <span class="kn">import</span> <span class="n">NullPool</span>
-<span class="kn">from</span> <span class="nn">gino.ext.sanic</span> <span class="kn">import</span> <span class="n">Gino</span>
-
-<span class="n">app</span> <span class="o">=</span> <span class="n">sanic</span><span class="o">.</span><span class="n">Sanic</span><span class="p">()</span>
-<span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">DB_HOST</span> <span class="o">=</span> <span class="s1">&#39;localhost&#39;</span>
-<span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">DB_KWARGS</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
-    <span class="n">pool_class</span><span class="o">=</span><span class="n">NullPool</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="n">db</span> <span class="o">=</span> <span class="n">Gino</span><span class="p">()</span>
-<span class="n">db</span><span class="o">.</span><span class="n">init_app</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
-</pre></div>
-</div>
+    <div class="section" id="use-alembic">
+<h1>Use Alembic<a class="headerlink" href="#use-alembic" title="Permalink to this headline">¶</a></h1>
+<p>TODO</p>
 </div>
 
 
@@ -156,7 +134,7 @@ The base class should be <a class="reference internal" href="../reference/api/gi
             <div class="table-of-contents fixed">
                 
                     <ul>
-<li><a class="reference internal" href="#">Connection Pool</a></li>
+<li><a class="reference internal" href="#">Use Alembic</a></li>
 </ul>
 
                 
@@ -172,8 +150,8 @@ The base class should be <a class="reference internal" href="../reference/api/gi
             </div>
         </a>
         <ul>
-            <li><a href="/docs/en/master/how-to/pool.html" class="btn-floating blue">EN</a></li>
-            <li><a href="/docs/zh/master/how-to/pool.html" class="btn-floating red">ZH</a></li>
+            <li><a href="/docs/en/master/how-to/alembic.html" class="btn-floating blue">EN</a></li>
+            <li><a href="/docs/zh/master/how-to/alembic.html" class="btn-floating red">ZH</a></li>
         </ul>
     </div>
 </main>

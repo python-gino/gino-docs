@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="../_static/favicon.ico">
-    <title>Tutorial - GINO 1.0.0rc3 documentation</title>
+    <title>GINO Basics - GINO 1.0.0rc3 documentation</title>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async
             src="https://www.googletagmanager.com/gtag/js?id=UA-3759436-10"></script>
@@ -49,7 +49,7 @@
                            class="breadcrumb">Tutorials</a>
                     
                     
-                        <a class="breadcrumb" style="color: #FFFFFF">Tutorial</a>
+                        <a class="breadcrumb" style="color: #FFFFFF">GINO Basics</a>
                     
                 </div>
                 <div class="spacer"></div>
@@ -84,14 +84,15 @@
         <p class="caption"><span class="caption-text">Tutorials</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../tutorials.html">Tutorials</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Tutorial</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">GINO Basics</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Tutorial</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">GINO Basics</a></li>
 </ul>
 <p class="caption"><span class="caption-text">How-to Guides</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../how-to.html">How-to Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to/alembic.html">Use Alembic</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../how-to/contributing.html">Contributing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../how-to/crud.html">CRUD</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../how-to/extensions.html">Extensions</a></li>
@@ -123,13 +124,13 @@
         <div class="col s12 m9 body">
             <div id="main-content" role="main">
                 
-    <div class="section" id="tutorial">
-<h1>Tutorial<a class="headerlink" href="#tutorial" title="Permalink to this headline">¶</a></h1>
+    <div class="section" id="gino-basics">
+<h1>GINO Basics<a class="headerlink" href="#gino-basics" title="Permalink to this headline">¶</a></h1>
 <p>This tutorial helps beginners to get started with the basic part of GINO.
 Target audiences of this tutorial should have basic knowledge of:</p>
 <ul class="simple">
 <li><p>RDBMS, especially <a class="reference external" href="https://www.postgresql.org/">PostgreSQL</a></p></li>
-<li><p>Asynchronous programming in Python</p></li>
+<li><p><a class="reference external" href="https://realpython.com/async-io-python/">Asynchronous programming in Python</a></p></li>
 </ul>
 <p>Knowledge of <a class="reference external" href="https://www.sqlalchemy.org/">SQLAlchemy</a> is not required.</p>
 <div class="section" id="introduction">
@@ -144,8 +145,6 @@ information.</p>
 </div>
 <div class="section" id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="stable-release">
-<h3>Stable release<a class="headerlink" href="#stable-release" title="Permalink to this headline">¶</a></h3>
 <p>To install GINO, run this command in your terminal:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> pip install gino
 </pre></div>
@@ -154,22 +153,10 @@ information.</p>
 most recent stable release.</p>
 <p>If you don’t have <a class="reference external" href="https://pip.pypa.io">pip</a> installed, this <a class="reference external" href="http://docs.python-guide.org/en/latest/starting/installation/">Python installation guide</a> can guide
 you through the process.</p>
-</div>
-<div class="section" id="from-sources">
-<h3>From sources<a class="headerlink" href="#from-sources" title="Permalink to this headline">¶</a></h3>
-<p>The sources for GINO can be downloaded from the <a class="reference external" href="https://github.com/python-gino/gino">Github repo</a>.</p>
-<p>You can either clone the public repository:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> git clone git://github.com/python-gino/gino
+<p>Alternatively, if you are using <a class="reference external" href="https://python-poetry.org">Poetry</a> to manage your project dependencies,
+you may want to run:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> poetry add gino
 </pre></div>
-</div>
-<p>Or download the <a class="reference external" href="https://github.com/python-gino/gino/tarball/master">tarball</a>:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> curl  -OL https://github.com/python-gino/gino/tarball/master
-</pre></div>
-</div>
-<p>Once you have a copy of the source, you can install it with:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> python setup.py install
-</pre></div>
-</div>
 </div>
 </div>
 <div class="section" id="declare-models">
@@ -286,7 +273,7 @@ SQLAlchemy using non-asynchronous methods, which doesn’t work with the
 bound GINO engine.</p>
 <p>In practice <a class="reference internal" href="../reference/api/gino.schema.html#gino.schema.GinoSchemaVisitor.create_all" title="gino.schema.GinoSchemaVisitor.create_all"><code class="xref py py-meth docutils literal notranslate"><span class="pre">create_all()</span></code></a> is usually
 not an ideal solution. To manage database schema, tool like <a class="reference external" href="https://bitbucket.org/zzzeek/alembic">Alembic</a> is
-recommended.</p>
+recommended, please see how to <a class="reference internal" href="../how-to/alembic.html"><span class="doc">Use Alembic</span></a>.</p>
 </div>
 <p>If you want to explicitly disconnect from the database, you can do this:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">await</span> <span class="n">db</span><span class="o">.</span><span class="n">pop_bind</span><span class="p">()</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
@@ -535,13 +522,9 @@ this documentation, and have fun hacking!</p>
             <div class="table-of-contents fixed">
                 
                     <ul>
-<li><a class="reference internal" href="#">Tutorial</a><ul>
+<li><a class="reference internal" href="#">GINO Basics</a><ul>
 <li><a class="reference internal" href="#introduction">Introduction</a></li>
-<li><a class="reference internal" href="#installation">Installation</a><ul>
-<li><a class="reference internal" href="#stable-release">Stable release</a></li>
-<li><a class="reference internal" href="#from-sources">From sources</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#installation">Installation</a></li>
 <li><a class="reference internal" href="#declare-models">Declare Models</a></li>
 <li><a class="reference internal" href="#get-connected">Get Connected</a></li>
 <li><a class="reference internal" href="#crud-operations">CRUD Operations</a><ul>
