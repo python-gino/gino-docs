@@ -192,15 +192,15 @@
           {title: 'Redo packaging and automation'},
           {title: 'Embed aiocontextvars and move extensions out'},
           {title: 'python-gino.org'},
-          {title: 'Better documentation'},
           {title: 'Release candidates'},
+          {title: 'Better documentation'},
           {title: 'Blog post'},
           {title: 'Refine core code'},
           {title: 'Better typing support'},
           {title: 'MySQL support?'},
           {title: 'Patch SQLAlchemy'},
         ],
-        progress: 2,
+        progress: 3,
       }
     }
   }
