@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="../_static/favicon.ico">
-    <title>上手教程 - GINO 1.0.0rc3 文档</title>
+    <title>GINO Basics - GINO 1.0.0rc3 文档</title>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async
             src="https://www.googletagmanager.com/gtag/js?id=UA-3759436-10"></script>
@@ -49,7 +49,7 @@
                            class="breadcrumb">上手教程</a>
                     
                     
-                        <a class="breadcrumb" style="color: #FFFFFF">上手教程</a>
+                        <a class="breadcrumb" style="color: #FFFFFF">GINO Basics</a>
                     
                 </div>
                 <div class="spacer"></div>
@@ -84,14 +84,15 @@
         <p class="caption"><span class="caption-text">上手教程</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../tutorials.html">上手教程</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">上手教程</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">GINO Basics</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">上手教程</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">GINO Basics</a></li>
 </ul>
 <p class="caption"><span class="caption-text">进阶用法</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../how-to.html">进阶用法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to/alembic.html">Use Alembic</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../how-to/contributing.html">贡献</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../how-to/crud.html">CRUD</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../how-to/extensions.html">Extensions</a></li>
@@ -123,12 +124,12 @@
         <div class="col s12 m9 body">
             <div id="main-content" role="main">
                 
-    <div class="section" id="tutorial">
-<h1>上手教程<a class="headerlink" href="#tutorial" title="永久链接至标题">¶</a></h1>
+    <div class="section" id="gino-basics">
+<h1>GINO Basics<a class="headerlink" href="#gino-basics" title="永久链接至标题">¶</a></h1>
 <p>这是一篇写给刚入坑同学的指南，将介绍 GINO 的基本部分。阅读之前，请先了解以下知识点：</p>
 <ul class="simple">
 <li><p>关系型数据库，尤其是 <a class="reference external" href="https://www.postgresql.org/">PostgreSQL</a></p></li>
-<li><p>Python 异步编程</p></li>
+<li><p><a class="reference external" href="https://realpython.com/async-io-python/">Asynchronous programming in Python</a></p></li>
 </ul>
 <p>您不需要对 <a class="reference external" href="https://www.sqlalchemy.org/">SQLAlchemy</a> 有所了解。</p>
 <div class="section" id="introduction">
@@ -138,30 +139,16 @@
 </div>
 <div class="section" id="installation">
 <h2>安装<a class="headerlink" href="#installation" title="永久链接至标题">¶</a></h2>
-<div class="section" id="stable-release">
-<h3>稳定版<a class="headerlink" href="#stable-release" title="永久链接至标题">¶</a></h3>
 <p>请在终端中执行以下命令以安装 GINO：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> pip install gino
 </pre></div>
 </div>
 <p>以上就是安装 GINO 的推荐方式，因为这种方式始终会去安装最新的稳定版。</p>
 <p>如果您还没有安装过 <a class="reference external" href="https://pip.pypa.io">pip</a>，您可以参阅 <a class="reference external" href="http://docs.python-guide.org/en/latest/starting/installation/">Python installation guide</a>。</p>
-</div>
-<div class="section" id="from-sources">
-<h3>从源码安装<a class="headerlink" href="#from-sources" title="永久链接至标题">¶</a></h3>
-<p>GINO 的源码可以从 <a class="reference external" href="https://github.com/python-gino/gino">Github repo</a> 下载。</p>
-<p>您可以 git clone：</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> git clone git://github.com/python-gino/gino
+<p>Alternatively, if you are using <a class="reference external" href="https://python-poetry.org">Poetry</a> to manage your project dependencies,
+you may want to run:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> poetry add gino
 </pre></div>
-</div>
-<p>或者下载 <a class="reference external" href="https://github.com/python-gino/gino/tarball/master">tarball</a>：</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> curl  -OL https://github.com/python-gino/gino/tarball/master
-</pre></div>
-</div>
-<p>拿到源码后，您可以这样安装：</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> python setup.py install
-</pre></div>
-</div>
 </div>
 </div>
 <div class="section" id="declare-models">
@@ -245,7 +232,9 @@ information about how to compose this database URL.</p>
 <div class="admonition warning">
 <p class="admonition-title">警告</p>
 <p>这里是 <a class="reference internal" href="../reference/api/gino.schema.html#gino.schema.GinoSchemaVisitor.create_all" title="gino.schema.GinoSchemaVisitor.create_all"><code class="xref py py-meth docutils literal notranslate"><span class="pre">db.gino.create_all</span></code></a>，而不是 <a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/metadata.html#sqlalchemy.schema.MetaData.create_all" title="(在 SQLAlchemy v1.3)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">db.create_all</span></code></a>，因为 <code class="docutils literal notranslate"><span class="pre">db</span></code> 继承自 SQLAlchemy 的 <a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/metadata.html#sqlalchemy.schema.MetaData" title="(在 SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetaData</span></code></a>，而 <a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/metadata.html#sqlalchemy.schema.MetaData.create_all" title="(在 SQLAlchemy v1.3)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">db.create_all</span></code></a> 是 SQLAlchemy 的阻塞式方法，无法适用于绑定的 GINO engine。</p>
-<p>实际应用中，<a class="reference internal" href="../reference/api/gino.schema.html#gino.schema.GinoSchemaVisitor.create_all" title="gino.schema.GinoSchemaVisitor.create_all"><code class="xref py py-meth docutils literal notranslate"><span class="pre">create_all()</span></code></a> 通常不是最理想的解决方案，我们推荐使用诸如 <a class="reference external" href="https://bitbucket.org/zzzeek/alembic">Alembic</a> 这样的工具来管理数据库表结构。</p>
+<p>In practice <a class="reference internal" href="../reference/api/gino.schema.html#gino.schema.GinoSchemaVisitor.create_all" title="gino.schema.GinoSchemaVisitor.create_all"><code class="xref py py-meth docutils literal notranslate"><span class="pre">create_all()</span></code></a> is usually
+not an ideal solution. To manage database schema, tool like <a class="reference external" href="https://bitbucket.org/zzzeek/alembic">Alembic</a> is
+recommended, please see how to <a class="reference internal" href="../how-to/alembic.html"><span class="doc">Use Alembic</span></a>.</p>
 </div>
 <p>如果您想显式地断开与数据库的连接，您可以这么做：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">await</span> <span class="n">db</span><span class="o">.</span><span class="n">pop_bind</span><span class="p">()</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
@@ -440,13 +429,9 @@ about writing queries, because the query object is exactly from SQLAlchemy core.
             <div class="table-of-contents fixed">
                 
                     <ul>
-<li><a class="reference internal" href="#">上手教程</a><ul>
+<li><a class="reference internal" href="#">GINO Basics</a><ul>
 <li><a class="reference internal" href="#introduction">介绍</a></li>
-<li><a class="reference internal" href="#installation">安装</a><ul>
-<li><a class="reference internal" href="#stable-release">稳定版</a></li>
-<li><a class="reference internal" href="#from-sources">从源码安装</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#installation">安装</a></li>
 <li><a class="reference internal" href="#declare-models">声明模型</a></li>
 <li><a class="reference internal" href="#get-connected">建立连接</a></li>
 <li><a class="reference internal" href="#crud-operations">增删改查</a><ul>
