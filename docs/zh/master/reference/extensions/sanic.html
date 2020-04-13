@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="../../_static/favicon.ico">
+    <title>Sanic Support - GINO 1.0.0rc3 文档</title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async
+            src="https://www.googletagmanager.com/gtag/js?id=UA-3759436-10"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag () {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'UA-3759436-10');
+    </script>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Raleway:400,500,600,700&display=swap">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css">
+    <link type="text/css" rel="stylesheet"
+          href="../../_static/css/materialize.min.css"
+          media="screen,projection"/>
+    <link rel="stylesheet" href="../../_static/pygments.css"
+          type="text/css"/>
+    <link type="text/css" rel="stylesheet"
+          href="../../_static/css/gino.css"/>
+</head>
+<body>
+
+<header>
+    <div class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper">
+                <a href="../../index.html" class="brand-logo">
+                    <div class="img"
+                         style="background-image: url(../../_static/logo.svg); width: 103px; height: 40px;"></div>
+                </a>
+                <div class="breadcrumbs">
+                    <a class="breadcrumb" style="display: none"></a>
+                    
+                        <a href="../../reference.html"
+                           class="breadcrumb">参考手册</a>
+                    
+                        <a href="../extensions.html"
+                           class="breadcrumb">Extensions</a>
+                    
+                    
+                        <a class="breadcrumb" style="color: #FFFFFF">Sanic Support</a>
+                    
+                </div>
+                <div class="spacer"></div>
+                <div id="search-container" class="search">
+                    <input type="text" id="search" placeholder="Search">
+                    <i class="mdi mdi-magnify"></i>
+                    <div id="search-results" style="display: none"></div>
+                </div>
+                <a class="btn-flat theme-dark" href="/">
+                    HOME
+                </a>
+                <a class="btn-flat theme-dark" href="/authors.html">
+                    CREDITS
+                </a>
+                <a href="https://github.com/python-gino/gino" target="_blank"
+                   class="github-stars">
+                    <div class="left"><img
+                        src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iNDNweCIgaGVpZ2h0PSI0MnB4IiB2aWV3Qm94PSIwIDAgNDMgNDIiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8IS0tIEdlbmVyYXRvcjogU2tldGNoIDYxLjIgKDg5NjUzKSAtIGh0dHBzOi8vc2tldGNoLmNvbSAtLT4KICAgIDx0aXRsZT5GaWxsIDQ5PC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPgogICAgPGcgaWQ9IlYzLeacgOaWsOeov+S7tiIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgaWQ9IkhPTUUtdjMiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0xNTA3LjAwMDAwMCwgLTQ5LjAwMDAwMCkiIGZpbGw9IiNGRkZGRkUiPgogICAgICAgICAgICA8ZyBpZD0iYmFubmVyLWJnIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMzc5LjAwMDAwMCwgLTE4Ny4wMDAwMDApIj4KICAgICAgICAgICAgICAgIDxnIGlkPSJoZWFkZXIiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDU5Ny4wMDAwMDAsIDIxOC4wMDAwMDApIj4KICAgICAgICAgICAgICAgICAgICA8cGF0aCBkPSJNMTMxMC40OTgwMiwxOCBDMTI5OC42MjcxMiwxOCAxMjg5LDI3LjYzOTg4MzEgMTI4OSwzOS41MzIxMTIzIEMxMjg5LDQ5LjA0NTEwMjYgMTI5NS4xNTk4Myw1Ny4xMTQ2ODggMTMwMy43MDMzNCw1OS45NjE4NDM5IEMxMzA0Ljc3OTAzLDYwLjE2MDExMzggMTMwNS4xNzEwMyw1OS40OTUyNDg3IDEzMDUuMTcxMDMsNTguOTI0MjMxMyBDMTMwNS4xNzEwMyw1OC40MTI2OTUgMTMwNS4xNTI1NSw1Ny4wNTkxNzI0IDEzMDUuMTQxOTksNTUuMjYyODQ3IEMxMjk5LjE2MTY3LDU2LjU2MzQ5NzYgMTI5Ny44OTk4Nyw1Mi4zNzYwMzcxIDEyOTcuODk5ODcsNTIuMzc2MDM3MSBDMTI5Ni45MjE4NSw0OS44ODg0MTA2IDEyOTUuNTEyMjMsNDkuMjI2MTg5MSAxMjk1LjUxMjIzLDQ5LjIyNjE4OTEgQzEyOTMuNTYwMTUsNDcuODkxMTcxNyAxMjk1LjY2MDA2LDQ3LjkxNzYwNzcgMTI5NS42NjAwNiw0Ny45MTc2MDc3IEMxMjk3LjgxODA0LDQ4LjA2OTYxNDYgMTI5OC45NTMxMyw1MC4xMzY5MDg5IDEyOTguOTUzMTMsNTAuMTM2OTA4OSBDMTMwMC44NzA5LDUzLjQyNjg2NzYgMTMwMy45ODU3OSw1Mi40NzY0OTM4IDEzMDUuMjEwNjMsNTEuOTI1MzAzNSBDMTMwNS40MDU5Nyw1MC41MzQ3NzA1IDEzMDUuOTYxNjMsNDkuNTg1NzE4NiAxMzA2LjU3NTM3LDQ5LjA0Nzc0NjIgQzEzMDEuODAxNDEsNDguNTA0NDg2NiAxMjk2Ljc4MTk1LDQ2LjY1NjYxMTEgMTI5Ni43ODE5NSwzOC40MDU5MzkyIEMxMjk2Ljc4MTk1LDM2LjA1NTc3OTkgMTI5Ny42MjAwNiwzNC4xMzI1NjE3IDEyOTguOTk1MzcsMzIuNjI4MzU0IEMxMjk4Ljc3MzYzLDMyLjA4Mzc3MjYgMTI5OC4wMzU4MiwyOS44OTM1NTEgMTI5OS4yMDY1NCwyNi45MzAwNzY4IEMxMjk5LjIwNjU0LDI2LjkzMDA3NjggMTMwMS4wMTA4LDI2LjM1MTEyODYgMTMwNS4xMTgyNCwyOS4xMzc0ODE4IEMxMzA2LjgzMjc1LDI4LjY1ODk5MDQgMTMwOC42NzI2NCwyOC40MjEwNjY1IDEzMTAuNTAwNjYsMjguNDExODEzOSBDMTMxMi4zMjczNiwyOC40MjEwNjY1IDEzMTQuMTY1OTQsMjguNjU4OTkwNCAxMzE1Ljg4MzA4LDI5LjEzNzQ4MTggQzEzMTkuOTg3ODgsMjYuMzUxMTI4NiAxMzIxLjc4OTUsMjYuOTMwMDc2OCAxMzIxLjc4OTUsMjYuOTMwMDc2OCBDMTMyMi45NjI4NiwyOS44OTM1NTEgMTMyMi4yMjUwNSwzMi4wODM3NzI2IDEzMjIuMDA0NjMsMzIuNjI4MzU0IEMxMzIzLjM4MjU4LDM0LjEzMjU2MTcgMTMyNC4yMTQwOSwzNi4wNTU3Nzk5IDEzMjQuMjE0MDksMzguNDA1OTM5MiBDMTMyNC4yMTQwOSw0Ni42Nzc3NTk5IDEzMTkuMTg2NzIsNDguNDk3ODc3NiAxMzE0LjM5ODIzLDQ5LjAzMDU2MjggQzEzMTUuMTY5MDQsNDkuNjk1NDI3OSAxMzE1Ljg1NjY5LDUxLjAwOTI5NjUgMTMxNS44NTY2OSw1My4wMTcxMDk4IEMxMzE1Ljg1NjY5LDU1Ljg5NTk4ODkgMTMxNS44MzAyOSw1OC4yMTgzOTA1IDEzMTUuODMwMjksNTguOTI0MjMxMyBDMTMxNS44MzAyOSw1OS41MDA1MzU5IDEzMTYuMjE4MzMsNjAuMTcwNjg4MiAxMzE3LjMwODU0LDU5Ljk2MDUyMjEgQzEzMjUuODQ1NDUsNTcuMTA2NzU3MiAxMzMyLDQ5LjA0MjQ1OSAxMzMyLDM5LjUzMjExMjMgQzEzMzIsMjcuNjM5ODgzMSAxMzIyLjM3Mjg4LDE4IDEzMTAuNDk4MDIsMTgiIGlkPSJGaWxsLTQ5Ij48L3BhdGg+CiAgICAgICAgICAgICAgICA8L2c+CiAgICAgICAgICAgIDwvZz4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPg=="
+                        class="github-logo">
+                        GitHub
+                    </div>
+                    <div class="right"><img
+                        src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMjFweCIgaGVpZ2h0PSIxOXB4IiB2aWV3Qm94PSIwIDAgMjEgMTkiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8IS0tIEdlbmVyYXRvcjogU2tldGNoIDYxLjIgKDg5NjUzKSAtIGh0dHBzOi8vc2tldGNoLmNvbSAtLT4KICAgIDx0aXRsZT5QYXRoPC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPgogICAgPGcgaWQ9IlYzLeacgOaWsOeov+S7tiIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgaWQ9IkhPTUUtdjMiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0xNTYxLjAwMDAwMCwgLTYwLjAwMDAwMCkiIGZpbGw9IiNGOEQyMzAiPgogICAgICAgICAgICA8ZyBpZD0iYmFubmVyLWJnIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMzc5LjAwMDAwMCwgLTE4Ny4wMDAwMDApIj4KICAgICAgICAgICAgICAgIDxnIGlkPSJoZWFkZXIiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDU5Ny4wMDAwMDAsIDIxOC4wMDAwMDApIj4KICAgICAgICAgICAgICAgICAgICA8ZyBpZD0ibGFiZWwtY29weS0xMiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTI4OS4wMDAwMDAsIDE4LjAwMDAwMCkiPgogICAgICAgICAgICAgICAgICAgICAgICA8cG9seWdvbiBpZD0iUGF0aCIgcG9pbnRzPSI2MS4wNTQzNTQzIDE3Ljc1NzM4MzYgNTQuMjE1MjQ2NiAxOC4zMTMzOTI5IDU5Ljg4OTM1MTcgMjIuOTczNzM4NyA1Ny43ODQ1MjI4IDI5Ljg0MDExODQgNjQuNDQyNTI3MSAyNi41NDM0MTg4IDcwLjU3NzcyMzkgMjkuODQwMTE4NCA2OS4yMzA0MzI1IDIyLjk3MzczODcgNzQuNzMyNTY5NiAxOC4zMTMzOTI5IDY3Ljg5MzQ2MiAxNy43NTczODM2IDY0LjQ0MjUyNzEgMTEuMzc1Ij48L3BvbHlnb24+CiAgICAgICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICA8L2c+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4=">
+                        <span id="github-star-num"></span>
+                    </div>
+                </a>
+            </div>
+        </nav>
+    </div>
+
+    <div id="sidenav" class="sidenav sidenav-fixed">
+        <p class="caption"><span class="caption-text">上手教程</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials.html">上手教程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/tutorial.html">GINO Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/fastapi.html">Build a FastAPI Server</a></li>
+</ul>
+<p class="caption"><span class="caption-text">进阶用法</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to.html">进阶用法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to/alembic.html">Use Alembic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to/contributing.html">贡献</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to/crud.html">CRUD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to/faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to/loaders.html">Loaders and Relationship</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to/pool.html">Connection Pool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to/schema.html">Schema Declaration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to/transaction.html">Transaction</a></li>
+</ul>
+<p class="caption"><span class="caption-text">原理说明</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../explanation.html">原理说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../explanation/engine.html">Engine and Connection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../explanation/why.html">Why Asynchronous ORM?</a></li>
+</ul>
+<p class="caption"><span class="caption-text">参考手册</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../reference.html">参考手册</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../api.html">API 参考</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../extensions.html">Extensions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../history.html">History</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API 参考</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../extensions.html">Extensions</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Sanic Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="starlette.html">Starlette Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tornado.html">Tornado Support</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../history.html">History</a></li>
+</ul>
+
+    </div>
+</header>
+
+<main>
+    <div class="row">
+        <div class="col s12 m9 body">
+            <div id="main-content" role="main">
+                
+    <div class="section" id="sanic-support">
+<h1>Sanic Support<a class="headerlink" href="#sanic-support" title="永久链接至标题">¶</a></h1>
+<p><strong>THIS IS A WIP</strong></p>
+<div class="section" id="work-with-sanic">
+<h2>Work with Sanic<a class="headerlink" href="#work-with-sanic" title="永久链接至标题">¶</a></h2>
+<p>Using the Sanic extension, the request handler acquires a lazy connection on each request,
+and return the connection when the response finishes by default.</p>
+<p>The lazy connection is actually established if necessary, i.e. just before first access to db.</p>
+<p>This behavior is controlled by app.config.DB_USE_CONNECTION_FOR_REQUEST, which is True by default.</p>
+<p>Supported configurations:</p>
+<ul class="simple">
+<li><p>DB_HOST</p></li>
+<li><p>DB_PORT</p></li>
+<li><p>DB_USER</p></li>
+<li><p>DB_PASSWORD</p></li>
+<li><p>DB_DATABASE</p></li>
+<li><p>DB_ECHO</p></li>
+<li><p>DB_POOL_MIN_SIZE</p></li>
+<li><p>DB_POOL_MAX_SIZE</p></li>
+<li><p>DB_USE_CONNECTION_FOR_REQUEST</p></li>
+<li><p>DB_KWARGS</p></li>
+</ul>
+<p>An example server:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sanic</span> <span class="kn">import</span> <span class="n">Sanic</span>
+<span class="kn">from</span> <span class="nn">sanic.exceptions</span> <span class="kn">import</span> <span class="n">abort</span>
+<span class="kn">from</span> <span class="nn">sanic.response</span> <span class="kn">import</span> <span class="n">json</span>
+<span class="kn">from</span> <span class="nn">gino.ext.sanic</span> <span class="kn">import</span> <span class="n">Gino</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Sanic</span><span class="p">()</span>
+<span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">DB_HOST</span> <span class="o">=</span> <span class="s1">&#39;localhost&#39;</span>
+<span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">DB_DATABASE</span> <span class="o">=</span> <span class="s1">&#39;gino&#39;</span>
+<span class="n">db</span> <span class="o">=</span> <span class="n">Gino</span><span class="p">()</span>
+<span class="n">db</span><span class="o">.</span><span class="n">init_app</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">User</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s1">&#39;users&#39;</span>
+
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">BigInteger</span><span class="p">(),</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">nickname</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Unicode</span><span class="p">())</span>
+
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">&lt;</span><span class="si">{}</span><span class="s1">&gt;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nickname</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/users/&lt;user_id&gt;&quot;</span><span class="p">)</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">get_user</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">user_id</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">user_id</span><span class="o">.</span><span class="n">isdigit</span><span class="p">():</span>
+        <span class="n">abort</span><span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="s1">&#39;invalid user id&#39;</span><span class="p">)</span>
+    <span class="n">user</span> <span class="o">=</span> <span class="k">await</span> <span class="n">User</span><span class="o">.</span><span class="n">get_or_404</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">user_id</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">json</span><span class="p">({</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">user</span><span class="o">.</span><span class="n">nickname</span><span class="p">})</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id1">
+<h2>Sanic Support<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<p>To integrate with Sanic, a few configurations needs to be set in
+<code class="docutils literal notranslate"><span class="pre">app.config</span></code> (with default value though):</p>
+<ul class="simple">
+<li><p>DB_HOST: if not set, <code class="docutils literal notranslate"><span class="pre">localhost</span></code></p></li>
+<li><p>DB_PORT: if not set, <code class="docutils literal notranslate"><span class="pre">5432</span></code></p></li>
+<li><p>DB_USER: if not set, <code class="docutils literal notranslate"><span class="pre">postgres</span></code></p></li>
+<li><p>DB_PASSWORD: if not set, empty string</p></li>
+<li><p>DB_DATABASE: if not set, <code class="docutils literal notranslate"><span class="pre">postgres</span></code></p></li>
+<li><p>DB_ECHO: if not set, <code class="docutils literal notranslate"><span class="pre">False</span></code></p></li>
+<li><p>DB_POOL_MIN_SIZE: if not set, 5</p></li>
+<li><p>DB_POOL_MAX_SIZE: if not set, 10</p></li>
+<li><p>DB_KWARGS; if not set, empty dictionary</p></li>
+</ul>
+<p>An example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sanic</span> <span class="kn">import</span> <span class="n">Sanic</span>
+<span class="kn">from</span> <span class="nn">gino.ext.sanic</span> <span class="kn">import</span> <span class="n">Gino</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Sanic</span><span class="p">()</span>
+<span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">DB_HOST</span> <span class="o">=</span> <span class="s1">&#39;localhost&#39;</span>
+<span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">DB_USER</span> <span class="o">=</span> <span class="s1">&#39;postgres&#39;</span>
+
+<span class="n">db</span> <span class="o">=</span> <span class="n">Gino</span><span class="p">()</span>
+<span class="n">db</span><span class="o">.</span><span class="n">init_app</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>After <code class="docutils literal notranslate"><span class="pre">db.init_app</span></code>, a connection pool with configured settings shall be
+created and bound to <code class="docutils literal notranslate"><span class="pre">db</span></code> when Sanic server is started, and closed on stop.
+Furthermore, a lazy connection context is created on each request, and released
+on response. That is to say, within Sanic request handlers, you can directly
+access db by e.g. <code class="docutils literal notranslate"><span class="pre">User.get(1)</span></code>, everything else is settled: database pool is
+created on server start, connection is lazily borrowed from pool on the first
+database access and shared within the rest of the same request handler, and
+automatically returned to the pool on response.</p>
+<p>Please be noted that, in the async world, <code class="docutils literal notranslate"><span class="pre">await</span></code> may block unpredictably for
+a long time. When this world is crossing RDBMS pools and transactions, it is
+a very dangerous bite for performance, even causing disasters sometimes.
+Therefore we recommend, during the time enjoying fast development, do pay
+special attention to the scope of transactions and borrowed connections, make
+sure that transactions are closed as soon as possible, and connections are not
+taken for unnecessarily long time. As for the Sanic support, if you want to
+release the concrete connection in the request context before response is
+reached, just do it like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">await</span> <span class="n">request</span><span class="p">[</span><span class="s1">&#39;connection&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Or if you prefer not to use the contextual lazy connection in certain handlers,
+prefer explicitly manage the connection lifetime, you can always borrow a new
+connection by setting <code class="docutils literal notranslate"><span class="pre">reuse=False</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">with</span> <span class="n">db</span><span class="o">.</span><span class="n">acquire</span><span class="p">(</span><span class="n">reuse</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="c1"># new connection context is created</span>
+</pre></div>
+</div>
+<p>Or if you prefer not to use the builtin request-scoped lazy connection at all,
+you can simply turn it off:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">DB_USE_CONNECTION_FOR_REQUEST</span> <span class="o">=</span> <span class="kc">False</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+            </div>
+        </div>
+
+        <div class="col hide-on-small-only m3 right-nav">
+            <div class="table-of-contents fixed">
+                
+                    <ul>
+<li><a class="reference internal" href="#">Sanic Support</a><ul>
+<li><a class="reference internal" href="#work-with-sanic">Work with Sanic</a></li>
+<li><a class="reference internal" href="#id1">Sanic Support</a></li>
+</ul>
+</li>
+</ul>
+
+                
+            </div>
+        </div>
+
+    </div>
+    <div class="fixed-action-btn click-to-toggle">
+        <a class="btn-floating btn-large white">
+            <img src="../../_static/images/language.svg">
+            <div>
+              ZH
+            </div>
+        </a>
+        <ul>
+            <li><a href="/docs/en/master/reference/extensions/sanic.html" class="btn-floating blue">EN</a></li>
+            <li><a href="/docs/zh/master/reference/extensions/sanic.html" class="btn-floating red">ZH</a></li>
+        </ul>
+    </div>
+</main>
+
+<script type="text/javascript" src="../../_static/js/materialize.min.js"></script>
+<script type="text/javascript" src="../../_static/js/language_data.js"></script>
+<script id="documentation_options" data-url_root="../../" src="../../_static/js/documentation_options.js"></script>
+<script type="text/javascript" src="../../_static/js/underscore.js"></script>
+<script type="text/javascript" src="../../_static/js/jquery.js"></script>
+<script type="text/javascript" src="../../_static/js/gino.js"></script>
+<script type="text/javascript" src="../../searchindex.js"></script>
+</body>
+</html>
