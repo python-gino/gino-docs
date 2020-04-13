@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="../../_static/favicon.ico">
-    <title>gino.ext package - GINO 1.0.0rc3 documentation</title>
+    <title>Starlette Support - GINO 1.0.0rc3 documentation</title>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async
             src="https://www.googletagmanager.com/gtag/js?id=UA-3759436-10"></script>
@@ -48,14 +48,11 @@
                         <a href="../../reference.html"
                            class="breadcrumb">Reference</a>
                     
-                        <a href="../api.html"
-                           class="breadcrumb">API Reference</a>
-                    
-                        <a href="gino.html"
-                           class="breadcrumb">gino package</a>
+                        <a href="../extensions.html"
+                           class="breadcrumb">Extensions</a>
                     
                     
-                        <a class="breadcrumb" style="color: #FFFFFF">gino.ext package</a>
+                        <a class="breadcrumb" style="color: #FFFFFF">Starlette Support</a>
                     
                 </div>
                 <div class="spacer"></div>
@@ -114,16 +111,18 @@
 <p class="caption"><span class="caption-text">Reference</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../../reference.html">Reference</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="../api.html">API Reference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../extensions.html">Extensions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html">API Reference</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../extensions.html">Extensions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../history.html">History</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API Reference</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="gino.html">gino package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API Reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../extensions.html">Extensions</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="sanic.html">Sanic Support</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Starlette Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tornado.html">Tornado Support</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../extensions.html">Extensions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../history.html">History</a></li>
 </ul>
 
@@ -135,10 +134,119 @@
         <div class="col s12 m9 body">
             <div id="main-content" role="main">
                 
-    <div class="section" id="gino-ext-package">
-<h1>gino.ext package<a class="headerlink" href="#gino-ext-package" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="module-gino.ext">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-gino.ext" title="Permalink to this headline">¶</a></h2>
+    <div class="section" id="starlette-support">
+<h1>Starlette Support<a class="headerlink" href="#starlette-support" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="work-with-starlette">
+<h2>Work with Starlette<a class="headerlink" href="#work-with-starlette" title="Permalink to this headline">¶</a></h2>
+<p>To use GINO with Starlette, the <a class="reference external" href="https://github.com/python-gino/gino-starlette">gino-starlette</a> package should
+be installed first:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">pip install gino-starlette</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The gino-starlette package supports only GINO 1.0 or later.
+Earlier versions of GINO like 0.8.x have built-in Starlette support.</p>
+</div>
+<p>This extension provides a Starlette middleware to setup and cleanup
+database according to the configurations that passed in the <code class="docutils literal notranslate"><span class="pre">kwargs</span></code>
+parameter.</p>
+<p>The common usage looks like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">starlette.applications</span> <span class="kn">import</span> <span class="n">Starlette</span>
+<span class="kn">from</span> <span class="nn">gino.ext.starlette</span> <span class="kn">import</span> <span class="n">Gino</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Starlette</span><span class="p">()</span>
+<span class="n">db</span> <span class="o">=</span> <span class="n">Gino</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="c1"># Or with application factory</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">Starlette</span><span class="p">()</span>
+<span class="n">db</span> <span class="o">=</span> <span class="n">Gino</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="n">db</span><span class="o">.</span><span class="n">init_app</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+<p>The config includes:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 70%" />
+<col style="width: 10%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Default</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">driver</span></code></p></td>
+<td><p>the database driver</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">asyncpg</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">host</span></code></p></td>
+<td><p>database server host</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">localhost</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">port</span></code></p></td>
+<td><p>database server port</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">5432</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">user</span></code></p></td>
+<td><p>database server user</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">postgres</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">password</span></code></p></td>
+<td><p>database server password</p></td>
+<td><p>empty</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">database</span></code></p></td>
+<td><p>database name</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">postgres</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">dsn</span></code></p></td>
+<td><p>a SQLAlchemy database URL to create the engine, its existence will replace all previous connect arguments.</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">pool_min_size</span></code></p></td>
+<td><p>the initial number of connections of the db pool.</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">pool_max_size</span></code></p></td>
+<td><p>the maximum number of connections in the db pool.</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">echo</span></code></p></td>
+<td><p>enable SQLAlchemy echo mode.</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ssl</span></code></p></td>
+<td><p>SSL context passed to <code class="docutils literal notranslate"><span class="pre">asyncpg.connect</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">use_connection_for_request</span></code></p></td>
+<td><p>flag to set up lazy connection for requests.</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">kwargs</span></code></p></td>
+<td><p>other parameters passed to the specified dialects, like <code class="docutils literal notranslate"><span class="pre">asyncpg</span></code>. Unrecognized parameters will cause exceptions.</p></td>
+<td><p>N/A</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="lazy-connection">
+<h2>Lazy Connection<a class="headerlink" href="#lazy-connection" title="Permalink to this headline">¶</a></h2>
+<p>If <code class="docutils literal notranslate"><span class="pre">use_connection_for_request</span></code> is set to be True, then a lazy
+connection is available at <code class="docutils literal notranslate"><span class="pre">request['connection']</span></code>. By default, a
+database connection is borrowed on the first query, shared in the same
+execution context, and returned to the pool on response. If you need to
+release the connection early in the middle to do some long-running
+tasks, you can simply do this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">await</span> <span class="n">request</span><span class="p">[</span><span class="s1">&#39;connection&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">release</span><span class="p">(</span><span class="n">permanent</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
 </div>
 </div>
 
@@ -150,8 +258,10 @@
             <div class="table-of-contents fixed">
                 
                     <ul>
-<li><a class="reference internal" href="#">gino.ext package</a><ul>
-<li><a class="reference internal" href="#module-gino.ext">Module contents</a></li>
+<li><a class="reference internal" href="#">Starlette Support</a><ul>
+<li><a class="reference internal" href="#work-with-starlette">Work with Starlette</a></li>
+<li><a class="reference internal" href="#configuration">Configuration</a></li>
+<li><a class="reference internal" href="#lazy-connection">Lazy Connection</a></li>
 </ul>
 </li>
 </ul>
@@ -169,8 +279,8 @@
             </div>
         </a>
         <ul>
-            <li><a href="/docs/en/master/reference/api/gino.ext.html" class="btn-floating blue">EN</a></li>
-            <li><a href="/docs/zh/master/reference/api/gino.ext.html" class="btn-floating red">ZH</a></li>
+            <li><a href="/docs/en/master/reference/extensions/starlette.html" class="btn-floating blue">EN</a></li>
+            <li><a href="/docs/zh/master/reference/extensions/starlette.html" class="btn-floating red">ZH</a></li>
         </ul>
     </div>
 </main>
