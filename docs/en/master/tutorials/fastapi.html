@@ -159,7 +159,7 @@ extension for Starlette</a>. Simply run:</p>
 </pre></div>
 </div>
 </div>
-<p>Then let’s add <a class="reference external" href="https://fastapi.tiangolo.com/">FastAPI</a>, together with the lightning-fast <a class="reference external" href="https://asgi.readthedocs.io/">ASGI</a> server <a class="reference external" href="https://www.uvicorn.org/">uvicorn</a>, and
+<p>Then let’s add <a class="reference external" href="https://fastapi.tiangolo.com/">FastAPI</a>, together with the lightning-fast <a class="reference external" href="https://asgi.readthedocs.io/">ASGI</a> server <a class="reference external" href="https://www.uvicorn.org/">Uvicorn</a>, and
 <a class="reference external" href="https://gunicorn.org/">Gunicorn</a> as a production application server:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> poetry add fastapi uvicorn gunicorn
 </pre></div>
@@ -180,7 +180,7 @@ behind the scene, and all the dependencies are installed there. We will assume
 using this for the rest of the tutorial. But you’re free to create your own
 <a class="reference external" href="https://virtualenv.pypa.io/">virtualenv</a>, and <a class="reference external" href="https://python-poetry.org/">Poetry</a> will honor it when it’s activated.</p>
 </div>
-<p>That’s all, this is my <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> created by <a class="reference external" href="https://python-poetry.org/">Poetry</a>:</p>
+<p>That’s all, this is my <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> created by <a class="reference external" href="https://python-poetry.org/">Poetry</a>, yours should look similar:</p>
 <div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[tool.poetry]</span>
 <span class="n">name</span> <span class="o">=</span> <span class="s">&quot;gino-fastapi-demo&quot;</span>
 <span class="n">version</span> <span class="o">=</span> <span class="s">&quot;0.1.0&quot;</span>
@@ -206,7 +206,7 @@ using this for the rest of the tutorial. But you’re free to create your own
 </div>
 <img alt="../_images/gino-fastapi-poetry.svg" class="align-right" src="../_images/gino-fastapi-poetry.svg" /><p>And there’s also an auto-generated <code class="docutils literal notranslate"><span class="pre">poetry.lock</span></code> file with the frozen versions. The
 directory layout should look like the diagram on the right. Now let’s add the two files
-to the Git repository (we will skip showing this in future steps):</p>
+to the Git repository (we will skip showing these git operations in future steps):</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> git add pyproject.toml poetry.lock
 <span class="gp">$</span> git commit -m <span class="s1">&#39;add project dependencies&#39;</span>
 </pre></div>
@@ -239,7 +239,7 @@ will create two Python modules:</p>
 </pre></div>
 </div>
 <p>Then run <code class="docutils literal notranslate"><span class="pre">poetry</span> <span class="pre">install</span></code> to link our Python package into the <code class="docutils literal notranslate"><span class="pre">PYTHONPATH</span></code> in
-development mode. We’ll be able to start a uvicorn development server after that:</p>
+development mode. We’ll be able to start a Uvicorn development server after that:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> poetry install
 <span class="gp">$</span> poetry run uvicorn gino_fastapi_demo.asgi:app --reload
 <span class="go">INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)</span>
@@ -249,7 +249,7 @@ development mode. We’ll be able to start a uvicorn development server after th
 <span class="go">INFO:     Application startup complete.</span>
 </pre></div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">--reload</span></code> option enables uvicorn to automatically reload the server for us when
+<p>The <code class="docutils literal notranslate"><span class="pre">--reload</span></code> option enables Uvicorn to automatically reload the server for us when
 the Python source code is updated. Now access <a class="reference external" href="http://127.0.0.1:8000/docs">http://127.0.0.1:8000/docs</a> to see the
 Swagger UI of our new FastAPI server.</p>
 <div class="admonition hint">
@@ -259,6 +259,9 @@ Swagger UI of our new FastAPI server.</p>
 <p><code class="docutils literal notranslate"><span class="pre">poetry</span> <span class="pre">run</span></code> is a convenient shortcut to run the following command in the
 virtualenv managed by Poetry.</p>
 </div>
+</div>
+<div class="section" id="tbd">
+<h2>TBD<a class="headerlink" href="#tbd" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 
@@ -274,6 +277,7 @@ virtualenv managed by Poetry.</p>
 <li><a class="reference internal" href="#start-a-new-project">Start a New Project</a></li>
 <li><a class="reference internal" href="#add-dependencies">Add Dependencies</a></li>
 <li><a class="reference internal" href="#write-a-simple-server">Write a Simple Server</a></li>
+<li><a class="reference internal" href="#tbd">TBD</a></li>
 </ul>
 </li>
 </ul>
