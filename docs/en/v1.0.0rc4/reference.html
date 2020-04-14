@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="_static/favicon.ico">
+    <title>Reference - GINO 1.0.0rc4 documentation</title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async
+            src="https://www.googletagmanager.com/gtag/js?id=UA-3759436-10"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag () {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'UA-3759436-10');
+    </script>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Raleway:400,500,600,700&display=swap">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css">
+    <link type="text/css" rel="stylesheet"
+          href="_static/css/materialize.min.css"
+          media="screen,projection"/>
+    <link rel="stylesheet" href="_static/pygments.css"
+          type="text/css"/>
+    <link type="text/css" rel="stylesheet"
+          href="_static/css/gino.css"/>
+</head>
+<body>
+
+<header>
+    <div class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper">
+                <a href="index.html" class="brand-logo">
+                    <div class="img"
+                         style="background-image: url(_static/logo.svg); width: 103px; height: 40px;"></div>
+                </a>
+                <div class="breadcrumbs">
+                    <a class="breadcrumb" style="display: none"></a>
+                    
+                    
+                        <a class="breadcrumb" style="color: #FFFFFF">Reference</a>
+                    
+                </div>
+                <div class="spacer"></div>
+                <div id="search-container" class="search">
+                    <input type="text" id="search" placeholder="Search">
+                    <i class="mdi mdi-magnify"></i>
+                    <div id="search-results" style="display: none"></div>
+                </div>
+                <a class="btn-flat theme-dark" href="/">
+                    HOME
+                </a>
+                <a class="btn-flat theme-dark" href="/authors.html">
+                    CREDITS
+                </a>
+                <a href="https://github.com/python-gino/gino" target="_blank"
+                   class="github-stars">
+                    <div class="left"><img
+                        src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iNDNweCIgaGVpZ2h0PSI0MnB4IiB2aWV3Qm94PSIwIDAgNDMgNDIiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8IS0tIEdlbmVyYXRvcjogU2tldGNoIDYxLjIgKDg5NjUzKSAtIGh0dHBzOi8vc2tldGNoLmNvbSAtLT4KICAgIDx0aXRsZT5GaWxsIDQ5PC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPgogICAgPGcgaWQ9IlYzLeacgOaWsOeov+S7tiIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgaWQ9IkhPTUUtdjMiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0xNTA3LjAwMDAwMCwgLTQ5LjAwMDAwMCkiIGZpbGw9IiNGRkZGRkUiPgogICAgICAgICAgICA8ZyBpZD0iYmFubmVyLWJnIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMzc5LjAwMDAwMCwgLTE4Ny4wMDAwMDApIj4KICAgICAgICAgICAgICAgIDxnIGlkPSJoZWFkZXIiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDU5Ny4wMDAwMDAsIDIxOC4wMDAwMDApIj4KICAgICAgICAgICAgICAgICAgICA8cGF0aCBkPSJNMTMxMC40OTgwMiwxOCBDMTI5OC42MjcxMiwxOCAxMjg5LDI3LjYzOTg4MzEgMTI4OSwzOS41MzIxMTIzIEMxMjg5LDQ5LjA0NTEwMjYgMTI5NS4xNTk4Myw1Ny4xMTQ2ODggMTMwMy43MDMzNCw1OS45NjE4NDM5IEMxMzA0Ljc3OTAzLDYwLjE2MDExMzggMTMwNS4xNzEwMyw1OS40OTUyNDg3IDEzMDUuMTcxMDMsNTguOTI0MjMxMyBDMTMwNS4xNzEwMyw1OC40MTI2OTUgMTMwNS4xNTI1NSw1Ny4wNTkxNzI0IDEzMDUuMTQxOTksNTUuMjYyODQ3IEMxMjk5LjE2MTY3LDU2LjU2MzQ5NzYgMTI5Ny44OTk4Nyw1Mi4zNzYwMzcxIDEyOTcuODk5ODcsNTIuMzc2MDM3MSBDMTI5Ni45MjE4NSw0OS44ODg0MTA2IDEyOTUuNTEyMjMsNDkuMjI2MTg5MSAxMjk1LjUxMjIzLDQ5LjIyNjE4OTEgQzEyOTMuNTYwMTUsNDcuODkxMTcxNyAxMjk1LjY2MDA2LDQ3LjkxNzYwNzcgMTI5NS42NjAwNiw0Ny45MTc2MDc3IEMxMjk3LjgxODA0LDQ4LjA2OTYxNDYgMTI5OC45NTMxMyw1MC4xMzY5MDg5IDEyOTguOTUzMTMsNTAuMTM2OTA4OSBDMTMwMC44NzA5LDUzLjQyNjg2NzYgMTMwMy45ODU3OSw1Mi40NzY0OTM4IDEzMDUuMjEwNjMsNTEuOTI1MzAzNSBDMTMwNS40MDU5Nyw1MC41MzQ3NzA1IDEzMDUuOTYxNjMsNDkuNTg1NzE4NiAxMzA2LjU3NTM3LDQ5LjA0Nzc0NjIgQzEzMDEuODAxNDEsNDguNTA0NDg2NiAxMjk2Ljc4MTk1LDQ2LjY1NjYxMTEgMTI5Ni43ODE5NSwzOC40MDU5MzkyIEMxMjk2Ljc4MTk1LDM2LjA1NTc3OTkgMTI5Ny42MjAwNiwzNC4xMzI1NjE3IDEyOTguOTk1MzcsMzIuNjI4MzU0IEMxMjk4Ljc3MzYzLDMyLjA4Mzc3MjYgMTI5OC4wMzU4MiwyOS44OTM1NTEgMTI5OS4yMDY1NCwyNi45MzAwNzY4IEMxMjk5LjIwNjU0LDI2LjkzMDA3NjggMTMwMS4wMTA4LDI2LjM1MTEyODYgMTMwNS4xMTgyNCwyOS4xMzc0ODE4IEMxMzA2LjgzMjc1LDI4LjY1ODk5MDQgMTMwOC42NzI2NCwyOC40MjEwNjY1IDEzMTAuNTAwNjYsMjguNDExODEzOSBDMTMxMi4zMjczNiwyOC40MjEwNjY1IDEzMTQuMTY1OTQsMjguNjU4OTkwNCAxMzE1Ljg4MzA4LDI5LjEzNzQ4MTggQzEzMTkuOTg3ODgsMjYuMzUxMTI4NiAxMzIxLjc4OTUsMjYuOTMwMDc2OCAxMzIxLjc4OTUsMjYuOTMwMDc2OCBDMTMyMi45NjI4NiwyOS44OTM1NTEgMTMyMi4yMjUwNSwzMi4wODM3NzI2IDEzMjIuMDA0NjMsMzIuNjI4MzU0IEMxMzIzLjM4MjU4LDM0LjEzMjU2MTcgMTMyNC4yMTQwOSwzNi4wNTU3Nzk5IDEzMjQuMjE0MDksMzguNDA1OTM5MiBDMTMyNC4yMTQwOSw0Ni42Nzc3NTk5IDEzMTkuMTg2NzIsNDguNDk3ODc3NiAxMzE0LjM5ODIzLDQ5LjAzMDU2MjggQzEzMTUuMTY5MDQsNDkuNjk1NDI3OSAxMzE1Ljg1NjY5LDUxLjAwOTI5NjUgMTMxNS44NTY2OSw1My4wMTcxMDk4IEMxMzE1Ljg1NjY5LDU1Ljg5NTk4ODkgMTMxNS44MzAyOSw1OC4yMTgzOTA1IDEzMTUuODMwMjksNTguOTI0MjMxMyBDMTMxNS44MzAyOSw1OS41MDA1MzU5IDEzMTYuMjE4MzMsNjAuMTcwNjg4MiAxMzE3LjMwODU0LDU5Ljk2MDUyMjEgQzEzMjUuODQ1NDUsNTcuMTA2NzU3MiAxMzMyLDQ5LjA0MjQ1OSAxMzMyLDM5LjUzMjExMjMgQzEzMzIsMjcuNjM5ODgzMSAxMzIyLjM3Mjg4LDE4IDEzMTAuNDk4MDIsMTgiIGlkPSJGaWxsLTQ5Ij48L3BhdGg+CiAgICAgICAgICAgICAgICA8L2c+CiAgICAgICAgICAgIDwvZz4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPg=="
+                        class="github-logo">
+                        GitHub
+                    </div>
+                    <div class="right"><img
+                        src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMjFweCIgaGVpZ2h0PSIxOXB4IiB2aWV3Qm94PSIwIDAgMjEgMTkiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8IS0tIEdlbmVyYXRvcjogU2tldGNoIDYxLjIgKDg5NjUzKSAtIGh0dHBzOi8vc2tldGNoLmNvbSAtLT4KICAgIDx0aXRsZT5QYXRoPC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPgogICAgPGcgaWQ9IlYzLeacgOaWsOeov+S7tiIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgaWQ9IkhPTUUtdjMiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0xNTYxLjAwMDAwMCwgLTYwLjAwMDAwMCkiIGZpbGw9IiNGOEQyMzAiPgogICAgICAgICAgICA8ZyBpZD0iYmFubmVyLWJnIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMzc5LjAwMDAwMCwgLTE4Ny4wMDAwMDApIj4KICAgICAgICAgICAgICAgIDxnIGlkPSJoZWFkZXIiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDU5Ny4wMDAwMDAsIDIxOC4wMDAwMDApIj4KICAgICAgICAgICAgICAgICAgICA8ZyBpZD0ibGFiZWwtY29weS0xMiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTI4OS4wMDAwMDAsIDE4LjAwMDAwMCkiPgogICAgICAgICAgICAgICAgICAgICAgICA8cG9seWdvbiBpZD0iUGF0aCIgcG9pbnRzPSI2MS4wNTQzNTQzIDE3Ljc1NzM4MzYgNTQuMjE1MjQ2NiAxOC4zMTMzOTI5IDU5Ljg4OTM1MTcgMjIuOTczNzM4NyA1Ny43ODQ1MjI4IDI5Ljg0MDExODQgNjQuNDQyNTI3MSAyNi41NDM0MTg4IDcwLjU3NzcyMzkgMjkuODQwMTE4NCA2OS4yMzA0MzI1IDIyLjk3MzczODcgNzQuNzMyNTY5NiAxOC4zMTMzOTI5IDY3Ljg5MzQ2MiAxNy43NTczODM2IDY0LjQ0MjUyNzEgMTEuMzc1Ij48L3BvbHlnb24+CiAgICAgICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICA8L2c+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4=">
+                        <span id="github-star-num"></span>
+                    </div>
+                </a>
+            </div>
+        </nav>
+    </div>
+
+    <div id="sidenav" class="sidenav sidenav-fixed">
+        <p class="caption"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/tutorial.html">GINO Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/fastapi.html">Build a FastAPI Server</a></li>
+</ul>
+<p class="caption"><span class="caption-text">How-to Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="how-to.html">How-to Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-to/alembic.html">Use Alembic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-to/contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-to/crud.html">CRUD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-to/faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-to/loaders.html">Loaders and Relationship</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-to/pool.html">Connection Pool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-to/schema.html">Schema Declaration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-to/transaction.html">Transaction</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Explanation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="explanation.html">Explanation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="explanation/engine.html">Engine and Connection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="explanation/why.html">Why Asynchronous ORM?</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/api.html">API Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/extensions.html">Extensions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/history.html">History</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/api.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/extensions.html">Extensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/history.html">History</a></li>
+</ul>
+
+    </div>
+</header>
+
+<main>
+    <div class="row">
+        <div class="col s12 m9 body">
+            <div id="main-content" role="main">
+                
+    <div class="section" id="reference">
+<h1>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="reference/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/api/gino.html">gino package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/api/gino.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="reference/api/gino.dialects.html">gino.dialects package</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="reference/api/gino.dialects.html#submodules">Submodules</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="reference/api/gino.dialects.asyncpg.html">gino.dialects.asyncpg module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="reference/api/gino.dialects.base.html">gino.dialects.base module</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="reference/api/gino.dialects.html#module-gino.dialects">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="reference/api/gino.ext.html">gino.ext package</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="reference/api/gino.ext.html#module-gino.ext">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="reference/api/gino.html#submodules">Submodules</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="reference/api/gino.aiocontextvars.html">gino.aiocontextvars module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference/api/gino.api.html">gino.api module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference/api/gino.crud.html">gino.crud module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference/api/gino.declarative.html">gino.declarative module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference/api/gino.engine.html">gino.engine module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference/api/gino.exceptions.html">gino.exceptions module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference/api/gino.json_support.html">gino.json_support module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference/api/gino.loader.html">gino.loader module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference/api/gino.schema.html">gino.schema module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference/api/gino.strategies.html">gino.strategies module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference/api/gino.transaction.html">gino.transaction module</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="reference/api/gino.html#module-gino">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/extensions.html">Extensions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/extensions/sanic.html">Sanic Support</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/extensions/sanic.html#work-with-sanic">Work with Sanic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/extensions/sanic.html#id1">Sanic Support</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reference/extensions/starlette.html">Starlette Support</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/extensions/starlette.html#work-with-starlette">Work with Starlette</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/extensions/starlette.html#configuration">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/extensions/starlette.html#lazy-connection">Lazy Connection</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reference/extensions/tornado.html">Tornado Support</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/history.html">History</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/history.html#gino-0-8">GINO 0.8</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#migrating-to-gino-0-8">Migrating to GINO 0.8</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="reference/history.html#contextvars">1. contextvars</a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference/history.html#none-as-none">2. none_as_none</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id1">0.8.6 (2020-02-10)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id2">0.8.5 (2019-11-19)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id3">0.8.4 (2019-11-09)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id4">0.8.3 (2019-06-06)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id5">0.8.2 (2019-03-07)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id6">0.8.1 (2018-12-08)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id7">0.8.0 (2018-10-16)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reference/history.html#gino-0-7">GINO 0.7</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id8">0.7.7 (2018-12-08)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id9">0.7.6 (2018-08-26)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id10">0.7.5 (2018-07-26)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id11">0.7.4 (2018-06-10)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id12">0.7.3 (2018-05-19)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id13">0.7.2 (2018-05-15)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id14">0.7.1 (2018-05-03)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id15">0.7.0 (2018-04-18)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reference/history.html#gino-0-6">GINO 0.6</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#migrating-to-gino-0-6">Migrating to GINO 0.6</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="reference/history.html#task-local">1. Task Local</a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference/history.html#engine">2. Engine</a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference/history.html#ginoconnection">3. GinoConnection</a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference/history.html#query-api">4. Query API</a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference/history.html#transaction">5. Transaction</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id16">0.6.6 (2018-05-18)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id17">0.6.5 (2018-04-18)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id18">0.6.4 (2018-04-16)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id19">0.6.3 (2018-04-08)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id20">0.6.2 (2018-03-24)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id21">0.6.1 (2018-03-18)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id22">0.6.0 (2018-03-14)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reference/history.html#gino-0-5">GINO 0.5</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id23">0.5.8 (2018-02-14)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id24">0.5.7 (2017-11-24)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id25">0.5.6 (2017-11-23)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id26">0.5.5 (2017-10-18)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id27">0.5.4 (2017-10-04)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id28">0.5.3 (2017-09-23)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id29">0.5.2 (2017-09-10)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id30">0.5.1 (2017-09-09)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id31">0.5.0 (2017-09-03)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reference/history.html#early-development-releases">Early Development Releases</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id32">0.4.1 (2017-08-20)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id33">0.4.0 (2017-08-15)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id34">0.3.0 (2017-08-07)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id35">0.2.3 (2017-08-04)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id36">0.2.2 (2017-08-02)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id37">0.2.1 (2017-07-28)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id38">0.2.0 (2017-07-28)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id39">0.1.1 (2017-07-25)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id40">0.1.0 (2017-07-21)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+            </div>
+        </div>
+
+        <div class="col hide-on-small-only m3 right-nav">
+            <div class="table-of-contents fixed">
+                
+                    <ul>
+<li><a class="reference internal" href="#">Reference</a></li>
+</ul>
+
+                
+            </div>
+        </div>
+
+    </div>
+    <div class="fixed-action-btn click-to-toggle">
+        <a class="btn-floating btn-large white">
+            <img src="_static/images/language.svg">
+            <div>
+              EN
+            </div>
+        </a>
+        <ul>
+            <li><a href="/docs/en/v1.0.0rc4/reference.html" class="btn-floating blue">EN</a></li>
+            <li><a href="/docs/zh/v1.0.0rc4/reference.html" class="btn-floating red">ZH</a></li>
+        </ul>
+    </div>
+</main>
+
+<script type="text/javascript" src="_static/js/materialize.min.js"></script>
+<script type="text/javascript" src="_static/js/language_data.js"></script>
+<script id="documentation_options" data-url_root="./" src="_static/js/documentation_options.js"></script>
+<script type="text/javascript" src="_static/js/underscore.js"></script>
+<script type="text/javascript" src="_static/js/jquery.js"></script>
+<script type="text/javascript" src="_static/js/gino.js"></script>
+<script type="text/javascript" src="searchindex.js"></script>
+</body>
+</html>

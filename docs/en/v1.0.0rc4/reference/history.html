@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="../_static/favicon.ico">
+    <title>History - GINO 1.0.0rc4 documentation</title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async
+            src="https://www.googletagmanager.com/gtag/js?id=UA-3759436-10"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag () {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'UA-3759436-10');
+    </script>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Raleway:400,500,600,700&display=swap">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css">
+    <link type="text/css" rel="stylesheet"
+          href="../_static/css/materialize.min.css"
+          media="screen,projection"/>
+    <link rel="stylesheet" href="../_static/pygments.css"
+          type="text/css"/>
+    <link type="text/css" rel="stylesheet"
+          href="../_static/css/gino.css"/>
+</head>
+<body>
+
+<header>
+    <div class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper">
+                <a href="../index.html" class="brand-logo">
+                    <div class="img"
+                         style="background-image: url(../_static/logo.svg); width: 103px; height: 40px;"></div>
+                </a>
+                <div class="breadcrumbs">
+                    <a class="breadcrumb" style="display: none"></a>
+                    
+                        <a href="../reference.html"
+                           class="breadcrumb">Reference</a>
+                    
+                    
+                        <a class="breadcrumb" style="color: #FFFFFF">History</a>
+                    
+                </div>
+                <div class="spacer"></div>
+                <div id="search-container" class="search">
+                    <input type="text" id="search" placeholder="Search">
+                    <i class="mdi mdi-magnify"></i>
+                    <div id="search-results" style="display: none"></div>
+                </div>
+                <a class="btn-flat theme-dark" href="/">
+                    HOME
+                </a>
+                <a class="btn-flat theme-dark" href="/authors.html">
+                    CREDITS
+                </a>
+                <a href="https://github.com/python-gino/gino" target="_blank"
+                   class="github-stars">
+                    <div class="left"><img
+                        src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iNDNweCIgaGVpZ2h0PSI0MnB4IiB2aWV3Qm94PSIwIDAgNDMgNDIiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8IS0tIEdlbmVyYXRvcjogU2tldGNoIDYxLjIgKDg5NjUzKSAtIGh0dHBzOi8vc2tldGNoLmNvbSAtLT4KICAgIDx0aXRsZT5GaWxsIDQ5PC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPgogICAgPGcgaWQ9IlYzLeacgOaWsOeov+S7tiIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgaWQ9IkhPTUUtdjMiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0xNTA3LjAwMDAwMCwgLTQ5LjAwMDAwMCkiIGZpbGw9IiNGRkZGRkUiPgogICAgICAgICAgICA8ZyBpZD0iYmFubmVyLWJnIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMzc5LjAwMDAwMCwgLTE4Ny4wMDAwMDApIj4KICAgICAgICAgICAgICAgIDxnIGlkPSJoZWFkZXIiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDU5Ny4wMDAwMDAsIDIxOC4wMDAwMDApIj4KICAgICAgICAgICAgICAgICAgICA8cGF0aCBkPSJNMTMxMC40OTgwMiwxOCBDMTI5OC42MjcxMiwxOCAxMjg5LDI3LjYzOTg4MzEgMTI4OSwzOS41MzIxMTIzIEMxMjg5LDQ5LjA0NTEwMjYgMTI5NS4xNTk4Myw1Ny4xMTQ2ODggMTMwMy43MDMzNCw1OS45NjE4NDM5IEMxMzA0Ljc3OTAzLDYwLjE2MDExMzggMTMwNS4xNzEwMyw1OS40OTUyNDg3IDEzMDUuMTcxMDMsNTguOTI0MjMxMyBDMTMwNS4xNzEwMyw1OC40MTI2OTUgMTMwNS4xNTI1NSw1Ny4wNTkxNzI0IDEzMDUuMTQxOTksNTUuMjYyODQ3IEMxMjk5LjE2MTY3LDU2LjU2MzQ5NzYgMTI5Ny44OTk4Nyw1Mi4zNzYwMzcxIDEyOTcuODk5ODcsNTIuMzc2MDM3MSBDMTI5Ni45MjE4NSw0OS44ODg0MTA2IDEyOTUuNTEyMjMsNDkuMjI2MTg5MSAxMjk1LjUxMjIzLDQ5LjIyNjE4OTEgQzEyOTMuNTYwMTUsNDcuODkxMTcxNyAxMjk1LjY2MDA2LDQ3LjkxNzYwNzcgMTI5NS42NjAwNiw0Ny45MTc2MDc3IEMxMjk3LjgxODA0LDQ4LjA2OTYxNDYgMTI5OC45NTMxMyw1MC4xMzY5MDg5IDEyOTguOTUzMTMsNTAuMTM2OTA4OSBDMTMwMC44NzA5LDUzLjQyNjg2NzYgMTMwMy45ODU3OSw1Mi40NzY0OTM4IDEzMDUuMjEwNjMsNTEuOTI1MzAzNSBDMTMwNS40MDU5Nyw1MC41MzQ3NzA1IDEzMDUuOTYxNjMsNDkuNTg1NzE4NiAxMzA2LjU3NTM3LDQ5LjA0Nzc0NjIgQzEzMDEuODAxNDEsNDguNTA0NDg2NiAxMjk2Ljc4MTk1LDQ2LjY1NjYxMTEgMTI5Ni43ODE5NSwzOC40MDU5MzkyIEMxMjk2Ljc4MTk1LDM2LjA1NTc3OTkgMTI5Ny42MjAwNiwzNC4xMzI1NjE3IDEyOTguOTk1MzcsMzIuNjI4MzU0IEMxMjk4Ljc3MzYzLDMyLjA4Mzc3MjYgMTI5OC4wMzU4MiwyOS44OTM1NTEgMTI5OS4yMDY1NCwyNi45MzAwNzY4IEMxMjk5LjIwNjU0LDI2LjkzMDA3NjggMTMwMS4wMTA4LDI2LjM1MTEyODYgMTMwNS4xMTgyNCwyOS4xMzc0ODE4IEMxMzA2LjgzMjc1LDI4LjY1ODk5MDQgMTMwOC42NzI2NCwyOC40MjEwNjY1IDEzMTAuNTAwNjYsMjguNDExODEzOSBDMTMxMi4zMjczNiwyOC40MjEwNjY1IDEzMTQuMTY1OTQsMjguNjU4OTkwNCAxMzE1Ljg4MzA4LDI5LjEzNzQ4MTggQzEzMTkuOTg3ODgsMjYuMzUxMTI4NiAxMzIxLjc4OTUsMjYuOTMwMDc2OCAxMzIxLjc4OTUsMjYuOTMwMDc2OCBDMTMyMi45NjI4NiwyOS44OTM1NTEgMTMyMi4yMjUwNSwzMi4wODM3NzI2IDEzMjIuMDA0NjMsMzIuNjI4MzU0IEMxMzIzLjM4MjU4LDM0LjEzMjU2MTcgMTMyNC4yMTQwOSwzNi4wNTU3Nzk5IDEzMjQuMjE0MDksMzguNDA1OTM5MiBDMTMyNC4yMTQwOSw0Ni42Nzc3NTk5IDEzMTkuMTg2NzIsNDguNDk3ODc3NiAxMzE0LjM5ODIzLDQ5LjAzMDU2MjggQzEzMTUuMTY5MDQsNDkuNjk1NDI3OSAxMzE1Ljg1NjY5LDUxLjAwOTI5NjUgMTMxNS44NTY2OSw1My4wMTcxMDk4IEMxMzE1Ljg1NjY5LDU1Ljg5NTk4ODkgMTMxNS44MzAyOSw1OC4yMTgzOTA1IDEzMTUuODMwMjksNTguOTI0MjMxMyBDMTMxNS44MzAyOSw1OS41MDA1MzU5IDEzMTYuMjE4MzMsNjAuMTcwNjg4MiAxMzE3LjMwODU0LDU5Ljk2MDUyMjEgQzEzMjUuODQ1NDUsNTcuMTA2NzU3MiAxMzMyLDQ5LjA0MjQ1OSAxMzMyLDM5LjUzMjExMjMgQzEzMzIsMjcuNjM5ODgzMSAxMzIyLjM3Mjg4LDE4IDEzMTAuNDk4MDIsMTgiIGlkPSJGaWxsLTQ5Ij48L3BhdGg+CiAgICAgICAgICAgICAgICA8L2c+CiAgICAgICAgICAgIDwvZz4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPg=="
+                        class="github-logo">
+                        GitHub
+                    </div>
+                    <div class="right"><img
+                        src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMjFweCIgaGVpZ2h0PSIxOXB4IiB2aWV3Qm94PSIwIDAgMjEgMTkiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8IS0tIEdlbmVyYXRvcjogU2tldGNoIDYxLjIgKDg5NjUzKSAtIGh0dHBzOi8vc2tldGNoLmNvbSAtLT4KICAgIDx0aXRsZT5QYXRoPC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPgogICAgPGcgaWQ9IlYzLeacgOaWsOeov+S7tiIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgaWQ9IkhPTUUtdjMiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0xNTYxLjAwMDAwMCwgLTYwLjAwMDAwMCkiIGZpbGw9IiNGOEQyMzAiPgogICAgICAgICAgICA8ZyBpZD0iYmFubmVyLWJnIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMzc5LjAwMDAwMCwgLTE4Ny4wMDAwMDApIj4KICAgICAgICAgICAgICAgIDxnIGlkPSJoZWFkZXIiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDU5Ny4wMDAwMDAsIDIxOC4wMDAwMDApIj4KICAgICAgICAgICAgICAgICAgICA8ZyBpZD0ibGFiZWwtY29weS0xMiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTI4OS4wMDAwMDAsIDE4LjAwMDAwMCkiPgogICAgICAgICAgICAgICAgICAgICAgICA8cG9seWdvbiBpZD0iUGF0aCIgcG9pbnRzPSI2MS4wNTQzNTQzIDE3Ljc1NzM4MzYgNTQuMjE1MjQ2NiAxOC4zMTMzOTI5IDU5Ljg4OTM1MTcgMjIuOTczNzM4NyA1Ny43ODQ1MjI4IDI5Ljg0MDExODQgNjQuNDQyNTI3MSAyNi41NDM0MTg4IDcwLjU3NzcyMzkgMjkuODQwMTE4NCA2OS4yMzA0MzI1IDIyLjk3MzczODcgNzQuNzMyNTY5NiAxOC4zMTMzOTI5IDY3Ljg5MzQ2MiAxNy43NTczODM2IDY0LjQ0MjUyNzEgMTEuMzc1Ij48L3BvbHlnb24+CiAgICAgICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICA8L2c+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4=">
+                        <span id="github-star-num"></span>
+                    </div>
+                </a>
+            </div>
+        </nav>
+    </div>
+
+    <div id="sidenav" class="sidenav sidenav-fixed">
+        <p class="caption"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/tutorial.html">GINO Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/fastapi.html">Build a FastAPI Server</a></li>
+</ul>
+<p class="caption"><span class="caption-text">How-to Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../how-to.html">How-to Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to/alembic.html">Use Alembic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to/contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to/crud.html">CRUD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to/faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to/loaders.html">Loaders and Relationship</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to/pool.html">Connection Pool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to/schema.html">Schema Declaration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to/transaction.html">Transaction</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Explanation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../explanation.html">Explanation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../explanation/engine.html">Engine and Connection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../explanation/why.html">Why Asynchronous ORM?</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../reference.html">Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="api.html">API Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extensions.html">Extensions</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">History</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extensions.html">Extensions</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">History</a></li>
+</ul>
+
+    </div>
+</header>
+
+<main>
+    <div class="row">
+        <div class="col s12 m9 body">
+            <div id="main-content" role="main">
+                
+    <div class="section" id="history">
+<h1>History<a class="headerlink" href="#history" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="gino-0-8">
+<h2>GINO 0.8<a class="headerlink" href="#gino-0-8" title="Permalink to this headline">¶</a></h2>
+<p>This is also version 1.0 release candidate.</p>
+<div class="section" id="migrating-to-gino-0-8">
+<h3>Migrating to GINO 0.8<a class="headerlink" href="#migrating-to-gino-0-8" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="contextvars">
+<h4>1. contextvars<a class="headerlink" href="#contextvars" title="Permalink to this headline">¶</a></h4>
+<p>We introduced <a class="reference external" href="https://github.com/fantix/aiocontextvars">aiocontextvars</a> 0.2.0 which is revamped to be compatible with
+PEP-567 without manual interference by a few simple implicit patches. To
+upgrade to GINO 0.8, please remove the <code class="docutils literal notranslate"><span class="pre">enable_inherit()</span></code> or
+<code class="docutils literal notranslate"><span class="pre">disable_inherit()</span></code> calls, because they are the default behavior now thus
+no longer exist. However, you’ll need to confirm that the event loop in use is
+always created <strong>after</strong> importing <code class="docutils literal notranslate"><span class="pre">gino</span></code> or <code class="docutils literal notranslate"><span class="pre">aiocontextvars</span></code>, or the patch
+won’t work correctly.</p>
+<p>There is nothing to worry about in Python 3.7.</p>
+</div>
+<div class="section" id="none-as-none">
+<h4>2. none_as_none<a class="headerlink" href="#none-as-none" title="Permalink to this headline">¶</a></h4>
+<p>When GINO tries to load a row with all <code class="docutils literal notranslate"><span class="pre">NULL</span></code> values into an instance, it
+will now by default return <code class="docutils literal notranslate"><span class="pre">None</span></code> instead of an instance with all <code class="docutils literal notranslate"><span class="pre">None</span></code>
+attributes. To recover the default behavior of 0.7, please specify
+<code class="docutils literal notranslate"><span class="pre">none_as_none(False)</span></code> in affected model loader.</p>
+<p>This is especially applicable to relationship sub-loaders - if the sub-loader
+found it all <code class="docutils literal notranslate"><span class="pre">NULL</span></code>, no instance will be set to parent instance. For
+example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">child</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Child</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">Parent</span><span class="p">)</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">gino</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>If <code class="docutils literal notranslate"><span class="pre">child.parent_id</span></code> is <code class="docutils literal notranslate"><span class="pre">NULL</span></code> in database, then the <code class="docutils literal notranslate"><span class="pre">child</span></code> instance
+won’t be called with any <code class="docutils literal notranslate"><span class="pre">setattr(child,</span> <span class="pre">'parent',</span> <span class="pre">...)</span></code> at all. (If you need
+<code class="docutils literal notranslate"><span class="pre">child.parent</span> <span class="pre">==</span> <span class="pre">None</span></code> in this case, consider setting default value
+<code class="docutils literal notranslate"><span class="pre">parent</span> <span class="pre">=</span> <span class="pre">None</span></code> in child model.)</p>
+<p>Please note, it is deprecated to disable <code class="docutils literal notranslate"><span class="pre">none_as_none</span></code>, and disabling will
+be removed in GINO 1.0.</p>
+</div>
+</div>
+<div class="section" id="id1">
+<h3>0.8.6 (2020-02-10)<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Fixed <code class="docutils literal notranslate"><span class="pre">JSONPathType</span></code> bind processor for asyncpg (#609)</p></li>
+<li><p>Allowed for primary keys with different names from the database columns (Contributed by Tiago Requeijo in #599 #600)</p></li>
+<li><p>Allowed to use simple callable instead of property for one-2-many loading (Contributed by Olexiy in #629)</p></li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">distinct()</span></code> to <code class="docutils literal notranslate"><span class="pre">Alias</span></code> (#628)</p></li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h3>0.8.5 (2019-11-19)<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Improved support for <code class="docutils literal notranslate"><span class="pre">__tablename__</span></code> in <code class="docutils literal notranslate"><span class="pre">declared_attr</span></code> (Contributed by Roald Storm in #592)</p></li>
+</ul>
+</div>
+<div class="section" id="id3">
+<h3>0.8.4 (2019-11-09)<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Better loader support for models in subqueries (#573 #585)</p></li>
+<li><p>Allowed <code class="docutils literal notranslate"><span class="pre">__tablename__</span></code> to be a <code class="docutils literal notranslate"><span class="pre">declared_attr</span></code> (#579 #582)</p></li>
+<li><p>Fixed Sanic 19.9.0 compatibility (#569)</p></li>
+<li><p>Added one() and one_or_none() (Contributed by Ilaï Deutel in #577)</p></li>
+<li><p>Improved Starleet extension compatibility (Contributed by Jim O’Brien in #538)</p></li>
+<li><p>Fixed Starlette connection release during exceptions issue (Contributed by qulaz in #533)</p></li>
+<li><p>Fixed server event compatibility with Sanic 19.6.2 (Contributed by Julio Lacerda in #520)</p></li>
+<li><p>Fixed Grammar (Contributed by Simeon J Morgan in #504)</p></li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h3>0.8.3 (2019-06-06)<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Fixed deprecated warnings in asyncpg dialect and aiohttp (#425)</p></li>
+<li><p>Customizable db attribute name in aiohttp app instance (#457)</p></li>
+<li><p>Added Starlette support (#486)</p></li>
+</ul>
+</div>
+<div class="section" id="id5">
+<h3>0.8.2 (2019-03-07)<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Added exception for unknown JSON properties (#406 #408)</p></li>
+<li><p>Supported Quart 0.7 (#411)</p></li>
+<li><p>Accepted kwargs for db init in extensions (#407 #427)</p></li>
+<li><p>Added custom config parameter to aiohttp middleware (Contributed by Michał Dziewulski in #440)</p></li>
+<li><p>Added NullPool (#437 #441)</p></li>
+<li><p>Unpinned dependency versions (#447)</p></li>
+<li><p>Added support for SQLAlchemy 1.3 (#433 #451)</p></li>
+</ul>
+</div>
+<div class="section" id="id6">
+<h3>0.8.1 (2018-12-08)<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Alias supported <code class="docutils literal notranslate"><span class="pre">Label</span></code> (#365)</p></li>
+<li><p>Docs update (#308, 4c59ad, #401 by Pascal van Kooten)</p></li>
+<li><p>Version requirement for SQLAlchemy is updated to <code class="docutils literal notranslate"><span class="pre">&gt;=1.2</span></code> (#378 #382)</p></li>
+<li><p>Added option for SSL in aiohttp extension (Contributed by Martin Zaťko in #387 #393)
+* And all other extensions (#395)</p></li>
+<li><p>Supported Tornado 5 (#396, also thanks to Vladimir Goncharov)</p></li>
+<li><p>Fixed custom JSON/JSONB type support (#402 #403)</p></li>
+</ul>
+<p>(Most fixes done by Tony Wang)</p>
+</div>
+<div class="section" id="id7">
+<h3>0.8.0 (2018-10-16)<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Welcome Tony Wang to the maintenance team (#335)</p></li>
+<li><p>Allowed custom column names (#261 #297)</p></li>
+<li><p>Allowed column instance in <code class="docutils literal notranslate"><span class="pre">model.load()</span></code> (Contributed by Jekel in #323)</p></li>
+<li><p>[Breaking] Upgraded to aiocontextvars 0.2.0 (#333)</p></li>
+<li><p>Fixed bug that the same empty stack is shared between sub-tasks (#313 #334)</p></li>
+<li><p>[Breaking] Made <code class="docutils literal notranslate"><span class="pre">none_as_none()</span></code> the default behavior (#351)</p></li>
+<li><p>Bug fixes and docs update</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="gino-0-7">
+<h2>GINO 0.7<a class="headerlink" href="#gino-0-7" title="Permalink to this headline">¶</a></h2>
+<p>This is also version 1.0 beta 3.</p>
+<div class="section" id="id8">
+<h3>0.7.7 (2018-12-08)<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Backported fix for custom JSON/JSONB type support (#402 #403)</p></li>
+</ul>
+</div>
+<div class="section" id="id9">
+<h3>0.7.6 (2018-08-26)<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Updated library support (Contributed by Tony Wang in #275 #309)</p></li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">none_as_none()</span></code> (#281 #282)</p></li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">ARRAY</span></code> alias in asyncpg dialect module (Contributed by Mykyta Holubakha in #289)</p></li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">Model.lookup()</span></code> to prevent updating whole table without primary key (#287 #288)</p></li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">DB_ECHO</span></code> in extension options (Contributed by Mykyta Holubakha in #298)</p></li>
+<li><p>Fixed broken JSON/JSONB result processor since 0.5.8 (Contributed by Tony Wang in #291 #305)</p></li>
+<li><p>Removed bad rollback after a failing commit (Contributed by Tony Wang in #302 #304)</p></li>
+<li><p>Fixed to raise <code class="docutils literal notranslate"><span class="pre">UninitializedError</span></code> if bind is <code class="docutils literal notranslate"><span class="pre">None</span></code> (Contributed by Tony Wang in #307 #310)</p></li>
+</ul>
+</div>
+<div class="section" id="id10">
+<h3>0.7.5 (2018-07-26)<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Added friendly error message when using abstract models by mistake (#224)</p></li>
+<li><p>Supported Python 3.7 (Contributed by Tony Wang in #265)</p></li>
+<li><p>Updated documentation</p></li>
+<li><p>Fixed a bug in TupleLoader (Contributed by Pavol Vargovcik in #279 #280)</p></li>
+</ul>
+</div>
+<div class="section" id="id11">
+<h3>0.7.4 (2018-06-10)<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Added aiocontextvars as required dependency required for Python 3.5 and 3.6 (#228)</p></li>
+<li><p>Added Quart support (#213)</p></li>
+<li><p>Fixed Tornado options parsing (#231)</p></li>
+<li><p>Improved coding style and test coverage</p></li>
+</ul>
+</div>
+<div class="section" id="id12">
+<h3>0.7.3 (2018-05-19)<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Fix for failing binary type (#225)</p></li>
+</ul>
+</div>
+<div class="section" id="id13">
+<h3>0.7.2 (2018-05-15)<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Added prepared statement support (#14)</p></li>
+<li><p>Added dsn in extension config (Contributed by Yurii Shtrikker in #215)</p></li>
+</ul>
+</div>
+<div class="section" id="id14">
+<h3>0.7.1 (2018-05-03)<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Added support for inline model constraints (Contributed by Kinware in #198)</p></li>
+<li><p>Added docs and tests for using SSL (#202)</p></li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">declared_attr</span></code> (#204)</p></li>
+<li><p>Allowed <code class="docutils literal notranslate"><span class="pre">ModelLoader</span></code> passively load partial model (#216)</p></li>
+</ul>
+</div>
+<div class="section" id="id15">
+<h3>0.7.0 (2018-04-18)<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Added Python 3.5 support (#187)</p></li>
+<li><p>Added support to use <code class="docutils literal notranslate"><span class="pre">dict</span></code> as ident for <code class="docutils literal notranslate"><span class="pre">Model.get</span></code> (#192)</p></li>
+<li><p>Added result loader (partial relationship support) (#13)</p></li>
+<li><p>Added documentation on relationship and transaction (#146)</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="gino-0-6">
+<h2>GINO 0.6<a class="headerlink" href="#gino-0-6" title="Permalink to this headline">¶</a></h2>
+<p>This is also version 1.0 beta 2.</p>
+<div class="section" id="migrating-to-gino-0-6">
+<h3>Migrating to GINO 0.6<a class="headerlink" href="#migrating-to-gino-0-6" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="task-local">
+<h4>1. Task Local<a class="headerlink" href="#task-local" title="Permalink to this headline">¶</a></h4>
+<p>We created a new Python package <a class="reference external" href="https://github.com/fantix/aiocontextvars">aiocontextvars</a> from previous <code class="docutils literal notranslate"><span class="pre">local.py</span></code>. If
+you made use of the task local features, you should install this package.</p>
+<p>Previous <code class="docutils literal notranslate"><span class="pre">gino.enable_task_local()</span></code> and <code class="docutils literal notranslate"><span class="pre">gino.disable_task_local()</span></code> are
+replaced by <code class="docutils literal notranslate"><span class="pre">aiocontextvars.enable_inherit()</span></code> and
+<code class="docutils literal notranslate"><span class="pre">aiocontextvars.disable_inherit()</span></code>. However in GINO 0.5 they controls the
+whole task local feature switch, while <a class="reference external" href="https://github.com/fantix/aiocontextvars">aiocontextvars</a> by default offers task
+local even without <code class="docutils literal notranslate"><span class="pre">enable_inherit()</span></code>, which controls whether the local
+storage should be passed between chained tasks. When enabled, it behaves the
+same as enabled in 0.5, but you cannot completely turn off the task local
+feature while <a class="reference external" href="https://github.com/fantix/aiocontextvars">aiocontextvars</a> is installed.</p>
+<p>There is no <code class="docutils literal notranslate"><span class="pre">gino.get_local()</span></code> and <code class="docutils literal notranslate"><span class="pre">gino.reset_local()</span></code> relevant in
+<a class="reference external" href="https://github.com/fantix/aiocontextvars">aiocontextvars</a>. The similar thing is <code class="docutils literal notranslate"><span class="pre">aiocontextvars.ContextVar</span></code> instance
+through its <code class="docutils literal notranslate"><span class="pre">get()</span></code>, <code class="docutils literal notranslate"><span class="pre">set()</span></code> and <code class="docutils literal notranslate"><span class="pre">delete()</span></code> methods.</p>
+<p>Previous <code class="docutils literal notranslate"><span class="pre">gino.is_local_root()</span></code> is now
+<code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">aiocontextvars.Context.current().inherited</span></code>.</p>
+</div>
+<div class="section" id="engine">
+<h4>2. Engine<a class="headerlink" href="#engine" title="Permalink to this headline">¶</a></h4>
+<p>GINO 0.6 hides <code class="docutils literal notranslate"><span class="pre">asyncpg.Pool</span></code> behind the new SQLAlchemy-alike
+<code class="docutils literal notranslate"><span class="pre">gino.GinoEngine</span></code>. Instead of doing this in 0.5:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">with</span> <span class="n">db</span><span class="o">.</span><span class="n">create_pool</span><span class="p">(</span><span class="s1">&#39;postgresql://...&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">pool</span><span class="p">:</span>
+    <span class="c1"># your code here</span>
+</pre></div>
+</div>
+<p>You should change it to this in 0.6:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">with</span> <span class="n">db</span><span class="o">.</span><span class="n">with_bind</span><span class="p">(</span><span class="s1">&#39;postgresql://...&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">engine</span><span class="p">:</span>
+    <span class="c1"># your code here</span>
+</pre></div>
+</div>
+<p>This equals to:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">engine</span> <span class="o">=</span> <span class="k">await</span> <span class="n">gino</span><span class="o">.</span><span class="n">create_engine</span><span class="p">(</span><span class="s1">&#39;postgresql://...&#39;</span><span class="p">)</span>
+<span class="n">db</span><span class="o">.</span><span class="n">bind</span> <span class="o">=</span> <span class="n">engine</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="c1"># your code here</span>
+<span class="k">finally</span><span class="p">:</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">bind</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">await</span> <span class="n">engine</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Or:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">engine</span> <span class="o">=</span> <span class="k">await</span> <span class="n">db</span><span class="o">.</span><span class="n">set_bind</span><span class="p">(</span><span class="s1">&#39;postgresql://...&#39;</span><span class="p">)</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="c1"># your code here</span>
+<span class="k">finally</span><span class="p">:</span>
+    <span class="k">await</span> <span class="n">db</span><span class="o">.</span><span class="n">pop_bind</span><span class="p">()</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Or even this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">db</span> <span class="o">=</span> <span class="k">await</span> <span class="n">gino</span><span class="o">.</span><span class="n">Gino</span><span class="p">(</span><span class="s1">&#39;postgresql://...&#39;</span><span class="p">)</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="c1"># your code here</span>
+<span class="k">finally</span><span class="p">:</span>
+    <span class="k">await</span> <span class="n">db</span><span class="o">.</span><span class="n">pop_bind</span><span class="p">()</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Choose whichever suits you the best.</p>
+<p>Obviously <code class="docutils literal notranslate"><span class="pre">GinoEngine</span></code> doesn’t provide <code class="docutils literal notranslate"><span class="pre">asyncpg.Pool</span></code> methods directly any
+longer, but you can get the underlying <code class="docutils literal notranslate"><span class="pre">asyncpg.Pool</span></code> object through
+<code class="docutils literal notranslate"><span class="pre">engine.raw_pool</span></code> property.</p>
+<p><code class="docutils literal notranslate"><span class="pre">GinoPool.get_current_connection()</span></code> is now changed to <code class="docutils literal notranslate"><span class="pre">current_connection</span></code>
+property on <code class="docutils literal notranslate"><span class="pre">GinoEngine</span></code> instances to support multiple engines.</p>
+<p><code class="docutils literal notranslate"><span class="pre">GinoPool.execution_option</span></code> is gone, instead <code class="docutils literal notranslate"><span class="pre">update_execution_options()</span></code>
+on <code class="docutils literal notranslate"><span class="pre">GinoEngine</span></code> instance is available.</p>
+<p><code class="docutils literal notranslate"><span class="pre">GinoPool().metadata</span></code> is gone, <code class="docutils literal notranslate"><span class="pre">dialect</span></code> is still available.</p>
+<p><code class="docutils literal notranslate"><span class="pre">GinoPool.release()</span></code> is removed in <code class="docutils literal notranslate"><span class="pre">GinoEngine</span></code> and <code class="docutils literal notranslate"><span class="pre">Gino</span></code>, the
+<code class="docutils literal notranslate"><span class="pre">release()</span></code> method on <code class="docutils literal notranslate"><span class="pre">GinoConnection</span></code> object should be used instead.</p>
+<p>These methods exist both in 0.5 <code class="docutils literal notranslate"><span class="pre">GinoPool</span></code> and 0.6 <code class="docutils literal notranslate"><span class="pre">GinoEngine</span></code>:
+<code class="docutils literal notranslate"><span class="pre">close()</span></code>, <code class="docutils literal notranslate"><span class="pre">acquire()</span></code>, <code class="docutils literal notranslate"><span class="pre">all()</span></code>, <code class="docutils literal notranslate"><span class="pre">first()</span></code>, <code class="docutils literal notranslate"><span class="pre">scalar()</span></code>, <code class="docutils literal notranslate"><span class="pre">status()</span></code>.</p>
+</div>
+<div class="section" id="ginoconnection">
+<h4>3. GinoConnection<a class="headerlink" href="#ginoconnection" title="Permalink to this headline">¶</a></h4>
+<p>Similarly, <code class="docutils literal notranslate"><span class="pre">GinoConnection</span></code> in 0.6 is no longer a subclass of
+<code class="docutils literal notranslate"><span class="pre">asyncpg.Connection</span></code>, instead it has a <code class="docutils literal notranslate"><span class="pre">asyncpg.Connection</span></code> instance,
+accessable through <code class="docutils literal notranslate"><span class="pre">GinoConnection.raw_connection</span></code> property.</p>
+<p><code class="docutils literal notranslate"><span class="pre">GinoConnection.metadata</span></code> is deleted in 0.6, while <code class="docutils literal notranslate"><span class="pre">dialect</span></code> remained.</p>
+<p><code class="docutils literal notranslate"><span class="pre">GinoConnection.execution_options()</span></code> is changed from a mutable dict in 0.5 to
+a method returning a copy of current connection with the new options, the same
+as SQLAlchemy behavior.</p>
+<p><code class="docutils literal notranslate"><span class="pre">GinoConnection.release()</span></code> is still present, but its default behavior has
+been changed to permanently release this connection. You should add argument
+<code class="docutils literal notranslate"><span class="pre">permanent=False</span></code> to remain its previous behavior.</p>
+<p>And <code class="docutils literal notranslate"><span class="pre">all()</span></code>, <code class="docutils literal notranslate"><span class="pre">first()</span></code>, <code class="docutils literal notranslate"><span class="pre">scalar()</span></code>, <code class="docutils literal notranslate"><span class="pre">status()</span></code>, <code class="docutils literal notranslate"><span class="pre">iterate()</span></code>,
+<code class="docutils literal notranslate"><span class="pre">transaction()</span></code> remained in 0.6.</p>
+</div>
+<div class="section" id="query-api">
+<h4>4. Query API<a class="headerlink" href="#query-api" title="Permalink to this headline">¶</a></h4>
+<p>All five query APIs <code class="docutils literal notranslate"><span class="pre">all()</span></code>, <code class="docutils literal notranslate"><span class="pre">first()</span></code>, <code class="docutils literal notranslate"><span class="pre">scalar()</span></code>, <code class="docutils literal notranslate"><span class="pre">status()</span></code>,
+<code class="docutils literal notranslate"><span class="pre">iterate()</span></code> now accept the same parameters as SQLAlchemy <code class="docutils literal notranslate"><span class="pre">execute()</span></code>,
+meaning they accept raw SQL text, or multiple sets of parameters for
+“executemany”. Please note, if the parameters are recognized as “executemany”,
+none of the methods will return anything. Meanwhile, they no longer accept the
+parameter <code class="docutils literal notranslate"><span class="pre">bind</span></code> if they did. Just use the API on the <code class="docutils literal notranslate"><span class="pre">GinoEngine</span></code> or
+<code class="docutils literal notranslate"><span class="pre">GinoConnection</span></code> object instead.</p>
+</div>
+<div class="section" id="transaction">
+<h4>5. Transaction<a class="headerlink" href="#transaction" title="Permalink to this headline">¶</a></h4>
+<p>Transaction interface is rewritten. Now in 0.6, a <code class="docutils literal notranslate"><span class="pre">GinoTransaction</span></code> object is
+provided consistently from all 3 methods:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">with</span> <span class="n">db</span><span class="o">.</span><span class="n">transaction</span><span class="p">()</span> <span class="k">as</span> <span class="n">tx</span><span class="p">:</span>
+    <span class="c1"># within transaction</span>
+
+<span class="k">async</span> <span class="k">with</span> <span class="n">engine</span><span class="o">.</span><span class="n">transaction</span><span class="p">()</span> <span class="k">as</span> <span class="n">tx</span><span class="p">:</span>
+    <span class="c1"># within transaction</span>
+
+<span class="k">async</span> <span class="k">with</span> <span class="n">engine</span><span class="o">.</span><span class="n">acquire</span><span class="p">()</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+    <span class="k">async</span> <span class="k">with</span> <span class="n">conn</span><span class="o">.</span><span class="n">transaction</span><span class="p">()</span> <span class="k">as</span> <span class="n">tx</span><span class="p">:</span>
+        <span class="c1"># within transaction</span>
+</pre></div>
+</div>
+<p>And different usage with <code class="docutils literal notranslate"><span class="pre">await</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tx</span> <span class="o">=</span> <span class="k">await</span> <span class="n">db</span><span class="o">.</span><span class="n">transaction</span><span class="p">()</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="c1"># within transaction</span>
+    <span class="k">await</span> <span class="n">tx</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="k">await</span> <span class="n">tx</span><span class="o">.</span><span class="n">rollback</span><span class="p">()</span>
+    <span class="k">raise</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">GinoConnection</span></code> object is available at <code class="docutils literal notranslate"><span class="pre">tx.connection</span></code>, while
+underlying transaction object from database driver is available at
+<code class="docutils literal notranslate"><span class="pre">tx.transaction</span></code> - for asyncpg it is an <code class="docutils literal notranslate"><span class="pre">asyncpg.transaction.Transaction</span></code>
+object.</p>
+</div>
+</div>
+<div class="section" id="id16">
+<h3>0.6.6 (2018-05-18)<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Backported a fix for failing binary type (#225)</p></li>
+</ul>
+</div>
+<div class="section" id="id17">
+<h3>0.6.5 (2018-04-18)<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Abandoned 0.6.4 and keep 0.6.x stable</p></li>
+<li><p>Backported doc for transaction</p></li>
+</ul>
+</div>
+<div class="section" id="id18">
+<h3>0.6.4 (2018-04-16)<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
+<p>Abandoned version, please use 0.7.0 instead.</p>
+</div>
+<div class="section" id="id19">
+<h3>0.6.3 (2018-04-08)<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Added aiohttp support</p></li>
+<li><p>Added support for calling <code class="docutils literal notranslate"><span class="pre">create()</span></code> on model instances (Contributed by Kinware in #178 #180)</p></li>
+<li><p>Fixed <code class="docutils literal notranslate"><span class="pre">get()</span></code> by string, and misc environment issues (Contributed by Tony Wang in #191 193 #183 #184)</p></li>
+</ul>
+</div>
+<div class="section" id="id20">
+<h3>0.6.2 (2018-03-24)<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Fixed SQLAlchemy prefetch issue (#141)</p></li>
+<li><p>Fixed issue that mixin class on Model not working (#174)</p></li>
+<li><p>Added more documentation (Thanks Olaf Conradi for reviewing)</p></li>
+</ul>
+</div>
+<div class="section" id="id21">
+<h3>0.6.1 (2018-03-18)<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Fixed <code class="docutils literal notranslate"><span class="pre">create</span></code> and <code class="docutils literal notranslate"><span class="pre">drop</span></code> for <code class="docutils literal notranslate"><span class="pre">Enum</span></code> type (#160)</p></li>
+<li><p>A bit more documentation (#159)</p></li>
+</ul>
+</div>
+<div class="section" id="id22">
+<h3>0.6.0 (2018-03-14)<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>[Breaking] API Refactored, <code class="docutils literal notranslate"><span class="pre">Pool</span></code> replaced with <code class="docutils literal notranslate"><span class="pre">Engine</span></code></p>
+<ul>
+<li><p>New API <code class="docutils literal notranslate"><span class="pre">Engine</span></code> replaced asyncpg <code class="docutils literal notranslate"><span class="pre">Pool</span></code> (#59)</p></li>
+<li><p>Supported different dialects, theoretically</p></li>
+<li><p>Used <a class="reference external" href="https://github.com/fantix/aiocontextvars">aiocontextvars</a> instead of builtin task local (#89)</p></li>
+</ul>
+</li>
+<li><p>[Breaking] Fixed query API with <code class="docutils literal notranslate"><span class="pre">multiparams</span></code> (executemany) to return correctly (#20)</p></li>
+<li><p>[Breaking] The query methods no longer accept the parameter <code class="docutils literal notranslate"><span class="pre">bind</span></code></p></li>
+<li><p>[Breaking] <code class="docutils literal notranslate"><span class="pre">Gino</span></code> no longer exposes <code class="docutils literal notranslate"><span class="pre">postgresql</span></code> types</p></li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">echo</span></code> on engine (#142)</p></li>
+<li><p>Added tests to cover 80% of code</p></li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">gino</span></code> extension on <code class="docutils literal notranslate"><span class="pre">SchemaItem</span></code> for <code class="docutils literal notranslate"><span class="pre">create_all</span></code> and so on (#76 #106)</p></li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">gino</span></code> extension on model classes for <code class="docutils literal notranslate"><span class="pre">create()</span></code> or <code class="docutils literal notranslate"><span class="pre">drop()</span></code></p></li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">_update_request_cls</span></code> on <code class="docutils literal notranslate"><span class="pre">CRUDModel</span></code> (#147)</p></li>
+<li><p>Rewrote the documentation (#146)</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="gino-0-5">
+<h2>GINO 0.5<a class="headerlink" href="#gino-0-5" title="Permalink to this headline">¶</a></h2>
+<p>This is also version 1.0 beta 1.</p>
+<div class="section" id="id23">
+<h3>0.5.8 (2018-02-14)<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Preparing for 0.6.0 which will be a breaking release</p></li>
+<li><p>Fixed wrong value of <code class="docutils literal notranslate"><span class="pre">Enum</span></code> in creation (Contributed by Sergey Kovalev in #126)</p></li>
+</ul>
+</div>
+<div class="section" id="id24">
+<h3>0.5.7 (2017-11-24)<a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h3>
+<p>This is an emergency fix for 0.5.6.</p>
+<ul class="simple">
+<li><p>Fixed broken lazy connection (Contributed by Ádám Barancsuk in #114)</p></li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">Model.outerjoin</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="id25">
+<h3>0.5.6 (2017-11-23)<a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Changed to use unnamed statement when possible (#80 #90)</p></li>
+<li><p>Added more example (Contributed by Kentoseth in #109)</p></li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">Model.join</span></code> and made <code class="docutils literal notranslate"><span class="pre">Model</span></code> selectable (Contributed by Ádám Barancsuk in #112 #113)</p></li>
+</ul>
+</div>
+<div class="section" id="id26">
+<h3>0.5.5 (2017-10-18)<a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Ensured clean connection if transaction acquire fails (Contributed by Vladimir Goncharov in #87)</p></li>
+<li><p>Added ability to reset local storage (#84)</p></li>
+<li><p>Fixed bug in JSON property update</p></li>
+<li><p>Added update chaining feature</p></li>
+</ul>
+</div>
+<div class="section" id="id27">
+<h3>0.5.4 (2017-10-04)<a class="headerlink" href="#id27" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Updated example (Contributed by Kinware in #75)</p></li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">Model.insert</span></code> (Contributed by Neal Wang in #63)</p></li>
+<li><p>Fixed issue that non-lazy acquiring fails dirty (#79)</p></li>
+</ul>
+</div>
+<div class="section" id="id28">
+<h3>0.5.3 (2017-09-23)<a class="headerlink" href="#id28" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Fixed <code class="docutils literal notranslate"><span class="pre">no</span> <span class="pre">module</span> <span class="pre">named</span> <span class="pre">cutils</span></code> error (Contributed by Vladimir Goncharov in #73)</p></li>
+</ul>
+</div>
+<div class="section" id="id29">
+<h3>0.5.2 (2017-09-10)<a class="headerlink" href="#id29" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Added missing driver name on dialect (#67)</p></li>
+<li><p>Fixed dialect to support native decimal type (#67)</p></li>
+</ul>
+</div>
+<div class="section" id="id30">
+<h3>0.5.1 (2017-09-09)<a class="headerlink" href="#id30" title="Permalink to this headline">¶</a></h3>
+<p>This is an emergency fix for 0.5.0.</p>
+<ul class="simple">
+<li><p>Reverted the extension, back to pure Python (#60)</p></li>
+<li><p>Used SQLAlchemy <code class="docutils literal notranslate"><span class="pre">RowProxy</span></code></p></li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">first_or_404</span></code></p></li>
+<li><p>Fixed bug that <code class="docutils literal notranslate"><span class="pre">GinoPool</span></code> cannot be inherited</p></li>
+</ul>
+</div>
+<div class="section" id="id31">
+<h3>0.5.0 (2017-09-03)<a class="headerlink" href="#id31" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>[Breaking] Internal refactor: extracted and isolated a few modules, partially rewritten</p>
+<ul>
+<li><p>Extracted CRUD operations</p></li>
+<li><p>Core operations are moved to <code class="docutils literal notranslate"><span class="pre">dialect</span></code> and execution context</p></li>
+<li><p>Removed <code class="docutils literal notranslate"><span class="pre">guess_model</span></code>, switched to explicit execution options</p></li>
+<li><p>Turned <code class="docutils literal notranslate"><span class="pre">timeout</span></code> parameter to an execution option</p></li>
+<li><p>Extracted <code class="docutils literal notranslate"><span class="pre">pool</span></code>, <code class="docutils literal notranslate"><span class="pre">connection</span></code> and <code class="docutils literal notranslate"><span class="pre">api</span></code> from <code class="docutils literal notranslate"><span class="pre">asyncpg_delegate</span></code></p></li>
+</ul>
+</li>
+<li><p>Added support for SQLAlchemy execution options, and a few custom options</p></li>
+<li><p>[Breaking] Made <cite>Model.select</cite> return rows by default (#39)</p></li>
+<li><p>Moved <cite>get_or_404</cite> to extensions (#38)</p></li>
+<li><p>Added iterator on model classes (#43)</p></li>
+<li><p>Added Tornado extension (Contributed by Vladimir Goncharov)</p></li>
+<li><p>Added <cite>Model.to_dict</cite> (#47)</p></li>
+<li><p>Added an extension module to update <cite>asyncpg.Record</cite> with processed results</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="early-development-releases">
+<h2>Early Development Releases<a class="headerlink" href="#early-development-releases" title="Permalink to this headline">¶</a></h2>
+<p>Considered as alpha releases.</p>
+<div class="section" id="id32">
+<h3>0.4.1 (2017-08-20)<a class="headerlink" href="#id32" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Support <code class="docutils literal notranslate"><span class="pre">select</span></code> on model instance</p></li>
+</ul>
+</div>
+<div class="section" id="id33">
+<h3>0.4.0 (2017-08-15)<a class="headerlink" href="#id33" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Made <code class="docutils literal notranslate"><span class="pre">get_or_404</span></code> more friendly when Sanic is missing (Contributed by Neal Wang in #23 #31)</p></li>
+<li><p>Delegated <code class="docutils literal notranslate"><span class="pre">sqlalchemy.__all__</span></code> (Contributed by Neal Wang in #10 #33)</p></li>
+<li><p>[Breaking] Rewrote JSON/JSONB support (#29)</p></li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">lazy</span></code> parameter on <code class="docutils literal notranslate"><span class="pre">db.acquire</span></code> (Contributed by Binghan Li in #32)</p></li>
+<li><p>Added Sanic integration (Contributed by Binghan Li, Tony Wang in #30 #32 #34)</p></li>
+<li><p>Fixed <code class="docutils literal notranslate"><span class="pre">iterate</span></code> API to be compatible with asyncpg (#32)</p></li>
+<li><p>Unified exceptions</p></li>
+<li><p>[Breaking] Changed <code class="docutils literal notranslate"><span class="pre">update</span></code> API (#29)</p></li>
+<li><p>Bug fixes</p></li>
+</ul>
+</div>
+<div class="section" id="id34">
+<h3>0.3.0 (2017-08-07)<a class="headerlink" href="#id34" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Supported <code class="docutils literal notranslate"><span class="pre">__table_args__</span></code> (#12)</p></li>
+<li><p>Introduced task local to manage connection in context (#19)</p></li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">query.gino</span></code> extension for in-place execution</p></li>
+<li><p>Refreshed README (#3)</p></li>
+<li><p>Adopted PEP 487 (Contributed by Tony Wang in #17 #27)</p></li>
+<li><p>Used <code class="docutils literal notranslate"><span class="pre">weakref</span></code> on <code class="docutils literal notranslate"><span class="pre">__model__</span></code> of table and query (Contributed by Tony Wang)</p></li>
+<li><p>Delegated asyncpg <code class="docutils literal notranslate"><span class="pre">timeout</span></code> parameter (Contributed by Neal Wang in #16 #22)</p></li>
+</ul>
+</div>
+<div class="section" id="id35">
+<h3>0.2.3 (2017-08-04)<a class="headerlink" href="#id35" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Supported any primary key (Contributed by Tony Wang in #11)</p></li>
+</ul>
+</div>
+<div class="section" id="id36">
+<h3>0.2.2 (2017-08-02)<a class="headerlink" href="#id36" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Supported SQLAlchemy result processor</p></li>
+<li><p>Added rich support on JSON/JSONB</p></li>
+<li><p>Bug fixes</p></li>
+</ul>
+</div>
+<div class="section" id="id37">
+<h3>0.2.1 (2017-07-28)<a class="headerlink" href="#id37" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">update</span></code> and <code class="docutils literal notranslate"><span class="pre">delete</span></code> API</p></li>
+</ul>
+</div>
+<div class="section" id="id38">
+<h3>0.2.0 (2017-07-28)<a class="headerlink" href="#id38" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Changed API, no longer reuses asyncpg API</p></li>
+</ul>
+</div>
+<div class="section" id="id39">
+<h3>0.1.1 (2017-07-25)<a class="headerlink" href="#id39" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">db.bind</span></code></p></li>
+<li><p>API changed: parameter <code class="docutils literal notranslate"><span class="pre">conn</span></code> renamed to optional <code class="docutils literal notranslate"><span class="pre">bind</span></code></p></li>
+<li><p>Delegated asyncpg Pool with <code class="docutils literal notranslate"><span class="pre">db.create_pool</span></code></p></li>
+<li><p>Internal enhancement and bug fixes</p></li>
+</ul>
+</div>
+<div class="section" id="id40">
+<h3>0.1.0 (2017-07-21)<a class="headerlink" href="#id40" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>First release on PyPI.</p></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+            </div>
+        </div>
+
+        <div class="col hide-on-small-only m3 right-nav">
+            <div class="table-of-contents fixed">
+                
+                    <ul>
+<li><a class="reference internal" href="#">History</a><ul>
+<li><a class="reference internal" href="#gino-0-8">GINO 0.8</a><ul>
+<li><a class="reference internal" href="#migrating-to-gino-0-8">Migrating to GINO 0.8</a><ul>
+<li><a class="reference internal" href="#contextvars">1. contextvars</a></li>
+<li><a class="reference internal" href="#none-as-none">2. none_as_none</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id1">0.8.6 (2020-02-10)</a></li>
+<li><a class="reference internal" href="#id2">0.8.5 (2019-11-19)</a></li>
+<li><a class="reference internal" href="#id3">0.8.4 (2019-11-09)</a></li>
+<li><a class="reference internal" href="#id4">0.8.3 (2019-06-06)</a></li>
+<li><a class="reference internal" href="#id5">0.8.2 (2019-03-07)</a></li>
+<li><a class="reference internal" href="#id6">0.8.1 (2018-12-08)</a></li>
+<li><a class="reference internal" href="#id7">0.8.0 (2018-10-16)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#gino-0-7">GINO 0.7</a><ul>
+<li><a class="reference internal" href="#id8">0.7.7 (2018-12-08)</a></li>
+<li><a class="reference internal" href="#id9">0.7.6 (2018-08-26)</a></li>
+<li><a class="reference internal" href="#id10">0.7.5 (2018-07-26)</a></li>
+<li><a class="reference internal" href="#id11">0.7.4 (2018-06-10)</a></li>
+<li><a class="reference internal" href="#id12">0.7.3 (2018-05-19)</a></li>
+<li><a class="reference internal" href="#id13">0.7.2 (2018-05-15)</a></li>
+<li><a class="reference internal" href="#id14">0.7.1 (2018-05-03)</a></li>
+<li><a class="reference internal" href="#id15">0.7.0 (2018-04-18)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#gino-0-6">GINO 0.6</a><ul>
+<li><a class="reference internal" href="#migrating-to-gino-0-6">Migrating to GINO 0.6</a><ul>
+<li><a class="reference internal" href="#task-local">1. Task Local</a></li>
+<li><a class="reference internal" href="#engine">2. Engine</a></li>
+<li><a class="reference internal" href="#ginoconnection">3. GinoConnection</a></li>
+<li><a class="reference internal" href="#query-api">4. Query API</a></li>
+<li><a class="reference internal" href="#transaction">5. Transaction</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id16">0.6.6 (2018-05-18)</a></li>
+<li><a class="reference internal" href="#id17">0.6.5 (2018-04-18)</a></li>
+<li><a class="reference internal" href="#id18">0.6.4 (2018-04-16)</a></li>
+<li><a class="reference internal" href="#id19">0.6.3 (2018-04-08)</a></li>
+<li><a class="reference internal" href="#id20">0.6.2 (2018-03-24)</a></li>
+<li><a class="reference internal" href="#id21">0.6.1 (2018-03-18)</a></li>
+<li><a class="reference internal" href="#id22">0.6.0 (2018-03-14)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#gino-0-5">GINO 0.5</a><ul>
+<li><a class="reference internal" href="#id23">0.5.8 (2018-02-14)</a></li>
+<li><a class="reference internal" href="#id24">0.5.7 (2017-11-24)</a></li>
+<li><a class="reference internal" href="#id25">0.5.6 (2017-11-23)</a></li>
+<li><a class="reference internal" href="#id26">0.5.5 (2017-10-18)</a></li>
+<li><a class="reference internal" href="#id27">0.5.4 (2017-10-04)</a></li>
+<li><a class="reference internal" href="#id28">0.5.3 (2017-09-23)</a></li>
+<li><a class="reference internal" href="#id29">0.5.2 (2017-09-10)</a></li>
+<li><a class="reference internal" href="#id30">0.5.1 (2017-09-09)</a></li>
+<li><a class="reference internal" href="#id31">0.5.0 (2017-09-03)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#early-development-releases">Early Development Releases</a><ul>
+<li><a class="reference internal" href="#id32">0.4.1 (2017-08-20)</a></li>
+<li><a class="reference internal" href="#id33">0.4.0 (2017-08-15)</a></li>
+<li><a class="reference internal" href="#id34">0.3.0 (2017-08-07)</a></li>
+<li><a class="reference internal" href="#id35">0.2.3 (2017-08-04)</a></li>
+<li><a class="reference internal" href="#id36">0.2.2 (2017-08-02)</a></li>
+<li><a class="reference internal" href="#id37">0.2.1 (2017-07-28)</a></li>
+<li><a class="reference internal" href="#id38">0.2.0 (2017-07-28)</a></li>
+<li><a class="reference internal" href="#id39">0.1.1 (2017-07-25)</a></li>
+<li><a class="reference internal" href="#id40">0.1.0 (2017-07-21)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+                
+            </div>
+        </div>
+
+    </div>
+    <div class="fixed-action-btn click-to-toggle">
+        <a class="btn-floating btn-large white">
+            <img src="../_static/images/language.svg">
+            <div>
+              EN
+            </div>
+        </a>
+        <ul>
+            <li><a href="/docs/en/v1.0.0rc4/reference/history.html" class="btn-floating blue">EN</a></li>
+            <li><a href="/docs/zh/v1.0.0rc4/reference/history.html" class="btn-floating red">ZH</a></li>
+        </ul>
+    </div>
+</main>
+
+<script type="text/javascript" src="../_static/js/materialize.min.js"></script>
+<script type="text/javascript" src="../_static/js/language_data.js"></script>
+<script id="documentation_options" data-url_root="../" src="../_static/js/documentation_options.js"></script>
+<script type="text/javascript" src="../_static/js/underscore.js"></script>
+<script type="text/javascript" src="../_static/js/jquery.js"></script>
+<script type="text/javascript" src="../_static/js/gino.js"></script>
+<script type="text/javascript" src="../searchindex.js"></script>
+</body>
+</html>

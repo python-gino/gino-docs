@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="../_static/favicon.ico">
+    <title>Build a FastAPI Server - GINO 1.0.0rc4 documentation</title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async
+            src="https://www.googletagmanager.com/gtag/js?id=UA-3759436-10"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag () {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'UA-3759436-10');
+    </script>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Raleway:400,500,600,700&display=swap">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css">
+    <link type="text/css" rel="stylesheet"
+          href="../_static/css/materialize.min.css"
+          media="screen,projection"/>
+    <link rel="stylesheet" href="../_static/pygments.css"
+          type="text/css"/>
+    <link type="text/css" rel="stylesheet"
+          href="../_static/css/gino.css"/>
+</head>
+<body>
+
+<header>
+    <div class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper">
+                <a href="../index.html" class="brand-logo">
+                    <div class="img"
+                         style="background-image: url(../_static/logo.svg); width: 103px; height: 40px;"></div>
+                </a>
+                <div class="breadcrumbs">
+                    <a class="breadcrumb" style="display: none"></a>
+                    
+                        <a href="../tutorials.html"
+                           class="breadcrumb">Tutorials</a>
+                    
+                    
+                        <a class="breadcrumb" style="color: #FFFFFF">Build a FastAPI Server</a>
+                    
+                </div>
+                <div class="spacer"></div>
+                <div id="search-container" class="search">
+                    <input type="text" id="search" placeholder="Search">
+                    <i class="mdi mdi-magnify"></i>
+                    <div id="search-results" style="display: none"></div>
+                </div>
+                <a class="btn-flat theme-dark" href="/">
+                    HOME
+                </a>
+                <a class="btn-flat theme-dark" href="/authors.html">
+                    CREDITS
+                </a>
+                <a href="https://github.com/python-gino/gino" target="_blank"
+                   class="github-stars">
+                    <div class="left"><img
+                        src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iNDNweCIgaGVpZ2h0PSI0MnB4IiB2aWV3Qm94PSIwIDAgNDMgNDIiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8IS0tIEdlbmVyYXRvcjogU2tldGNoIDYxLjIgKDg5NjUzKSAtIGh0dHBzOi8vc2tldGNoLmNvbSAtLT4KICAgIDx0aXRsZT5GaWxsIDQ5PC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPgogICAgPGcgaWQ9IlYzLeacgOaWsOeov+S7tiIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgaWQ9IkhPTUUtdjMiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0xNTA3LjAwMDAwMCwgLTQ5LjAwMDAwMCkiIGZpbGw9IiNGRkZGRkUiPgogICAgICAgICAgICA8ZyBpZD0iYmFubmVyLWJnIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMzc5LjAwMDAwMCwgLTE4Ny4wMDAwMDApIj4KICAgICAgICAgICAgICAgIDxnIGlkPSJoZWFkZXIiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDU5Ny4wMDAwMDAsIDIxOC4wMDAwMDApIj4KICAgICAgICAgICAgICAgICAgICA8cGF0aCBkPSJNMTMxMC40OTgwMiwxOCBDMTI5OC42MjcxMiwxOCAxMjg5LDI3LjYzOTg4MzEgMTI4OSwzOS41MzIxMTIzIEMxMjg5LDQ5LjA0NTEwMjYgMTI5NS4xNTk4Myw1Ny4xMTQ2ODggMTMwMy43MDMzNCw1OS45NjE4NDM5IEMxMzA0Ljc3OTAzLDYwLjE2MDExMzggMTMwNS4xNzEwMyw1OS40OTUyNDg3IDEzMDUuMTcxMDMsNTguOTI0MjMxMyBDMTMwNS4xNzEwMyw1OC40MTI2OTUgMTMwNS4xNTI1NSw1Ny4wNTkxNzI0IDEzMDUuMTQxOTksNTUuMjYyODQ3IEMxMjk5LjE2MTY3LDU2LjU2MzQ5NzYgMTI5Ny44OTk4Nyw1Mi4zNzYwMzcxIDEyOTcuODk5ODcsNTIuMzc2MDM3MSBDMTI5Ni45MjE4NSw0OS44ODg0MTA2IDEyOTUuNTEyMjMsNDkuMjI2MTg5MSAxMjk1LjUxMjIzLDQ5LjIyNjE4OTEgQzEyOTMuNTYwMTUsNDcuODkxMTcxNyAxMjk1LjY2MDA2LDQ3LjkxNzYwNzcgMTI5NS42NjAwNiw0Ny45MTc2MDc3IEMxMjk3LjgxODA0LDQ4LjA2OTYxNDYgMTI5OC45NTMxMyw1MC4xMzY5MDg5IDEyOTguOTUzMTMsNTAuMTM2OTA4OSBDMTMwMC44NzA5LDUzLjQyNjg2NzYgMTMwMy45ODU3OSw1Mi40NzY0OTM4IDEzMDUuMjEwNjMsNTEuOTI1MzAzNSBDMTMwNS40MDU5Nyw1MC41MzQ3NzA1IDEzMDUuOTYxNjMsNDkuNTg1NzE4NiAxMzA2LjU3NTM3LDQ5LjA0Nzc0NjIgQzEzMDEuODAxNDEsNDguNTA0NDg2NiAxMjk2Ljc4MTk1LDQ2LjY1NjYxMTEgMTI5Ni43ODE5NSwzOC40MDU5MzkyIEMxMjk2Ljc4MTk1LDM2LjA1NTc3OTkgMTI5Ny42MjAwNiwzNC4xMzI1NjE3IDEyOTguOTk1MzcsMzIuNjI4MzU0IEMxMjk4Ljc3MzYzLDMyLjA4Mzc3MjYgMTI5OC4wMzU4MiwyOS44OTM1NTEgMTI5OS4yMDY1NCwyNi45MzAwNzY4IEMxMjk5LjIwNjU0LDI2LjkzMDA3NjggMTMwMS4wMTA4LDI2LjM1MTEyODYgMTMwNS4xMTgyNCwyOS4xMzc0ODE4IEMxMzA2LjgzMjc1LDI4LjY1ODk5MDQgMTMwOC42NzI2NCwyOC40MjEwNjY1IDEzMTAuNTAwNjYsMjguNDExODEzOSBDMTMxMi4zMjczNiwyOC40MjEwNjY1IDEzMTQuMTY1OTQsMjguNjU4OTkwNCAxMzE1Ljg4MzA4LDI5LjEzNzQ4MTggQzEzMTkuOTg3ODgsMjYuMzUxMTI4NiAxMzIxLjc4OTUsMjYuOTMwMDc2OCAxMzIxLjc4OTUsMjYuOTMwMDc2OCBDMTMyMi45NjI4NiwyOS44OTM1NTEgMTMyMi4yMjUwNSwzMi4wODM3NzI2IDEzMjIuMDA0NjMsMzIuNjI4MzU0IEMxMzIzLjM4MjU4LDM0LjEzMjU2MTcgMTMyNC4yMTQwOSwzNi4wNTU3Nzk5IDEzMjQuMjE0MDksMzguNDA1OTM5MiBDMTMyNC4yMTQwOSw0Ni42Nzc3NTk5IDEzMTkuMTg2NzIsNDguNDk3ODc3NiAxMzE0LjM5ODIzLDQ5LjAzMDU2MjggQzEzMTUuMTY5MDQsNDkuNjk1NDI3OSAxMzE1Ljg1NjY5LDUxLjAwOTI5NjUgMTMxNS44NTY2OSw1My4wMTcxMDk4IEMxMzE1Ljg1NjY5LDU1Ljg5NTk4ODkgMTMxNS44MzAyOSw1OC4yMTgzOTA1IDEzMTUuODMwMjksNTguOTI0MjMxMyBDMTMxNS44MzAyOSw1OS41MDA1MzU5IDEzMTYuMjE4MzMsNjAuMTcwNjg4MiAxMzE3LjMwODU0LDU5Ljk2MDUyMjEgQzEzMjUuODQ1NDUsNTcuMTA2NzU3MiAxMzMyLDQ5LjA0MjQ1OSAxMzMyLDM5LjUzMjExMjMgQzEzMzIsMjcuNjM5ODgzMSAxMzIyLjM3Mjg4LDE4IDEzMTAuNDk4MDIsMTgiIGlkPSJGaWxsLTQ5Ij48L3BhdGg+CiAgICAgICAgICAgICAgICA8L2c+CiAgICAgICAgICAgIDwvZz4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPg=="
+                        class="github-logo">
+                        GitHub
+                    </div>
+                    <div class="right"><img
+                        src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMjFweCIgaGVpZ2h0PSIxOXB4IiB2aWV3Qm94PSIwIDAgMjEgMTkiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8IS0tIEdlbmVyYXRvcjogU2tldGNoIDYxLjIgKDg5NjUzKSAtIGh0dHBzOi8vc2tldGNoLmNvbSAtLT4KICAgIDx0aXRsZT5QYXRoPC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPgogICAgPGcgaWQ9IlYzLeacgOaWsOeov+S7tiIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgaWQ9IkhPTUUtdjMiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0xNTYxLjAwMDAwMCwgLTYwLjAwMDAwMCkiIGZpbGw9IiNGOEQyMzAiPgogICAgICAgICAgICA8ZyBpZD0iYmFubmVyLWJnIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMzc5LjAwMDAwMCwgLTE4Ny4wMDAwMDApIj4KICAgICAgICAgICAgICAgIDxnIGlkPSJoZWFkZXIiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDU5Ny4wMDAwMDAsIDIxOC4wMDAwMDApIj4KICAgICAgICAgICAgICAgICAgICA8ZyBpZD0ibGFiZWwtY29weS0xMiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTI4OS4wMDAwMDAsIDE4LjAwMDAwMCkiPgogICAgICAgICAgICAgICAgICAgICAgICA8cG9seWdvbiBpZD0iUGF0aCIgcG9pbnRzPSI2MS4wNTQzNTQzIDE3Ljc1NzM4MzYgNTQuMjE1MjQ2NiAxOC4zMTMzOTI5IDU5Ljg4OTM1MTcgMjIuOTczNzM4NyA1Ny43ODQ1MjI4IDI5Ljg0MDExODQgNjQuNDQyNTI3MSAyNi41NDM0MTg4IDcwLjU3NzcyMzkgMjkuODQwMTE4NCA2OS4yMzA0MzI1IDIyLjk3MzczODcgNzQuNzMyNTY5NiAxOC4zMTMzOTI5IDY3Ljg5MzQ2MiAxNy43NTczODM2IDY0LjQ0MjUyNzEgMTEuMzc1Ij48L3BvbHlnb24+CiAgICAgICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICA8L2c+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4=">
+                        <span id="github-star-num"></span>
+                    </div>
+                </a>
+            </div>
+        </nav>
+    </div>
+
+    <div id="sidenav" class="sidenav sidenav-fixed">
+        <p class="caption"><span class="caption-text">Tutorials</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../tutorials.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html">GINO Basics</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Build a FastAPI Server</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">GINO Basics</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Build a FastAPI Server</a></li>
+</ul>
+<p class="caption"><span class="caption-text">How-to Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../how-to.html">How-to Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to/alembic.html">Use Alembic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to/contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to/crud.html">CRUD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to/faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to/loaders.html">Loaders and Relationship</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to/pool.html">Connection Pool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to/schema.html">Schema Declaration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to/transaction.html">Transaction</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Explanation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../explanation.html">Explanation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../explanation/engine.html">Engine and Connection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../explanation/why.html">Why Asynchronous ORM?</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../reference.html">Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/api.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/extensions.html">Extensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/history.html">History</a></li>
+</ul>
+
+    </div>
+</header>
+
+<main>
+    <div class="row">
+        <div class="col s12 m9 body">
+            <div id="main-content" role="main">
+                
+    <div class="section" id="build-a-fastapi-server">
+<h1>Build a FastAPI Server<a class="headerlink" href="#build-a-fastapi-server" title="Permalink to this headline">¶</a></h1>
+<p>In this tutorial, we’ll build a production-ready <a class="reference external" href="https://fastapi.tiangolo.com/">FastAPI</a> server together.
+The full functional example is available <a class="reference external" href="https://github.com/python-gino/gino-starlette/tree/master/examples/prod_fastapi_demo">here</a>.</p>
+<p>Our application stack will look like this:</p>
+<img alt="../_images/gino-fastapi.svg" class="align-center" src="../_images/gino-fastapi.svg" /><div class="section" id="start-a-new-project">
+<h2>Start a New Project<a class="headerlink" href="#start-a-new-project" title="Permalink to this headline">¶</a></h2>
+<p>Instead of pip, let’s use the shiny <a class="reference external" href="https://python-poetry.org/">Poetry</a> to manage our project. Follow the link to
+<a class="reference external" href="https://python-poetry.org/docs/#installation">install Poetry</a>, and create our new
+project in an empty directory:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> mkdir gino-fastapi-demo
+<span class="gp">$</span> <span class="nb">cd</span> gino-fastapi-demo
+<span class="gp">$</span> git init
+<span class="gp">$</span> poetry init
+</pre></div>
+</div>
+<p>Then follow the <a class="reference external" href="https://python-poetry.org/">Poetry</a> guide to finish the initialization - you may say “no” to the
+interactive dependency creation, because we will add them manually. It is okay to use
+the default values in the other steps of the guide, and make sure the package name
+remains <code class="docutils literal notranslate"><span class="pre">gino-fastapi-demo</span></code>.</p>
+</div>
+<div class="section" id="add-dependencies">
+<h2>Add Dependencies<a class="headerlink" href="#add-dependencies" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://fastapi.tiangolo.com/">FastAPI</a> is built on top of the <a class="reference external" href="https://www.starlette.io/">Starlette</a> framework, so we shall use the <a class="reference external" href="https://github.com/python-gino/gino-starlette">GINO
+extension for Starlette</a>. Simply run:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> poetry add <span class="s1">&#39;gino[starlette]@^1.0&#39;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Before the final GINO 1.0 is released, please use 1.0rc4 for now:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> poetry add <span class="s1">&#39;gino[starlette]@^1.0rc4&#39;</span> --allow-prereleases
+</pre></div>
+</div>
+</div>
+<p>Then let’s add <a class="reference external" href="https://fastapi.tiangolo.com/">FastAPI</a>, together with the lightning-fast <a class="reference external" href="https://asgi.readthedocs.io/">ASGI</a> server <a class="reference external" href="https://www.uvicorn.org/">Uvicorn</a>, and
+<a class="reference external" href="https://gunicorn.org/">Gunicorn</a> as a production application server:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> poetry add fastapi uvicorn gunicorn
+</pre></div>
+</div>
+<p>For database migration, we’ll use <a class="reference external" href="https://alembic.sqlalchemy.org/">Alembic</a>. Because it uses normal <a class="reference external" href="https://www.python.org/dev/peps/pep-0249/">DB-API</a>, we need
+<a class="reference external" href="https://www.psycopg.org/">psycopg</a> here too:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> poetry add alembic psycopg2
+</pre></div>
+</div>
+<p>At last, let’s add <a class="reference external" href="https://docs.pytest.org/">pytest</a> in the development environment for testing. We also want to
+add the <a class="reference external" href="https://requests.readthedocs.io/">requests</a> library to use the <a class="reference external" href="https://www.starlette.io/">Starlette</a> <a class="reference external" href="https://www.starlette.io/testclient/"><code class="docutils literal notranslate"><span class="pre">TestClient</span></code></a>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> poetry add -D pytest requests
+</pre></div>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>With the steps above, <a class="reference external" href="https://python-poetry.org/">Poetry</a> will automatically create a <a class="reference external" href="https://virtualenv.pypa.io/">virtualenv</a> for you
+behind the scene, and all the dependencies are installed there. We will assume
+using this for the rest of the tutorial. But you’re free to create your own
+<a class="reference external" href="https://virtualenv.pypa.io/">virtualenv</a>, and <a class="reference external" href="https://python-poetry.org/">Poetry</a> will honor it when it’s activated.</p>
+</div>
+<p>That’s all, this is my <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> created by <a class="reference external" href="https://python-poetry.org/">Poetry</a>, yours should look similar:</p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[tool.poetry]</span>
+<span class="n">name</span> <span class="o">=</span> <span class="s">&quot;gino-fastapi-demo&quot;</span>
+<span class="n">version</span> <span class="o">=</span> <span class="s">&quot;0.1.0&quot;</span>
+<span class="n">description</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+<span class="n">authors</span> <span class="o">=</span> <span class="k">[&quot;Fantix King &lt;fantix.king@gmail.com&gt;&quot;]</span>
+
+<span class="k">[tool.poetry.dependencies]</span>
+<span class="n">python</span> <span class="o">=</span> <span class="s">&quot;^3.8&quot;</span>
+<span class="n">gino</span> <span class="o">=</span> <span class="p">{</span><span class="n">version</span> <span class="o">=</span> <span class="s">&quot;^1.0&quot;</span><span class="p">,</span> <span class="n">extras</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;starlette&quot;</span><span class="p">]}</span>
+<span class="n">fastapi</span> <span class="o">=</span> <span class="s">&quot;^0.54.1&quot;</span>
+<span class="n">uvicorn</span> <span class="o">=</span> <span class="s">&quot;^0.11.3&quot;</span>
+<span class="n">gunicorn</span> <span class="o">=</span> <span class="s">&quot;^20.0.4&quot;</span>
+<span class="n">alembic</span> <span class="o">=</span> <span class="s">&quot;^1.4.2&quot;</span>
+<span class="n">psycopg2</span> <span class="o">=</span> <span class="s">&quot;^2.8.5&quot;</span>
+
+<span class="k">[tool.poetry.dev-dependencies]</span>
+<span class="n">pytest</span> <span class="o">=</span> <span class="s">&quot;^5.4.1&quot;</span>
+<span class="n">requests</span> <span class="o">=</span> <span class="s">&quot;^2.23.0&quot;</span>
+
+<span class="k">[build-system]</span>
+<span class="n">requires</span> <span class="o">=</span> <span class="k">[&quot;poetry&gt;=0.12&quot;]</span>
+<span class="n">build-backend</span> <span class="o">=</span> <span class="s">&quot;poetry.masonry.api&quot;</span>
+</pre></div>
+</div>
+<img alt="../_images/gino-fastapi-poetry.svg" class="align-right" src="../_images/gino-fastapi-poetry.svg" /><p>And there’s also an auto-generated <code class="docutils literal notranslate"><span class="pre">poetry.lock</span></code> file with the frozen versions. The
+directory layout should look like the diagram on the right. Now let’s add the two files
+to the Git repository (we will skip showing these git operations in future steps):</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> git add pyproject.toml poetry.lock
+<span class="gp">$</span> git commit -m <span class="s1">&#39;add project dependencies&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="write-a-simple-server">
+<h2>Write a Simple Server<a class="headerlink" href="#write-a-simple-server" title="Permalink to this headline">¶</a></h2>
+<p>Now let’s write some Python code.</p>
+<p>We’ll create an extra <code class="docutils literal notranslate"><span class="pre">src</span></code> directory to include all the Python files, as demonstrated
+in the diagram below. This is known as the “<a class="reference external" href="https://hynek.me/articles/testing-packaging/">src layout</a>” providing a cleaner hierarchy.</p>
+<img alt="../_images/gino-fastapi-src.svg" class="align-right" src="../_images/gino-fastapi-src.svg" /><p>The root Python package of our project is named as <code class="docutils literal notranslate"><span class="pre">gino_fastapi_demo</span></code>, under which we
+will create two Python modules:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">asgi</span></code> as the ASGI entry point - we’ll feed it to the ASGI server</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">main</span></code> to initialize our server</p></li>
+</ul>
+<p>Here’s <code class="docutils literal notranslate"><span class="pre">main.py</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fastapi</span> <span class="kn">import</span> <span class="n">FastAPI</span>
+
+<span class="k">def</span> <span class="nf">get_app</span><span class="p">():</span>
+    <span class="n">app</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;GINO FastAPI Demo&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">app</span>
+</pre></div>
+</div>
+<p>And we’ll simply instantiate our application in <code class="docutils literal notranslate"><span class="pre">asgi.py</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">.main</span> <span class="kn">import</span> <span class="n">get_app</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">get_app</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Then run <code class="docutils literal notranslate"><span class="pre">poetry</span> <span class="pre">install</span></code> to link our Python package into the <code class="docutils literal notranslate"><span class="pre">PYTHONPATH</span></code> in
+development mode. We’ll be able to start a Uvicorn development server after that:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> poetry install
+<span class="gp">$</span> poetry run uvicorn gino_fastapi_demo.asgi:app --reload
+<span class="go">INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)</span>
+<span class="go">INFO:     Started reloader process [53010]</span>
+<span class="go">INFO:     Started server process [53015]</span>
+<span class="go">INFO:     Waiting for application startup.</span>
+<span class="go">INFO:     Application startup complete.</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">--reload</span></code> option enables Uvicorn to automatically reload the server for us when
+the Python source code is updated. Now access <a class="reference external" href="http://127.0.0.1:8000/docs">http://127.0.0.1:8000/docs</a> to see the
+Swagger UI of our new FastAPI server.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>As mentioned previously, if you’re in your own virtualenv, the command <code class="docutils literal notranslate"><span class="pre">poetry</span> <span class="pre">run</span>
+<span class="pre">uvicorn</span></code> can be simplified as just <code class="docutils literal notranslate"><span class="pre">uvicorn</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">poetry</span> <span class="pre">run</span></code> is a convenient shortcut to run the following command in the
+virtualenv managed by Poetry.</p>
+</div>
+</div>
+<div class="section" id="add-gino-extension">
+<h2>Add GINO Extension<a class="headerlink" href="#add-gino-extension" title="Permalink to this headline">¶</a></h2>
+<img alt="../_images/gino-fastapi-config.svg" class="align-right" src="../_images/gino-fastapi-config.svg" /><p>Now let’s add GINO to our server.</p>
+<p>First of all, we need a way to configure the database. In this tutorial, we’ll use the
+<a class="reference external" href="https://www.starlette.io/config/">configuration system</a> from <a class="reference external" href="https://www.starlette.io/">Starlette</a>.
+Add <code class="docutils literal notranslate"><span class="pre">src/gino_fastapi_demo/config.py</span></code> as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sqlalchemy.engine.url</span> <span class="kn">import</span> <span class="n">URL</span><span class="p">,</span> <span class="n">make_url</span>
+<span class="kn">from</span> <span class="nn">starlette.config</span> <span class="kn">import</span> <span class="n">Config</span>
+<span class="kn">from</span> <span class="nn">starlette.datastructures</span> <span class="kn">import</span> <span class="n">Secret</span>
+
+<span class="n">config</span> <span class="o">=</span> <span class="n">Config</span><span class="p">(</span><span class="s2">&quot;.env&quot;</span><span class="p">)</span>
+
+<span class="n">DB_DRIVER</span> <span class="o">=</span> <span class="n">config</span><span class="p">(</span><span class="s2">&quot;DB_DRIVER&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;postgresql&quot;</span><span class="p">)</span>
+<span class="n">DB_HOST</span> <span class="o">=</span> <span class="n">config</span><span class="p">(</span><span class="s2">&quot;DB_HOST&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">DB_PORT</span> <span class="o">=</span> <span class="n">config</span><span class="p">(</span><span class="s2">&quot;DB_PORT&quot;</span><span class="p">,</span> <span class="n">cast</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">DB_USER</span> <span class="o">=</span> <span class="n">config</span><span class="p">(</span><span class="s2">&quot;DB_USER&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">DB_PASSWORD</span> <span class="o">=</span> <span class="n">config</span><span class="p">(</span><span class="s2">&quot;DB_PASSWORD&quot;</span><span class="p">,</span> <span class="n">cast</span><span class="o">=</span><span class="n">Secret</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">DB_DATABASE</span> <span class="o">=</span> <span class="n">config</span><span class="p">(</span><span class="s2">&quot;DB_DATABASE&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">DB_DSN</span> <span class="o">=</span> <span class="n">config</span><span class="p">(</span>
+    <span class="s2">&quot;DB_DSN&quot;</span><span class="p">,</span>
+    <span class="n">cast</span><span class="o">=</span><span class="n">make_url</span><span class="p">,</span>
+    <span class="n">default</span><span class="o">=</span><span class="n">URL</span><span class="p">(</span>
+        <span class="n">drivername</span><span class="o">=</span><span class="n">DB_DRIVER</span><span class="p">,</span>
+        <span class="n">username</span><span class="o">=</span><span class="n">DB_USER</span><span class="p">,</span>
+        <span class="n">password</span><span class="o">=</span><span class="n">DB_PASSWORD</span><span class="p">,</span>
+        <span class="n">host</span><span class="o">=</span><span class="n">DB_HOST</span><span class="p">,</span>
+        <span class="n">port</span><span class="o">=</span><span class="n">DB_PORT</span><span class="p">,</span>
+        <span class="n">database</span><span class="o">=</span><span class="n">DB_DATABASE</span><span class="p">,</span>
+    <span class="p">),</span>
+<span class="p">)</span>
+<span class="n">DB_POOL_MIN_SIZE</span> <span class="o">=</span> <span class="n">config</span><span class="p">(</span><span class="s2">&quot;DB_POOL_MIN_SIZE&quot;</span><span class="p">,</span> <span class="n">cast</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">DB_POOL_MAX_SIZE</span> <span class="o">=</span> <span class="n">config</span><span class="p">(</span><span class="s2">&quot;DB_POOL_MAX_SIZE&quot;</span><span class="p">,</span> <span class="n">cast</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">DB_ECHO</span> <span class="o">=</span> <span class="n">config</span><span class="p">(</span><span class="s2">&quot;DB_ECHO&quot;</span><span class="p">,</span> <span class="n">cast</span><span class="o">=</span><span class="nb">bool</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">DB_SSL</span> <span class="o">=</span> <span class="n">config</span><span class="p">(</span><span class="s2">&quot;DB_SSL&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">DB_USE_CONNECTION_FOR_REQUEST</span> <span class="o">=</span> <span class="n">config</span><span class="p">(</span>
+    <span class="s2">&quot;DB_USE_CONNECTION_FOR_REQUEST&quot;</span><span class="p">,</span> <span class="n">cast</span><span class="o">=</span><span class="nb">bool</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+<span class="n">DB_RETRY_LIMIT</span> <span class="o">=</span> <span class="n">config</span><span class="p">(</span><span class="s2">&quot;DB_RETRY_LIMIT&quot;</span><span class="p">,</span> <span class="n">cast</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">DB_RETRY_INTERVAL</span> <span class="o">=</span> <span class="n">config</span><span class="p">(</span><span class="s2">&quot;DB_RETRY_INTERVAL&quot;</span><span class="p">,</span> <span class="n">cast</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This config file will load from environment variable first, if not found then from a
+file named <code class="docutils literal notranslate"><span class="pre">.env</span></code> from current path (usually the project root directory), and at last
+use the default value defined above. For example, you can either overwrite in CLI
+directly like this:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nv">DB_HOST</span><span class="o">=</span>localhost <span class="nv">DB_USER</span><span class="o">=</span>postgres poetry run uvicorn gino_fastapi_demo.asgi:app --reload
+</pre></div>
+</div>
+<img alt="../_images/gino-fastapi-env.svg" class="align-right" src="../_images/gino-fastapi-env.svg" /><p>Or set them in the file <code class="docutils literal notranslate"><span class="pre">.env</span></code> (this file must not be committed into Git, remember to
+add it to <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code>):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">DB_HOST</span><span class="o">=</span>localhost
+<span class="nv">DB_USER</span><span class="o">=</span>postgres
+</pre></div>
+</div>
+<p>Now it’s time to create a <a class="reference external" href="https://www.postgresql.org/">PostgreSQL</a> database and set the connection variables
+correctly here. This is usually something like <code class="docutils literal notranslate"><span class="pre">createdb</span> <span class="pre">yourdbname</span></code>, but it may vary
+across different platforms, so we won’t cover this part in this tutorial.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Alternatively, you could also set <code class="docutils literal notranslate"><span class="pre">DB_DSN</span></code> to for example
+<code class="docutils literal notranslate"><span class="pre">postgresql://user:password&#64;localhost:5432/dbname</span></code> to override the other individual
+config values like <code class="docutils literal notranslate"><span class="pre">DB_HOST</span></code> defined before <code class="docutils literal notranslate"><span class="pre">DB_DSN</span></code>.</p>
+<p>If defined, <code class="docutils literal notranslate"><span class="pre">DB_DSN</span></code> always have the higher priority over the individual ones,
+regardless of where they are defined - even if <code class="docutils literal notranslate"><span class="pre">DB_HOST</span></code> is defined in environment
+variable and <code class="docutils literal notranslate"><span class="pre">DB_DSN</span></code> is defined in <code class="docutils literal notranslate"><span class="pre">.env</span></code> file, <code class="docutils literal notranslate"><span class="pre">DB_HOST</span></code> is still ignored.
+Default value doesn’t count.</p>
+</div>
+<img alt="../_images/gino-fastapi-models.svg" class="align-right" src="../_images/gino-fastapi-models.svg" /><p>Then, create a new Python sub-package <code class="docutils literal notranslate"><span class="pre">gino_fastapi_demo.models</span></code> to encapsulate
+database-related code, and add the code below to
+<code class="docutils literal notranslate"><span class="pre">src/gino_fastapi_demo/models/__init__.py</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gino.ext.starlette</span> <span class="kn">import</span> <span class="n">Gino</span>
+
+<span class="kn">from</span> <span class="nn">..</span> <span class="kn">import</span> <span class="n">config</span>
+
+<span class="n">db</span> <span class="o">=</span> <span class="n">Gino</span><span class="p">(</span>
+    <span class="n">dsn</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">DB_DSN</span><span class="p">,</span>
+    <span class="n">pool_min_size</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">DB_POOL_MIN_SIZE</span><span class="p">,</span>
+    <span class="n">pool_max_size</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">DB_POOL_MAX_SIZE</span><span class="p">,</span>
+    <span class="n">echo</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">DB_ECHO</span><span class="p">,</span>
+    <span class="n">ssl</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">DB_SSL</span><span class="p">,</span>
+    <span class="n">use_connection_for_request</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">DB_USE_CONNECTION_FOR_REQUEST</span><span class="p">,</span>
+    <span class="n">retry_limit</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">DB_RETRY_LIMIT</span><span class="p">,</span>
+    <span class="n">retry_interval</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">DB_RETRY_INTERVAL</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>At last, modify <code class="docutils literal notranslate"><span class="pre">src/gino_fastapi_demo/main.py</span></code> to install the GINO extension:</p>
+<div class="highlight-diff notranslate"><div class="highlight"><pre><span></span> from fastapi import FastAPI
+<span class="gi">+</span>
+<span class="gi">+from .models import db</span>
+
+ def get_app():
+     app = FastAPI(title=&quot;GINO FastAPI Demo&quot;)
+<span class="gi">+    db.init_app(app)</span>
+     return app
+</pre></div>
+</div>
+<p>Saving the file, you should see the Uvicorn server reloads our changes and connects to
+the database:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">WARNING:  Detected file change in &#39;src/gino_fastapi_demo/main.py&#39;. Reloading...</span>
+<span class="go">INFO:     Shutting down</span>
+<span class="go">INFO:     Waiting for application shutdown.</span>
+<span class="go">INFO:     Application shutdown complete.</span>
+<span class="go">INFO:     Finished server process [63562]</span>
+<span class="go">INFO:     Started server process [63563]</span>
+<span class="go">INFO:     Waiting for application startup.</span>
+<span class="go">INFO:     Connecting to the database: postgresql://fantix:***@localhost</span>
+<span class="go">INFO:     Database connection pool created: &lt;asyncpg.pool.Pool max=16 min=1 cur=1 use=0&gt;</span>
+<span class="go">INFO:     Application startup complete.</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="create-models-and-api">
+<h2>Create Models and API<a class="headerlink" href="#create-models-and-api" title="Permalink to this headline">¶</a></h2>
+<img alt="../_images/gino-fastapi-models-users.svg" class="align-right" src="../_images/gino-fastapi-models-users.svg" /><p>It’s time to implement the API now. Let’s say we are building a user management service,
+through which we could add users, list users and delete users.</p>
+<p>First of all, we need a database table <code class="docutils literal notranslate"><span class="pre">users</span></code> to store the data, mapped to a GINO
+model named <code class="docutils literal notranslate"><span class="pre">User</span></code>. We shall add the model in <code class="docutils literal notranslate"><span class="pre">gino_fastapi_demo.models.users</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">db</span>
+
+<span class="k">class</span> <span class="nc">User</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s2">&quot;users&quot;</span>
+
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">BigInteger</span><span class="p">(),</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">nickname</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Unicode</span><span class="p">(),</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;unnamed&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="../_images/gino-fastapi-views.svg" class="align-right" src="../_images/gino-fastapi-views.svg" /><p>The model definition is simple enough to explain itself.</p>
+<p>Then we only have to use it properly in the API implementation, for which we’ll create a
+new Python sub-package <code class="docutils literal notranslate"><span class="pre">gino_fastapi_demo.views</span></code>, and a new module
+<code class="docutils literal notranslate"><span class="pre">gino_fastapi_demo.views.users</span></code> as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fastapi</span> <span class="kn">import</span> <span class="n">APIRouter</span>
+<span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span>
+
+<span class="kn">from</span> <span class="nn">..models.users</span> <span class="kn">import</span> <span class="n">User</span>
+
+<span class="n">router</span> <span class="o">=</span> <span class="n">APIRouter</span><span class="p">()</span>
+
+<span class="nd">@router</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/users/</span><span class="si">{uid}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">get_user</span><span class="p">(</span><span class="n">uid</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+    <span class="n">user</span> <span class="o">=</span> <span class="k">await</span> <span class="n">User</span><span class="o">.</span><span class="n">get_or_404</span><span class="p">(</span><span class="n">uid</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">user</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
+
+<span class="k">class</span> <span class="nc">UserModel</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
+
+<span class="nd">@router</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;/users&quot;</span><span class="p">)</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">add_user</span><span class="p">(</span><span class="n">user</span><span class="p">:</span> <span class="n">UserModel</span><span class="p">):</span>
+    <span class="n">rv</span> <span class="o">=</span> <span class="k">await</span> <span class="n">User</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">nickname</span><span class="o">=</span><span class="n">user</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">rv</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
+
+<span class="nd">@router</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">&quot;/users/</span><span class="si">{uid}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">delete_user</span><span class="p">(</span><span class="n">uid</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+    <span class="n">user</span> <span class="o">=</span> <span class="k">await</span> <span class="n">User</span><span class="o">.</span><span class="n">get_or_404</span><span class="p">(</span><span class="n">uid</span><span class="p">)</span>
+    <span class="k">await</span> <span class="n">user</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+    <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">uid</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">init_app</span><span class="p">(</span><span class="n">app</span><span class="p">):</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">include_router</span><span class="p">(</span><span class="n">router</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The <a class="reference external" href="https://fastapi.tiangolo.com/tutorial/bigger-applications/#apirouter"><code class="docutils literal notranslate"><span class="pre">APIRouter</span></code></a> holds our new APIs locally, and <code class="docutils literal notranslate"><span class="pre">init_app</span></code> is used to integrate it
+into our FastAPI application. Here we want some <a class="reference external" href="https://en.wikipedia.org/wiki/Inversion_of_control">inversion of control</a>: let’s make the
+APIs plugable, so that we don’t have to import all possible future views manually. We
+shall use the <a class="reference external" href="https://docs.python.org/3/library/importlib.metadata.html#entry-points">Entry Points</a> feature to load the dependencies. Add this code below to
+<code class="docutils literal notranslate"><span class="pre">gino_fastapi_demo.main</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">from</span> <span class="nn">importlib.metadata</span> <span class="kn">import</span> <span class="n">entry_points</span>
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">load_modules</span><span class="p">(</span><span class="n">app</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">ep</span> <span class="ow">in</span> <span class="n">entry_points</span><span class="p">()[</span><span class="s2">&quot;gino_fastapi_demo.modules&quot;</span><span class="p">]:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Loading module: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">ep</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+        <span class="n">mod</span> <span class="o">=</span> <span class="n">ep</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">app</span><span class="p">:</span>
+            <span class="n">init_app</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">mod</span><span class="p">,</span> <span class="s2">&quot;init_app&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">init_app</span><span class="p">:</span>
+                <span class="n">init_app</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>If you’re running Python &lt; 3.8, you’ll need this <a class="reference external" href="https://importlib-metadata.readthedocs.io/">importlib-metadata backport</a>.</p>
+</div>
+<p>And call it in our application factory:</p>
+<div class="highlight-diff notranslate"><div class="highlight"><pre><span></span> def get_app():
+     app = FastAPI(title=&quot;GINO FastAPI Demo&quot;)
+     db.init_app(app)
+<span class="gi">+    load_modules(app)</span>
+     return app
+</pre></div>
+</div>
+<p>Finally, define the entry points in <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> following the <a class="reference external" href="https://python-poetry.org/docs/pyproject/#plugins">Poetry document
+for plugins</a>:</p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[tool.poetry.plugins.&quot;gino_fastapi_demo.modules&quot;]</span>
+<span class="s">&quot;users&quot;</span> <span class="o">=</span> <span class="s">&quot;gino_fastapi_demo.views.users&quot;</span>
+</pre></div>
+</div>
+<p>Run <code class="docutils literal notranslate"><span class="pre">poetry</span> <span class="pre">install</span></code> again to activate the entry points - you may need to restart the
+<a class="reference external" href="https://www.uvicorn.org/">Uvicorn</a> development server manually, as the reloader cannot capture the changes we made
+to <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code>.</p>
+<p>Now you should be able to see the 3 new APIs on the Swagger UI. But none of them works,
+because we still haven’t created the database tables.</p>
+</div>
+<div class="section" id="integrate-with-alembic">
+<h2>Integrate with Alembic<a class="headerlink" href="#integrate-with-alembic" title="Permalink to this headline">¶</a></h2>
+<p>To get started with <a class="reference external" href="https://alembic.sqlalchemy.org/">Alembic</a>, run this command in the project root directory:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> poetry run alembic init migrations
+</pre></div>
+</div>
+<img alt="../_images/gino-fastapi-alembic.svg" class="align-right" src="../_images/gino-fastapi-alembic.svg" /><p>This will generate a new directory <code class="docutils literal notranslate"><span class="pre">migrations</span></code> where <a class="reference external" href="https://alembic.sqlalchemy.org/">Alembic</a> will store database
+migration revisions. At the same time, an <code class="docutils literal notranslate"><span class="pre">alembic.ini</span></code> file is created in the project
+root directory. Let’s simply add all of them to Git control.</p>
+<p>For <a class="reference external" href="https://alembic.sqlalchemy.org/">Alembic</a> to use our data models defined with GINO (and of course the database
+config), we need to modify <code class="docutils literal notranslate"><span class="pre">migrations/env.py</span></code> to connect with the GINO instance:</p>
+<div class="highlight-diff notranslate"><div class="highlight"><pre><span></span> # add your model&#39;s MetaData object here
+ # for &#39;autogenerate&#39; support
+ # from myapp import mymodel
+ # target_metadata = mymodel.Base.metadata
+<span class="gd">-target_metadata = None</span>
+<span class="gi">+from gino_fastapi_demo.config import DB_DSN</span>
+<span class="gi">+from gino_fastapi_demo.main import db, load_modules</span>
+<span class="gi">+</span>
+<span class="gi">+load_modules()</span>
+<span class="gi">+config.set_main_option(&quot;sqlalchemy.url&quot;, str(DB_DSN))</span>
+<span class="gi">+target_metadata = db</span>
+</pre></div>
+</div>
+<p>Then create our first migration revision with:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> poetry run alembic revision --autogenerate -m <span class="s1">&#39;add users table&#39;</span>
+<span class="go">INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.</span>
+<span class="go">INFO  [alembic.runtime.migration] Will assume transactional DDL.</span>
+<span class="go">INFO  [alembic.autogenerate.compare] Detected added table &#39;users&#39;</span>
+<span class="go">  Generating migrations/versions/32c0feba61ea_add_users_table.py ...  done</span>
+</pre></div>
+</div>
+<p>The generated revision file should roughly look like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">upgrade</span><span class="p">():</span>
+    <span class="n">op</span><span class="o">.</span><span class="n">create_table</span><span class="p">(</span>
+        <span class="s2">&quot;users&quot;</span><span class="p">,</span>
+        <span class="n">sa</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="n">sa</span><span class="o">.</span><span class="n">BigInteger</span><span class="p">(),</span> <span class="n">nullable</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span>
+        <span class="n">sa</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="s2">&quot;nickname&quot;</span><span class="p">,</span> <span class="n">sa</span><span class="o">.</span><span class="n">Unicode</span><span class="p">(),</span> <span class="n">nullable</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+        <span class="n">sa</span><span class="o">.</span><span class="n">PrimaryKeyConstraint</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">),</span>
+    <span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">downgrade</span><span class="p">():</span>
+    <span class="n">op</span><span class="o">.</span><span class="n">drop_table</span><span class="p">(</span><span class="s2">&quot;users&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Whenever there is a change to the database schema in the future, just modify the
+GINO modules and run <code class="docutils literal notranslate"><span class="pre">alembic</span> <span class="pre">revision</span> <span class="pre">--autogenerate</span></code> again to generate new
+revisions to track the change. Remember to review the revision file - you may want
+to adjust it.</p>
+</div>
+<p>Eventually, let’s apply this migration, by upgrading to the latest revision:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> poetry run alembic upgrade head
+<span class="go">INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.</span>
+<span class="go">INFO  [alembic.runtime.migration] Will assume transactional DDL.</span>
+<span class="go">INFO  [alembic.runtime.migration] Running upgrade  -&gt; 32c0feba61ea, add users table</span>
+</pre></div>
+</div>
+<p>Now all the APIs should be fully operational, try with the Swagger UI.</p>
+</div>
+<div class="section" id="write-the-tests">
+<h2>Write the Tests<a class="headerlink" href="#write-the-tests" title="Permalink to this headline">¶</a></h2>
+<p>In order not to break our development database with running tests, let’s create a
+separate database to run tests. Apply this change to <code class="docutils literal notranslate"><span class="pre">gino_fastapi_demo.config</span></code>:</p>
+<div class="highlight-diff notranslate"><div class="highlight"><pre><span></span> config = Config(&quot;.env&quot;)
+
+<span class="gi">+TESTING = config(&quot;TESTING&quot;, cast=bool, default=False)</span>
+
+ DB_DRIVER = config(&quot;DB_DRIVER&quot;, default=&quot;postgresql&quot;)
+ DB_HOST = config(&quot;DB_HOST&quot;, default=None)
+ DB_PORT = config(&quot;DB_PORT&quot;, cast=int, default=None)
+ DB_USER = config(&quot;DB_USER&quot;, default=None)
+ DB_PASSWORD = config(&quot;DB_PASSWORD&quot;, cast=Secret, default=None)
+ DB_DATABASE = config(&quot;DB_DATABASE&quot;, default=None)
+<span class="gi">+if TESTING:</span>
+<span class="gi">+    if DB_DATABASE:</span>
+<span class="gi">+        DB_DATABASE += &quot;_test&quot;</span>
+<span class="gi">+    else:</span>
+<span class="gi">+        DB_DATABASE = &quot;gino_fastapi_demo_test&quot;</span>
+ DB_DSN = config(
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You need to run <code class="docutils literal notranslate"><span class="pre">createdb</span></code> to actually create the database. If you have set
+<code class="docutils literal notranslate"><span class="pre">DB_DATABASE</span></code> in <code class="docutils literal notranslate"><span class="pre">.env</span></code> - e.g. <code class="docutils literal notranslate"><span class="pre">DB_DATABASE=mydb</span></code>, the name of the testing
+database should be <code class="docutils literal notranslate"><span class="pre">mydb_test</span></code>. Or else, <code class="docutils literal notranslate"><span class="pre">gino_fastapi_demo_test</span></code>.</p>
+</div>
+<p>Then, let’s create our <a class="reference external" href="https://docs.pytest.org/">pytest</a> fixture in <code class="docutils literal notranslate"><span class="pre">tests/conftest.py</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pytest</span>
+<span class="kn">from</span> <span class="nn">alembic.config</span> <span class="kn">import</span> <span class="n">main</span>
+<span class="kn">from</span> <span class="nn">starlette.config</span> <span class="kn">import</span> <span class="n">environ</span>
+<span class="kn">from</span> <span class="nn">starlette.testclient</span> <span class="kn">import</span> <span class="n">TestClient</span>
+
+<span class="n">environ</span><span class="p">[</span><span class="s2">&quot;TESTING&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;TRUE&quot;</span>
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span> <span class="nf">client</span><span class="p">():</span>
+    <span class="kn">from</span> <span class="nn">gino_fastapi_demo.main</span> <span class="kn">import</span> <span class="n">db</span><span class="p">,</span> <span class="n">get_app</span>
+
+    <span class="n">main</span><span class="p">([</span><span class="s2">&quot;--raiseerr&quot;</span><span class="p">,</span> <span class="s2">&quot;upgrade&quot;</span><span class="p">,</span> <span class="s2">&quot;head&quot;</span><span class="p">])</span>
+
+    <span class="k">with</span> <span class="n">TestClient</span><span class="p">(</span><span class="n">get_app</span><span class="p">())</span> <span class="k">as</span> <span class="n">client</span><span class="p">:</span>
+        <span class="k">yield</span> <span class="n">client</span>
+
+    <span class="n">main</span><span class="p">([</span><span class="s2">&quot;--raiseerr&quot;</span><span class="p">,</span> <span class="s2">&quot;downgrade&quot;</span><span class="p">,</span> <span class="s2">&quot;base&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+<img alt="../_images/gino-fastapi-tests.svg" class="align-right" src="../_images/gino-fastapi-tests.svg" /><p>This fixture creates all the database tables before running the test, yield a <a class="reference external" href="https://www.starlette.io/">Starlette</a>
+<a class="reference external" href="https://www.starlette.io/testclient/"><code class="docutils literal notranslate"><span class="pre">TestClient</span></code></a>, and drop all the tables with all the data after the test to maintain a
+clean environment for the next test.</p>
+<p>Here’s a sample test in <code class="docutils literal notranslate"><span class="pre">tests/test_users.py</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">uuid</span>
+
+<span class="k">def</span> <span class="nf">test_crud</span><span class="p">(</span><span class="n">client</span><span class="p">):</span>
+    <span class="c1"># create</span>
+    <span class="n">nickname</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">())</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;/users&quot;</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">nickname</span><span class="p">))</span>
+    <span class="n">r</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
+
+    <span class="c1"># retrieve</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;/users/</span><span class="si">{</span><span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="k">assert</span> <span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">&quot;nickname&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">nickname</span>
+
+    <span class="c1"># delete</span>
+    <span class="n">client</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">404</span>
+</pre></div>
+</div>
+<p>Then run the test:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> poetry run pytest
+<span class="go">=========================== test session starts ===========================</span>
+<span class="go">platform darwin -- Python 3.8.2, pytest-5.4.1, py-1.8.1, pluggy-0.13.1</span>
+<span class="go">rootdir: gino-fastapi-demo</span>
+<span class="go">collected 1 item</span>
+
+<span class="go">tests/test_users.py .                                               [100%]</span>
+
+<span class="go">============================ 1 passed in 1.21s ============================</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="notes-for-production">
+<h2>Notes for Production<a class="headerlink" href="#notes-for-production" title="Permalink to this headline">¶</a></h2>
+<p>Given the popularity of Docker/Kubernetes, we’ll build a <code class="docutils literal notranslate"><span class="pre">Dockerfile</span></code> for our demo:</p>
+<div class="highlight-dockerfile notranslate"><div class="highlight"><pre><span></span><span class="k">FROM</span> <span class="s">python:3.8-alpine</span> <span class="k">as</span> <span class="s">base</span>
+
+<span class="k">FROM</span> <span class="s">base</span> <span class="k">as</span> <span class="s">builder</span>
+<span class="k">RUN</span> apk add --no-cache gcc musl-dev libffi-dev openssl-dev make postgresql-dev
+<span class="k">RUN</span> pip install poetry
+<span class="k">COPY</span> . /src/
+<span class="k">WORKDIR</span><span class="s"> /src</span>
+<span class="k">RUN</span> python -m venv /env <span class="o">&amp;&amp;</span> . /env/bin/activate <span class="o">&amp;&amp;</span> poetry install
+
+<span class="k">FROM</span> <span class="s">base</span>
+<span class="k">RUN</span> apk add --no-cache postgresql-libs
+<span class="k">COPY</span> --from<span class="o">=</span>builder /env /env
+<span class="k">COPY</span> --from<span class="o">=</span>builder /src /src
+<span class="k">WORKDIR</span><span class="s"> /src</span>
+<span class="k">CMD</span> <span class="p">[</span><span class="s2">&quot;/env/bin/gunicorn&quot;</span><span class="p">,</span> <span class="s2">&quot;gino_fastapi_demo.asgi:app&quot;</span><span class="p">,</span> <span class="s2">&quot;-b&quot;</span><span class="p">,</span> <span class="s2">&quot;0.0.0.0:80&quot;</span><span class="p">,</span> <span class="s2">&quot;-k&quot;</span><span class="p">,</span> <span class="s2">&quot;uvicorn.workers.UvicornWorker&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>In this <code class="docutils literal notranslate"><span class="pre">Dockerfile</span></code>, we used 2 phases to separate the building from the production
+image to reduce target artifact size. Also, we are using <a class="reference external" href="https://gunicorn.org/">Gunicorn</a> with
+<a class="reference external" href="https://www.uvicorn.org/deployment/#gunicorn"><code class="docutils literal notranslate"><span class="pre">UvicornWorker</span></code></a> from <a class="reference external" href="https://www.uvicorn.org/">Uvicorn</a> as the worker class for best production reliability.</p>
+<p>Let’s review what we have in the project.</p>
+<img alt="../_images/gino-fastapi-layout.svg" class="align-center" src="../_images/gino-fastapi-layout.svg" /><p>This is the end of the tutorial to build a demo. Below is an incomplete checklist to
+go live:</p>
+<ul class="simple">
+<li><p>Set <code class="docutils literal notranslate"><span class="pre">DB_RETRY_LIMIT</span></code> to a larger number to allow staring the application server
+before the database is fully ready.</p></li>
+<li><p>Implement the same retry logic in <code class="docutils literal notranslate"><span class="pre">migrations/env.py</span></code> so that <a class="reference external" href="https://alembic.sqlalchemy.org/">Alembic</a> gets the same
+functionality.</p></li>
+<li><p>Enable <code class="docutils literal notranslate"><span class="pre">DB_SSL</span></code> if needed.</p></li>
+<li><p>Write a <code class="docutils literal notranslate"><span class="pre">docker-compose.yml</span></code> for other developers to get a quick taste or even use
+it for development.</p></li>
+<li><p>Enable <a class="reference external" href="https://en.wikipedia.org/wiki/Continuous_integration">CI</a>, install <code class="docutils literal notranslate"><span class="pre">pytest-cov</span></code> and use <code class="docutils literal notranslate"><span class="pre">--cov-fail-under</span></code> to guarantee coverage.</p></li>
+<li><p>Integrate static code analysis tools and security/CVE checking tools.</p></li>
+<li><p>Automate <a class="reference external" href="https://alembic.sqlalchemy.org/">Alembic</a> upgrade properly - e.g. after new version is deployed.</p></li>
+<li><p>Be aware of the usual security attacks like <a class="reference external" href="https://en.wikipedia.org/wiki/Cross-site_request_forgery">CSRF</a>, <a class="reference external" href="https://en.wikipedia.org/wiki/Cross-site_scripting">XSS</a>, etc.</p></li>
+<li><p>Write load tests.</p></li>
+</ul>
+<p>Again, the source code of the demo is available <a class="reference external" href="https://github.com/python-gino/gino-starlette/tree/master/examples/prod_fastapi_demo">here</a>,
+and the source of this tutorial is <a class="reference external" href="https://github.com/python-gino/gino/blob/master/docs/tutorials/fastapi.rst">here</a>.
+Please feel free to submit PRs to fix issues or add your thoughts. Happy hacking!</p>
+</div>
+</div>
+
+
+            </div>
+        </div>
+
+        <div class="col hide-on-small-only m3 right-nav">
+            <div class="table-of-contents fixed">
+                
+                    <ul>
+<li><a class="reference internal" href="#">Build a FastAPI Server</a><ul>
+<li><a class="reference internal" href="#start-a-new-project">Start a New Project</a></li>
+<li><a class="reference internal" href="#add-dependencies">Add Dependencies</a></li>
+<li><a class="reference internal" href="#write-a-simple-server">Write a Simple Server</a></li>
+<li><a class="reference internal" href="#add-gino-extension">Add GINO Extension</a></li>
+<li><a class="reference internal" href="#create-models-and-api">Create Models and API</a></li>
+<li><a class="reference internal" href="#integrate-with-alembic">Integrate with Alembic</a></li>
+<li><a class="reference internal" href="#write-the-tests">Write the Tests</a></li>
+<li><a class="reference internal" href="#notes-for-production">Notes for Production</a></li>
+</ul>
+</li>
+</ul>
+
+                
+            </div>
+        </div>
+
+    </div>
+    <div class="fixed-action-btn click-to-toggle">
+        <a class="btn-floating btn-large white">
+            <img src="../_static/images/language.svg">
+            <div>
+              EN
+            </div>
+        </a>
+        <ul>
+            <li><a href="/docs/en/v1.0.0rc4/tutorials/fastapi.html" class="btn-floating blue">EN</a></li>
+            <li><a href="/docs/zh/v1.0.0rc4/tutorials/fastapi.html" class="btn-floating red">ZH</a></li>
+        </ul>
+    </div>
+</main>
+
+<script type="text/javascript" src="../_static/js/materialize.min.js"></script>
+<script type="text/javascript" src="../_static/js/language_data.js"></script>
+<script id="documentation_options" data-url_root="../" src="../_static/js/documentation_options.js"></script>
+<script type="text/javascript" src="../_static/js/underscore.js"></script>
+<script type="text/javascript" src="../_static/js/jquery.js"></script>
+<script type="text/javascript" src="../_static/js/gino.js"></script>
+<script type="text/javascript" src="../searchindex.js"></script>
+</body>
+</html>
