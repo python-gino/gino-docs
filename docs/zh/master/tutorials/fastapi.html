@@ -515,7 +515,7 @@ config), we need to modify <code class="docutils literal notranslate"><span clas
 <div class="admonition hint">
 <p class="admonition-title">提示</p>
 <p>Whenever there is a change to the database schema in the future, just modify the
-GINO modules and run <code class="docutils literal notranslate"><span class="pre">alembic</span> <span class="pre">revision</span> <span class="pre">--autogenerate</span></code> again to generate new
+GINO models and run <code class="docutils literal notranslate"><span class="pre">alembic</span> <span class="pre">revision</span> <span class="pre">--autogenerate</span></code> again to generate new
 revisions to track the change. Remember to review the revision file - you may want
 to adjust it.</p>
 </div>
@@ -647,7 +647,7 @@ it for development.</p></li>
 <li><p>Enable <a class="reference external" href="https://en.wikipedia.org/wiki/Continuous_integration">CI</a>, install <code class="docutils literal notranslate"><span class="pre">pytest-cov</span></code> and use <code class="docutils literal notranslate"><span class="pre">--cov-fail-under</span></code> to guarantee coverage.</p></li>
 <li><p>Integrate static code analysis tools and security/CVE checking tools.</p></li>
 <li><p>Automate <a class="reference external" href="https://alembic.sqlalchemy.org/">Alembic</a> upgrade properly - e.g. after new version is deployed.</p></li>
-<li><p>Be aware of the usual security attacks like <a class="reference external" href="https://en.wikipedia.org/wiki/Cross-site_request_forgery">CSRF</a>, <a class="reference external" href="https://en.wikipedia.org/wiki/Cross-site_scripting">XSS</a>, etc.</p></li>
+<li><p>Be aware of the common security attacks like <a class="reference external" href="https://en.wikipedia.org/wiki/Cross-site_request_forgery">CSRF</a>, <a class="reference external" href="https://en.wikipedia.org/wiki/Cross-site_scripting">XSS</a>, etc.</p></li>
 <li><p>Write load tests.</p></li>
 </ul>
 <p>Again, the source code of the demo is available <a class="reference external" href="https://github.com/python-gino/gino-starlette/tree/master/examples/prod_fastapi_demo">here</a>,
