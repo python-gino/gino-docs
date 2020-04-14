@@ -443,6 +443,10 @@ shall use the <a class="reference external" href="https://docs.python.org/3/libr
                 <span class="n">init_app</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
 </pre></div>
 </div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>If you’re running Python &lt; 3.8, you’ll need this <a class="reference external" href="https://importlib-metadata.readthedocs.io/">importlib-metadata backport</a>.</p>
+</div>
 <p>And call it in our application factory:</p>
 <div class="highlight-diff notranslate"><div class="highlight"><pre><span></span> def get_app():
      app = FastAPI(title=&quot;GINO FastAPI Demo&quot;)
