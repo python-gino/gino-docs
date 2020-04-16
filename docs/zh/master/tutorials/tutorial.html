@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="../_static/favicon.ico">
-    <title>GINO Basics - GINO 1.0.0rc4 文档</title>
+    <title>GINO 基础教程 - GINO 1.0.0rc4 文档</title>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async
             src="https://www.googletagmanager.com/gtag/js?id=UA-3759436-10"></script>
@@ -49,20 +49,20 @@
                            class="breadcrumb">上手教程</a>
                     
                     
-                        <a class="breadcrumb" style="color: #FFFFFF">GINO Basics</a>
+                        <a class="breadcrumb" style="color: #FFFFFF">GINO 基础教程</a>
                     
                 </div>
                 <div class="spacer"></div>
                 <div id="search-container" class="search">
-                    <input type="text" id="search" placeholder="Search">
+                    <input type="text" id="search" placeholder="搜索">
                     <i class="mdi mdi-magnify"></i>
                     <div id="search-results" style="display: none"></div>
                 </div>
                 <a class="btn-flat theme-dark" href="/">
-                    HOME
+                    首页
                 </a>
                 <a class="btn-flat theme-dark" href="/authors.html">
-                    CREDITS
+                    鸣谢
                 </a>
                 <a href="https://github.com/python-gino/gino" target="_blank"
                    class="github-stars">
@@ -84,12 +84,12 @@
         <p class="caption"><span class="caption-text">上手教程</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../tutorials.html">上手教程</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">GINO Basics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fastapi.html">Build a FastAPI Server</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">GINO 基础教程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fastapi.html">搭建一个 FastAPI 服务器</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">GINO Basics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="fastapi.html">Build a FastAPI Server</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">GINO 基础教程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fastapi.html">搭建一个 FastAPI 服务器</a></li>
 </ul>
 <p class="caption"><span class="caption-text">进阶用法</span></p>
 <ul>
@@ -126,11 +126,11 @@
             <div id="main-content" role="main">
                 
     <div class="section" id="gino-basics">
-<h1>GINO Basics<a class="headerlink" href="#gino-basics" title="永久链接至标题">¶</a></h1>
+<h1>GINO 基础教程<a class="headerlink" href="#gino-basics" title="永久链接至标题">¶</a></h1>
 <p>这是一篇写给刚入坑同学的指南，将介绍 GINO 的基本部分。阅读之前，请先了解以下知识点：</p>
 <ul class="simple">
 <li><p>关系型数据库，尤其是 <a class="reference external" href="https://www.postgresql.org/">PostgreSQL</a></p></li>
-<li><p><a class="reference external" href="https://realpython.com/async-io-python/">Asynchronous programming in Python</a></p></li>
+<li><p><a class="reference external" href="https://realpython.com/async-io-python/">Python 异步编程</a></p></li>
 </ul>
 <p>您不需要对 <a class="reference external" href="https://www.sqlalchemy.org/">SQLAlchemy</a> 有所了解。</p>
 <div class="section" id="introduction">
@@ -145,9 +145,8 @@
 </pre></div>
 </div>
 <p>以上就是安装 GINO 的推荐方式，因为这种方式始终会去安装最新的稳定版。</p>
-<p>如果您还没有安装过 <a class="reference external" href="https://pip.pypa.io">pip</a>，您可以参阅 <a class="reference external" href="http://docs.python-guide.org/en/latest/starting/installation/">Python installation guide</a>。</p>
-<p>Alternatively, if you are using <a class="reference external" href="https://python-poetry.org">Poetry</a> to manage your project dependencies,
-you may want to run:</p>
+<p>如果您还没有安装过 <a class="reference external" href="https://pip.pypa.io">pip</a>，您可以参阅 <a class="reference external" href="http://docs.python-guide.org/en/latest/starting/installation/">Python 安装指南</a>。</p>
+<p>另外如果您在使用 <a class="reference external" href="https://python-poetry.org">Poetry</a> 进行项目依赖关系管理，那需要执行的则是：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> poetry add gino
 </pre></div>
 </div>
@@ -169,15 +168,7 @@ you may want to run:</p>
     <span class="n">nickname</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Unicode</span><span class="p">(),</span> <span class="n">default</span><span class="o">=</span><span class="s1">&#39;noname&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>By declaring this <code class="docutils literal notranslate"><span class="pre">User</span></code> class, we are actually defining a database table
-named <code class="docutils literal notranslate"><span class="pre">users</span></code>, with two columns <code class="docutils literal notranslate"><span class="pre">id</span></code> and <code class="docutils literal notranslate"><span class="pre">nickname</span></code>. Note that the fixed
-<code class="xref py py-attr docutils literal notranslate"><span class="pre">__tablename__</span></code> property is required. GINO
-suggests singular for model names, and plural for table names. Each
-<a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/metadata.html#sqlalchemy.schema.Column" title="(在 SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">db.Column</span></code></a> property defines one column for
-the table, where its first parameter indicates the column type in database,
-while the rest is for other column attributes or constraints. You can find a
-mapping of database types to <code class="docutils literal notranslate"><span class="pre">db</span></code> types <a class="reference external" href="http://docs.sqlalchemy.org/en/latest/core/type_basics.html">here</a> in the SQLAlchemy
-documentation.</p>
+<p>这里的 <code class="docutils literal notranslate"><span class="pre">User</span></code> 类其实就是在定义一张叫做 <code class="docutils literal notranslate"><span class="pre">users</span></code> 的数据库表，包含了 <code class="docutils literal notranslate"><span class="pre">id</span></code> 和 <code class="docutils literal notranslate"><span class="pre">nickname</span></code> 两个字段。请注意，<code class="xref py py-attr docutils literal notranslate"><span class="pre">__tablename__</span></code> 是一个必要的固定属性。GINO 建议使用单数名词来为 model 命名，同时使用复数名词去命名表。每个 <a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/metadata.html#sqlalchemy.schema.Column" title="(在 SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">db.Column</span></code></a> 属性都定义了一个数据库字段，其中第一个参数是字段类型，其余参数则用来定义字段其他属性或约束。您可以参考 <a class="reference external" href="http://docs.sqlalchemy.org/en/latest/core/type_basics.html">SQLAlchemy</a> 的文档来了解不同 <code class="docutils literal notranslate"><span class="pre">db</span></code> 类型到数据库类型的对应关系。</p>
 <div class="admonition note">
 <p class="admonition-title">注解</p>
 <p><a class="reference external" href="https://www.sqlalchemy.org/">SQLAlchemy</a> 是 Python 中一个强大的非异步 ORM 库，而 GINO 就是基于其构建的。通过不同的 SQL 方言实现，SQLAlchemy 支持包括 PostgreSQL 和 MySQL 在内的许多流行的 RDBMS，以至于有时相同的 Python 代码可以不经修改地运行在不同的数据库上。GINO 自然也承袭了这一特性，但目前暂仅支持 PostgreSQL（通过 <a class="reference external" href="https://github.com/MagicStack/asyncpg">asyncpg</a>）。</p>
@@ -195,10 +186,7 @@ documentation.</p>
    <span class="n">_idx2</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Index</span><span class="p">(</span><span class="s1">&#39;bookings_idx_booker_room&#39;</span><span class="p">,</span> <span class="s1">&#39;booker&#39;</span><span class="p">,</span> <span class="s1">&#39;room&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>It is also possible to define model constraints and indexes outside the model
-class if that is preferred. For more details on constraints and indexes, see
-<a class="reference external" href="http://docs.sqlalchemy.org/en/latest/core/constraints.html">here</a> in the
-SQLAlchemy documentation.</p>
+<p>另外如果有倾向性，您也可以在 model 类之外定义约束和索引，请参考 <a class="reference external" href="http://docs.sqlalchemy.org/en/latest/core/constraints.html">SQLAlchemy 文档</a> 来了解更多细节。</p>
 <p>由于一些限制，目前不允许在父类中直接使用类属性的方式来单独定义数据库约束和索引，<code class="xref py py-attr docutils literal notranslate"><span class="pre">__table_args__</span></code> 也是一样的。GINO 提供了 <a class="reference internal" href="../reference/api/gino.declarative.html#gino.declarative.declared_attr" title="gino.declarative.declared_attr"><code class="xref py py-func docutils literal notranslate"><span class="pre">declared_attr()</span></code></a> 来实现比如 mixin 类这样的功能，更多信息请参阅其 API 文档。</p>
 </div>
 <div class="section" id="get-connected">
@@ -216,12 +204,7 @@ SQLAlchemy documentation.</p>
 <span class="n">asyncio</span><span class="o">.</span><span class="n">get_event_loop</span><span class="p">()</span><span class="o">.</span><span class="n">run_until_complete</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
 </pre></div>
 </div>
-<p>If this runs successfully, then you are connected to the newly created database.
-Here <code class="docutils literal notranslate"><span class="pre">postgresql</span></code> indicates the database dialect to use (the default driver
-is <code class="docutils literal notranslate"><span class="pre">asyncpg</span></code>, you can explicitly specify that with <code class="docutils literal notranslate"><span class="pre">postgresql+asyncpg://</span></code>,
-or simply <code class="docutils literal notranslate"><span class="pre">asyncpg://</span></code>), <code class="docutils literal notranslate"><span class="pre">localhost</span></code> is where the server is, and <code class="docutils literal notranslate"><span class="pre">gino</span></code>
-is the name of the database. Check <a class="reference external" href="https://docs.sqlalchemy.org/en/latest/core/engines.html">here</a> for more
-information about how to compose this database URL.</p>
+<p>如果执行成功了，那就意味着您连上了新创建的数据库。此处的 <code class="docutils literal notranslate"><span class="pre">postgresql</span></code> 代表了要用的数据库方言（默认的驱动是 <code class="docutils literal notranslate"><span class="pre">asyncpg</span></code>，您也可以显式地指定使用它：<code class="docutils literal notranslate"><span class="pre">postgresql+asyncpg://</span></code> 或者就只写 <code class="docutils literal notranslate"><span class="pre">asyncpg://</span></code>），<code class="docutils literal notranslate"><span class="pre">localhost</span></code> 是数据库服务器所在的地址，<code class="docutils literal notranslate"><span class="pre">gino</span></code> 是数据库实例的名字。<a class="reference external" href="https://docs.sqlalchemy.org/en/latest/core/engines.html">这里</a> 可以读到更多关于如何构造一个数据库 URL 的信息。</p>
 <div class="admonition note">
 <p class="admonition-title">注解</p>
 <p>在底层，<a class="reference internal" href="../reference/api/gino.api.html#gino.api.Gino.set_bind" title="gino.api.Gino.set_bind"><code class="xref py py-meth docutils literal notranslate"><span class="pre">set_bind()</span></code></a> 调用了 <a class="reference internal" href="../reference/api/gino.html#gino.create_engine" title="gino.create_engine"><code class="xref py py-func docutils literal notranslate"><span class="pre">create_engine()</span></code></a> 来创建 engine，并将其绑定到 <code class="docutils literal notranslate"><span class="pre">db</span></code> 对象上。GINO engine 与 SQLAlchemy engine 类似，但 GINO engine 是异步的，而后者是阻塞式的。关于如何使用 engine，请参考 GINO 的 API 文档。</p>
@@ -233,9 +216,7 @@ information about how to compose this database URL.</p>
 <div class="admonition warning">
 <p class="admonition-title">警告</p>
 <p>这里是 <a class="reference internal" href="../reference/api/gino.schema.html#gino.schema.GinoSchemaVisitor.create_all" title="gino.schema.GinoSchemaVisitor.create_all"><code class="xref py py-meth docutils literal notranslate"><span class="pre">db.gino.create_all</span></code></a>，而不是 <a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/metadata.html#sqlalchemy.schema.MetaData.create_all" title="(在 SQLAlchemy v1.3)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">db.create_all</span></code></a>，因为 <code class="docutils literal notranslate"><span class="pre">db</span></code> 继承自 SQLAlchemy 的 <a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/metadata.html#sqlalchemy.schema.MetaData" title="(在 SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetaData</span></code></a>，而 <a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/metadata.html#sqlalchemy.schema.MetaData.create_all" title="(在 SQLAlchemy v1.3)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">db.create_all</span></code></a> 是 SQLAlchemy 的阻塞式方法，无法适用于绑定的 GINO engine。</p>
-<p>In practice <a class="reference internal" href="../reference/api/gino.schema.html#gino.schema.GinoSchemaVisitor.create_all" title="gino.schema.GinoSchemaVisitor.create_all"><code class="xref py py-meth docutils literal notranslate"><span class="pre">create_all()</span></code></a> is usually
-not an ideal solution. To manage database schema, tool like <a class="reference external" href="https://bitbucket.org/zzzeek/alembic">Alembic</a> is
-recommended, please see how to <a class="reference internal" href="../how-to/alembic.html"><span class="doc">Use Alembic</span></a>.</p>
+<p>实践中 <a class="reference internal" href="../reference/api/gino.schema.html#gino.schema.GinoSchemaVisitor.create_all" title="gino.schema.GinoSchemaVisitor.create_all"><code class="xref py py-meth docutils literal notranslate"><span class="pre">create_all()</span></code></a> 通常并不是一个理想的解决方案。为了管理数据库表结构，我们通常推荐使用诸如 <a class="reference external" href="https://bitbucket.org/zzzeek/alembic">Alembic</a> 这样的工具，请参阅如何 <a class="reference internal" href="../how-to/alembic.html"><span class="doc">Use Alembic</span></a>。</p>
 </div>
 <p>如果您想显式地断开与数据库的连接，您可以这么做：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">await</span> <span class="n">db</span><span class="o">.</span><span class="n">pop_bind</span><span class="p">()</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
@@ -321,8 +302,7 @@ recommended, please see how to <a class="reference internal" href="../how-to/ale
 <span class="c1"># SELECT users.id, users.nickname FROM users WHERE users.id &lt; $1</span>
 </pre></div>
 </div>
-<p>Read more <a class="reference external" href="https://docs.sqlalchemy.org/en/latest/core/expression_api.html">here</a>
-about writing queries, because the query object is exactly from SQLAlchemy core.</p>
+<p>因为查询对象就是出自于 SQLAlchemy core，所以请参阅 <a class="reference external" href="https://docs.sqlalchemy.org/en/latest/core/expression_api.html">如何编写查询</a> 。</p>
 <div class="admonition warning">
 <p class="admonition-title">警告</p>
 <p>当您拿到一个 model 对象时，这个对象就已经彻底与数据库分离了，完全成为内存中的一个普通对象。这就意味着，即使数据库中对应的行发生了变化，对象的值仍然不会受到丝毫影响。类似地，如果您修改了该对象的值，数据库也不会受到任何影响。</p>
@@ -430,7 +410,7 @@ about writing queries, because the query object is exactly from SQLAlchemy core.
             <div class="table-of-contents fixed">
                 
                     <ul>
-<li><a class="reference internal" href="#">GINO Basics</a><ul>
+<li><a class="reference internal" href="#">GINO 基础教程</a><ul>
 <li><a class="reference internal" href="#introduction">介绍</a></li>
 <li><a class="reference internal" href="#installation">安装</a></li>
 <li><a class="reference internal" href="#declare-models">声明模型</a></li>

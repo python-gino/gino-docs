@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="../_static/favicon.ico">
-    <title>Build a FastAPI Server - GINO 1.0.0rc4 文档</title>
+    <title>搭建一个 FastAPI 服务器 - GINO 1.0.0rc4 文档</title>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async
             src="https://www.googletagmanager.com/gtag/js?id=UA-3759436-10"></script>
@@ -49,20 +49,20 @@
                            class="breadcrumb">上手教程</a>
                     
                     
-                        <a class="breadcrumb" style="color: #FFFFFF">Build a FastAPI Server</a>
+                        <a class="breadcrumb" style="color: #FFFFFF">搭建一个 FastAPI 服务器</a>
                     
                 </div>
                 <div class="spacer"></div>
                 <div id="search-container" class="search">
-                    <input type="text" id="search" placeholder="Search">
+                    <input type="text" id="search" placeholder="搜索">
                     <i class="mdi mdi-magnify"></i>
                     <div id="search-results" style="display: none"></div>
                 </div>
                 <a class="btn-flat theme-dark" href="/">
-                    HOME
+                    首页
                 </a>
                 <a class="btn-flat theme-dark" href="/authors.html">
-                    CREDITS
+                    鸣谢
                 </a>
                 <a href="https://github.com/python-gino/gino" target="_blank"
                    class="github-stars">
@@ -84,12 +84,12 @@
         <p class="caption"><span class="caption-text">上手教程</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../tutorials.html">上手教程</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="tutorial.html">GINO Basics</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Build a FastAPI Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html">GINO 基础教程</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">搭建一个 FastAPI 服务器</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial.html">GINO Basics</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Build a FastAPI Server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">GINO 基础教程</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">搭建一个 FastAPI 服务器</a></li>
 </ul>
 <p class="caption"><span class="caption-text">进阶用法</span></p>
 <ul>
@@ -126,63 +126,50 @@
             <div id="main-content" role="main">
                 
     <div class="section" id="build-a-fastapi-server">
-<h1>Build a FastAPI Server<a class="headerlink" href="#build-a-fastapi-server" title="永久链接至标题">¶</a></h1>
-<p>In this tutorial, we'll build a production-ready <a class="reference external" href="https://fastapi.tiangolo.com/">FastAPI</a> server together.
-The full functional example is available <a class="reference external" href="https://github.com/python-gino/gino-starlette/tree/master/examples/prod_fastapi_demo">here</a>.</p>
-<p>Our application stack will look like this:</p>
+<h1>搭建一个 FastAPI 服务器<a class="headerlink" href="#build-a-fastapi-server" title="永久链接至标题">¶</a></h1>
+<p>在这篇教程里，我们会一起搭建一个用于生产环境的 <a class="reference external" href="https://fastapi.tiangolo.com/">FastAPI</a> 服务器。完整的示例代码在  <a class="reference external" href="https://github.com/python-gino/gino-starlette/tree/master/examples/prod_fastapi_demo">这里</a> 。</p>
+<p>写好之后，整个应用技术栈会是这样的：</p>
 <img alt="../_images/gino-fastapi.svg" class="align-center" src="../_images/gino-fastapi.svg" /><div class="section" id="start-a-new-project">
-<h2>Start a New Project<a class="headerlink" href="#start-a-new-project" title="永久链接至标题">¶</a></h2>
-<p>Instead of pip, let's use the shiny <a class="reference external" href="https://python-poetry.org/">Poetry</a> to manage our project. Follow the link to
-<a class="reference external" href="https://python-poetry.org/docs/#installation">install Poetry</a>, and create our new
-project in an empty directory:</p>
+<h2>创建一个新项目<a class="headerlink" href="#start-a-new-project" title="永久链接至标题">¶</a></h2>
+<p>这里我们尝试用亮瞎眼的 <a class="reference external" href="https://python-poetry.org/">Poetry</a> 来管理我们的项目，而不是传统的 pip。请跟随链接<a class="reference external" href="https://python-poetry.org/docs/#installation">安装 Poetry</a>，并且在一个空文件夹中创建我们的新项目：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> mkdir gino-fastapi-demo
 <span class="gp">$</span> <span class="nb">cd</span> gino-fastapi-demo
 <span class="gp">$</span> git init
 <span class="gp">$</span> poetry init
 </pre></div>
 </div>
-<p>Then follow the <a class="reference external" href="https://python-poetry.org/">Poetry</a> guide to finish the initialization - you may say &quot;no&quot; to the
-interactive dependency creation, because we will add them manually. It is okay to use
-the default values in the other steps of the guide, and make sure the package name
-remains <code class="docutils literal notranslate"><span class="pre">gino-fastapi-demo</span></code>.</p>
+<p>然后跟着 <a class="reference external" href="https://python-poetry.org/">Poetry</a> 的向导完成初始化——关于交互式创建依赖的两个问题，您可以回答“no”，因为我们会在下面手动创建。其他问题都可以用默认值，只是一定保证包的名字是 <code class="docutils literal notranslate"><span class="pre">gino-fastapi-demo</span></code>。</p>
 </div>
 <div class="section" id="add-dependencies">
-<h2>Add Dependencies<a class="headerlink" href="#add-dependencies" title="永久链接至标题">¶</a></h2>
-<p><a class="reference external" href="https://fastapi.tiangolo.com/">FastAPI</a> is built on top of the <a class="reference external" href="https://www.starlette.io/">Starlette</a> framework, so we shall use the <a class="reference external" href="https://github.com/python-gino/gino-starlette">GINO
-extension for Starlette</a>. Simply run:</p>
+<h2>添加依赖关系<a class="headerlink" href="#add-dependencies" title="永久链接至标题">¶</a></h2>
+<p><a class="reference external" href="https://fastapi.tiangolo.com/">FastAPI</a> 底层用的是 <a class="reference external" href="https://www.starlette.io/">Starlette</a> 框架，所以我们就可以直接使用 <a class="reference external" href="https://github.com/python-gino/gino-starlette">GINO 的 Starlette 扩展</a>。执行以下命令即可：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> poetry add <span class="s1">&#39;gino[starlette]@^1.0&#39;</span>
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">注解</p>
-<p>Before the final GINO 1.0 is released, please use 1.0rc4 for now:</p>
+<p>在 GINO 1.0 正式版发布之前，请先用 1.0rc4：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> poetry add <span class="s1">&#39;gino[starlette]@^1.0rc4&#39;</span> --allow-prereleases
 </pre></div>
 </div>
 </div>
-<p>Then let's add <a class="reference external" href="https://fastapi.tiangolo.com/">FastAPI</a>, together with the lightning-fast <a class="reference external" href="https://asgi.readthedocs.io/">ASGI</a> server <a class="reference external" href="https://www.uvicorn.org/">Uvicorn</a>, and
-<a class="reference external" href="https://gunicorn.org/">Gunicorn</a> as a production application server:</p>
+<p>接着我们添加 <a class="reference external" href="https://fastapi.tiangolo.com/">FastAPI</a>，以及快成一道闪电的 <a class="reference external" href="https://asgi.readthedocs.io/">ASGI</a> 服务器 <a class="reference external" href="https://www.uvicorn.org/">Uvicorn</a>，还有用作生产环境的应用服务器 <a class="reference external" href="https://gunicorn.org/">Gunicorn</a>：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> poetry add fastapi uvicorn gunicorn
 </pre></div>
 </div>
-<p>For database migration, we'll use <a class="reference external" href="https://alembic.sqlalchemy.org/">Alembic</a>. Because it uses normal <a class="reference external" href="https://www.python.org/dev/peps/pep-0249/">DB-API</a>, we need
-<a class="reference external" href="https://www.psycopg.org/">psycopg</a> here too:</p>
+<p>我们将用 <a class="reference external" href="https://alembic.sqlalchemy.org/">Alembic</a> 来管理数据库表结构变更。因为 <a class="reference external" href="https://alembic.sqlalchemy.org/">Alembic</a> 只兼容传统的 <a class="reference external" href="https://www.python.org/dev/peps/pep-0249/">DB-API</a> 驱动，所以我们还得加上 <a class="reference external" href="https://www.psycopg.org/">psycopg</a>：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> poetry add alembic psycopg2
 </pre></div>
 </div>
-<p>At last, let's add <a class="reference external" href="https://docs.pytest.org/">pytest</a> in the development environment for testing. We also want to
-add the <a class="reference external" href="https://requests.readthedocs.io/">requests</a> library to use the <a class="reference external" href="https://www.starlette.io/">Starlette</a> <a class="reference external" href="https://www.starlette.io/testclient/"><code class="docutils literal notranslate"><span class="pre">TestClient</span></code></a>:</p>
+<p>最后，测试框架选用 <a class="reference external" href="https://docs.pytest.org/">pytest</a>，我们将其添加到开发环境的依赖关系中。同时也加上 <a class="reference external" href="https://requests.readthedocs.io/">requests</a> 库，因为 <a class="reference external" href="https://www.starlette.io/">Starlette</a> 的 <a class="reference external" href="https://www.starlette.io/testclient/"><code class="docutils literal notranslate"><span class="pre">TestClient</span></code></a> 要用到它：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> poetry add -D pytest requests
 </pre></div>
 </div>
 <div class="admonition hint">
 <p class="admonition-title">提示</p>
-<p>With the steps above, <a class="reference external" href="https://python-poetry.org/">Poetry</a> will automatically create a <a class="reference external" href="https://virtualenv.pypa.io/">virtualenv</a> for you
-behind the scene, and all the dependencies are installed there. We will assume
-using this for the rest of the tutorial. But you're free to create your own
-<a class="reference external" href="https://virtualenv.pypa.io/">virtualenv</a>, and <a class="reference external" href="https://python-poetry.org/">Poetry</a> will honor it when it's activated.</p>
+<p>经过了上面的步骤，<a class="reference external" href="https://python-poetry.org/">Poetry</a> 会悄没声地帮我们自动创建一个 <a class="reference external" href="https://virtualenv.pypa.io/">virtualenv</a>，并且把所有的依赖关系装到这个虚拟环境里。在本教程后面的步骤里，我们会假定继续使用这个环境。但是，您也可以创建自己的 <a class="reference external" href="https://virtualenv.pypa.io/">virtualenv</a>，只要激活了 <a class="reference external" href="https://python-poetry.org/">Poetry</a> 就会用它。</p>
 </div>
-<p>That's all, this is my <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> created by <a class="reference external" href="https://python-poetry.org/">Poetry</a>, yours should look similar:</p>
+<p>以上。下面是 <a class="reference external" href="https://python-poetry.org/">Poetry</a> 给我创建出来的 <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> 文件内容，您的应该也长得差不多：</p>
 <div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[tool.poetry]</span>
 <span class="n">name</span> <span class="o">=</span> <span class="s">&quot;gino-fastapi-demo&quot;</span>
 <span class="n">version</span> <span class="o">=</span> <span class="s">&quot;0.1.0&quot;</span>
@@ -207,26 +194,22 @@ using this for the rest of the tutorial. But you're free to create your own
 <span class="n">build-backend</span> <span class="o">=</span> <span class="s">&quot;poetry.masonry.api&quot;</span>
 </pre></div>
 </div>
-<img alt="../_images/gino-fastapi-poetry.svg" class="align-right" src="../_images/gino-fastapi-poetry.svg" /><p>And there's also an auto-generated <code class="docutils literal notranslate"><span class="pre">poetry.lock</span></code> file with the frozen versions. The
-directory layout should look like the diagram on the right. Now let's add the two files
-to the Git repository (we will skip showing these git operations in future steps):</p>
+<img alt="../_images/gino-fastapi-poetry.svg" class="align-right" src="../_images/gino-fastapi-poetry.svg" /><p>同时自动生成的还有一个叫 <code class="docutils literal notranslate"><span class="pre">poetry.lock</span></code> 的文件，内容是当前完整依赖关系树的精确版本号，当前的目录结构如右图所示。现在让我们把这两个文件加到 Git 仓库中（以后的步骤就不再演示 Git 的操作了）：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> git add pyproject.toml poetry.lock
 <span class="gp">$</span> git commit -m <span class="s1">&#39;add project dependencies&#39;</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="write-a-simple-server">
-<h2>Write a Simple Server<a class="headerlink" href="#write-a-simple-server" title="永久链接至标题">¶</a></h2>
-<p>Now let's write some Python code.</p>
-<p>We'll create an extra <code class="docutils literal notranslate"><span class="pre">src</span></code> directory to include all the Python files, as demonstrated
-in the diagram below. This is known as the &quot;<a class="reference external" href="https://hynek.me/articles/testing-packaging/">src layout</a>&quot; providing a cleaner hierarchy.</p>
-<img alt="../_images/gino-fastapi-src.svg" class="align-right" src="../_images/gino-fastapi-src.svg" /><p>The root Python package of our project is named as <code class="docutils literal notranslate"><span class="pre">gino_fastapi_demo</span></code>, under which we
-will create two Python modules:</p>
+<h2>编写一个简单的服务器<a class="headerlink" href="#write-a-simple-server" title="永久链接至标题">¶</a></h2>
+<p>现在让我们写一点 Python 的代码吧。</p>
+<p>我们要创建一个 <code class="docutils literal notranslate"><span class="pre">src</span></code> 文件夹，用来装所有的 Python 文件，如下图所示。这种目录结构叫做“<a class="reference external" href="https://hynek.me/articles/testing-packaging/">src 布局</a>”，能让项目结构更清晰。</p>
+<img alt="../_images/gino-fastapi-src.svg" class="align-right" src="../_images/gino-fastapi-src.svg" /><p>我们项目的顶层 Python 包叫做 <code class="docutils literal notranslate"><span class="pre">gino_fastapi_demo</span></code>，我们在里面创建两个 Python 模块：</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">asgi</span></code> as the ASGI entry point - we'll feed it to the ASGI server</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">main</span></code> to initialize our server</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">asgi</span></code> 作为 ASGI 的入口，将被 ASGI 服务器直接使用</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">main</span></code> 用来初始化我们自己的服务器</p></li>
 </ul>
-<p>Here's <code class="docutils literal notranslate"><span class="pre">main.py</span></code>:</p>
+<p>下面是 <code class="docutils literal notranslate"><span class="pre">main.py</span></code> 的内容：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fastapi</span> <span class="kn">import</span> <span class="n">FastAPI</span>
 
 <span class="k">def</span> <span class="nf">get_app</span><span class="p">():</span>
@@ -234,15 +217,20 @@ will create two Python modules:</p>
     <span class="k">return</span> <span class="n">app</span>
 </pre></div>
 </div>
-<p>And we'll simply instantiate our application in <code class="docutils literal notranslate"><span class="pre">asgi.py</span></code>:</p>
+<p>在 <code class="docutils literal notranslate"><span class="pre">asgi.py</span></code> 里，我们只需要实例化我们的应用即可：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">.main</span> <span class="kn">import</span> <span class="n">get_app</span>
 
 <span class="n">app</span> <span class="o">=</span> <span class="n">get_app</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Then run <code class="docutils literal notranslate"><span class="pre">poetry</span> <span class="pre">install</span></code> to link our Python package into the <code class="docutils literal notranslate"><span class="pre">PYTHONPATH</span></code> in
-development mode. We'll be able to start a Uvicorn development server after that:</p>
+<p>然后执行 <code class="docutils literal notranslate"><span class="pre">poetry</span> <span class="pre">install</span></code> 来把我们的 Python 包以开发模式链接到 <code class="docutils literal notranslate"><span class="pre">PYTHONPATH</span></code> 中，接下来就可以启动 Uvicorn 的开发服务器了：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> poetry install
+<span class="go">Installing dependencies from lock file</span>
+
+<span class="go">No dependencies to install or update</span>
+
+<span class="go">  - Installing gino-fastapi-demo (0.1.0)</span>
+
 <span class="gp">$</span> poetry run uvicorn gino_fastapi_demo.asgi:app --reload
 <span class="go">INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)</span>
 <span class="go">INFO:     Started reloader process [53010]</span>
@@ -251,23 +239,17 @@ development mode. We'll be able to start a Uvicorn development server after that
 <span class="go">INFO:     Application startup complete.</span>
 </pre></div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">--reload</span></code> option enables Uvicorn to automatically reload the server for us when
-the Python source code is updated. Now access <a class="reference external" href="http://127.0.0.1:8000/docs">http://127.0.0.1:8000/docs</a> to see the
-Swagger UI of our new FastAPI server.</p>
+<p>这里的 <code class="docutils literal notranslate"><span class="pre">--reload</span></code> 选项会启用 Uvicorn 的自动加载功能，当我们的 Python 代码发生变动的时候，Uvicorn 会自动加载使用新代码。现在可以访问 <a class="reference external" href="http://127.0.0.1:8000/docs">http://127.0.0.1:8000/docs</a> 了，试一下我们新 FastAPI 服务器的 Swagger UI 接口文档。</p>
 <div class="admonition hint">
 <p class="admonition-title">提示</p>
-<p>As mentioned previously, if you're in your own virtualenv, the command <code class="docutils literal notranslate"><span class="pre">poetry</span> <span class="pre">run</span>
-<span class="pre">uvicorn</span></code> can be simplified as just <code class="docutils literal notranslate"><span class="pre">uvicorn</span></code>.</p>
-<p><code class="docutils literal notranslate"><span class="pre">poetry</span> <span class="pre">run</span></code> is a convenient shortcut to run the following command in the
-virtualenv managed by Poetry.</p>
+<p>正如之前提到的，如果您使用自己的虚拟环境，那么此处的 <code class="docutils literal notranslate"><span class="pre">poetry</span> <span class="pre">run</span> <span class="pre">uvicorn</span></code> 就可以简化为 <code class="docutils literal notranslate"><span class="pre">uvicorn</span></code>。</p>
+<p><code class="docutils literal notranslate"><span class="pre">poetry</span> <span class="pre">run</span></code> 是一个快捷命令，用于在 Poetry 管理的虚拟环境中执行后续的命令。</p>
 </div>
 </div>
 <div class="section" id="add-gino-extension">
-<h2>Add GINO Extension<a class="headerlink" href="#add-gino-extension" title="永久链接至标题">¶</a></h2>
-<img alt="../_images/gino-fastapi-config.svg" class="align-right" src="../_images/gino-fastapi-config.svg" /><p>Now let's add GINO to our server.</p>
-<p>First of all, we need a way to configure the database. In this tutorial, we'll use the
-<a class="reference external" href="https://www.starlette.io/config/">configuration system</a> from <a class="reference external" href="https://www.starlette.io/">Starlette</a>.
-Add <code class="docutils literal notranslate"><span class="pre">src/gino_fastapi_demo/config.py</span></code> as follows:</p>
+<h2>添加 GINO 扩展<a class="headerlink" href="#add-gino-extension" title="永久链接至标题">¶</a></h2>
+<img alt="../_images/gino-fastapi-config.svg" class="align-right" src="../_images/gino-fastapi-config.svg" /><p>现在让我们把 GINO 添加到服务器里。</p>
+<p>首先，我们需要有办法来配置数据库。在本教程中，我们选用 <a class="reference external" href="https://www.starlette.io/">Starlette</a> 的<a class="reference external" href="https://www.starlette.io/config/">配置系统</a>。创建文件 <code class="docutils literal notranslate"><span class="pre">src/gino_fastapi_demo/config.py</span></code>，内容为：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sqlalchemy.engine.url</span> <span class="kn">import</span> <span class="n">URL</span><span class="p">,</span> <span class="n">make_url</span>
 <span class="kn">from</span> <span class="nn">starlette.config</span> <span class="kn">import</span> <span class="n">Config</span>
 <span class="kn">from</span> <span class="nn">starlette.datastructures</span> <span class="kn">import</span> <span class="n">Secret</span>
@@ -303,35 +285,22 @@ Add <code class="docutils literal notranslate"><span class="pre">src/gino_fastap
 <span class="n">DB_RETRY_INTERVAL</span> <span class="o">=</span> <span class="n">config</span><span class="p">(</span><span class="s2">&quot;DB_RETRY_INTERVAL&quot;</span><span class="p">,</span> <span class="n">cast</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>This config file will load from environment variable first, if not found then from a
-file named <code class="docutils literal notranslate"><span class="pre">.env</span></code> from current path (usually the project root directory), and at last
-use the default value defined above. For example, you can either overwrite in CLI
-directly like this:</p>
+<p>这个配置文件会首先从环境变量中加载配置参数，如果没找到，则会从当前路径（通常是项目顶层目录）下一个叫 <code class="docutils literal notranslate"><span class="pre">.env</span></code> 的文件中加载，最后不行才会使用上面定义的默认值。比如，您即可以在命令行中设置：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nv">DB_HOST</span><span class="o">=</span>localhost <span class="nv">DB_USER</span><span class="o">=</span>postgres poetry run uvicorn gino_fastapi_demo.asgi:app --reload
 </pre></div>
 </div>
-<img alt="../_images/gino-fastapi-env.svg" class="align-right" src="../_images/gino-fastapi-env.svg" /><p>Or set them in the file <code class="docutils literal notranslate"><span class="pre">.env</span></code> (this file must not be committed into Git, remember to
-add it to <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code>):</p>
+<img alt="../_images/gino-fastapi-env.svg" class="align-right" src="../_images/gino-fastapi-env.svg" /><p>也可以在 <code class="docutils literal notranslate"><span class="pre">.env</span></code> 文件中设置（一定不要将该文件提交到 Git 中，记得在 <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> 里加上它）：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">DB_HOST</span><span class="o">=</span>localhost
 <span class="nv">DB_USER</span><span class="o">=</span>postgres
 </pre></div>
 </div>
-<p>Now it's time to create a <a class="reference external" href="https://www.postgresql.org/">PostgreSQL</a> database and set the connection variables
-correctly here. This is usually something like <code class="docutils literal notranslate"><span class="pre">createdb</span> <span class="pre">yourdbname</span></code>, but it may vary
-across different platforms, so we won't cover this part in this tutorial.</p>
+<p>接下来就该创建 <a class="reference external" href="https://www.postgresql.org/">PostgreSQL</a> 数据库实例并且将连接参数设置好了。创建数据库实例的命令通常是 <code class="docutils literal notranslate"><span class="pre">createdb</span> <span class="pre">yourdbname</span></code>，但不同平台可能有不同的方式，此教程里就不具体写了。</p>
 <div class="admonition tip">
 <p class="admonition-title">小技巧</p>
-<p>Alternatively, you could also set <code class="docutils literal notranslate"><span class="pre">DB_DSN</span></code> to for example
-<code class="docutils literal notranslate"><span class="pre">postgresql://user:password&#64;localhost:5432/dbname</span></code> to override the other individual
-config values like <code class="docutils literal notranslate"><span class="pre">DB_HOST</span></code> defined before <code class="docutils literal notranslate"><span class="pre">DB_DSN</span></code>.</p>
-<p>If defined, <code class="docutils literal notranslate"><span class="pre">DB_DSN</span></code> always have the higher priority over the individual ones,
-regardless of where they are defined - even if <code class="docutils literal notranslate"><span class="pre">DB_HOST</span></code> is defined in environment
-variable and <code class="docutils literal notranslate"><span class="pre">DB_DSN</span></code> is defined in <code class="docutils literal notranslate"><span class="pre">.env</span></code> file, <code class="docutils literal notranslate"><span class="pre">DB_HOST</span></code> is still ignored.
-Default value doesn't count.</p>
+<p>另外，您也可以使用 <code class="docutils literal notranslate"><span class="pre">DB_DSN</span></code> 来定义数据库连接参数，比如 <code class="docutils literal notranslate"><span class="pre">postgresql://user:password&#64;localhost:5432/dbname</span></code>，它会覆盖出现在它前面的单个的配置，比如 <code class="docutils literal notranslate"><span class="pre">DB_HOST</span></code>。</p>
+<p>除了默认值不算之外，只要您定义了 <code class="docutils literal notranslate"><span class="pre">DB_DSN</span></code> ——不管是在环境变量中还是在 <code class="docutils literal notranslate"><span class="pre">.env</span></code> 文件中，它都比单个的连接参数有更高的优先级。比如哪怕环境变量中定义了 <code class="docutils literal notranslate"><span class="pre">DB_HOST</span></code>，<code class="docutils literal notranslate"><span class="pre">.env</span></code> 文件中的 <code class="docutils literal notranslate"><span class="pre">DB_DSN</span></code> 仍然能够覆盖前者的值。</p>
 </div>
-<img alt="../_images/gino-fastapi-models.svg" class="align-right" src="../_images/gino-fastapi-models.svg" /><p>Then, create a new Python sub-package <code class="docutils literal notranslate"><span class="pre">gino_fastapi_demo.models</span></code> to encapsulate
-database-related code, and add the code below to
-<code class="docutils literal notranslate"><span class="pre">src/gino_fastapi_demo/models/__init__.py</span></code>:</p>
+<img alt="../_images/gino-fastapi-models.svg" class="align-right" src="../_images/gino-fastapi-models.svg" /><p>然后创建一个 Python 的二级包 <code class="docutils literal notranslate"><span class="pre">gino_fastapi_demo.models</span></code>，用来封装数据库相关的代码。将下面的代码添加到 <code class="docutils literal notranslate"><span class="pre">src/gino_fastapi_demo/models/__init__.py</span></code>：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gino.ext.starlette</span> <span class="kn">import</span> <span class="n">Gino</span>
 
 <span class="kn">from</span> <span class="nn">..</span> <span class="kn">import</span> <span class="n">config</span>
@@ -348,7 +317,7 @@ database-related code, and add the code below to
 <span class="p">)</span>
 </pre></div>
 </div>
-<p>At last, modify <code class="docutils literal notranslate"><span class="pre">src/gino_fastapi_demo/main.py</span></code> to install the GINO extension:</p>
+<p>最后，修改 <code class="docutils literal notranslate"><span class="pre">src/gino_fastapi_demo/main.py</span></code>，安装 GINO 扩展：</p>
 <div class="highlight-diff notranslate"><div class="highlight"><pre><span></span> from fastapi import FastAPI
 <span class="gi">+</span>
 <span class="gi">+from .models import db</span>
@@ -359,8 +328,7 @@ database-related code, and add the code below to
      return app
 </pre></div>
 </div>
-<p>Saving the file, you should see the Uvicorn server reloads our changes and connects to
-the database:</p>
+<p>保存该文件后，您应该可以看到 Uvicorn 服务器重载了我们的变更，然后连上了数据库：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">WARNING:  Detected file change in &#39;src/gino_fastapi_demo/main.py&#39;. Reloading...</span>
 <span class="go">INFO:     Shutting down</span>
 <span class="go">INFO:     Waiting for application shutdown.</span>
@@ -375,11 +343,9 @@ the database:</p>
 </div>
 </div>
 <div class="section" id="create-models-and-api">
-<h2>Create Models and API<a class="headerlink" href="#create-models-and-api" title="永久链接至标题">¶</a></h2>
-<img alt="../_images/gino-fastapi-models-users.svg" class="align-right" src="../_images/gino-fastapi-models-users.svg" /><p>It's time to implement the API now. Let's say we are building a user management service,
-through which we could add users, list users and delete users.</p>
-<p>First of all, we need a database table <code class="docutils literal notranslate"><span class="pre">users</span></code> to store the data, mapped to a GINO
-model named <code class="docutils literal notranslate"><span class="pre">User</span></code>. We shall add the model in <code class="docutils literal notranslate"><span class="pre">gino_fastapi_demo.models.users</span></code>:</p>
+<h2>创建 model 及 API<a class="headerlink" href="#create-models-and-api" title="永久链接至标题">¶</a></h2>
+<img alt="../_images/gino-fastapi-models-users.svg" class="align-right" src="../_images/gino-fastapi-models-users.svg" /><p>现在轮到实现 API 逻辑了。比方说我们打算做一个用户管理的服务，可以添加、查看和删除用户。</p>
+<p>首先，我们需要一张数据库表 <code class="docutils literal notranslate"><span class="pre">users</span></code>，用于存储数据。在 <code class="docutils literal notranslate"><span class="pre">gino_fastapi_demo.models.users</span></code> 模块中添加一个映射这张表的 model <code class="docutils literal notranslate"><span class="pre">User</span></code>：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">db</span>
 
 <span class="k">class</span> <span class="nc">User</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
@@ -389,10 +355,8 @@ model named <code class="docutils literal notranslate"><span class="pre">User</s
     <span class="n">nickname</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Unicode</span><span class="p">(),</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;unnamed&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="../_images/gino-fastapi-views.svg" class="align-right" src="../_images/gino-fastapi-views.svg" /><p>The model definition is simple enough to explain itself.</p>
-<p>Then we only have to use it properly in the API implementation, for which we'll create a
-new Python sub-package <code class="docutils literal notranslate"><span class="pre">gino_fastapi_demo.views</span></code>, and a new module
-<code class="docutils literal notranslate"><span class="pre">gino_fastapi_demo.views.users</span></code> as follows:</p>
+<img alt="../_images/gino-fastapi-views.svg" class="align-right" src="../_images/gino-fastapi-views.svg" /><p>很简单的 model 定义，一切尽在不言中。</p>
+<p>然后我们只需要在 API 的实现中正确使用它即可。创建一个新的 Python 二级包 <code class="docutils literal notranslate"><span class="pre">gino_fastapi_demo.models.views</span></code>，在其中添加一个模块 <code class="docutils literal notranslate"><span class="pre">gino_fastapi_demo.views.users</span></code>，内容为：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fastapi</span> <span class="kn">import</span> <span class="n">APIRouter</span>
 <span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span>
 
@@ -423,11 +387,7 @@ new Python sub-package <code class="docutils literal notranslate"><span class="p
     <span class="n">app</span><span class="o">.</span><span class="n">include_router</span><span class="p">(</span><span class="n">router</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>The <a class="reference external" href="https://fastapi.tiangolo.com/tutorial/bigger-applications/#apirouter"><code class="docutils literal notranslate"><span class="pre">APIRouter</span></code></a> holds our new APIs locally, and <code class="docutils literal notranslate"><span class="pre">init_app</span></code> is used to integrate it
-into our FastAPI application. Here we want some <a class="reference external" href="https://en.wikipedia.org/wiki/Inversion_of_control">inversion of control</a>: let's make the
-APIs plugable, so that we don't have to import all possible future views manually. We
-shall use the <a class="reference external" href="https://docs.python.org/3/library/importlib.metadata.html#entry-points">Entry Points</a> feature to load the dependencies. Add this code below to
-<code class="docutils literal notranslate"><span class="pre">gino_fastapi_demo.main</span></code>:</p>
+<p><a class="reference external" href="https://fastapi.tiangolo.com/tutorial/bigger-applications/#apirouter"><code class="docutils literal notranslate"><span class="pre">APIRouter</span></code></a> 用来收集新接口的定义，然后在 <code class="docutils literal notranslate"><span class="pre">init_app</span></code> 里集成到 FastAPI 应用中去。这里我们加一点<a class="reference external" href="https://en.wikipedia.org/wiki/Inversion_of_control">反转控制</a> ：把接口做成模块化的，用 <a class="reference external" href="https://docs.python.org/3/library/importlib.metadata.html#entry-points">Entry Points</a> 功能进行拼装，避免需要手动一一 import 将来可能有的其他接口。将下面的代码添加到 <code class="docutils literal notranslate"><span class="pre">gino_fastapi_demo.main</span></code>：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">logging</span>
 <span class="kn">from</span> <span class="nn">importlib.metadata</span> <span class="kn">import</span> <span class="n">entry_points</span>
 
@@ -445,9 +405,9 @@ shall use the <a class="reference external" href="https://docs.python.org/3/libr
 </div>
 <div class="admonition hint">
 <p class="admonition-title">提示</p>
-<p>If you're running Python &lt; 3.8, you'll need this <a class="reference external" href="https://importlib-metadata.readthedocs.io/">importlib-metadata backport</a>.</p>
+<p>如果您的 Python 版本低于 3.8，您还需要这个 <a class="reference external" href="https://importlib-metadata.readthedocs.io/">importlib-metadata 的移植</a>。</p>
 </div>
-<p>And call it in our application factory:</p>
+<p>然后在我们的应用工厂函数中调用它：</p>
 <div class="highlight-diff notranslate"><div class="highlight"><pre><span></span> def get_app():
      app = FastAPI(title=&quot;GINO FastAPI Demo&quot;)
      db.init_app(app)
@@ -455,29 +415,22 @@ shall use the <a class="reference external" href="https://docs.python.org/3/libr
      return app
 </pre></div>
 </div>
-<p>Finally, define the entry points in <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> following the <a class="reference external" href="https://python-poetry.org/docs/pyproject/#plugins">Poetry document
-for plugins</a>:</p>
+<p>最后，根据 <a class="reference external" href="https://python-poetry.org/docs/pyproject/#plugins">Poetry 插件文档</a>，在 <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> 文件中定义 Entry Point：</p>
 <div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[tool.poetry.plugins.&quot;gino_fastapi_demo.modules&quot;]</span>
 <span class="s">&quot;users&quot;</span> <span class="o">=</span> <span class="s">&quot;gino_fastapi_demo.views.users&quot;</span>
 </pre></div>
 </div>
-<p>Run <code class="docutils literal notranslate"><span class="pre">poetry</span> <span class="pre">install</span></code> again to activate the entry points - you may need to restart the
-<a class="reference external" href="https://www.uvicorn.org/">Uvicorn</a> development server manually, as the reloader cannot capture the changes we made
-to <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code>.</p>
-<p>Now you should be able to see the 3 new APIs on the Swagger UI. But none of them works,
-because we still haven't created the database tables.</p>
+<p>再执行一次 <code class="docutils literal notranslate"><span class="pre">poetry</span> <span class="pre">install</span></code> 来激活这些 Entry Point——这次您可能需要亲自重启 <a class="reference external" href="https://www.uvicorn.org/">Uvicorn</a> 的开发服务器了，因为自动重载机制无法识别 <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> 文件的变更。</p>
+<p>现在您应该可以在 Swagger UI 中看到那 3 个新接口了，但是它们还都不能用，因为我们还没有创建数据库表。</p>
 </div>
 <div class="section" id="integrate-with-alembic">
-<h2>Integrate with Alembic<a class="headerlink" href="#integrate-with-alembic" title="永久链接至标题">¶</a></h2>
-<p>To get started with <a class="reference external" href="https://alembic.sqlalchemy.org/">Alembic</a>, run this command in the project root directory:</p>
+<h2>集成 Alembic<a class="headerlink" href="#integrate-with-alembic" title="永久链接至标题">¶</a></h2>
+<p>请在项目顶层文件夹中执行下面的命令，以开始使用 <a class="reference external" href="https://alembic.sqlalchemy.org/">Alembic</a>：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> poetry run alembic init migrations
 </pre></div>
 </div>
-<img alt="../_images/gino-fastapi-alembic.svg" class="align-right" src="../_images/gino-fastapi-alembic.svg" /><p>This will generate a new directory <code class="docutils literal notranslate"><span class="pre">migrations</span></code> where <a class="reference external" href="https://alembic.sqlalchemy.org/">Alembic</a> will store database
-migration revisions. At the same time, an <code class="docutils literal notranslate"><span class="pre">alembic.ini</span></code> file is created in the project
-root directory. Let's simply add all of them to Git control.</p>
-<p>For <a class="reference external" href="https://alembic.sqlalchemy.org/">Alembic</a> to use our data models defined with GINO (and of course the database
-config), we need to modify <code class="docutils literal notranslate"><span class="pre">migrations/env.py</span></code> to connect with the GINO instance:</p>
+<img alt="../_images/gino-fastapi-alembic.svg" class="align-right" src="../_images/gino-fastapi-alembic.svg" /><p>这句命令会生产一个新的文件夹 <code class="docutils literal notranslate"><span class="pre">migrations</span></code>，包含了 <a class="reference external" href="https://alembic.sqlalchemy.org/">Alembic</a> 用于数据库表结构变更追踪的版本文件。同时创建的还有一个在顶层文件夹下面的 <code class="docutils literal notranslate"><span class="pre">alembic.ini</span></code> 文件，我们把这些文件都添加到 Git 中。</p>
+<p>为了能让 <a class="reference external" href="https://alembic.sqlalchemy.org/">Alembic</a> 用上我们用 GINO 定义的 model，我们需要修改 <code class="docutils literal notranslate"><span class="pre">migrations/env.py</span></code> 文件去链接 GINO 实例：</p>
 <div class="highlight-diff notranslate"><div class="highlight"><pre><span></span> # add your model&#39;s MetaData object here
  # for &#39;autogenerate&#39; support
  # from myapp import mymodel
@@ -491,7 +444,7 @@ config), we need to modify <code class="docutils literal notranslate"><span clas
 <span class="gi">+target_metadata = db</span>
 </pre></div>
 </div>
-<p>Then create our first migration revision with:</p>
+<p>然后就可以创建我们的第一个变更版本了：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> poetry run alembic revision --autogenerate -m <span class="s1">&#39;add users table&#39;</span>
 <span class="go">INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.</span>
 <span class="go">INFO  [alembic.runtime.migration] Will assume transactional DDL.</span>
@@ -499,7 +452,7 @@ config), we need to modify <code class="docutils literal notranslate"><span clas
 <span class="go">  Generating migrations/versions/32c0feba61ea_add_users_table.py ...  done</span>
 </pre></div>
 </div>
-<p>The generated revision file should roughly look like this:</p>
+<p>生成的版本文件大体上应该长这样：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">upgrade</span><span class="p">():</span>
     <span class="n">op</span><span class="o">.</span><span class="n">create_table</span><span class="p">(</span>
         <span class="s2">&quot;users&quot;</span><span class="p">,</span>
@@ -514,24 +467,20 @@ config), we need to modify <code class="docutils literal notranslate"><span clas
 </div>
 <div class="admonition hint">
 <p class="admonition-title">提示</p>
-<p>Whenever there is a change to the database schema in the future, just modify the
-GINO models and run <code class="docutils literal notranslate"><span class="pre">alembic</span> <span class="pre">revision</span> <span class="pre">--autogenerate</span></code> again to generate new
-revisions to track the change. Remember to review the revision file - you may want
-to adjust it.</p>
+<p>以后需要再次修改数据库表结构的时候，您只需要修改 GINO model 然后执行 <code class="docutils literal notranslate"><span class="pre">alembic</span> <span class="pre">revision</span> <span class="pre">--autogenerate</span></code> 命令来生成对应改动的新版本即可。提交前记得看一下生成的版本文件，有时需要调整。</p>
 </div>
-<p>Eventually, let's apply this migration, by upgrading to the latest revision:</p>
+<p>我们终于可以应用此次变更了，执行下面的命令将数据库表结构版本升级至最高：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> poetry run alembic upgrade head
 <span class="go">INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.</span>
 <span class="go">INFO  [alembic.runtime.migration] Will assume transactional DDL.</span>
 <span class="go">INFO  [alembic.runtime.migration] Running upgrade  -&gt; 32c0feba61ea, add users table</span>
 </pre></div>
 </div>
-<p>Now all the APIs should be fully operational, try with the Swagger UI.</p>
+<p>到这里，所有的接口应该都可以正常工作了，您可以在 Swagger UI 中试一下。</p>
 </div>
 <div class="section" id="write-the-tests">
-<h2>Write the Tests<a class="headerlink" href="#write-the-tests" title="永久链接至标题">¶</a></h2>
-<p>In order not to break our development database with running tests, let's create a
-separate database to run tests. Apply this change to <code class="docutils literal notranslate"><span class="pre">gino_fastapi_demo.config</span></code>:</p>
+<h2>编写测试<a class="headerlink" href="#write-the-tests" title="永久链接至标题">¶</a></h2>
+<p>为了不影响开发环境的数据库，我们需要为测试创建单独的数据库。根据下面的补丁修改 <code class="docutils literal notranslate"><span class="pre">gino_fastapi_demo.config</span></code>：</p>
 <div class="highlight-diff notranslate"><div class="highlight"><pre><span></span> config = Config(&quot;.env&quot;)
 
 <span class="gi">+TESTING = config(&quot;TESTING&quot;, cast=bool, default=False)</span>
@@ -550,13 +499,11 @@ separate database to run tests. Apply this change to <code class="docutils liter
  DB_DSN = config(
 </pre></div>
 </div>
-<div class="admonition tip">
-<p class="admonition-title">小技巧</p>
-<p>You need to run <code class="docutils literal notranslate"><span class="pre">createdb</span></code> to actually create the database. If you have set
-<code class="docutils literal notranslate"><span class="pre">DB_DATABASE</span></code> in <code class="docutils literal notranslate"><span class="pre">.env</span></code> - e.g. <code class="docutils literal notranslate"><span class="pre">DB_DATABASE=mydb</span></code>, the name of the testing
-database should be <code class="docutils literal notranslate"><span class="pre">mydb_test</span></code>. Or else, <code class="docutils literal notranslate"><span class="pre">gino_fastapi_demo_test</span></code>.</p>
+<div class="admonition hint">
+<p class="admonition-title">提示</p>
+<p>您需要执行 <code class="docutils literal notranslate"><span class="pre">createdb</span></code> 来创建数据库实例。比如说，如果您在 <code class="docutils literal notranslate"><span class="pre">.env</span></code> 文件中定义了 <code class="docutils literal notranslate"><span class="pre">DB_DATABASE=mydb</span></code>，那么测试数据库的名字就是 <code class="docutils literal notranslate"><span class="pre">mydb_test</span></code>。否则如果没定义的话，默认就是 <code class="docutils literal notranslate"><span class="pre">gino_fastapi_demo_test</span></code>。</p>
 </div>
-<p>Then, let's create our <a class="reference external" href="https://docs.pytest.org/">pytest</a> fixture in <code class="docutils literal notranslate"><span class="pre">tests/conftest.py</span></code>:</p>
+<p>然后在 <code class="docutils literal notranslate"><span class="pre">tests/conftest.py</span></code> 中创建 <a class="reference external" href="https://docs.pytest.org/">pytest</a> fixture：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pytest</span>
 <span class="kn">from</span> <span class="nn">alembic.config</span> <span class="kn">import</span> <span class="n">main</span>
 <span class="kn">from</span> <span class="nn">starlette.config</span> <span class="kn">import</span> <span class="n">environ</span>
@@ -576,10 +523,8 @@ database should be <code class="docutils literal notranslate"><span class="pre">
     <span class="n">main</span><span class="p">([</span><span class="s2">&quot;--raiseerr&quot;</span><span class="p">,</span> <span class="s2">&quot;downgrade&quot;</span><span class="p">,</span> <span class="s2">&quot;base&quot;</span><span class="p">])</span>
 </pre></div>
 </div>
-<img alt="../_images/gino-fastapi-tests.svg" class="align-right" src="../_images/gino-fastapi-tests.svg" /><p>This fixture creates all the database tables before running the test, yield a <a class="reference external" href="https://www.starlette.io/">Starlette</a>
-<a class="reference external" href="https://www.starlette.io/testclient/"><code class="docutils literal notranslate"><span class="pre">TestClient</span></code></a>, and drop all the tables with all the data after the test to maintain a
-clean environment for the next test.</p>
-<p>Here's a sample test in <code class="docutils literal notranslate"><span class="pre">tests/test_users.py</span></code>:</p>
+<img alt="../_images/gino-fastapi-tests.svg" class="align-right" src="../_images/gino-fastapi-tests.svg" /><p>这个 fixture 的作用是，在跑测试之前创建所有的数据库表、提供一个 <a class="reference external" href="https://www.starlette.io/">Starlette</a> 的 <a class="reference external" href="https://www.starlette.io/testclient/"><code class="docutils literal notranslate"><span class="pre">TestClient</span></code></a>、并且在测试跑完之后删除所有的表及其数据，为后续测试保持一个干净的环境。</p>
+<p>下面是一个简单的测试例子，<code class="docutils literal notranslate"><span class="pre">tests/test_users.py</span></code>：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">uuid</span>
 
 <span class="k">def</span> <span class="nf">test_crud</span><span class="p">(</span><span class="n">client</span><span class="p">):</span>
@@ -597,7 +542,7 @@ clean environment for the next test.</p>
     <span class="k">assert</span> <span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">404</span>
 </pre></div>
 </div>
-<p>Then run the test:</p>
+<p>测试跑起来：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> poetry run pytest
 <span class="go">=========================== test session starts ===========================</span>
 <span class="go">platform darwin -- Python 3.8.2, pytest-5.4.1, py-1.8.1, pluggy-0.13.1</span>
@@ -611,8 +556,8 @@ clean environment for the next test.</p>
 </div>
 </div>
 <div class="section" id="notes-for-production">
-<h2>Notes for Production<a class="headerlink" href="#notes-for-production" title="永久链接至标题">¶</a></h2>
-<p>Given the popularity of Docker/Kubernetes, we'll build a <code class="docutils literal notranslate"><span class="pre">Dockerfile</span></code> for our demo:</p>
+<h2>生产环境注意事项<a class="headerlink" href="#notes-for-production" title="永久链接至标题">¶</a></h2>
+<p>最近 Docker/Kubernetes 挺火，我们也写一个 <code class="docutils literal notranslate"><span class="pre">Dockerfile</span></code>：</p>
 <div class="highlight-dockerfile notranslate"><div class="highlight"><pre><span></span><span class="k">FROM</span> <span class="s">python:3.8-alpine</span> <span class="k">as</span> <span class="s">base</span>
 
 <span class="k">FROM</span> <span class="s">base</span> <span class="k">as</span> <span class="s">builder</span>
@@ -630,29 +575,21 @@ clean environment for the next test.</p>
 <span class="k">CMD</span> <span class="p">[</span><span class="s2">&quot;/env/bin/gunicorn&quot;</span><span class="p">,</span> <span class="s2">&quot;gino_fastapi_demo.asgi:app&quot;</span><span class="p">,</span> <span class="s2">&quot;-b&quot;</span><span class="p">,</span> <span class="s2">&quot;0.0.0.0:80&quot;</span><span class="p">,</span> <span class="s2">&quot;-k&quot;</span><span class="p">,</span> <span class="s2">&quot;uvicorn.workers.UvicornWorker&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>In this <code class="docutils literal notranslate"><span class="pre">Dockerfile</span></code>, we used 2 phases to separate the building from the production
-image to reduce target artifact size. Also, we are using <a class="reference external" href="https://gunicorn.org/">Gunicorn</a> with
-<a class="reference external" href="https://www.uvicorn.org/deployment/#gunicorn"><code class="docutils literal notranslate"><span class="pre">UvicornWorker</span></code></a> from <a class="reference external" href="https://www.uvicorn.org/">Uvicorn</a> as the worker class for best production reliability.</p>
-<p>Let's review what we have in the project.</p>
-<img alt="../_images/gino-fastapi-layout.svg" class="align-center" src="../_images/gino-fastapi-layout.svg" /><p>This is the end of the tutorial to build a demo. Below is an incomplete checklist to
-go live:</p>
+<p>这个 <code class="docutils literal notranslate"><span class="pre">Dockerfile</span></code> 里，为了降低目标镜像文件的大小，我们分成了两步来分别进行源码构建和生产镜像的组装。另外，我们还采用了 <a class="reference external" href="https://gunicorn.org/">Gunicorn</a> 搭配 <a class="reference external" href="https://www.uvicorn.org/">Uvicorn</a> 的 <a class="reference external" href="https://www.uvicorn.org/deployment/#gunicorn"><code class="docutils literal notranslate"><span class="pre">UvicornWorker</span></code></a> 的方式来获取最佳生产级别可靠性。</p>
+<p>回头看一下项目里一共有哪些文件。</p>
+<img alt="../_images/gino-fastapi-layout.svg" class="align-center" src="../_images/gino-fastapi-layout.svg" /><p>至此，我们就完成了演示项目的开发。下面是上生产可以用到的一个不完整检查清单：</p>
 <ul class="simple">
-<li><p>Set <code class="docutils literal notranslate"><span class="pre">DB_RETRY_LIMIT</span></code> to a larger number to allow staring the application server
-before the database is fully ready.</p></li>
-<li><p>Implement the same retry logic in <code class="docutils literal notranslate"><span class="pre">migrations/env.py</span></code> so that <a class="reference external" href="https://alembic.sqlalchemy.org/">Alembic</a> gets the same
-functionality.</p></li>
-<li><p>Enable <code class="docutils literal notranslate"><span class="pre">DB_SSL</span></code> if needed.</p></li>
-<li><p>Write a <code class="docutils literal notranslate"><span class="pre">docker-compose.yml</span></code> for other developers to get a quick taste or even use
-it for development.</p></li>
-<li><p>Enable <a class="reference external" href="https://en.wikipedia.org/wiki/Continuous_integration">CI</a>, install <code class="docutils literal notranslate"><span class="pre">pytest-cov</span></code> and use <code class="docutils literal notranslate"><span class="pre">--cov-fail-under</span></code> to guarantee coverage.</p></li>
-<li><p>Integrate static code analysis tools and security/CVE checking tools.</p></li>
-<li><p>Automate <a class="reference external" href="https://alembic.sqlalchemy.org/">Alembic</a> upgrade properly - e.g. after new version is deployed.</p></li>
-<li><p>Be aware of the common security attacks like <a class="reference external" href="https://en.wikipedia.org/wiki/Cross-site_request_forgery">CSRF</a>, <a class="reference external" href="https://en.wikipedia.org/wiki/Cross-site_scripting">XSS</a>, etc.</p></li>
-<li><p>Write load tests.</p></li>
+<li><p>将 <code class="docutils literal notranslate"><span class="pre">DB_RETRY_LIMIT</span></code> 设置成一个稍微大一点的数字，以支持在数据库就绪前启动应用服务器的情况。</p></li>
+<li><p>在 <code class="docutils literal notranslate"><span class="pre">migrations/env.py</span></code> 中实现同样的重连尝试逻辑，这样 <a class="reference external" href="https://alembic.sqlalchemy.org/">Alembic</a> 也能拥有同样的特性。</p></li>
+<li><p>如果需要的话，启用 <code class="docutils literal notranslate"><span class="pre">DB_SSL</span></code>。</p></li>
+<li><p>写一个 <code class="docutils literal notranslate"><span class="pre">docker-compose.yml</span></code>，用于其他开发人员快速尝鲜，甚至可以用于开发。</p></li>
+<li><p>启用<cite>持续集成 &lt;CI_&gt;</cite>，安装 <code class="docutils literal notranslate"><span class="pre">pytest-cov</span></code> 并且用 <code class="docutils literal notranslate"><span class="pre">--cov-fail-under</span></code> 参数来保障测试覆盖率。</p></li>
+<li><p>集成静态代码检查工具和安全性/CVE筛查工具。</p></li>
+<li><p>正确自动化 <a class="reference external" href="https://alembic.sqlalchemy.org/">Alembic</a> 的升级流程，比如在每次新版本部署之后执行。</p></li>
+<li><p>注意针对诸如 <a class="reference external" href="https://en.wikipedia.org/wiki/Cross-site_request_forgery">CSRF</a>、<a class="reference external" href="https://en.wikipedia.org/wiki/Cross-site_scripting">XSS</a> 等常见攻击的安全性防护。</p></li>
+<li><p>编写压力测试。</p></li>
 </ul>
-<p>Again, the source code of the demo is available <a class="reference external" href="https://github.com/python-gino/gino-starlette/tree/master/examples/prod_fastapi_demo">here</a>,
-and the source of this tutorial is <a class="reference external" href="https://github.com/python-gino/gino/blob/master/docs/tutorials/fastapi.rst">here</a>.
-Please feel free to submit PRs to fix issues or add your thoughts. Happy hacking!</p>
+<p>最后再贴一次，实例程序的源码在<a class="reference external" href="https://github.com/python-gino/gino-starlette/tree/master/examples/prod_fastapi_demo">这里</a>，本教程的文档源码在<a href="#id1"><span class="problematic" id="id2">`这里&lt;https://github.com/python-gino/gino/blob/master/docs/tutorials/fastapi.rst&gt;`__</span></a>，请敞开了提 PR，修问题或者分享想法都行。祝玩得愉快！</p>
 </div>
 </div>
 
@@ -664,15 +601,15 @@ Please feel free to submit PRs to fix issues or add your thoughts. Happy hacking
             <div class="table-of-contents fixed">
                 
                     <ul>
-<li><a class="reference internal" href="#">Build a FastAPI Server</a><ul>
-<li><a class="reference internal" href="#start-a-new-project">Start a New Project</a></li>
-<li><a class="reference internal" href="#add-dependencies">Add Dependencies</a></li>
-<li><a class="reference internal" href="#write-a-simple-server">Write a Simple Server</a></li>
-<li><a class="reference internal" href="#add-gino-extension">Add GINO Extension</a></li>
-<li><a class="reference internal" href="#create-models-and-api">Create Models and API</a></li>
-<li><a class="reference internal" href="#integrate-with-alembic">Integrate with Alembic</a></li>
-<li><a class="reference internal" href="#write-the-tests">Write the Tests</a></li>
-<li><a class="reference internal" href="#notes-for-production">Notes for Production</a></li>
+<li><a class="reference internal" href="#">搭建一个 FastAPI 服务器</a><ul>
+<li><a class="reference internal" href="#start-a-new-project">创建一个新项目</a></li>
+<li><a class="reference internal" href="#add-dependencies">添加依赖关系</a></li>
+<li><a class="reference internal" href="#write-a-simple-server">编写一个简单的服务器</a></li>
+<li><a class="reference internal" href="#add-gino-extension">添加 GINO 扩展</a></li>
+<li><a class="reference internal" href="#create-models-and-api">创建 model 及 API</a></li>
+<li><a class="reference internal" href="#integrate-with-alembic">集成 Alembic</a></li>
+<li><a class="reference internal" href="#write-the-tests">编写测试</a></li>
+<li><a class="reference internal" href="#notes-for-production">生产环境注意事项</a></li>
 </ul>
 </li>
 </ul>
