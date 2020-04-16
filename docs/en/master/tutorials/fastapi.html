@@ -243,6 +243,12 @@ will create two Python modules:</p>
 <p>Then run <code class="docutils literal notranslate"><span class="pre">poetry</span> <span class="pre">install</span></code> to link our Python package into the <code class="docutils literal notranslate"><span class="pre">PYTHONPATH</span></code> in
 development mode. We’ll be able to start a Uvicorn development server after that:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> poetry install
+<span class="go">Installing dependencies from lock file</span>
+
+<span class="go">No dependencies to install or update</span>
+
+<span class="go">  - Installing gino-fastapi-demo (0.1.0)</span>
+
 <span class="gp">$</span> poetry run uvicorn gino_fastapi_demo.asgi:app --reload
 <span class="go">INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)</span>
 <span class="go">INFO:     Started reloader process [53010]</span>
@@ -550,8 +556,8 @@ separate database to run tests. Apply this change to <code class="docutils liter
  DB_DSN = config(
 </pre></div>
 </div>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
 <p>You need to run <code class="docutils literal notranslate"><span class="pre">createdb</span></code> to actually create the database. If you have set
 <code class="docutils literal notranslate"><span class="pre">DB_DATABASE</span></code> in <code class="docutils literal notranslate"><span class="pre">.env</span></code> - e.g. <code class="docutils literal notranslate"><span class="pre">DB_DATABASE=mydb</span></code>, the name of the testing
 database should be <code class="docutils literal notranslate"><span class="pre">mydb_test</span></code>. Or else, <code class="docutils literal notranslate"><span class="pre">gino_fastapi_demo_test</span></code>.</p>
