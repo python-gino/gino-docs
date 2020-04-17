@@ -38,6 +38,7 @@
     <div class="navbar-fixed">
         <nav>
             <div class="nav-wrapper">
+                <a href="#" data-target="sidenav" class="sidenav-trigger"><hr><hr><hr></a>
                 <a href="../index.html" class="brand-logo">
                     <div class="img"
                          style="background-image: url(../_static/logo.svg); width: 103px; height: 40px;"></div>
@@ -125,7 +126,7 @@
 <h1>Engine and Connection<a class="headerlink" href="#engine-and-connection" title="Permalink to this headline">¶</a></h1>
 <p><a class="reference internal" href="../reference/api/gino.engine.html#gino.engine.GinoEngine" title="gino.engine.GinoEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">GinoEngine</span></code></a> is the core of GINO. It acts like a pool of
 connections but also does the work of assembling everyone together:</p>
-<img alt="../_images/engine.png" src="../_images/engine.png" />
+<img alt="../_images/engine.png" class="align-center" src="../_images/engine.png" />
 <p>Under the hood, engine is associated with a specific dialect instance on
 creation, e.g. asyncpg dialect. The dialect is actually a set of classes that
 implements GINO dialect API, offering all the details about how to operate on
@@ -304,7 +305,7 @@ context manager:</p>
 <p>Here <code class="docutils literal notranslate"><span class="pre">conn</span></code> is a <a class="reference internal" href="../reference/api/gino.engine.html#gino.engine.GinoConnection" title="gino.engine.GinoConnection"><code class="xref py py-class docutils literal notranslate"><span class="pre">GinoConnection</span></code></a> instance. As mentioned
 previously, <a class="reference internal" href="../reference/api/gino.engine.html#gino.engine.GinoConnection" title="gino.engine.GinoConnection"><code class="xref py py-class docutils literal notranslate"><span class="pre">GinoConnection</span></code></a> is mapped to an underlying raw
 connection, as shown in following diagram:</p>
-<img alt="../_images/connection.png" src="../_images/connection.png" />
+<img alt="../_images/connection.png" class="align-center" src="../_images/connection.png" />
 <p>Each column has at most one actual raw connection, and the number is the
 sequence the connections are created in this example. It is designed this way
 so that GINO could offer two features for connection management: <code class="docutils literal notranslate"><span class="pre">reuse</span></code> and
@@ -429,7 +430,7 @@ result only one raw connection checked out, no matter which executes first. It
 is also worth noting that, if we set <code class="docutils literal notranslate"><span class="pre">lazy=False</span></code> on (6), then the raw
 connection will be immediately borrowed on acquire, and shared between both (5)
 and (6). It’s been quite a while, let me post the same diagram again:</p>
-<img alt="../_images/connection.png" src="../_images/connection.png" />
+<img alt="../_images/connection.png" class="align-center" src="../_images/connection.png" />
 </div>
 <div class="section" id="reusable">
 <h3>reusable<a class="headerlink" href="#reusable" title="Permalink to this headline">¶</a></h3>
