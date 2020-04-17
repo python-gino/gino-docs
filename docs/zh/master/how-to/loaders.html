@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="../_static/favicon.ico">
-    <title>Loaders and Relationship - GINO 1.0.0rc4 文档</title>
+    <title>加载器与关系 - GINO 1.0.0rc4 文档</title>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async
             src="https://www.googletagmanager.com/gtag/js?id=UA-3759436-10"></script>
@@ -38,6 +38,7 @@
     <div class="navbar-fixed">
         <nav>
             <div class="nav-wrapper">
+                <a href="#" data-target="sidenav" class="sidenav-trigger"><hr><hr><hr></a>
                 <a href="../index.html" class="brand-logo">
                     <div class="img"
                          style="background-image: url(../_static/logo.svg); width: 103px; height: 40px;"></div>
@@ -49,7 +50,7 @@
                            class="breadcrumb">进阶用法</a>
                     
                     
-                        <a class="breadcrumb" style="color: #FFFFFF">Loaders and Relationship</a>
+                        <a class="breadcrumb" style="color: #FFFFFF">加载器与关系</a>
                     
                 </div>
                 <div class="spacer"></div>
@@ -90,27 +91,27 @@
 <p class="caption"><span class="caption-text">进阶用法</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../how-to.html">进阶用法</a></li>
-<li class="toctree-l1"><a class="reference internal" href="alembic.html">Use Alembic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="alembic.html">使用 Alembic</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contributing.html">贡献</a></li>
-<li class="toctree-l1"><a class="reference internal" href="crud.html">CRUD</a></li>
-<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Loaders and Relationship</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pool.html">Connection Pool</a></li>
-<li class="toctree-l1"><a class="reference internal" href="schema.html">Schema Declaration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="transaction.html">Transaction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="crud.html">增删改查</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">常见问题</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">加载器与关系</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pool.html">连接池</a></li>
+<li class="toctree-l1"><a class="reference internal" href="schema.html">表结构定义</a></li>
+<li class="toctree-l1"><a class="reference internal" href="transaction.html">数据库事务</a></li>
 </ul>
 <p class="caption"><span class="caption-text">原理说明</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../explanation.html">原理说明</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../explanation/engine.html">Engine and Connection</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../explanation/why.html">Why Asynchronous ORM?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../explanation/why.html">为什么要用异步 ORM？</a></li>
 </ul>
 <p class="caption"><span class="caption-text">参考手册</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../reference.html">参考手册</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference/api.html">API 参考</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reference/extensions.html">Extensions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reference/history.html">History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/extensions.html">扩展</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/history.html">版本历史</a></li>
 </ul>
 
     </div>
@@ -122,7 +123,7 @@
             <div id="main-content" role="main">
                 
     <div class="section" id="loaders-and-relationship">
-<h1>Loaders and Relationship<a class="headerlink" href="#loaders-and-relationship" title="永久链接至标题">¶</a></h1>
+<h1>加载器与关系<a class="headerlink" href="#loaders-and-relationship" title="永久链接至标题">¶</a></h1>
 <p>Loaders are used to load database row results into objects.</p>
 <p>GINO doesn't support automated relationship. We insist explicit code style in
 asynchronous programming and that conflicts with some usual ORM relationship
@@ -568,7 +569,7 @@ more inspiration here in the future.</p>
             <div class="table-of-contents fixed">
                 
                     <ul>
-<li><a class="reference internal" href="#">Loaders and Relationship</a><ul>
+<li><a class="reference internal" href="#">加载器与关系</a><ul>
 <li><a class="reference internal" href="#model-loader">Model Loader</a></li>
 <li><a class="reference internal" href="#loader-expression">Loader Expression</a></li>
 <li><a class="reference internal" href="#many-to-one-relationship">Many-to-One Relationship</a></li>
