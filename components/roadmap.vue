@@ -178,6 +178,64 @@
       }
     }
   }
+
+  @media (max-width: 992px) {
+    #roadmap {
+      background: none;
+      flex-direction: column;
+      height: auto;
+      align-items: center;
+
+      h1 {
+        padding-top: 0;
+      }
+
+      .container {
+        position: initial;
+        height: auto;
+        width: auto;
+        left: 0;
+        margin: 0 1rem;
+        align-items: flex-start;
+
+        .shadow {
+          display: none;
+        }
+
+        .milestone {
+          display: none;
+          position: initial;
+
+          img {
+            display: none;
+          }
+        }
+
+        .item {
+          &, &.tall, &.up, &.down {
+            display: list-item;
+            width: auto;
+            background: none;
+            position: initial;
+            height: auto;
+            margin: 0.1rem 0;
+            font-size: 0.24rem;
+
+            hr, .window {
+              display: none;
+            }
+
+            h1 {
+              font-size: 0.24rem;
+              line-height: 1.5;
+              padding: 0;
+              text-align: initial;
+            }
+          }
+        }
+      }
+    }
+  }
 </style>
 
 <script>

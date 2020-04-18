@@ -145,4 +145,20 @@
       }
     }
   }
+
+  @media (max-width: 992px) {
+    #architecture {
+      flex-direction: column;
+      width: auto;
+
+      > .section {
+        margin-left: 1rem;
+      }
+
+      .diagram {
+        margin-top: 0;
+        transform: scale(0.8);
+      }
+    }
+  }
 </style>

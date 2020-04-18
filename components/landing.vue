@@ -55,6 +55,20 @@
       }
     }
   }
+  @media (max-width: 992px) {
+    #landing {
+      .title {
+        left: 0.5rem;
+        right: 0.5rem;
+        text-align: center;
+
+        span {
+          font-size: 0.36rem;
+        }
+      }
+
+    }
+  }
 </style>
 
 <script>
@@ -62,6 +76,7 @@
 
   export default {
     mounted () {
+      if (window.innerWidth <= 992) return
       let sky = this.$refs.sky
       this.width = this.$refs.landing.clientWidth
       this.height = this.$refs.landing.clientHeight

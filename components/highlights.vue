@@ -58,7 +58,14 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        margin: 0 0.18rem 0.18rem 0;
+
+        &:first-of-type {
+          margin: 0 0.18rem 0.18rem 0;
+        }
+
+        &:last-of-type {
+          margin-left: 0.18rem;
+        }
 
         div {
           height: 0.64rem;
@@ -101,6 +108,25 @@
     .section {
       text-align: right;
       margin-left: 1.3rem;
+    }
+  }
+
+  @media (max-width: 992px) {
+    #highlights {
+      flex-direction: column-reverse;
+      justify-content: space-evenly;
+      width: auto;
+      height: calc(var(--bg-width) * 0.6);
+      margin-top: 0;
+
+      .highlights-container {
+        justify-content: center;
+      }
+
+      .section {
+        text-align: center;
+        margin-left: 0;
+      }
     }
   }
 </style>

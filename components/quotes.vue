@@ -49,4 +49,10 @@
       width: 2rem;
     }
   }
+
+  @media (max-width: 992px) {
+    #quotes {
+      width: auto;
+    }
+  }
 </style>

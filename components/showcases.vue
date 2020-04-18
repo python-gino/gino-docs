@@ -197,6 +197,14 @@
       }
     }
   }
+
+  @media (max-width: 992px) {
+    #showcase {
+      > .section {
+        margin-top: 1rem;
+      }
+    }
+  }
 </style>
 
 <script>

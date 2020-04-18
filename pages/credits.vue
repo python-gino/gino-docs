@@ -1,6 +1,6 @@
 <template>
   <div class="credits">
-    <div class="clouds"></div>
+    <div class="clouds" ref="clouds"></div>
 
     <div>
       <h1>YOUR NAME HERE</h1>
@@ -12,14 +12,15 @@
       <ul>
         <li>Accepted Pull Requests</li>
         <li>Accepted Translations</li>
-        <li>Sponsorship</li>
+        <li><a href="https://www.patreon.com/fantixking" target="_blank">Sponsorship</a>
+        </li>
       </ul>
       <p>We also appreciate:</p>
       <ul>
-        <li>Using, sharing and star⭐!</li>
-        <li>Share your story</li>
-        <li>Report a bug/issue, or request for new features</li>
-        <li>Ask a question</li>
+        <li>Using, sharing and adding stars⭐!</li>
+        <li>Sharing your story</li>
+        <li>Reporting a bug/issue, or requesting for new features</li>
+        <li>Asking a question</li>
       </ul>
 
       <h1>CORE TEAM</h1>
@@ -117,7 +118,7 @@
               Special thanks to my wife Daisy and her outsourcing company <a
               href="https://decentfox.com/" target="_blank">DecentFoX Studio</a>, for
               offering me the opportunity to build this project in 2018. They are open
-              for global software project outsourcing on Python, iOS and Android
+              for global software project outsourcing on Python, Web, iOS and Android
               development.
             </p>
             <p>
@@ -138,6 +139,65 @@
             <h2>{{ author.name }}</h2>
             <p>{{ author.email }}</p>
           </div>
+        </li>
+      </ul>
+
+      <h1>OTHER PROJECTS</h1>
+      <p>GINO is built on top of these awesome projects:</p>
+      <ul>
+        <li><a href="https://www.sqlalchemy.org/" target="_blank">SQLAlchemy</a></li>
+        <li><a href="https://github.com/MagicStack/asyncpg" target="_blank">asyncpg</a>
+        </li>
+      </ul>
+      <p>Projects using GINO (please
+        <a
+          href="https://github.com/python-gino/python-gino.org/blob/src/pages/credits.vue"
+          target="_blank">create a pull request</a> to add your projects here):</p>
+      <ul>
+        <li>
+          <a href="https://github.com/python-gino/gino-starlette" target="_blank">gino-starlette</a>
+        </li>
+        <li>
+          <a href="https://github.com/python-gino/gino-aiohttp" target="_blank">gino-aiohttp</a>
+        </li>
+        <li>
+          <a href="https://github.com/python-gino/gino-tornado" target="_blank">gino-tornado</a>
+        </li>
+        <li>
+          <a href="https://github.com/python-gino/gino-sanic"
+             target="_blank">gino-sanic</a>
+        </li>
+        <li>
+          <a href="https://github.com/python-gino/gino-quart"
+             target="_blank">gino-quart</a>
+        </li>
+        <li>
+          <a href="https://github.com/fantix/aintq" target="_blank">AintQ</a>
+           - asyncio task queue on PostgreSQL
+        </li>
+        <li>
+          <a href="https://github.com/madisvain/exchangeratesapi" target="_blank">ExchangeratesAPI</a>
+           - Foreign exchange rates API with currency conversion
+        </li>
+      </ul>
+      <p>GINO was inspired by these projects:</p>
+      <ul>
+        <li><a href="https://github.com/CanopyTax/asyncpgsa"
+               target="_blank">asyncpgsa</a></li>
+        <li><a href="https://github.com/05bit/peewee-async"
+               target="_blank">peewee-async</a></li>
+        <li><a href="https://github.com/monobot/asyncorm" target="_blank">asyncorm</a>
+        </li>
+      </ul>
+      <p>Other similar Python asyncio ORM projects:</p>
+      <ul>
+        <li><a href="https://tortoise.github.io/" target="_blank">Tortoise ORM</a> since
+          2018.
+        </li>
+        <li>
+          <a href="https://github.com/encode/orm" target="_blank">ORM</a> by
+          <a href="https://www.encode.io/" target="_blank">Encode OSS</a>
+          since 2019.
         </li>
       </ul>
     </div>
@@ -224,7 +284,7 @@
     }
 
     .clouds {
-      position: absolute;
+      position: fixed;
       left: 0;
       top: 0;
       z-index: -1;
@@ -237,6 +297,49 @@
       height: calc(var(--bg-width) * 0.4734375);
     }
   }
+
+  @media (max-width: 992px) {
+    .credits {
+      font-size: 0.24rem;
+      line-height: 0.3rem;
+
+      h1, h2 {
+        align-self: center;
+      }
+
+      .name-cards {
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+
+        &.wrap {
+          text-align: center;
+        }
+
+        img {
+          margin-right: 0;
+        }
+
+        li {
+          flex-direction: column;
+          align-items: center;
+          margin: 0 0 0.32rem;
+        }
+      }
+
+      > div {
+        width: auto;
+        margin: 0 0.5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+        &.clouds {
+          margin: 0;
+        }
+      }
+    }
+  }
 </style>
 
 <script>
@@ -246,6 +349,20 @@
     data () {
       return {
         authors: authors
+      }
+    },
+
+    mounted () {
+      let clouds = this.$refs.clouds
+      let requested = false
+      clouds.style.transform = 'translateY(-' + (window.scrollY / 4) + 'px)'
+      window.onscroll = () => {
+        if (requested) return
+        requested = true
+        window.requestAnimationFrame(() => {
+          requested = false
+          clouds.style.transform = 'translateY(-' + (window.scrollY / 4) + 'px)'
+        })
       }
     }
   }
