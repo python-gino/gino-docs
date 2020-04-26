@@ -91,6 +91,7 @@
         <p class="caption"><span class="caption-text">Tutorials</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/announcement.html">官宣：Python 异步编程再添一利器</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/tutorial.html">GINO Basics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/fastapi.html">Build a FastAPI Server</a></li>
 </ul>
@@ -141,7 +142,10 @@
 <dl class="py function">
 <dt id="gino.aiocontextvars.patch_asyncio">
 <code class="sig-prename descclassname">gino.aiocontextvars.</code><code class="sig-name descname">patch_asyncio</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.aiocontextvars.patch_asyncio" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Patches asyncio to support <a class="reference external" href="https://docs.python.org/3/library/contextvars.html#module-contextvars" title="(in Python v3.8)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">contextvars</span></code></a>.</p>
+<p>This is automatically called when <a class="reference internal" href="gino.html#module-gino" title="gino"><code class="xref py py-mod docutils literal notranslate"><span class="pre">gino</span></code></a> is imported. If Python version is 3.7
+or greater, this function is a no-op.</p>
+</dd></dl>
 
 </div>
 
