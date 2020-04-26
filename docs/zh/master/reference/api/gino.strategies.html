@@ -91,6 +91,7 @@
         <p class="caption"><span class="caption-text">上手教程</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials.html">上手教程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/announcement.html">官宣：Python 异步编程再添一利器</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/tutorial.html">GINO 基础教程</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/fastapi.html">搭建一个 FastAPI 服务器</a></li>
 </ul>
@@ -142,6 +143,11 @@
 <dt id="gino.strategies.GinoStrategy">
 <em class="property">class </em><code class="sig-prename descclassname">gino.strategies.</code><code class="sig-name descname">GinoStrategy</code><a class="headerlink" href="#gino.strategies.GinoStrategy" title="永久链接至目标">¶</a></dt>
 <dd><p>基类：<code class="xref py py-class docutils literal notranslate"><span class="pre">sqlalchemy.engine.strategies.EngineStrategy</span></code></p>
+<p>A SQLAlchemy engine strategy for GINO.</p>
+<p>This strategy is initialized automatically as <a class="reference internal" href="gino.html#module-gino" title="gino"><code class="xref py py-mod docutils literal notranslate"><span class="pre">gino</span></code></a> is imported.</p>
+<p>If <a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/engines.html#sqlalchemy.create_engine" title="(在 SQLAlchemy v1.3)"><code class="xref py py-func docutils literal notranslate"><span class="pre">sqlalchemy.create_engine()</span></code></a> uses <code class="docutils literal notranslate"><span class="pre">strategy=&quot;gino&quot;</span></code>, it will return a
+<a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Coroutine" title="(在 Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Coroutine</span></code></a>, and treat URL prefix <code class="docutils literal notranslate"><span class="pre">postgresql://</span></code> or
+<code class="docutils literal notranslate"><span class="pre">postgres://</span></code> as <code class="docutils literal notranslate"><span class="pre">postgresql+asyncpg://</span></code>.</p>
 <dl class="py method">
 <dt id="gino.strategies.GinoStrategy.create">
 <em class="property">async </em><code class="sig-name descname">create</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name_or_url</span></em>, <em class="sig-param"><span class="n">loop</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.strategies.GinoStrategy.create" title="永久链接至目标">¶</a></dt>
