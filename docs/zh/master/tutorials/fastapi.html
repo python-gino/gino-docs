@@ -146,15 +146,8 @@
 <div class="section" id="add-dependencies">
 <h2>添加依赖关系<a class="headerlink" href="#add-dependencies" title="永久链接至标题">¶</a></h2>
 <p><a class="reference external" href="https://fastapi.tiangolo.com/">FastAPI</a> 底层用的是 <a class="reference external" href="https://www.starlette.io/">Starlette</a> 框架，所以我们就可以直接使用 <a class="reference external" href="https://github.com/python-gino/gino-starlette">GINO 的 Starlette 扩展</a>。执行以下命令即可：</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> poetry add <span class="s1">&#39;gino[starlette]@^1.0&#39;</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> poetry add gino<span class="o">[</span>starlette<span class="o">]</span>
 </pre></div>
-</div>
-<div class="admonition note">
-<p class="admonition-title">注解</p>
-<p>在 GINO 1.0 正式版发布之前，请先用 1.0rc4：</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> poetry add <span class="s1">&#39;gino[starlette]@^1.0rc4&#39;</span> --allow-prereleases
-</pre></div>
-</div>
 </div>
 <p>接着我们添加 <a class="reference external" href="https://fastapi.tiangolo.com/">FastAPI</a>，以及快成一道闪电的 <a class="reference external" href="https://asgi.readthedocs.io/">ASGI</a> 服务器 <a class="reference external" href="https://www.uvicorn.org/">Uvicorn</a>，还有用作生产环境的应用服务器 <a class="reference external" href="https://gunicorn.org/">Gunicorn</a>：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> poetry add fastapi uvicorn gunicorn
