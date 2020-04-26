@@ -253,12 +253,12 @@
           {title: 'Release candidates'},
           {title: 'Better documentation'},
           {title: 'Blog post'},
-          {title: 'Refine core code'},
+          {title: 'Cached prepared statement'},
           {title: 'Better typing support'},
           {title: 'MySQL support?'},
           {title: 'Patch SQLAlchemy'},
         ],
-        progress: 3,
+        progress: 5,
       }
     }
   }
