@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="../_static/favicon.ico">
+    <title>官宣：Python 异步编程再添一利器 - GINO 1.0.0 文档</title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async
+            src="https://www.googletagmanager.com/gtag/js?id=UA-3759436-10"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag () {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'UA-3759436-10');
+    </script>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Raleway:400,500,600,700&display=swap">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css">
+    <link type="text/css" rel="stylesheet"
+          href="../_static/css/materialize.min.css"
+          media="screen,projection"/>
+    <link rel="stylesheet" href="../_static/pygments.css"
+          type="text/css"/>
+    <link type="text/css" rel="stylesheet"
+          href="../_static/css/gino.css"/>
+</head>
+<body>
+
+<header>
+    <div class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper">
+                <a href="#" data-target="sidenav" class="sidenav-trigger"><hr><hr><hr></a>
+                <a href="../index.html" class="brand-logo">
+                    <div class="img"
+                         style="background-image: url(../_static/logo.svg); width: 103px; height: 40px;"></div>
+                </a>
+                <div class="breadcrumbs">
+                    <a class="breadcrumb" style="display: none"></a>
+                    
+                        <a href="../tutorials.html"
+                           class="breadcrumb">上手教程</a>
+                    
+                    
+                        <a class="breadcrumb" style="color: #FFFFFF">官宣：Python 异步编程再添一利器</a>
+                    
+                </div>
+                <div class="spacer"></div>
+                <div id="search-container" class="search">
+                    <input type="text" id="search" placeholder="搜索">
+                    <i class="mdi mdi-magnify"></i>
+                    <div id="search-results" style="display: none"></div>
+                </div>
+                <a class="btn-flat theme-dark" href="/">
+                    首页
+                </a>
+                <a class="btn-flat theme-dark" href="/authors.html">
+                    鸣谢
+                </a>
+                <a href="https://github.com/python-gino/gino" target="_blank"
+                   class="github-stars">
+                    <div class="left"><img
+                        src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iNDNweCIgaGVpZ2h0PSI0MnB4IiB2aWV3Qm94PSIwIDAgNDMgNDIiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8IS0tIEdlbmVyYXRvcjogU2tldGNoIDYxLjIgKDg5NjUzKSAtIGh0dHBzOi8vc2tldGNoLmNvbSAtLT4KICAgIDx0aXRsZT5GaWxsIDQ5PC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPgogICAgPGcgaWQ9IlYzLeacgOaWsOeov+S7tiIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgaWQ9IkhPTUUtdjMiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0xNTA3LjAwMDAwMCwgLTQ5LjAwMDAwMCkiIGZpbGw9IiNGRkZGRkUiPgogICAgICAgICAgICA8ZyBpZD0iYmFubmVyLWJnIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMzc5LjAwMDAwMCwgLTE4Ny4wMDAwMDApIj4KICAgICAgICAgICAgICAgIDxnIGlkPSJoZWFkZXIiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDU5Ny4wMDAwMDAsIDIxOC4wMDAwMDApIj4KICAgICAgICAgICAgICAgICAgICA8cGF0aCBkPSJNMTMxMC40OTgwMiwxOCBDMTI5OC42MjcxMiwxOCAxMjg5LDI3LjYzOTg4MzEgMTI4OSwzOS41MzIxMTIzIEMxMjg5LDQ5LjA0NTEwMjYgMTI5NS4xNTk4Myw1Ny4xMTQ2ODggMTMwMy43MDMzNCw1OS45NjE4NDM5IEMxMzA0Ljc3OTAzLDYwLjE2MDExMzggMTMwNS4xNzEwMyw1OS40OTUyNDg3IDEzMDUuMTcxMDMsNTguOTI0MjMxMyBDMTMwNS4xNzEwMyw1OC40MTI2OTUgMTMwNS4xNTI1NSw1Ny4wNTkxNzI0IDEzMDUuMTQxOTksNTUuMjYyODQ3IEMxMjk5LjE2MTY3LDU2LjU2MzQ5NzYgMTI5Ny44OTk4Nyw1Mi4zNzYwMzcxIDEyOTcuODk5ODcsNTIuMzc2MDM3MSBDMTI5Ni45MjE4NSw0OS44ODg0MTA2IDEyOTUuNTEyMjMsNDkuMjI2MTg5MSAxMjk1LjUxMjIzLDQ5LjIyNjE4OTEgQzEyOTMuNTYwMTUsNDcuODkxMTcxNyAxMjk1LjY2MDA2LDQ3LjkxNzYwNzcgMTI5NS42NjAwNiw0Ny45MTc2MDc3IEMxMjk3LjgxODA0LDQ4LjA2OTYxNDYgMTI5OC45NTMxMyw1MC4xMzY5MDg5IDEyOTguOTUzMTMsNTAuMTM2OTA4OSBDMTMwMC44NzA5LDUzLjQyNjg2NzYgMTMwMy45ODU3OSw1Mi40NzY0OTM4IDEzMDUuMjEwNjMsNTEuOTI1MzAzNSBDMTMwNS40MDU5Nyw1MC41MzQ3NzA1IDEzMDUuOTYxNjMsNDkuNTg1NzE4NiAxMzA2LjU3NTM3LDQ5LjA0Nzc0NjIgQzEzMDEuODAxNDEsNDguNTA0NDg2NiAxMjk2Ljc4MTk1LDQ2LjY1NjYxMTEgMTI5Ni43ODE5NSwzOC40MDU5MzkyIEMxMjk2Ljc4MTk1LDM2LjA1NTc3OTkgMTI5Ny42MjAwNiwzNC4xMzI1NjE3IDEyOTguOTk1MzcsMzIuNjI4MzU0IEMxMjk4Ljc3MzYzLDMyLjA4Mzc3MjYgMTI5OC4wMzU4MiwyOS44OTM1NTEgMTI5OS4yMDY1NCwyNi45MzAwNzY4IEMxMjk5LjIwNjU0LDI2LjkzMDA3NjggMTMwMS4wMTA4LDI2LjM1MTEyODYgMTMwNS4xMTgyNCwyOS4xMzc0ODE4IEMxMzA2LjgzMjc1LDI4LjY1ODk5MDQgMTMwOC42NzI2NCwyOC40MjEwNjY1IDEzMTAuNTAwNjYsMjguNDExODEzOSBDMTMxMi4zMjczNiwyOC40MjEwNjY1IDEzMTQuMTY1OTQsMjguNjU4OTkwNCAxMzE1Ljg4MzA4LDI5LjEzNzQ4MTggQzEzMTkuOTg3ODgsMjYuMzUxMTI4NiAxMzIxLjc4OTUsMjYuOTMwMDc2OCAxMzIxLjc4OTUsMjYuOTMwMDc2OCBDMTMyMi45NjI4NiwyOS44OTM1NTEgMTMyMi4yMjUwNSwzMi4wODM3NzI2IDEzMjIuMDA0NjMsMzIuNjI4MzU0IEMxMzIzLjM4MjU4LDM0LjEzMjU2MTcgMTMyNC4yMTQwOSwzNi4wNTU3Nzk5IDEzMjQuMjE0MDksMzguNDA1OTM5MiBDMTMyNC4yMTQwOSw0Ni42Nzc3NTk5IDEzMTkuMTg2NzIsNDguNDk3ODc3NiAxMzE0LjM5ODIzLDQ5LjAzMDU2MjggQzEzMTUuMTY5MDQsNDkuNjk1NDI3OSAxMzE1Ljg1NjY5LDUxLjAwOTI5NjUgMTMxNS44NTY2OSw1My4wMTcxMDk4IEMxMzE1Ljg1NjY5LDU1Ljg5NTk4ODkgMTMxNS44MzAyOSw1OC4yMTgzOTA1IDEzMTUuODMwMjksNTguOTI0MjMxMyBDMTMxNS44MzAyOSw1OS41MDA1MzU5IDEzMTYuMjE4MzMsNjAuMTcwNjg4MiAxMzE3LjMwODU0LDU5Ljk2MDUyMjEgQzEzMjUuODQ1NDUsNTcuMTA2NzU3MiAxMzMyLDQ5LjA0MjQ1OSAxMzMyLDM5LjUzMjExMjMgQzEzMzIsMjcuNjM5ODgzMSAxMzIyLjM3Mjg4LDE4IDEzMTAuNDk4MDIsMTgiIGlkPSJGaWxsLTQ5Ij48L3BhdGg+CiAgICAgICAgICAgICAgICA8L2c+CiAgICAgICAgICAgIDwvZz4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPg=="
+                        class="github-logo">
+                        GitHub
+                    </div>
+                    <div class="right"><img
+                        src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMjFweCIgaGVpZ2h0PSIxOXB4IiB2aWV3Qm94PSIwIDAgMjEgMTkiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8IS0tIEdlbmVyYXRvcjogU2tldGNoIDYxLjIgKDg5NjUzKSAtIGh0dHBzOi8vc2tldGNoLmNvbSAtLT4KICAgIDx0aXRsZT5QYXRoPC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPgogICAgPGcgaWQ9IlYzLeacgOaWsOeov+S7tiIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgaWQ9IkhPTUUtdjMiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0xNTYxLjAwMDAwMCwgLTYwLjAwMDAwMCkiIGZpbGw9IiNGOEQyMzAiPgogICAgICAgICAgICA8ZyBpZD0iYmFubmVyLWJnIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMzc5LjAwMDAwMCwgLTE4Ny4wMDAwMDApIj4KICAgICAgICAgICAgICAgIDxnIGlkPSJoZWFkZXIiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDU5Ny4wMDAwMDAsIDIxOC4wMDAwMDApIj4KICAgICAgICAgICAgICAgICAgICA8ZyBpZD0ibGFiZWwtY29weS0xMiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTI4OS4wMDAwMDAsIDE4LjAwMDAwMCkiPgogICAgICAgICAgICAgICAgICAgICAgICA8cG9seWdvbiBpZD0iUGF0aCIgcG9pbnRzPSI2MS4wNTQzNTQzIDE3Ljc1NzM4MzYgNTQuMjE1MjQ2NiAxOC4zMTMzOTI5IDU5Ljg4OTM1MTcgMjIuOTczNzM4NyA1Ny43ODQ1MjI4IDI5Ljg0MDExODQgNjQuNDQyNTI3MSAyNi41NDM0MTg4IDcwLjU3NzcyMzkgMjkuODQwMTE4NCA2OS4yMzA0MzI1IDIyLjk3MzczODcgNzQuNzMyNTY5NiAxOC4zMTMzOTI5IDY3Ljg5MzQ2MiAxNy43NTczODM2IDY0LjQ0MjUyNzEgMTEuMzc1Ij48L3BvbHlnb24+CiAgICAgICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICA8L2c+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4=">
+                        <span id="github-star-num"></span>
+                    </div>
+                </a>
+            </div>
+        </nav>
+    </div>
+
+    <div id="sidenav" class="sidenav sidenav-fixed">
+        <p class="caption"><span class="caption-text">上手教程</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../tutorials.html">上手教程</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">官宣：Python 异步编程再添一利器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html">GINO 基础教程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fastapi.html">搭建一个 FastAPI 服务器</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">官宣：Python 异步编程再添一利器</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">GINO 基础教程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fastapi.html">搭建一个 FastAPI 服务器</a></li>
+</ul>
+<p class="caption"><span class="caption-text">进阶用法</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../how-to.html">进阶用法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to/alembic.html">使用 Alembic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to/contributing.html">贡献</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to/crud.html">增删改查</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to/faq.html">常见问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to/loaders.html">加载器与关系</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to/pool.html">连接池</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to/schema.html">表结构定义</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to/transaction.html">数据库事务</a></li>
+</ul>
+<p class="caption"><span class="caption-text">原理说明</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../explanation.html">原理说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../explanation/engine.html">引擎与连接</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../explanation/why.html">为什么要用异步 ORM？</a></li>
+</ul>
+<p class="caption"><span class="caption-text">参考手册</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../reference.html">参考手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/api.html">API 参考</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/extensions.html">扩展</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/history.html">版本历史</a></li>
+</ul>
+
+    </div>
+</header>
+
+<main>
+    <div class="row">
+        <div class="col s12 m9 body">
+            <div id="main-content" role="main">
+                
+    <div class="section" id="python">
+<h1>官宣：Python 异步编程再添一利器<a class="headerlink" href="#python" title="永久链接至标题">¶</a></h1>
+<blockquote>
+<div><p>GINO 填补了国内外 asyncio ORM 领域的空白</p>
+</div></blockquote>
+<p>随着 Tornado<a class="footnote-reference brackets" href="#id41" id="id1">1</a> 和 asyncio<a class="footnote-reference brackets" href="#id42" id="id2">2</a> 等框架的陆续涌现，Python 异步编程这个话题也在逐渐升温。在这个烧脑的异步世界里，有没有办法可以既方便快捷、又简单明了地访问数据库呢？GitHub 千星项目
+<a class="reference external" href="https://github.com/python-gino/gino">GINO</a> 了解一下！</p>
+<img alt="../_images/python-gino.webp" class="align-center" src="../_images/python-gino.webp" />
+<div class="section" id="gino">
+<h2>GINO 是谁<a class="headerlink" href="#gino" title="永久链接至标题">¶</a></h2>
+<p>GINO 是一个“轻量级”异步 ORM 框架，它的全称是 GINO Is Not ORM，借鉴了 GNU is Not Unix
+的递归定义<a class="footnote-reference brackets" href="#id43" id="id3">3</a>手法。所以，GINO 一定要全！部！大！写！如果像这样“Gino”就变成了人名，你肯定要问一句“这是谁”。</p>
+<p>ORM，即关系对象映射（Object-Relational Mapping<a class="footnote-reference brackets" href="#id44" id="id4">4</a>），是一类开发人员喜闻乐见的效率工具，它们“极大地”提升了写代码的幸福指数。GINO 是用来访问数据库的，也提供了对象映射的工具，那为什么非说
+GINO 不是 ORM 呢？</p>
+<p>因为物极必反，ORM 在带来生活便利的同时，也是 bug 生长的温床——传统 ORM 往往会选择牺牲明确性（explicitness）来换取便捷性（convenience），再加上 Python 得天独厚的灵活性（flexibility），创造出了一种爆炸式的化学反应。一旦代码初具规模，项目或多或少都会遇到 ORM 反噬的情景：性能莫名其妙的差、出问题找不到原因、为了鸡毛蒜皮的小事大动干戈。随便一句 <code class="docutils literal notranslate"><span class="pre">current_user.name</span></code>
+都有可能触发一大堆意想不到的数据库调用，这代码你让我怎么调试？</p>
+<p>传统 ORM 的学习曲线前平后陡，能在快速原型开发中大展身手，但应用到大型项目中却十分考验开发人员的平均水平。</p>
+<p>所有这些问题如果再放进异步编程的环境里，那就是 O(n<sup>2</sup>) 的复杂度了——哦不，是
+O(2<sup>n</sup>)。这对于一款优秀的异步 ORM 框架来说是不可接受的，所以 GINO 是 ORM 但不是一个传统的
+ORM，正犹如 GNU 不是一个传统的 Unix 一样，形似而神不似。</p>
+<p>所以在 2017 年创作之初，我就给 GINO 定下了两个业绩目标：1) 方便快捷，2) 简单明了。三年后的今天，我索性在 1.0 稳定版发布的前夕做个年终总结。</p>
+</div>
+<div class="section" id="id5">
+<h2>先说“方便快捷”<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<blockquote>
+<div><p>“方便快捷”主要说的是开发效率。</p>
+</div></blockquote>
+<p>重视开发效率的概念对于写 Python 的同学来说可能并不陌生，某些场景下，开发人员的时间确实比机器的时间值钱。所以，传统 ORM 里的对象映射不能丢。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gino</span> <span class="kn">import</span> <span class="n">Gino</span>
+<span class="n">db</span> <span class="o">=</span> <span class="n">Gino</span><span class="p">()</span>
+<span class="k">class</span> <span class="nc">User</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s2">&quot;users&quot;</span>
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">String</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>这么定义表结构甚至让人有点小兴奋。咦，为什么这么眼熟？</p>
+<p>没有错，这就是 SQLAlchemy ORM<a class="footnote-reference brackets" href="#id45" id="id6">5</a> 的定义风格。GINO 并不是从头造轮子，而是在 SQLAlchemy
+core<a class="footnote-reference brackets" href="#id46" id="id7">6</a>（SQLAlchemy 中负责构建 SQL 的底层核心）的基础上开发的。这么做除了能保持熟悉的味道（以节省学习和迁移成本），更重要的是带来了整个 SQLAlchemy 的生态环境：开箱即用的数据库变更管理工具
+Alembic<a class="footnote-reference brackets" href="#id47" id="id8">7</a>、各种 SQLAlchemy 的增强插件<a class="footnote-reference brackets" href="#id48" id="id9">8</a>、专业领域的 PostGIS/geoalchemy<a class="footnote-reference brackets" href="#id49" id="id10">9</a>等，GINO 全都兼容。</p>
+<p>是不是十分方便、十分快捷？不止这样。</p>
+<p>GINO 一站式地解决了常用 CRUD 快捷方式<a class="footnote-reference brackets" href="#id50" id="id11">10</a>、上下文管理（aiocontextvars<a class="footnote-reference brackets" href="#id51" id="id12">11</a><a class="footnote-reference brackets" href="#id52" id="id13">12</a>）、
+数据库事务封装和嵌套<a class="footnote-reference brackets" href="#id53" id="id14">13</a>、连接池管理和懒加载<a class="footnote-reference brackets" href="#id54" id="id15">14</a>等多项便捷功能，无额外依赖关系，即装即用。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">daisy</span> <span class="o">=</span> <span class="k">await</span> <span class="n">User</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;daisy&quot;</span><span class="p">)</span>
+<span class="k">await</span> <span class="n">daisy</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Daisy&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>GINO 还提供了<a class="footnote-reference brackets" href="#id55" id="id16">15</a>各大流行异步 Web 框架的定制版插件，能叫上名字的像 Tornado<a class="footnote-reference brackets" href="#id41" id="id17">1</a>、aiohttp<a class="footnote-reference brackets" href="#id56" id="id18">16</a>、Sanic<a class="footnote-reference brackets" href="#id57" id="id19">17</a>、FastAPI<a class="footnote-reference brackets" href="#id58" id="id20">18</a>/Starlette<a class="footnote-reference brackets" href="#id59" id="id21">19</a>、Quart<a class="footnote-reference brackets" href="#id60" id="id22">20</a>什么的都有，从简单示范到生产环境的各种例子品种齐全，妈妈再也不用担心我不会集成 Web 框架了。</p>
+<p>为了让不同应用场景下的用户体验到最大的善意，GINO 目前支持三种不同程度的用法，成功实现了对同期竞品
+asyncpgsa<a class="footnote-reference brackets" href="#id61" id="id23">21</a> 的降维打击：</p>
+<ol class="arabic simple">
+<li><p>最少侵入型<a class="footnote-reference brackets" href="#id62" id="id24">22</a>：SQLAlchemy core 原教旨主义者，只有异步执行时才用到 GINO。</p></li>
+<li><p>终身不婚型<a class="footnote-reference brackets" href="#id63" id="id25">23</a>：天生厌恶“对象”，只愿定义“表”，空手接 SQL。</p></li>
+<li><p>火力全开型<a class="footnote-reference brackets" href="#id64" id="id26">24</a>：最大程度的便利，非典型异步 ORM。</p></li>
+</ol>
+<p>最后，虽然是 Python（绝不是黑哈），但 GINO 在执行效率上也没落下。基于 MagicStack 出品必属精品的、一秒可读百万行的 asyncpg<a class="footnote-reference brackets" href="#id65" id="id27">25</a>，以及 uvloop<a class="footnote-reference brackets" href="#id66" id="id28">26</a>（可选）的强力加持，GINO
+跑起来也是可以飞快的，被广泛应用于诸如实时汇率、聊天机器人、在线游戏等高并发领域，深受俄罗斯和乌克兰人民的爱戴。</p>
+</div>
+<div class="section" id="id29">
+<h2>再说“简单明了”<a class="headerlink" href="#id29" title="永久链接至标题">¶</a></h2>
+<blockquote>
+<div><p>Explicit is better than implicit.</p>
+<p>Simple is better than complex.</p>
+<p>–The Zen of Python, PEP 20<a class="footnote-reference brackets" href="#id67" id="id30">27</a></p>
+</div></blockquote>
+<p>Python 之禅完美表达了 GINO 的立场——明确性（explicitness）对于上了规模的异步工程项目来说尤为重要，因此 GINO 的很多设计都受到了明确性的影响。</p>
+<p>比如说，GINO 的 <code class="docutils literal notranslate"><span class="pre">Model</span></code> 是完全无状态的普通 Python 对象（POPO<a class="footnote-reference brackets" href="#id68" id="id31">28</a>—— 例如前面的 <code class="docutils literal notranslate"><span class="pre">User</span></code>
+类，它的实例 <code class="docutils literal notranslate"><span class="pre">daisy</span></code> 就是内存里面的常规对象，你可以用 <code class="docutils literal notranslate"><span class="pre">daisy.name</span></code> 访问属性，也可以用
+<code class="docutils literal notranslate"><span class="pre">daisy.name</span> <span class="pre">=</span> <span class="pre">&quot;DAISY&quot;</span></code> 来修改属性，或者用 <code class="docutils literal notranslate"><span class="pre">u</span> <span class="pre">=</span> <span class="pre">User()</span></code> 来创建新的实例，这些操作都不会访问数据库，绝对绿色环保无毒副作用。</p>
+<p>等到需要操作数据库的时候，你一定会有感知的。比如执行 <code class="docutils literal notranslate"><span class="pre">INSERT</span></code> 要用
+<code class="docutils literal notranslate"><span class="pre">u</span> <span class="pre">=</span> <span class="pre">await</span> <span class="pre">User.create()</span></code>，而 <code class="docutils literal notranslate"><span class="pre">UPDATE</span></code> 则是
+<code class="docutils literal notranslate"><span class="pre">await</span> <span class="pre">u.update(name=&quot;Daisy&quot;).apply()</span></code>。</p>
+<div class="admonition hint">
+<p class="admonition-title">提示</p>
+<p>其中，<code class="docutils literal notranslate"><span class="pre">u.update(name=&quot;Daisy&quot;)</span></code> 与 <code class="docutils literal notranslate"><span class="pre">u.name</span> <span class="pre">=</span> <span class="pre">&quot;Daisy&quot;</span></code> 类似，都是只在内存里修改对象的属性，不同的是 <code class="docutils literal notranslate"><span class="pre">u.update()</span></code> 还会返回一个包含本次变更的中间结果，对其执行 <code class="docutils literal notranslate"><span class="pre">await</span> <span class="pre">xxx.apply()</span></code> 则会将这些变更应用到数据库里。</p>
+</div>
+<p>这里的 <code class="docutils literal notranslate"><span class="pre">await</span></code> 就是明确性的关键，意味着我们要跳出去执行数据库操作了。换句话说，没有 <code class="docutils literal notranslate"><span class="pre">await</span></code>
+就没有数据库操作。</p>
+<p>另一方面，对于如何将数据库查询结果组装成内存对象及其属性，GINO
+也有一套精妙的显式机制——可定制化的加载器 loaders<a class="footnote-reference brackets" href="#id69" id="id32">29</a>。对于简单直观的一对一加载，GINO
+自然是伺候到家的，比如用 <code class="docutils literal notranslate"><span class="pre">u</span> <span class="pre">=</span> <span class="pre">await</span> <span class="pre">User.get(1)</span></code> 可以直接获取到 ID 为 <code class="docutils literal notranslate"><span class="pre">1</span></code> 的用户对象。但是对于更复杂的查询，GINO 不会去无端猜测主人的意图，而全权交给用户来明确地定义。加载器的用法也是很简单的，比如一个用户可能写了很多本书：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Book</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s2">&quot;books&quot;</span>
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">String</span><span class="p">)</span>
+    <span class="n">author_id</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="s2">&quot;users.id&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>然后这样来加载这种多对一关系，以同时获取所有的书和他们的作者：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">query</span> <span class="o">=</span> <span class="n">Book</span><span class="o">.</span><span class="n">outerjoin</span><span class="p">(</span><span class="n">User</span><span class="p">)</span><span class="o">.</span><span class="n">select</span><span class="p">()</span>
+<span class="n">loader</span> <span class="o">=</span> <span class="n">Book</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">author</span><span class="o">=</span><span class="n">User</span><span class="p">)</span>
+<span class="k">async</span> <span class="k">for</span> <span class="n">book</span> <span class="ow">in</span> <span class="n">query</span><span class="o">.</span><span class="n">gino</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">loader</span><span class="p">)</span><span class="o">.</span><span class="n">iterate</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">book</span><span class="o">.</span><span class="n">title</span><span class="p">,</span> <span class="s2">&quot;written by&quot;</span><span class="p">,</span> <span class="n">book</span><span class="o">.</span><span class="n">author</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>很简单的一个外连接查询 <code class="docutils literal notranslate"><span class="pre">Book.outerjoin(User)</span></code>，配合一个直观的加载器
+<code class="docutils literal notranslate"><span class="pre">Book.load(author=User)</span></code>，就实现了：</p>
+<ol class="arabic simple">
+<li><p>执行 <code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">*</span> <span class="pre">FROM</span> <span class="pre">books</span> <span class="pre">LEFT</span> <span class="pre">JOIN</span> <span class="pre">users</span> <span class="pre">ON</span> <span class="pre">...</span></code>；</p></li>
+<li><p>将数据库返回结果的每一行中，属于 <code class="docutils literal notranslate"><span class="pre">books</span></code> 的字段加载成一个 <code class="docutils literal notranslate"><span class="pre">Book</span></code> 实例；</p></li>
+<li><p>然后将该行中剩下的属于 <code class="docutils literal notranslate"><span class="pre">users</span></code> 的字段加载成一个 <code class="docutils literal notranslate"><span class="pre">User</span></code> 实例；</p></li>
+<li><p>最后将 <code class="docutils literal notranslate"><span class="pre">User</span></code> 实例设置到 <code class="docutils literal notranslate"><span class="pre">Book</span></code> 实例的 <code class="docutils literal notranslate"><span class="pre">author</span></code> 属性上。</p></li>
+</ol>
+<p>既简单又明了有没有！你甚至可以手写任何 SQL，然后定制加载器自动加载成期望的对象关系，精准控制加载行为，指哪儿打哪儿。GINO 还有很多类似的特性，在这里就不一一列举了。</p>
+</div>
+<div class="section" id="id33">
+<h2>优势与不足<a class="headerlink" href="#id33" title="永久链接至标题">¶</a></h2>
+<p>随着这几年 GINO 不断演进成熟，Python 开源社区里也相继出现了像 Tortoise
+ORM<a class="footnote-reference brackets" href="#id70" id="id34">30</a>、ORM<a class="footnote-reference brackets" href="#id71" id="id35">31</a>（是的，这个项目就叫 ORM……我真 ORZ。出品方是 Encode，Starlette
+就是他们的作品）等优秀的异步 ORM 框架。它们关注的重点与 GINO 稍有不同，但都是同行就不多评价了。</p>
+<p>GINO 的最大优势还是在于充分平衡了开发效率和明确性之间的辩证矛盾关系，用 GINO 开发应用程序的时候不用担心会被意料之外的行为所惊吓到，同时也不需要为这种明确性付出过大的工程代价，上手后依然可以快速、快乐地编程。同时，大量的成功案例也证明了 GINO 已经初步具备发布 1.0 稳定版的各种条件，可以谨慎地用于生产环境了。</p>
+<p>以下是近来统计到的关于 GINO 的应用案例：</p>
+<ul>
+<li><p>笔者工作上开发的一个服务：<a class="reference external" href="https://github.com/uc-cdis/metadata-service">https://github.com/uc-cdis/metadata-service</a></p></li>
+<li><p>还是笔者自己写的一个工具：<a class="reference external" href="https://github.com/fantix/aintq">https://github.com/fantix/aintq</a></p></li>
+<li><p>一个汇率 API 服务：<a class="reference external" href="https://exchangeratesapi.io/">https://exchangeratesapi.io/</a></p>
+<img alt="../_images/exchangeratesapi.webp" class="align-center" src="../_images/exchangeratesapi.webp" />
+</li>
+<li><p>各种 Telegram、Discord 的 Bot。</p></li>
+<li><p>ArchLinux 用户包：<a class="reference external" href="https://aur.archlinux.org/packages/python-gino/">https://aur.archlinux.org/packages/python-gino/</a></p>
+<img alt="../_images/archlinux.webp" class="align-center" src="../_images/archlinux.webp" />
+</li>
+<li><p><a class="reference external" href="https://github.com/bryanforbes/gino-stubs/">https://github.com/bryanforbes/gino-stubs/</a></p></li>
+<li><p>俄语教程：<a class="reference external" href="https://www.youtube.com/watch?v=WW4rOnfhiQY">https://www.youtube.com/watch?v=WW4rOnfhiQY</a></p></li>
+<li><p>高性能模板项目：<a class="reference external" href="https://github.com/leosussan/fastapi-gino-arq-uvicorn">https://github.com/leosussan/fastapi-gino-arq-uvicorn</a></p></li>
+<li><p>还有几个商用的，但没征得同意就不贴出来了。</p></li>
+</ul>
+<p>另外，GINO 还贴心地提供了中文文档<a class="footnote-reference brackets" href="#id72" id="id36">32</a>，从上手教程到原理说明应有尽有（虽然文档还在努力编写中！）：</p>
+<img alt="../_images/docs.webp" class="align-center" src="../_images/docs.webp" />
+<p>GINO 目前的不足之处还有一些，比如没有照顾到 Python 3 的类型提示，因此还不能完全发挥 IDE 的潜能（上面那个 gino-stubs 就是有人受不了了自己写了一个类型注解）。MySQL 目前也是不支持的，但 GINO
+从比较早就解耦了不同 SQL 方言和驱动的集成，所以这些功能会陆续在 1.1 和 1.2 版本中跟上。</p>
+</div>
+<div class="section" id="id37">
+<h2>建设社会主义<a class="headerlink" href="#id37" title="永久链接至标题">¶</a></h2>
+<p>GINO 是一个开源项目，所以欢迎大家一起来建设！长期活跃的贡献者还能获赠价值 <strong>4888 元</strong>的 PyCharm
+专业版全家桶 License 一枚<a class="footnote-reference brackets" href="#id73" id="id38">33</a>（没有发票）。</p>
+<p>目前急需帮助的有：</p>
+<ol class="arabic simple">
+<li><p>各个 Web 框架插件的维护工作需要多人认领；</p></li>
+<li><p>更多的例子和文档，以及中文、俄文的翻译；</p></li>
+<li><p>MySQL 的支持。</p></li>
+</ol>
+<p>以及下面这些一直需要的帮助：</p>
+<ol class="arabic simple">
+<li><p>用 GINO，找 bug，提建议；</p></li>
+<li><p>修 bug，做功能，提 PR；</p></li>
+<li><p>维护社区，回答问题，参与讨论；</p></li>
+<li><p>最后也是最重要的：<a class="reference external" href="https://github.com/python-gino/gino">去 GitHub 上给 GINO 加一颗星星！</a></p></li>
+</ol>
+<img alt="../_images/happy-hacking.png" class="align-center" src="../_images/happy-hacking.png" />
+</div>
+<div class="section" id="id39">
+<h2>关于作者<a class="headerlink" href="#id39" title="永久链接至标题">¶</a></h2>
+<p>87 年生人，6 岁开始接触编程，二十五六年的编程史和十三四年的工作经验教会了我许多软件开发的奥义。小时候写 GBasic、QBasic 和 Visual Basic；大学里开始写 Java 并接触到了 FreeBSD 和 Ubuntu
+等开源项目且一发不可收拾；工作头五年转向了 Python，通过 Twisted 和 Eventlet 等项目了解了异步编程，期间贡献了 Gevent 的 Python 3 迁移；也曾在创业的潮流中留下身影，亲身经历并见证了软件技术随着手游、新媒体、矿圈、互金、电商、社交、文娱、汽车等行业的起起伏伏；目前在芝大继续做生物大数据相关的开源项目。业余时间除了开发维护 GINO 项目外，还会偶尔修一修 uvloop、asyncpg 和 CPython 的 bug :P</p>
+<p>特别感谢 <a class="reference external" href="https://github.com/wwwjfy">Tony Wang</a> 对 GINO 项目的贡献，以及<a class="reference external" href="https://python-gino.org/credits/">所有人</a>的贡献。</p>
+</div>
+<div class="section" id="id40">
+<h2>参考文献<a class="headerlink" href="#id40" title="永久链接至标题">¶</a></h2>
+<dl class="footnote brackets">
+<dt class="label" id="id41"><span class="brackets">1</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id17">2</a>)</span></dt>
+<dd><p>Facebook. Tornado. <a class="reference external" href="https://zh.wikipedia.org/wiki/Tornado">https://zh.wikipedia.org/wiki/Tornado</a>.</p>
+</dd>
+<dt class="label" id="id42"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
+<dd><p>Python Software Foundation. asyncio — 异步 I/O.
+<a class="reference external" href="https://docs.python.org/zh-cn/3/library/asyncio.html">https://docs.python.org/zh-cn/3/library/asyncio.html</a>.</p>
+</dd>
+<dt class="label" id="id43"><span class="brackets"><a class="fn-backref" href="#id3">3</a></span></dt>
+<dd><p>维基百科. GNU. <a class="reference external" href="https://zh.wikipedia.org/wiki/GNU">https://zh.wikipedia.org/wiki/GNU</a>.</p>
+</dd>
+<dt class="label" id="id44"><span class="brackets"><a class="fn-backref" href="#id4">4</a></span></dt>
+<dd><p>维基百科. 对象关系映射.
+<a class="reference external" href="https://zh.wikipedia.org/wiki/%E5%AF%B9%E8%B1%A1%E5%85%B3%E7%B3%BB%E6%98%A0%E5%B0%84">https://zh.wikipedia.org/wiki/对象关系映射</a>.</p>
+</dd>
+<dt class="label" id="id45"><span class="brackets"><a class="fn-backref" href="#id6">5</a></span></dt>
+<dd><p>维基百科. SQLAlchemy. <a class="reference external" href="https://zh.wikipedia.org/wiki/SQLAlchemy">https://zh.wikipedia.org/wiki/SQLAlchemy</a>.</p>
+</dd>
+<dt class="label" id="id46"><span class="brackets"><a class="fn-backref" href="#id7">6</a></span></dt>
+<dd><p>Michael Bayer. SQLAlchemy Core - SQLAlchemy. Documentation.
+<a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/index.html">https://docs.sqlalchemy.org/en/13/core/index.html</a>.</p>
+</dd>
+<dt class="label" id="id47"><span class="brackets"><a class="fn-backref" href="#id8">7</a></span></dt>
+<dd><p>Michael Bayer. Welcome to Alembic’s documentation!.
+<a class="reference external" href="https://alembic.sqlalchemy.org/en/latest/">https://alembic.sqlalchemy.org/en/latest/</a>.</p>
+</dd>
+<dt class="label" id="id48"><span class="brackets"><a class="fn-backref" href="#id9">8</a></span></dt>
+<dd><p>Hong Minhee. A curatedlist of awesome tools for SQLAlchemy.
+<a class="reference external" href="https://github.com/dahlia/awesome-sqlalchemy">https://github.com/dahlia/awesome-sqlalchemy</a>.</p>
+</dd>
+<dt class="label" id="id49"><span class="brackets"><a class="fn-backref" href="#id10">9</a></span></dt>
+<dd><p>Ricardo GarciaSilva. Does it have postgis support?.
+<a class="reference external" href="https://github.com/python-gino/gino/issues/627">https://github.com/python-gino/gino/issues/627</a>.</p>
+</dd>
+<dt class="label" id="id50"><span class="brackets"><a class="fn-backref" href="#id11">10</a></span></dt>
+<dd><p>Fantix King. GINO 基础教程 - 增删改查.
+<a class="reference external" href="https://python-gino.org/docs/zh/master/tutorials/tutorial.html#crud-operations">https://python-gino.org/docs/zh/master/tutorials/tutorial.html#crud-operations</a>.</p>
+</dd>
+<dt class="label" id="id51"><span class="brackets"><a class="fn-backref" href="#id12">11</a></span></dt>
+<dd><p>Python Software Foundation. contextvars —Context Variables.
+<a class="reference external" href="https://docs.python.org/3/library/contextvars.html">https://docs.python.org/3/library/contextvars.html</a>.</p>
+</dd>
+<dt class="label" id="id52"><span class="brackets"><a class="fn-backref" href="#id13">12</a></span></dt>
+<dd><p>Fantix King. gino/aiocontextvars.py.
+<a class="reference external" href="https://github.com/python-gino/gino/blob/f2c273a43a3ed893a767d4239046f2befabf510d/src/gino/aiocontextvars.py">https://github.com/python-gino/gino/blob/f2c273a43a3ed893a767d4239046f2befabf510d/src/gino/aiocontextvars.py</a>.</p>
+</dd>
+<dt class="label" id="id53"><span class="brackets"><a class="fn-backref" href="#id14">13</a></span></dt>
+<dd><p>Fantix King. 数据库事务.
+<a class="reference external" href="https://python-gino.org/docs/zh/master/how-to/transaction.html">https://python-gino.org/docs/zh/master/how-to/transaction.html</a>.</p>
+</dd>
+<dt class="label" id="id54"><span class="brackets"><a class="fn-backref" href="#id15">14</a></span></dt>
+<dd><p>Fantix King. 引擎与连接.
+<a class="reference external" href="https://python-gino.org/docs/zh/master/explanation/engine.html">https://python-gino.org/docs/zh/master/explanation/engine.html</a>.</p>
+</dd>
+<dt class="label" id="id55"><span class="brackets"><a class="fn-backref" href="#id16">15</a></span></dt>
+<dd><p>GINO Community. GINO Community. <a class="reference external" href="https://github.com/python-gino/">https://github.com/python-gino/</a>.</p>
+</dd>
+<dt class="label" id="id56"><span class="brackets"><a class="fn-backref" href="#id18">16</a></span></dt>
+<dd><p>aiohttp maintainers. Welcome to AIOHTTP. <a class="reference external" href="https://docs.aiohttp.org/en/stable/">https://docs.aiohttp.org/en/stable/</a>.</p>
+</dd>
+<dt class="label" id="id57"><span class="brackets"><a class="fn-backref" href="#id19">17</a></span></dt>
+<dd><p>Sanic Community. SanicFramework. <a class="reference external" href="https://sanicframework.org/">https://sanicframework.org/</a>.</p>
+</dd>
+<dt class="label" id="id58"><span class="brackets"><a class="fn-backref" href="#id20">18</a></span></dt>
+<dd><p>Sebastián Ramírez. FastAPI. <a class="reference external" href="https://fastapi.tiangolo.com/">https://fastapi.tiangolo.com/</a>.</p>
+</dd>
+<dt class="label" id="id59"><span class="brackets"><a class="fn-backref" href="#id21">19</a></span></dt>
+<dd><p>Encode OSS. Starlette. <a class="reference external" href="https://www.starlette.io/">https://www.starlette.io/</a>.</p>
+</dd>
+<dt class="label" id="id60"><span class="brackets"><a class="fn-backref" href="#id22">20</a></span></dt>
+<dd><p>Philip Jones. Quart Documentation. <a class="reference external" href="https://pgjones.gitlab.io/quart/">https://pgjones.gitlab.io/quart/</a>.</p>
+</dd>
+<dt class="label" id="id61"><span class="brackets"><a class="fn-backref" href="#id23">21</a></span></dt>
+<dd><p>Canopy. asyncpgsa - A wrapper around asyncpg for use with sqlalchemy.
+<a class="reference external" href="https://github.com/CanopyTax/asyncpgsa">https://github.com/CanopyTax/asyncpgsa</a>.</p>
+</dd>
+<dt class="label" id="id62"><span class="brackets"><a class="fn-backref" href="#id24">22</a></span></dt>
+<dd><p>Fantix King. 表结构定义 -GINO 引擎.
+<a class="reference external" href="https://pythongino.org/docs/zh/master/how-to/schema.html#gino-engine">https://pythongino.org/docs/zh/master/how-to/schema.html#gino-engine</a>.</p>
+</dd>
+<dt class="label" id="id63"><span class="brackets"><a class="fn-backref" href="#id25">23</a></span></dt>
+<dd><p>Fantix King. 表结构定义 - GINO core.
+<a class="reference external" href="https://python-gino.org/docs/zh/master/how-to/schema.html#gino-core">https://python-gino.org/docs/zh/master/how-to/schema.html#gino-core</a>.</p>
+</dd>
+<dt class="label" id="id64"><span class="brackets"><a class="fn-backref" href="#id26">24</a></span></dt>
+<dd><p>Fantix King. 表结构定义 - GINO ORM.
+<a class="reference external" href="https://python-gino.org/docs/zh/master/how-to/schema.html#gino-orm">https://python-gino.org/docs/zh/master/how-to/schema.html#gino-orm</a>.</p>
+</dd>
+<dt class="label" id="id65"><span class="brackets"><a class="fn-backref" href="#id27">25</a></span></dt>
+<dd><p>MagicStack Inc.
+asyncpg - A fast PostgreSQL Database Client Library for Python/asyncio.
+<a class="reference external" href="https://github.com/MagicStack/asyncpg">https://github.com/MagicStack/asyncpg</a>.</p>
+</dd>
+<dt class="label" id="id66"><span class="brackets"><a class="fn-backref" href="#id28">26</a></span></dt>
+<dd><p>MagicStack Inc. uvloop -Ultra fast asyncio event loop.
+<a class="reference external" href="https://github.com/MagicStack/uvloop">https://github.com/MagicStack/uvloop</a>.</p>
+</dd>
+<dt class="label" id="id67"><span class="brackets"><a class="fn-backref" href="#id30">27</a></span></dt>
+<dd><p>Tim Peters. PEP ‒ The Zenof Python. <a class="reference external" href="https://www.python.org/dev/peps/pep-0020/">https://www.python.org/dev/peps/pep-0020/</a>.</p>
+</dd>
+<dt class="label" id="id68"><span class="brackets"><a class="fn-backref" href="#id31">28</a></span></dt>
+<dd><p>Wikipedia. Plain old Java object.
+<a class="reference external" href="https://en.wikipedia.org/wiki/Plain_old_Java_object">https://en.wikipedia.org/wiki/Plain_old_Java_object</a>.</p>
+</dd>
+<dt class="label" id="id69"><span class="brackets"><a class="fn-backref" href="#id32">29</a></span></dt>
+<dd><p>Fantix King. 加载器与关系.
+<a class="reference external" href="https://python-gino.org/docs/zh/master/how-to/loaders.html">https://python-gino.org/docs/zh/master/how-to/loaders.html</a>.</p>
+</dd>
+<dt class="label" id="id70"><span class="brackets"><a class="fn-backref" href="#id34">30</a></span></dt>
+<dd><p>Andrey Bondar. Tortoise ORM. <a class="reference external" href="https://tortoise.github.io/">https://tortoise.github.io/</a>.</p>
+</dd>
+<dt class="label" id="id71"><span class="brackets"><a class="fn-backref" href="#id35">31</a></span></dt>
+<dd><p>Encode OSS. ORM - An async ORM. <a class="reference external" href="https://github.com/encode/orm">https://github.com/encode/orm</a>.</p>
+</dd>
+<dt class="label" id="id72"><span class="brackets"><a class="fn-backref" href="#id36">32</a></span></dt>
+<dd><p>Fantix King. 欢迎来到 GINO 的文档！.
+<a class="reference external" href="https://python-gino.org/docs/zh/master/index.html">https://python-gino.org/docs/zh/master/index.html</a>.</p>
+</dd>
+<dt class="label" id="id73"><span class="brackets"><a class="fn-backref" href="#id38">33</a></span></dt>
+<dd><p>JetBrains s.r.o. Open Source Licenses.
+<a class="reference external" href="https://www.jetbrains.com/community/opensource/#support">https://www.jetbrains.com/community/opensource/#support</a>.</p>
+</dd>
+</dl>
+</div>
+</div>
+
+
+            </div>
+        </div>
+
+        <div class="col hide-on-small-only m3 right-nav">
+            <div class="table-of-contents fixed">
+                
+                    <ul>
+<li><a class="reference internal" href="#">官宣：Python 异步编程再添一利器</a><ul>
+<li><a class="reference internal" href="#gino">GINO 是谁</a></li>
+<li><a class="reference internal" href="#id5">先说“方便快捷”</a></li>
+<li><a class="reference internal" href="#id29">再说“简单明了”</a></li>
+<li><a class="reference internal" href="#id33">优势与不足</a></li>
+<li><a class="reference internal" href="#id37">建设社会主义</a></li>
+<li><a class="reference internal" href="#id39">关于作者</a></li>
+<li><a class="reference internal" href="#id40">参考文献</a></li>
+</ul>
+</li>
+</ul>
+
+                
+            </div>
+        </div>
+
+    </div>
+    <div class="fixed-action-btn click-to-toggle">
+        <a class="btn-floating btn-large white">
+            <img src="../_static/images/language.svg">
+            <div>
+              ZH
+            </div>
+        </a>
+        <ul>
+            <li><a href="/docs/en/v1.0.0/tutorials/announcement.html" class="btn-floating blue">EN</a></li>
+            <li><a href="/docs/zh/v1.0.0/tutorials/announcement.html" class="btn-floating red">ZH</a></li>
+        </ul>
+    </div>
+</main>
+
+<script type="text/javascript" src="../_static/js/materialize.min.js"></script>
+<script type="text/javascript" src="../_static/js/language_data.js"></script>
+<script id="documentation_options" data-url_root="../" src="../_static/js/documentation_options.js"></script>
+<script type="text/javascript" src="../_static/js/underscore.js"></script>
+<script type="text/javascript" src="../_static/js/jquery.js"></script>
+<script type="text/javascript" src="../_static/js/gino.js"></script>
+<script type="text/javascript" src="../searchindex.js"></script>
+</body>
+</html>
