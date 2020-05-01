@@ -1,7 +1,0 @@
-gino.declarative module
-=======================
-
-.. automodule:: gino.declarative
-   :members:
-   :undoc-members:
-   :show-inheritance:

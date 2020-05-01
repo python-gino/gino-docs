@@ -1,7 +1,0 @@
-gino.transaction module
-=======================
-
-.. automodule:: gino.transaction
-   :members:
-   :undoc-members:
-   :show-inheritance:

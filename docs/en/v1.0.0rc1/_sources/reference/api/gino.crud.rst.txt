@@ -1,7 +1,0 @@
-gino.crud module
-================
-
-.. automodule:: gino.crud
-   :members:
-   :undoc-members:
-   :show-inheritance:

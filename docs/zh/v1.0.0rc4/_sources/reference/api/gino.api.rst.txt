@@ -1,7 +1,0 @@
-gino.api module
-===============
-
-.. automodule:: gino.api
-   :members:
-   :undoc-members:
-   :show-inheritance:

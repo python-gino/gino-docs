@@ -1,7 +1,0 @@
-gino.dialects.asyncpg module
-============================
-
-.. automodule:: gino.dialects.asyncpg
-   :members:
-   :undoc-members:
-   :show-inheritance:

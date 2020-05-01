@@ -1,7 +1,0 @@
-gino.json\_support module
-=========================
-
-.. automodule:: gino.json_support
-   :members:
-   :undoc-members:
-   :show-inheritance:
