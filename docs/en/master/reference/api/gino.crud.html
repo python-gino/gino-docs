@@ -311,8 +311,8 @@ execution option value if unspecified.</p></li>
 columns as the original table, but SQLAlchemy could not recognize them
 as the columns are in subqueries, so technically they’re columns in the
 new “table”.</p>
-<p>With this method, the columns are loaded into the origintal models when
-being used in subquries. For example:</p>
+<p>With this method, the columns are loaded into the original models when
+being used in subqueries. For example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">query</span> <span class="o">=</span> <span class="n">query</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;users&#39;</span><span class="p">)</span>
 <span class="n">MyUser</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">in_query</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
 
