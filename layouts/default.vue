@@ -47,19 +47,17 @@
           <div class="links">
             <div>
               <h2>DOCUMENTATION</h2>
-              <p>
-                <b>master</b>:
-                <a href="/docs/en/master/">English</a>
-                <a href="/docs/zh/master/">Chinese</a>
+              <p v-for="row in docs">
+                <b>{{ row[0] }}</b>:
+                <template v-for="lang in row[1]">
+                  <a :href="'/docs/' + lang + '/' + row[0] + '/'">{{ lang === 'en' ? 'English' : 'Chinese' }}</a>
+                  {{ ' ' }}
+                </template>
               </p>
               <p>
-                <b>0.8.5</b>:
+                <b>0.8</b>:
                 <a href="https://python-gino.readthedocs.io/en/v0.8.5/" target="_blank">English</a>
                 <a href="https://python-gino.readthedocs.io/zh/v0.8.5/" target="_blank">Chinese</a>
-              </p>
-              <p>
-                <b>0.7.7</b>:
-                <a href="https://python-gino.readthedocs.io/en/v0.7.7/" target="_blank">English</a>
               </p>
             </div>
             <div>
@@ -379,7 +377,7 @@
           height: auto;
 
           a, a:not(:first-of-type) {
-           margin: 0 8px 0 0;
+            margin: 0 8px 0 0;
           }
         }
       }
@@ -395,13 +393,14 @@
       return {
         stars: '',
         short: false,
+        docs: [],
       }
     },
 
     async mounted () {
       if (process.browser) this.onScroll()
-      let resp = await axios.get('https://api.github.com/repos/python-gino/gino')
-      this.stars = resp.data.stargazers_count
+      this.loadStars()
+      this.loadDocVersions()
     },
 
     created () {
@@ -423,6 +422,34 @@
           if (!this.short)
             this.short = true
         }
+      },
+
+      async loadStars () {
+        let num = localStorage.getItem("github-star-num");
+        let expire = localStorage.getItem("github-star-expire");
+        if (num === null || Date.now() > parseInt(expire)) {
+          let resp = await axios.get('https://api.github.com/repos/python-gino/gino')
+          num = resp.data.stargazers_count
+          localStorage.setItem('github-star-num', num);
+          localStorage.setItem('github-star-expire', Date.now() + 3600 * 24 * 1000)
+        }
+        this.stars = num
+      },
+
+      async loadDocVersions () {
+        let resp = await axios.get('/docs/versions.json')
+        let docs = {}
+        for (let [loc, vers] of Object.entries(resp.data)) {
+          for (let ver of vers) {
+            if (docs[ver]) {
+              docs[ver].push(loc)
+              docs[ver].sort()
+            } else {
+              docs[ver] = [loc]
+            }
+          }
+        }
+        this.docs = Object.entries(docs).sort().reverse()
       }
     }
   }
