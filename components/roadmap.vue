@@ -11,7 +11,9 @@
         <img src="~/assets/logo-icon-light.svg">
         <h1>1.0 Release</h1>
       </div>
-
+      <div class="flag-stmt"
+           title="We all live in the same world. Let's have more understanding of each other, less prejudice.&#013;I am because we are.&#013;利而不害，为而不争。">
+      </div>
       <div v-for="(item, i) in items" class="item" :style="{left: lefts[i] + 'rem'}"
            :class="{up: i % 2 === 0, down: i % 2 === 1, on: i <= progress, tall: i % 5 === 2}">
         <h1>{{ item.title }}</h1>
@@ -91,6 +93,14 @@
         align-items: center;
         left: 9.2rem;
         top: 0.2rem;
+      }
+
+      .flag-stmt {
+        position: absolute;
+        left: 8.5rem;
+        top: 0.2rem;
+        width: 1.1rem;
+        height: 1rem;
       }
 
       .item {
@@ -254,11 +264,11 @@
           {title: 'Better documentation'},
           {title: 'Blog post'},
           {title: 'Cached prepared statement'},
-          {title: 'Better typing support'},
           {title: 'MySQL support?'},
+          {title: 'Better typing support'},
           {title: 'Patch SQLAlchemy'},
         ],
-        progress: 5,
+        progress: 6,
       }
     }
   }
