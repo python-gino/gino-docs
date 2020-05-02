@@ -151,33 +151,14 @@
       </ul>
       <p>Projects using GINO (please
         <a
-          href="https://github.com/python-gino/python-gino.org/blob/src/pages/credits.vue"
-          target="_blank">create a pull request</a> to add your projects here):</p>
+          href="https://github.com/python-gino/python-gino.org/edit/src/assets/users.json"
+          target="_blank">edit on GitHub</a> to add your projects here):</p>
       <ul>
-        <li>
-          <a href="https://github.com/python-gino/gino-starlette" target="_blank">gino-starlette</a>
-        </li>
-        <li>
-          <a href="https://github.com/python-gino/gino-aiohttp" target="_blank">gino-aiohttp</a>
-        </li>
-        <li>
-          <a href="https://github.com/python-gino/gino-tornado" target="_blank">gino-tornado</a>
-        </li>
-        <li>
-          <a href="https://github.com/python-gino/gino-sanic"
-             target="_blank">gino-sanic</a>
-        </li>
-        <li>
-          <a href="https://github.com/python-gino/gino-quart"
-             target="_blank">gino-quart</a>
-        </li>
-        <li>
-          <a href="https://github.com/fantix/aintq" target="_blank">AintQ</a>
-           - asyncio task queue on PostgreSQL
-        </li>
-        <li>
-          <a href="https://github.com/madisvain/exchangeratesapi" target="_blank">ExchangeratesAPI</a>
-           - Foreign exchange rates API with currency conversion
+        <li v-for="user in users">
+          <a :href="user.link" target="_blank">
+            {{ user.name }}
+          </a>
+          <template v-if="user.desc"> - {{ user.desc }}</template>
         </li>
       </ul>
       <p>GINO was inspired by these projects:</p>
@@ -344,11 +325,13 @@
 
 <script>
   import authors from 'assets/authors.json'
+  import users from 'assets/users'
 
   export default {
     data () {
       return {
-        authors: authors
+        authors: authors,
+        users: users
       }
     },
 
