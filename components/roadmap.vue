@@ -264,9 +264,9 @@
           {title: 'Better documentation'},
           {title: 'Blog post'},
           {title: 'Cached prepared statement'},
-          {title: 'MySQL support?'},
+          {title: 'MySQL support'},
           {title: 'Better typing support'},
-          {title: 'Patch SQLAlchemy'},
+          {title: 'SQLAlchemy 1.4 SQLAlchemy 2 support'},
         ],
         progress: 6,
       }
