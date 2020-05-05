@@ -221,8 +221,8 @@ you'll have to declare columns for the query:</p>
     <span class="n">now</span><span class="p">,</span>
 <span class="p">)</span><span class="o">.</span><span class="n">gino</span><span class="o">.</span><span class="n">load</span><span class="p">(</span>
     <span class="p">(</span><span class="s1">&#39;now:&#39;</span><span class="p">,</span> <span class="n">now</span><span class="p">)</span>
-<span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># now: 2018-04-08 08:23:02.431847</span>
+<span class="p">)</span><span class="o">.</span><span class="n">query</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="o">*</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># now: 2018-04-08 08:23:02.431847</span>
 </pre></div>
 </div>
 <p>Let's get back to previous example. The second item in the tuple is a GINO
