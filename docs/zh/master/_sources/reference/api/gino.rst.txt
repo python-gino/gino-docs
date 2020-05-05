@@ -18,6 +18,7 @@ Submodules
 
    gino.aiocontextvars
    gino.api
+   gino.bakery
    gino.crud
    gino.declarative
    gino.engine

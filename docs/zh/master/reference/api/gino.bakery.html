@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="../../_static/favicon.ico">
-    <title>Sanic Support - GINO 1.1.0a0 文档</title>
+    <title>gino.bakery module - GINO 1.1.0a0 文档</title>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async
             src="https://www.googletagmanager.com/gtag/js?id=UA-3759436-10"></script>
@@ -49,11 +49,14 @@
                         <a href="../../reference.html"
                            class="breadcrumb">参考手册</a>
                     
-                        <a href="../extensions.html"
-                           class="breadcrumb">扩展</a>
+                        <a href="../api.html"
+                           class="breadcrumb">API 参考</a>
+                    
+                        <a href="gino.html"
+                           class="breadcrumb">gino package</a>
                     
                     
-                        <a class="breadcrumb" style="color: #FFFFFF">Sanic Support</a>
+                        <a class="breadcrumb" style="color: #FFFFFF">gino.bakery module</a>
                     
                 </div>
                 <div class="spacer"></div>
@@ -115,18 +118,16 @@
 <p class="caption"><span class="caption-text">参考手册</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../../reference.html">参考手册</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../api.html">API 参考</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="../extensions.html">扩展</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../api.html">API 参考</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extensions.html">扩展</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../history.html">版本历史</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../api.html">API 参考</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../extensions.html">扩展</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Sanic Support</a></li>
-<li class="toctree-l2"><a class="reference internal" href="starlette.html">Starlette Support</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tornado.html">Tornado Support</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API 参考</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="gino.html">gino package</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../extensions.html">扩展</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../history.html">版本历史</a></li>
 </ul>
 
@@ -138,124 +139,123 @@
         <div class="col s12 m9 body">
             <div id="main-content" role="main">
                 
-    <div class="section" id="sanic-support">
-<h1>Sanic Support<a class="headerlink" href="#sanic-support" title="永久链接至标题">¶</a></h1>
-<p><strong>THIS IS A WIP</strong></p>
-<div class="section" id="work-with-sanic">
-<h2>Work with Sanic<a class="headerlink" href="#work-with-sanic" title="永久链接至标题">¶</a></h2>
-<p>Using the Sanic extension, the request handler acquires a lazy connection on each request,
-and return the connection when the response finishes by default.</p>
-<p>The lazy connection is actually established if necessary, i.e. just before first access to db.</p>
-<p>This behavior is controlled by app.config.DB_USE_CONNECTION_FOR_REQUEST, which is True by default.</p>
-<p>Supported configurations:</p>
-<ul class="simple">
-<li><p>DB_HOST</p></li>
-<li><p>DB_PORT</p></li>
-<li><p>DB_USER</p></li>
-<li><p>DB_PASSWORD</p></li>
-<li><p>DB_DATABASE</p></li>
-<li><p>DB_ECHO</p></li>
-<li><p>DB_POOL_MIN_SIZE</p></li>
-<li><p>DB_POOL_MAX_SIZE</p></li>
-<li><p>DB_USE_CONNECTION_FOR_REQUEST</p></li>
-<li><p>DB_KWARGS</p></li>
+    <div class="section" id="module-gino.bakery">
+<span id="gino-bakery-module"></span><h1>gino.bakery module<a class="headerlink" href="#module-gino.bakery" title="永久链接至标题">¶</a></h1>
+<dl class="py class">
+<dt id="gino.bakery.BakedQuery">
+<em class="property">class </em><code class="sig-prename descclassname">gino.bakery.</code><code class="sig-name descname">BakedQuery</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">elem</span></em>, <em class="sig-param"><span class="n">metadata</span></em>, <em class="sig-param"><span class="n">hash_</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.bakery.BakedQuery" title="永久链接至目标">¶</a></dt>
+<dd><p>基类：<a class="reference internal" href="gino.api.html#gino.api.GinoExecutor" title="gino.api.GinoExecutor"><code class="xref py py-class docutils literal notranslate"><span class="pre">gino.api.GinoExecutor</span></code></a></p>
+<p>Represents a pre-compiled and possibly prepared query for faster execution.</p>
+<p><a class="reference internal" href="#gino.bakery.BakedQuery" title="gino.bakery.BakedQuery"><code class="xref py py-class docutils literal notranslate"><span class="pre">BakedQuery</span></code></a> is created by <a class="reference internal" href="#gino.bakery.Bakery.bake" title="gino.bakery.Bakery.bake"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Bakery.bake()</span></code></a>, and can be executed by
+<a class="reference internal" href="gino.engine.html#gino.engine.GinoEngine" title="gino.engine.GinoEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">GinoEngine</span></code></a> or <a class="reference internal" href="gino.engine.html#gino.engine.GinoConnection" title="gino.engine.GinoConnection"><code class="xref py py-class docutils literal notranslate"><span class="pre">GinoConnection</span></code></a>. If there
+is a proper bind in the baked query, contextual execution APIs inherited from
+<a class="reference internal" href="gino.api.html#gino.api.GinoExecutor" title="gino.api.GinoExecutor"><code class="xref py py-class docutils literal notranslate"><span class="pre">GinoExecutor</span></code></a> can also be used.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">1.1 新版功能.</span></p>
+</div>
+<dl class="py method">
+<dt id="gino.bakery.BakedQuery.bind">
+<em class="property">property </em><code class="sig-name descname">bind</code><a class="headerlink" href="#gino.bakery.BakedQuery.bind" title="永久链接至目标">¶</a></dt>
+<dd><p>Internal API to provide a proper bind if found.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="gino.bakery.BakedQuery.compiled_sql">
+<em class="property">property </em><code class="sig-name descname">compiled_sql</code><a class="headerlink" href="#gino.bakery.BakedQuery.compiled_sql" title="永久链接至目标">¶</a></dt>
+<dd><p>Internal API to get the SQLAlchemy compiled sql context.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="gino.bakery.BakedQuery.execution_options">
+<code class="sig-name descname">execution_options</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.bakery.BakedQuery.execution_options" title="永久链接至目标">¶</a></dt>
+<dd><p>Set execution options on a shadow query of this baked query.</p>
+<p>The execution options set in this method won't affect the execution options in
+the baked query.</p>
+<p>Read <a class="reference internal" href="gino.engine.html#gino.engine.GinoConnection.execution_options" title="gino.engine.GinoConnection.execution_options"><code class="xref py py-meth docutils literal notranslate"><span class="pre">execution_options()</span></code></a> for more
+information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>options</strong> -- Multiple execution options.</p>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>A shadow of the baked query with new execution options but still
+functions as a baked query.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="gino.bakery.BakedQuery.get">
+<code class="sig-name descname">get</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">_</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.bakery.BakedQuery.get" title="永久链接至目标">¶</a></dt>
+<dd><p>Internal API to get the <a class="reference internal" href="#gino.bakery.BakedQuery.compiled_sql" title="gino.bakery.BakedQuery.compiled_sql"><code class="xref py py-attr docutils literal notranslate"><span class="pre">compiled_sql</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>_</strong> -- Ignored.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="gino.bakery.BakedQuery.query">
+<em class="property">property </em><code class="sig-name descname">query</code><a class="headerlink" href="#gino.bakery.BakedQuery.query" title="永久链接至目标">¶</a></dt>
+<dd><p>Internal API to get the query instance before compilation.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="gino.bakery.BakedQuery.sql">
+<em class="property">property </em><code class="sig-name descname">sql</code><a class="headerlink" href="#gino.bakery.BakedQuery.sql" title="永久链接至目标">¶</a></dt>
+<dd><p>Internal API to get the compiled raw SQL.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="gino.bakery.Bakery">
+<em class="property">class </em><code class="sig-prename descclassname">gino.bakery.</code><code class="sig-name descname">Bakery</code><a class="headerlink" href="#gino.bakery.Bakery" title="永久链接至目标">¶</a></dt>
+<dd><p>基类：<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(在 Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Factory and warehouse of baked queries.</p>
+<p>You may provide a bakery to a <a class="reference internal" href="gino.engine.html#gino.engine.GinoEngine" title="gino.engine.GinoEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">GinoEngine</span></code></a> during creation as
+the <code class="docutils literal notranslate"><span class="pre">bakery</span></code> keyword argument, and the engine will bake the queries and create
+corresponding prepared statements for each of the connections in the pool.</p>
+<p>A <a class="reference internal" href="gino.api.html#gino.api.Gino" title="gino.api.Gino"><code class="xref py py-class docutils literal notranslate"><span class="pre">Gino</span></code></a> instance has a built-in <a class="reference internal" href="gino.api.html#gino.api.Gino.bakery" title="gino.api.Gino.bakery"><code class="xref py py-attr docutils literal notranslate"><span class="pre">bakery</span></code></a>,
+it's automatically given to the engine during <a class="reference internal" href="gino.api.html#gino.api.Gino.set_bind" title="gino.api.Gino.set_bind"><code class="xref py py-meth docutils literal notranslate"><span class="pre">set_bind()</span></code></a> or
+<a class="reference internal" href="gino.api.html#gino.api.Gino.with_bind" title="gino.api.Gino.with_bind"><code class="xref py py-meth docutils literal notranslate"><span class="pre">with_bind()</span></code></a>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">1.1 新版功能.</span></p>
+</div>
+<dl class="py method">
+<dt id="gino.bakery.Bakery.bake">
+<code class="sig-name descname">bake</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">func_or_elem</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">execution_options</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.bakery.Bakery.bake" title="永久链接至目标">¶</a></dt>
+<dd><p>Bake a query.</p>
+<p>You can bake raw SQL strings or SQLAlchemy Core query instances. This method
+adds the given query into a queue in the bakery, and bakes it only when the
+bakery is set to an <a class="reference internal" href="gino.engine.html#gino.engine.GinoEngine" title="gino.engine.GinoEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">GinoEngine</span></code></a> from which the bakery could
+learn about the SQL dialect and compile the queries into SQL. Once done, the
+bakery is &quot;closed&quot;, you can neither give it to another engine, nor use it to
+bake more queries.</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>func_or_elem</strong> -- A <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a> or a SQLAlchemy Core query instance, or a
+function that returns such results.</p></li>
+<li><p><strong>execution_options</strong> -- Shortcut to add SQLAlchemy execution options to the
+query.</p></li>
 </ul>
-<p>An example server:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sanic</span> <span class="kn">import</span> <span class="n">Sanic</span>
-<span class="kn">from</span> <span class="nn">sanic.exceptions</span> <span class="kn">import</span> <span class="n">abort</span>
-<span class="kn">from</span> <span class="nn">sanic.response</span> <span class="kn">import</span> <span class="n">json</span>
-<span class="kn">from</span> <span class="nn">gino.ext.sanic</span> <span class="kn">import</span> <span class="n">Gino</span>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>A <a class="reference internal" href="#gino.bakery.BakedQuery" title="gino.bakery.BakedQuery"><code class="xref py py-class docutils literal notranslate"><span class="pre">BakedQuery</span></code></a> instance.</p>
+</dd>
+</dl>
+</dd></dl>
 
-<span class="n">app</span> <span class="o">=</span> <span class="n">Sanic</span><span class="p">()</span>
-<span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">DB_HOST</span> <span class="o">=</span> <span class="s1">&#39;localhost&#39;</span>
-<span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">DB_DATABASE</span> <span class="o">=</span> <span class="s1">&#39;gino&#39;</span>
-<span class="n">db</span> <span class="o">=</span> <span class="n">Gino</span><span class="p">()</span>
-<span class="n">db</span><span class="o">.</span><span class="n">init_app</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+<dl class="py attribute">
+<dt id="gino.bakery.Bakery.query_cls">
+<code class="sig-name descname">query_cls</code><a class="headerlink" href="#gino.bakery.Bakery.query_cls" title="永久链接至目标">¶</a></dt>
+<dd><p><a class="reference internal" href="#gino.bakery.BakedQuery" title="gino.bakery.BakedQuery"><code class="xref py py-class docutils literal notranslate"><span class="pre">BakedQuery</span></code></a> 的别名</p>
+</dd></dl>
 
+</dd></dl>
 
-<span class="k">class</span> <span class="nc">User</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
-    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s1">&#39;users&#39;</span>
-
-    <span class="nb">id</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">BigInteger</span><span class="p">(),</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="n">nickname</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Unicode</span><span class="p">())</span>
-
-    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">&lt;</span><span class="si">{}</span><span class="s1">&gt;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nickname</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
-
-
-<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/users/&lt;user_id&gt;&quot;</span><span class="p">)</span>
-<span class="k">async</span> <span class="k">def</span> <span class="nf">get_user</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">user_id</span><span class="p">):</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">user_id</span><span class="o">.</span><span class="n">isdigit</span><span class="p">():</span>
-        <span class="n">abort</span><span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="s1">&#39;invalid user id&#39;</span><span class="p">)</span>
-    <span class="n">user</span> <span class="o">=</span> <span class="k">await</span> <span class="n">User</span><span class="o">.</span><span class="n">get_or_404</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">user_id</span><span class="p">))</span>
-    <span class="k">return</span> <span class="n">json</span><span class="p">({</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">user</span><span class="o">.</span><span class="n">nickname</span><span class="p">})</span>
-
-
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="id1">
-<h2>Sanic Support<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
-<p>To integrate with Sanic, a few configurations needs to be set in
-<code class="docutils literal notranslate"><span class="pre">app.config</span></code> (with default value though):</p>
-<ul class="simple">
-<li><p>DB_HOST: if not set, <code class="docutils literal notranslate"><span class="pre">localhost</span></code></p></li>
-<li><p>DB_PORT: if not set, <code class="docutils literal notranslate"><span class="pre">5432</span></code></p></li>
-<li><p>DB_USER: if not set, <code class="docutils literal notranslate"><span class="pre">postgres</span></code></p></li>
-<li><p>DB_PASSWORD: if not set, empty string</p></li>
-<li><p>DB_DATABASE: if not set, <code class="docutils literal notranslate"><span class="pre">postgres</span></code></p></li>
-<li><p>DB_ECHO: if not set, <code class="docutils literal notranslate"><span class="pre">False</span></code></p></li>
-<li><p>DB_POOL_MIN_SIZE: if not set, 5</p></li>
-<li><p>DB_POOL_MAX_SIZE: if not set, 10</p></li>
-<li><p>DB_KWARGS; if not set, empty dictionary</p></li>
-</ul>
-<p>An example:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sanic</span> <span class="kn">import</span> <span class="n">Sanic</span>
-<span class="kn">from</span> <span class="nn">gino.ext.sanic</span> <span class="kn">import</span> <span class="n">Gino</span>
-
-<span class="n">app</span> <span class="o">=</span> <span class="n">Sanic</span><span class="p">()</span>
-<span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">DB_HOST</span> <span class="o">=</span> <span class="s1">&#39;localhost&#39;</span>
-<span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">DB_USER</span> <span class="o">=</span> <span class="s1">&#39;postgres&#39;</span>
-
-<span class="n">db</span> <span class="o">=</span> <span class="n">Gino</span><span class="p">()</span>
-<span class="n">db</span><span class="o">.</span><span class="n">init_app</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>After <code class="docutils literal notranslate"><span class="pre">db.init_app</span></code>, a connection pool with configured settings shall be
-created and bound to <code class="docutils literal notranslate"><span class="pre">db</span></code> when Sanic server is started, and closed on stop.
-Furthermore, a lazy connection context is created on each request, and released
-on response. That is to say, within Sanic request handlers, you can directly
-access db by e.g. <code class="docutils literal notranslate"><span class="pre">User.get(1)</span></code>, everything else is settled: database pool is
-created on server start, connection is lazily borrowed from pool on the first
-database access and shared within the rest of the same request handler, and
-automatically returned to the pool on response.</p>
-<p>Please be noted that, in the async world, <code class="docutils literal notranslate"><span class="pre">await</span></code> may block unpredictably for
-a long time. When this world is crossing RDBMS pools and transactions, it is
-a very dangerous bite for performance, even causing disasters sometimes.
-Therefore we recommend, during the time enjoying fast development, do pay
-special attention to the scope of transactions and borrowed connections, make
-sure that transactions are closed as soon as possible, and connections are not
-taken for unnecessarily long time. As for the Sanic support, if you want to
-release the concrete connection in the request context before response is
-reached, just do it like this:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">await</span> <span class="n">request</span><span class="p">[</span><span class="s1">&#39;connection&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
-</pre></div>
-</div>
-<p>Or if you prefer not to use the contextual lazy connection in certain handlers,
-prefer explicitly manage the connection lifetime, you can always borrow a new
-connection by setting <code class="docutils literal notranslate"><span class="pre">reuse=False</span></code>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">with</span> <span class="n">db</span><span class="o">.</span><span class="n">acquire</span><span class="p">(</span><span class="n">reuse</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-    <span class="c1"># new connection context is created</span>
-</pre></div>
-</div>
-<p>Or if you prefer not to use the builtin request-scoped lazy connection at all,
-you can simply turn it off:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">DB_USE_CONNECTION_FOR_REQUEST</span> <span class="o">=</span> <span class="kc">False</span>
-</pre></div>
-</div>
-</div>
 </div>
 
 
@@ -277,17 +277,11 @@ you can simply turn it off:</p>
             <div class="table-of-contents fixed">
                 
                     <ul>
-<li><a class="reference internal" href="#">Sanic Support</a><ul>
-<li><a class="reference internal" href="#work-with-sanic">Work with Sanic</a></li>
-<li><a class="reference internal" href="#id1">Sanic Support</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#">gino.bakery module</a></li>
 </ul>
 
                 
                 <div id="version-selector">
-                    
-                        <hr>
                     
                 </div>
                 <div class="add-your-lang">
@@ -318,7 +312,7 @@ you can simply turn it off:</p>
 <script type="text/javascript">
     var sver = 'master';
     var language = 'zh';
-    var pagename = 'reference/extensions/sanic';
+    var pagename = 'reference/api/gino.bakery';
 </script>
 <script type="text/javascript" src="../../_static/js/gino.js"></script>
 <script type="text/javascript" src="../../searchindex.js"></script>

@@ -102,6 +102,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../how-to.html">进阶用法</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../how-to/alembic.html">使用 Alembic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to/bakery.html">Bake Queries</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../how-to/contributing.html">贡献</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../how-to/crud.html">增删改查</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../how-to/faq.html">常见问题</a></li>
@@ -175,6 +176,11 @@
 <dd></dd></dl>
 
 <dl class="py method">
+<dt id="gino.dialects.base.AsyncDialectMixin.set_bakery">
+<code class="sig-name descname">set_bakery</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bakery</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.AsyncDialectMixin.set_bakery" title="永久链接至目标">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
 <dt id="gino.dialects.base.AsyncDialectMixin.transaction">
 <code class="sig-name descname">transaction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">raw_conn</span></em>, <em class="sig-param"><span class="n">args</span></em>, <em class="sig-param"><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.AsyncDialectMixin.transaction" title="永久链接至目标">¶</a></dt>
 <dd></dd></dl>
@@ -244,6 +250,11 @@
 <dd></dd></dl>
 
 <dl class="py method">
+<dt id="gino.dialects.base.DBAPICursor.execute_baked">
+<em class="property">async </em><code class="sig-name descname">execute_baked</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">baked_query</span></em>, <em class="sig-param"><span class="n">timeout</span></em>, <em class="sig-param"><span class="n">args</span></em>, <em class="sig-param"><span class="n">one</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.DBAPICursor.execute_baked" title="永久链接至目标">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
 <dt id="gino.dialects.base.DBAPICursor.executemany">
 <code class="sig-name descname">executemany</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">statement</span></em>, <em class="sig-param"><span class="n">parameters</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.DBAPICursor.executemany" title="永久链接至目标">¶</a></dt>
 <dd></dd></dl>
@@ -264,6 +275,11 @@
 <dt id="gino.dialects.base.ExecutionContextOverride">
 <em class="property">class </em><code class="sig-prename descclassname">gino.dialects.base.</code><code class="sig-name descname">ExecutionContextOverride</code><a class="headerlink" href="#gino.dialects.base.ExecutionContextOverride" title="永久链接至目标">¶</a></dt>
 <dd><p>基类：<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(在 Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dl class="py attribute">
+<dt id="gino.dialects.base.ExecutionContextOverride.baked_query">
+<code class="sig-name descname">baked_query</code><em class="property"> = None</em><a class="headerlink" href="#gino.dialects.base.ExecutionContextOverride.baked_query" title="永久链接至目标">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="py method">
 <dt id="gino.dialects.base.ExecutionContextOverride.get_result_proxy">
 <code class="sig-name descname">get_result_proxy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.ExecutionContextOverride.get_result_proxy" title="永久链接至目标">¶</a></dt>

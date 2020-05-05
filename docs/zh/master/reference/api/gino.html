@@ -96,6 +96,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../how-to.html">进阶用法</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../how-to/alembic.html">使用 Alembic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to/bakery.html">Bake Queries</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../how-to/contributing.html">贡献</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../how-to/crud.html">增删改查</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../how-to/faq.html">常见问题</a></li>
@@ -163,6 +164,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="gino.aiocontextvars.html">gino.aiocontextvars module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gino.api.html">gino.api module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gino.bakery.html">gino.bakery module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gino.crud.html">gino.crud module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gino.declarative.html">gino.declarative module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gino.engine.html">gino.engine module</a></li>
@@ -181,6 +183,9 @@
 <dt id="gino.create_engine">
 <code class="sig-prename descclassname">gino.</code><code class="sig-name descname">create_engine</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.create_engine" title="永久链接至目标">¶</a></dt>
 <dd><p>Shortcut for <a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/engines.html#sqlalchemy.create_engine" title="(在 SQLAlchemy v1.3)"><code class="xref py py-func docutils literal notranslate"><span class="pre">sqlalchemy.create_engine()</span></code></a> with <code class="docutils literal notranslate"><span class="pre">strategy=&quot;gino&quot;</span></code>.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">在 1.1 版更改: </span>Added the <code class="docutils literal notranslate"><span class="pre">bakery</span></code> keyword argument, please see <a class="reference internal" href="gino.bakery.html#gino.bakery.Bakery" title="gino.bakery.Bakery"><code class="xref py py-class docutils literal notranslate"><span class="pre">Bakery</span></code></a>.</p>
+</div>
 </dd></dl>
 
 <dl class="py function">
