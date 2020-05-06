@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="../_static/favicon.ico">
-    <title>常见问题 - GINO 1.0.0 文档</title>
+    <title>常见问题 - GINO 1.0.1.dev0 文档</title>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async
             src="https://www.googletagmanager.com/gtag/js?id=UA-3759436-10"></script>
@@ -96,6 +96,7 @@
 <li class="toctree-l1"><a class="reference internal" href="contributing.html">贡献</a></li>
 <li class="toctree-l1"><a class="reference internal" href="crud.html">增删改查</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">常见问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="json-props.html">JSON 扩展属性</a></li>
 <li class="toctree-l1"><a class="reference internal" href="loaders.html">加载器与关系</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pool.html">连接池</a></li>
 <li class="toctree-l1"><a class="reference internal" href="schema.html">表结构定义</a></li>
@@ -139,6 +140,15 @@ wrapping the results with Objects again. Objects are just row data containers,
 you are still dealing with SQL which is represented by Models and SQLAlchemy
 core grammars. Besides GINO can be used in a completely <a class="reference external" href="schema.html#gino-core">non-ORM way</a>.</p>
 </div>
+<div class="section" id="can-i-use-features-of-sqlalchemy-orm">
+<h2>Can I use features of SQLAlchemy ORM?<a class="headerlink" href="#can-i-use-features-of-sqlalchemy-orm" title="永久链接至标题">¶</a></h2>
+<p>SQLAlchemy has <a class="reference external" href="https://docs.sqlalchemy.org/en/13/">two parts</a>:</p>
+<ul class="simple">
+<li><p>SQLAlchemy Core</p></li>
+<li><p>SQLAlchemy ORM</p></li>
+</ul>
+<p>GINO is built on top of SQLAlchemy Core, so SQLAlchemy ORM won't work in GINO.</p>
+</div>
 <div class="section" id="how-to-join">
 <h2>How to join?<a class="headerlink" href="#how-to-join" title="永久链接至标题">¶</a></h2>
 <p>GINO invented none about making up queries, everything for that is inherited
@@ -174,10 +184,263 @@ is also under discussion in upstream backport project, please read more here:
 this documentation if you are using GINO 0.7.</p>
 </div>
 </div>
+<div class="section" id="how-to-define-relationships">
+<h2>How to define relationships?<a class="headerlink" href="#how-to-define-relationships" title="永久链接至标题">¶</a></h2>
+<p>GINO 1.0 or lower doesn't provide relationship definition feature found in typical ORMs.
+However, you could always manually define your tables, design your queries and load the
+results explicitly in GINO. Please see <a class="reference internal" href="loaders.html"><span class="doc">加载器与关系</span></a> for more information.</p>
+</div>
+<div class="section" id="how-to-define-index-with-multiple-columns">
+<h2>How to define index with multiple columns?<a class="headerlink" href="#how-to-define-index-with-multiple-columns" title="永久链接至标题">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">User</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s1">&#39;users&#39;</span>
+
+    <span class="n">first_name</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Unicode</span><span class="p">())</span>
+    <span class="n">last_name</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Unicode</span><span class="p">())</span>
+
+    <span class="n">_name_idx</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Index</span><span class="p">(</span><span class="s1">&#39;index_on_name&#39;</span><span class="p">,</span> <span class="s1">&#39;first_name&#39;</span><span class="p">,</span> <span class="s1">&#39;last_name&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">_name_idx</span></code> is not used.</p>
+</div>
+<div class="section" id="is-there-a-django-admin-interface-for-gino">
+<h2>Is there a django admin interface for GINO?<a class="headerlink" href="#is-there-a-django-admin-interface-for-gino" title="永久链接至标题">¶</a></h2>
+<p>Not quite yet, please follow <a class="reference external" href="https://github.com/python-gino/gino/issues/260">this discussion</a>.</p>
+</div>
+<div class="section" id="how-to-use-multiple-databases-for-different-users-on-the-fly">
+<h2>How to use multiple databases for different users on the fly?<a class="headerlink" href="#how-to-use-multiple-databases-for-different-users-on-the-fly" title="永久链接至标题">¶</a></h2>
+<p>GINO models are linked to a <a class="reference internal" href="../reference/api/gino.api.html#gino.api.Gino" title="gino.api.Gino"><code class="xref py py-class docutils literal notranslate"><span class="pre">Gino</span></code></a> instance, while
+<a class="reference internal" href="../reference/api/gino.api.html#gino.api.Gino" title="gino.api.Gino"><code class="xref py py-class docutils literal notranslate"><span class="pre">Gino</span></code></a> has an optional property <code class="docutils literal notranslate"><span class="pre">bind</span></code> to hold a
+<a class="reference internal" href="../reference/api/gino.engine.html#gino.engine.GinoEngine" title="gino.engine.GinoEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">GinoEngine</span></code></a> instance. So when you are executing:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">user</span> <span class="o">=</span> <span class="k">await</span> <span class="n">User</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">user_id</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">bind</span></code> is implicitly used to execute the query.</p>
+<p>In order to use multiple databases, you would need multiple
+<a class="reference internal" href="../reference/api/gino.engine.html#gino.engine.GinoEngine" title="gino.engine.GinoEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">GinoEngine</span></code></a> instances. Here's a full example using FastAPI with
+lazy engine creation:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">asyncio</span> <span class="kn">import</span> <span class="n">Future</span>
+<span class="kn">from</span> <span class="nn">contextvars</span> <span class="kn">import</span> <span class="n">ContextVar</span>
+
+<span class="kn">from</span> <span class="nn">fastapi</span> <span class="kn">import</span> <span class="n">FastAPI</span><span class="p">,</span> <span class="n">Request</span>
+<span class="kn">from</span> <span class="nn">gino</span> <span class="kn">import</span> <span class="n">create_engine</span>
+<span class="kn">from</span> <span class="nn">gino.ext.starlette</span> <span class="kn">import</span> <span class="n">Gino</span>
+
+<span class="n">engines</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">dbname</span> <span class="o">=</span> <span class="n">ContextVar</span><span class="p">(</span><span class="s2">&quot;dbname&quot;</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">ContextualGino</span><span class="p">(</span><span class="n">Gino</span><span class="p">):</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">bind</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">e</span> <span class="o">=</span> <span class="n">engines</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">dbname</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">e</span> <span class="ow">and</span> <span class="n">e</span><span class="o">.</span><span class="n">done</span><span class="p">():</span>
+            <span class="k">return</span> <span class="n">e</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bind</span>
+
+    <span class="nd">@bind</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">bind</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_bind</span> <span class="o">=</span> <span class="n">val</span>
+
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">()</span>
+<span class="n">db</span> <span class="o">=</span> <span class="n">ContextualGino</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">middleware</span><span class="p">(</span><span class="s2">&quot;http&quot;</span><span class="p">)</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">lazy_engines</span><span class="p">(</span><span class="n">request</span><span class="p">:</span> <span class="n">Request</span><span class="p">,</span> <span class="n">call_next</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">query_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;db&quot;</span><span class="p">,</span> <span class="s2">&quot;postgres&quot;</span><span class="p">)</span>
+    <span class="n">fut</span> <span class="o">=</span> <span class="n">engines</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">fut</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">fut</span> <span class="o">=</span> <span class="n">engines</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">Future</span><span class="p">()</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">engine</span> <span class="o">=</span> <span class="k">await</span> <span class="n">create_engine</span><span class="p">(</span><span class="s2">&quot;postgresql://localhost/&quot;</span> <span class="o">+</span> <span class="n">name</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">fut</span><span class="o">.</span><span class="n">set_exception</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+            <span class="k">del</span> <span class="n">engines</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+            <span class="k">raise</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">fut</span><span class="o">.</span><span class="n">set_result</span><span class="p">(</span><span class="n">engine</span><span class="p">)</span>
+    <span class="k">await</span> <span class="n">fut</span>
+    <span class="n">dbname</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+    <span class="k">return</span> <span class="k">await</span> <span class="n">call_next</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">get</span><span class="p">():</span>
+    <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="n">dbname</span><span class="o">=</span><span class="k">await</span> <span class="n">db</span><span class="o">.</span><span class="n">scalar</span><span class="p">(</span><span class="s2">&quot;SELECT current_database()&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="how-to-load-complex-query-results">
+<h2>How to load complex query results?<a class="headerlink" href="#how-to-load-complex-query-results" title="永久链接至标题">¶</a></h2>
+<p>The API doc of <a class="reference internal" href="../reference/api/gino.loader.html#module-gino.loader" title="gino.loader"><code class="xref py py-mod docutils literal notranslate"><span class="pre">gino.loader</span></code></a> explains the available loaders, and there're a few
+examples in <a class="reference internal" href="loaders.html"><span class="doc">加载器与关系</span></a> too.</p>
+<p>Below is an example with a joined result to load both a GINO model and an integer at the
+same time, using a <a class="reference internal" href="../reference/api/gino.loader.html#gino.loader.TupleLoader" title="gino.loader.TupleLoader"><code class="xref py py-class docutils literal notranslate"><span class="pre">TupleLoader</span></code></a> with two sub-loaders -
+<a class="reference internal" href="../reference/api/gino.loader.html#gino.loader.ModelLoader" title="gino.loader.ModelLoader"><code class="xref py py-class docutils literal notranslate"><span class="pre">ModelLoader</span></code></a> and <a class="reference internal" href="../reference/api/gino.loader.html#gino.loader.ColumnLoader" title="gino.loader.ColumnLoader"><code class="xref py py-class docutils literal notranslate"><span class="pre">ColumnLoader</span></code></a>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">asyncio</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">string</span>
+
+<span class="kn">import</span> <span class="nn">gino</span>
+<span class="kn">from</span> <span class="nn">gino.loader</span> <span class="kn">import</span> <span class="n">ColumnLoader</span>
+
+<span class="n">db</span> <span class="o">=</span> <span class="n">gino</span><span class="o">.</span><span class="n">Gino</span><span class="p">()</span>
+
+
+<span class="k">class</span> <span class="nc">User</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s1">&#39;users&#39;</span>
+
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Integer</span><span class="p">(),</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Unicode</span><span class="p">())</span>
+
+
+<span class="k">class</span> <span class="nc">Visit</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s1">&#39;visits&#39;</span>
+
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Integer</span><span class="p">(),</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">time</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">DateTime</span><span class="p">(),</span> <span class="n">server_default</span><span class="o">=</span><span class="s1">&#39;now()&#39;</span><span class="p">)</span>
+    <span class="n">user_id</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="s1">&#39;users.id&#39;</span><span class="p">))</span>
+
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="k">async</span> <span class="k">with</span> <span class="n">db</span><span class="o">.</span><span class="n">with_bind</span><span class="p">(</span><span class="s1">&#39;postgresql://localhost/gino&#39;</span><span class="p">):</span>
+        <span class="k">await</span> <span class="n">db</span><span class="o">.</span><span class="n">gino</span><span class="o">.</span><span class="n">create_all</span><span class="p">()</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">)):</span>
+            <span class="n">u</span> <span class="o">=</span> <span class="k">await</span> <span class="n">User</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+                <span class="n">name</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">choices</span><span class="p">(</span><span class="n">string</span><span class="o">.</span><span class="n">ascii_letters</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">10</span><span class="p">)))</span>
+            <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">)):</span>
+                <span class="k">await</span> <span class="n">Visit</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">user_id</span><span class="o">=</span><span class="n">u</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+
+        <span class="n">visits</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">func</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">Visit</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+        <span class="n">q</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">select</span><span class="p">([</span>
+            <span class="n">User</span><span class="p">,</span>
+            <span class="n">visits</span><span class="p">,</span>
+        <span class="p">])</span><span class="o">.</span><span class="n">select_from</span><span class="p">(</span>
+            <span class="n">User</span><span class="o">.</span><span class="n">outerjoin</span><span class="p">(</span><span class="n">Visit</span><span class="p">)</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">group_by</span><span class="p">(</span>
+            <span class="o">*</span><span class="n">User</span><span class="p">,</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">gino</span><span class="o">.</span><span class="n">load</span><span class="p">((</span><span class="n">User</span><span class="p">,</span> <span class="n">ColumnLoader</span><span class="p">(</span><span class="n">visits</span><span class="p">)))</span>
+        <span class="k">async</span> <span class="k">with</span> <span class="n">db</span><span class="o">.</span><span class="n">transaction</span><span class="p">():</span>
+            <span class="k">async</span> <span class="k">for</span> <span class="n">user</span><span class="p">,</span> <span class="n">visits</span> <span class="ow">in</span> <span class="n">q</span><span class="o">.</span><span class="n">iterate</span><span class="p">():</span>
+                <span class="nb">print</span><span class="p">(</span><span class="n">user</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">visits</span><span class="p">)</span>
+
+        <span class="k">await</span> <span class="n">db</span><span class="o">.</span><span class="n">gino</span><span class="o">.</span><span class="n">drop_all</span><span class="p">()</span>
+
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>Be ware of the <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(在 Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a> in <code class="docutils literal notranslate"><span class="pre">.gino.load((...))</span></code>.</p>
+</div>
+<div class="section" id="how-to-do-bulk-insert-update">
+<h2>How to do bulk insert / update?<a class="headerlink" href="#how-to-do-bulk-insert-update" title="永久链接至标题">¶</a></h2>
+<p>TBD #314</p>
+</div>
+<div class="section" id="how-to-print-the-executed-sql">
+<h2>How to print the executed SQL?<a class="headerlink" href="#how-to-print-the-executed-sql" title="永久链接至标题">¶</a></h2>
+<p>GINO uses the same approach from SQLAlchemy: <code class="docutils literal notranslate"><span class="pre">create_engine(...,</span> <span class="pre">echo=True)</span></code>.
+(Or <code class="docutils literal notranslate"><span class="pre">db.set_bind(...,</span> <span class="pre">echo=True)</span></code>) Please see also <a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/engines.html#sqlalchemy.create_engine.params.echo">here</a>.</p>
+<p>If you use any extension, you can also set that in config, by <cite>db_echo</cite> or <cite>DB_ECHO</cite>.</p>
+</div>
+<div class="section" id="how-to-run-exists-sql">
+<h2>How to run <code class="docutils literal notranslate"><span class="pre">EXISTS</span></code> SQL?<a class="headerlink" href="#how-to-run-exists-sql" title="永久链接至标题">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">await</span> <span class="n">db</span><span class="o">.</span><span class="n">scalar</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">User</span><span class="o">.</span><span class="n">email</span> <span class="o">==</span> <span class="n">email</span><span class="p">)</span><span class="o">.</span><span class="n">select</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="how-to-work-with-alembic">
+<h2>How to work with Alembic?<a class="headerlink" href="#how-to-work-with-alembic" title="永久链接至标题">¶</a></h2>
+<p>The fact that <a class="reference internal" href="../reference/api/gino.api.html#gino.api.Gino" title="gino.api.Gino"><code class="xref py py-class docutils literal notranslate"><span class="pre">Gino</span></code></a> is a <a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/metadata.html#sqlalchemy.schema.MetaData" title="(在 SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetaData</span></code></a> is the
+key to use Alembic. Just import and set <code class="docutils literal notranslate"><span class="pre">target_metadata</span> <span class="pre">=</span> <span class="pre">db</span></code> in Alembic <code class="docutils literal notranslate"><span class="pre">env.py</span></code>
+will do. See <a class="reference internal" href="alembic.html"><span class="doc">使用 Alembic</span></a> for more details.</p>
+</div>
+<div class="section" id="how-to-join-the-same-table-twice">
+<h2>How to join the same table twice?<a class="headerlink" href="#how-to-join-the-same-table-twice" title="永久链接至标题">¶</a></h2>
+<p>This is the same pattern as described in SQLAlchemy <a class="reference external" href="https://docs.sqlalchemy.org/en/13/orm/self_referential.html#self-referential" title="(在 SQLAlchemy v1.3)"><span>Adjacency List Relationships</span></a>, where you
+have a table with &quot;a foreign key reference to itself&quot;, or join the same table more than
+once, &quot;to represent hierarchical data in flat tables.&quot; We'd need to use
+<a class="reference internal" href="../reference/api/gino.crud.html#gino.crud.CRUDModel.alias" title="gino.crud.CRUDModel.alias"><code class="xref py py-func docutils literal notranslate"><span class="pre">alias()</span></code></a>, for example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">User</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s2">&quot;users&quot;</span>
+
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">parent_id</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="s2">&quot;users.id&quot;</span><span class="p">))</span>
+
+<span class="n">Parent</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">alias</span><span class="p">()</span>
+<span class="n">query</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">outerjoin</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">User</span><span class="o">.</span><span class="n">parent_id</span> <span class="o">==</span> <span class="n">Parent</span><span class="o">.</span><span class="n">id</span><span class="p">)</span><span class="o">.</span><span class="n">select</span><span class="p">()</span>
+<span class="n">users</span> <span class="o">=</span> <span class="k">await</span> <span class="n">query</span><span class="o">.</span><span class="n">gino</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">User</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">Parent</span><span class="p">))</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="how-to-execute-raw-sql-with-parameters">
+<span id="raw-sql"></span><h2>How to execute raw SQL with parameters?<a class="headerlink" href="#how-to-execute-raw-sql-with-parameters" title="永久链接至标题">¶</a></h2>
+<p>Wrap the SQL with <a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/sqlelement.html#sqlalchemy.sql.expression.text" title="(在 SQLAlchemy v1.3)"><code class="xref py py-func docutils literal notranslate"><span class="pre">text()</span></code></a>, and use keyword arguments:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">query</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM users WHERE id = :id_val&#39;</span><span class="p">)</span>
+<span class="n">row</span> <span class="o">=</span> <span class="k">await</span> <span class="n">db</span><span class="o">.</span><span class="n">first</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">id_val</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You may even load the rows into model instances:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">query</span> <span class="o">=</span> <span class="n">query</span><span class="o">.</span><span class="n">execution_options</span><span class="p">(</span><span class="n">loader</span><span class="o">=</span><span class="n">User</span><span class="p">)</span>
+<span class="n">user</span> <span class="o">=</span> <span class="k">await</span> <span class="n">db</span><span class="o">.</span><span class="n">first</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">id_val</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="gino-engine-is-not-initialized">
+<h2>Gino engine is not initialized?<a class="headerlink" href="#gino-engine-is-not-initialized" title="永久链接至标题">¶</a></h2>
+<p>GINO models are linked to a <a class="reference internal" href="../reference/api/gino.api.html#gino.api.Gino" title="gino.api.Gino"><code class="xref py py-class docutils literal notranslate"><span class="pre">Gino</span></code></a> instance, while
+<a class="reference internal" href="../reference/api/gino.api.html#gino.api.Gino" title="gino.api.Gino"><code class="xref py py-class docutils literal notranslate"><span class="pre">Gino</span></code></a> has an optional property <code class="docutils literal notranslate"><span class="pre">bind</span></code> to hold a
+<a class="reference internal" href="../reference/api/gino.engine.html#gino.engine.GinoEngine" title="gino.engine.GinoEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">GinoEngine</span></code></a> instance. So when you are executing:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">user</span> <span class="o">=</span> <span class="k">await</span> <span class="n">User</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">user_id</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">bind</span></code> is implicitly used to execute the query. If <code class="docutils literal notranslate"><span class="pre">bind</span></code> is not set before
+this, you'll see this error:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>gino.exceptions.UninitializedError: Gino engine is not initialized.
+</pre></div>
+</div>
+<p>You could use either:</p>
+<ul>
+<li><p>Call <a class="reference internal" href="../reference/api/gino.api.html#gino.api.Gino.set_bind" title="gino.api.Gino.set_bind"><code class="xref py py-meth docutils literal notranslate"><span class="pre">set_bind()</span></code></a> or <a class="reference internal" href="../reference/api/gino.api.html#gino.api.Gino.with_bind" title="gino.api.Gino.with_bind"><code class="xref py py-meth docutils literal notranslate"><span class="pre">with_bind()</span></code></a> to set the
+bind on the <a class="reference internal" href="../reference/api/gino.api.html#gino.api.Gino" title="gino.api.Gino"><code class="xref py py-class docutils literal notranslate"><span class="pre">Gino</span></code></a> instance.</p></li>
+<li><p>Use one of the Web framework extensions to set the bind for you in usually the server
+start-up hook.</p></li>
+<li><p>Use explicit <code class="docutils literal notranslate"><span class="pre">bind</span></code> for each execution, for example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">engine</span> <span class="o">=</span> <span class="k">await</span> <span class="n">create_engine</span><span class="p">(</span><span class="s2">&quot;...&quot;</span><span class="p">)</span>
+<span class="c1"># ...</span>
+<span class="n">user</span> <span class="o">=</span> <span class="k">await</span> <span class="n">User</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">user_id</span><span class="p">,</span> <span class="n">bind</span><span class="o">=</span><span class="n">engine</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="how-can-i-do-sql-xxxx-in-gino">
+<h2>How can I do SQL xxxx in GINO?<a class="headerlink" href="#how-can-i-do-sql-xxxx-in-gino" title="永久链接至标题">¶</a></h2>
+<p>GINO uses <a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/">SQLAlchemy Core</a> queries, so
+please check its documentation on how to build queries. The GINO models are simply
+wrappers of SQLAlchemy <a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/metadata.html#sqlalchemy.schema.Table" title="(在 SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Table</span></code></a> instances, and the column
+attributes on GINO model classes are just SQLAlchemy <a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/metadata.html#sqlalchemy.schema.Column" title="(在 SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Column</span></code></a>
+instances, you can use them in building your SQLAlchemy Core queries.</p>
+<p>Alternatively, you could always execute the raw SQL directly, see <a class="reference internal" href="#raw-sql"><span class="std std-ref">How to execute raw SQL with parameters?</span></a> above.</p>
+</div>
 </div>
 
 
             </div>
+            <p style="text-align: center; font-size: 12px;">
+                <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+                    <img
+                        alt="知识共享许可协议"
+                        style="border-width:0"
+                        src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png"
+                    />
+                </a>
+                <br/>
+                本作品采用<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">知识共享署名-相同方式共享 4.0 国际许可协议</a>进行许可。
+            </p>
         </div>
 
         <div class="col hide-on-small-only m3 right-nav">
@@ -186,14 +449,37 @@ this documentation if you are using GINO 0.7.</p>
                     <ul>
 <li><a class="reference internal" href="#">常见问题</a><ul>
 <li><a class="reference internal" href="#orm-or-not-orm">ORM or not ORM?</a></li>
+<li><a class="reference internal" href="#can-i-use-features-of-sqlalchemy-orm">Can I use features of SQLAlchemy ORM?</a></li>
 <li><a class="reference internal" href="#how-to-join">How to join?</a></li>
 <li><a class="reference internal" href="#how-to-connect-to-database-through-ssl">How to connect to database through SSL?</a></li>
 <li><a class="reference internal" href="#what-is-aiocontextvars-and-what-does-it-do">What is aiocontextvars and what does it do?</a></li>
+<li><a class="reference internal" href="#how-to-define-relationships">How to define relationships?</a></li>
+<li><a class="reference internal" href="#how-to-define-index-with-multiple-columns">How to define index with multiple columns?</a></li>
+<li><a class="reference internal" href="#is-there-a-django-admin-interface-for-gino">Is there a django admin interface for GINO?</a></li>
+<li><a class="reference internal" href="#how-to-use-multiple-databases-for-different-users-on-the-fly">How to use multiple databases for different users on the fly?</a></li>
+<li><a class="reference internal" href="#how-to-load-complex-query-results">How to load complex query results?</a></li>
+<li><a class="reference internal" href="#how-to-do-bulk-insert-update">How to do bulk insert / update?</a></li>
+<li><a class="reference internal" href="#how-to-print-the-executed-sql">How to print the executed SQL?</a></li>
+<li><a class="reference internal" href="#how-to-run-exists-sql">How to run <code class="docutils literal notranslate"><span class="pre">EXISTS</span></code> SQL?</a></li>
+<li><a class="reference internal" href="#how-to-work-with-alembic">How to work with Alembic?</a></li>
+<li><a class="reference internal" href="#how-to-join-the-same-table-twice">How to join the same table twice?</a></li>
+<li><a class="reference internal" href="#how-to-execute-raw-sql-with-parameters">How to execute raw SQL with parameters?</a></li>
+<li><a class="reference internal" href="#gino-engine-is-not-initialized">Gino engine is not initialized?</a></li>
+<li><a class="reference internal" href="#how-can-i-do-sql-xxxx-in-gino">How can I do SQL xxxx in GINO?</a></li>
 </ul>
 </li>
 </ul>
 
                 
+                <div id="version-selector">
+                    
+                        <hr>
+                    
+                </div>
+                <div class="add-your-lang">
+                    <a href="https://www.transifex.com/decentfox-studio/gino_1_0/"
+                       target="_blank">Add your language here.</a>
+                </div>
             </div>
         </div>
 
@@ -205,9 +491,7 @@ this documentation if you are using GINO 0.7.</p>
               ZH
             </div>
         </a>
-        <ul>
-            <li><a href="/docs/en/v1.0.0/how-to/faq.html" class="btn-floating blue">EN</a></li>
-            <li><a href="/docs/zh/v1.0.0/how-to/faq.html" class="btn-floating red">ZH</a></li>
+        <ul id="lang-selector">
         </ul>
     </div>
 </main>
@@ -217,6 +501,11 @@ this documentation if you are using GINO 0.7.</p>
 <script id="documentation_options" data-url_root="../" src="../_static/js/documentation_options.js"></script>
 <script type="text/javascript" src="../_static/js/underscore.js"></script>
 <script type="text/javascript" src="../_static/js/jquery.js"></script>
+<script type="text/javascript">
+    var sver = '1.0';
+    var language = 'zh';
+    var pagename = 'how-to/faq';
+</script>
 <script type="text/javascript" src="../_static/js/gino.js"></script>
 <script type="text/javascript" src="../searchindex.js"></script>
 </body>

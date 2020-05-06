@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="_static/favicon.ico">
-    <title>参考手册 - GINO 1.0.0 文档</title>
+    <title>参考手册 - GINO 1.0.1.dev0 文档</title>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async
             src="https://www.googletagmanager.com/gtag/js?id=UA-3759436-10"></script>
@@ -93,6 +93,7 @@
 <li class="toctree-l1"><a class="reference internal" href="how-to/contributing.html">贡献</a></li>
 <li class="toctree-l1"><a class="reference internal" href="how-to/crud.html">增删改查</a></li>
 <li class="toctree-l1"><a class="reference internal" href="how-to/faq.html">常见问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-to/json-props.html">JSON 扩展属性</a></li>
 <li class="toctree-l1"><a class="reference internal" href="how-to/loaders.html">加载器与关系</a></li>
 <li class="toctree-l1"><a class="reference internal" href="how-to/pool.html">连接池</a></li>
 <li class="toctree-l1"><a class="reference internal" href="how-to/schema.html">表结构定义</a></li>
@@ -182,30 +183,36 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="reference/history.html">版本历史</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/history.html#gino-1-0">GINO 1.0</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#migrating-to-gino-1-0">Migrating to GINO 1.0</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id1">1.0.0 (2020-04-26)</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="reference/history.html#gino-0-8">GINO 0.8</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="reference/history.html#migrating-to-gino-0-8">Migrating to GINO 0.8</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="reference/history.html#contextvars">1. contextvars</a></li>
 <li class="toctree-l4"><a class="reference internal" href="reference/history.html#none-as-none">2. none_as_none</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id1">0.8.6 (2020-02-10)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id2">0.8.5 (2019-11-19)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id3">0.8.4 (2019-11-09)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id4">0.8.3 (2019-06-06)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id5">0.8.2 (2019-03-07)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id6">0.8.1 (2018-12-08)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id7">0.8.0 (2018-10-16)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id2">0.8.7 (2020-04-19)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id3">0.8.6 (2020-02-10)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id4">0.8.5 (2019-11-19)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id5">0.8.4 (2019-11-09)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id6">0.8.3 (2019-06-06)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id7">0.8.2 (2019-03-07)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id8">0.8.1 (2018-12-08)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id9">0.8.0 (2018-10-16)</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="reference/history.html#gino-0-7">GINO 0.7</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id8">0.7.7 (2018-12-08)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id9">0.7.6 (2018-08-26)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id10">0.7.5 (2018-07-26)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id11">0.7.4 (2018-06-10)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id12">0.7.3 (2018-05-19)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id13">0.7.2 (2018-05-15)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id14">0.7.1 (2018-05-03)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id15">0.7.0 (2018-04-18)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id10">0.7.7 (2018-12-08)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id11">0.7.6 (2018-08-26)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id12">0.7.5 (2018-07-26)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id13">0.7.4 (2018-06-10)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id14">0.7.3 (2018-05-19)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id15">0.7.2 (2018-05-15)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id16">0.7.1 (2018-05-03)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id17">0.7.0 (2018-04-18)</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="reference/history.html#gino-0-6">GINO 0.6</a><ul>
@@ -217,37 +224,37 @@
 <li class="toctree-l4"><a class="reference internal" href="reference/history.html#transaction">5. Transaction</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id16">0.6.6 (2018-05-18)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id17">0.6.5 (2018-04-18)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id18">0.6.4 (2018-04-16)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id19">0.6.3 (2018-04-08)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id20">0.6.2 (2018-03-24)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id21">0.6.1 (2018-03-18)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id22">0.6.0 (2018-03-14)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id18">0.6.6 (2018-05-18)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id19">0.6.5 (2018-04-18)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id20">0.6.4 (2018-04-16)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id21">0.6.3 (2018-04-08)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id22">0.6.2 (2018-03-24)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id23">0.6.1 (2018-03-18)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id24">0.6.0 (2018-03-14)</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="reference/history.html#gino-0-5">GINO 0.5</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id23">0.5.8 (2018-02-14)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id24">0.5.7 (2017-11-24)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id25">0.5.6 (2017-11-23)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id26">0.5.5 (2017-10-18)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id27">0.5.4 (2017-10-04)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id28">0.5.3 (2017-09-23)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id29">0.5.2 (2017-09-10)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id30">0.5.1 (2017-09-09)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id31">0.5.0 (2017-09-03)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id25">0.5.8 (2018-02-14)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id26">0.5.7 (2017-11-24)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id27">0.5.6 (2017-11-23)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id28">0.5.5 (2017-10-18)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id29">0.5.4 (2017-10-04)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id30">0.5.3 (2017-09-23)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id31">0.5.2 (2017-09-10)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id32">0.5.1 (2017-09-09)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id33">0.5.0 (2017-09-03)</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="reference/history.html#early-development-releases">Early Development Releases</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id32">0.4.1 (2017-08-20)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id33">0.4.0 (2017-08-15)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id34">0.3.0 (2017-08-07)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id35">0.2.3 (2017-08-04)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id36">0.2.2 (2017-08-02)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id37">0.2.1 (2017-07-28)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id38">0.2.0 (2017-07-28)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id39">0.1.1 (2017-07-25)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id40">0.1.0 (2017-07-21)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id34">0.4.1 (2017-08-20)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id35">0.4.0 (2017-08-15)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id36">0.3.0 (2017-08-07)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id37">0.2.3 (2017-08-04)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id38">0.2.2 (2017-08-02)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id39">0.2.1 (2017-07-28)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id40">0.2.0 (2017-07-28)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id41">0.1.1 (2017-07-25)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/history.html#id42">0.1.0 (2017-07-21)</a></li>
 </ul>
 </li>
 </ul>
@@ -258,6 +265,17 @@
 
 
             </div>
+            <p style="text-align: center; font-size: 12px;">
+                <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+                    <img
+                        alt="知识共享许可协议"
+                        style="border-width:0"
+                        src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png"
+                    />
+                </a>
+                <br/>
+                本作品采用<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">知识共享署名-相同方式共享 4.0 国际许可协议</a>进行许可。
+            </p>
         </div>
 
         <div class="col hide-on-small-only m3 right-nav">
@@ -268,6 +286,13 @@
 </ul>
 
                 
+                <div id="version-selector">
+                    
+                </div>
+                <div class="add-your-lang">
+                    <a href="https://www.transifex.com/decentfox-studio/gino_1_0/"
+                       target="_blank">Add your language here.</a>
+                </div>
             </div>
         </div>
 
@@ -279,9 +304,7 @@
               ZH
             </div>
         </a>
-        <ul>
-            <li><a href="/docs/en/v1.0.0/reference.html" class="btn-floating blue">EN</a></li>
-            <li><a href="/docs/zh/v1.0.0/reference.html" class="btn-floating red">ZH</a></li>
+        <ul id="lang-selector">
         </ul>
     </div>
 </main>
@@ -291,6 +314,11 @@
 <script id="documentation_options" data-url_root="./" src="_static/js/documentation_options.js"></script>
 <script type="text/javascript" src="_static/js/underscore.js"></script>
 <script type="text/javascript" src="_static/js/jquery.js"></script>
+<script type="text/javascript">
+    var sver = '1.0';
+    var language = 'zh';
+    var pagename = 'reference';
+</script>
 <script type="text/javascript" src="_static/js/gino.js"></script>
 <script type="text/javascript" src="searchindex.js"></script>
 </body>
