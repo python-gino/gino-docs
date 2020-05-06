@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="../_static/favicon.ico">
-    <title>官宣：Python 异步编程再添一利器 - GINO 1.0.0 documentation</title>
+    <title>官宣：Python 异步编程再添一利器 - GINO 1.0.1.dev0 documentation</title>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async
             src="https://www.googletagmanager.com/gtag/js?id=UA-3759436-10"></script>
@@ -101,6 +101,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../how-to/contributing.html">Contributing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../how-to/crud.html">CRUD</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../how-to/faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to/json-props.html">JSON Property</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../how-to/loaders.html">Loaders and Relationship</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../how-to/pool.html">Connection Pool</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../how-to/schema.html">Schema Declaration</a></li>
@@ -415,6 +416,17 @@ asyncpg - A fast PostgreSQL Database Client Library for Python/asyncio.
 
 
             </div>
+            <p style="text-align: center; font-size: 12px;">
+                <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+                    <img
+                        alt="Creative Commons License"
+                        style="border-width:0"
+                        src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png"
+                    />
+                </a>
+                <br/>
+                This work is licensed under a<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+            </p>
         </div>
 
         <div class="col hide-on-small-only m3 right-nav">
@@ -434,6 +446,15 @@ asyncpg - A fast PostgreSQL Database Client Library for Python/asyncio.
 </ul>
 
                 
+                <div id="version-selector">
+                    
+                        <hr>
+                    
+                </div>
+                <div class="add-your-lang">
+                    <a href="https://www.transifex.com/decentfox-studio/gino_1_0/"
+                       target="_blank">Add your language here.</a>
+                </div>
             </div>
         </div>
 
@@ -445,9 +466,7 @@ asyncpg - A fast PostgreSQL Database Client Library for Python/asyncio.
               EN
             </div>
         </a>
-        <ul>
-            <li><a href="/docs/en/v1.0.0/tutorials/announcement.html" class="btn-floating blue">EN</a></li>
-            <li><a href="/docs/zh/v1.0.0/tutorials/announcement.html" class="btn-floating red">ZH</a></li>
+        <ul id="lang-selector">
         </ul>
     </div>
 </main>
@@ -457,6 +476,11 @@ asyncpg - A fast PostgreSQL Database Client Library for Python/asyncio.
 <script id="documentation_options" data-url_root="../" src="../_static/js/documentation_options.js"></script>
 <script type="text/javascript" src="../_static/js/underscore.js"></script>
 <script type="text/javascript" src="../_static/js/jquery.js"></script>
+<script type="text/javascript">
+    var sver = '1.0';
+    var language = 'en';
+    var pagename = 'tutorials/announcement';
+</script>
 <script type="text/javascript" src="../_static/js/gino.js"></script>
 <script type="text/javascript" src="../searchindex.js"></script>
 </body>
