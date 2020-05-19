@@ -187,6 +187,15 @@
 <div class="versionchanged">
 <p><span class="versionmodified changed">在 1.1 版更改: </span>Added the <code class="docutils literal notranslate"><span class="pre">bakery</span></code> keyword argument, please see <a class="reference internal" href="gino.bakery.html#gino.bakery.Bakery" title="gino.bakery.Bakery"><code class="xref py py-class docutils literal notranslate"><span class="pre">Bakery</span></code></a>.</p>
 </div>
+<div class="versionchanged">
+<p><span class="versionmodified changed">在 1.1 版更改: </span>Added the <code class="docutils literal notranslate"><span class="pre">prebake</span></code> keyword argument to choose when to create the prepared
+statements for the queries in the bakery:</p>
+<ul class="simple">
+<li><p><strong>Pre-bake</strong> immediately when connected to the database (default).</p></li>
+<li><p>No <strong>pre-bake</strong> but create prepared statements lazily when needed for the first
+time.</p></li>
+</ul>
+</div>
 </dd></dl>
 
 <dl class="py function">

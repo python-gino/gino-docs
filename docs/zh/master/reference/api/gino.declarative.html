@@ -294,18 +294,19 @@ class attributes):</p>
 </div>
 <div class="versionchanged">
 <p><span class="versionmodified changed">在 1.1 版更改: </span>Added <code class="docutils literal notranslate"><span class="pre">with_table</span></code> parameter which works after the <code class="docutils literal notranslate"><span class="pre">__table__</span></code> is created:</p>
-<dl>
-<dt>class User(db.Model):</dt><dd><p>__tablename__ = &quot;users&quot;</p>
-<p>...</p>
-<p>&#64;db.declared_attr(with_table=True)
-def table_name(cls):</p>
-<blockquote>
-<div><p># this is called only once when defining the class
-return cls.__table__.name</p>
-</div></blockquote>
-</dd>
-</dl>
-<p>assert User.table_name == &quot;users&quot;</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">User</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s2">&quot;users&quot;</span>
+
+    <span class="o">...</span>
+
+    <span class="nd">@db</span><span class="o">.</span><span class="n">declared_attr</span><span class="p">(</span><span class="n">with_table</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">table_name</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+        <span class="c1"># this is called only once when defining the class</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">__table__</span><span class="o">.</span><span class="n">name</span>
+
+<span class="k">assert</span> <span class="n">User</span><span class="o">.</span><span class="n">table_name</span> <span class="o">==</span> <span class="s2">&quot;users&quot;</span>
+</pre></div>
+</div>
 </div>
 </dd></dl>
 
