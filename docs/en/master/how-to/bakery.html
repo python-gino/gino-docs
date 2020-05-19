@@ -311,6 +311,23 @@ suffix, plus it is directly executable.</p>
 <p>Please see API document of <a class="reference internal" href="../reference/api/gino.bakery.html#module-gino.bakery" title="gino.bakery"><code class="xref py py-mod docutils literal notranslate"><span class="pre">gino.bakery</span></code></a> for more information.</p>
 </div>
 </div>
+<div class="section" id="i-don-t-want-the-prepared-statements">
+<h2>I don’t want the prepared statements.<a class="headerlink" href="#i-don-t-want-the-prepared-statements" title="Permalink to this headline">¶</a></h2>
+<p>If you don’t need all the baked queries (<code class="docutils literal notranslate"><span class="pre">m</span></code>) to create prepared statements for all
+the active database connections (<code class="docutils literal notranslate"><span class="pre">n</span></code>) in the beginning, you could set
+<code class="docutils literal notranslate"><span class="pre">prebake=False</span></code> in the engine initialization to prevent the default initial
+<code class="docutils literal notranslate"><span class="pre">m</span> <span class="pre">x</span> <span class="pre">n</span></code> prepare calls:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">e</span> <span class="o">=</span> <span class="k">await</span> <span class="n">gino</span><span class="o">.</span><span class="n">create_engine</span><span class="p">(</span><span class="s2">&quot;postgresql://...&quot;</span><span class="p">,</span> <span class="n">bakery</span><span class="o">=</span><span class="n">bakery</span><span class="p">,</span> <span class="n">prebake</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Or if you’re using bind:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">await</span> <span class="n">db</span><span class="o">.</span><span class="n">set_bind</span><span class="p">(</span><span class="s2">&quot;postgresql://...&quot;</span><span class="p">,</span> <span class="n">prebake</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This is useful when you’re depending on <code class="docutils literal notranslate"><span class="pre">db.gino.create_all()</span></code> to create the tables,
+because the prepared statements can only be created after the table creation.</p>
+<p>The prepared statements will then be created and cached lazily on demand.</p>
+</div>
 </div>
 
 
@@ -337,6 +354,7 @@ suffix, plus it is directly executable.</p>
 <li><a class="reference internal" href="#use-the-gino-integration">Use the <code class="xref py py-class docutils literal notranslate"><span class="pre">Gino</span></code> Integration</a></li>
 <li><a class="reference internal" href="#how-to-customize-loaders">How to customize loaders?</a></li>
 <li><a class="reference internal" href="#what-apis-are-available-on-bakedquery">What APIs are available on <code class="xref py py-class docutils literal notranslate"><span class="pre">BakedQuery</span></code>?</a></li>
+<li><a class="reference internal" href="#i-don-t-want-the-prepared-statements">I don’t want the prepared statements.</a></li>
 </ul>
 </li>
 </ul>
