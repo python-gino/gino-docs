@@ -128,11 +128,8 @@
     <div class="section" id="asynchronous-programming-101">
 <h1>异步编程基础<a class="headerlink" href="#asynchronous-programming-101" title="永久链接至标题">¶</a></h1>
 <div class="section" id="the-story">
-<h2>The Story<a class="headerlink" href="#the-story" title="永久链接至标题">¶</a></h2>
-<p>Let's say we want to build a search engine. We'll use a single core computer to
-build our index. To make things simpler, our tasks are to fetch web pages
-(I/O operation), and process their content (CPU operation). Each task looks
-like this:</p>
+<h2>一个经典场景<a class="headerlink" href="#the-story" title="永久链接至标题">¶</a></h2>
+<p>假如现在我们想要去创建自己的搜索引擎，为了创建索引数据库，家境贫寒的我们使用了一台单核电脑去爬取网页（I/O型操作），然后再将这些网页内容进行处理（计算型操作）。这个过程如下图所示：</p>
 <img alt="../_images/why_single_task.png" class="align-center" src="../_images/why_single_task.png" />
 <p>We have lots of web pages to index, so we simply handle them one by one:</p>
 <img alt="../_images/why_throughput.png" class="align-center" src="../_images/why_throughput.png" />
@@ -323,7 +320,7 @@ time-critical tasks, think again to be sure.</p>
                 
                     <ul>
 <li><a class="reference internal" href="#">异步编程基础</a><ul>
-<li><a class="reference internal" href="#the-story">The Story</a></li>
+<li><a class="reference internal" href="#the-story">一个经典场景</a></li>
 <li><a class="reference internal" href="#cooperative-multitasking">Cooperative multitasking</a></li>
 <li><a class="reference internal" href="#pros-and-cons">Pros and cons</a></li>
 </ul>
