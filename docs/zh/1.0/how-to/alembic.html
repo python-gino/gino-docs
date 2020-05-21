@@ -127,7 +127,102 @@
                 
     <div class="section" id="use-alembic">
 <h1>使用 Alembic<a class="headerlink" href="#use-alembic" title="永久链接至标题">¶</a></h1>
-<p>未完待续</p>
+<p>Alembic is a lightweight database migration tool for usage with the SQLAlchemy Database
+Toolkit for Python. It’s also possible to use with GINO.</p>
+<p>To add migrations to project first of all, add alembic as dependency:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> pip install --user alembic
+</pre></div>
+</div>
+<p>When you need to set up alembic for your project.</p>
+<p>Prepare sample project. We will have a structure:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">alembic_sample/</span>
+<span class="go">    my_app/</span>
+<span class="go">        models.py</span>
+</pre></div>
+</div>
+<p>Inside <code class="docutils literal notranslate"><span class="pre">models.py</span></code> define simple DB Model with GINO:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gino</span> <span class="kn">import</span> <span class="n">Gino</span>
+
+<span class="n">db</span> <span class="o">=</span> <span class="n">Gino</span><span class="p">()</span>
+
+    <span class="k">class</span> <span class="nc">User</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+        <span class="n">__tablename__</span> <span class="o">=</span> <span class="s1">&#39;users&#39;</span>
+
+ <span class="nb">id</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Integer</span><span class="p">(),</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+ <span class="n">nickname</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Unicode</span><span class="p">(),</span> <span class="n">default</span><span class="o">=</span><span class="s1">&#39;noname&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="section" id="set-up-alembic">
+<h2>Set up Alembic<a class="headerlink" href="#set-up-alembic" title="永久链接至标题">¶</a></h2>
+<p>This will need to be done only once. Go to the main folder of your project
+<code class="docutils literal notranslate"><span class="pre">alembic_sample</span></code> and run:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> alembic init alembic
+</pre></div>
+</div>
+<p>Alembic will create a bunch of files and folders in your project directory. One of them
+will be <code class="docutils literal notranslate"><span class="pre">alembic.ini</span></code>. Open <code class="docutils literal notranslate"><span class="pre">alembic.ini</span></code> (you can find it in the main project
+folder <code class="docutils literal notranslate"><span class="pre">alembic_sample</span></code>). Now change property <code class="docutils literal notranslate"><span class="pre">sqlalchemy.url</span> <span class="pre">=</span></code>  with your DB
+credentials. Like this:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">sqlalchemy.url</span> <span class="o">=</span> <span class="s">postgres://{{username}}:{{password}}@{{address}}/{{db_name}}</span>
+</pre></div>
+</div>
+<p>Next go to folder <code class="docutils literal notranslate"><span class="pre">alembic/</span></code> and open <code class="docutils literal notranslate"><span class="pre">env.py</span></code> file. Inside the <code class="docutils literal notranslate"><span class="pre">env.py</span></code> file you
+need to import the <code class="docutils literal notranslate"><span class="pre">db</span></code> object. In our case <code class="docutils literal notranslate"><span class="pre">db</span></code> object is <code class="docutils literal notranslate"><span class="pre">db</span></code> from <code class="docutils literal notranslate"><span class="pre">models</span></code>
+modules. This is a variable that links to your <code class="docutils literal notranslate"><span class="pre">Gino()</span></code> instance.</p>
+<p>Inside <code class="docutils literal notranslate"><span class="pre">alembic/env.py</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">main_app.models</span> <span class="kn">import</span> <span class="n">db</span>
+</pre></div>
+</div>
+<p>And change <code class="docutils literal notranslate"><span class="pre">target_metadata</span> <span class="pre">=</span></code> to:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">target_metadata</span> <span class="o">=</span> <span class="n">db</span>
+</pre></div>
+</div>
+<p>That’s it. We finished setting up Alembic for a project.</p>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>All <code class="docutils literal notranslate"><span class="pre">alembic</span></code> commands must be run always from the folder that contains the
+<code class="docutils literal notranslate"><span class="pre">alembic.ini</span></code> file.</p>
+</div>
+</div>
+<div class="section" id="create-first-migration-revision">
+<h2>Create first migration revision<a class="headerlink" href="#create-first-migration-revision" title="永久链接至标题">¶</a></h2>
+<p>Same commands you must run each time when you make some changes in DB Models and want to
+apply these changes to your DB Schema.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> alembic revision -m <span class="s2">&quot;first migration&quot;</span> --autogenerate --head head
+</pre></div>
+</div>
+<p>If you have any problems relative to package imports similar to this example:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">File &quot;alembic/env.py&quot;, line 7, in &lt;module&gt;</span>
+<span class="go">    from main_app.models import db</span>
+<span class="go">ModuleNotFoundError: No module named &#39;main_app&#39;</span>
+</pre></div>
+</div>
+<p>Either install your project locally with <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-e</span> <span class="pre">.</span></code>, <code class="docutils literal notranslate"><span class="pre">poetry</span> <span class="pre">install</span></code> or
+<code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">develop</span></code>, or add you package to PYTHONPATH, like this:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nb">export</span> <span class="nv">PYTHONPATH</span><span class="o">=</span><span class="nv">$PYTHONPATH</span>:/full_path/to/alembic_sample
+</pre></div>
+</div>
+<p>After the successful run of <code class="docutils literal notranslate"><span class="pre">alembic</span> <span class="pre">revision</span></code> in folder <code class="docutils literal notranslate"><span class="pre">alembic/versions</span></code> you will
+see a file with new migration.</p>
+</div>
+<div class="section" id="apply-migration-on-db">
+<h2>Apply migration on DB<a class="headerlink" href="#apply-migration-on-db" title="永久链接至标题">¶</a></h2>
+<p>Now time to apply migration to DB. It will create tables based on you DB Models.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> alembic upgrade head
+</pre></div>
+</div>
+<p>Great. Now you apply your first migration. Congratulations!</p>
+<p>Next time, when you will make any changes in DB models just do:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> alembic revision -m <span class="s2">&quot;your migration description&quot;</span> --autogenerate --head head
+</pre></div>
+</div>
+<p>And</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">alembic upgrade head</span>
+</pre></div>
+</div>
+<p>Full documentation about how to work with Alembic migrations, downgrades and other
+things - you can find in official docs <a class="reference external" href="https://alembic.sqlalchemy.org">https://alembic.sqlalchemy.org</a></p>
+</div>
 </div>
 
 
@@ -149,11 +244,18 @@
             <div class="table-of-contents fixed">
                 
                     <ul>
-<li><a class="reference internal" href="#">使用 Alembic</a></li>
+<li><a class="reference internal" href="#">使用 Alembic</a><ul>
+<li><a class="reference internal" href="#set-up-alembic">Set up Alembic</a></li>
+<li><a class="reference internal" href="#create-first-migration-revision">Create first migration revision</a></li>
+<li><a class="reference internal" href="#apply-migration-on-db">Apply migration on DB</a></li>
+</ul>
+</li>
 </ul>
 
                 
                 <div id="version-selector">
+                    
+                        <hr>
                     
                 </div>
                 <div class="add-your-lang">

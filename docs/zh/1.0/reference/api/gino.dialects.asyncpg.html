@@ -209,7 +209,7 @@
 <dd><p>基类：<code class="xref py py-class docutils literal notranslate"><span class="pre">sqlalchemy.dialects.postgresql.base.PGDialect</span></code>, <a class="reference internal" href="gino.dialects.base.html#gino.dialects.base.AsyncDialectMixin" title="gino.dialects.base.AsyncDialectMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">gino.dialects.base.AsyncDialectMixin</span></code></a></p>
 <dl class="py attribute">
 <dt id="gino.dialects.asyncpg.AsyncpgDialect.colspecs">
-<code class="sig-name descname">colspecs</code><em class="property"> = {&lt;class 'sqlalchemy.sql.sqltypes.Interval'&gt;: &lt;class 'sqlalchemy.dialects.postgresql.base.INTERVAL'&gt;, &lt;class 'sqlalchemy.sql.sqltypes.Enum'&gt;: &lt;class 'gino.dialects.asyncpg.AsyncEnum'&gt;, &lt;class 'sqlalchemy.sql.sqltypes.JSON.JSONPathType'&gt;: &lt;class 'gino.dialects.asyncpg.AsyncpgJSONPathType'&gt;, &lt;class 'sqlalchemy.sql.sqltypes.JSON'&gt;: &lt;class 'sqlalchemy.dialects.postgresql.json.JSON'&gt;, &lt;class 'sqlalchemy.sql.sqltypes.ARRAY'&gt;: &lt;class 'sqlalchemy.dialects.postgresql.array.ARRAY'&gt;, &lt;class 'sqlalchemy.dialects.postgresql.base.ENUM'&gt;: &lt;class 'gino.dialects.asyncpg.AsyncEnum'&gt;, &lt;class 'sqlalchemy.sql.sqltypes.NullType'&gt;: &lt;class 'gino.dialects.asyncpg.GinoNullType'&gt;}</em><a class="headerlink" href="#gino.dialects.asyncpg.AsyncpgDialect.colspecs" title="永久链接至目标">¶</a></dt>
+<code class="sig-name descname">colspecs</code><em class="property"> = {&lt;class 'sqlalchemy.sql.sqltypes.ARRAY'&gt;: &lt;class 'sqlalchemy.dialects.postgresql.array.ARRAY'&gt;, &lt;class 'sqlalchemy.sql.sqltypes.Interval'&gt;: &lt;class 'sqlalchemy.dialects.postgresql.base.INTERVAL'&gt;, &lt;class 'sqlalchemy.sql.sqltypes.Enum'&gt;: &lt;class 'gino.dialects.asyncpg.AsyncEnum'&gt;, &lt;class 'sqlalchemy.sql.sqltypes.JSON.JSONPathType'&gt;: &lt;class 'gino.dialects.asyncpg.AsyncpgJSONPathType'&gt;, &lt;class 'sqlalchemy.sql.sqltypes.JSON'&gt;: &lt;class 'sqlalchemy.dialects.postgresql.json.JSON'&gt;, &lt;class 'sqlalchemy.dialects.postgresql.base.ENUM'&gt;: &lt;class 'gino.dialects.asyncpg.AsyncEnum'&gt;, &lt;class 'sqlalchemy.sql.sqltypes.NullType'&gt;: &lt;class 'gino.dialects.asyncpg.GinoNullType'&gt;}</em><a class="headerlink" href="#gino.dialects.asyncpg.AsyncpgDialect.colspecs" title="永久链接至目标">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -250,7 +250,7 @@
 <dt id="gino.dialects.asyncpg.AsyncpgDialect.has_sequence">
 <em class="property">async </em><code class="sig-name descname">has_sequence</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">connection</span></em>, <em class="sig-param"><span class="n">sequence_name</span></em>, <em class="sig-param"><span class="n">schema</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.asyncpg.AsyncpgDialect.has_sequence" title="永久链接至目标">¶</a></dt>
 <dd><p>Check the existence of a particular sequence in the database.</p>
-<p>Given a <code class="xref py py-class docutils literal notranslate"><span class="pre">Connection</span></code> object and a string
+<p>Given a <code class="xref py py-class docutils literal notranslate"><span class="pre">_engine.Connection</span></code> object and a string
 <cite>sequence_name</cite>, return True if the given sequence exists in
 the database, False otherwise.</p>
 </dd></dl>
@@ -259,7 +259,7 @@ the database, False otherwise.</p>
 <dt id="gino.dialects.asyncpg.AsyncpgDialect.has_table">
 <em class="property">async </em><code class="sig-name descname">has_table</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">connection</span></em>, <em class="sig-param"><span class="n">table_name</span></em>, <em class="sig-param"><span class="n">schema</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.asyncpg.AsyncpgDialect.has_table" title="永久链接至目标">¶</a></dt>
 <dd><p>Check the existence of a particular table in the database.</p>
-<p>Given a <code class="xref py py-class docutils literal notranslate"><span class="pre">Connection</span></code> object and a string
+<p>Given a <code class="xref py py-class docutils literal notranslate"><span class="pre">_engine.Connection</span></code> object and a string
 <cite>table_name</cite>, return True if the given table (possibly within
 the specified <cite>schema</cite>) exists in the database, False
 otherwise.</p>
@@ -301,11 +301,13 @@ return value.</p>
 <p>This is used to set dialect-wide per-connection options such as
 isolation modes, Unicode modes, etc.</p>
 <p>The &quot;do_on_connect&quot; callable is invoked by using the
-<code class="xref py py-meth docutils literal notranslate"><span class="pre">PoolEvents.first_connect()</span></code> and <code class="xref py py-meth docutils literal notranslate"><span class="pre">PoolEvents.connect()</span></code> event
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">_events.PoolEvents.first_connect()</span></code> and
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">_events.PoolEvents.connect()</span></code> event
 hooks, then unwrapping the DBAPI connection and passing it into the
 callable.  The reason it is invoked for both events is so that any
 dialect-level initialization that occurs upon first connection, which
-also makes use of the <code class="xref py py-meth docutils literal notranslate"><span class="pre">PoolEvents.first_connect()</span></code> method, will
+also makes use of the <code class="xref py py-meth docutils literal notranslate"><span class="pre">_events.PoolEvents.first_connect()</span></code> method,
+will
 proceed after this hook has been called. This currently means the
 hook is in fact called twice for the very first  connection in which a
 dialect creates; and once per connection afterwards.</p>
