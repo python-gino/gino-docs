@@ -33,5 +33,10 @@
     "name": "gino_admin",
     "link": "https://github.com/xnuinside/gino_admin",
     "desc": "Admin Panel for PostgreSQL DB with GINO and Sanic (inspired by Flask-Admin)"
+  },
+  {
+    "name": "Authlib-GINO",
+    "link": "https://github.com/python-gino/authlib-gino",
+    "desc": "OpenID Connect provider implemented with Authlib and GINO"
   }
 ]

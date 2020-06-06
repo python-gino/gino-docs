@@ -32,8 +32,9 @@
             <h2>Fantix King</h2>
             <p style="display: flex">
               <img class="icon" src="~/assets/title.svg">
-              Lead Architect at The University of Chicago Center for Translational Data
-              Science
+              Senior Software Architect<br>
+              Center for Translational Data Science<br>
+              The University of Chicago
             </p>
             <p style="display: flex">
               <img class="icon" src="~/assets/location.svg">
