@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="../../_static/favicon.ico">
-    <title>gino.json_support module - GINO 1.0.1.dev0 documentation</title>
+    <title>gino.json_support module - GINO 1.0.1 documentation</title>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async
             src="https://www.googletagmanager.com/gtag/js?id=UA-3759436-10"></script>
@@ -142,48 +142,38 @@
     <div class="section" id="module-gino.json_support">
 <span id="gino-json-support-module"></span><h1>gino.json_support module<a class="headerlink" href="#module-gino.json_support" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
-<dt id="gino.json_support.JSONProperty">
-<em class="property">class </em><code class="sig-prename descclassname">gino.json_support.</code><code class="sig-name descname">JSONProperty</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">default</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">prop_name</span><span class="o">=</span><span class="default_value">'profile'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.json_support.JSONProperty" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dt id="gino.json_support.ArrayProperty">
+<em class="property">class </em><code class="sig-prename descclassname">gino.json_support.</code><code class="sig-name descname">ArrayProperty</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">default</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">prop_name</span><span class="o">=</span><span class="default_value">'profile'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.json_support.ArrayProperty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#gino.json_support.JSONProperty" title="gino.json_support.JSONProperty"><code class="xref py py-class docutils literal notranslate"><span class="pre">gino.json_support.JSONProperty</span></code></a></p>
 <dl class="py method">
-<dt id="gino.json_support.JSONProperty.decode">
-<code class="sig-name descname">decode</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">val</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.json_support.JSONProperty.decode" title="Permalink to this definition">¶</a></dt>
+<dt id="gino.json_support.ArrayProperty.decode">
+<code class="sig-name descname">decode</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">val</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.json_support.ArrayProperty.decode" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="gino.json_support.JSONProperty.encode">
-<code class="sig-name descname">encode</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">val</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.json_support.JSONProperty.encode" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt id="gino.json_support.JSONProperty.get_profile">
-<code class="sig-name descname">get_profile</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">instance</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.json_support.JSONProperty.get_profile" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt id="gino.json_support.JSONProperty.make_expression">
-<code class="sig-name descname">make_expression</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">base_exp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.json_support.JSONProperty.make_expression" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt id="gino.json_support.JSONProperty.reload">
-<code class="sig-name descname">reload</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">instance</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.json_support.JSONProperty.reload" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt id="gino.json_support.JSONProperty.save">
-<code class="sig-name descname">save</code><span class="sig-paren">(</span><em class="sig-param">instance</em>, <em class="sig-param">value=&lt;object object&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.json_support.JSONProperty.save" title="Permalink to this definition">¶</a></dt>
+<dt id="gino.json_support.ArrayProperty.encode">
+<code class="sig-name descname">encode</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">val</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.json_support.ArrayProperty.encode" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
-<dt id="gino.json_support.StringProperty">
-<em class="property">class </em><code class="sig-prename descclassname">gino.json_support.</code><code class="sig-name descname">StringProperty</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">default</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">prop_name</span><span class="o">=</span><span class="default_value">'profile'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.json_support.StringProperty" title="Permalink to this definition">¶</a></dt>
+<dt id="gino.json_support.BooleanProperty">
+<em class="property">class </em><code class="sig-prename descclassname">gino.json_support.</code><code class="sig-name descname">BooleanProperty</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">default</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">prop_name</span><span class="o">=</span><span class="default_value">'profile'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.json_support.BooleanProperty" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#gino.json_support.JSONProperty" title="gino.json_support.JSONProperty"><code class="xref py py-class docutils literal notranslate"><span class="pre">gino.json_support.JSONProperty</span></code></a></p>
 <dl class="py method">
-<dt id="gino.json_support.StringProperty.make_expression">
-<code class="sig-name descname">make_expression</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">base_exp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.json_support.StringProperty.make_expression" title="Permalink to this definition">¶</a></dt>
+<dt id="gino.json_support.BooleanProperty.decode">
+<code class="sig-name descname">decode</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">val</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.json_support.BooleanProperty.decode" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="gino.json_support.BooleanProperty.encode">
+<code class="sig-name descname">encode</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">val</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.json_support.BooleanProperty.encode" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="gino.json_support.BooleanProperty.make_expression">
+<code class="sig-name descname">make_expression</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">base_exp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.json_support.BooleanProperty.make_expression" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -231,22 +221,37 @@
 </dd></dl>
 
 <dl class="py class">
-<dt id="gino.json_support.BooleanProperty">
-<em class="property">class </em><code class="sig-prename descclassname">gino.json_support.</code><code class="sig-name descname">BooleanProperty</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">default</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">prop_name</span><span class="o">=</span><span class="default_value">'profile'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.json_support.BooleanProperty" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#gino.json_support.JSONProperty" title="gino.json_support.JSONProperty"><code class="xref py py-class docutils literal notranslate"><span class="pre">gino.json_support.JSONProperty</span></code></a></p>
+<dt id="gino.json_support.JSONProperty">
+<em class="property">class </em><code class="sig-prename descclassname">gino.json_support.</code><code class="sig-name descname">JSONProperty</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">default</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">prop_name</span><span class="o">=</span><span class="default_value">'profile'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.json_support.JSONProperty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <dl class="py method">
-<dt id="gino.json_support.BooleanProperty.decode">
-<code class="sig-name descname">decode</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">val</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.json_support.BooleanProperty.decode" title="Permalink to this definition">¶</a></dt>
+<dt id="gino.json_support.JSONProperty.decode">
+<code class="sig-name descname">decode</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">val</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.json_support.JSONProperty.decode" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="gino.json_support.BooleanProperty.encode">
-<code class="sig-name descname">encode</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">val</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.json_support.BooleanProperty.encode" title="Permalink to this definition">¶</a></dt>
+<dt id="gino.json_support.JSONProperty.encode">
+<code class="sig-name descname">encode</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">val</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.json_support.JSONProperty.encode" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="gino.json_support.BooleanProperty.make_expression">
-<code class="sig-name descname">make_expression</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">base_exp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.json_support.BooleanProperty.make_expression" title="Permalink to this definition">¶</a></dt>
+<dt id="gino.json_support.JSONProperty.get_profile">
+<code class="sig-name descname">get_profile</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">instance</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.json_support.JSONProperty.get_profile" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="gino.json_support.JSONProperty.make_expression">
+<code class="sig-name descname">make_expression</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">base_exp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.json_support.JSONProperty.make_expression" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="gino.json_support.JSONProperty.reload">
+<code class="sig-name descname">reload</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">instance</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.json_support.JSONProperty.reload" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="gino.json_support.JSONProperty.save">
+<code class="sig-name descname">save</code><span class="sig-paren">(</span><em class="sig-param">instance</em>, <em class="sig-param">value=&lt;object object&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.json_support.JSONProperty.save" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -268,17 +273,12 @@
 </dd></dl>
 
 <dl class="py class">
-<dt id="gino.json_support.ArrayProperty">
-<em class="property">class </em><code class="sig-prename descclassname">gino.json_support.</code><code class="sig-name descname">ArrayProperty</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">default</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">prop_name</span><span class="o">=</span><span class="default_value">'profile'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.json_support.ArrayProperty" title="Permalink to this definition">¶</a></dt>
+<dt id="gino.json_support.StringProperty">
+<em class="property">class </em><code class="sig-prename descclassname">gino.json_support.</code><code class="sig-name descname">StringProperty</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">default</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">prop_name</span><span class="o">=</span><span class="default_value">'profile'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.json_support.StringProperty" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#gino.json_support.JSONProperty" title="gino.json_support.JSONProperty"><code class="xref py py-class docutils literal notranslate"><span class="pre">gino.json_support.JSONProperty</span></code></a></p>
 <dl class="py method">
-<dt id="gino.json_support.ArrayProperty.decode">
-<code class="sig-name descname">decode</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">val</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.json_support.ArrayProperty.decode" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt id="gino.json_support.ArrayProperty.encode">
-<code class="sig-name descname">encode</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">val</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.json_support.ArrayProperty.encode" title="Permalink to this definition">¶</a></dt>
+<dt id="gino.json_support.StringProperty.make_expression">
+<code class="sig-name descname">make_expression</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">base_exp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.json_support.StringProperty.make_expression" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>

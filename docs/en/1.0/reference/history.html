@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="../_static/favicon.ico">
-    <title>History - GINO 1.0.1.dev0 documentation</title>
+    <title>History - GINO 1.0.1 documentation</title>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async
             src="https://www.googletagmanager.com/gtag/js?id=UA-3759436-10"></script>
@@ -184,7 +184,18 @@ a limitation of Poetry.</p></li>
 </ul>
 </div>
 <div class="section" id="id1">
-<h3>1.0.0 (2020-04-26)<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<h3>1.0.1 (2020-06-08)<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Fixed dependency version range (SQLAlchemy &gt;=1.2.16, &lt;1.4)</p></li>
+<li><p>Updated docs (Including contribution by Galden in #660, and Iuliia Volkova in #672)</p></li>
+<li><p>Multiple JSON property fixes (#661 #662 #695)</p></li>
+<li><p>Fixed extension typing issue (#673 #674)</p></li>
+<li><p>Fixed model override behavior (#694)</p></li>
+<li><p>Fixed multiple JSON profiles issue (Contributed by Roman Averchenkov in #693 #696)</p></li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h3>1.0.0 (2020-04-26)<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Switched to Poetry for package and dependency management.</p></li>
 <li><p>[Breaking] Moved built-in extension modules to separate PyPI packages.</p></li>
@@ -234,15 +245,15 @@ won’t be called with any <code class="docutils literal notranslate"><span clas
 be removed in GINO 1.0.</p>
 </div>
 </div>
-<div class="section" id="id2">
-<h3>0.8.7 (2020-04-19)<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id3">
+<h3>0.8.7 (2020-04-19)<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Improved error handling when attribute names collide (Contributed by Reskov in #637 #638)</p></li>
 <li><p>Fixed <code class="docutils literal notranslate"><span class="pre">with_bind</span></code> usability in aiohttp extension (#518)</p></li>
 </ul>
 </div>
-<div class="section" id="id3">
-<h3>0.8.6 (2020-02-10)<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id4">
+<h3>0.8.6 (2020-02-10)<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Fixed <code class="docutils literal notranslate"><span class="pre">JSONPathType</span></code> bind processor for asyncpg (#609)</p></li>
 <li><p>Allowed for primary keys with different names from the database columns (Contributed by Tiago Requeijo in #599 #600)</p></li>
@@ -250,14 +261,14 @@ be removed in GINO 1.0.</p>
 <li><p>Added <code class="docutils literal notranslate"><span class="pre">distinct()</span></code> to <code class="docutils literal notranslate"><span class="pre">Alias</span></code> (#628)</p></li>
 </ul>
 </div>
-<div class="section" id="id4">
-<h3>0.8.5 (2019-11-19)<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id5">
+<h3>0.8.5 (2019-11-19)<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Improved support for <code class="docutils literal notranslate"><span class="pre">__tablename__</span></code> in <code class="docutils literal notranslate"><span class="pre">declared_attr</span></code> (Contributed by Roald Storm in #592)</p></li>
 </ul>
 </div>
-<div class="section" id="id5">
-<h3>0.8.4 (2019-11-09)<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id6">
+<h3>0.8.4 (2019-11-09)<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Better loader support for models in subqueries (#573 #585)</p></li>
 <li><p>Allowed <code class="docutils literal notranslate"><span class="pre">__tablename__</span></code> to be a <code class="docutils literal notranslate"><span class="pre">declared_attr</span></code> (#579 #582)</p></li>
@@ -269,16 +280,16 @@ be removed in GINO 1.0.</p>
 <li><p>Fixed Grammar (Contributed by Simeon J Morgan in #504)</p></li>
 </ul>
 </div>
-<div class="section" id="id6">
-<h3>0.8.3 (2019-06-06)<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id7">
+<h3>0.8.3 (2019-06-06)<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Fixed deprecated warnings in asyncpg dialect and aiohttp (#425)</p></li>
 <li><p>Customizable db attribute name in aiohttp app instance (#457)</p></li>
 <li><p>Added Starlette support (#486)</p></li>
 </ul>
 </div>
-<div class="section" id="id7">
-<h3>0.8.2 (2019-03-07)<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id8">
+<h3>0.8.2 (2019-03-07)<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Added exception for unknown JSON properties (#406 #408)</p></li>
 <li><p>Supported Quart 0.7 (#411)</p></li>
@@ -289,8 +300,8 @@ be removed in GINO 1.0.</p>
 <li><p>Added support for SQLAlchemy 1.3 (#433 #451)</p></li>
 </ul>
 </div>
-<div class="section" id="id8">
-<h3>0.8.1 (2018-12-08)<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id9">
+<h3>0.8.1 (2018-12-08)<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Alias supported <code class="docutils literal notranslate"><span class="pre">Label</span></code> (#365)</p></li>
 <li><p>Docs update (#308, 4c59ad, #401 by Pascal van Kooten)</p></li>
@@ -302,8 +313,8 @@ be removed in GINO 1.0.</p>
 </ul>
 <p>(Most fixes done by Tony Wang)</p>
 </div>
-<div class="section" id="id9">
-<h3>0.8.0 (2018-10-16)<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id10">
+<h3>0.8.0 (2018-10-16)<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Welcome Tony Wang to the maintenance team (#335)</p></li>
 <li><p>Allowed custom column names (#261 #297)</p></li>
@@ -318,14 +329,14 @@ be removed in GINO 1.0.</p>
 <div class="section" id="gino-0-7">
 <h2>GINO 0.7<a class="headerlink" href="#gino-0-7" title="Permalink to this headline">¶</a></h2>
 <p>This is also version 1.0 beta 3.</p>
-<div class="section" id="id10">
-<h3>0.7.7 (2018-12-08)<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id11">
+<h3>0.7.7 (2018-12-08)<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Backported fix for custom JSON/JSONB type support (#402 #403)</p></li>
 </ul>
 </div>
-<div class="section" id="id11">
-<h3>0.7.6 (2018-08-26)<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id12">
+<h3>0.7.6 (2018-08-26)<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Updated library support (Contributed by Tony Wang in #275 #309)</p></li>
 <li><p>Added <code class="docutils literal notranslate"><span class="pre">none_as_none()</span></code> (#281 #282)</p></li>
@@ -337,8 +348,8 @@ be removed in GINO 1.0.</p>
 <li><p>Fixed to raise <code class="docutils literal notranslate"><span class="pre">UninitializedError</span></code> if bind is <code class="docutils literal notranslate"><span class="pre">None</span></code> (Contributed by Tony Wang in #307 #310)</p></li>
 </ul>
 </div>
-<div class="section" id="id12">
-<h3>0.7.5 (2018-07-26)<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id13">
+<h3>0.7.5 (2018-07-26)<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Added friendly error message when using abstract models by mistake (#224)</p></li>
 <li><p>Supported Python 3.7 (Contributed by Tony Wang in #265)</p></li>
@@ -346,8 +357,8 @@ be removed in GINO 1.0.</p>
 <li><p>Fixed a bug in TupleLoader (Contributed by Pavol Vargovcik in #279 #280)</p></li>
 </ul>
 </div>
-<div class="section" id="id13">
-<h3>0.7.4 (2018-06-10)<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id14">
+<h3>0.7.4 (2018-06-10)<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Added aiocontextvars as required dependency required for Python 3.5 and 3.6 (#228)</p></li>
 <li><p>Added Quart support (#213)</p></li>
@@ -355,21 +366,21 @@ be removed in GINO 1.0.</p>
 <li><p>Improved coding style and test coverage</p></li>
 </ul>
 </div>
-<div class="section" id="id14">
-<h3>0.7.3 (2018-05-19)<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id15">
+<h3>0.7.3 (2018-05-19)<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Fix for failing binary type (#225)</p></li>
 </ul>
 </div>
-<div class="section" id="id15">
-<h3>0.7.2 (2018-05-15)<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id16">
+<h3>0.7.2 (2018-05-15)<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Added prepared statement support (#14)</p></li>
 <li><p>Added dsn in extension config (Contributed by Yurii Shtrikker in #215)</p></li>
 </ul>
 </div>
-<div class="section" id="id16">
-<h3>0.7.1 (2018-05-03)<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id17">
+<h3>0.7.1 (2018-05-03)<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Added support for inline model constraints (Contributed by Kinware in #198)</p></li>
 <li><p>Added docs and tests for using SSL (#202)</p></li>
@@ -377,8 +388,8 @@ be removed in GINO 1.0.</p>
 <li><p>Allowed <code class="docutils literal notranslate"><span class="pre">ModelLoader</span></code> passively load partial model (#216)</p></li>
 </ul>
 </div>
-<div class="section" id="id17">
-<h3>0.7.0 (2018-04-18)<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id18">
+<h3>0.7.0 (2018-04-18)<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Added Python 3.5 support (#187)</p></li>
 <li><p>Added support to use <code class="docutils literal notranslate"><span class="pre">dict</span></code> as ident for <code class="docutils literal notranslate"><span class="pre">Model.get</span></code> (#192)</p></li>
@@ -519,48 +530,48 @@ underlying transaction object from database driver is available at
 object.</p>
 </div>
 </div>
-<div class="section" id="id18">
-<h3>0.6.6 (2018-05-18)<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id19">
+<h3>0.6.6 (2018-05-18)<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Backported a fix for failing binary type (#225)</p></li>
 </ul>
 </div>
-<div class="section" id="id19">
-<h3>0.6.5 (2018-04-18)<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id20">
+<h3>0.6.5 (2018-04-18)<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Abandoned 0.6.4 and keep 0.6.x stable</p></li>
 <li><p>Backported doc for transaction</p></li>
 </ul>
 </div>
-<div class="section" id="id20">
-<h3>0.6.4 (2018-04-16)<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id21">
+<h3>0.6.4 (2018-04-16)<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h3>
 <p>Abandoned version, please use 0.7.0 instead.</p>
 </div>
-<div class="section" id="id21">
-<h3>0.6.3 (2018-04-08)<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id22">
+<h3>0.6.3 (2018-04-08)<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Added aiohttp support</p></li>
 <li><p>Added support for calling <code class="docutils literal notranslate"><span class="pre">create()</span></code> on model instances (Contributed by Kinware in #178 #180)</p></li>
 <li><p>Fixed <code class="docutils literal notranslate"><span class="pre">get()</span></code> by string, and misc environment issues (Contributed by Tony Wang in #191 193 #183 #184)</p></li>
 </ul>
 </div>
-<div class="section" id="id22">
-<h3>0.6.2 (2018-03-24)<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id23">
+<h3>0.6.2 (2018-03-24)<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Fixed SQLAlchemy prefetch issue (#141)</p></li>
 <li><p>Fixed issue that mixin class on Model not working (#174)</p></li>
 <li><p>Added more documentation (Thanks Olaf Conradi for reviewing)</p></li>
 </ul>
 </div>
-<div class="section" id="id23">
-<h3>0.6.1 (2018-03-18)<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id24">
+<h3>0.6.1 (2018-03-18)<a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Fixed <code class="docutils literal notranslate"><span class="pre">create</span></code> and <code class="docutils literal notranslate"><span class="pre">drop</span></code> for <code class="docutils literal notranslate"><span class="pre">Enum</span></code> type (#160)</p></li>
 <li><p>A bit more documentation (#159)</p></li>
 </ul>
 </div>
-<div class="section" id="id24">
-<h3>0.6.0 (2018-03-14)<a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id25">
+<h3>0.6.0 (2018-03-14)<a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>[Breaking] API Refactored, <code class="docutils literal notranslate"><span class="pre">Pool</span></code> replaced with <code class="docutils literal notranslate"><span class="pre">Engine</span></code></p>
 <ul>
@@ -584,31 +595,31 @@ object.</p>
 <div class="section" id="gino-0-5">
 <h2>GINO 0.5<a class="headerlink" href="#gino-0-5" title="Permalink to this headline">¶</a></h2>
 <p>This is also version 1.0 beta 1.</p>
-<div class="section" id="id25">
-<h3>0.5.8 (2018-02-14)<a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id26">
+<h3>0.5.8 (2018-02-14)<a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Preparing for 0.6.0 which will be a breaking release</p></li>
 <li><p>Fixed wrong value of <code class="docutils literal notranslate"><span class="pre">Enum</span></code> in creation (Contributed by Sergey Kovalev in #126)</p></li>
 </ul>
 </div>
-<div class="section" id="id26">
-<h3>0.5.7 (2017-11-24)<a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id27">
+<h3>0.5.7 (2017-11-24)<a class="headerlink" href="#id27" title="Permalink to this headline">¶</a></h3>
 <p>This is an emergency fix for 0.5.6.</p>
 <ul class="simple">
 <li><p>Fixed broken lazy connection (Contributed by Ádám Barancsuk in #114)</p></li>
 <li><p>Added <code class="docutils literal notranslate"><span class="pre">Model.outerjoin</span></code></p></li>
 </ul>
 </div>
-<div class="section" id="id27">
-<h3>0.5.6 (2017-11-23)<a class="headerlink" href="#id27" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id28">
+<h3>0.5.6 (2017-11-23)<a class="headerlink" href="#id28" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Changed to use unnamed statement when possible (#80 #90)</p></li>
 <li><p>Added more example (Contributed by Kentoseth in #109)</p></li>
 <li><p>Added <code class="docutils literal notranslate"><span class="pre">Model.join</span></code> and made <code class="docutils literal notranslate"><span class="pre">Model</span></code> selectable (Contributed by Ádám Barancsuk in #112 #113)</p></li>
 </ul>
 </div>
-<div class="section" id="id28">
-<h3>0.5.5 (2017-10-18)<a class="headerlink" href="#id28" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id29">
+<h3>0.5.5 (2017-10-18)<a class="headerlink" href="#id29" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Ensured clean connection if transaction acquire fails (Contributed by Vladimir Goncharov in #87)</p></li>
 <li><p>Added ability to reset local storage (#84)</p></li>
@@ -616,29 +627,29 @@ object.</p>
 <li><p>Added update chaining feature</p></li>
 </ul>
 </div>
-<div class="section" id="id29">
-<h3>0.5.4 (2017-10-04)<a class="headerlink" href="#id29" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id30">
+<h3>0.5.4 (2017-10-04)<a class="headerlink" href="#id30" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Updated example (Contributed by Kinware in #75)</p></li>
 <li><p>Added <code class="docutils literal notranslate"><span class="pre">Model.insert</span></code> (Contributed by Neal Wang in #63)</p></li>
 <li><p>Fixed issue that non-lazy acquiring fails dirty (#79)</p></li>
 </ul>
 </div>
-<div class="section" id="id30">
-<h3>0.5.3 (2017-09-23)<a class="headerlink" href="#id30" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id31">
+<h3>0.5.3 (2017-09-23)<a class="headerlink" href="#id31" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Fixed <code class="docutils literal notranslate"><span class="pre">no</span> <span class="pre">module</span> <span class="pre">named</span> <span class="pre">cutils</span></code> error (Contributed by Vladimir Goncharov in #73)</p></li>
 </ul>
 </div>
-<div class="section" id="id31">
-<h3>0.5.2 (2017-09-10)<a class="headerlink" href="#id31" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id32">
+<h3>0.5.2 (2017-09-10)<a class="headerlink" href="#id32" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Added missing driver name on dialect (#67)</p></li>
 <li><p>Fixed dialect to support native decimal type (#67)</p></li>
 </ul>
 </div>
-<div class="section" id="id32">
-<h3>0.5.1 (2017-09-09)<a class="headerlink" href="#id32" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id33">
+<h3>0.5.1 (2017-09-09)<a class="headerlink" href="#id33" title="Permalink to this headline">¶</a></h3>
 <p>This is an emergency fix for 0.5.0.</p>
 <ul class="simple">
 <li><p>Reverted the extension, back to pure Python (#60)</p></li>
@@ -647,8 +658,8 @@ object.</p>
 <li><p>Fixed bug that <code class="docutils literal notranslate"><span class="pre">GinoPool</span></code> cannot be inherited</p></li>
 </ul>
 </div>
-<div class="section" id="id33">
-<h3>0.5.0 (2017-09-03)<a class="headerlink" href="#id33" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id34">
+<h3>0.5.0 (2017-09-03)<a class="headerlink" href="#id34" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>[Breaking] Internal refactor: extracted and isolated a few modules, partially rewritten</p>
 <ul>
@@ -672,14 +683,14 @@ object.</p>
 <div class="section" id="early-development-releases">
 <h2>Early Development Releases<a class="headerlink" href="#early-development-releases" title="Permalink to this headline">¶</a></h2>
 <p>Considered as alpha releases.</p>
-<div class="section" id="id34">
-<h3>0.4.1 (2017-08-20)<a class="headerlink" href="#id34" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id35">
+<h3>0.4.1 (2017-08-20)<a class="headerlink" href="#id35" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Support <code class="docutils literal notranslate"><span class="pre">select</span></code> on model instance</p></li>
 </ul>
 </div>
-<div class="section" id="id35">
-<h3>0.4.0 (2017-08-15)<a class="headerlink" href="#id35" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id36">
+<h3>0.4.0 (2017-08-15)<a class="headerlink" href="#id36" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Made <code class="docutils literal notranslate"><span class="pre">get_or_404</span></code> more friendly when Sanic is missing (Contributed by Neal Wang in #23 #31)</p></li>
 <li><p>Delegated <code class="docutils literal notranslate"><span class="pre">sqlalchemy.__all__</span></code> (Contributed by Neal Wang in #10 #33)</p></li>
@@ -692,8 +703,8 @@ object.</p>
 <li><p>Bug fixes</p></li>
 </ul>
 </div>
-<div class="section" id="id36">
-<h3>0.3.0 (2017-08-07)<a class="headerlink" href="#id36" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id37">
+<h3>0.3.0 (2017-08-07)<a class="headerlink" href="#id37" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Supported <code class="docutils literal notranslate"><span class="pre">__table_args__</span></code> (#12)</p></li>
 <li><p>Introduced task local to manage connection in context (#19)</p></li>
@@ -704,34 +715,34 @@ object.</p>
 <li><p>Delegated asyncpg <code class="docutils literal notranslate"><span class="pre">timeout</span></code> parameter (Contributed by Neal Wang in #16 #22)</p></li>
 </ul>
 </div>
-<div class="section" id="id37">
-<h3>0.2.3 (2017-08-04)<a class="headerlink" href="#id37" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id38">
+<h3>0.2.3 (2017-08-04)<a class="headerlink" href="#id38" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Supported any primary key (Contributed by Tony Wang in #11)</p></li>
 </ul>
 </div>
-<div class="section" id="id38">
-<h3>0.2.2 (2017-08-02)<a class="headerlink" href="#id38" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id39">
+<h3>0.2.2 (2017-08-02)<a class="headerlink" href="#id39" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Supported SQLAlchemy result processor</p></li>
 <li><p>Added rich support on JSON/JSONB</p></li>
 <li><p>Bug fixes</p></li>
 </ul>
 </div>
-<div class="section" id="id39">
-<h3>0.2.1 (2017-07-28)<a class="headerlink" href="#id39" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id40">
+<h3>0.2.1 (2017-07-28)<a class="headerlink" href="#id40" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Added <code class="docutils literal notranslate"><span class="pre">update</span></code> and <code class="docutils literal notranslate"><span class="pre">delete</span></code> API</p></li>
 </ul>
 </div>
-<div class="section" id="id40">
-<h3>0.2.0 (2017-07-28)<a class="headerlink" href="#id40" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id41">
+<h3>0.2.0 (2017-07-28)<a class="headerlink" href="#id41" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Changed API, no longer reuses asyncpg API</p></li>
 </ul>
 </div>
-<div class="section" id="id41">
-<h3>0.1.1 (2017-07-25)<a class="headerlink" href="#id41" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id42">
+<h3>0.1.1 (2017-07-25)<a class="headerlink" href="#id42" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Added <code class="docutils literal notranslate"><span class="pre">db.bind</span></code></p></li>
 <li><p>API changed: parameter <code class="docutils literal notranslate"><span class="pre">conn</span></code> renamed to optional <code class="docutils literal notranslate"><span class="pre">bind</span></code></p></li>
@@ -739,8 +750,8 @@ object.</p>
 <li><p>Internal enhancement and bug fixes</p></li>
 </ul>
 </div>
-<div class="section" id="id42">
-<h3>0.1.0 (2017-07-21)<a class="headerlink" href="#id42" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id43">
+<h3>0.1.0 (2017-07-21)<a class="headerlink" href="#id43" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>First release on PyPI.</p></li>
 </ul>
@@ -770,7 +781,8 @@ object.</p>
 <li><a class="reference internal" href="#">History</a><ul>
 <li><a class="reference internal" href="#gino-1-0">GINO 1.0</a><ul>
 <li><a class="reference internal" href="#migrating-to-gino-1-0">Migrating to GINO 1.0</a></li>
-<li><a class="reference internal" href="#id1">1.0.0 (2020-04-26)</a></li>
+<li><a class="reference internal" href="#id1">1.0.1 (2020-06-08)</a></li>
+<li><a class="reference internal" href="#id2">1.0.0 (2020-04-26)</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#gino-0-8">GINO 0.8</a><ul>
@@ -779,25 +791,25 @@ object.</p>
 <li><a class="reference internal" href="#none-as-none">2. none_as_none</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id2">0.8.7 (2020-04-19)</a></li>
-<li><a class="reference internal" href="#id3">0.8.6 (2020-02-10)</a></li>
-<li><a class="reference internal" href="#id4">0.8.5 (2019-11-19)</a></li>
-<li><a class="reference internal" href="#id5">0.8.4 (2019-11-09)</a></li>
-<li><a class="reference internal" href="#id6">0.8.3 (2019-06-06)</a></li>
-<li><a class="reference internal" href="#id7">0.8.2 (2019-03-07)</a></li>
-<li><a class="reference internal" href="#id8">0.8.1 (2018-12-08)</a></li>
-<li><a class="reference internal" href="#id9">0.8.0 (2018-10-16)</a></li>
+<li><a class="reference internal" href="#id3">0.8.7 (2020-04-19)</a></li>
+<li><a class="reference internal" href="#id4">0.8.6 (2020-02-10)</a></li>
+<li><a class="reference internal" href="#id5">0.8.5 (2019-11-19)</a></li>
+<li><a class="reference internal" href="#id6">0.8.4 (2019-11-09)</a></li>
+<li><a class="reference internal" href="#id7">0.8.3 (2019-06-06)</a></li>
+<li><a class="reference internal" href="#id8">0.8.2 (2019-03-07)</a></li>
+<li><a class="reference internal" href="#id9">0.8.1 (2018-12-08)</a></li>
+<li><a class="reference internal" href="#id10">0.8.0 (2018-10-16)</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#gino-0-7">GINO 0.7</a><ul>
-<li><a class="reference internal" href="#id10">0.7.7 (2018-12-08)</a></li>
-<li><a class="reference internal" href="#id11">0.7.6 (2018-08-26)</a></li>
-<li><a class="reference internal" href="#id12">0.7.5 (2018-07-26)</a></li>
-<li><a class="reference internal" href="#id13">0.7.4 (2018-06-10)</a></li>
-<li><a class="reference internal" href="#id14">0.7.3 (2018-05-19)</a></li>
-<li><a class="reference internal" href="#id15">0.7.2 (2018-05-15)</a></li>
-<li><a class="reference internal" href="#id16">0.7.1 (2018-05-03)</a></li>
-<li><a class="reference internal" href="#id17">0.7.0 (2018-04-18)</a></li>
+<li><a class="reference internal" href="#id11">0.7.7 (2018-12-08)</a></li>
+<li><a class="reference internal" href="#id12">0.7.6 (2018-08-26)</a></li>
+<li><a class="reference internal" href="#id13">0.7.5 (2018-07-26)</a></li>
+<li><a class="reference internal" href="#id14">0.7.4 (2018-06-10)</a></li>
+<li><a class="reference internal" href="#id15">0.7.3 (2018-05-19)</a></li>
+<li><a class="reference internal" href="#id16">0.7.2 (2018-05-15)</a></li>
+<li><a class="reference internal" href="#id17">0.7.1 (2018-05-03)</a></li>
+<li><a class="reference internal" href="#id18">0.7.0 (2018-04-18)</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#gino-0-6">GINO 0.6</a><ul>
@@ -809,37 +821,37 @@ object.</p>
 <li><a class="reference internal" href="#transaction">5. Transaction</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id18">0.6.6 (2018-05-18)</a></li>
-<li><a class="reference internal" href="#id19">0.6.5 (2018-04-18)</a></li>
-<li><a class="reference internal" href="#id20">0.6.4 (2018-04-16)</a></li>
-<li><a class="reference internal" href="#id21">0.6.3 (2018-04-08)</a></li>
-<li><a class="reference internal" href="#id22">0.6.2 (2018-03-24)</a></li>
-<li><a class="reference internal" href="#id23">0.6.1 (2018-03-18)</a></li>
-<li><a class="reference internal" href="#id24">0.6.0 (2018-03-14)</a></li>
+<li><a class="reference internal" href="#id19">0.6.6 (2018-05-18)</a></li>
+<li><a class="reference internal" href="#id20">0.6.5 (2018-04-18)</a></li>
+<li><a class="reference internal" href="#id21">0.6.4 (2018-04-16)</a></li>
+<li><a class="reference internal" href="#id22">0.6.3 (2018-04-08)</a></li>
+<li><a class="reference internal" href="#id23">0.6.2 (2018-03-24)</a></li>
+<li><a class="reference internal" href="#id24">0.6.1 (2018-03-18)</a></li>
+<li><a class="reference internal" href="#id25">0.6.0 (2018-03-14)</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#gino-0-5">GINO 0.5</a><ul>
-<li><a class="reference internal" href="#id25">0.5.8 (2018-02-14)</a></li>
-<li><a class="reference internal" href="#id26">0.5.7 (2017-11-24)</a></li>
-<li><a class="reference internal" href="#id27">0.5.6 (2017-11-23)</a></li>
-<li><a class="reference internal" href="#id28">0.5.5 (2017-10-18)</a></li>
-<li><a class="reference internal" href="#id29">0.5.4 (2017-10-04)</a></li>
-<li><a class="reference internal" href="#id30">0.5.3 (2017-09-23)</a></li>
-<li><a class="reference internal" href="#id31">0.5.2 (2017-09-10)</a></li>
-<li><a class="reference internal" href="#id32">0.5.1 (2017-09-09)</a></li>
-<li><a class="reference internal" href="#id33">0.5.0 (2017-09-03)</a></li>
+<li><a class="reference internal" href="#id26">0.5.8 (2018-02-14)</a></li>
+<li><a class="reference internal" href="#id27">0.5.7 (2017-11-24)</a></li>
+<li><a class="reference internal" href="#id28">0.5.6 (2017-11-23)</a></li>
+<li><a class="reference internal" href="#id29">0.5.5 (2017-10-18)</a></li>
+<li><a class="reference internal" href="#id30">0.5.4 (2017-10-04)</a></li>
+<li><a class="reference internal" href="#id31">0.5.3 (2017-09-23)</a></li>
+<li><a class="reference internal" href="#id32">0.5.2 (2017-09-10)</a></li>
+<li><a class="reference internal" href="#id33">0.5.1 (2017-09-09)</a></li>
+<li><a class="reference internal" href="#id34">0.5.0 (2017-09-03)</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#early-development-releases">Early Development Releases</a><ul>
-<li><a class="reference internal" href="#id34">0.4.1 (2017-08-20)</a></li>
-<li><a class="reference internal" href="#id35">0.4.0 (2017-08-15)</a></li>
-<li><a class="reference internal" href="#id36">0.3.0 (2017-08-07)</a></li>
-<li><a class="reference internal" href="#id37">0.2.3 (2017-08-04)</a></li>
-<li><a class="reference internal" href="#id38">0.2.2 (2017-08-02)</a></li>
-<li><a class="reference internal" href="#id39">0.2.1 (2017-07-28)</a></li>
-<li><a class="reference internal" href="#id40">0.2.0 (2017-07-28)</a></li>
-<li><a class="reference internal" href="#id41">0.1.1 (2017-07-25)</a></li>
-<li><a class="reference internal" href="#id42">0.1.0 (2017-07-21)</a></li>
+<li><a class="reference internal" href="#id35">0.4.1 (2017-08-20)</a></li>
+<li><a class="reference internal" href="#id36">0.4.0 (2017-08-15)</a></li>
+<li><a class="reference internal" href="#id37">0.3.0 (2017-08-07)</a></li>
+<li><a class="reference internal" href="#id38">0.2.3 (2017-08-04)</a></li>
+<li><a class="reference internal" href="#id39">0.2.2 (2017-08-02)</a></li>
+<li><a class="reference internal" href="#id40">0.2.1 (2017-07-28)</a></li>
+<li><a class="reference internal" href="#id41">0.2.0 (2017-07-28)</a></li>
+<li><a class="reference internal" href="#id42">0.1.1 (2017-07-25)</a></li>
+<li><a class="reference internal" href="#id43">0.1.0 (2017-07-21)</a></li>
 </ul>
 </li>
 </ul>
