@@ -156,6 +156,31 @@
 </dd></dl>
 
 <dl class="py class">
+<dt id="gino.declarative.InvertDict">
+<em class="property">class </em><code class="sig-prename descclassname">gino.declarative.</code><code class="sig-name descname">InvertDict</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.declarative.InvertDict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a></p>
+<p>A custom <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a> that allows getting keys by values.</p>
+<p>Used internally by <a class="reference internal" href="#gino.declarative.Model" title="gino.declarative.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></a>.</p>
+<dl class="py method">
+<dt id="gino.declarative.InvertDict.invert_get">
+<code class="sig-name descname">invert_get</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em>, <em class="sig-param"><span class="n">default</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.declarative.InvertDict.invert_get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get key by value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>value</strong> – A value in this dict.</p></li>
+<li><p><strong>default</strong> – If specified value doesn’t exist, return default.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The corresponding key if the value is found, or default otherwise.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt id="gino.declarative.Model">
 <em class="property">class </em><code class="sig-prename descclassname">gino.declarative.</code><code class="sig-name descname">Model</code><a class="headerlink" href="#gino.declarative.Model" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
@@ -308,31 +333,6 @@ class attributes):</p>
 </pre></div>
 </div>
 </div>
-</dd></dl>
-
-<dl class="py class">
-<dt id="gino.declarative.InvertDict">
-<em class="property">class </em><code class="sig-prename descclassname">gino.declarative.</code><code class="sig-name descname">InvertDict</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.declarative.InvertDict" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a></p>
-<p>A custom <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a> that allows getting keys by values.</p>
-<p>Used internally by <a class="reference internal" href="#gino.declarative.Model" title="gino.declarative.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></a>.</p>
-<dl class="py method">
-<dt id="gino.declarative.InvertDict.invert_get">
-<code class="sig-name descname">invert_get</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em>, <em class="sig-param"><span class="n">default</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.declarative.InvertDict.invert_get" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get key by value.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>value</strong> – A value in this dict.</p></li>
-<li><p><strong>default</strong> – If specified value doesn’t exist, return default.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>The corresponding key if the value is found, or default otherwise.</p>
-</dd>
-</dl>
-</dd></dl>
-
 </dd></dl>
 
 </div>
