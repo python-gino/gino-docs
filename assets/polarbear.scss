@@ -15,28 +15,16 @@ html, body {
   margin: 0;
 }
 
-@media (max-device-width: 960px), (max-device-width: 1280px) and (max-width: 961px), (max-device-width: 1440px) and (max-width: 1281px) {
-  html {
-    font-size: 64px;
-  }
-
-  :root {
-    --bg-width: 177.78vh;
-  }
+html {
+  font-size: 66.66666666666666px;
 }
 
-@media (min-width: 961px) and (max-device-width: 1280px) {
-  html {
-    font-size: 66.66666666666666px;
-  }
-
-  :root {
-    --factor: 0.6666666666666666;
-    --bg-width: 1280px;
-  }
+:root {
+  --factor: 0.6666666666666666;
+  --bg-width: 1280px;
 }
 
-@media (min-width: 1080px) and (max-device-width: 1440px) {
+@media (min-width: 1080px) {
   html {
     font-size: 75px;
   }
@@ -47,7 +35,7 @@ html, body {
   }
 }
 
-@media (min-width: 1441px) and (max-device-width: 1600px) {
+@media (min-width: 1441px) {
   html {
     font-size: 83.33333333333334px;
   }
