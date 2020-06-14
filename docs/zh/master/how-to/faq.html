@@ -338,9 +338,23 @@ same time, using a <a class="reference internal" href="../reference/api/gino.loa
 </div>
 <p>Be ware of the <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(在 Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a> in <code class="docutils literal notranslate"><span class="pre">.gino.load((...))</span></code>.</p>
 </div>
-<div class="section" id="how-to-do-bulk-insert-update">
-<h2>How to do bulk insert / update?<a class="headerlink" href="#how-to-do-bulk-insert-update" title="永久链接至标题">¶</a></h2>
-<p>TBD #314</p>
+<div class="section" id="how-to-do-bulk-or-batch-insert-update">
+<h2>How to do bulk or batch insert / update?<a class="headerlink" href="#how-to-do-bulk-or-batch-insert-update" title="永久链接至标题">¶</a></h2>
+<p>For a simple example, take a model that has one field, &quot;name.&quot; In your application you
+have a list of names you would like to add to the database:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">new_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Austin&quot;</span><span class="p">,</span> <span class="s2">&quot;Ali&quot;</span><span class="p">,</span> <span class="s2">&quot;Jeff&quot;</span><span class="p">,</span> <span class="s2">&quot;Marissa&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>To quickly insert the names in one query, first construct a dict with the
+<code class="docutils literal notranslate"><span class="pre">{&quot;model_key&quot;:</span> <span class="pre">&quot;value&quot;}</span></code> format:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">new_names_dict</span> <span class="o">=</span> <span class="p">[</span><span class="nb">dict</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">new_name</span><span class="p">)</span> <span class="k">for</span> <span class="n">new_name</span> <span class="ow">in</span> <span class="n">new_names</span><span class="p">]</span>
+<span class="o">&gt;&gt;</span> <span class="p">[{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Austin&#39;</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Ali&#39;</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Jeff&#39;</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Marissa&#39;</span><span class="p">}]</span>
+</pre></div>
+</div>
+<p>Finally, run an insert statement on the model:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">await</span> <span class="n">User</span><span class="o">.</span><span class="n">insert</span><span class="p">()</span><span class="o">.</span><span class="n">gino</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">new_names_dict</span><span class="p">)</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="how-to-print-the-executed-sql">
 <h2>How to print the executed SQL?<a class="headerlink" href="#how-to-print-the-executed-sql" title="永久链接至标题">¶</a></h2>
@@ -460,7 +474,7 @@ instances, you can use them in building your SQLAlchemy Core queries.</p>
 <li><a class="reference internal" href="#is-there-a-django-admin-interface-for-gino">Is there a django admin interface for GINO?</a></li>
 <li><a class="reference internal" href="#how-to-use-multiple-databases-for-different-users-on-the-fly">How to use multiple databases for different users on the fly?</a></li>
 <li><a class="reference internal" href="#how-to-load-complex-query-results">How to load complex query results?</a></li>
-<li><a class="reference internal" href="#how-to-do-bulk-insert-update">How to do bulk insert / update?</a></li>
+<li><a class="reference internal" href="#how-to-do-bulk-or-batch-insert-update">How to do bulk or batch insert / update?</a></li>
 <li><a class="reference internal" href="#how-to-print-the-executed-sql">How to print the executed SQL?</a></li>
 <li><a class="reference internal" href="#how-to-run-exists-sql">How to run <code class="docutils literal notranslate"><span class="pre">EXISTS</span></code> SQL?</a></li>
 <li><a class="reference internal" href="#how-to-work-with-alembic">How to work with Alembic?</a></li>
