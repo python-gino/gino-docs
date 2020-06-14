@@ -2,9 +2,13 @@
 <html lang="en-US">
     <head>
         <meta charset="UTF-8">
-        <meta http-equiv="refresh" content="0; url=./en/1.0/">
         <script type="text/javascript">
-            window.location.href = "./en/1.0/"
+            var langs = navigator.languages || [navigator.language || navigator.userLanguage];
+            if (langs.indexOf("zh") > -1 || langs.indexOf("zh-CN") > -1) {
+                window.location.href = "./zh/1.0/"
+            } else {
+                window.location.href = "./en/1.0/"
+            }
         </script>
         <title>Page Redirection</title>
     </head>
