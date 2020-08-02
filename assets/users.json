@@ -1,5 +1,9 @@
 [
   {
+    "name": "gino-enum-tables",
+    "link": "https://github.com/gazorby/gino-enum-tables"
+  },
+  {
     "name": "gino-starlette",
     "link": "https://github.com/python-gino/gino-starlette"
   },
