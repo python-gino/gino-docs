@@ -128,6 +128,33 @@
                 
     <div class="section" id="frequently-asked-questions">
 <h1>Frequently Asked Questions<a class="headerlink" href="#frequently-asked-questions" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="sqlalchemy-1-4-supports-asyncio-what-will-gino-be">
+<h2>SQLAlchemy 1.4 supports asyncio, what will GINO be?<a class="headerlink" href="#sqlalchemy-1-4-supports-asyncio-what-will-gino-be" title="Permalink to this headline">¶</a></h2>
+<p>Starting from 1.4, SQLAlchemy will <a class="reference external" href="https://docs.sqlalchemy.org/en/14/changelog/migration_14.html#asynchronous-io-support-for-core-and-orm">support asyncio</a>.
+This is a great news to the SQLAlchemy-based ORMs including GINO, because the users will
+have one more option, and many GINO hacks can be eventually cleaned up. SQLAlchemy
+achieved both sync and async API with the same code base by encapsulating the use of
+<a class="reference external" href="https://greenlet.readthedocs.io/en/latest/">greenlet</a>. As an “async” user, you don’t
+need to worry about its internals in most cases, it’s fine to just use its async APIs.
+Both SQLAlchemy Core and ORM will be async-compatible, but some ORM features that
+involve implicit database accesses are disallowed.</p>
+<p>Given such news, GINO no longer has to maintain its own asyncpg dialect for SQLAlchemy
+in future versions (yay!). Still, GINO will focus on the differences and keep a
+compatible API. To list some of the different/future features:</p>
+<ul class="simple">
+<li><p>Contextual Connections (see <a class="reference internal" href="../explanation/engine.html"><span class="doc">Engine and Connection</span></a>)</p></li>
+<li><p>SQLAlchemy Core-based CRUD models</p></li>
+<li><p>The GINO Loader system</p></li>
+<li><p>Async MySQL support</p></li>
+<li><p>Typing support <sup>NEW</sup></p></li>
+<li><p><a class="reference external" href="https://trio.readthedocs.io/en/stable/">Trio</a> support <sup>NEW</sup></p></li>
+<li><p>Execution performance <sup>NEW</sup></p></li>
+</ul>
+<p>As SQLAlchemy async support is considered in Alpha level, GINO will include SQLAlchemy
+1.4 support in GINO 2.0.0-alpha.x releases, while the current GINO 1.0.x and 1.1.x will
+remain on SQLAlchemy 1.3. GINO 1.x will receive bug fixes and security updates until
+both SQLAlchemy async support and GINO 2.x are stabilized.</p>
+</div>
 <div class="section" id="orm-or-not-orm">
 <h2>ORM or not ORM?<a class="headerlink" href="#orm-or-not-orm" title="Permalink to this headline">¶</a></h2>
 <p>GINO does perform the Object-Relational Mapping work under the
@@ -166,7 +193,7 @@ that you can use model classes directly as if they are tables in joining:</p>
 <div class="section" id="how-to-connect-to-database-through-ssl">
 <h2>How to connect to database through SSL?<a class="headerlink" href="#how-to-connect-to-database-through-ssl" title="Permalink to this headline">¶</a></h2>
 <p>It depends on the dialect and database driver. For asyncpg, keyword arguments
-on <a class="reference external" href="https://magicstack.github.io/asyncpg/current/api/index.html#asyncpg.connection.connect" title="(in asyncpg v0.20.1)"><code class="xref py py-func docutils literal notranslate"><span class="pre">asyncpg.connect()</span></code></a> are directly
+on <a class="reference external" href="https://magicstack.github.io/asyncpg/current/api/index.html#asyncpg.connection.connect" title="(in asyncpg v0.21.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">asyncpg.connect()</span></code></a> are directly
 available on <a class="reference internal" href="../reference/api/gino.html#gino.create_engine" title="gino.create_engine"><code class="xref py py-func docutils literal notranslate"><span class="pre">create_engine()</span></code></a> or <a class="reference internal" href="../reference/api/gino.api.html#gino.api.Gino.set_bind" title="gino.api.Gino.set_bind"><code class="xref py py-meth docutils literal notranslate"><span class="pre">db.set_bind()</span></code></a>. Therefore, enabling SSL is rather easy:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">engine</span> <span class="o">=</span> <span class="k">await</span> <span class="n">gino</span><span class="o">.</span><span class="n">create_engine</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">ssl</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
@@ -464,6 +491,7 @@ instances, you can use them in building your SQLAlchemy Core queries.</p>
                 
                     <ul>
 <li><a class="reference internal" href="#">Frequently Asked Questions</a><ul>
+<li><a class="reference internal" href="#sqlalchemy-1-4-supports-asyncio-what-will-gino-be">SQLAlchemy 1.4 supports asyncio, what will GINO be?</a></li>
 <li><a class="reference internal" href="#orm-or-not-orm">ORM or not ORM?</a></li>
 <li><a class="reference internal" href="#can-i-use-features-of-sqlalchemy-orm">Can I use features of SQLAlchemy ORM?</a></li>
 <li><a class="reference internal" href="#how-to-join">How to join?</a></li>
