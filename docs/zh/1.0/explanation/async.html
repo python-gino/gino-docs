@@ -171,15 +171,7 @@ Thread 2: Alright ... but I really need the CPU.
 OS: You&#39;ll have it later. Thread 1, hurry up!
 </pre></div>
 </div>
-<p>In contrast, coroutines are scheduled by themselves cooperatively with the help
-of an event manager. The event manager lives in the same thread as the
-coroutines and unlike the OS scheduler that forces context switches on threads,
-the event manager acts only when coroutines pause themselves. A thread knows
-when it wants to run, but coroutines don't - only the event manager knows which
-coroutine should run. The event manager may only trigger the next coroutine to
-run after the previous coroutine yields control to wait for an event (e.g.
-wait for an HTTP response). This approach to achieve concurrency is called
-<a class="reference external" href="https://en.wikipedia.org/wiki/Cooperative_multitasking">cooperative multitasking</a>. It's like this:</p>
+<p>而协程，恰恰相反，它是在某个事件管家的帮助下合作完成任务的。这个事件管家同样也和协程在同一条线程内。但是和通过系统调度完成强制切换的线程不一样，事件管家只会在协程自我挂起的时候完成协程的切换。上面说了线程是抢占式地多任务，因此它是只要自己不阻塞了就想被运行，但是协程相对佛系，一切由事件管家调度，来决定哪一条协程可以被运行。当一条执行中的协程突然遇到一个需要等待的事件（比如HTTP响应），它会将控制权交换给事件管家然后默默等待事件完成，此时事件管家就去找去找另外一条已经得到事件响应的协程，然后将控制权交给它，让它执行。这种并发模式被称为<a href="#id2"><span class="problematic" id="id3">`协作式多任务处理&lt;https://en.wikipedia.org/wiki/Cooperative_multitasking&gt;`_</span></a>，如果换成拟人的修辞手法，他们大概是这样交流的：</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Coroutine 1: Let me know when event A arrives. I&#39;m done here before that.
 Event manager: Okay. What about you, coroutine 2?
 Coroutine 2: Um I&#39;ve got nothing to do here before event B.
@@ -195,53 +187,19 @@ Coroutine 1: Arrrrh gotta kill myself with an exception :S
 Event manager: Up to you :/
 </pre></div>
 </div>
-<p>For coroutines, a task cannot be paused externally, the task can only pause
-itself from within. When there are a lot of coroutines, concurrency depends on
-each of them pausing from time to time to wait for events. If you wrote a
-coroutine that never paused, it would allow no concurrency at all when running
-because no other coroutine would have a chance to run. On the other hand, you
-can feel safe in the code between pauses, because no other coroutine can
-run at the same time to mess up shared states. That's why in the last diagram,
-the red bars are not interleaved like threads.</p>
+<p>协程遇到IO事件将会等待并挂起自己当前的任务，但它不能被其他外部因素打断。所以当有很多协程的时候，并发就是由这些协程时不时地遇到事件时挂起来实现的。当然，如果你写了一个永远不会挂起的协程，它也不会允许任何并发的产生，因为其他的协程根本没有机会去运行。另外一方面，由于不会有多个协程同时运行，我们也大可不必我们所写的担心代码会搞乱一些共享的资源。现在你能理解上图中协程和线程红色色块堆叠方式不一样的原因了吧。</p>
 <div class="admonition tip">
 <p class="admonition-title">小技巧</p>
-<p>In Python and asyncio, <code class="docutils literal notranslate"><span class="pre">async</span> <span class="pre">def</span></code> declares coroutines, <code class="docutils literal notranslate"><span class="pre">await</span></code> yields
-control to event loop (event manager).</p>
+<p>在Python中，<code class="docutils literal notranslate"><span class="pre">async</span> <span class="pre">def</span></code> 用来声明协程，<code class="docutils literal notranslate"><span class="pre">await</span></code> 用来将协程加入一个事件循环（即上文提到的将控制权交给事件管家）。</p>
 </div>
 </div>
 <div class="section" id="pros-and-cons">
-<h2>Pros and cons<a class="headerlink" href="#pros-and-cons" title="永久链接至标题">¶</a></h2>
-<p>Asynchronous I/O may handle tens of thousands of concurrent I/O operations in
-the same thread. This can save a lot of CPU time from context switching, and
-memory from multi-threading. Therefore if you are dealing with lots of I/O-bound
-tasks concurrently, asynchronous I/O can efficiently use limited CPU and memory to
-deliver greater throughput.</p>
-<p>With coroutines, you can naturally write sequential code that is cooperatively
-scheduled. If your business logic is complex, coroutines could greatly improve
-readability of asynchronous I/O code.</p>
-<p>However for a single task, asynchronous I/O can actually impair throughput. For
-example, for a simple <code class="docutils literal notranslate"><span class="pre">recv()</span></code> operation blocking I/O would just block until
-returning the result, but for asynchronous I/O additional steps are required:
-register for the read event, wait until event arrives, try to <code class="docutils literal notranslate"><span class="pre">recv()</span></code>, repeat
-until a result returns, and finally feed the result to a callback. With coroutines,
-the framework cost is even larger. Thanks to <a class="reference external" href="https://github.com/MagicStack/uvloop">uvloop</a> this cost has been minimized
-in Python, but it is still additional overhead compared to raw blocking I/O.</p>
-<p>Timing in Asynchronous I/O is also less predictable because of its cooperative
-nature. For example, in a coroutine you may want to sleep for 1 second. However,
-if another coroutine received control and ran for 2 seconds, by the time we get
-back to the first coroutine 2 seconds have already passed. Therefore, <code class="docutils literal notranslate"><span class="pre">sleep(1)</span></code>
-means to wait for at least 1 second. In practice, you should try your best to make
-sure that all code between <code class="docutils literal notranslate"><span class="pre">await</span></code> finishes ASAP, being literally cooperative.
-Still, there can be code outside your control, so it is important to keep this
-unpredictibility of timing in mind.</p>
-<p>Finally, asynchronous programming is complicated. Writing good asynchronous code
-is easier said than done, and debugging it is more difficult than debugging
-similar synchronous code. Especially when a whole team is working on the
-same piece of asynchronous code, it can easily go wrong. Therefore, a general
-suggestion is to use asynchronous I/O carefully for I/O-bound high concurrency
-scenarios only. It's not a drop-in that will provide a performance boost, but
-more like a sharp blade for concurrency with two edges. And if you are dealing with
-time-critical tasks, think again to be sure.</p>
+<h2>异步I/O的利弊<a class="headerlink" href="#pros-and-cons" title="永久链接至标题">¶</a></h2>
+<p>异步I/O能够在同一条线程里面完成成千上万次的并发I/O操作。这样就能够节省多线程带来的CPU上下文切换时间以及内存。因此，在面临I/O密集型的任务时，异步I/O能够有效地使用CPU和内存资源，以达到相对较高的吞吐量。</p>
+<p>并且，在Python中可以轻松自然地编写基于协程的代码。如果业务逻辑十分复杂，基于协程完成异步I/O的代码读起来也是行云流水。</p>
+<p>但是，对于一个任务来说，异步I/O也会降低吞吐量。比如，调用函数 <code class="docutils literal notranslate"><span class="pre">recv()</span></code> ，它仅仅只是阻塞地等待返回值。而如果想要它变为异步，则必须要注册读事件，等待事件循环，尝试调用 <a href="#id1"><span class="problematic" id="id2">``</span></a>recv()``函数，重复以上步骤，直到结果真正返回，然后再进行回调。所以用了协程之后，整个框架的开销实际上更大了。不过幸好有了像uvloop这样优秀的事件管理模块，上述的开销已经被极大地减少。即使是这样，和阻塞式的I/O相比，总提上开销还是大了些。</p>
+<p>想要去为异步I/O的程序计算耗时也是比较费劲的，由于协作的特性，程序的可预测性会变差。举个栗子，你可能希望当前的协程暂停1秒钟。但是此时如果另外一个协程得到了控制权，开始运行，结果计算太久，花费了2秒钟，当我们再次回到刚才的协程时，2秒钟已经实实在在地过了，这么来看，<code class="docutils literal notranslate"><span class="pre">sleep(1)</span></code> 这个操作已经不能理解为暂停1秒，而应该理解为至少暂停1秒。所以，你应该努力做到让那些不使用 <code class="docutils literal notranslate"><span class="pre">await</span></code> 进行调用、同步执行的代码尽可能快得执行，让协程真正得“合作”起来。但即使你真的做到了让同步代码快速执行，有时程序的运行候难免还是会不如你所愿，所以要时刻记住这种在执行时间上的不确定性，这样才能方便更好地排查问题。</p>
+<p>最后，异步编程其实是复杂的。要真正写好异步的代码比想象中的难很多，而且异步的代码比同步的代码更加难以调试。尤其是当整个团队都在处理同一段异步代码时，常常会遇到意想不到的问题。因此，这里给一个比较中肯的建议：仅仅在I/O密集型的高并发场景中谨慎使用异步I/O。不是说使用了异步I/O就能够给并发性能带来的巨大提升，它更像一把双刃剑。而且如果要处理一些对时间要求十分严格的任务，请考虑再三！</p>
 </div>
 </div>
 
@@ -267,7 +225,7 @@ time-critical tasks, think again to be sure.</p>
 <li><a class="reference internal" href="#">异步编程基础</a><ul>
 <li><a class="reference internal" href="#the-story">一个经典场景</a></li>
 <li><a class="reference internal" href="#cooperative-multitasking">协作式多任务处理</a></li>
-<li><a class="reference internal" href="#pros-and-cons">Pros and cons</a></li>
+<li><a class="reference internal" href="#pros-and-cons">异步I/O的利弊</a></li>
 </ul>
 </li>
 </ul>
