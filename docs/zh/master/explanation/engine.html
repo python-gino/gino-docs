@@ -234,7 +234,7 @@ of all the parameters listed in SQLAlchemy document (we are working on it!):</p>
 <li><p><a class="reference external" href="https://docs.sqlalchemy.org/en/latest/core/engines.html#sqlalchemy.create_engine.params.module">module</a></p></li>
 </ul>
 <p>In addition, keyword arguments for creating the underlying pool is accepted
-here. In the case of asyncpg, they are from <a class="reference external" href="https://magicstack.github.io/asyncpg/current/api/index.html#asyncpg.pool.create_pool" title="(在 asyncpg v0.20.1)"><code class="xref py py-func docutils literal notranslate"><span class="pre">create_pool()</span></code></a>.
+here. In the case of asyncpg, they are from <a class="reference external" href="https://magicstack.github.io/asyncpg/current/api/index.html#asyncpg.pool.create_pool" title="(在 asyncpg v0.21.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">create_pool()</span></code></a>.
 For example, we can create an engine without initial connections:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">e</span> <span class="o">=</span> <span class="k">await</span> <span class="n">gino</span><span class="o">.</span><span class="n">create_engine</span><span class="p">(</span><span class="s1">&#39;postgresql://...&#39;</span><span class="p">,</span> <span class="n">min_size</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
