@@ -181,6 +181,9 @@
           <a href="https://www.encode.io/" target="_blank">Encode OSS</a>
           since 2019.
         </li>
+        <li><a href="https://docs.sqlalchemy.org/en/14/changelog/migration_14.html#asynchronous-io-support-for-core-and-orm" target="_blank">SQLAlchemy</a>
+          itself since 2020.
+        </li>
       </ul>
     </div>
 
