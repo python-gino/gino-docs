@@ -7,6 +7,7 @@ Submodules
 .. toctree::
    :maxdepth: 4
 
+   gino.dialects.aiomysql
    gino.dialects.asyncpg
    gino.dialects.base
 

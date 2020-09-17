@@ -174,7 +174,17 @@
 
 <dl class="py method">
 <dt id="gino.dialects.base.AsyncDialectMixin.init_pool">
-<em class="property">async </em><code class="sig-name descname">init_pool</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">url</span></em>, <em class="sig-param"><span class="n">loop</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.AsyncDialectMixin.init_pool" title="Permalink to this definition">¶</a></dt>
+<em class="property">async </em><code class="sig-name descname">init_pool</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">url</span></em>, <em class="sig-param"><span class="n">loop</span></em>, <em class="sig-param"><span class="n">pool_class</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.AsyncDialectMixin.init_pool" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="gino.dialects.base.AsyncDialectMixin.support_prepare">
+<code class="sig-name descname">support_prepare</code><em class="property"> = True</em><a class="headerlink" href="#gino.dialects.base.AsyncDialectMixin.support_prepare" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="gino.dialects.base.AsyncDialectMixin.support_returning">
+<code class="sig-name descname">support_returning</code><em class="property"> = True</em><a class="headerlink" href="#gino.dialects.base.AsyncDialectMixin.support_returning" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -275,6 +285,16 @@
 <dl class="py attribute">
 <dt id="gino.dialects.base.ExecutionContextOverride.baked_query">
 <code class="sig-name descname">baked_query</code><em class="property"> = None</em><a class="headerlink" href="#gino.dialects.base.ExecutionContextOverride.baked_query" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="gino.dialects.base.ExecutionContextOverride.get_affected_rows">
+<code class="sig-name descname">get_affected_rows</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.ExecutionContextOverride.get_affected_rows" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="gino.dialects.base.ExecutionContextOverride.get_lastrowid">
+<code class="sig-name descname">get_lastrowid</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.ExecutionContextOverride.get_lastrowid" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
