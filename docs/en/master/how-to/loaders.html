@@ -239,7 +239,7 @@ it doesn’t matter <code class="docutils literal notranslate"><span class="pre"
 <p>The last item in the tuple is a callable, it will be called for each row with
 two arguments: the first argument is the row itself, while the second is a
 contextual value provided by outer loader, we’ll get to that later. Similar to
-<a class="reference external" href="https://docs.python.org/3/library/functions.html#map" title="(in Python v3.8)"><code class="xref py py-func docutils literal notranslate"><span class="pre">map()</span></code></a>, the return value of the call will be the loaded result.</p>
+<a class="reference external" href="https://docs.python.org/3/library/functions.html#map" title="(in Python v3.9)"><code class="xref py py-func docutils literal notranslate"><span class="pre">map()</span></code></a>, the return value of the call will be the loaded result.</p>
 <p>At last, if none of the above types matches a Loader Expression, it will be
 treated as is. Like the <code class="docutils literal notranslate"><span class="pre">'|'</span></code> separator, it will show up as the third item
 in every result returned by the query.</p>
@@ -282,7 +282,7 @@ attributes to its <a class="reference internal" href="../reference/api/gino.load
 be omitted.</p>
 <p>For <a class="reference internal" href="../reference/api/gino.loader.html#gino.loader.ModelLoader" title="gino.loader.ModelLoader"><code class="xref py py-class docutils literal notranslate"><span class="pre">ModelLoader</span></code></a>, all keyword arguments are interpreted as
 subloaders, their results will be set to the attributes of the result model
-under the corresponding keys using <a class="reference external" href="https://docs.python.org/3/library/functions.html#setattr" title="(in Python v3.8)"><code class="xref py py-func docutils literal notranslate"><span class="pre">setattr()</span></code></a>. For example, <code class="docutils literal notranslate"><span class="pre">Parent</span></code> is
+under the corresponding keys using <a class="reference external" href="https://docs.python.org/3/library/functions.html#setattr" title="(in Python v3.9)"><code class="xref py py-func docutils literal notranslate"><span class="pre">setattr()</span></code></a>. For example, <code class="docutils literal notranslate"><span class="pre">Parent</span></code> is
 interpreted as <code class="docutils literal notranslate"><span class="pre">ModelLoader(Parent)</span></code> which loads <code class="docutils literal notranslate"><span class="pre">Parent</span></code> instances, and
 <code class="docutils literal notranslate"><span class="pre">Parent</span></code> instances are set as the <code class="docutils literal notranslate"><span class="pre">parent</span></code> attribute of the outer <code class="docutils literal notranslate"><span class="pre">Child</span></code>
 instance.</p>

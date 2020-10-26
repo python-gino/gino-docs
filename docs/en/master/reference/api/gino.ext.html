@@ -147,7 +147,7 @@
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-gino.ext" title="Permalink to this headline">¶</a></h2>
 <p>Namespace package for GINO extensions.</p>
 <p>This namespace package didn’t use any of the <a class="reference external" href="https://packaging.python.org/guides/packaging-namespace-packages/">3 official solutions</a>. Instead,
-<code class="docutils literal notranslate"><span class="pre">gino.ext</span></code> adds a hook into <a class="reference external" href="https://docs.python.org/3/library/sys.html#sys.meta_path" title="(in Python v3.8)"><code class="xref py py-data docutils literal notranslate"><span class="pre">sys.meta_path</span></code></a>, and utilize the <a class="reference external" href="https://docs.python.org/3/library/importlib.metadata.html#entry-points" title="(in Python v3.8)"><span>Entry points</span></a>
+<code class="docutils literal notranslate"><span class="pre">gino.ext</span></code> adds a hook into <a class="reference external" href="https://docs.python.org/3/library/sys.html#sys.meta_path" title="(in Python v3.9)"><code class="xref py py-data docutils literal notranslate"><span class="pre">sys.meta_path</span></code></a>, and utilize the <a class="reference external" href="https://docs.python.org/3/library/importlib.metadata.html#entry-points" title="(in Python v3.9)"><span>Entry points</span></a>
 to find the extensions.</p>
 <p>Any GINO extension package should provide an entry point like this:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">gino</span><span class="o">.</span><span class="n">extensions</span><span class="p">]</span>
