@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="../_static/favicon.ico">
-    <title>Engine and Connection - GINO 1.1.0b1 documentation</title>
+    <title>Engine and Connection - GINO 1.1.0b2 documentation</title>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async
             src="https://www.googletagmanager.com/gtag/js?id=UA-3759436-10"></script>
@@ -172,7 +172,7 @@ connection. We’ll get to this later.</p>
 <p>GINO also supports <a class="reference external" href="https://docs.sqlalchemy.org/en/latest/core/connections.html#connectionless-execution-implicit-execution">implicit execution</a>
 without having to specify an engine or connection explicitly. This is done by
 binding the engine to the <code class="docutils literal notranslate"><span class="pre">db</span></code> instance, also known as the
-<a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/metadata.html#sqlalchemy.schema.MetaData" title="(in SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetaData</span></code></a> or the <a class="reference internal" href="../reference/api/gino.api.html#gino.api.Gino" title="gino.api.Gino"><code class="xref py py-class docutils literal notranslate"><span class="pre">Gino</span></code></a> instance.
+<a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/metadata.html#sqlalchemy.schema.MetaData" title="(in SQLAlchemy v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetaData</span></code></a> or the <a class="reference internal" href="../reference/api/gino.api.html#gino.api.Gino" title="gino.api.Gino"><code class="xref py py-class docutils literal notranslate"><span class="pre">Gino</span></code></a> instance.
 You may possibly bind a <a class="reference internal" href="../reference/api/gino.engine.html#gino.engine.GinoConnection" title="gino.engine.GinoConnection"><code class="xref py py-class docutils literal notranslate"><span class="pre">GinoConnection</span></code></a> instance, but that
 is greatly not recommended because it is very much untested.</p>
 <p>At last, as the ORM / CRUD feature, models are just add-ons on top of
@@ -213,10 +213,10 @@ example:</p>
 </pre></div>
 </div>
 <p>As you may have noticed, when using the GINO strategy,
-<a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/engines.html#sqlalchemy.create_engine" title="(in SQLAlchemy v1.3)"><code class="xref py py-func docutils literal notranslate"><span class="pre">create_engine()</span></code></a> returns a coroutine, which must be awaited
+<a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/engines.html#sqlalchemy.create_engine" title="(in SQLAlchemy v1.4)"><code class="xref py py-func docutils literal notranslate"><span class="pre">create_engine()</span></code></a> returns a coroutine, which must be awaited
 for result. Because it will create a database connection pool behind the scene,
 and actually making a few initial connections by default.</p>
-<p>For it is just SQLAlchemy <a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/engines.html#sqlalchemy.create_engine" title="(in SQLAlchemy v1.3)"><code class="xref py py-func docutils literal notranslate"><span class="pre">create_engine()</span></code></a>, the same rules of
+<p>For it is just SQLAlchemy <a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/engines.html#sqlalchemy.create_engine" title="(in SQLAlchemy v1.4)"><code class="xref py py-func docutils literal notranslate"><span class="pre">create_engine()</span></code></a>, the same rules of
 parameters apply in GINO too. Well for now, GINO only supports a small amount
 of all the parameters listed in SQLAlchemy document (we are working on it!):</p>
 <p>For Dialect:</p>
@@ -252,7 +252,7 @@ setting it as a bind. In SQLAlchemy it is like this:</p>
 <span class="n">metadata</span> <span class="o">=</span> <span class="n">sqlalchemy</span><span class="o">.</span><span class="n">MetaData</span><span class="p">(</span><span class="s1">&#39;postgresql://...&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>This implicitly calls <a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/engines.html#sqlalchemy.create_engine" title="(in SQLAlchemy v1.3)"><code class="xref py py-func docutils literal notranslate"><span class="pre">create_engine()</span></code></a> under the hood. However
+<p>This implicitly calls <a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/engines.html#sqlalchemy.create_engine" title="(in SQLAlchemy v1.4)"><code class="xref py py-func docutils literal notranslate"><span class="pre">create_engine()</span></code></a> under the hood. However
 in GINO, creating an engine requires <code class="docutils literal notranslate"><span class="pre">await</span></code>, it can no longer be hidden
 behind a normal assignment statement. Therefore, GINO removed the assignment
 magic in subclass <a class="reference internal" href="../reference/api/gino.api.html#gino.api.Gino" title="gino.api.Gino"><code class="xref py py-class docutils literal notranslate"><span class="pre">Gino</span></code></a>, reverted it to simple assignment:</p>
@@ -513,33 +513,33 @@ is, usually a textual string. Note, there may be no optimization to only
 return the status without loading the results, so make your query generate
 nothing if you don’t want any result.</p></li>
 </ul>
-<p>By “result”, I meant <a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/connections.html#sqlalchemy.engine.RowProxy" title="(in SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">RowProxy</span></code></a> of SQLAlchemy - an
+<p>By “result”, I meant <code class="xref py py-class docutils literal notranslate"><span class="pre">RowProxy</span></code> of SQLAlchemy - an
 immutable row instance with both <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a> and <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a> interfaces.
 Database values are translated twice before they are eventually stored in a
-<a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/connections.html#sqlalchemy.engine.RowProxy" title="(in SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">RowProxy</span></code></a>: first by the database driver (dialect)
+<code class="xref py py-class docutils literal notranslate"><span class="pre">RowProxy</span></code>: first by the database driver (dialect)
 from network payload to Python objects (see <a class="reference external" href="https://magicstack.github.io/asyncpg/current/usage.html#type-conversion">Type Conversion</a> of
 how asyncpg does this), second by SQLAlchemy
-<a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/type_api.html#sqlalchemy.types.TypeEngine.result_processor" title="(in SQLAlchemy v1.3)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">result_processor()</span></code></a> depending on the actual
+<a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/type_api.html#sqlalchemy.types.TypeEngine.result_processor" title="(in SQLAlchemy v1.4)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">result_processor()</span></code></a> depending on the actual
 type and dialect.</p>
 <p>The arguments taken by these 4 methods are identical to the ones accepted by
-SQLAlchemy <a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/connections.html#sqlalchemy.engine.Connection.execute" title="(in SQLAlchemy v1.3)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">execute()</span></code></a> (click to read more),
+SQLAlchemy <a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/connections.html#sqlalchemy.engine.Connection.execute" title="(in SQLAlchemy v1.4)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">execute()</span></code></a> (click to read more),
 usually a plain string of SQL directly or a SQLAlchemy query clause, followed
 by query parameters. In the case when multiple dictionaries are given to
 <code class="docutils literal notranslate"><span class="pre">multiparams</span></code>, all 4 methods will always return <code class="docutils literal notranslate"><span class="pre">None</span></code> discarding all
 results. Likewise, the parameter values are processed twice too: first by
-<a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/type_api.html#sqlalchemy.types.TypeEngine.bind_processor" title="(in SQLAlchemy v1.3)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">bind_processor()</span></code></a> then the database driver.</p>
+<a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/type_api.html#sqlalchemy.types.TypeEngine.bind_processor" title="(in SQLAlchemy v1.4)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">bind_processor()</span></code></a> then the database driver.</p>
 <p>GINO also supports SQLAlchemy
-<a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/connections.html#sqlalchemy.engine.Connection.execution_options" title="(in SQLAlchemy v1.3)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">execution_options()</span></code></a> provided either on
+<a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/connections.html#sqlalchemy.engine.Connection.execution_options" title="(in SQLAlchemy v1.4)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">execution_options()</span></code></a> provided either on
 <a class="reference internal" href="../reference/api/gino.engine.html#gino.engine.GinoEngine.update_execution_options" title="gino.engine.GinoEngine.update_execution_options"><code class="xref py py-meth docutils literal notranslate"><span class="pre">engine</span> <span class="pre">level</span></code></a>,
 <a class="reference internal" href="../reference/api/gino.engine.html#gino.engine.GinoConnection.execution_options" title="gino.engine.GinoConnection.execution_options"><code class="xref py py-meth docutils literal notranslate"><span class="pre">connection</span> <span class="pre">level</span></code></a> or on
-<a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/selectable.html#sqlalchemy.sql.expression.Executable.execution_options" title="(in SQLAlchemy v1.3)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">queries</span></code></a>. At
+<a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/selectable.html#sqlalchemy.sql.expression.Executable.execution_options" title="(in SQLAlchemy v1.4)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">queries</span></code></a>. At
 the moment we are working on being compatible with SQLAlchemy execution
 options. In the mean while, GINO provides several new execution options, for
 example enabling <code class="docutils literal notranslate"><span class="pre">return_model</span></code> and providing a <code class="docutils literal notranslate"><span class="pre">model</span></code> will make
 <a class="reference internal" href="../reference/api/gino.engine.html#gino.engine.GinoConnection.all" title="gino.engine.GinoConnection.all"><code class="xref py py-meth docutils literal notranslate"><span class="pre">all()</span></code></a> and
 <a class="reference internal" href="../reference/api/gino.engine.html#gino.engine.GinoConnection.first" title="gino.engine.GinoConnection.first"><code class="xref py py-meth docutils literal notranslate"><span class="pre">first()</span></code></a> return ORM model instance(s) instead
-of <a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/connections.html#sqlalchemy.engine.RowProxy" title="(in SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">RowProxy</span></code></a> instance(s). See also
-<a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/connections.html#sqlalchemy.engine.Connection.execution_options" title="(in SQLAlchemy v1.3)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">execution_options()</span></code></a> for more information.</p>
+of <code class="xref py py-class docutils literal notranslate"><span class="pre">RowProxy</span></code> instance(s). See also
+<a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/connections.html#sqlalchemy.engine.Connection.execution_options" title="(in SQLAlchemy v1.4)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">execution_options()</span></code></a> for more information.</p>
 <p>In addition, GINO has an <a class="reference internal" href="../reference/api/gino.engine.html#gino.engine.GinoConnection.iterate" title="gino.engine.GinoConnection.iterate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">iterate()</span></code></a> method to
 traverse the query results progressively, instead of loading all the results at
 once. This method takes the same arguments as the other 4 execute methods do,
@@ -597,9 +597,9 @@ on queries also work in GINO, under an extension named <code class="docutils lit
 </pre></div>
 </div>
 <p>By default, the extension <a class="reference internal" href="../reference/api/gino.api.html#gino.api.GinoExecutor" title="gino.api.GinoExecutor"><code class="xref py py-class docutils literal notranslate"><span class="pre">GinoExecutor</span></code></a> is injected on
-<a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/selectable.html#sqlalchemy.sql.expression.Executable" title="(in SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Executable</span></code></a> as a property of name <code class="docutils literal notranslate"><span class="pre">gino</span></code>
+<a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/selectable.html#sqlalchemy.sql.expression.Executable" title="(in SQLAlchemy v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Executable</span></code></a> as a property of name <code class="docutils literal notranslate"><span class="pre">gino</span></code>
 at the creation of <a class="reference internal" href="../reference/api/gino.api.html#gino.api.Gino" title="gino.api.Gino"><code class="xref py py-class docutils literal notranslate"><span class="pre">Gino</span></code></a> instance. Therefore, any
-<a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/selectable.html#sqlalchemy.sql.expression.Executable" title="(in SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Executable</span></code></a> object has the <code class="docutils literal notranslate"><span class="pre">gino</span></code>
+<a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/selectable.html#sqlalchemy.sql.expression.Executable" title="(in SQLAlchemy v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Executable</span></code></a> object has the <code class="docutils literal notranslate"><span class="pre">gino</span></code>
 property for implicit execution. Similarly, the execution methods calls the
 corresponding ones on the <code class="docutils literal notranslate"><span class="pre">bind</span></code> of the <code class="docutils literal notranslate"><span class="pre">db</span></code> instance.</p>
 </div>

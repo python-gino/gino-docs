@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="../../_static/favicon.ico">
-    <title>gino.engine module - GINO 1.1.0b1 documentation</title>
+    <title>gino.engine module - GINO 1.1.0b2 documentation</title>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async
             src="https://www.googletagmanager.com/gtag/js?id=UA-3759436-10"></script>
@@ -173,7 +173,7 @@ in <a class="reference internal" href="#gino.engine.GinoEngine.acquire" title="g
 <em class="property">async </em><code class="sig-name descname">all</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">clause</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">multiparams</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">params</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.engine.GinoConnection.all" title="Permalink to this definition">¶</a></dt>
 <dd><p>Runs the given query in database, returns all results as a list.</p>
 <p>This method accepts the same parameters taken by SQLAlchemy
-<a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/connections.html#sqlalchemy.engine.Connectable.execute" title="(in SQLAlchemy v1.3)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">execute()</span></code></a>. You can pass in a raw
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">execute()</span></code>. You can pass in a raw
 SQL string, or <em>any</em> SQLAlchemy query clauses.</p>
 <p>If the given query clause is built by CRUD models, then the returning
 rows will be turned into relevant model objects (Only one type of model
@@ -187,7 +187,7 @@ database will be discarded and this method will return <code class="docutils lit
 <dl class="py method">
 <dt id="gino.engine.GinoConnection.dialect">
 <em class="property">property </em><code class="sig-name descname">dialect</code><a class="headerlink" href="#gino.engine.GinoConnection.dialect" title="Permalink to this definition">¶</a></dt>
-<dd><p>The <a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/internals.html#sqlalchemy.engine.interfaces.Dialect" title="(in SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dialect</span></code></a> in use, inherited
+<dd><p>The <code class="xref py py-class docutils literal notranslate"><span class="pre">Dialect</span></code> in use, inherited
 from the engine created this connection.</p>
 </dd></dl>
 
@@ -228,7 +228,7 @@ specified objective structure. It can be either:</p>
 <li><p>A model class, so that the query will yield model instances of this
 class. It is your responsibility to make sure all the columns of
 this model is selected in the query.</p></li>
-<li><p>A <a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/metadata.html#sqlalchemy.schema.Column" title="(in SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Column</span></code></a> instance, so that each result
+<li><p>A <a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/metadata.html#sqlalchemy.schema.Column" title="(in SQLAlchemy v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Column</span></code></a> instance, so that each result
 will be only a single value of this column. Please note, if you
 want to achieve fetching the very first value, you should use
 <a class="reference internal" href="#gino.engine.GinoConnection.first" title="gino.engine.GinoConnection.first"><code class="xref py py-meth docutils literal notranslate"><span class="pre">first()</span></code></a> instead of
@@ -237,7 +237,7 @@ want to achieve fetching the very first value, you should use
 <li><p>A tuple nesting more loader expressions recursively.</p></li>
 <li><p>A <a class="reference external" href="https://docs.python.org/3/library/functions.html#callable" title="(in Python v3.9)"><code class="xref py py-func docutils literal notranslate"><span class="pre">callable()</span></code></a> function that will be called for each row to
 fully customize the result. Two positional arguments will be passed
-to the function: the first is the <a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/connections.html#sqlalchemy.engine.RowProxy" title="(in SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">row</span></code></a> instance, the second is a context
+to the function: the first is the <code class="xref py py-class docutils literal notranslate"><span class="pre">row</span></code> instance, the second is a context
 object which is only present if nested else <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
 <li><p>A <a class="reference internal" href="gino.loader.html#gino.loader.Loader" title="gino.loader.Loader"><code class="xref py py-class docutils literal notranslate"><span class="pre">Loader</span></code></a> instance directly.</p></li>
 <li><p>Anything else will be treated as literal values thus returned as
@@ -427,7 +427,7 @@ asyncpg.</p>
 <em class="property">class </em><code class="sig-prename descclassname">gino.engine.</code><code class="sig-name descname">GinoEngine</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dialect</span></em>, <em class="sig-param"><span class="n">pool</span></em>, <em class="sig-param"><span class="n">loop</span></em>, <em class="sig-param"><span class="n">logging_name</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">echo</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">execution_options</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.engine.GinoEngine" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Connects a <a class="reference internal" href="gino.dialects.base.html#gino.dialects.base.Pool" title="gino.dialects.base.Pool"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pool</span></code></a> and
-<a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/internals.html#sqlalchemy.engine.interfaces.Dialect" title="(in SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dialect</span></code></a> together to provide a source
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Dialect</span></code> together to provide a source
 of database connectivity and behavior.</p>
 <p>A <a class="reference internal" href="#gino.engine.GinoEngine" title="gino.engine.GinoEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">GinoEngine</span></code></a> object is instantiated publicly using the
 <a class="reference internal" href="gino.html#gino.create_engine" title="gino.create_engine"><code class="xref py py-func docutils literal notranslate"><span class="pre">gino.create_engine()</span></code></a> function or
@@ -551,7 +551,7 @@ rules of the dialect.</p>
 <dt id="gino.engine.GinoEngine.dialect">
 <em class="property">property </em><code class="sig-name descname">dialect</code><a class="headerlink" href="#gino.engine.GinoEngine.dialect" title="Permalink to this definition">¶</a></dt>
 <dd><p>Read-only property for the
-<a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/internals.html#sqlalchemy.engine.interfaces.Dialect" title="(in SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dialect</span></code></a> of this engine.</p>
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Dialect</span></code> of this engine.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -646,7 +646,7 @@ arguments.</p>
 of this <a class="reference internal" href="#gino.engine.GinoEngine" title="gino.engine.GinoEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">GinoEngine</span></code></a>.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
-<p><a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/connections.html#sqlalchemy.engine.Engine.update_execution_options" title="(in SQLAlchemy v1.3)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">sqlalchemy.engine.Engine.update_execution_options()</span></code></a></p>
+<p><a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/connections.html#sqlalchemy.engine.Engine.update_execution_options" title="(in SQLAlchemy v1.4)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">sqlalchemy.engine.Engine.update_execution_options()</span></code></a></p>
 <p><a class="reference internal" href="#gino.engine.GinoConnection.execution_options" title="gino.engine.GinoConnection.execution_options"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GinoConnection.execution_options()</span></code></a></p>
 </div>
 </dd></dl>

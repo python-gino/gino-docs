@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="../../_static/favicon.ico">
-    <title>gino.strategies module - GINO 1.1.0b1 documentation</title>
+    <title>gino.strategies module - GINO 1.1.0b2 documentation</title>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async
             src="https://www.googletagmanager.com/gtag/js?id=UA-3759436-10"></script>
@@ -149,7 +149,7 @@
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sqlalchemy.engine.strategies.EngineStrategy</span></code></p>
 <p>A SQLAlchemy engine strategy for GINO.</p>
 <p>This strategy is initialized automatically as <a class="reference internal" href="gino.html#module-gino" title="gino"><code class="xref py py-mod docutils literal notranslate"><span class="pre">gino</span></code></a> is imported.</p>
-<p>If <a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/engines.html#sqlalchemy.create_engine" title="(in SQLAlchemy v1.3)"><code class="xref py py-func docutils literal notranslate"><span class="pre">sqlalchemy.create_engine()</span></code></a> uses <code class="docutils literal notranslate"><span class="pre">strategy=&quot;gino&quot;</span></code>, it will return a
+<p>If <a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/engines.html#sqlalchemy.create_engine" title="(in SQLAlchemy v1.4)"><code class="xref py py-func docutils literal notranslate"><span class="pre">sqlalchemy.create_engine()</span></code></a> uses <code class="docutils literal notranslate"><span class="pre">strategy=&quot;gino&quot;</span></code>, it will return a
 <a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Coroutine" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Coroutine</span></code></a>, and treat URL prefix <code class="docutils literal notranslate"><span class="pre">postgresql://</span></code> or
 <code class="docutils literal notranslate"><span class="pre">postgres://</span></code> as <code class="docutils literal notranslate"><span class="pre">postgresql+asyncpg://</span></code>.</p>
 <dl class="py method">

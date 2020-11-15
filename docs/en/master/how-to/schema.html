@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="../_static/favicon.ico">
-    <title>Schema Declaration - GINO 1.1.0b1 documentation</title>
+    <title>Schema Declaration - GINO 1.1.0b2 documentation</title>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async
             src="https://www.googletagmanager.com/gtag/js?id=UA-3759436-10"></script>
@@ -131,7 +131,7 @@
 <h1>Schema Declaration<a class="headerlink" href="#schema-declaration" title="Permalink to this headline">¶</a></h1>
 <p>There are 3 ways to declare your database schema to be used with GINO. Because
 GINO is built on top of SQLAlchemy core, either way you are actually declaring
-SQLAlchemy <a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/metadata.html#sqlalchemy.schema.Table" title="(in SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Table</span></code></a>.</p>
+SQLAlchemy <a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/metadata.html#sqlalchemy.schema.Table" title="(in SQLAlchemy v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Table</span></code></a>.</p>
 <div class="section" id="gino-engine">
 <h2>GINO Engine<a class="headerlink" href="#gino-engine" title="Permalink to this headline">¶</a></h2>
 <p>This is the minimized way to use GINO - using only
@@ -164,7 +164,7 @@ code please use the other two.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>When using GINO Engine only, it is usually your own business to create the
-tables with either <a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/metadata.html#sqlalchemy.schema.MetaData.create_all" title="(in SQLAlchemy v1.3)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">create_all()</span></code></a> on a
+tables with either <a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/metadata.html#sqlalchemy.schema.MetaData.create_all" title="(in SQLAlchemy v1.4)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">create_all()</span></code></a> on a
 normal non-async SQLAlchemy engine, or using Alembic. However it is still
 possible to be done with GINO if it had to:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">gino</span>
@@ -195,32 +195,32 @@ then <a class="reference internal" href="../reference/api/gino.engine.html#gino.
 <a class="reference internal" href="../reference/api/gino.engine.html#gino.engine.GinoConnection" title="gino.engine.GinoConnection"><code class="xref py py-class docutils literal notranslate"><span class="pre">GinoConnection</span></code></a>, and
 <a class="reference internal" href="../reference/api/gino.engine.html#gino.engine.GinoConnection.status" title="gino.engine.GinoConnection.status"><code class="xref py py-meth docutils literal notranslate"><span class="pre">status()</span></code></a> executes the insert and returns the
 status text. This works similarly as SQLAlchemy
-<a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/connections.html#sqlalchemy.engine.Connection.execute" title="(in SQLAlchemy v1.3)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">execute()</span></code></a> - they take the same parameters
+<a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/connections.html#sqlalchemy.engine.Connection.execute" title="(in SQLAlchemy v1.4)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">execute()</span></code></a> - they take the same parameters
 but return a bit differently. There are also other similar query APIs:</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="../reference/api/gino.engine.html#gino.engine.GinoConnection.all" title="gino.engine.GinoConnection.all"><code class="xref py py-meth docutils literal notranslate"><span class="pre">all()</span></code></a> returns a list of
-<a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/connections.html#sqlalchemy.engine.RowProxy" title="(in SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">RowProxy</span></code></a></p></li>
+<code class="xref py py-class docutils literal notranslate"><span class="pre">RowProxy</span></code></p></li>
 <li><p><a class="reference internal" href="../reference/api/gino.engine.html#gino.engine.GinoConnection.first" title="gino.engine.GinoConnection.first"><code class="xref py py-meth docutils literal notranslate"><span class="pre">first()</span></code></a> returns one
-<a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/connections.html#sqlalchemy.engine.RowProxy" title="(in SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">RowProxy</span></code></a>, or <code class="docutils literal notranslate"><span class="pre">None</span></code></p></li>
+<code class="xref py py-class docutils literal notranslate"><span class="pre">RowProxy</span></code>, or <code class="docutils literal notranslate"><span class="pre">None</span></code></p></li>
 <li><p><a class="reference internal" href="../reference/api/gino.engine.html#gino.engine.GinoConnection.one" title="gino.engine.GinoConnection.one"><code class="xref py py-meth docutils literal notranslate"><span class="pre">one()</span></code></a> returns one
-<a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/connections.html#sqlalchemy.engine.RowProxy" title="(in SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">RowProxy</span></code></a></p></li>
+<code class="xref py py-class docutils literal notranslate"><span class="pre">RowProxy</span></code></p></li>
 <li><p><a class="reference internal" href="../reference/api/gino.engine.html#gino.engine.GinoConnection.one_or_none" title="gino.engine.GinoConnection.one_or_none"><code class="xref py py-meth docutils literal notranslate"><span class="pre">one_or_none()</span></code></a> returns one
-<a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/connections.html#sqlalchemy.engine.RowProxy" title="(in SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">RowProxy</span></code></a>, or <code class="docutils literal notranslate"><span class="pre">None</span></code></p></li>
+<code class="xref py py-class docutils literal notranslate"><span class="pre">RowProxy</span></code>, or <code class="docutils literal notranslate"><span class="pre">None</span></code></p></li>
 <li><p><a class="reference internal" href="../reference/api/gino.engine.html#gino.engine.GinoConnection.scalar" title="gino.engine.GinoConnection.scalar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">scalar()</span></code></a> returns a single value, or
 <code class="docutils literal notranslate"><span class="pre">None</span></code></p></li>
 <li><p><a class="reference internal" href="../reference/api/gino.engine.html#gino.engine.GinoConnection.iterate" title="gino.engine.GinoConnection.iterate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">iterate()</span></code></a> returns an asynchronous iterator
-which yields <a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/connections.html#sqlalchemy.engine.RowProxy" title="(in SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">RowProxy</span></code></a></p></li>
+which yields <code class="xref py py-class docutils literal notranslate"><span class="pre">RowProxy</span></code></p></li>
 </ul>
 <p>Please go to their API for more information.</p>
 </div>
 <div class="section" id="gino-core">
 <h2>GINO Core<a class="headerlink" href="#gino-core" title="Permalink to this headline">¶</a></h2>
 <p>In previous scenario, <a class="reference internal" href="../reference/api/gino.engine.html#gino.engine.GinoEngine" title="gino.engine.GinoEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">GinoEngine</span></code></a> must not be set to
-<a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/metadata.html#sqlalchemy.schema.MetaData.bind" title="(in SQLAlchemy v1.3)"><code class="xref py py-attr docutils literal notranslate"><span class="pre">metadata.bind</span></code></a> because it is not a
+<a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/metadata.html#sqlalchemy.schema.MetaData.bind" title="(in SQLAlchemy v1.4)"><code class="xref py py-attr docutils literal notranslate"><span class="pre">metadata.bind</span></code></a> because it is not a
 regular SQLAlchemy Engine thus it won’t work correctly. For this, GINO provides
-a subclass of <a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/metadata.html#sqlalchemy.schema.MetaData" title="(in SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetaData</span></code></a> as <a class="reference internal" href="../reference/api/gino.api.html#gino.api.Gino" title="gino.api.Gino"><code class="xref py py-class docutils literal notranslate"><span class="pre">Gino</span></code></a>,
+a subclass of <a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/metadata.html#sqlalchemy.schema.MetaData" title="(in SQLAlchemy v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetaData</span></code></a> as <a class="reference internal" href="../reference/api/gino.api.html#gino.api.Gino" title="gino.api.Gino"><code class="xref py py-class docutils literal notranslate"><span class="pre">Gino</span></code></a>,
 usually instantiated globally under the name of <code class="docutils literal notranslate"><span class="pre">db</span></code>. It can be used as a
-normal <a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/metadata.html#sqlalchemy.schema.MetaData" title="(in SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetaData</span></code></a> still offering some conveniences:</p>
+normal <a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/metadata.html#sqlalchemy.schema.MetaData" title="(in SQLAlchemy v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetaData</span></code></a> still offering some conveniences:</p>
 <ul class="simple">
 <li><p>It delegates most public types you can access on <code class="docutils literal notranslate"><span class="pre">sqlalchemy</span></code></p></li>
 <li><p>It works with both normal SQLAlchemy engine and asynchronous GINO engine</p></li>
@@ -316,7 +316,7 @@ instance. Still the same example rewritten in GINO ORM:</p>
 <p>As you can see, the declaration is pretty much the same as before. Underlying
 they are identical, declaring two tables in <code class="docutils literal notranslate"><span class="pre">db</span></code>. The <code class="docutils literal notranslate"><span class="pre">class</span></code> style is just
 more declarative. Instead of <code class="docutils literal notranslate"><span class="pre">users.c.name</span></code>, you can now access the column by
-<code class="docutils literal notranslate"><span class="pre">User.name</span></code>. The implicitly created <a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/metadata.html#sqlalchemy.schema.Table" title="(in SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Table</span></code></a> is
+<code class="docutils literal notranslate"><span class="pre">User.name</span></code>. The implicitly created <a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/metadata.html#sqlalchemy.schema.Table" title="(in SQLAlchemy v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Table</span></code></a> is
 available at <code class="docutils literal notranslate"><span class="pre">User.__table__</span></code> and <code class="docutils literal notranslate"><span class="pre">Address.__table__</span></code>. You can use anything
 that works in GINO core here.</p>
 <div class="admonition note">
@@ -341,7 +341,7 @@ the very <code class="docutils literal notranslate"><span class="pre">db</span><
 to directly <a class="reference internal" href="../reference/api/gino.crud.html#gino.crud.CRUDModel.create" title="gino.crud.CRUDModel.create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">create()</span></code></a> a model instance, instead of
 inserting a new row. Or <a class="reference internal" href="../reference/api/gino.crud.html#gino.crud.CRUDModel.delete" title="gino.crud.CRUDModel.delete"><code class="xref py py-meth docutils literal notranslate"><span class="pre">delete()</span></code></a> a model instance
 without needing to specify the where clause manually. Query returns model
-instances instead of <a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/connections.html#sqlalchemy.engine.RowProxy" title="(in SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">RowProxy</span></code></a>, and row values are
+instances instead of <code class="xref py py-class docutils literal notranslate"><span class="pre">RowProxy</span></code>, and row values are
 directly available as attributes on model instances. See also:
 <a class="reference internal" href="crud.html"><span class="doc">CRUD</span></a>.</p>
 <p>After all, <a class="reference internal" href="../reference/api/gino.engine.html#gino.engine.GinoEngine" title="gino.engine.GinoEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">GinoEngine</span></code></a> is always in use. Next let’s dig

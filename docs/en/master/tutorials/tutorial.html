@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="../_static/favicon.ico">
-    <title>GINO Basics - GINO 1.1.0b1 documentation</title>
+    <title>GINO Basics - GINO 1.1.0b2 documentation</title>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async
             src="https://www.googletagmanager.com/gtag/js?id=UA-3759436-10"></script>
@@ -194,7 +194,7 @@ strange word to you. Now let’s declare a model:</p>
 named <code class="docutils literal notranslate"><span class="pre">users</span></code>, with two columns <code class="docutils literal notranslate"><span class="pre">id</span></code> and <code class="docutils literal notranslate"><span class="pre">nickname</span></code>. Note that the fixed
 <code class="xref py py-attr docutils literal notranslate"><span class="pre">__tablename__</span></code> property is required. GINO
 suggests singular for model names, and plural for table names. Each
-<a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/metadata.html#sqlalchemy.schema.Column" title="(in SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">db.Column</span></code></a> property defines one column for
+<a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/metadata.html#sqlalchemy.schema.Column" title="(in SQLAlchemy v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">db.Column</span></code></a> property defines one column for
 the table, where its first parameter indicates the column type in database,
 while the rest is for other column attributes or constraints. You can find a
 mapping of database types to <code class="docutils literal notranslate"><span class="pre">db</span></code> types <a class="reference external" href="http://docs.sqlalchemy.org/en/latest/core/type_basics.html">here</a> in the SQLAlchemy
@@ -274,9 +274,9 @@ reference of GINO for more information.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>It is <a class="reference internal" href="../reference/api/gino.schema.html#gino.schema.GinoSchemaVisitor.create_all" title="gino.schema.GinoSchemaVisitor.create_all"><code class="xref py py-meth docutils literal notranslate"><span class="pre">db.gino.create_all</span></code></a>,
-not <a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/metadata.html#sqlalchemy.schema.MetaData.create_all" title="(in SQLAlchemy v1.3)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">db.create_all</span></code></a>, because
-<code class="docutils literal notranslate"><span class="pre">db</span></code> is inherited from SQLAlchemy <a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/metadata.html#sqlalchemy.schema.MetaData" title="(in SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetaData</span></code></a>,
-and <a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/metadata.html#sqlalchemy.schema.MetaData.create_all" title="(in SQLAlchemy v1.3)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">db.create_all</span></code></a> is from
+not <a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/metadata.html#sqlalchemy.schema.MetaData.create_all" title="(in SQLAlchemy v1.4)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">db.create_all</span></code></a>, because
+<code class="docutils literal notranslate"><span class="pre">db</span></code> is inherited from SQLAlchemy <a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/metadata.html#sqlalchemy.schema.MetaData" title="(in SQLAlchemy v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetaData</span></code></a>,
+and <a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/metadata.html#sqlalchemy.schema.MetaData.create_all" title="(in SQLAlchemy v1.4)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">db.create_all</span></code></a> is from
 SQLAlchemy using non-asynchronous methods, which doesn’t work with the
 bound GINO engine.</p>
 <p>In practice <a class="reference internal" href="../reference/api/gino.schema.html#gino.schema.GinoSchemaVisitor.create_all" title="gino.schema.GinoSchemaVisitor.create_all"><code class="xref py py-meth docutils literal notranslate"><span class="pre">create_all()</span></code></a> is usually
