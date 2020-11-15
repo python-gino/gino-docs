@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="../_static/favicon.ico">
-    <title>常见问题 - GINO 1.1.0b1 文档</title>
+    <title>常见问题 - GINO 1.1.0b2 文档</title>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async
             src="https://www.googletagmanager.com/gtag/js?id=UA-3759436-10"></script>
@@ -398,13 +398,13 @@ have a list of names you would like to add to the database:</p>
 </div>
 <div class="section" id="how-to-work-with-alembic">
 <h2>How to work with Alembic?<a class="headerlink" href="#how-to-work-with-alembic" title="永久链接至标题">¶</a></h2>
-<p>The fact that <a class="reference internal" href="../reference/api/gino.api.html#gino.api.Gino" title="gino.api.Gino"><code class="xref py py-class docutils literal notranslate"><span class="pre">Gino</span></code></a> is a <a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/metadata.html#sqlalchemy.schema.MetaData" title="(在 SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetaData</span></code></a> is the
+<p>The fact that <a class="reference internal" href="../reference/api/gino.api.html#gino.api.Gino" title="gino.api.Gino"><code class="xref py py-class docutils literal notranslate"><span class="pre">Gino</span></code></a> is a <a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/metadata.html#sqlalchemy.schema.MetaData" title="(在 SQLAlchemy v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetaData</span></code></a> is the
 key to use Alembic. Just import and set <code class="docutils literal notranslate"><span class="pre">target_metadata</span> <span class="pre">=</span> <span class="pre">db</span></code> in Alembic <code class="docutils literal notranslate"><span class="pre">env.py</span></code>
 will do. See <a class="reference internal" href="alembic.html"><span class="doc">使用 Alembic</span></a> for more details.</p>
 </div>
 <div class="section" id="how-to-join-the-same-table-twice">
 <h2>How to join the same table twice?<a class="headerlink" href="#how-to-join-the-same-table-twice" title="永久链接至标题">¶</a></h2>
-<p>This is the same pattern as described in SQLAlchemy <a class="reference external" href="https://docs.sqlalchemy.org/en/13/orm/self_referential.html#self-referential" title="(在 SQLAlchemy v1.3)"><span>Adjacency List Relationships</span></a>, where you
+<p>This is the same pattern as described in SQLAlchemy <a class="reference external" href="https://docs.sqlalchemy.org/en/14/orm/self_referential.html#self-referential" title="(在 SQLAlchemy v1.4)"><span>Adjacency List Relationships</span></a>, where you
 have a table with &quot;a foreign key reference to itself&quot;, or join the same table more than
 once, &quot;to represent hierarchical data in flat tables.&quot; We'd need to use
 <a class="reference internal" href="../reference/api/gino.crud.html#gino.crud.CRUDModel.alias" title="gino.crud.CRUDModel.alias"><code class="xref py py-func docutils literal notranslate"><span class="pre">alias()</span></code></a>, for example:</p>
@@ -422,7 +422,7 @@ once, &quot;to represent hierarchical data in flat tables.&quot; We'd need to us
 </div>
 <div class="section" id="how-to-execute-raw-sql-with-parameters">
 <span id="raw-sql"></span><h2>How to execute raw SQL with parameters?<a class="headerlink" href="#how-to-execute-raw-sql-with-parameters" title="永久链接至标题">¶</a></h2>
-<p>Wrap the SQL with <a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/sqlelement.html#sqlalchemy.sql.expression.text" title="(在 SQLAlchemy v1.3)"><code class="xref py py-func docutils literal notranslate"><span class="pre">text()</span></code></a>, and use keyword arguments:</p>
+<p>Wrap the SQL with <a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/sqlelement.html#sqlalchemy.sql.expression.text" title="(在 SQLAlchemy v1.4)"><code class="xref py py-func docutils literal notranslate"><span class="pre">text()</span></code></a>, and use keyword arguments:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">query</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM users WHERE id = :id_val&#39;</span><span class="p">)</span>
 <span class="n">row</span> <span class="o">=</span> <span class="k">await</span> <span class="n">db</span><span class="o">.</span><span class="n">first</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">id_val</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
@@ -465,8 +465,8 @@ start-up hook.</p></li>
 <h2>How can I do SQL xxxx in GINO?<a class="headerlink" href="#how-can-i-do-sql-xxxx-in-gino" title="永久链接至标题">¶</a></h2>
 <p>GINO uses <a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/">SQLAlchemy Core</a> queries, so
 please check its documentation on how to build queries. The GINO models are simply
-wrappers of SQLAlchemy <a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/metadata.html#sqlalchemy.schema.Table" title="(在 SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Table</span></code></a> instances, and the column
-attributes on GINO model classes are just SQLAlchemy <a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/metadata.html#sqlalchemy.schema.Column" title="(在 SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Column</span></code></a>
+wrappers of SQLAlchemy <a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/metadata.html#sqlalchemy.schema.Table" title="(在 SQLAlchemy v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Table</span></code></a> instances, and the column
+attributes on GINO model classes are just SQLAlchemy <a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/metadata.html#sqlalchemy.schema.Column" title="(在 SQLAlchemy v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Column</span></code></a>
 instances, you can use them in building your SQLAlchemy Core queries.</p>
 <p>Alternatively, you could always execute the raw SQL directly, see <a class="reference internal" href="#raw-sql"><span class="std std-ref">How to execute raw SQL with parameters?</span></a> above.</p>
 </div>

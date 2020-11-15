@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="../_static/favicon.ico">
-    <title>预制查询 - GINO 1.1.0b1 文档</title>
+    <title>预制查询 - GINO 1.1.0b2 文档</title>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async
             src="https://www.googletagmanager.com/gtag/js?id=UA-3759436-10"></script>
@@ -133,7 +133,7 @@
 <p><span class="versionmodified added">1.1 新版功能.</span></p>
 </div>
 <p>Baked queries are used to boost execution performance for constantly-used queries.
-Similar to the <a class="reference external" href="https://docs.sqlalchemy.org/en/13/orm/extensions/baked.html" title="(在 SQLAlchemy v1.3)"><span>Baked Queries</span></a> in SQLAlchemy, GINO could also cache the
+Similar to the <a class="reference external" href="https://docs.sqlalchemy.org/en/14/orm/extensions/baked.html" title="(在 SQLAlchemy v1.4)"><span>Baked Queries</span></a> in SQLAlchemy, GINO could also cache the
 object’s construction and string-compilation steps. Furthermore, GINO automatically
 manages a prepared statement for each baked query in every active connection in the
 pool. Executing baked queries is at least 40% faster than running normal queries, but

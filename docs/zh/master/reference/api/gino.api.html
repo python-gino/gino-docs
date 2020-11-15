@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="../../_static/favicon.ico">
-    <title>gino.api module - GINO 1.1.0b1 文档</title>
+    <title>gino.api module - GINO 1.1.0b2 文档</title>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async
             src="https://www.googletagmanager.com/gtag/js?id=UA-3759436-10"></script>
@@ -149,8 +149,8 @@
 <dd><p>基类：<code class="xref py py-class docutils literal notranslate"><span class="pre">sqlalchemy.sql.schema.MetaData</span></code></p>
 <p>All-in-one API class of GINO, providing several shortcuts.</p>
 <p>This class is a subclass of SQLAlchemy
-<a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/metadata.html#sqlalchemy.schema.MetaData" title="(在 SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetaData</span></code></a>, therefore its instances can be used
-as a normal <a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/metadata.html#sqlalchemy.schema.MetaData" title="(在 SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetaData</span></code></a> object, e.g. used in
+<a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/metadata.html#sqlalchemy.schema.MetaData" title="(在 SQLAlchemy v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetaData</span></code></a>, therefore its instances can be used
+as a normal <a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/metadata.html#sqlalchemy.schema.MetaData" title="(在 SQLAlchemy v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetaData</span></code></a> object, e.g. used in
 <a class="reference external" href="http://alembic.zzzcomputing.com/">Alembic</a>. In usual cases, you would
 want to define one global <a class="reference internal" href="#gino.api.Gino" title="gino.api.Gino"><code class="xref py py-class docutils literal notranslate"><span class="pre">Gino</span></code></a> instance, usually under the name
 of <code class="docutils literal notranslate"><span class="pre">db</span></code>, representing the database used in your application.</p>
@@ -165,11 +165,11 @@ without importing <code class="xref py py-mod docutils literal notranslate"><spa
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">id</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">BigInteger</span><span class="p">(),</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Similar to <a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/metadata.html#sqlalchemy.schema.MetaData" title="(在 SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetaData</span></code></a>, a <a class="reference internal" href="#gino.api.Gino" title="gino.api.Gino"><code class="xref py py-class docutils literal notranslate"><span class="pre">Gino</span></code></a> object
+<p>Similar to <a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/metadata.html#sqlalchemy.schema.MetaData" title="(在 SQLAlchemy v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetaData</span></code></a>, a <a class="reference internal" href="#gino.api.Gino" title="gino.api.Gino"><code class="xref py py-class docutils literal notranslate"><span class="pre">Gino</span></code></a> object
 can bind to a <a class="reference internal" href="gino.engine.html#gino.engine.GinoEngine" title="gino.engine.GinoEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">GinoEngine</span></code></a> instance, hereby allowing
 <a class="reference external" href="http://bit.ly/2oTUcKY">&quot;implicit execution&quot;</a> through the <code class="docutils literal notranslate"><span class="pre">gino</span></code>
-extension on <a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/selectable.html#sqlalchemy.sql.expression.Executable" title="(在 SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Executable</span></code></a> or
-<a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/metadata.html#sqlalchemy.schema.SchemaItem" title="(在 SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">SchemaItem</span></code></a> constructs:</p>
+extension on <a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/selectable.html#sqlalchemy.sql.expression.Executable" title="(在 SQLAlchemy v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Executable</span></code></a> or
+<a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/metadata.html#sqlalchemy.schema.SchemaItem" title="(在 SQLAlchemy v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">SchemaItem</span></code></a> constructs:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">await</span> <span class="n">User</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">gino</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
 <span class="k">await</span> <span class="n">db</span><span class="o">.</span><span class="n">gino</span><span class="o">.</span><span class="n">create_all</span><span class="p">()</span>
 </pre></div>
@@ -257,10 +257,10 @@ result new tables added to this <a class="reference internal" href="#gino.api.Gi
 <dd><p>An <a class="reference internal" href="gino.engine.html#gino.engine.GinoEngine" title="gino.engine.GinoEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">GinoEngine</span></code></a> to which this <a class="reference internal" href="#gino.api.Gino" title="gino.api.Gino"><code class="xref py py-class docutils literal notranslate"><span class="pre">Gino</span></code></a> is bound.</p>
 <p>This is a simple property with no getter or setter hook - what you set
 is what you get. To achieve the same result as it is in SQLAlchemy -
-setting a string or <a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/engines.html#sqlalchemy.engine.url.URL" title="(在 SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">URL</span></code></a> and getting an
+setting a string or <code class="xref py py-class docutils literal notranslate"><span class="pre">URL</span></code> and getting an
 engine instance, use <a class="reference internal" href="#gino.api.Gino.set_bind" title="gino.api.Gino.set_bind"><code class="xref py py-meth docutils literal notranslate"><span class="pre">set_bind()</span></code></a> (or <code class="docutils literal notranslate"><span class="pre">await</span></code> on this
 <a class="reference internal" href="#gino.api.Gino" title="gino.api.Gino"><code class="xref py py-class docutils literal notranslate"><span class="pre">Gino</span></code></a> object after setting a string or
-<a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/engines.html#sqlalchemy.engine.url.URL" title="(在 SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">URL</span></code></a>).</p>
+<code class="xref py py-class docutils literal notranslate"><span class="pre">URL</span></code>).</p>
 </dd></dl>
 
 <dl class="py method">
@@ -326,9 +326,9 @@ engine instance, use <a class="reference internal" href="#gino.api.Gino.set_bind
 <dt id="gino.api.Gino.query_executor">
 <code class="sig-name descname">query_executor</code><a class="headerlink" href="#gino.api.Gino.query_executor" title="永久链接至目标">¶</a></dt>
 <dd><p>The overridable <code class="docutils literal notranslate"><span class="pre">gino</span></code> extension class on
-<a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/selectable.html#sqlalchemy.sql.expression.Executable" title="(在 SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Executable</span></code></a>.</p>
+<a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/selectable.html#sqlalchemy.sql.expression.Executable" title="(在 SQLAlchemy v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Executable</span></code></a>.</p>
 <p>This class will be set as the getter method of the property <code class="docutils literal notranslate"><span class="pre">gino</span></code> on
-<a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/selectable.html#sqlalchemy.sql.expression.Executable" title="(在 SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Executable</span></code></a> and its subclasses, if
+<a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/selectable.html#sqlalchemy.sql.expression.Executable" title="(在 SQLAlchemy v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Executable</span></code></a> and its subclasses, if
 <code class="docutils literal notranslate"><span class="pre">ext</span></code> and <code class="docutils literal notranslate"><span class="pre">query_ext</span></code> arguments are both <code class="docutils literal notranslate"><span class="pre">True</span></code>. Default is
 <a class="reference internal" href="#gino.api.GinoExecutor" title="gino.api.GinoExecutor"><code class="xref py py-class docutils literal notranslate"><span class="pre">GinoExecutor</span></code></a>.</p>
 <p><a class="reference internal" href="#gino.api.GinoExecutor" title="gino.api.GinoExecutor"><code class="xref py py-class docutils literal notranslate"><span class="pre">GinoExecutor</span></code></a> 的别名</p>
@@ -351,7 +351,7 @@ engine instance, use <a class="reference internal" href="#gino.api.Gino.set_bind
 <em class="property">async </em><code class="sig-name descname">set_bind</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bind</span></em>, <em class="sig-param"><span class="n">loop</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.Gino.set_bind" title="永久链接至目标">¶</a></dt>
 <dd><p>Bind self to the given <a class="reference internal" href="gino.engine.html#gino.engine.GinoEngine" title="gino.engine.GinoEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">GinoEngine</span></code></a> and return it.</p>
 <p>If the given <code class="docutils literal notranslate"><span class="pre">bind</span></code> is a string or
-<a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/engines.html#sqlalchemy.engine.url.URL" title="(在 SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">URL</span></code></a>, all arguments will be sent to
+<code class="xref py py-class docutils literal notranslate"><span class="pre">URL</span></code>, all arguments will be sent to
 <a class="reference internal" href="gino.html#gino.create_engine" title="gino.create_engine"><code class="xref py py-func docutils literal notranslate"><span class="pre">create_engine()</span></code></a> to create a new engine, and return it.</p>
 <dl class="field-list simple">
 <dt class="field-odd">返回</dt>
@@ -398,10 +398,10 @@ exit:</p>
 <em class="property">class </em><code class="sig-prename descclassname">gino.api.</code><code class="sig-name descname">GinoExecutor</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">query</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.GinoExecutor" title="永久链接至目标">¶</a></dt>
 <dd><p>基类：<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(在 Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>The default <code class="docutils literal notranslate"><span class="pre">gino</span></code> extension on
-<a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/selectable.html#sqlalchemy.sql.expression.Executable" title="(在 SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Executable</span></code></a> constructs for implicit
+<a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/selectable.html#sqlalchemy.sql.expression.Executable" title="(在 SQLAlchemy v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Executable</span></code></a> constructs for implicit
 execution.</p>
 <p>Instances of this class are created when visiting the <code class="docutils literal notranslate"><span class="pre">gino</span></code> property of
-<a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/selectable.html#sqlalchemy.sql.expression.Executable" title="(在 SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Executable</span></code></a> instances (also referred as
+<a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/selectable.html#sqlalchemy.sql.expression.Executable" title="(在 SQLAlchemy v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Executable</span></code></a> instances (also referred as
 queries or clause elements), for example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">await</span> <span class="n">User</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">gino</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
 </pre></div>
@@ -511,7 +511,7 @@ query.</p>
 <dl class="py method">
 <dt id="gino.api.GinoExecutor.query">
 <em class="property">property </em><code class="sig-name descname">query</code><a class="headerlink" href="#gino.api.GinoExecutor.query" title="永久链接至目标">¶</a></dt>
-<dd><p>Get back the chained <a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/selectable.html#sqlalchemy.sql.expression.Executable" title="(在 SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Executable</span></code></a>.</p>
+<dd><p>Get back the chained <a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/selectable.html#sqlalchemy.sql.expression.Executable" title="(在 SQLAlchemy v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Executable</span></code></a>.</p>
 <p>In a chained query calls, occasionally the previous query clause is
 needed after a <code class="docutils literal notranslate"><span class="pre">.gino.</span></code> chain, you can use <code class="docutils literal notranslate"><span class="pre">.query.</span></code> to resume the
 chain back. For example:</p>

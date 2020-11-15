@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="../../_static/favicon.ico">
-    <title>gino.loader module - GINO 1.1.0b1 文档</title>
+    <title>gino.loader module - GINO 1.1.0b2 文档</title>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async
             src="https://www.googletagmanager.com/gtag/js?id=UA-3759436-10"></script>
@@ -169,7 +169,7 @@ that will be called in <a class="reference internal" href="#gino.loader.Callable
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>row</strong> -- A <a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/connections.html#sqlalchemy.engine.RowProxy" title="(在 SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">RowProxy</span></code></a> instance.</p></li>
+<li><p><strong>row</strong> -- A <code class="xref py py-class docutils literal notranslate"><span class="pre">RowProxy</span></code> instance.</p></li>
 <li><p><strong>context</strong> -- A <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(在 Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a> that is reused across all loaders in one query.</p></li>
 </ul>
 </dd>
@@ -189,7 +189,7 @@ that will be called in <a class="reference internal" href="#gino.loader.Callable
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
 <dd class="field-odd"><p><strong>column</strong> -- The column name as <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, or a
-<a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/metadata.html#sqlalchemy.schema.Column" title="(在 SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Column</span></code></a> instance to avoid name conflict.</p>
+<a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/metadata.html#sqlalchemy.schema.Column" title="(在 SQLAlchemy v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Column</span></code></a> instance to avoid name conflict.</p>
 </dd>
 </dl>
 <dl class="py method">
@@ -199,7 +199,7 @@ that will be called in <a class="reference internal" href="#gino.loader.Callable
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>row</strong> -- A <a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/connections.html#sqlalchemy.engine.RowProxy" title="(在 SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">RowProxy</span></code></a> instance.</p></li>
+<li><p><strong>row</strong> -- A <code class="xref py py-class docutils literal notranslate"><span class="pre">RowProxy</span></code> instance.</p></li>
 <li><p><strong>context</strong> -- Not used.</p></li>
 </ul>
 </dd>
@@ -218,7 +218,7 @@ that will be called in <a class="reference internal" href="#gino.loader.Callable
 <p>The abstract base class of loaders.</p>
 <p>Loaders are used to load raw database rows into expected results.
 <a class="reference internal" href="gino.engine.html#gino.engine.GinoEngine" title="gino.engine.GinoEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">GinoEngine</span></code></a> will use the loader set on the <code class="docutils literal notranslate"><span class="pre">loader</span></code> value of
-the <a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/selectable.html#sqlalchemy.sql.expression.Executable.execution_options" title="(在 SQLAlchemy v1.3)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">execution_options()</span></code></a>, for example:</p>
+the <a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/selectable.html#sqlalchemy.sql.expression.Executable.execution_options" title="(在 SQLAlchemy v1.4)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">execution_options()</span></code></a>, for example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">text</span><span class="p">,</span> <span class="n">create_engine</span>
 <span class="kn">from</span> <span class="nn">gino.loader</span> <span class="kn">import</span> <span class="n">ColumnLoader</span>
 
@@ -236,7 +236,7 @@ the <a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/s
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>row</strong> -- A <a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/connections.html#sqlalchemy.engine.RowProxy" title="(在 SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">RowProxy</span></code></a> instance.</p></li>
+<li><p><strong>row</strong> -- A <code class="xref py py-class docutils literal notranslate"><span class="pre">RowProxy</span></code> instance.</p></li>
 <li><p><strong>context</strong> -- A <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(在 Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a> that is reused across all loaders in one query.</p></li>
 </ul>
 </dd>
@@ -268,8 +268,8 @@ value indicating if the result is distinct.</p>
 <tr class="row-odd"><td><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#callable" title="(在 Python v3.9)"><code class="xref py py-func docutils literal notranslate"><span class="pre">callable()</span></code></a></p></td>
 <td><p><a class="reference internal" href="#gino.loader.CallableLoader" title="gino.loader.CallableLoader"><code class="xref py py-class docutils literal notranslate"><span class="pre">CallableLoader</span></code></a></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/metadata.html#sqlalchemy.schema.Column" title="(在 SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Column</span></code></a>,
-<a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/sqlelement.html#sqlalchemy.sql.expression.Label" title="(在 SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Label</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/metadata.html#sqlalchemy.schema.Column" title="(在 SQLAlchemy v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Column</span></code></a>,
+<a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/sqlelement.html#sqlalchemy.sql.expression.Label" title="(在 SQLAlchemy v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Label</span></code></a></p></td>
 <td><p><a class="reference internal" href="#gino.loader.ColumnLoader" title="gino.loader.ColumnLoader"><code class="xref py py-class docutils literal notranslate"><span class="pre">ColumnLoader</span></code></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="gino.declarative.html#gino.declarative.Model" title="gino.declarative.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></a></p></td>
@@ -313,12 +313,12 @@ value indicating if the result is distinct.</p>
 <dt id="gino.loader.Loader.get_from">
 <code class="sig-name descname">get_from</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.loader.Loader.get_from" title="永久链接至目标">¶</a></dt>
 <dd><p>Generate a clause to be used in
-<a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/selectable.html#sqlalchemy.sql.expression.Select.select_from" title="(在 SQLAlchemy v1.3)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">select_from()</span></code></a> from this loader.</p>
+<a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/selectable.html#sqlalchemy.sql.expression.Select.select_from" title="(在 SQLAlchemy v1.4)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">select_from()</span></code></a> from this loader.</p>
 <p>This is an experimental feature, this method is supposed to be called by
 <a class="reference internal" href="#gino.loader.Loader.query" title="gino.loader.Loader.query"><code class="xref py py-attr docutils literal notranslate"><span class="pre">query</span></code></a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">返回</dt>
-<dd class="field-odd"><p>A <a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/selectable.html#sqlalchemy.sql.expression.FromClause" title="(在 SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">FromClause</span></code></a> instance, or <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<dd class="field-odd"><p>A <a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/selectable.html#sqlalchemy.sql.expression.FromClause" title="(在 SQLAlchemy v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">FromClause</span></code></a> instance, or <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -390,7 +390,7 @@ the <code class="docutils literal notranslate"><span class="pre">company</span><
 <dt class="field-odd">参数</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>model</strong> -- A subclass of <a class="reference internal" href="gino.declarative.html#gino.declarative.Model" title="gino.declarative.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></a> to instantiate.</p></li>
-<li><p><strong>columns</strong> -- A list of <a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/metadata.html#sqlalchemy.schema.Column" title="(在 SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Column</span></code></a> or <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a> to
+<li><p><strong>columns</strong> -- A list of <a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/metadata.html#sqlalchemy.schema.Column" title="(在 SQLAlchemy v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Column</span></code></a> or <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a> to
 load, default is all the columns in the model.</p></li>
 <li><p><strong>extras</strong> -- Additional attributes to load on the model instance.</p></li>
 </ul>
@@ -403,7 +403,7 @@ load, default is all the columns in the model.</p></li>
 give columns.</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
-<dd class="field-odd"><p><strong>columns</strong> -- Preferably <a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/metadata.html#sqlalchemy.schema.Column" title="(在 SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Column</span></code></a> instances.</p>
+<dd class="field-odd"><p><strong>columns</strong> -- Preferably <a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/metadata.html#sqlalchemy.schema.Column" title="(在 SQLAlchemy v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Column</span></code></a> instances.</p>
 </dd>
 <dt class="field-even">返回</dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">self</span></code> for chaining.</p>
@@ -418,7 +418,7 @@ give columns.</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>row</strong> -- A <a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/connections.html#sqlalchemy.engine.RowProxy" title="(在 SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">RowProxy</span></code></a> instance.</p></li>
+<li><p><strong>row</strong> -- A <code class="xref py py-class docutils literal notranslate"><span class="pre">RowProxy</span></code> instance.</p></li>
 <li><p><strong>context</strong> -- A <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(在 Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a> that is reused across all loaders in one query.</p></li>
 </ul>
 </dd>
@@ -446,12 +446,12 @@ result is distinct.</p>
 <dt id="gino.loader.ModelLoader.get_from">
 <code class="sig-name descname">get_from</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.loader.ModelLoader.get_from" title="永久链接至目标">¶</a></dt>
 <dd><p>Generate a clause to be used in
-<a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/selectable.html#sqlalchemy.sql.expression.Select.select_from" title="(在 SQLAlchemy v1.3)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">select_from()</span></code></a> from this loader.</p>
+<a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/selectable.html#sqlalchemy.sql.expression.Select.select_from" title="(在 SQLAlchemy v1.4)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">select_from()</span></code></a> from this loader.</p>
 <p>This is an experimental feature, this method is supposed to be called by
 <code class="xref py py-attr docutils literal notranslate"><span class="pre">query</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">返回</dt>
-<dd class="field-odd"><p>A <a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/selectable.html#sqlalchemy.sql.expression.FromClause" title="(在 SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">FromClause</span></code></a> instance, or <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<dd class="field-odd"><p>A <a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/selectable.html#sqlalchemy.sql.expression.FromClause" title="(在 SQLAlchemy v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">FromClause</span></code></a> instance, or <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -497,7 +497,7 @@ possible, chaining with a <a class="reference internal" href="#gino.loader.Model
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
 <dd class="field-odd"><p><strong>on_clause</strong> -- An expression to feed into
-<a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/selectable.html#sqlalchemy.sql.expression.join" title="(在 SQLAlchemy v1.3)"><code class="xref py py-func docutils literal notranslate"><span class="pre">join()</span></code></a>.</p>
+<a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/selectable.html#sqlalchemy.sql.expression.join" title="(在 SQLAlchemy v1.4)"><code class="xref py py-func docutils literal notranslate"><span class="pre">join()</span></code></a>.</p>
 </dd>
 <dt class="field-even">返回</dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">self</span></code> for chaining.</p>
@@ -526,7 +526,7 @@ possible, chaining with a <a class="reference internal" href="#gino.loader.Model
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>row</strong> -- A <a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/connections.html#sqlalchemy.engine.RowProxy" title="(在 SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">RowProxy</span></code></a> instance.</p></li>
+<li><p><strong>row</strong> -- A <code class="xref py py-class docutils literal notranslate"><span class="pre">RowProxy</span></code> instance.</p></li>
 <li><p><strong>context</strong> -- A <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(在 Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a> that is reused across all loaders in one query.</p></li>
 </ul>
 </dd>

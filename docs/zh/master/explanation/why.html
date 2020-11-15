@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="../_static/favicon.ico">
-    <title>为什么要用异步 ORM？ - GINO 1.1.0b1 文档</title>
+    <title>为什么要用异步 ORM？ - GINO 1.1.0b2 文档</title>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async
             src="https://www.googletagmanager.com/gtag/js?id=UA-3759436-10"></script>
@@ -204,7 +204,7 @@ connection pool and cooperative multitasking. For example, here's a very simple 
         <span class="n">session</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>This follows advices found in <a class="reference external" href="https://docs.sqlalchemy.org/en/13/orm/session_basics.html#session-faq-whentocreate" title="(在 SQLAlchemy v1.3)"><span>When do I construct a Session, when do I commit it, and when do I close it?</span></a> from SQLAlchemy - linking
+<p>This follows advices found in <a class="reference external" href="https://docs.sqlalchemy.org/en/14/orm/session_basics.html#session-faq-whentocreate" title="(在 SQLAlchemy v1.4)"><span>When do I construct a Session, when do I commit it, and when do I close it?</span></a> from SQLAlchemy - linking
 the <strong>session scope</strong> to the request scope. It works fine within 10 concurrent requests,
 but freezes miserably for any number beyond 10: all requests hang and the only way to
 stop the server is <code class="docutils literal notranslate"><span class="pre">kill</span> <span class="pre">-9</span></code>.</p>

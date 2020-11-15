@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="../../_static/favicon.ico">
-    <title>gino.declarative module - GINO 1.1.0b1 文档</title>
+    <title>gino.declarative module - GINO 1.1.0b2 文档</title>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async
             src="https://www.googletagmanager.com/gtag/js?id=UA-3759436-10"></script>
@@ -188,11 +188,11 @@
 <p>The base class of GINO models.</p>
 <p>This is not supposed to be sub-classed directly, <a class="reference internal" href="#gino.declarative.declarative_base" title="gino.declarative.declarative_base"><code class="xref py py-func docutils literal notranslate"><span class="pre">declarative_base()</span></code></a> should
 be used instead to generate a base model class with a given
-<a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/metadata.html#sqlalchemy.schema.MetaData" title="(在 SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetaData</span></code></a>. By defining subclasses of a model, instances
-of <a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/metadata.html#sqlalchemy.schema.Table" title="(在 SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sqlalchemy.schema.Table</span></code></a> will be created and added to the bound
-<a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/metadata.html#sqlalchemy.schema.MetaData" title="(在 SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetaData</span></code></a>. The columns of the
-<a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/metadata.html#sqlalchemy.schema.Table" title="(在 SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Table</span></code></a> instance are defined as
-<a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/metadata.html#sqlalchemy.schema.Column" title="(在 SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Column</span></code></a> attributes:</p>
+<a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/metadata.html#sqlalchemy.schema.MetaData" title="(在 SQLAlchemy v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetaData</span></code></a>. By defining subclasses of a model, instances
+of <a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/metadata.html#sqlalchemy.schema.Table" title="(在 SQLAlchemy v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sqlalchemy.schema.Table</span></code></a> will be created and added to the bound
+<a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/metadata.html#sqlalchemy.schema.MetaData" title="(在 SQLAlchemy v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetaData</span></code></a>. The columns of the
+<a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/metadata.html#sqlalchemy.schema.Table" title="(在 SQLAlchemy v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Table</span></code></a> instance are defined as
+<a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/metadata.html#sqlalchemy.schema.Column" title="(在 SQLAlchemy v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Column</span></code></a> attributes:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">MetaData</span><span class="p">,</span> <span class="n">Column</span><span class="p">,</span> <span class="n">Integer</span><span class="p">,</span> <span class="n">String</span>
 <span class="kn">from</span> <span class="nn">gino.declarative</span> <span class="kn">import</span> <span class="n">declarative_base</span>
 
@@ -220,33 +220,33 @@ with new values, just like normal Python objects:</p>
 <p>Accessing column attributes on a model instance will NOT trigger any database
 operation.</p>
 </div>
-<p><a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/constraints.html#sqlalchemy.schema.Constraint" title="(在 SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Constraint</span></code></a> and <a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/constraints.html#sqlalchemy.schema.Index" title="(在 SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Index</span></code></a> are
+<p><a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/constraints.html#sqlalchemy.schema.Constraint" title="(在 SQLAlchemy v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Constraint</span></code></a> and <a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/constraints.html#sqlalchemy.schema.Index" title="(在 SQLAlchemy v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Index</span></code></a> are
 also allowed as model class attributes. Their attribute names are not used.</p>
 <p>A concrete model class can be used as a replacement of the
-<a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/metadata.html#sqlalchemy.schema.Table" title="(在 SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Table</span></code></a> it reflects in SQLAlchemy queries. The model class
-is also iterable, yielding all the <a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/metadata.html#sqlalchemy.schema.Column" title="(在 SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Column</span></code></a> instances
+<a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/metadata.html#sqlalchemy.schema.Table" title="(在 SQLAlchemy v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Table</span></code></a> it reflects in SQLAlchemy queries. The model class
+is also iterable, yielding all the <a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/metadata.html#sqlalchemy.schema.Column" title="(在 SQLAlchemy v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Column</span></code></a> instances
 defined in the model.</p>
 <p>Other built-in class attributes:</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">__metadata__</span></code></p>
 <p>This is supposed to be set by <a class="reference internal" href="#gino.declarative.declarative_base" title="gino.declarative.declarative_base"><code class="xref py py-func docutils literal notranslate"><span class="pre">declarative_base()</span></code></a> and used only during
 subclass construction. Still, this can be treated as a read-only attribute to
-find out which <a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/metadata.html#sqlalchemy.schema.MetaData" title="(在 SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetaData</span></code></a> this model is bound to.</p>
+find out which <a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/metadata.html#sqlalchemy.schema.MetaData" title="(在 SQLAlchemy v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetaData</span></code></a> this model is bound to.</p>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">__tablename__</span></code></p>
 <p>This is a required attribute to define a concrete model, meaning a
-<a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/metadata.html#sqlalchemy.schema.Table" title="(在 SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sqlalchemy.schema.Table</span></code></a> instance will be created, added to the bound
-<a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/metadata.html#sqlalchemy.schema.MetaData" title="(在 SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetaData</span></code></a> and set to the class attribute <code class="docutils literal notranslate"><span class="pre">__table__</span></code>.
+<a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/metadata.html#sqlalchemy.schema.Table" title="(在 SQLAlchemy v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sqlalchemy.schema.Table</span></code></a> instance will be created, added to the bound
+<a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/metadata.html#sqlalchemy.schema.MetaData" title="(在 SQLAlchemy v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetaData</span></code></a> and set to the class attribute <code class="docutils literal notranslate"><span class="pre">__table__</span></code>.
 Not defining <code class="docutils literal notranslate"><span class="pre">__tablename__</span></code> will result in an abstract model - no table
 instance will be created, and instances of an abstract model are meaningless.</p>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">__table__</span></code></p>
 <p>This should usually be treated as an auto-generated read-only attribute storing
-the <a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/metadata.html#sqlalchemy.schema.Table" title="(在 SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sqlalchemy.schema.Table</span></code></a> instance.</p>
+the <a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/metadata.html#sqlalchemy.schema.Table" title="(在 SQLAlchemy v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sqlalchemy.schema.Table</span></code></a> instance.</p>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">__attr_factory__</span></code></p>
 <p>An attribute factory that is used to wrap the actual
-<a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/metadata.html#sqlalchemy.schema.Column" title="(在 SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Column</span></code></a> instance on the model class, so that the access
+<a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/metadata.html#sqlalchemy.schema.Column" title="(在 SQLAlchemy v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Column</span></code></a> instance on the model class, so that the access
 to the column attributes on model instances is redirected to the in-memory value
 store. The default factory is <a class="reference internal" href="#gino.declarative.ColumnAttribute" title="gino.declarative.ColumnAttribute"><code class="xref py py-class docutils literal notranslate"><span class="pre">ColumnAttribute</span></code></a>, can be override.</p>
 </li>
@@ -264,7 +264,7 @@ instances. Accessing column attributes is equivalent to accessing <code class="d
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>metadata</strong> -- A <a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/metadata.html#sqlalchemy.schema.MetaData" title="(在 SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetaData</span></code></a> instance to contain the
+<li><p><strong>metadata</strong> -- A <a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/metadata.html#sqlalchemy.schema.MetaData" title="(在 SQLAlchemy v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetaData</span></code></a> instance to contain the
 tables.</p></li>
 <li><p><strong>model_classes</strong> -- Base class(es) of the base model class to be created. Default:
 <a class="reference internal" href="#gino.declarative.Model" title="gino.declarative.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></a>.</p></li>
@@ -288,7 +288,7 @@ subclasses, the decorated factory method will be called for each class, the
 returned result will be set on the class in place of the factory method
 under the same name.</p>
 <p><code class="docutils literal notranslate"><span class="pre">&#64;declared_attr</span></code> is implemented differently than
-<a class="reference external" href="https://docs.sqlalchemy.org/en/13/orm/extensions/declarative/api.html#sqlalchemy.ext.declarative.declared_attr" title="(在 SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">declared_attr</span></code></a> of SQLAlchemy, but they
+<code class="xref py py-class docutils literal notranslate"><span class="pre">declared_attr</span></code> of SQLAlchemy, but they
 are both more often used on mixins to dynamically declare indices or
 constraints (also works for column and <code class="docutils literal notranslate"><span class="pre">__table_args__</span></code>, or even normal
 class attributes):</p>

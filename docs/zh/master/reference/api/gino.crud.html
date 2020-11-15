@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="../../_static/favicon.ico">
-    <title>gino.crud module - GINO 1.1.0b1 文档</title>
+    <title>gino.crud module - GINO 1.1.0b2 文档</title>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async
             src="https://www.googletagmanager.com/gtag/js?id=UA-3759436-10"></script>
@@ -239,12 +239,12 @@ initial values. Only available when called on a model class.</p></li>
 <dd><p>Similar to <a class="reference internal" href="#gino.crud.UpdateRequest.update" title="gino.crud.UpdateRequest.update"><code class="xref py py-meth docutils literal notranslate"><span class="pre">update()</span></code></a>, this <code class="docutils literal notranslate"><span class="pre">delete</span></code> is also different on model
 classes than on model instances.</p>
 <p>On model classes <code class="docutils literal notranslate"><span class="pre">delete</span></code> is an attribute of type
-<a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/dml.html#sqlalchemy.sql.expression.Delete" title="(在 SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Delete</span></code></a> for massive deletes, for
+<a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/dml.html#sqlalchemy.sql.expression.Delete" title="(在 SQLAlchemy v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Delete</span></code></a> for massive deletes, for
 example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">await</span> <span class="n">User</span><span class="o">.</span><span class="n">delete</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">User</span><span class="o">.</span><span class="n">enabled</span><span class="o">.</span><span class="n">is_</span><span class="p">(</span><span class="kc">False</span><span class="p">))</span><span class="o">.</span><span class="n">gino</span><span class="o">.</span><span class="n">status</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Similarly you can add a <a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/dml.html#sqlalchemy.sql.expression.Delete.returning" title="(在 SQLAlchemy v1.3)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">returning()</span></code></a>
+<p>Similarly you can add a <a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/dml.html#sqlalchemy.sql.expression.Delete.returning" title="(在 SQLAlchemy v1.4)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">returning()</span></code></a>
 clause to the query and it shall return the deleted rows as model objects.</p>
 <p>And on model instances, <code class="docutils literal notranslate"><span class="pre">delete()</span></code> is a method to remove the
 corresponding row in the database of this model instance. and returns the
@@ -434,7 +434,7 @@ for a given query.</p>
 <dt id="gino.crud.CRUDModel.query">
 <code class="sig-name descname">query</code><a class="headerlink" href="#gino.crud.CRUDModel.query" title="永久链接至目标">¶</a></dt>
 <dd><p>Get a SQLAlchemy query clause of the table behind this model. This equals
-to <a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/selectable.html#sqlalchemy.sql.expression.select" title="(在 SQLAlchemy v1.3)"><code class="xref py py-func docutils literal notranslate"><span class="pre">sqlalchemy.select([self.__table__])</span></code></a>. If this attribute is retrieved on a
+to <a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/selectable.html#sqlalchemy.sql.expression.select" title="(在 SQLAlchemy v1.4)"><code class="xref py py-func docutils literal notranslate"><span class="pre">sqlalchemy.select([self.__table__])</span></code></a>. If this attribute is retrieved on a
 model instance, then a where clause to locate this instance by its primary
 key is appended to the returning query clause. This model type is set as
 the execution option <code class="docutils literal notranslate"><span class="pre">model</span></code> in the returning clause, so by default the
@@ -446,7 +446,7 @@ query yields instances of this model instead of database rows.</p>
 <code class="sig-name descname">select</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.crud.CRUDModel.select" title="永久链接至目标">¶</a></dt>
 <dd><p>Build a query to retrieve only specified columns from this table.</p>
 <p>This method accepts positional string arguments as names of attributes to
-retrieve, and returns a <a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/selectable.html#sqlalchemy.sql.expression.Select" title="(在 SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Select</span></code></a> for
+retrieve, and returns a <a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/selectable.html#sqlalchemy.sql.expression.Select" title="(在 SQLAlchemy v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Select</span></code></a> for
 query. The returning query object is always set with two execution options:</p>
 <ol class="arabic simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">model</span></code> is set to this model type</p></li>
@@ -492,14 +492,14 @@ in the returning dict - instead the JSON attributes will be.</p>
 <dd><p>This <code class="docutils literal notranslate"><span class="pre">update</span></code> behaves quite different on model classes rather than model
 instances.</p>
 <p>On model classes, <code class="docutils literal notranslate"><span class="pre">update</span></code> is an attribute of type
-<a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/dml.html#sqlalchemy.sql.expression.Update" title="(在 SQLAlchemy v1.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Update</span></code></a> for massive updates, for
+<a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/dml.html#sqlalchemy.sql.expression.Update" title="(在 SQLAlchemy v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Update</span></code></a> for massive updates, for
 example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">await</span> <span class="n">User</span><span class="o">.</span><span class="n">update</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="n">enabled</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="o">...</span><span class="p">)</span><span class="o">.</span><span class="n">gino</span><span class="o">.</span><span class="n">status</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Like <a class="reference internal" href="#gino.crud.CRUDModel.query" title="gino.crud.CRUDModel.query"><code class="xref py py-attr docutils literal notranslate"><span class="pre">query</span></code></a>, the update query also has the <code class="docutils literal notranslate"><span class="pre">model</span></code> execution
 option of this model, so if you use the
-<a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/dml.html#sqlalchemy.sql.expression.Update.returning" title="(在 SQLAlchemy v1.3)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">returning()</span></code></a> clause, the query shall
+<a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/dml.html#sqlalchemy.sql.expression.Update.returning" title="(在 SQLAlchemy v1.4)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">returning()</span></code></a> clause, the query shall
 return model objects.</p>
 <p>However on model instances, <code class="docutils literal notranslate"><span class="pre">update()</span></code> is a method which accepts keyword
 arguments only and returns an <a class="reference internal" href="#gino.crud.UpdateRequest" title="gino.crud.UpdateRequest"><code class="xref py py-class docutils literal notranslate"><span class="pre">UpdateRequest</span></code></a> to update this single
