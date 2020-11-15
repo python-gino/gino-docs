@@ -1,0 +1,7 @@
+gino.bakery module
+==================
+
+.. automodule:: gino.bakery
+   :members:
+   :undoc-members:
+   :show-inheritance:

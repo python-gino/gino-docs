@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="_static/favicon.ico">
+    <title>进阶用法 - GINO 1.1.0b2 文档</title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async
+            src="https://www.googletagmanager.com/gtag/js?id=UA-3759436-10"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag () {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'UA-3759436-10');
+    </script>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Raleway:400,500,600,700&display=swap">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css">
+    <link type="text/css" rel="stylesheet"
+          href="_static/css/materialize.min.css"
+          media="screen,projection"/>
+    <link rel="stylesheet" href="_static/pygments.css"
+          type="text/css"/>
+    <link type="text/css" rel="stylesheet"
+          href="_static/css/gino.css"/>
+</head>
+<body>
+
+<header>
+    <div class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper">
+                <a href="#" data-target="sidenav" class="sidenav-trigger"><hr><hr><hr></a>
+                <a href="index.html" class="brand-logo">
+                    <div class="img"
+                         style="background-image: url(_static/logo.svg); width: 103px; height: 40px;"></div>
+                </a>
+                <div class="breadcrumbs">
+                    <a class="breadcrumb" style="display: none"></a>
+                    
+                    
+                        <a class="breadcrumb" style="color: #FFFFFF">进阶用法</a>
+                    
+                </div>
+                <div class="spacer"></div>
+                <div id="search-container" class="search">
+                    <input type="text" id="search" placeholder="搜索">
+                    <i class="mdi mdi-magnify"></i>
+                    <div id="search-results" style="display: none"></div>
+                </div>
+                <a class="btn-flat theme-dark" href="/">
+                    首页
+                </a>
+                <a class="btn-flat theme-dark" href="/authors.html">
+                    鸣谢
+                </a>
+                <a href="https://github.com/python-gino/gino" target="_blank"
+                   class="github-stars">
+                    <div class="left"><img
+                        src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iNDNweCIgaGVpZ2h0PSI0MnB4IiB2aWV3Qm94PSIwIDAgNDMgNDIiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8IS0tIEdlbmVyYXRvcjogU2tldGNoIDYxLjIgKDg5NjUzKSAtIGh0dHBzOi8vc2tldGNoLmNvbSAtLT4KICAgIDx0aXRsZT5GaWxsIDQ5PC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPgogICAgPGcgaWQ9IlYzLeacgOaWsOeov+S7tiIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgaWQ9IkhPTUUtdjMiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0xNTA3LjAwMDAwMCwgLTQ5LjAwMDAwMCkiIGZpbGw9IiNGRkZGRkUiPgogICAgICAgICAgICA8ZyBpZD0iYmFubmVyLWJnIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMzc5LjAwMDAwMCwgLTE4Ny4wMDAwMDApIj4KICAgICAgICAgICAgICAgIDxnIGlkPSJoZWFkZXIiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDU5Ny4wMDAwMDAsIDIxOC4wMDAwMDApIj4KICAgICAgICAgICAgICAgICAgICA8cGF0aCBkPSJNMTMxMC40OTgwMiwxOCBDMTI5OC42MjcxMiwxOCAxMjg5LDI3LjYzOTg4MzEgMTI4OSwzOS41MzIxMTIzIEMxMjg5LDQ5LjA0NTEwMjYgMTI5NS4xNTk4Myw1Ny4xMTQ2ODggMTMwMy43MDMzNCw1OS45NjE4NDM5IEMxMzA0Ljc3OTAzLDYwLjE2MDExMzggMTMwNS4xNzEwMyw1OS40OTUyNDg3IDEzMDUuMTcxMDMsNTguOTI0MjMxMyBDMTMwNS4xNzEwMyw1OC40MTI2OTUgMTMwNS4xNTI1NSw1Ny4wNTkxNzI0IDEzMDUuMTQxOTksNTUuMjYyODQ3IEMxMjk5LjE2MTY3LDU2LjU2MzQ5NzYgMTI5Ny44OTk4Nyw1Mi4zNzYwMzcxIDEyOTcuODk5ODcsNTIuMzc2MDM3MSBDMTI5Ni45MjE4NSw0OS44ODg0MTA2IDEyOTUuNTEyMjMsNDkuMjI2MTg5MSAxMjk1LjUxMjIzLDQ5LjIyNjE4OTEgQzEyOTMuNTYwMTUsNDcuODkxMTcxNyAxMjk1LjY2MDA2LDQ3LjkxNzYwNzcgMTI5NS42NjAwNiw0Ny45MTc2MDc3IEMxMjk3LjgxODA0LDQ4LjA2OTYxNDYgMTI5OC45NTMxMyw1MC4xMzY5MDg5IDEyOTguOTUzMTMsNTAuMTM2OTA4OSBDMTMwMC44NzA5LDUzLjQyNjg2NzYgMTMwMy45ODU3OSw1Mi40NzY0OTM4IDEzMDUuMjEwNjMsNTEuOTI1MzAzNSBDMTMwNS40MDU5Nyw1MC41MzQ3NzA1IDEzMDUuOTYxNjMsNDkuNTg1NzE4NiAxMzA2LjU3NTM3LDQ5LjA0Nzc0NjIgQzEzMDEuODAxNDEsNDguNTA0NDg2NiAxMjk2Ljc4MTk1LDQ2LjY1NjYxMTEgMTI5Ni43ODE5NSwzOC40MDU5MzkyIEMxMjk2Ljc4MTk1LDM2LjA1NTc3OTkgMTI5Ny42MjAwNiwzNC4xMzI1NjE3IDEyOTguOTk1MzcsMzIuNjI4MzU0IEMxMjk4Ljc3MzYzLDMyLjA4Mzc3MjYgMTI5OC4wMzU4MiwyOS44OTM1NTEgMTI5OS4yMDY1NCwyNi45MzAwNzY4IEMxMjk5LjIwNjU0LDI2LjkzMDA3NjggMTMwMS4wMTA4LDI2LjM1MTEyODYgMTMwNS4xMTgyNCwyOS4xMzc0ODE4IEMxMzA2LjgzMjc1LDI4LjY1ODk5MDQgMTMwOC42NzI2NCwyOC40MjEwNjY1IDEzMTAuNTAwNjYsMjguNDExODEzOSBDMTMxMi4zMjczNiwyOC40MjEwNjY1IDEzMTQuMTY1OTQsMjguNjU4OTkwNCAxMzE1Ljg4MzA4LDI5LjEzNzQ4MTggQzEzMTkuOTg3ODgsMjYuMzUxMTI4NiAxMzIxLjc4OTUsMjYuOTMwMDc2OCAxMzIxLjc4OTUsMjYuOTMwMDc2OCBDMTMyMi45NjI4NiwyOS44OTM1NTEgMTMyMi4yMjUwNSwzMi4wODM3NzI2IDEzMjIuMDA0NjMsMzIuNjI4MzU0IEMxMzIzLjM4MjU4LDM0LjEzMjU2MTcgMTMyNC4yMTQwOSwzNi4wNTU3Nzk5IDEzMjQuMjE0MDksMzguNDA1OTM5MiBDMTMyNC4yMTQwOSw0Ni42Nzc3NTk5IDEzMTkuMTg2NzIsNDguNDk3ODc3NiAxMzE0LjM5ODIzLDQ5LjAzMDU2MjggQzEzMTUuMTY5MDQsNDkuNjk1NDI3OSAxMzE1Ljg1NjY5LDUxLjAwOTI5NjUgMTMxNS44NTY2OSw1My4wMTcxMDk4IEMxMzE1Ljg1NjY5LDU1Ljg5NTk4ODkgMTMxNS44MzAyOSw1OC4yMTgzOTA1IDEzMTUuODMwMjksNTguOTI0MjMxMyBDMTMxNS44MzAyOSw1OS41MDA1MzU5IDEzMTYuMjE4MzMsNjAuMTcwNjg4MiAxMzE3LjMwODU0LDU5Ljk2MDUyMjEgQzEzMjUuODQ1NDUsNTcuMTA2NzU3MiAxMzMyLDQ5LjA0MjQ1OSAxMzMyLDM5LjUzMjExMjMgQzEzMzIsMjcuNjM5ODgzMSAxMzIyLjM3Mjg4LDE4IDEzMTAuNDk4MDIsMTgiIGlkPSJGaWxsLTQ5Ij48L3BhdGg+CiAgICAgICAgICAgICAgICA8L2c+CiAgICAgICAgICAgIDwvZz4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPg=="
+                        class="github-logo">
+                        GitHub
+                    </div>
+                    <div class="right"><img
+                        src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMjFweCIgaGVpZ2h0PSIxOXB4IiB2aWV3Qm94PSIwIDAgMjEgMTkiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8IS0tIEdlbmVyYXRvcjogU2tldGNoIDYxLjIgKDg5NjUzKSAtIGh0dHBzOi8vc2tldGNoLmNvbSAtLT4KICAgIDx0aXRsZT5QYXRoPC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPgogICAgPGcgaWQ9IlYzLeacgOaWsOeov+S7tiIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgaWQ9IkhPTUUtdjMiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0xNTYxLjAwMDAwMCwgLTYwLjAwMDAwMCkiIGZpbGw9IiNGOEQyMzAiPgogICAgICAgICAgICA8ZyBpZD0iYmFubmVyLWJnIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMzc5LjAwMDAwMCwgLTE4Ny4wMDAwMDApIj4KICAgICAgICAgICAgICAgIDxnIGlkPSJoZWFkZXIiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDU5Ny4wMDAwMDAsIDIxOC4wMDAwMDApIj4KICAgICAgICAgICAgICAgICAgICA8ZyBpZD0ibGFiZWwtY29weS0xMiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTI4OS4wMDAwMDAsIDE4LjAwMDAwMCkiPgogICAgICAgICAgICAgICAgICAgICAgICA8cG9seWdvbiBpZD0iUGF0aCIgcG9pbnRzPSI2MS4wNTQzNTQzIDE3Ljc1NzM4MzYgNTQuMjE1MjQ2NiAxOC4zMTMzOTI5IDU5Ljg4OTM1MTcgMjIuOTczNzM4NyA1Ny43ODQ1MjI4IDI5Ljg0MDExODQgNjQuNDQyNTI3MSAyNi41NDM0MTg4IDcwLjU3NzcyMzkgMjkuODQwMTE4NCA2OS4yMzA0MzI1IDIyLjk3MzczODcgNzQuNzMyNTY5NiAxOC4zMTMzOTI5IDY3Ljg5MzQ2MiAxNy43NTczODM2IDY0LjQ0MjUyNzEgMTEuMzc1Ij48L3BvbHlnb24+CiAgICAgICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICA8L2c+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4=">
+                        <span id="github-star-num"></span>
+                    </div>
+                </a>
+            </div>
+        </nav>
+    </div>
+
+    <div id="sidenav" class="sidenav sidenav-fixed">
+        <p class="caption"><span class="caption-text">上手教程</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">上手教程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/announcement.html">官宣：Python 异步编程再添一利器</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/tutorial.html">GINO 基础教程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/fastapi.html">搭建一个 FastAPI 服务器</a></li>
+</ul>
+<p class="caption"><span class="caption-text">进阶用法</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">进阶用法</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="how-to/alembic.html">使用 Alembic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-to/bakery.html">预制查询</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-to/contributing.html">贡献</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-to/crud.html">增删改查</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-to/faq.html">常见问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-to/json-props.html">JSON 扩展属性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-to/loaders.html">加载器与关系</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-to/pool.html">连接池</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-to/schema.html">表结构定义</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-to/transaction.html">数据库事务</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="how-to/alembic.html">使用 Alembic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-to/bakery.html">预制查询</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-to/contributing.html">贡献</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-to/crud.html">增删改查</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-to/faq.html">常见问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-to/json-props.html">JSON 扩展属性</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-to/loaders.html">加载器与关系</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-to/pool.html">连接池</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-to/schema.html">表结构定义</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-to/transaction.html">数据库事务</a></li>
+</ul>
+<p class="caption"><span class="caption-text">原理说明</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="explanation.html">原理说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="explanation/async.html">异步编程基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="explanation/engine.html">引擎与连接</a></li>
+<li class="toctree-l1"><a class="reference internal" href="explanation/sa20.html">SQLAlchemy 2.0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="explanation/why.html">为什么要用异步 ORM？</a></li>
+</ul>
+<p class="caption"><span class="caption-text">参考手册</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">参考手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/api.html">API 参考</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/extensions.html">扩展</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/history.html">版本历史</a></li>
+</ul>
+
+    </div>
+</header>
+
+<main>
+    <div class="row">
+        <div class="col s12 m9 body">
+            <div id="main-content" role="main">
+                
+    <div class="section" id="how-to-guides">
+<h1>进阶用法<a class="headerlink" href="#how-to-guides" title="永久链接至标题">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="how-to/alembic.html">使用 Alembic</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="how-to/alembic.html#set-up-alembic">Set up Alembic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-to/alembic.html#create-first-migration-revision">Create first migration revision</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-to/alembic.html#apply-migration-on-db">Apply migration on DB</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="how-to/bakery.html">预制查询</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="how-to/bakery.html#use-bakery-with-bare-engine">Use Bakery with Bare Engine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-to/bakery.html#use-the-gino-integration">Use the <code class="xref py py-class docutils literal notranslate"><span class="pre">Gino</span></code> Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-to/bakery.html#how-to-customize-loaders">How to customize loaders?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-to/bakery.html#what-apis-are-available-on-bakedquery">What APIs are available on <code class="xref py py-class docutils literal notranslate"><span class="pre">BakedQuery</span></code>?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-to/bakery.html#i-don-t-want-the-prepared-statements">I don't want the prepared statements.</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="how-to/contributing.html">贡献</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="how-to/contributing.html#types-of-contributions">Types of Contributions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="how-to/contributing.html#report-bugs">报告错误</a></li>
+<li class="toctree-l3"><a class="reference internal" href="how-to/contributing.html#fix-bugs">修复错误</a></li>
+<li class="toctree-l3"><a class="reference internal" href="how-to/contributing.html#implement-features">实现功能</a></li>
+<li class="toctree-l3"><a class="reference internal" href="how-to/contributing.html#write-documentation">写文档</a></li>
+<li class="toctree-l3"><a class="reference internal" href="how-to/contributing.html#submit-feedback">提交反馈</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="how-to/contributing.html#get-started">Get Started!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-to/contributing.html#pull-request-guidelines">Pull Request Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-to/contributing.html#tips">Tips</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="how-to/crud.html">增删改查</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-to/faq.html">常见问题</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="how-to/faq.html#sqlalchemy-1-4-supports-asyncio-what-will-gino-be">SQLAlchemy 1.4 supports asyncio, what will GINO be?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-to/faq.html#orm-or-not-orm">ORM or not ORM?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-to/faq.html#can-i-use-features-of-sqlalchemy-orm">Can I use features of SQLAlchemy ORM?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-to/faq.html#how-to-join">How to join?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-to/faq.html#how-to-connect-to-database-through-ssl">How to connect to database through SSL?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-to/faq.html#what-is-aiocontextvars-and-what-does-it-do">What is aiocontextvars and what does it do?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-to/faq.html#how-to-define-relationships">How to define relationships?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-to/faq.html#how-to-define-index-with-multiple-columns">How to define index with multiple columns?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-to/faq.html#is-there-a-django-admin-interface-for-gino">Is there a django admin interface for GINO?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-to/faq.html#how-to-use-multiple-databases-for-different-users-on-the-fly">How to use multiple databases for different users on the fly?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-to/faq.html#how-to-load-complex-query-results">How to load complex query results?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-to/faq.html#how-to-do-bulk-or-batch-insert-update">How to do bulk or batch insert / update?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-to/faq.html#how-to-print-the-executed-sql">How to print the executed SQL?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-to/faq.html#how-to-run-exists-sql">How to run <code class="docutils literal notranslate"><span class="pre">EXISTS</span></code> SQL?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-to/faq.html#how-to-work-with-alembic">How to work with Alembic?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-to/faq.html#how-to-join-the-same-table-twice">How to join the same table twice?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-to/faq.html#how-to-execute-raw-sql-with-parameters">How to execute raw SQL with parameters?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-to/faq.html#gino-engine-is-not-initialized">Gino engine is not initialized?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-to/faq.html#how-can-i-do-sql-xxxx-in-gino">How can I do SQL xxxx in GINO?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="how-to/json-props.html">JSON 扩展属性</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="how-to/json-props.html#quick-start">Quick Start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-to/json-props.html#hooks">Hooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-to/json-props.html#create-index-on-json-properties">Create Index on JSON Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="how-to/loaders.html">加载器与关系</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="how-to/loaders.html#model-loader">Model Loader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-to/loaders.html#loader-expression">Loader Expression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-to/loaders.html#many-to-one-relationship">Many-to-One Relationship</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-to/loaders.html#self-referencing">Self Referencing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-to/loaders.html#other-relationships">Other Relationships</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-to/loaders.html#advanced-usage-of-loaders">Advanced Usage of Loaders</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="how-to/pool.html">连接池</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-to/schema.html">表结构定义</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="how-to/schema.html#gino-engine">GINO Engine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-to/schema.html#gino-core">GINO Core</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-to/schema.html#gino-orm">GINO ORM</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="how-to/transaction.html">数据库事务</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="how-to/transaction.html#basic-usage">Basic usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-to/transaction.html#nested-transactions">Nested Transactions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-to/transaction.html#manual-control">Manual Control</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+            </div>
+            <p style="text-align: center; font-size: 12px;">
+                <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+                    <img
+                        alt="知识共享许可协议"
+                        style="border-width:0"
+                        src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png"
+                    />
+                </a>
+                <br/>
+                本作品采用<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">知识共享署名-相同方式共享 4.0 国际许可协议</a>进行许可。
+            </p>
+        </div>
+
+        <div class="col hide-on-small-only m3 right-nav">
+            <div class="table-of-contents fixed">
+                
+                    <ul>
+<li><a class="reference internal" href="#">进阶用法</a></li>
+</ul>
+
+                
+                <div id="version-selector">
+                    
+                    
+                </div>
+                <div class="add-your-lang">
+                    <a href="https://www.transifex.com/decentfox-studio/gino_1_0/"
+                       target="_blank">Add your language here.</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="fixed-action-btn click-to-toggle">
+        <a class="btn-floating btn-large white">
+            <img src="_static/images/language.svg">
+            <div>
+              ZH
+            </div>
+        </a>
+        <ul id="lang-selector">
+        </ul>
+    </div>
+</main>
+
+<script type="text/javascript" src="_static/js/materialize.min.js"></script>
+<script type="text/javascript" src="_static/js/language_data.js"></script>
+<script id="documentation_options" data-url_root="./" src="_static/js/documentation_options.js"></script>
+<script type="text/javascript" src="_static/js/underscore.js"></script>
+<script type="text/javascript" src="_static/js/jquery.js"></script>
+<script type="text/javascript">
+    var sver = '1.1';
+    var language = 'zh';
+    var pagename = 'how-to';
+</script>
+<script type="text/javascript" src="_static/js/gino.js"></script>
+<script type="text/javascript" src="searchindex.js"></script>
+</body>
+</html>
