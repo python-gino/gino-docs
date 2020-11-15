@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="../../_static/favicon.ico">
+    <title>gino.dialects.asyncpg module - GINO 1.1.0b2 documentation</title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async
+            src="https://www.googletagmanager.com/gtag/js?id=UA-3759436-10"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag () {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'UA-3759436-10');
+    </script>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Raleway:400,500,600,700&display=swap">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css">
+    <link type="text/css" rel="stylesheet"
+          href="../../_static/css/materialize.min.css"
+          media="screen,projection"/>
+    <link rel="stylesheet" href="../../_static/pygments.css"
+          type="text/css"/>
+    <link type="text/css" rel="stylesheet"
+          href="../../_static/css/gino.css"/>
+</head>
+<body>
+
+<header>
+    <div class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper">
+                <a href="#" data-target="sidenav" class="sidenav-trigger"><hr><hr><hr></a>
+                <a href="../../index.html" class="brand-logo">
+                    <div class="img"
+                         style="background-image: url(../../_static/logo.svg); width: 103px; height: 40px;"></div>
+                </a>
+                <div class="breadcrumbs">
+                    <a class="breadcrumb" style="display: none"></a>
+                    
+                        <a href="../../reference.html"
+                           class="breadcrumb">Reference</a>
+                    
+                        <a href="../api.html"
+                           class="breadcrumb">API Reference</a>
+                    
+                        <a href="gino.html"
+                           class="breadcrumb">gino package</a>
+                    
+                        <a href="gino.dialects.html"
+                           class="breadcrumb">gino.dialects package</a>
+                    
+                    
+                        <a class="breadcrumb" style="color: #FFFFFF">gino.dialects.asyncpg module</a>
+                    
+                </div>
+                <div class="spacer"></div>
+                <div id="search-container" class="search">
+                    <input type="text" id="search" placeholder="Search">
+                    <i class="mdi mdi-magnify"></i>
+                    <div id="search-results" style="display: none"></div>
+                </div>
+                <a class="btn-flat theme-dark" href="/">
+                    HOME
+                </a>
+                <a class="btn-flat theme-dark" href="/authors.html">
+                    CREDITS
+                </a>
+                <a href="https://github.com/python-gino/gino" target="_blank"
+                   class="github-stars">
+                    <div class="left"><img
+                        src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iNDNweCIgaGVpZ2h0PSI0MnB4IiB2aWV3Qm94PSIwIDAgNDMgNDIiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8IS0tIEdlbmVyYXRvcjogU2tldGNoIDYxLjIgKDg5NjUzKSAtIGh0dHBzOi8vc2tldGNoLmNvbSAtLT4KICAgIDx0aXRsZT5GaWxsIDQ5PC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPgogICAgPGcgaWQ9IlYzLeacgOaWsOeov+S7tiIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgaWQ9IkhPTUUtdjMiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0xNTA3LjAwMDAwMCwgLTQ5LjAwMDAwMCkiIGZpbGw9IiNGRkZGRkUiPgogICAgICAgICAgICA8ZyBpZD0iYmFubmVyLWJnIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMzc5LjAwMDAwMCwgLTE4Ny4wMDAwMDApIj4KICAgICAgICAgICAgICAgIDxnIGlkPSJoZWFkZXIiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDU5Ny4wMDAwMDAsIDIxOC4wMDAwMDApIj4KICAgICAgICAgICAgICAgICAgICA8cGF0aCBkPSJNMTMxMC40OTgwMiwxOCBDMTI5OC42MjcxMiwxOCAxMjg5LDI3LjYzOTg4MzEgMTI4OSwzOS41MzIxMTIzIEMxMjg5LDQ5LjA0NTEwMjYgMTI5NS4xNTk4Myw1Ny4xMTQ2ODggMTMwMy43MDMzNCw1OS45NjE4NDM5IEMxMzA0Ljc3OTAzLDYwLjE2MDExMzggMTMwNS4xNzEwMyw1OS40OTUyNDg3IDEzMDUuMTcxMDMsNTguOTI0MjMxMyBDMTMwNS4xNzEwMyw1OC40MTI2OTUgMTMwNS4xNTI1NSw1Ny4wNTkxNzI0IDEzMDUuMTQxOTksNTUuMjYyODQ3IEMxMjk5LjE2MTY3LDU2LjU2MzQ5NzYgMTI5Ny44OTk4Nyw1Mi4zNzYwMzcxIDEyOTcuODk5ODcsNTIuMzc2MDM3MSBDMTI5Ni45MjE4NSw0OS44ODg0MTA2IDEyOTUuNTEyMjMsNDkuMjI2MTg5MSAxMjk1LjUxMjIzLDQ5LjIyNjE4OTEgQzEyOTMuNTYwMTUsNDcuODkxMTcxNyAxMjk1LjY2MDA2LDQ3LjkxNzYwNzcgMTI5NS42NjAwNiw0Ny45MTc2MDc3IEMxMjk3LjgxODA0LDQ4LjA2OTYxNDYgMTI5OC45NTMxMyw1MC4xMzY5MDg5IDEyOTguOTUzMTMsNTAuMTM2OTA4OSBDMTMwMC44NzA5LDUzLjQyNjg2NzYgMTMwMy45ODU3OSw1Mi40NzY0OTM4IDEzMDUuMjEwNjMsNTEuOTI1MzAzNSBDMTMwNS40MDU5Nyw1MC41MzQ3NzA1IDEzMDUuOTYxNjMsNDkuNTg1NzE4NiAxMzA2LjU3NTM3LDQ5LjA0Nzc0NjIgQzEzMDEuODAxNDEsNDguNTA0NDg2NiAxMjk2Ljc4MTk1LDQ2LjY1NjYxMTEgMTI5Ni43ODE5NSwzOC40MDU5MzkyIEMxMjk2Ljc4MTk1LDM2LjA1NTc3OTkgMTI5Ny42MjAwNiwzNC4xMzI1NjE3IDEyOTguOTk1MzcsMzIuNjI4MzU0IEMxMjk4Ljc3MzYzLDMyLjA4Mzc3MjYgMTI5OC4wMzU4MiwyOS44OTM1NTEgMTI5OS4yMDY1NCwyNi45MzAwNzY4IEMxMjk5LjIwNjU0LDI2LjkzMDA3NjggMTMwMS4wMTA4LDI2LjM1MTEyODYgMTMwNS4xMTgyNCwyOS4xMzc0ODE4IEMxMzA2LjgzMjc1LDI4LjY1ODk5MDQgMTMwOC42NzI2NCwyOC40MjEwNjY1IDEzMTAuNTAwNjYsMjguNDExODEzOSBDMTMxMi4zMjczNiwyOC40MjEwNjY1IDEzMTQuMTY1OTQsMjguNjU4OTkwNCAxMzE1Ljg4MzA4LDI5LjEzNzQ4MTggQzEzMTkuOTg3ODgsMjYuMzUxMTI4NiAxMzIxLjc4OTUsMjYuOTMwMDc2OCAxMzIxLjc4OTUsMjYuOTMwMDc2OCBDMTMyMi45NjI4NiwyOS44OTM1NTEgMTMyMi4yMjUwNSwzMi4wODM3NzI2IDEzMjIuMDA0NjMsMzIuNjI4MzU0IEMxMzIzLjM4MjU4LDM0LjEzMjU2MTcgMTMyNC4yMTQwOSwzNi4wNTU3Nzk5IDEzMjQuMjE0MDksMzguNDA1OTM5MiBDMTMyNC4yMTQwOSw0Ni42Nzc3NTk5IDEzMTkuMTg2NzIsNDguNDk3ODc3NiAxMzE0LjM5ODIzLDQ5LjAzMDU2MjggQzEzMTUuMTY5MDQsNDkuNjk1NDI3OSAxMzE1Ljg1NjY5LDUxLjAwOTI5NjUgMTMxNS44NTY2OSw1My4wMTcxMDk4IEMxMzE1Ljg1NjY5LDU1Ljg5NTk4ODkgMTMxNS44MzAyOSw1OC4yMTgzOTA1IDEzMTUuODMwMjksNTguOTI0MjMxMyBDMTMxNS44MzAyOSw1OS41MDA1MzU5IDEzMTYuMjE4MzMsNjAuMTcwNjg4MiAxMzE3LjMwODU0LDU5Ljk2MDUyMjEgQzEzMjUuODQ1NDUsNTcuMTA2NzU3MiAxMzMyLDQ5LjA0MjQ1OSAxMzMyLDM5LjUzMjExMjMgQzEzMzIsMjcuNjM5ODgzMSAxMzIyLjM3Mjg4LDE4IDEzMTAuNDk4MDIsMTgiIGlkPSJGaWxsLTQ5Ij48L3BhdGg+CiAgICAgICAgICAgICAgICA8L2c+CiAgICAgICAgICAgIDwvZz4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPg=="
+                        class="github-logo">
+                        GitHub
+                    </div>
+                    <div class="right"><img
+                        src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMjFweCIgaGVpZ2h0PSIxOXB4IiB2aWV3Qm94PSIwIDAgMjEgMTkiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8IS0tIEdlbmVyYXRvcjogU2tldGNoIDYxLjIgKDg5NjUzKSAtIGh0dHBzOi8vc2tldGNoLmNvbSAtLT4KICAgIDx0aXRsZT5QYXRoPC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPgogICAgPGcgaWQ9IlYzLeacgOaWsOeov+S7tiIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgaWQ9IkhPTUUtdjMiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0xNTYxLjAwMDAwMCwgLTYwLjAwMDAwMCkiIGZpbGw9IiNGOEQyMzAiPgogICAgICAgICAgICA8ZyBpZD0iYmFubmVyLWJnIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMzc5LjAwMDAwMCwgLTE4Ny4wMDAwMDApIj4KICAgICAgICAgICAgICAgIDxnIGlkPSJoZWFkZXIiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDU5Ny4wMDAwMDAsIDIxOC4wMDAwMDApIj4KICAgICAgICAgICAgICAgICAgICA8ZyBpZD0ibGFiZWwtY29weS0xMiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTI4OS4wMDAwMDAsIDE4LjAwMDAwMCkiPgogICAgICAgICAgICAgICAgICAgICAgICA8cG9seWdvbiBpZD0iUGF0aCIgcG9pbnRzPSI2MS4wNTQzNTQzIDE3Ljc1NzM4MzYgNTQuMjE1MjQ2NiAxOC4zMTMzOTI5IDU5Ljg4OTM1MTcgMjIuOTczNzM4NyA1Ny43ODQ1MjI4IDI5Ljg0MDExODQgNjQuNDQyNTI3MSAyNi41NDM0MTg4IDcwLjU3NzcyMzkgMjkuODQwMTE4NCA2OS4yMzA0MzI1IDIyLjk3MzczODcgNzQuNzMyNTY5NiAxOC4zMTMzOTI5IDY3Ljg5MzQ2MiAxNy43NTczODM2IDY0LjQ0MjUyNzEgMTEuMzc1Ij48L3BvbHlnb24+CiAgICAgICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICA8L2c+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4=">
+                        <span id="github-star-num"></span>
+                    </div>
+                </a>
+            </div>
+        </nav>
+    </div>
+
+    <div id="sidenav" class="sidenav sidenav-fixed">
+        <p class="caption"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/announcement.html">官宣：Python 异步编程再添一利器</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/tutorial.html">GINO Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/fastapi.html">Build a FastAPI Server</a></li>
+</ul>
+<p class="caption"><span class="caption-text">How-to Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to.html">How-to Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to/alembic.html">Use Alembic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to/bakery.html">Bake Queries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to/contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to/crud.html">CRUD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to/faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to/json-props.html">JSON Property</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to/loaders.html">Loaders and Relationship</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to/pool.html">Connection Pool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to/schema.html">Schema Declaration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to/transaction.html">Transaction</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Explanation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../explanation.html">Explanation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../explanation/async.html">Asynchronous Programming 101</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../explanation/engine.html">Engine and Connection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../explanation/sa20.html">SQLAlchemy 2.0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../explanation/why.html">Why Asynchronous ORM?</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../reference.html">Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../api.html">API Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extensions.html">Extensions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../history.html">History</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="gino.html">gino package</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../extensions.html">Extensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../history.html">History</a></li>
+</ul>
+
+    </div>
+</header>
+
+<main>
+    <div class="row">
+        <div class="col s12 m9 body">
+            <div id="main-content" role="main">
+                
+    <div class="section" id="module-gino.dialects.asyncpg">
+<span id="gino-dialects-asyncpg-module"></span><h1>gino.dialects.asyncpg module<a class="headerlink" href="#module-gino.dialects.asyncpg" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="gino.dialects.asyncpg.AsyncEnum">
+<em class="property">class </em><code class="sig-prename descclassname">gino.dialects.asyncpg.</code><code class="sig-name descname">AsyncEnum</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">enums</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kw</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.asyncpg.AsyncEnum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sqlalchemy.dialects.postgresql.base.ENUM</span></code></p>
+<dl class="py method">
+<dt id="gino.dialects.asyncpg.AsyncEnum.create_async">
+<em class="property">async </em><code class="sig-name descname">create_async</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bind</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">checkfirst</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.asyncpg.AsyncEnum.create_async" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="gino.dialects.asyncpg.AsyncEnum.drop_async">
+<em class="property">async </em><code class="sig-name descname">drop_async</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bind</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">checkfirst</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.asyncpg.AsyncEnum.drop_async" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="gino.dialects.asyncpg.AsyncpgCompiler">
+<em class="property">class </em><code class="sig-prename descclassname">gino.dialects.asyncpg.</code><code class="sig-name descname">AsyncpgCompiler</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dialect</span></em>, <em class="sig-param"><span class="n">statement</span></em>, <em class="sig-param"><span class="n">column_keys</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">inline</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.asyncpg.AsyncpgCompiler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sqlalchemy.dialects.postgresql.base.PGCompiler</span></code></p>
+<dl class="py method">
+<dt id="gino.dialects.asyncpg.AsyncpgCompiler.bindtemplate">
+<em class="property">property </em><code class="sig-name descname">bindtemplate</code><a class="headerlink" href="#gino.dialects.asyncpg.AsyncpgCompiler.bindtemplate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="gino.dialects.asyncpg.AsyncpgCursor">
+<em class="property">class </em><code class="sig-prename descclassname">gino.dialects.asyncpg.</code><code class="sig-name descname">AsyncpgCursor</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">context</span></em>, <em class="sig-param"><span class="n">cursor</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.asyncpg.AsyncpgCursor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="gino.dialects.base.html#gino.dialects.base.Cursor" title="gino.dialects.base.Cursor"><code class="xref py py-class docutils literal notranslate"><span class="pre">gino.dialects.base.Cursor</span></code></a></p>
+<dl class="py method">
+<dt id="gino.dialects.asyncpg.AsyncpgCursor.forward">
+<em class="property">async </em><code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param">n</em>, <em class="sig-param">*</em>, <em class="sig-param">timeout=&lt;object object&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.asyncpg.AsyncpgCursor.forward" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="gino.dialects.asyncpg.AsyncpgCursor.many">
+<em class="property">async </em><code class="sig-name descname">many</code><span class="sig-paren">(</span><em class="sig-param">n</em>, <em class="sig-param">*</em>, <em class="sig-param">timeout=&lt;object object&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.asyncpg.AsyncpgCursor.many" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="gino.dialects.asyncpg.AsyncpgCursor.next">
+<em class="property">async </em><code class="sig-name descname">next</code><span class="sig-paren">(</span><em class="sig-param">*</em>, <em class="sig-param">timeout=&lt;object object&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.asyncpg.AsyncpgCursor.next" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="gino.dialects.asyncpg.AsyncpgDBAPI">
+<em class="property">class </em><code class="sig-prename descclassname">gino.dialects.asyncpg.</code><code class="sig-name descname">AsyncpgDBAPI</code><a class="headerlink" href="#gino.dialects.asyncpg.AsyncpgDBAPI" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="gino.dialects.base.html#gino.dialects.base.BaseDBAPI" title="gino.dialects.base.BaseDBAPI"><code class="xref py py-class docutils literal notranslate"><span class="pre">gino.dialects.base.BaseDBAPI</span></code></a></p>
+<dl class="py attribute">
+<dt id="gino.dialects.asyncpg.AsyncpgDBAPI.Error">
+<code class="sig-name descname">Error</code><em class="property"> = (&lt;class 'asyncpg.exceptions._base.PostgresError'&gt;, &lt;class 'asyncpg.exceptions._base.InterfaceError'&gt;)</em><a class="headerlink" href="#gino.dialects.asyncpg.AsyncpgDBAPI.Error" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="gino.dialects.asyncpg.AsyncpgDialect">
+<em class="property">class </em><code class="sig-prename descclassname">gino.dialects.asyncpg.</code><code class="sig-name descname">AsyncpgDialect</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="n">bakery</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.asyncpg.AsyncpgDialect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sqlalchemy.dialects.postgresql.base.PGDialect</span></code>, <a class="reference internal" href="gino.dialects.base.html#gino.dialects.base.AsyncDialectMixin" title="gino.dialects.base.AsyncDialectMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">gino.dialects.base.AsyncDialectMixin</span></code></a></p>
+<dl class="py attribute">
+<dt id="gino.dialects.asyncpg.AsyncpgDialect.colspecs">
+<code class="sig-name descname">colspecs</code><em class="property"> = {&lt;class 'sqlalchemy.sql.sqltypes.ARRAY'&gt;: &lt;class 'sqlalchemy.dialects.postgresql.array.ARRAY'&gt;, &lt;class 'sqlalchemy.sql.sqltypes.Interval'&gt;: &lt;class 'sqlalchemy.dialects.postgresql.base.INTERVAL'&gt;, &lt;class 'sqlalchemy.sql.sqltypes.Enum'&gt;: &lt;class 'gino.dialects.asyncpg.AsyncEnum'&gt;, &lt;class 'sqlalchemy.sql.sqltypes.JSON.JSONPathType'&gt;: &lt;class 'gino.dialects.asyncpg.AsyncpgJSONPathType'&gt;, &lt;class 'sqlalchemy.sql.sqltypes.JSON'&gt;: &lt;class 'sqlalchemy.dialects.postgresql.json.JSON'&gt;, &lt;class 'sqlalchemy.dialects.postgresql.base.ENUM'&gt;: &lt;class 'gino.dialects.asyncpg.AsyncEnum'&gt;, &lt;class 'sqlalchemy.sql.sqltypes.NullType'&gt;: &lt;class 'gino.dialects.asyncpg.GinoNullType'&gt;}</em><a class="headerlink" href="#gino.dialects.asyncpg.AsyncpgDialect.colspecs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="gino.dialects.asyncpg.AsyncpgDialect.cursor_cls">
+<code class="sig-name descname">cursor_cls</code><a class="headerlink" href="#gino.dialects.asyncpg.AsyncpgDialect.cursor_cls" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#gino.dialects.asyncpg.DBAPICursor" title="gino.dialects.asyncpg.DBAPICursor"><code class="xref py py-class docutils literal notranslate"><span class="pre">DBAPICursor</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="gino.dialects.asyncpg.AsyncpgDialect.dbapi_class">
+<code class="sig-name descname">dbapi_class</code><a class="headerlink" href="#gino.dialects.asyncpg.AsyncpgDialect.dbapi_class" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#gino.dialects.asyncpg.AsyncpgDBAPI" title="gino.dialects.asyncpg.AsyncpgDBAPI"><code class="xref py py-class docutils literal notranslate"><span class="pre">AsyncpgDBAPI</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="gino.dialects.asyncpg.AsyncpgDialect.driver">
+<code class="sig-name descname">driver</code><em class="property"> = 'asyncpg'</em><a class="headerlink" href="#gino.dialects.asyncpg.AsyncpgDialect.driver" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="gino.dialects.asyncpg.AsyncpgDialect.execution_ctx_cls">
+<code class="sig-name descname">execution_ctx_cls</code><a class="headerlink" href="#gino.dialects.asyncpg.AsyncpgDialect.execution_ctx_cls" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#gino.dialects.asyncpg.AsyncpgExecutionContext" title="gino.dialects.asyncpg.AsyncpgExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">AsyncpgExecutionContext</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="gino.dialects.asyncpg.AsyncpgDialect.get_isolation_level">
+<em class="property">async </em><code class="sig-name descname">get_isolation_level</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">connection</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.asyncpg.AsyncpgDialect.get_isolation_level" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given an asyncpg connection, return its isolation level.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="gino.dialects.asyncpg.AsyncpgDialect.has_schema">
+<em class="property">async </em><code class="sig-name descname">has_schema</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">connection</span></em>, <em class="sig-param"><span class="n">schema</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.asyncpg.AsyncpgDialect.has_schema" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="gino.dialects.asyncpg.AsyncpgDialect.has_sequence">
+<em class="property">async </em><code class="sig-name descname">has_sequence</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">connection</span></em>, <em class="sig-param"><span class="n">sequence_name</span></em>, <em class="sig-param"><span class="n">schema</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.asyncpg.AsyncpgDialect.has_sequence" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check the existence of a particular sequence in the database.</p>
+<p>Given a <code class="xref py py-class docutils literal notranslate"><span class="pre">_engine.Connection</span></code> object and a string
+<cite>sequence_name</cite>, return True if the given sequence exists in
+the database, False otherwise.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="gino.dialects.asyncpg.AsyncpgDialect.has_table">
+<em class="property">async </em><code class="sig-name descname">has_table</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">connection</span></em>, <em class="sig-param"><span class="n">table_name</span></em>, <em class="sig-param"><span class="n">schema</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.asyncpg.AsyncpgDialect.has_table" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check the existence of a particular table in the database.</p>
+<p>Given a <code class="xref py py-class docutils literal notranslate"><span class="pre">_engine.Connection</span></code> object and a string
+<cite>table_name</cite>, return True if the given table (possibly within
+the specified <cite>schema</cite>) exists in the database, False
+otherwise.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="gino.dialects.asyncpg.AsyncpgDialect.has_type">
+<em class="property">async </em><code class="sig-name descname">has_type</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">connection</span></em>, <em class="sig-param"><span class="n">type_name</span></em>, <em class="sig-param"><span class="n">schema</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.asyncpg.AsyncpgDialect.has_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="gino.dialects.asyncpg.AsyncpgDialect.init_kwargs">
+<code class="sig-name descname">init_kwargs</code><em class="property"> = {'bakery', 'command_timeout', 'connection_class', 'database', 'host', 'init', 'loop', 'max_cacheable_statement_size', 'max_cached_statement_lifetime', 'max_inactive_connection_lifetime', 'max_queries', 'max_size', 'min_size', 'passfile', 'password', 'port', 'prebake', 'server_settings', 'setup', 'ssl', 'statement_cache_size', 'timeout', 'user'}</em><a class="headerlink" href="#gino.dialects.asyncpg.AsyncpgDialect.init_kwargs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="gino.dialects.asyncpg.AsyncpgDialect.init_pool">
+<em class="property">async </em><code class="sig-name descname">init_pool</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">url</span></em>, <em class="sig-param"><span class="n">loop</span></em>, <em class="sig-param"><span class="n">pool_class</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.asyncpg.AsyncpgDialect.init_pool" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="gino.dialects.asyncpg.AsyncpgDialect.on_connect">
+<code class="sig-name descname">on_connect</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.asyncpg.AsyncpgDialect.on_connect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a callable which sets up a newly created DBAPI connection.</p>
+<p>The callable should accept a single argument “conn” which is the
+DBAPI connection itself.  The inner callable has no
+return value.</p>
+<p>E.g.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyDialect</span><span class="p">(</span><span class="n">default</span><span class="o">.</span><span class="n">DefaultDialect</span><span class="p">):</span>
+    <span class="c1"># ...</span>
+
+    <span class="k">def</span> <span class="nf">on_connect</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">def</span> <span class="nf">do_on_connect</span><span class="p">(</span><span class="n">connection</span><span class="p">):</span>
+            <span class="n">connection</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SET SPECIAL FLAGS etc&quot;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">do_on_connect</span>
+</pre></div>
+</div>
+<p>This is used to set dialect-wide per-connection options such as
+isolation modes, Unicode modes, etc.</p>
+<p>The “do_on_connect” callable is invoked by using the
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">_events.PoolEvents.first_connect()</span></code> and
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">_events.PoolEvents.connect()</span></code> event
+hooks, then unwrapping the DBAPI connection and passing it into the
+callable.  The reason it is invoked for both events is so that any
+dialect-level initialization that occurs upon first connection, which
+also makes use of the <code class="xref py py-meth docutils literal notranslate"><span class="pre">_events.PoolEvents.first_connect()</span></code> method,
+will
+proceed after this hook has been called. This currently means the
+hook is in fact called twice for the very first  connection in which a
+dialect creates; and once per connection afterwards.</p>
+<p>If None is returned, no event listener is generated.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a callable that accepts a single DBAPI connection as an
+argument, or None.</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><code class="xref py py-meth docutils literal notranslate"><span class="pre">Dialect.connect()</span></code> - allows the DBAPI <code class="docutils literal notranslate"><span class="pre">connect()</span></code> sequence
+itself to be controlled.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="gino.dialects.asyncpg.AsyncpgDialect.set_isolation_level">
+<em class="property">async </em><code class="sig-name descname">set_isolation_level</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">connection</span></em>, <em class="sig-param"><span class="n">level</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.asyncpg.AsyncpgDialect.set_isolation_level" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given an asyncpg connection, set its isolation level.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="gino.dialects.asyncpg.AsyncpgDialect.statement_compiler">
+<code class="sig-name descname">statement_compiler</code><a class="headerlink" href="#gino.dialects.asyncpg.AsyncpgDialect.statement_compiler" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#gino.dialects.asyncpg.AsyncpgCompiler" title="gino.dialects.asyncpg.AsyncpgCompiler"><code class="xref py py-class docutils literal notranslate"><span class="pre">AsyncpgCompiler</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="gino.dialects.asyncpg.AsyncpgDialect.supports_native_decimal">
+<code class="sig-name descname">supports_native_decimal</code><em class="property"> = True</em><a class="headerlink" href="#gino.dialects.asyncpg.AsyncpgDialect.supports_native_decimal" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="gino.dialects.asyncpg.AsyncpgDialect.transaction">
+<code class="sig-name descname">transaction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">raw_conn</span></em>, <em class="sig-param"><span class="n">args</span></em>, <em class="sig-param"><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.asyncpg.AsyncpgDialect.transaction" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="gino.dialects.asyncpg.AsyncpgExecutionContext">
+<em class="property">class </em><code class="sig-prename descclassname">gino.dialects.asyncpg.</code><code class="sig-name descname">AsyncpgExecutionContext</code><a class="headerlink" href="#gino.dialects.asyncpg.AsyncpgExecutionContext" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="gino.dialects.base.html#gino.dialects.base.ExecutionContextOverride" title="gino.dialects.base.ExecutionContextOverride"><code class="xref py py-class docutils literal notranslate"><span class="pre">gino.dialects.base.ExecutionContextOverride</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">sqlalchemy.dialects.postgresql.base.PGExecutionContext</span></code></p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="gino.dialects.asyncpg.AsyncpgIterator">
+<em class="property">class </em><code class="sig-prename descclassname">gino.dialects.asyncpg.</code><code class="sig-name descname">AsyncpgIterator</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">context</span></em>, <em class="sig-param"><span class="n">iterator</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.asyncpg.AsyncpgIterator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="gino.dialects.asyncpg.AsyncpgJSONPathType">
+<em class="property">class </em><code class="sig-prename descclassname">gino.dialects.asyncpg.</code><code class="sig-name descname">AsyncpgJSONPathType</code><a class="headerlink" href="#gino.dialects.asyncpg.AsyncpgJSONPathType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sqlalchemy.dialects.postgresql.json.JSONPathType</span></code></p>
+<dl class="py method">
+<dt id="gino.dialects.asyncpg.AsyncpgJSONPathType.bind_processor">
+<code class="sig-name descname">bind_processor</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dialect</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.asyncpg.AsyncpgJSONPathType.bind_processor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a conversion function for processing bind values.</p>
+<p>Returns a callable which will receive a bind parameter value
+as the sole positional argument and will return a value to
+send to the DB-API.</p>
+<p>If processing is not necessary, the method should return <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>dialect</strong> – Dialect instance in use.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="gino.dialects.asyncpg.DBAPICursor">
+<em class="property">class </em><code class="sig-prename descclassname">gino.dialects.asyncpg.</code><code class="sig-name descname">DBAPICursor</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dbapi_conn</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.asyncpg.DBAPICursor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="gino.dialects.base.html#gino.dialects.base.DBAPICursor" title="gino.dialects.base.DBAPICursor"><code class="xref py py-class docutils literal notranslate"><span class="pre">gino.dialects.base.DBAPICursor</span></code></a></p>
+<dl class="py method">
+<dt id="gino.dialects.asyncpg.DBAPICursor.async_execute">
+<em class="property">async </em><code class="sig-name descname">async_execute</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">query</span></em>, <em class="sig-param"><span class="n">timeout</span></em>, <em class="sig-param"><span class="n">args</span></em>, <em class="sig-param"><span class="n">limit</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">many</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.asyncpg.DBAPICursor.async_execute" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="gino.dialects.asyncpg.DBAPICursor.description">
+<em class="property">property </em><code class="sig-name descname">description</code><a class="headerlink" href="#gino.dialects.asyncpg.DBAPICursor.description" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="gino.dialects.asyncpg.DBAPICursor.execute_baked">
+<em class="property">async </em><code class="sig-name descname">execute_baked</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">baked_query</span></em>, <em class="sig-param"><span class="n">timeout</span></em>, <em class="sig-param"><span class="n">args</span></em>, <em class="sig-param"><span class="n">one</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.asyncpg.DBAPICursor.execute_baked" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="gino.dialects.asyncpg.DBAPICursor.get_statusmsg">
+<code class="sig-name descname">get_statusmsg</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.asyncpg.DBAPICursor.get_statusmsg" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="gino.dialects.asyncpg.DBAPICursor.prepare">
+<em class="property">async </em><code class="sig-name descname">prepare</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">context</span></em>, <em class="sig-param"><span class="n">clause</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.asyncpg.DBAPICursor.prepare" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="gino.dialects.asyncpg.GinoNullType">
+<em class="property">class </em><code class="sig-prename descclassname">gino.dialects.asyncpg.</code><code class="sig-name descname">GinoNullType</code><a class="headerlink" href="#gino.dialects.asyncpg.GinoNullType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sqlalchemy.sql.sqltypes.NullType</span></code></p>
+<dl class="py method">
+<dt id="gino.dialects.asyncpg.GinoNullType.result_processor">
+<code class="sig-name descname">result_processor</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dialect</span></em>, <em class="sig-param"><span class="n">coltype</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.asyncpg.GinoNullType.result_processor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a conversion function for processing result row values.</p>
+<p>Returns a callable which will receive a result row column
+value as the sole positional argument and will return a value
+to return to the user.</p>
+<p>If processing is not necessary, the method should return <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dialect</strong> – Dialect instance in use.</p></li>
+<li><p><strong>coltype</strong> – DBAPI coltype argument received in cursor.description.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="gino.dialects.asyncpg.NullPool">
+<em class="property">class </em><code class="sig-prename descclassname">gino.dialects.asyncpg.</code><code class="sig-name descname">NullPool</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">url</span></em>, <em class="sig-param"><span class="n">loop</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.asyncpg.NullPool" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="gino.dialects.base.html#gino.dialects.base.Pool" title="gino.dialects.base.Pool"><code class="xref py py-class docutils literal notranslate"><span class="pre">gino.dialects.base.Pool</span></code></a></p>
+<dl class="py method">
+<dt id="gino.dialects.asyncpg.NullPool.acquire">
+<em class="property">async </em><code class="sig-name descname">acquire</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">timeout</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.asyncpg.NullPool.acquire" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="gino.dialects.asyncpg.NullPool.close">
+<em class="property">async </em><code class="sig-name descname">close</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.asyncpg.NullPool.close" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="gino.dialects.asyncpg.NullPool.raw_pool">
+<em class="property">property </em><code class="sig-name descname">raw_pool</code><a class="headerlink" href="#gino.dialects.asyncpg.NullPool.raw_pool" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="gino.dialects.asyncpg.NullPool.release">
+<em class="property">async </em><code class="sig-name descname">release</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">conn</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.asyncpg.NullPool.release" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="gino.dialects.asyncpg.NullPool.repr">
+<code class="sig-name descname">repr</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">color</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.asyncpg.NullPool.repr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="gino.dialects.asyncpg.Pool">
+<em class="property">class </em><code class="sig-prename descclassname">gino.dialects.asyncpg.</code><code class="sig-name descname">Pool</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">url</span></em>, <em class="sig-param"><span class="n">loop</span></em>, <em class="sig-param"><span class="n">bakery</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">prebake</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.asyncpg.Pool" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="gino.dialects.base.html#gino.dialects.base.Pool" title="gino.dialects.base.Pool"><code class="xref py py-class docutils literal notranslate"><span class="pre">gino.dialects.base.Pool</span></code></a></p>
+<dl class="py method">
+<dt id="gino.dialects.asyncpg.Pool.acquire">
+<em class="property">async </em><code class="sig-name descname">acquire</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">timeout</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.asyncpg.Pool.acquire" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="gino.dialects.asyncpg.Pool.close">
+<em class="property">async </em><code class="sig-name descname">close</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.asyncpg.Pool.close" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="gino.dialects.asyncpg.Pool.raw_pool">
+<em class="property">property </em><code class="sig-name descname">raw_pool</code><a class="headerlink" href="#gino.dialects.asyncpg.Pool.raw_pool" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="gino.dialects.asyncpg.Pool.release">
+<em class="property">async </em><code class="sig-name descname">release</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">conn</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.asyncpg.Pool.release" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="gino.dialects.asyncpg.Pool.repr">
+<code class="sig-name descname">repr</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">color</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.asyncpg.Pool.repr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="gino.dialects.asyncpg.PreparedStatement">
+<em class="property">class </em><code class="sig-prename descclassname">gino.dialects.asyncpg.</code><code class="sig-name descname">PreparedStatement</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">prepared</span></em>, <em class="sig-param"><span class="n">clause</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.asyncpg.PreparedStatement" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="gino.dialects.base.html#gino.dialects.base.PreparedStatement" title="gino.dialects.base.PreparedStatement"><code class="xref py py-class docutils literal notranslate"><span class="pre">gino.dialects.base.PreparedStatement</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="gino.dialects.asyncpg.Transaction">
+<em class="property">class </em><code class="sig-prename descclassname">gino.dialects.asyncpg.</code><code class="sig-name descname">Transaction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tx</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.asyncpg.Transaction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="gino.dialects.base.html#gino.dialects.base.Transaction" title="gino.dialects.base.Transaction"><code class="xref py py-class docutils literal notranslate"><span class="pre">gino.dialects.base.Transaction</span></code></a></p>
+<dl class="py method">
+<dt id="gino.dialects.asyncpg.Transaction.begin">
+<em class="property">async </em><code class="sig-name descname">begin</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.asyncpg.Transaction.begin" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="gino.dialects.asyncpg.Transaction.commit">
+<em class="property">async </em><code class="sig-name descname">commit</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.asyncpg.Transaction.commit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="gino.dialects.asyncpg.Transaction.raw_transaction">
+<em class="property">property </em><code class="sig-name descname">raw_transaction</code><a class="headerlink" href="#gino.dialects.asyncpg.Transaction.raw_transaction" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="gino.dialects.asyncpg.Transaction.rollback">
+<em class="property">async </em><code class="sig-name descname">rollback</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.asyncpg.Transaction.rollback" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+            </div>
+            <p style="text-align: center; font-size: 12px;">
+                <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+                    <img
+                        alt="Creative Commons License"
+                        style="border-width:0"
+                        src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png"
+                    />
+                </a>
+                <br/>
+                This work is licensed under a<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+            </p>
+        </div>
+
+        <div class="col hide-on-small-only m3 right-nav">
+            <div class="table-of-contents fixed">
+                
+                    <ul>
+<li><a class="reference internal" href="#">gino.dialects.asyncpg module</a></li>
+</ul>
+
+                
+                <div id="version-selector">
+                    
+                    
+                </div>
+                <div class="add-your-lang">
+                    <a href="https://www.transifex.com/decentfox-studio/gino_1_0/"
+                       target="_blank">Add your language here.</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="fixed-action-btn click-to-toggle">
+        <a class="btn-floating btn-large white">
+            <img src="../../_static/images/language.svg">
+            <div>
+              EN
+            </div>
+        </a>
+        <ul id="lang-selector">
+        </ul>
+    </div>
+</main>
+
+<script type="text/javascript" src="../../_static/js/materialize.min.js"></script>
+<script type="text/javascript" src="../../_static/js/language_data.js"></script>
+<script id="documentation_options" data-url_root="../../" src="../../_static/js/documentation_options.js"></script>
+<script type="text/javascript" src="../../_static/js/underscore.js"></script>
+<script type="text/javascript" src="../../_static/js/jquery.js"></script>
+<script type="text/javascript">
+    var sver = '1.1';
+    var language = 'en';
+    var pagename = 'reference/api/gino.dialects.asyncpg';
+</script>
+<script type="text/javascript" src="../../_static/js/gino.js"></script>
+<script type="text/javascript" src="../../searchindex.js"></script>
+</body>
+</html>

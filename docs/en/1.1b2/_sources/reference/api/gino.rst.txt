@@ -1,0 +1,38 @@
+gino package
+============
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   gino.dialects
+   gino.ext
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   gino.aiocontextvars
+   gino.api
+   gino.bakery
+   gino.crud
+   gino.declarative
+   gino.engine
+   gino.exceptions
+   gino.json_support
+   gino.loader
+   gino.schema
+   gino.strategies
+   gino.transaction
+
+Module contents
+---------------
+
+.. automodule:: gino
+   :members:
+   :undoc-members:
+   :show-inheritance:

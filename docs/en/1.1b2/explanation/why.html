@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="../_static/favicon.ico">
+    <title>Why Asynchronous ORM? - GINO 1.1.0b2 documentation</title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async
+            src="https://www.googletagmanager.com/gtag/js?id=UA-3759436-10"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag () {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'UA-3759436-10');
+    </script>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Raleway:400,500,600,700&display=swap">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css">
+    <link type="text/css" rel="stylesheet"
+          href="../_static/css/materialize.min.css"
+          media="screen,projection"/>
+    <link rel="stylesheet" href="../_static/pygments.css"
+          type="text/css"/>
+    <link type="text/css" rel="stylesheet"
+          href="../_static/css/gino.css"/>
+</head>
+<body>
+
+<header>
+    <div class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper">
+                <a href="#" data-target="sidenav" class="sidenav-trigger"><hr><hr><hr></a>
+                <a href="../index.html" class="brand-logo">
+                    <div class="img"
+                         style="background-image: url(../_static/logo.svg); width: 103px; height: 40px;"></div>
+                </a>
+                <div class="breadcrumbs">
+                    <a class="breadcrumb" style="display: none"></a>
+                    
+                        <a href="../explanation.html"
+                           class="breadcrumb">Explanation</a>
+                    
+                    
+                        <a class="breadcrumb" style="color: #FFFFFF">Why Asynchronous ORM?</a>
+                    
+                </div>
+                <div class="spacer"></div>
+                <div id="search-container" class="search">
+                    <input type="text" id="search" placeholder="Search">
+                    <i class="mdi mdi-magnify"></i>
+                    <div id="search-results" style="display: none"></div>
+                </div>
+                <a class="btn-flat theme-dark" href="/">
+                    HOME
+                </a>
+                <a class="btn-flat theme-dark" href="/authors.html">
+                    CREDITS
+                </a>
+                <a href="https://github.com/python-gino/gino" target="_blank"
+                   class="github-stars">
+                    <div class="left"><img
+                        src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iNDNweCIgaGVpZ2h0PSI0MnB4IiB2aWV3Qm94PSIwIDAgNDMgNDIiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8IS0tIEdlbmVyYXRvcjogU2tldGNoIDYxLjIgKDg5NjUzKSAtIGh0dHBzOi8vc2tldGNoLmNvbSAtLT4KICAgIDx0aXRsZT5GaWxsIDQ5PC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPgogICAgPGcgaWQ9IlYzLeacgOaWsOeov+S7tiIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgaWQ9IkhPTUUtdjMiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0xNTA3LjAwMDAwMCwgLTQ5LjAwMDAwMCkiIGZpbGw9IiNGRkZGRkUiPgogICAgICAgICAgICA8ZyBpZD0iYmFubmVyLWJnIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMzc5LjAwMDAwMCwgLTE4Ny4wMDAwMDApIj4KICAgICAgICAgICAgICAgIDxnIGlkPSJoZWFkZXIiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDU5Ny4wMDAwMDAsIDIxOC4wMDAwMDApIj4KICAgICAgICAgICAgICAgICAgICA8cGF0aCBkPSJNMTMxMC40OTgwMiwxOCBDMTI5OC42MjcxMiwxOCAxMjg5LDI3LjYzOTg4MzEgMTI4OSwzOS41MzIxMTIzIEMxMjg5LDQ5LjA0NTEwMjYgMTI5NS4xNTk4Myw1Ny4xMTQ2ODggMTMwMy43MDMzNCw1OS45NjE4NDM5IEMxMzA0Ljc3OTAzLDYwLjE2MDExMzggMTMwNS4xNzEwMyw1OS40OTUyNDg3IDEzMDUuMTcxMDMsNTguOTI0MjMxMyBDMTMwNS4xNzEwMyw1OC40MTI2OTUgMTMwNS4xNTI1NSw1Ny4wNTkxNzI0IDEzMDUuMTQxOTksNTUuMjYyODQ3IEMxMjk5LjE2MTY3LDU2LjU2MzQ5NzYgMTI5Ny44OTk4Nyw1Mi4zNzYwMzcxIDEyOTcuODk5ODcsNTIuMzc2MDM3MSBDMTI5Ni45MjE4NSw0OS44ODg0MTA2IDEyOTUuNTEyMjMsNDkuMjI2MTg5MSAxMjk1LjUxMjIzLDQ5LjIyNjE4OTEgQzEyOTMuNTYwMTUsNDcuODkxMTcxNyAxMjk1LjY2MDA2LDQ3LjkxNzYwNzcgMTI5NS42NjAwNiw0Ny45MTc2MDc3IEMxMjk3LjgxODA0LDQ4LjA2OTYxNDYgMTI5OC45NTMxMyw1MC4xMzY5MDg5IDEyOTguOTUzMTMsNTAuMTM2OTA4OSBDMTMwMC44NzA5LDUzLjQyNjg2NzYgMTMwMy45ODU3OSw1Mi40NzY0OTM4IDEzMDUuMjEwNjMsNTEuOTI1MzAzNSBDMTMwNS40MDU5Nyw1MC41MzQ3NzA1IDEzMDUuOTYxNjMsNDkuNTg1NzE4NiAxMzA2LjU3NTM3LDQ5LjA0Nzc0NjIgQzEzMDEuODAxNDEsNDguNTA0NDg2NiAxMjk2Ljc4MTk1LDQ2LjY1NjYxMTEgMTI5Ni43ODE5NSwzOC40MDU5MzkyIEMxMjk2Ljc4MTk1LDM2LjA1NTc3OTkgMTI5Ny42MjAwNiwzNC4xMzI1NjE3IDEyOTguOTk1MzcsMzIuNjI4MzU0IEMxMjk4Ljc3MzYzLDMyLjA4Mzc3MjYgMTI5OC4wMzU4MiwyOS44OTM1NTEgMTI5OS4yMDY1NCwyNi45MzAwNzY4IEMxMjk5LjIwNjU0LDI2LjkzMDA3NjggMTMwMS4wMTA4LDI2LjM1MTEyODYgMTMwNS4xMTgyNCwyOS4xMzc0ODE4IEMxMzA2LjgzMjc1LDI4LjY1ODk5MDQgMTMwOC42NzI2NCwyOC40MjEwNjY1IDEzMTAuNTAwNjYsMjguNDExODEzOSBDMTMxMi4zMjczNiwyOC40MjEwNjY1IDEzMTQuMTY1OTQsMjguNjU4OTkwNCAxMzE1Ljg4MzA4LDI5LjEzNzQ4MTggQzEzMTkuOTg3ODgsMjYuMzUxMTI4NiAxMzIxLjc4OTUsMjYuOTMwMDc2OCAxMzIxLjc4OTUsMjYuOTMwMDc2OCBDMTMyMi45NjI4NiwyOS44OTM1NTEgMTMyMi4yMjUwNSwzMi4wODM3NzI2IDEzMjIuMDA0NjMsMzIuNjI4MzU0IEMxMzIzLjM4MjU4LDM0LjEzMjU2MTcgMTMyNC4yMTQwOSwzNi4wNTU3Nzk5IDEzMjQuMjE0MDksMzguNDA1OTM5MiBDMTMyNC4yMTQwOSw0Ni42Nzc3NTk5IDEzMTkuMTg2NzIsNDguNDk3ODc3NiAxMzE0LjM5ODIzLDQ5LjAzMDU2MjggQzEzMTUuMTY5MDQsNDkuNjk1NDI3OSAxMzE1Ljg1NjY5LDUxLjAwOTI5NjUgMTMxNS44NTY2OSw1My4wMTcxMDk4IEMxMzE1Ljg1NjY5LDU1Ljg5NTk4ODkgMTMxNS44MzAyOSw1OC4yMTgzOTA1IDEzMTUuODMwMjksNTguOTI0MjMxMyBDMTMxNS44MzAyOSw1OS41MDA1MzU5IDEzMTYuMjE4MzMsNjAuMTcwNjg4MiAxMzE3LjMwODU0LDU5Ljk2MDUyMjEgQzEzMjUuODQ1NDUsNTcuMTA2NzU3MiAxMzMyLDQ5LjA0MjQ1OSAxMzMyLDM5LjUzMjExMjMgQzEzMzIsMjcuNjM5ODgzMSAxMzIyLjM3Mjg4LDE4IDEzMTAuNDk4MDIsMTgiIGlkPSJGaWxsLTQ5Ij48L3BhdGg+CiAgICAgICAgICAgICAgICA8L2c+CiAgICAgICAgICAgIDwvZz4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPg=="
+                        class="github-logo">
+                        GitHub
+                    </div>
+                    <div class="right"><img
+                        src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMjFweCIgaGVpZ2h0PSIxOXB4IiB2aWV3Qm94PSIwIDAgMjEgMTkiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8IS0tIEdlbmVyYXRvcjogU2tldGNoIDYxLjIgKDg5NjUzKSAtIGh0dHBzOi8vc2tldGNoLmNvbSAtLT4KICAgIDx0aXRsZT5QYXRoPC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPgogICAgPGcgaWQ9IlYzLeacgOaWsOeov+S7tiIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgaWQ9IkhPTUUtdjMiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0xNTYxLjAwMDAwMCwgLTYwLjAwMDAwMCkiIGZpbGw9IiNGOEQyMzAiPgogICAgICAgICAgICA8ZyBpZD0iYmFubmVyLWJnIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMzc5LjAwMDAwMCwgLTE4Ny4wMDAwMDApIj4KICAgICAgICAgICAgICAgIDxnIGlkPSJoZWFkZXIiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDU5Ny4wMDAwMDAsIDIxOC4wMDAwMDApIj4KICAgICAgICAgICAgICAgICAgICA8ZyBpZD0ibGFiZWwtY29weS0xMiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTI4OS4wMDAwMDAsIDE4LjAwMDAwMCkiPgogICAgICAgICAgICAgICAgICAgICAgICA8cG9seWdvbiBpZD0iUGF0aCIgcG9pbnRzPSI2MS4wNTQzNTQzIDE3Ljc1NzM4MzYgNTQuMjE1MjQ2NiAxOC4zMTMzOTI5IDU5Ljg4OTM1MTcgMjIuOTczNzM4NyA1Ny43ODQ1MjI4IDI5Ljg0MDExODQgNjQuNDQyNTI3MSAyNi41NDM0MTg4IDcwLjU3NzcyMzkgMjkuODQwMTE4NCA2OS4yMzA0MzI1IDIyLjk3MzczODcgNzQuNzMyNTY5NiAxOC4zMTMzOTI5IDY3Ljg5MzQ2MiAxNy43NTczODM2IDY0LjQ0MjUyNzEgMTEuMzc1Ij48L3BvbHlnb24+CiAgICAgICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICA8L2c+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4=">
+                        <span id="github-star-num"></span>
+                    </div>
+                </a>
+            </div>
+        </nav>
+    </div>
+
+    <div id="sidenav" class="sidenav sidenav-fixed">
+        <p class="caption"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/announcement.html">官宣：Python 异步编程再添一利器</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/tutorial.html">GINO Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/fastapi.html">Build a FastAPI Server</a></li>
+</ul>
+<p class="caption"><span class="caption-text">How-to Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../how-to.html">How-to Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to/alembic.html">Use Alembic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to/bakery.html">Bake Queries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to/contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to/crud.html">CRUD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to/faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to/json-props.html">JSON Property</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to/loaders.html">Loaders and Relationship</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to/pool.html">Connection Pool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to/schema.html">Schema Declaration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to/transaction.html">Transaction</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Explanation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../explanation.html">Explanation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="async.html">Asynchronous Programming 101</a></li>
+<li class="toctree-l1"><a class="reference internal" href="engine.html">Engine and Connection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sa20.html">SQLAlchemy 2.0</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Why Asynchronous ORM?</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../reference.html">Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/api.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/extensions.html">Extensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/history.html">History</a></li>
+</ul>
+
+    </div>
+</header>
+
+<main>
+    <div class="row">
+        <div class="col s12 m9 body">
+            <div id="main-content" role="main">
+                
+    <div class="section" id="why-asynchronous-orm">
+<h1>Why Asynchronous ORM?<a class="headerlink" href="#why-asynchronous-orm" title="Permalink to this headline">¶</a></h1>
+<p>Conclusion first: in many cases, you don’t need to use an asynchronous ORM, or even
+asyncio itself. But when you do, it’s very important to get it done correctly.</p>
+<div class="section" id="when-asyncio-helps">
+<h2>When asyncio Helps<a class="headerlink" href="#when-asyncio-helps" title="Permalink to this headline">¶</a></h2>
+<p>As Mike Bayer - the author of SQLAlchemy - <a class="reference external" href="http://techspot.zzzeek.org/2015/02/15/asynchronous-python-and-databases/">pointed out</a>, even
+Python itself can be slower than the database operation in a stereotypical
+business-style CRUD-ish application, because the modern databases are so fast when the
+query is simple, and this kind of application usually deploys the database in a super
+reliable network. In this case, it doesn’t make sense to say “Hey I wanna use asyncio
+because I love this asynchronous ORM”.</p>
+<p>The problem asyncio solves is quite different: when you need to deal with a lot of
+concurrent tasks, some of which may block on I/O for arbitrary time, asyncio could
+largely leverage the scalability with cooperative multitasking. This is explained in
+<a class="reference internal" href="async.html"><span class="doc">Asynchronous Programming 101</span></a>. So the ultimate reason to use asyncio should be the application itself,
+not the database.</p>
+<p>For example, a chat server may need to talk to tens of thousands of clients at the same
+time. The clients are idle for most of the time, because the user didn’t send a message
+in seconds, which is thousands of times longer than the time needed by the server to
+handle the message. Obviously the last thing you want is to have tens of thousands of OS
+threads to wait for each of those clients to reply, as it’ll disproportionately consume
+way too much hardware resource. In contrast, asyncio could easily handle this
+concurrency with reasonably tiny overhead.</p>
+<img alt="../_images/263px-Minimum-Tonne.svg.png" class="align-right" src="../_images/263px-Minimum-Tonne.svg.png" />
+<p>Another example is authentication using <a class="reference external" href="https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth">OpenID Connect Authorization Code Flow</a> as a Client. If
+the Token Endpoint of the Authorization Server responds fast, everything is fine. But
+once it’s delayed for even just a few seconds due to unreliable Internet or overloaded
+server or whatever reasons, the Client would face a concurrency challenge. According to
+<a class="reference external" href="https://en.wikipedia.org/wiki/Liebig%27s_law_of_the_minimum">Liebig’s law</a>, the
+minimum throughput of the Client or the Server determines the overall performance.
+Comparing to asyncio, it’s not wise to use threading model to build the Client and rely
+on the Internet which may make the Client the shortest stave.</p>
+<p>Arbitrary delays may happen in the database too. In PostgreSQL, you can <a class="reference external" href="https://www.postgresql.org/docs/current/sql-listen.html"><code class="docutils literal notranslate"><span class="pre">LISTEN</span></code></a> to
+some asynchronous events that happens unpredictably. Some normal bulk queries may also
+take a long time to run, and the database locks can occasionally block too, especially
+the dead ones. But these are usually not considered as a high-concurrency scenario,
+because the database will possibly hit its bottleneck before your server does, or there
+are smarter ways to handle such situations than asyncio. Nevertheless, the database
+could be the reason to use asyncio, depending on the actual case.</p>
+<p>In closing, there are scenarios when asyncio could help with concurrency issues. Now
+that we know we will write an asynchronous server, then the next question is:</p>
+</div>
+<div class="section" id="how-to-access-database">
+<h2>How to Access Database<a class="headerlink" href="#how-to-access-database" title="Permalink to this headline">¶</a></h2>
+<p>The first thing to balance here is ORM - how much convenience would you like to
+sacrifice for execution performance. As we are talking about ORM, let’s assume we need
+at least some level of abstraction over raw SQL, or else low-level tools like asyncpg
+would be a neat choice. Don’t get me wrong - asyncpg is great and convenient to use, but
+there won’t be such a question “why asynchronous ORM” if we’re not seeking an objective
+layer over bare SQL. It’s totally reasonable and sometimes beneficial and fun to play
+with SQL in asynchronous contexts, it’s just out of our scope here.</p>
+<p>Because simple queries are executed so fast in the database, one obvious but wrong
+approach is to just run the query in the main thread. It won’t work because it will 100%
+cause a dead lock - not a typical database dead lock, but a hybrid one between the
+connection pool and cooperative multitasking. For example, here’s a very simple server:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">asyncio</span>
+<span class="kn">from</span> <span class="nn">fastapi</span> <span class="kn">import</span> <span class="n">FastAPI</span>
+<span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span>
+<span class="kn">from</span> <span class="nn">sqlalchemy.orm</span> <span class="kn">import</span> <span class="n">sessionmaker</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">()</span>
+<span class="n">e</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="s2">&quot;postgresql://localhost&quot;</span><span class="p">)</span>
+<span class="n">Session</span> <span class="o">=</span> <span class="n">sessionmaker</span><span class="p">(</span><span class="n">bind</span><span class="o">=</span><span class="n">e</span><span class="p">)</span>
+
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">read_root</span><span class="p">():</span>
+    <span class="n">session</span> <span class="o">=</span> <span class="n">Session</span><span class="p">()</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">now</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT now()&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">scalar</span><span class="p">()</span>
+        <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>  <span class="c1"># do some async work</span>
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">now</span><span class="p">)</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="n">session</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This follows advices found in <a class="reference external" href="https://docs.sqlalchemy.org/en/14/orm/session_basics.html#session-faq-whentocreate" title="(in SQLAlchemy v1.4)"><span>When do I construct a Session, when do I commit it, and when do I close it?</span></a> from SQLAlchemy - linking
+the <strong>session scope</strong> to the request scope. It works fine within 10 concurrent requests,
+but freezes miserably for any number beyond 10: all requests hang and the only way to
+stop the server is <code class="docutils literal notranslate"><span class="pre">kill</span> <span class="pre">-9</span></code>.</p>
+<p>What just happened is called a <a class="reference external" href="https://en.wikipedia.org/wiki/Starvation_(computer_science)">resource starvation</a>. While the first 10
+requests were waiting for the async work (<code class="docutils literal notranslate"><span class="pre">sleep(0.1)</span></code>), the 11th request came in and
+tried to acquire a new database connection from the pool. But the connection pool is
+already exhausted (default <code class="docutils literal notranslate"><span class="pre">max_overflow=10</span></code>) by the first 10 requests, the 11th
+request was then blocked by the acquisition. However, this acquisition is unfortunately
+a blocking operation, therefore the main thread is blocked and the first 10 requests
+lost their chance to finish the async work and return their connection back to the pool
+to resume the 11th’s acquisition.</p>
+<p>The root cause of such starvation is making asynchronous calls in a <strong>transaction
+scope</strong> created implicitly by the default <code class="docutils literal notranslate"><span class="pre">autocommit=False</span></code>. So other than limiting
+the number of concurrent requests down to 10, a more reasonable solution is to avoid
+doing asynchronous calls in <strong>transaction scopes</strong> by explicitly ending them:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">read_root</span><span class="p">():</span>
+    <span class="n">session</span> <span class="o">=</span> <span class="n">Session</span><span class="p">()</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">now</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT now()&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">scalar</span><span class="p">()</span>
+        <span class="n">session</span><span class="o">.</span><span class="n">rollback</span><span class="p">()</span>  <span class="c1"># return the connection to avoid starvation</span>
+        <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>  <span class="c1"># do some async work</span>
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">now</span><span class="p">)</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="n">session</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Because of the implicit nature of typical ORMs, it’s very hard to identify all such
+<strong>transaction scopes</strong> and make sure there’s no <code class="docutils literal notranslate"><span class="pre">await</span></code> in them - you may have started
+an implicit transaction by simply accessing a property like <code class="docutils literal notranslate"><span class="pre">current_user.name</span></code>. In
+practice, it is an impossible mission to correctly mix blocking ORM code with
+asynchronous programming in the same thread. So never do this.</p>
+<p>What about thread pool?</p>
+<p>The idea is to defer all blocking code into a thread pool, and run asynchronous
+cooperative multitasking in the main thread. This is theoretically possible, but the
+same implicit ORM issue keeps haunting us - how do you guarantee there is no blocking
+calls in the main thread? Taking one step back, let’s assume we could do this cleanly.
+What would the code look like? There must be a clear API as the logical separation
+between the blocking and asynchronous code -  the server executes major DB-free business
+logic in the main thread with asynchronous programming, and calls blocking methods for
+encapsulated database operations in a thread pool.</p>
+<p>This reminds me of its opposite pattern, where the main server runs in blocking mode,
+deferring I/O intensive operations into a task queue like <a class="reference external" href="http://www.celeryproject.org/">Celery</a>. Both approaches solve
+the problem, the reason to choose one over the other is on the concentration of business
+logic - you’d want to write the majority of your code in the main server, and defer only
+sub-tasks or low priority operations into a thread pool or task queue. In reality, using
+a task queue to e.g. send emails is a more reasonable approach. If you’re doing that in
+the opposite way, you may want to reconsider the design.</p>
+<p>In summary, other than using raw SQL, the existing typical ORMs could not serve
+asynchronous programming well enough. We need true asynchronous ORMs.</p>
+</div>
+<div class="section" id="asynchronous-orm-done-right">
+<h2>Asynchronous ORM Done Right<a class="headerlink" href="#asynchronous-orm-done-right" title="Permalink to this headline">¶</a></h2>
+<p>I would describe a proper asynchronous ORM as follows:</p>
+<div class="section" id="don-t-starve">
+<h3>Don’t Starve.<a class="headerlink" href="#don-t-starve" title="Permalink to this headline">¶</a></h3>
+<p>The very basic requirement for an asynchronous ORM is to avoid resource starvation, at
+least avoid the part caused by the ORM design. The fix is actually pretty
+straightforward - just make everything <code class="docutils literal notranslate"><span class="pre">async</span></code>.</p>
+<p>In the example above, if the connection acquisition is asynchronous, it won’t block the
+main thread any more (it’ll block it’s own coroutine instead). Therefore, the other
+tasks would get a chance to finish the async work and return the connection back to the
+pool, thus the starvation is avoided:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">read_root</span><span class="p">():</span>
+    <span class="k">async</span> <span class="k">with</span> <span class="n">db</span><span class="o">.</span><span class="n">acquire</span><span class="p">()</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>  <span class="c1"># }</span>
+        <span class="k">async</span> <span class="k">with</span> <span class="n">conn</span><span class="o">.</span><span class="n">begin</span><span class="p">():</span>      <span class="c1"># } These two won&#39;t block the main thread</span>
+            <span class="n">now</span> <span class="o">=</span> <span class="k">await</span> <span class="n">db</span><span class="o">.</span><span class="n">scalar</span><span class="p">(</span><span class="s2">&quot;SELECT now()&quot;</span><span class="p">)</span>
+            <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>  <span class="c1"># do some async work</span>
+            <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">now</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Even though this code won’t cause any resource starvation, using <code class="docutils literal notranslate"><span class="pre">await</span></code> within
+database transactions is still strongly discouraged, unless it is for the database query
+or absolutely necessary. Because after yielding the execution, we have no idea when we
+can resume the following execution. That leads to a hanging transaction or at least an
+unused database connection for a moment. Doing so won’t kill the server immediately, but
+it has a few disadvantages:</p>
+<ol class="arabic simple">
+<li><p>As the database connection pool is usually much smaller than the asynchronous server
+concurrency, this kind of code caps the concurrency down to the DB pool level.</p></li>
+<li><p>Taking a database connection from the pool for nothing is a waste of resource,
+especially when the database pool is the shortest stave.</p></li>
+<li><p>Database transactions should be kept short as much as possible. Because long-hanging
+transactions may keep certain database locks, leading to performance issues or even
+triggering a chain reaction of deadlocks.</p></li>
+</ol>
+</div>
+<div class="section" id="be-explicit">
+<h3>Be explicit.<a class="headerlink" href="#be-explicit" title="Permalink to this headline">¶</a></h3>
+<p>With that said, it is especially important to make everything explicit - all the
+connection acquisition, transactions and executions. Anything that will block must be
+marked with an <code class="docutils literal notranslate"><span class="pre">await</span></code> or <code class="docutils literal notranslate"><span class="pre">async</span> <span class="pre">with</span></code>, so that you’ll know for sure when a
+statement is trying to make any database I/O. Fortunately there’s no other way in
+asyncio to do this - following <a class="reference external" href="https://glyph.twistedmatrix.com/2014/02/unyielding.html">the pattern of Twisted</a>, asyncio is already forcing
+explicit <code class="docutils literal notranslate"><span class="pre">await</span></code> for any asynchronous operations.</p>
+<p>Being explicit in other part of the ORM design is also useful for enhancing the quality
+of users’ code. This has nothing to do with asynchronous, it’s not a golden standard or
+something with a clear cut either. For example:</p>
+<ul class="simple">
+<li><p>We could design the ORM model instances to be stateless, so that the users don’t have
+to learn and worry about maintaining the state of the instances.</p></li>
+<li><p>There shouldn’t be any “buffered operations” which users could “flush” with a single
+statement once for all.</p></li>
+<li><p>The user should just give direct one-off commands and the ORM executes them right away.</p></li>
+<li><p>Also I think the convenience tooling should be well-balanced, the user doesn’t have to
+guess or remember what an API means - for example, there’re more than one ways to load
+a many-to-one relationship, I’d prefer to write the query by myself rather than trying
+to remember what “join_without_n_plus_1()” means.</p></li>
+</ul>
+</div>
+<div class="section" id="be-productive">
+<h3>Be productive.<a class="headerlink" href="#be-productive" title="Permalink to this headline">¶</a></h3>
+<p>Explicitness and productivity are kind of like two sides of the same coin - more
+explicitness means less productive, and more convenience means less explicit. As we are
+already using Python, being able to code productively is especially important. For an
+asynchronous ORM, is it possible to find a proper balance between the two?</p>
+<p>I think some of the fundamental principals must be explicit, for example the stateless
+model and asynchronous yieldings. Then we could add convenient tooling on top of this
+foundation as much as it doesn’t harm the basic explicitness. The tooling could better
+be simple wrappers, grammar sugars or shortcuts for lengthy code, with a proper and
+intuitive naming. This is mostly the idea behind GINO’s design.</p>
+<p>Additionally, being able to leverage an existing ecosystem is also an important part in
+productivity. People could use what they’ve learned directly, port what they wrote to
+the new platform with minimum effort. More importantly - reuse some of the tools from
+the ecosystem without having to reinvent the wheel again.</p>
+</div>
+</div>
+</div>
+
+
+            </div>
+            <p style="text-align: center; font-size: 12px;">
+                <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+                    <img
+                        alt="Creative Commons License"
+                        style="border-width:0"
+                        src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png"
+                    />
+                </a>
+                <br/>
+                This work is licensed under a<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+            </p>
+        </div>
+
+        <div class="col hide-on-small-only m3 right-nav">
+            <div class="table-of-contents fixed">
+                
+                    <ul>
+<li><a class="reference internal" href="#">Why Asynchronous ORM?</a><ul>
+<li><a class="reference internal" href="#when-asyncio-helps">When asyncio Helps</a></li>
+<li><a class="reference internal" href="#how-to-access-database">How to Access Database</a></li>
+<li><a class="reference internal" href="#asynchronous-orm-done-right">Asynchronous ORM Done Right</a><ul>
+<li><a class="reference internal" href="#don-t-starve">Don’t Starve.</a></li>
+<li><a class="reference internal" href="#be-explicit">Be explicit.</a></li>
+<li><a class="reference internal" href="#be-productive">Be productive.</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+                
+                <div id="version-selector">
+                    
+                        <hr>
+                    
+                    
+                </div>
+                <div class="add-your-lang">
+                    <a href="https://www.transifex.com/decentfox-studio/gino_1_0/"
+                       target="_blank">Add your language here.</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="fixed-action-btn click-to-toggle">
+        <a class="btn-floating btn-large white">
+            <img src="../_static/images/language.svg">
+            <div>
+              EN
+            </div>
+        </a>
+        <ul id="lang-selector">
+        </ul>
+    </div>
+</main>
+
+<script type="text/javascript" src="../_static/js/materialize.min.js"></script>
+<script type="text/javascript" src="../_static/js/language_data.js"></script>
+<script id="documentation_options" data-url_root="../" src="../_static/js/documentation_options.js"></script>
+<script type="text/javascript" src="../_static/js/underscore.js"></script>
+<script type="text/javascript" src="../_static/js/jquery.js"></script>
+<script type="text/javascript">
+    var sver = '1.1';
+    var language = 'en';
+    var pagename = 'explanation/why';
+</script>
+<script type="text/javascript" src="../_static/js/gino.js"></script>
+<script type="text/javascript" src="../searchindex.js"></script>
+</body>
+</html>

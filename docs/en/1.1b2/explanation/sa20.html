@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="../_static/favicon.ico">
+    <title>SQLAlchemy 2.0 - GINO 1.1.0b2 documentation</title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async
+            src="https://www.googletagmanager.com/gtag/js?id=UA-3759436-10"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag () {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'UA-3759436-10');
+    </script>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Raleway:400,500,600,700&display=swap">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css">
+    <link type="text/css" rel="stylesheet"
+          href="../_static/css/materialize.min.css"
+          media="screen,projection"/>
+    <link rel="stylesheet" href="../_static/pygments.css"
+          type="text/css"/>
+    <link type="text/css" rel="stylesheet"
+          href="../_static/css/gino.css"/>
+</head>
+<body>
+
+<header>
+    <div class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper">
+                <a href="#" data-target="sidenav" class="sidenav-trigger"><hr><hr><hr></a>
+                <a href="../index.html" class="brand-logo">
+                    <div class="img"
+                         style="background-image: url(../_static/logo.svg); width: 103px; height: 40px;"></div>
+                </a>
+                <div class="breadcrumbs">
+                    <a class="breadcrumb" style="display: none"></a>
+                    
+                        <a href="../explanation.html"
+                           class="breadcrumb">Explanation</a>
+                    
+                    
+                        <a class="breadcrumb" style="color: #FFFFFF">SQLAlchemy 2.0</a>
+                    
+                </div>
+                <div class="spacer"></div>
+                <div id="search-container" class="search">
+                    <input type="text" id="search" placeholder="Search">
+                    <i class="mdi mdi-magnify"></i>
+                    <div id="search-results" style="display: none"></div>
+                </div>
+                <a class="btn-flat theme-dark" href="/">
+                    HOME
+                </a>
+                <a class="btn-flat theme-dark" href="/authors.html">
+                    CREDITS
+                </a>
+                <a href="https://github.com/python-gino/gino" target="_blank"
+                   class="github-stars">
+                    <div class="left"><img
+                        src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iNDNweCIgaGVpZ2h0PSI0MnB4IiB2aWV3Qm94PSIwIDAgNDMgNDIiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8IS0tIEdlbmVyYXRvcjogU2tldGNoIDYxLjIgKDg5NjUzKSAtIGh0dHBzOi8vc2tldGNoLmNvbSAtLT4KICAgIDx0aXRsZT5GaWxsIDQ5PC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPgogICAgPGcgaWQ9IlYzLeacgOaWsOeov+S7tiIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgaWQ9IkhPTUUtdjMiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0xNTA3LjAwMDAwMCwgLTQ5LjAwMDAwMCkiIGZpbGw9IiNGRkZGRkUiPgogICAgICAgICAgICA8ZyBpZD0iYmFubmVyLWJnIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMzc5LjAwMDAwMCwgLTE4Ny4wMDAwMDApIj4KICAgICAgICAgICAgICAgIDxnIGlkPSJoZWFkZXIiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDU5Ny4wMDAwMDAsIDIxOC4wMDAwMDApIj4KICAgICAgICAgICAgICAgICAgICA8cGF0aCBkPSJNMTMxMC40OTgwMiwxOCBDMTI5OC42MjcxMiwxOCAxMjg5LDI3LjYzOTg4MzEgMTI4OSwzOS41MzIxMTIzIEMxMjg5LDQ5LjA0NTEwMjYgMTI5NS4xNTk4Myw1Ny4xMTQ2ODggMTMwMy43MDMzNCw1OS45NjE4NDM5IEMxMzA0Ljc3OTAzLDYwLjE2MDExMzggMTMwNS4xNzEwMyw1OS40OTUyNDg3IDEzMDUuMTcxMDMsNTguOTI0MjMxMyBDMTMwNS4xNzEwMyw1OC40MTI2OTUgMTMwNS4xNTI1NSw1Ny4wNTkxNzI0IDEzMDUuMTQxOTksNTUuMjYyODQ3IEMxMjk5LjE2MTY3LDU2LjU2MzQ5NzYgMTI5Ny44OTk4Nyw1Mi4zNzYwMzcxIDEyOTcuODk5ODcsNTIuMzc2MDM3MSBDMTI5Ni45MjE4NSw0OS44ODg0MTA2IDEyOTUuNTEyMjMsNDkuMjI2MTg5MSAxMjk1LjUxMjIzLDQ5LjIyNjE4OTEgQzEyOTMuNTYwMTUsNDcuODkxMTcxNyAxMjk1LjY2MDA2LDQ3LjkxNzYwNzcgMTI5NS42NjAwNiw0Ny45MTc2MDc3IEMxMjk3LjgxODA0LDQ4LjA2OTYxNDYgMTI5OC45NTMxMyw1MC4xMzY5MDg5IDEyOTguOTUzMTMsNTAuMTM2OTA4OSBDMTMwMC44NzA5LDUzLjQyNjg2NzYgMTMwMy45ODU3OSw1Mi40NzY0OTM4IDEzMDUuMjEwNjMsNTEuOTI1MzAzNSBDMTMwNS40MDU5Nyw1MC41MzQ3NzA1IDEzMDUuOTYxNjMsNDkuNTg1NzE4NiAxMzA2LjU3NTM3LDQ5LjA0Nzc0NjIgQzEzMDEuODAxNDEsNDguNTA0NDg2NiAxMjk2Ljc4MTk1LDQ2LjY1NjYxMTEgMTI5Ni43ODE5NSwzOC40MDU5MzkyIEMxMjk2Ljc4MTk1LDM2LjA1NTc3OTkgMTI5Ny42MjAwNiwzNC4xMzI1NjE3IDEyOTguOTk1MzcsMzIuNjI4MzU0IEMxMjk4Ljc3MzYzLDMyLjA4Mzc3MjYgMTI5OC4wMzU4MiwyOS44OTM1NTEgMTI5OS4yMDY1NCwyNi45MzAwNzY4IEMxMjk5LjIwNjU0LDI2LjkzMDA3NjggMTMwMS4wMTA4LDI2LjM1MTEyODYgMTMwNS4xMTgyNCwyOS4xMzc0ODE4IEMxMzA2LjgzMjc1LDI4LjY1ODk5MDQgMTMwOC42NzI2NCwyOC40MjEwNjY1IDEzMTAuNTAwNjYsMjguNDExODEzOSBDMTMxMi4zMjczNiwyOC40MjEwNjY1IDEzMTQuMTY1OTQsMjguNjU4OTkwNCAxMzE1Ljg4MzA4LDI5LjEzNzQ4MTggQzEzMTkuOTg3ODgsMjYuMzUxMTI4NiAxMzIxLjc4OTUsMjYuOTMwMDc2OCAxMzIxLjc4OTUsMjYuOTMwMDc2OCBDMTMyMi45NjI4NiwyOS44OTM1NTEgMTMyMi4yMjUwNSwzMi4wODM3NzI2IDEzMjIuMDA0NjMsMzIuNjI4MzU0IEMxMzIzLjM4MjU4LDM0LjEzMjU2MTcgMTMyNC4yMTQwOSwzNi4wNTU3Nzk5IDEzMjQuMjE0MDksMzguNDA1OTM5MiBDMTMyNC4yMTQwOSw0Ni42Nzc3NTk5IDEzMTkuMTg2NzIsNDguNDk3ODc3NiAxMzE0LjM5ODIzLDQ5LjAzMDU2MjggQzEzMTUuMTY5MDQsNDkuNjk1NDI3OSAxMzE1Ljg1NjY5LDUxLjAwOTI5NjUgMTMxNS44NTY2OSw1My4wMTcxMDk4IEMxMzE1Ljg1NjY5LDU1Ljg5NTk4ODkgMTMxNS44MzAyOSw1OC4yMTgzOTA1IDEzMTUuODMwMjksNTguOTI0MjMxMyBDMTMxNS44MzAyOSw1OS41MDA1MzU5IDEzMTYuMjE4MzMsNjAuMTcwNjg4MiAxMzE3LjMwODU0LDU5Ljk2MDUyMjEgQzEzMjUuODQ1NDUsNTcuMTA2NzU3MiAxMzMyLDQ5LjA0MjQ1OSAxMzMyLDM5LjUzMjExMjMgQzEzMzIsMjcuNjM5ODgzMSAxMzIyLjM3Mjg4LDE4IDEzMTAuNDk4MDIsMTgiIGlkPSJGaWxsLTQ5Ij48L3BhdGg+CiAgICAgICAgICAgICAgICA8L2c+CiAgICAgICAgICAgIDwvZz4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPg=="
+                        class="github-logo">
+                        GitHub
+                    </div>
+                    <div class="right"><img
+                        src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMjFweCIgaGVpZ2h0PSIxOXB4IiB2aWV3Qm94PSIwIDAgMjEgMTkiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8IS0tIEdlbmVyYXRvcjogU2tldGNoIDYxLjIgKDg5NjUzKSAtIGh0dHBzOi8vc2tldGNoLmNvbSAtLT4KICAgIDx0aXRsZT5QYXRoPC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPgogICAgPGcgaWQ9IlYzLeacgOaWsOeov+S7tiIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgaWQ9IkhPTUUtdjMiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0xNTYxLjAwMDAwMCwgLTYwLjAwMDAwMCkiIGZpbGw9IiNGOEQyMzAiPgogICAgICAgICAgICA8ZyBpZD0iYmFubmVyLWJnIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMzc5LjAwMDAwMCwgLTE4Ny4wMDAwMDApIj4KICAgICAgICAgICAgICAgIDxnIGlkPSJoZWFkZXIiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDU5Ny4wMDAwMDAsIDIxOC4wMDAwMDApIj4KICAgICAgICAgICAgICAgICAgICA8ZyBpZD0ibGFiZWwtY29weS0xMiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTI4OS4wMDAwMDAsIDE4LjAwMDAwMCkiPgogICAgICAgICAgICAgICAgICAgICAgICA8cG9seWdvbiBpZD0iUGF0aCIgcG9pbnRzPSI2MS4wNTQzNTQzIDE3Ljc1NzM4MzYgNTQuMjE1MjQ2NiAxOC4zMTMzOTI5IDU5Ljg4OTM1MTcgMjIuOTczNzM4NyA1Ny43ODQ1MjI4IDI5Ljg0MDExODQgNjQuNDQyNTI3MSAyNi41NDM0MTg4IDcwLjU3NzcyMzkgMjkuODQwMTE4NCA2OS4yMzA0MzI1IDIyLjk3MzczODcgNzQuNzMyNTY5NiAxOC4zMTMzOTI5IDY3Ljg5MzQ2MiAxNy43NTczODM2IDY0LjQ0MjUyNzEgMTEuMzc1Ij48L3BvbHlnb24+CiAgICAgICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICA8L2c+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4=">
+                        <span id="github-star-num"></span>
+                    </div>
+                </a>
+            </div>
+        </nav>
+    </div>
+
+    <div id="sidenav" class="sidenav sidenav-fixed">
+        <p class="caption"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/announcement.html">官宣：Python 异步编程再添一利器</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/tutorial.html">GINO Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/fastapi.html">Build a FastAPI Server</a></li>
+</ul>
+<p class="caption"><span class="caption-text">How-to Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../how-to.html">How-to Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to/alembic.html">Use Alembic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to/bakery.html">Bake Queries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to/contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to/crud.html">CRUD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to/faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to/json-props.html">JSON Property</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to/loaders.html">Loaders and Relationship</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to/pool.html">Connection Pool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to/schema.html">Schema Declaration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to/transaction.html">Transaction</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Explanation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../explanation.html">Explanation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="async.html">Asynchronous Programming 101</a></li>
+<li class="toctree-l1"><a class="reference internal" href="engine.html">Engine and Connection</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">SQLAlchemy 2.0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="why.html">Why Asynchronous ORM?</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../reference.html">Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/api.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/extensions.html">Extensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/history.html">History</a></li>
+</ul>
+
+    </div>
+</header>
+
+<main>
+    <div class="row">
+        <div class="col s12 m9 body">
+            <div id="main-content" role="main">
+                
+    <div class="section" id="sqlalchemy-2-0">
+<h1>SQLAlchemy 2.0<a class="headerlink" href="#sqlalchemy-2-0" title="Permalink to this headline">¶</a></h1>
+<p>This article explains the new updates from SQLAlchemy 1.4 and 2.0, as well as how GINO
+adapts to such changes.</p>
+<p><a class="reference external" href="https://docs.sqlalchemy.org/en/14/changelog/migration_20.html">SQLAlchemy 2.0</a> will
+deliver many breaking API changes, and <a class="reference external" href="https://docs.sqlalchemy.org/en/14/changelog/migration_14.html">SQLAlchemy 1.4</a> will be the “interim”
+version for people to eventually upgrade their software to use SQLAlchemy 2.0.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 12%" />
+<col style="width: 21%" />
+<col style="width: 18%" />
+<col style="width: 49%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>GINO</p></th>
+<th class="head"><p>SQLAlchemy</p></th>
+<th class="head"><p>Dialect</p></th>
+<th class="head"><p>Comments</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1.0.x</p></td>
+<td><p>1.3.x</p></td>
+<td><p>Custom</p></td>
+<td><p>Current (old-)stable.</p></td>
+</tr>
+<tr class="row-odd"><td><p>1.1.x</p></td>
+<td><p>1.3.x</p></td>
+<td><p>Custom</p></td>
+<td><p>Next old-stable.</p></td>
+</tr>
+<tr class="row-even"><td><p>1.2.x</p></td>
+<td><p>1.3.x</p></td>
+<td><p>Custom</p></td>
+<td><p>Future old-stable (maybe).</p></td>
+</tr>
+<tr class="row-odd"><td><p>1.4.x</p></td>
+<td><p>1.4.x</p></td>
+<td><p>Upstream</p></td>
+<td><p>2.0 Interim.</p></td>
+</tr>
+<tr class="row-even"><td><p>2.0.x</p></td>
+<td><p>2.0.x</p></td>
+<td><p>Upstream</p></td>
+<td><p>Future stable.</p></td>
+</tr>
+<tr class="row-odd"><td><p>2.1.x</p></td>
+<td><p>2.0.x</p></td>
+<td><p>Upstream</p></td>
+<td><p>Future stable iterations.</p></td>
+</tr>
+</tbody>
+</table>
+<p>To make things easier, GINO will (luckily) also <a class="reference external" href="https://github.com/python-gino/gino/milestones">follow the same versions</a> for the transition. That is,
+GINO 1.4 will be requiring SQLAlchemy 1.4, providing similar pre-1.4-compatible APIs
+with deprecations and options to switch to 2.0-API; GINO 2.0 needs SQLAlchemy 2.0 and
+provides new APIs only.</p>
+<p>At the same time, GINO 1.1, 1.2 and 1.3 will be reserved as the old-stable versions with
+new features added on SQLAlchemy 1.3. And GINO post-2.0 won’t match SQLAlchemy versions.</p>
+<div class="section" id="the-async-solution">
+<h2>The Async Solution<a class="headerlink" href="#the-async-solution" title="Permalink to this headline">¶</a></h2>
+<p>Among all the exciting updates in SQLAlchemy 1.4 / 2.0, <a class="reference external" href="https://docs.sqlalchemy.org/en/14/orm/extensions/asyncio.html">native async support</a> is the most
+significant change for GINO. Simply speaking, SQLAlchemy 1.4 decided to make use of
+<a class="reference external" href="https://greenlet.readthedocs.io/en/latest/">greenlet</a> to mix asynchronous stuff into current code base, avoiding making everything
+async.</p>
+<p>Let’s say we have an asynchronous method to create an asyncpg connection:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">asyncpg</span>
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">connect</span><span class="p">():</span>
+    <span class="k">return</span> <span class="k">await</span> <span class="n">asyncpg</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;postgresql:///&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>And an end-user method to use it:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">conn</span> <span class="o">=</span> <span class="k">await</span> <span class="n">connect</span><span class="p">()</span>
+    <span class="n">now</span> <span class="o">=</span> <span class="k">await</span> <span class="n">conn</span><span class="o">.</span><span class="n">fetchval</span><span class="p">(</span><span class="s2">&quot;SELECT now()&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now instead of directly calling <code class="docutils literal notranslate"><span class="pre">connect()</span></code> from <code class="docutils literal notranslate"><span class="pre">main()</span></code>, I would like to add some
+additional logic - let’s say, a sanity check:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">def</span> <span class="nf">safe_connect</span><span class="p">():</span>
+    <span class="n">conn</span> <span class="o">=</span> <span class="k">await</span> <span class="n">connect</span><span class="p">()</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">await</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT 1&quot;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">conn</span>
+</pre></div>
+</div>
+<p>Then the end-user should modify <code class="docutils literal notranslate"><span class="pre">main()</span></code> to:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span> <span class="k">async</span> <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<span class="hll">     <span class="n">conn</span> <span class="o">=</span> <span class="k">await</span> <span class="n">safe_connect</span><span class="p">()</span>
+</span><span class="hll">     <span class="k">if</span> <span class="n">conn</span><span class="p">:</span>
+</span>         <span class="n">now</span> <span class="o">=</span> <span class="k">await</span> <span class="n">conn</span><span class="o">.</span><span class="n">fetchval</span><span class="p">(</span><span class="s2">&quot;SELECT now()&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>OK, everything works so far, as they are all regular async code. Here’s the interesting
+part: <code class="docutils literal notranslate"><span class="pre">safe_connect()</span></code> must not be an <code class="docutils literal notranslate"><span class="pre">async</span> <span class="pre">def</span></code> method. With SQLAlchemy 1.4+, we
+could:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="hll"> <span class="kn">from</span> <span class="nn">sqlalchemy.util</span> <span class="kn">import</span> <span class="n">await_only</span><span class="p">,</span> <span class="n">greenlet_spawn</span>
+</span>
+<span class="hll"> <span class="k">def</span> <span class="nf">sync_safe_connect</span><span class="p">():</span>
+</span><span class="hll">     <span class="n">conn</span> <span class="o">=</span> <span class="n">await_only</span><span class="p">(</span><span class="n">connect</span><span class="p">())</span>
+</span>     <span class="k">try</span><span class="p">:</span>
+<span class="hll">         <span class="n">await_only</span><span class="p">(</span><span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT 1&quot;</span><span class="p">))</span>
+</span>     <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+         <span class="k">return</span> <span class="kc">None</span>
+     <span class="k">else</span><span class="p">:</span>
+         <span class="k">return</span> <span class="n">conn</span>
+
+ <span class="k">async</span> <span class="k">def</span> <span class="nf">safe_connect</span><span class="p">():</span>
+<span class="hll">     <span class="k">return</span> <span class="k">await</span> <span class="n">greenlet_spawn</span><span class="p">(</span><span class="n">sync_safe_connect</span><span class="p">)</span>
+</span></pre></div>
+</div>
+<p>Behind the scene, <code class="docutils literal notranslate"><span class="pre">greenlet_spawn()</span></code> runs the given “sync” method in a greenlet, which
+uses <code class="docutils literal notranslate"><span class="pre">await_only()</span></code> to switch to the event loop and bridge the underlying async
+methods. As <code class="docutils literal notranslate"><span class="pre">sync_safe_connect()</span></code> is just a normal Python method, you can imagine how
+it works together with lots of other “sync” code asynchronously.</p>
+<p>We’re not going deeper into the implementation, but this is basically how SQLAlchemy 1.4
+mixes asyncpg driver into its “sync” code base, and still being able to provide async
+APIs on top of them.</p>
+</div>
+<div class="section" id="async-sqlalchemy">
+<h2>Async SQLAlchemy<a class="headerlink" href="#async-sqlalchemy" title="Permalink to this headline">¶</a></h2>
+<p>Although <a class="reference external" href="https://greenlet.readthedocs.io/en/latest/">greenlet</a> might be the only way to practically port SQLAlchemy to the async
+world natively without having to maintain 2 copies of the same code, introducing
+implicit asynchronous to a large sync code base is still a risky move.</p>
+<p>The sync library existed for years, with many assumptions like using <code class="docutils literal notranslate"><span class="pre">threading.Lock</span></code>
+to control concurrency. When switching to asynchronous programming, such primitives and
+assumptions usually need to be reviewed and probably replaced by e.g. <code class="docutils literal notranslate"><span class="pre">asyncio.Lock</span></code>.
+However, the implicit approach is so convenient that most of the blocking code just
+works without any changes at all, lowering the odds to review and find possible issues.</p>
+<p>As a matter of fact, some issues can only be revealed under (heavy) concurrency. For
+example, <code class="docutils literal notranslate"><span class="pre">threading.Lock.acquire()</span></code> actually works fine in a single coroutine, but <a class="reference external" href="https://github.com/sqlalchemy/sqlalchemy/issues/5581">2
+concurrent coroutines</a>
+acquiring the same <code class="docutils literal notranslate"><span class="pre">threading.Lock</span></code> may easily block the main thread forever. The same
+applies to data structures like queues, etc. In short, there must be nothing to block
+the main thread.</p>
+<p>Lastly, having implicit asynchronous is a potential maintenance risk. Because the
+context switches are usually hidden behind regular sync methods, it is easy to forget
+such methods may lead to concurrency issues. Treating coroutines as OS threads is a good
+idea and it usually works, but they are fundamentally different. Extra care is always
+needed when trying to support both sync and async with the same code base.</p>
+<p>However, such risks are mostly contained within SQLAlchemy itself. End-users are still
+using regular explicit asynchronous APIs to leverage the async DB drivers. With proper
+reviewing, testing and sufficient community exposure (that’s GINO’s part), it is still
+possible and reliable to have a single SQLAlchemy with 2 sets of APIs (sync + async).
+For sure, the APIs are not 100% identical - for example, the ORM lazy-loading won’t work
+because there is no place for <code class="docutils literal notranslate"><span class="pre">await</span></code> in accessing attributes (GINO doesn’t like such
+implicitness anyways, so yeah).</p>
+<p>To quickly get a picture of async SQLAlchemy (Core), here’s a sample from SQLAlchemy:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">asyncio</span>
+
+<span class="kn">from</span> <span class="nn">sqlalchemy.ext.asyncio</span> <span class="kn">import</span> <span class="n">create_async_engine</span>
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">async_main</span><span class="p">():</span>
+    <span class="n">engine</span> <span class="o">=</span> <span class="n">create_async_engine</span><span class="p">(</span>
+        <span class="s2">&quot;postgresql+asyncpg://scott:tiger@localhost/test&quot;</span><span class="p">,</span> <span class="n">echo</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="k">async</span> <span class="k">with</span> <span class="n">engine</span><span class="o">.</span><span class="n">begin</span><span class="p">()</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+        <span class="k">await</span> <span class="n">conn</span><span class="o">.</span><span class="n">run_sync</span><span class="p">(</span><span class="n">meta</span><span class="o">.</span><span class="n">drop_all</span><span class="p">)</span>
+        <span class="k">await</span> <span class="n">conn</span><span class="o">.</span><span class="n">run_sync</span><span class="p">(</span><span class="n">meta</span><span class="o">.</span><span class="n">create_all</span><span class="p">)</span>
+
+        <span class="k">await</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+            <span class="n">t1</span><span class="o">.</span><span class="n">insert</span><span class="p">(),</span> <span class="p">[{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;some name 1&quot;</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;some name 2&quot;</span><span class="p">}]</span>
+        <span class="p">)</span>
+
+    <span class="k">async</span> <span class="k">with</span> <span class="n">engine</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+
+        <span class="c1"># select a Result, which will be delivered with buffered</span>
+        <span class="c1"># results</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">select</span><span class="p">(</span><span class="n">t1</span><span class="p">)</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">c</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;some name 1&quot;</span><span class="p">))</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">fetchall</span><span class="p">())</span>
+
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">async_main</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="auto-commit-complication">
+<h2>Auto-Commit Complication<a class="headerlink" href="#auto-commit-complication" title="Permalink to this headline">¶</a></h2>
+<p>After using PostgreSQL for a long time, I took many features for granted. The
+auto-commit feature is one of them. We all know that <code class="docutils literal notranslate"><span class="pre">BEGIN</span></code> starts a transaction and
+<code class="docutils literal notranslate"><span class="pre">COMMIT</span></code> / <code class="docutils literal notranslate"><span class="pre">ROLLBACK</span></code> ends it. But what is happening to SQL statements that is not
+wrapped in <code class="docutils literal notranslate"><span class="pre">BEGIN</span> <span class="pre">...</span> <span class="pre">COMMIT</span></code> blocks?</p>
+<blockquote>
+<div><p>If you do not issue a <code class="docutils literal notranslate"><span class="pre">BEGIN</span></code> command, then each individual statement has an
+implicit <code class="docutils literal notranslate"><span class="pre">BEGIN</span></code> and (if successful) <code class="docutils literal notranslate"><span class="pre">COMMIT</span></code> wrapped around it.</p>
+<p class="attribution">—PostgreSQL Documentation, <a class="reference external" href="https://www.postgresql.org/docs/12/tutorial-transactions.html">3.4. Transactions</a></p>
+</div></blockquote>
+<p>And yes, implicit <code class="docutils literal notranslate"><span class="pre">ROLLBACK</span></code> if not successful. This is not directly named as an
+“auto-commit” feature, but PostgreSQL does enforce it. Now imagine a database whose
+“auto-commit” feature can be turned off - such individual statements are either executed
+without ACID-transactions at all (no surprise, there are databases without ACID :doge:),
+or the session is left with a open-ended transaction to be further committed.</p>
+<p><a class="reference external" href="https://www.python.org/dev/peps/pep-0249/">PEP 249</a> (DB-API 2.0) - the standard for
+Python database drivers - was created in such background stories. The assumption it made
+appears to me like, the database may probably not support ACID; if it does, auto-commit
+is usually not supported. Because it defined only <code class="docutils literal notranslate"><span class="pre">commit()</span></code> and <code class="docutils literal notranslate"><span class="pre">rollback()</span></code> on a
+connection, but no <code class="docutils literal notranslate"><span class="pre">begin()</span></code>. So I think DB-API assumes that, when executing
+statements, the connection is automatically put in a transaction (if ACID is supported),
+and you have to call <code class="docutils literal notranslate"><span class="pre">commit()</span></code> to persist your changes. Closing a connection will
+cause pending transactions rolled back automatically.</p>
+<blockquote>
+<div><p>Note that if the database supports an auto-commit feature, this (<em>the auto-commit
+feature – GINO comments</em>) must be initially off.</p>
+<p class="attribution">—PEP 249</p>
+</div></blockquote>
+<p>As the API behavior is defined, database drivers for even e.g. PostgreSQL with enforced
+“auto-commit” has to mimic such behavior. For example, <a class="reference external" href="https://www.psycopg.org/docs/">psycopg2</a> will automatically emit
+a <code class="docutils literal notranslate"><span class="pre">BEGIN</span></code> to the database upon the first execution by default, so that such execution
+is not auto-committed. The implicit transaction boundary is a very evil thing - people
+constantly leaves transactions open (ever seen <code class="docutils literal notranslate"><span class="pre">IDLE</span> <span class="pre">IN</span> <span class="pre">TRANSACTION</span></code>?), sometimes even
+holding database locks and eventually causing a deadlock storm.</p>
+<p>To work around this workaround, PEP 249 does say:</p>
+<blockquote>
+<div><p>An interface method may be provided to turn it (the auto-commit feature) back on.</p>
+</div></blockquote>
+<p>So for <a class="reference external" href="https://www.psycopg.org/docs/">psycopg2</a>, one could do this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">psycopg2</span>
+
+<span class="n">conn</span> <span class="o">=</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;postgresql:///&quot;</span><span class="p">)</span>
+<span class="n">conn</span><span class="o">.</span><span class="n">autocommit</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT now()&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now the database correctly receives this <code class="docutils literal notranslate"><span class="pre">SELECT</span></code> statement only, without any implicit
+<code class="docutils literal notranslate"><span class="pre">BEGIN</span></code> surprises. But when we want to have explicit transactions, DB-API only gives
+us 2 options: 1) Do it manually:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;BEGIN&quot;</span><span class="p">)</span>
+<span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;UPDATE ...&quot;</span><span class="p">)</span>
+<span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;COMMIT&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Or 2) turn auto-commit off again:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conn</span><span class="o">.</span><span class="n">autocommit</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;UPDATE ...&quot;</span><span class="p">)</span>
+<span class="n">conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>I know this is frustrating (or maybe people have accepted it), but newer database
+drivers like <a class="reference external" href="https://github.com/MagicStack/asyncpg">asyncpg</a> does provide a cleaner API, by not complying to PEP 249:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">asyncpg</span>
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">conn</span> <span class="o">=</span> <span class="k">await</span> <span class="n">asyncpg</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;postgresql://&quot;</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="k">await</span> <span class="n">conn</span><span class="o">.</span><span class="n">fetchval</span><span class="p">(</span><span class="s2">&quot;SELECT now()&quot;</span><span class="p">))</span>  <span class="c1"># SELECT now();</span>
+
+    <span class="k">async</span> <span class="k">with</span> <span class="n">conn</span><span class="o">.</span><span class="n">transaction</span><span class="p">():</span>              <span class="c1"># BEGIN;</span>
+        <span class="k">await</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;UPDATE ...&quot;</span><span class="p">)</span>        <span class="c1"># UPDATE ...;</span>
+                                                <span class="c1"># COMMIT;</span>
+</pre></div>
+</div>
+<p>It’s much cleaner to see what’s actually happening on the wire to the database. This is
+also how GINO works.</p>
+</div>
+<div class="section" id="sqlalchemy-for-db-api">
+<h2>SQLAlchemy for DB-API<a class="headerlink" href="#sqlalchemy-for-db-api" title="Permalink to this headline">¶</a></h2>
+<p>Because SQLAlchemy is built on PEP 249 (DB-API 2.0), its API is also greatly affected by
+the PEP standard. For example, imagine what SQL is actually executed by this code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sqlalchemy</span> <span class="k">as</span> <span class="nn">sa</span>
+
+<span class="n">e</span> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><span class="n">create_engine</span><span class="p">(</span><span class="s2">&quot;postgresql:///&quot;</span><span class="p">,</span> <span class="n">future</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">with</span> <span class="n">e</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+    <span class="n">conn</span><span class="o">.</span><span class="n">scalar</span><span class="p">(</span><span class="n">sa</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">&quot;SELECT now()&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Only <code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">now()</span></code>? No. Here’s the answer:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">e</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>                 <span class="c1"># BEGIN; SELECT version(); ...; ROLLBACK;</span>
+    <span class="n">conn</span><span class="o">.</span><span class="n">scalar</span><span class="p">(</span><span class="n">sa</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">&quot;SELECT now()&quot;</span><span class="p">))</span>  <span class="c1"># BEGIN; SELECT now();</span>
+                                          <span class="c1"># ROLLBACK;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We are using SQLAlchemy 2.0 API for simplification, by setting <code class="docutils literal notranslate"><span class="pre">future=True</span></code> using
+SQLAlchemy 1.4. It’s way more complicated in SQLAlchemy 1.3 and I don’t want to get
+into that.</p>
+</div>
+<p>The reason behind this is, connections have “auto-commit” turned off by default. If
+there is no transaction, an implicit <code class="docutils literal notranslate"><span class="pre">BEGIN</span></code> will be automatically executed upon the
+first statement. This applies to async SQLAlchemy too - even if the underlying <a class="reference external" href="https://github.com/MagicStack/asyncpg">asyncpg</a>
+is not DB-API-compliant, the AsyncpgDialect in SQLAlchemy still wrapped <a class="reference external" href="https://github.com/MagicStack/asyncpg">asyncpg</a> and
+simulated a compatible DB-API. Like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sqlalchemy</span> <span class="k">as</span> <span class="nn">sa</span>
+<span class="kn">from</span> <span class="nn">sqlalchemy.ext.asyncio</span> <span class="kn">import</span> <span class="n">create_async_engine</span>
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">e</span> <span class="o">=</span> <span class="n">create_async_engine</span><span class="p">(</span><span class="s2">&quot;postgresql+asyncpg:///&quot;</span><span class="p">)</span>
+    <span class="k">async</span> <span class="k">with</span> <span class="n">e</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>                  <span class="c1"># BEGIN; SELECT version(); ...; ROLLBACK;</span>
+        <span class="k">await</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sa</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">&quot;SELECT now()&quot;</span><span class="p">))</span>  <span class="c1"># BEGIN; SELECT now();</span>
+                                                     <span class="c1"># ROLLBACK;</span>
+</pre></div>
+</div>
+<p>If you want to modify the database permanently, you have to <code class="docutils literal notranslate"><span class="pre">commit()</span></code> the implicit
+transaction explicitly:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span> <span class="k">async</span> <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+     <span class="n">e</span> <span class="o">=</span> <span class="o">...</span>
+     <span class="k">async</span> <span class="k">with</span> <span class="n">e</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+         <span class="k">await</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sa</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">&quot;UPDATE ...&quot;</span><span class="p">))</span>    <span class="c1"># BEGIN; UPDATE ...;</span>
+<span class="hll">         <span class="k">await</span> <span class="n">conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>                          <span class="c1"># COMMIT;</span>
+</span></pre></div>
+</div>
+<p>Or use the explicit transaction API:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span> <span class="k">async</span> <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+     <span class="n">e</span> <span class="o">=</span> <span class="o">...</span>
+     <span class="k">async</span> <span class="k">with</span> <span class="n">e</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+<span class="hll">         <span class="k">async</span> <span class="k">with</span> <span class="n">conn</span><span class="o">.</span><span class="n">begin</span><span class="p">():</span>                     <span class="c1"># BEGIN;</span>
+</span>             <span class="k">await</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sa</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">&quot;UPDATE..&quot;</span><span class="p">))</span>  <span class="c1"># UPDATE ...;</span>
+<span class="hll">                                                      <span class="c1"># COMMIT;</span>
+</span></pre></div>
+</div>
+<p>Please note that, SQLAlchemy 2.0 doesn’t allow soft-nested transactions. In other words,
+you cannot nest 2 <code class="docutils literal notranslate"><span class="pre">async</span> <span class="pre">with</span> <span class="pre">conn.begin():</span></code> blocks like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span> <span class="k">async</span> <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+     <span class="n">e</span> <span class="o">=</span> <span class="o">...</span>
+     <span class="k">async</span> <span class="k">with</span> <span class="n">e</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+         <span class="k">async</span> <span class="k">with</span> <span class="n">conn</span><span class="o">.</span><span class="n">begin</span><span class="p">():</span>      <span class="c1"># BEGIN;</span>
+<span class="hll">             <span class="k">async</span> <span class="k">with</span> <span class="n">conn</span><span class="o">.</span><span class="n">begin</span><span class="p">():</span>  <span class="c1"># Error: a transaction is already begun</span>
+</span>                 <span class="o">...</span>
+</pre></div>
+</div>
+<p>This limitation applies to implicit transactions too, even though it’s weird:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span> <span class="k">async</span> <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+     <span class="n">e</span> <span class="o">=</span> <span class="o">...</span>
+     <span class="k">async</span> <span class="k">with</span> <span class="n">e</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+         <span class="k">await</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sa</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">&quot;SELECT now()&quot;</span><span class="p">))</span>  <span class="c1"># BEGIN; SELECT now();</span>
+<span class="hll">         <span class="k">async</span> <span class="k">with</span> <span class="n">conn</span><span class="o">.</span><span class="n">begin</span><span class="p">():</span>  <span class="c1"># Error: a transaction is already begun</span>
+</span>             <span class="o">...</span>
+</pre></div>
+</div>
+<p>You have to explicitly close this implicit transaction in order for an explicit
+transaction to start successfully:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span> <span class="k">async</span> <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+     <span class="n">e</span> <span class="o">=</span> <span class="o">...</span>
+     <span class="k">async</span> <span class="k">with</span> <span class="n">e</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+         <span class="k">await</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sa</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">&quot;SELECT now()&quot;</span><span class="p">))</span>  <span class="c1"># BEGIN; SELECT now();</span>
+<span class="hll">         <span class="k">await</span> <span class="n">conn</span><span class="o">.</span><span class="n">rollback</span><span class="p">()</span>                        <span class="c1"># ROLLBACK;</span>
+</span>         <span class="k">async</span> <span class="k">with</span> <span class="n">conn</span><span class="o">.</span><span class="n">begin</span><span class="p">():</span>                     <span class="c1"># BEGIN;</span>
+             <span class="k">await</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sa</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">&quot;UPDATE..&quot;</span><span class="p">))</span>  <span class="c1"># UPDATE ...;</span>
+                                                      <span class="c1"># COMMIT;</span>
+</pre></div>
+</div>
+<p>Similar to Core, SQLAlchemy ORM <a class="reference external" href="https://docs.sqlalchemy.org/en/14/orm/session_transaction.html">follows the same principal</a>. Grab a session, use
+it without <code class="docutils literal notranslate"><span class="pre">begin()</span></code>, and when you want to commit, <code class="docutils literal notranslate"><span class="pre">commit()</span></code>. Or, use an explicit
+transaction in a <code class="docutils literal notranslate"><span class="pre">with</span> <span class="pre">session.begin():</span></code> block. Personally I don’t like that much, but
+it is how SQLAlchemy manages transactions. Please follow the link above to read more.</p>
+</div>
+<div class="section" id="sqlalchemy-autocommit">
+<h2>SQLAlchemy AUTOCOMMIT<a class="headerlink" href="#sqlalchemy-autocommit" title="Permalink to this headline">¶</a></h2>
+<p>I know you already miss the WYSIWYG <a class="reference external" href="https://github.com/MagicStack/asyncpg">asyncpg</a> and GINO API. Hang in there, let’s build
+GINO 1.4 together with the <a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/connections.html#setting-transaction-isolation-levels-including-dbapi-autocommit">SQLAlchemy AUTOCOMMIT feature</a>.</p>
+<p>To turn AUTOCOMMIT back on, we need to set the <code class="docutils literal notranslate"><span class="pre">isolation_level</span></code> to <code class="docutils literal notranslate"><span class="pre">AUTOCOMMIT</span></code> in
+<code class="docutils literal notranslate"><span class="pre">execution_options</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span> <span class="k">async</span> <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+     <span class="n">e</span> <span class="o">=</span> <span class="n">create_async_engine</span><span class="p">(</span>
+         <span class="s2">&quot;postgresql+asyncpg:///&quot;</span><span class="p">,</span>
+<span class="hll">         <span class="n">execution_options</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;isolation_level&quot;</span><span class="p">:</span> <span class="s2">&quot;AUTOCOMMIT&quot;</span><span class="p">},</span>
+</span>     <span class="p">)</span>
+     <span class="k">async</span> <span class="k">with</span> <span class="n">e</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+<span class="hll">         <span class="k">await</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sa</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">&quot;SELECT now()&quot;</span><span class="p">))</span>  <span class="c1"># SELECT now();</span>
+</span></pre></div>
+</div>
+<p>Hooray! No more implicit <code class="docutils literal notranslate"><span class="pre">BEGIN</span></code> magic. We’re one step closer.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>There is also a keyword argument:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span> <span class="n">e</span> <span class="o">=</span> <span class="n">create_async_engine</span><span class="p">(</span>
+     <span class="s2">&quot;postgresql+asyncpg:///&quot;</span><span class="p">,</span>
+<span class="hll">     <span class="n">isolation_level</span><span class="o">=</span><span class="s2">&quot;AUTOCOMMIT&quot;</span><span class="p">,</span>
+</span> <span class="p">)</span>
+</pre></div>
+</div>
+<p>But this is implemented very differently than <code class="docutils literal notranslate"><span class="pre">execution_options</span></code>, and I don’t
+think it’s working for GINO’s use case.</p>
+</div>
+<p>The next question is, how do we explicitly start a transaction? Let’s try <code class="docutils literal notranslate"><span class="pre">begin()</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span> <span class="k">async</span> <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+     <span class="n">e</span> <span class="o">=</span> <span class="o">...</span>
+     <span class="k">async</span> <span class="k">with</span> <span class="n">e</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+         <span class="k">await</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sa</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">&quot;SELECT now()&quot;</span><span class="p">))</span>  <span class="c1"># SELECT now();</span>
+<span class="hll">         <span class="k">async</span> <span class="k">with</span> <span class="n">conn</span><span class="o">.</span><span class="n">begin</span><span class="p">():</span>  <span class="c1"># Error: a transaction is already begun</span>
+</span>             <span class="o">...</span>
+</pre></div>
+</div>
+<p>Wait a second … we’ve seen this error before! It is the implicit transaction
+conflicting with the explicit transaction. But I thought we’re in AUTOCOMMIT mode? Even
+though the <code class="docutils literal notranslate"><span class="pre">isolation_level</span></code> tell the driver not to send <code class="docutils literal notranslate"><span class="pre">BEGIN</span></code> to the database,
+SQLAlchemy still manages library-level transaction objects. We have to close the virtual
+implicit transaction before starting an explicit transaction:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span> <span class="k">async</span> <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+     <span class="n">e</span> <span class="o">=</span> <span class="o">...</span>
+     <span class="k">async</span> <span class="k">with</span> <span class="n">e</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+         <span class="k">await</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sa</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">&quot;SELECT now()&quot;</span><span class="p">))</span>  <span class="c1"># SELECT now();</span>
+<span class="hll">         <span class="k">await</span> <span class="n">conn</span><span class="o">.</span><span class="n">rollback</span><span class="p">()</span>                        <span class="c1"># no-op</span>
+</span><span class="hll">         <span class="k">async</span> <span class="k">with</span> <span class="n">conn</span><span class="o">.</span><span class="n">begin</span><span class="p">():</span>                     <span class="c1"># no-op</span>
+</span>             <span class="k">await</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sa</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">&quot;UPDATE..&quot;</span><span class="p">))</span>  <span class="c1"># UPDATE ...;</span>
+</pre></div>
+</div>
+<p>Well, not quite what we expected. With AUTOCOMMIT set, all of <code class="docutils literal notranslate"><span class="pre">begin()</span></code>, <code class="docutils literal notranslate"><span class="pre">commit()</span></code>
+and <code class="docutils literal notranslate"><span class="pre">rollback()</span></code> become no-ops.</p>
+<p>Similar to the answers in <a class="reference external" href="https://www.psycopg.org/docs/">psycopg2</a>, we have 2 options here too: 1) manually execute
+transaction-control SQLs, or 2) turn off AUTOCOMMIT temporarily. As we want to be more
+compatible with SQLAlchemy, let’s try 2):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span> <span class="k">async</span> <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+     <span class="n">e</span> <span class="o">=</span> <span class="o">...</span>
+     <span class="k">async</span> <span class="k">with</span> <span class="n">e</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+         <span class="k">await</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sa</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">&quot;SELECT now()&quot;</span><span class="p">))</span>  <span class="c1"># SELECT now();</span>
+         <span class="k">await</span> <span class="n">conn</span><span class="o">.</span><span class="n">rollback</span><span class="p">()</span>                        <span class="c1"># no-op</span>
+<span class="hll">         <span class="k">async</span> <span class="k">with</span> <span class="n">conn</span><span class="o">.</span><span class="n">execution_options</span><span class="p">(</span>
+</span><span class="hll">             <span class="n">isolation_level</span><span class="o">=</span><span class="s2">&quot;READ COMMITTED&quot;</span>
+</span><span class="hll">         <span class="p">)</span><span class="o">.</span><span class="n">begin</span><span class="p">():</span>                                   <span class="c1"># BEGIN;</span>
+</span>             <span class="k">await</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sa</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">&quot;UPDATE..&quot;</span><span class="p">))</span>  <span class="c1"># UPDATE ...;</span>
+                                                      <span class="c1"># COMMIT;</span>
+</pre></div>
+</div>
+<p>It’s working! According to SQLAlchemy docs, <code class="docutils literal notranslate"><span class="pre">execution_options()</span></code> creates a shallow
+copy of the connection, and apply new values only to the copy. So the original
+connection should still be in AUTOCOMMIT, right? Well…</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span> <span class="k">async</span> <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+     <span class="n">e</span> <span class="o">=</span> <span class="o">...</span>
+     <span class="k">async</span> <span class="k">with</span> <span class="n">e</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+         <span class="o">...</span>
+         <span class="k">async</span> <span class="k">with</span> <span class="n">conn</span><span class="o">.</span><span class="n">execution_options</span><span class="p">(</span>
+             <span class="n">isolation_level</span><span class="o">=</span><span class="s2">&quot;READ COMMITTED&quot;</span>
+         <span class="p">)</span><span class="o">.</span><span class="n">begin</span><span class="p">():</span>                                   <span class="c1"># BEGIN;</span>
+             <span class="k">await</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sa</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">&quot;UPDATE..&quot;</span><span class="p">))</span>  <span class="c1"># UPDATE ...;</span>
+                                                      <span class="c1"># COMMIT;</span>
+
+<span class="hll">         <span class="k">await</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sa</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">&quot;SELECT now()&quot;</span><span class="p">))</span>  <span class="c1"># BEGIN; SELECT now();</span>
+</span><span class="hll">                                                      <span class="c1"># ROLLBACK;</span>
+</span></pre></div>
+</div>
+<p>Unfortunately, the implicit transaction is haunting us again. This is because both the
+original connection and its shallow copy points to the same “DB-API” connection (in this
+case, a SQLAlchemy wrapper of asyncpg connection), and setting <code class="docutils literal notranslate"><span class="pre">isolation_level</span></code>
+modifies the value on “DB-API” connection.</p>
+<p>Returning a SQLAlchemy connection back to the pool resets the <code class="docutils literal notranslate"><span class="pre">isolation_level</span></code> to its
+default value, and acquiring the same connection again will initialize the
+<code class="docutils literal notranslate"><span class="pre">isolation_level</span></code> with values from <code class="docutils literal notranslate"><span class="pre">execution_options</span></code> of the engine. But if we want
+to keep using the same connection without returning, we have to manually overwrite its
+<code class="docutils literal notranslate"><span class="pre">isolation_level</span></code> again:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span> <span class="k">async</span> <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+     <span class="n">e</span> <span class="o">=</span> <span class="o">...</span>
+     <span class="k">async</span> <span class="k">with</span> <span class="n">e</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+         <span class="o">...</span>
+         <span class="k">async</span> <span class="k">with</span> <span class="n">conn</span><span class="o">.</span><span class="n">execution_options</span><span class="p">(</span>
+             <span class="n">isolation_level</span><span class="o">=</span><span class="s2">&quot;READ COMMITTED&quot;</span>
+         <span class="p">)</span><span class="o">.</span><span class="n">begin</span><span class="p">():</span>                                   <span class="c1"># BEGIN;</span>
+             <span class="k">await</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sa</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">&quot;UPDATE..&quot;</span><span class="p">))</span>  <span class="c1"># UPDATE ...;</span>
+                                                      <span class="c1"># COMMIT;</span>
+
+<span class="hll">         <span class="n">conn</span><span class="o">.</span><span class="n">execution_options</span><span class="p">(</span><span class="n">isolation_level</span><span class="o">=</span><span class="s2">&quot;AUTOCOMMIT&quot;</span><span class="p">)</span>
+</span>         <span class="k">await</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sa</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">&quot;SELECT now()&quot;</span><span class="p">))</span>  <span class="c1"># SELECT now();</span>
+</pre></div>
+</div>
+<p>Eventually we made it! 🎉</p>
+<p>Encapsulating all such logic, GINO 1.4 could then provide decent WYSIWYG APIs again:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">gino</span>
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">engine</span> <span class="o">=</span> <span class="k">await</span> <span class="n">gino</span><span class="o">.</span><span class="n">create_engine</span><span class="p">(</span><span class="s2">&quot;postgresql:///&quot;</span><span class="p">)</span>
+    <span class="k">async</span> <span class="k">with</span> <span class="n">engine</span><span class="o">.</span><span class="n">acquire</span><span class="p">()</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+        <span class="k">await</span> <span class="n">conn</span><span class="o">.</span><span class="n">scalar</span><span class="p">(</span><span class="s2">&quot;SELECT now()&quot;</span><span class="p">)</span>    <span class="c1"># SELECT now();</span>
+
+        <span class="k">async</span> <span class="k">with</span> <span class="n">conn</span><span class="o">.</span><span class="n">transaction</span><span class="p">():</span>       <span class="c1"># BEGIN;</span>
+            <span class="k">await</span> <span class="n">conn</span><span class="o">.</span><span class="n">status</span><span class="p">(</span><span class="s2">&quot;UPDATE ...&quot;</span><span class="p">)</span>  <span class="c1"># UPDATE ...;</span>
+                                             <span class="c1"># COMMIT;</span>
+</pre></div>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Now I feel that “implementing” auto-commit feature is more like restoring to the
+original database behavior, and having auto-commit turned off by default should be
+considered as a new feature called “auto-begin” or “implicit transaction”. And it’s
+a bad design introduced in early PEP 249, affecting SQLAlchemy and the ecosystem.</p>
+</div>
+</div>
+<div class="section" id="isolation-levels">
+<h2>Isolation Levels<a class="headerlink" href="#isolation-levels" title="Permalink to this headline">¶</a></h2>
+<p>By far, we only used 2 <code class="docutils literal notranslate"><span class="pre">isolation_level</span></code> values:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">AUTOCOMMIT</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">READ</span> <span class="pre">COMMITTED</span></code></p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">AUTOCOMMIT</span></code> is not a valid PostgreSQL isolation level. It’s only recognized and
+consumed by the SQLAlchemy asyncpg dialect to bypass the “auto-begin” simulation.</p>
+<p><code class="docutils literal notranslate"><span class="pre">READ</span> <span class="pre">COMMITTED</span></code> is the default PostgreSQL isolation level. You can verify this by
+executing a SQL directly in a transaction:</p>
+<div class="highlight-plpgsql notranslate"><div class="highlight"><pre><span></span><span class="o">#</span> <span class="k">BEGIN</span><span class="p">;</span>
+<span class="k">BEGIN</span>
+
+<span class="o">#</span> <span class="k">SHOW</span> <span class="k">TRANSACTION</span> <span class="k">ISOLATION</span> <span class="k">LEVEL</span><span class="p">;</span>
+ <span class="n">transaction_isolation</span>
+<span class="c1">-----------------------</span>
+ <span class="k">read</span> <span class="k">committed</span>
+<span class="p">(</span><span class="mf">1</span> <span class="k">row</span><span class="p">)</span>
+
+<span class="o">#</span> <span class="k">ROLLBACK</span><span class="p">;</span>
+<span class="k">ROLLBACK</span>
+</pre></div>
+</div>
+<p>To start a transaction in a different isolation level, you may:</p>
+<div class="highlight-plpgsql notranslate"><div class="highlight"><pre><span></span><span class="hll"> <span class="o">#</span> <span class="k">BEGIN</span> <span class="k">ISOLATION</span> <span class="k">LEVEL</span> <span class="k">SERIALIZABLE</span><span class="p">;</span>
+</span> <span class="k">BEGIN</span>
+
+ <span class="o">#</span> <span class="k">SHOW</span> <span class="k">TRANSACTION</span> <span class="k">ISOLATION</span> <span class="k">LEVEL</span><span class="p">;</span>
+  <span class="n">transaction_isolation</span>
+ <span class="c1">-----------------------</span>
+<span class="hll">  <span class="k">serializable</span>
+</span> <span class="p">(</span><span class="mf">1</span> <span class="k">row</span><span class="p">)</span>
+
+ <span class="o">#</span> <span class="k">ROLLBACK</span><span class="p">;</span>
+ <span class="k">ROLLBACK</span>
+</pre></div>
+</div>
+<p>As mentioned earlier, all PostgreSQL statements are executed in a transaction. If no
+explicit <code class="docutils literal notranslate"><span class="pre">BEGIN</span></code> in place, an implicit transaction is used. So this SQL also works
+individually:</p>
+<div class="highlight-plpgsql notranslate"><div class="highlight"><pre><span></span><span class="o">#</span> <span class="k">SHOW</span> <span class="k">TRANSACTION</span> <span class="k">ISOLATION</span> <span class="k">LEVEL</span><span class="p">;</span>
+ <span class="n">transaction_isolation</span>
+<span class="c1">-----------------------</span>
+ <span class="k">read</span> <span class="k">committed</span>
+<span class="p">(</span><span class="mf">1</span> <span class="k">row</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>But how could we modify the isolation level of such implicit transactions? The answer is
+to set isolation level session-wise. This affects all subsequent transactions, including
+both implicit and explicit ones, except for explicit transactions with explicit
+isolation levels:</p>
+<div class="highlight-plpgsql notranslate"><div class="highlight"><pre><span></span><span class="hll"> <span class="o">#</span> <span class="k">SET</span> <span class="k">SESSION</span> <span class="k">CHARACTERISTICS</span> <span class="k">AS</span> <span class="k">TRANSACTION</span> <span class="k">ISOLATION</span> <span class="k">LEVEL</span> <span class="k">SERIALIZABLE</span><span class="p">;</span>
+</span> <span class="k">SET</span>
+
+ <span class="o">#</span> <span class="k">SHOW</span> <span class="k">TRANSACTION</span> <span class="k">ISOLATION</span> <span class="k">LEVEL</span><span class="p">;</span>
+  <span class="n">transaction_isolation</span>
+ <span class="c1">-----------------------</span>
+<span class="hll">  <span class="k">serializable</span>
+</span> <span class="p">(</span><span class="mf">1</span> <span class="k">row</span><span class="p">)</span>
+
+<span class="hll"> <span class="o">#</span> <span class="k">BEGIN</span><span class="p">;</span>
+</span> <span class="k">BEGIN</span>
+
+ <span class="o">#</span> <span class="k">SHOW</span> <span class="k">TRANSACTION</span> <span class="k">ISOLATION</span> <span class="k">LEVEL</span><span class="p">;</span>
+  <span class="n">transaction_isolation</span>
+ <span class="c1">-----------------------</span>
+<span class="hll">  <span class="k">serializable</span>
+</span> <span class="p">(</span><span class="mf">1</span> <span class="k">row</span><span class="p">)</span>
+
+ <span class="o">#</span> <span class="k">ROLLBACK</span><span class="p">;</span>
+ <span class="k">ROLLBACK</span>
+
+<span class="hll"> <span class="o">#</span> <span class="k">BEGIN</span> <span class="k">ISOLATION</span> <span class="k">LEVEL</span> <span class="k">READ</span> <span class="k">COMMITTED</span><span class="p">;</span>
+</span> <span class="k">BEGIN</span>
+
+ <span class="o">#</span> <span class="k">SHOW</span> <span class="k">TRANSACTION</span> <span class="k">ISOLATION</span> <span class="k">LEVEL</span><span class="p">;</span>
+  <span class="n">transaction_isolation</span>
+ <span class="c1">-----------------------</span>
+<span class="hll">  <span class="k">read</span> <span class="k">committed</span>
+</span> <span class="p">(</span><span class="mf">1</span> <span class="k">row</span><span class="p">)</span>
+
+ <span class="o">#</span> <span class="k">ROLLBACK</span><span class="p">;</span>
+ <span class="k">ROLLBACK</span>
+</pre></div>
+</div>
+<p>Then let’s see how SQLAlchemy with asyncpg solves this problem:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span> <span class="k">async</span> <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+     <span class="n">e</span> <span class="o">=</span> <span class="n">create_async_engine</span><span class="p">(</span>
+         <span class="s2">&quot;postgresql+asyncpg:///&quot;</span><span class="p">,</span>
+<span class="hll">         <span class="n">execution_options</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;isolation_level&quot;</span><span class="p">:</span> <span class="s2">&quot;SERIALIZABLE&quot;</span><span class="p">},</span>
+</span>     <span class="p">)</span>
+     <span class="k">async</span> <span class="k">with</span> <span class="n">e</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+<span class="hll">         <span class="k">async</span> <span class="k">with</span> <span class="n">conn</span><span class="o">.</span><span class="n">begin</span><span class="p">():</span>  <span class="c1"># BEGIN ISOLATION LEVEL SERIALIZABLE;</span>
+</span>             <span class="k">await</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sa</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">&quot;UPDATE ...&quot;</span><span class="p">))</span>  <span class="c1"># UPDATE ...;</span>
+                                                        <span class="c1"># COMMIT;</span>
+</pre></div>
+</div>
+<p>Under the neath, SQLAlchemy is leveraging asyncpg’s
+<code class="docutils literal notranslate"><span class="pre">Connection.transaction(isolation=&quot;...&quot;)</span></code> to set isolation level per transaction. In
+GINO, we just need to store the user-defined isolation level, and set before
+transactions.</p>
+<p>But there are 2 issues:</p>
+<ul class="simple">
+<li><p>User-defined isolation level is not applied in PostgreSQL implicit transactions
+(a.k.a. auto-commit statements), because no one <code class="docutils literal notranslate"><span class="pre">SET</span> <span class="pre">SESSION</span></code>.</p></li>
+<li><p>asyncpg has a bug that <code class="docutils literal notranslate"><span class="pre">Connection.transaction(isolation=&quot;read_committed&quot;)</span></code> always
+emit <code class="docutils literal notranslate"><span class="pre">BEGIN</span></code> without explicit isolation level, regardless of the actual default
+isolation level.</p></li>
+</ul>
+<p>The asyncpg bug should be fixed from upstream, but we could leverage a session-wide
+isolation level setter from base SQLAlchemy dialect for PostgreSQL:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span> <span class="kn">import</span> <span class="nn">sqlalchemy</span> <span class="k">as</span> <span class="nn">sa</span>
+ <span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">event</span>
+ <span class="kn">from</span> <span class="nn">sqlalchemy.dialects.postgresql.base</span> <span class="kn">import</span> <span class="n">PGDialect</span>
+ <span class="kn">from</span> <span class="nn">sqlalchemy.ext.asyncio</span> <span class="kn">import</span> <span class="n">create_async_engine</span>
+
+
+ <span class="k">async</span> <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+     <span class="n">e</span> <span class="o">=</span> <span class="n">create_async_engine</span><span class="p">(</span>
+         <span class="s2">&quot;postgresql+asyncpg:///&quot;</span><span class="p">,</span>
+         <span class="n">execution_options</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;isolation_level&quot;</span><span class="p">:</span> <span class="s2">&quot;AUTOCOMMIT&quot;</span><span class="p">},</span>
+     <span class="p">)</span>
+
+<span class="hll">     <span class="k">def</span> <span class="nf">set_isolation_level</span><span class="p">(</span><span class="n">dbapi_conn</span><span class="p">,</span> <span class="n">record</span><span class="p">):</span>
+</span><span class="hll">         <span class="n">PGDialect</span><span class="o">.</span><span class="n">set_isolation_level</span><span class="p">(</span>
+</span><span class="hll">             <span class="n">e</span><span class="o">.</span><span class="n">sync_engine</span><span class="o">.</span><span class="n">dialect</span><span class="p">,</span>
+</span><span class="hll">             <span class="n">dbapi_conn</span><span class="p">,</span>
+</span><span class="hll">             <span class="s2">&quot;SERIALIZABLE&quot;</span><span class="p">,</span>
+</span><span class="hll">         <span class="p">)</span>
+</span><span class="hll">
+</span><span class="hll">     <span class="n">event</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">sync_engine</span><span class="p">,</span> <span class="s2">&quot;connect&quot;</span><span class="p">,</span> <span class="n">set_isolation_level</span><span class="p">)</span>
+</span>
+     <span class="k">async</span> <span class="k">with</span> <span class="n">e</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+<span class="hll">         <span class="nb">print</span><span class="p">(</span><span class="k">await</span> <span class="n">conn</span><span class="o">.</span><span class="n">scalar</span><span class="p">(</span><span class="n">sa</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">&quot;SHOW TRANSACTION ISOLATION LEVEL&quot;</span><span class="p">)))</span>
+</span><span class="hll">         <span class="c1"># Outputs: serializable</span>
+</span></pre></div>
+</div>
+</div>
+</div>
+
+
+            </div>
+            <p style="text-align: center; font-size: 12px;">
+                <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+                    <img
+                        alt="Creative Commons License"
+                        style="border-width:0"
+                        src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png"
+                    />
+                </a>
+                <br/>
+                This work is licensed under a<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+            </p>
+        </div>
+
+        <div class="col hide-on-small-only m3 right-nav">
+            <div class="table-of-contents fixed">
+                
+                    <ul>
+<li><a class="reference internal" href="#">SQLAlchemy 2.0</a><ul>
+<li><a class="reference internal" href="#the-async-solution">The Async Solution</a></li>
+<li><a class="reference internal" href="#async-sqlalchemy">Async SQLAlchemy</a></li>
+<li><a class="reference internal" href="#auto-commit-complication">Auto-Commit Complication</a></li>
+<li><a class="reference internal" href="#sqlalchemy-for-db-api">SQLAlchemy for DB-API</a></li>
+<li><a class="reference internal" href="#sqlalchemy-autocommit">SQLAlchemy AUTOCOMMIT</a></li>
+<li><a class="reference internal" href="#isolation-levels">Isolation Levels</a></li>
+</ul>
+</li>
+</ul>
+
+                
+                <div id="version-selector">
+                    
+                        <hr>
+                    
+                    
+                </div>
+                <div class="add-your-lang">
+                    <a href="https://www.transifex.com/decentfox-studio/gino_1_0/"
+                       target="_blank">Add your language here.</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="fixed-action-btn click-to-toggle">
+        <a class="btn-floating btn-large white">
+            <img src="../_static/images/language.svg">
+            <div>
+              EN
+            </div>
+        </a>
+        <ul id="lang-selector">
+        </ul>
+    </div>
+</main>
+
+<script type="text/javascript" src="../_static/js/materialize.min.js"></script>
+<script type="text/javascript" src="../_static/js/language_data.js"></script>
+<script id="documentation_options" data-url_root="../" src="../_static/js/documentation_options.js"></script>
+<script type="text/javascript" src="../_static/js/underscore.js"></script>
+<script type="text/javascript" src="../_static/js/jquery.js"></script>
+<script type="text/javascript">
+    var sver = '1.1';
+    var language = 'en';
+    var pagename = 'explanation/sa20';
+</script>
+<script type="text/javascript" src="../_static/js/gino.js"></script>
+<script type="text/javascript" src="../searchindex.js"></script>
+</body>
+</html>
