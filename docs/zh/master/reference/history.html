@@ -142,7 +142,9 @@
 <li><p>Added baked query feature (#478 #659 #667)</p></li>
 <li><p>Added <code class="docutils literal notranslate"><span class="pre">Query.gino.execution_options</span></code> shortcut (#659)</p></li>
 <li><p>Added <code class="docutils literal notranslate"><span class="pre">&#64;db.declared_attr(with_table=True)</span></code> (#659)</p></li>
-<li><p>[Breaking] empty object instead of <code class="docutils literal notranslate"><span class="pre">None</span></code> being returned for objects with values of all selected columns are None (#729)</p></li>
+<li><p>[Breaking] Empty object instead of <code class="docutils literal notranslate"><span class="pre">None</span></code> being returned for objects with values of all selected columns are None (#729)</p></li>
+<li><p>Added MySQL support (#381 #685)</p></li>
+<li><p>[Breaking] asyncpg is no longer installed as a dependency by default, install <code class="docutils literal notranslate"><span class="pre">gino[pg]</span></code> for the old behavior</p></li>
 </ul>
 </div>
 </div>
