@@ -145,7 +145,7 @@
 <span id="gino-transaction-module"></span><h1>gino.transaction module<a class="headerlink" href="#module-gino.transaction" title="永久链接至标题">¶</a></h1>
 <dl class="py class">
 <dt id="gino.transaction.GinoTransaction">
-<em class="property">class </em><code class="sig-prename descclassname">gino.transaction.</code><code class="sig-name descname">GinoTransaction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">conn</span></em>, <em class="sig-param"><span class="n">args</span></em>, <em class="sig-param"><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.transaction.GinoTransaction" title="永久链接至目标">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">gino.transaction.</span></code><code class="sig-name descname"><span class="pre">GinoTransaction</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">conn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.transaction.GinoTransaction" title="永久链接至目标">¶</a></dt>
 <dd><p>基类：<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(在 Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Represents an underlying database transaction and its connection, offering
 methods to manage this transaction.</p>
@@ -205,13 +205,13 @@ normal <code class="docutils literal notranslate"><span class="pre">try</span> <
 </div>
 <dl class="py method">
 <dt id="gino.transaction.GinoTransaction.commit">
-<em class="property">async </em><code class="sig-name descname">commit</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.transaction.GinoTransaction.commit" title="永久链接至目标">¶</a></dt>
+<em class="property"><span class="pre">async</span> </em><code class="sig-name descname"><span class="pre">commit</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.transaction.GinoTransaction.commit" title="永久链接至目标">¶</a></dt>
 <dd><p>Only available in manual mode: manually commit this transaction.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="gino.transaction.GinoTransaction.connection">
-<em class="property">property </em><code class="sig-name descname">connection</code><a class="headerlink" href="#gino.transaction.GinoTransaction.connection" title="永久链接至目标">¶</a></dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">connection</span></code><a class="headerlink" href="#gino.transaction.GinoTransaction.connection" title="永久链接至目标">¶</a></dt>
 <dd><p>Accesses to the <a class="reference internal" href="gino.engine.html#gino.engine.GinoConnection" title="gino.engine.GinoConnection"><code class="xref py py-class docutils literal notranslate"><span class="pre">GinoConnection</span></code></a> of this
 transaction. This is useful if when the transaction is started from
 <code class="docutils literal notranslate"><span class="pre">db</span></code> or <code class="docutils literal notranslate"><span class="pre">engine</span></code> where the connection is implicitly acquired for
@@ -220,7 +220,7 @@ you together with the transaction.</p>
 
 <dl class="py method">
 <dt id="gino.transaction.GinoTransaction.raise_commit">
-<code class="sig-name descname">raise_commit</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.transaction.GinoTransaction.raise_commit" title="永久链接至目标">¶</a></dt>
+<code class="sig-name descname"><span class="pre">raise_commit</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.transaction.GinoTransaction.raise_commit" title="永久链接至目标">¶</a></dt>
 <dd><p>Only available in managed mode: skip rest of the code in this
 transaction and commit immediately by raising an internal exception,
 which will be caught and handled by the asynchronous context manager:</p>
@@ -236,7 +236,7 @@ which will be caught and handled by the asynchronous context manager:</p>
 
 <dl class="py method">
 <dt id="gino.transaction.GinoTransaction.raise_rollback">
-<code class="sig-name descname">raise_rollback</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.transaction.GinoTransaction.raise_rollback" title="永久链接至目标">¶</a></dt>
+<code class="sig-name descname"><span class="pre">raise_rollback</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.transaction.GinoTransaction.raise_rollback" title="永久链接至目标">¶</a></dt>
 <dd><p>Only available in managed mode: skip rest of the code in this
 transaction and rollback immediately by raising an internal exception,
 which will be caught and handled by the asynchronous context manager:</p>
@@ -254,14 +254,14 @@ which will be caught and handled by the asynchronous context manager:</p>
 
 <dl class="py method">
 <dt id="gino.transaction.GinoTransaction.raw_transaction">
-<em class="property">property </em><code class="sig-name descname">raw_transaction</code><a class="headerlink" href="#gino.transaction.GinoTransaction.raw_transaction" title="永久链接至目标">¶</a></dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">raw_transaction</span></code><a class="headerlink" href="#gino.transaction.GinoTransaction.raw_transaction" title="永久链接至目标">¶</a></dt>
 <dd><p>Accesses to the underlying transaction object, whose type depends on
 the dialect in use.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="gino.transaction.GinoTransaction.rollback">
-<em class="property">async </em><code class="sig-name descname">rollback</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.transaction.GinoTransaction.rollback" title="永久链接至目标">¶</a></dt>
+<em class="property"><span class="pre">async</span> </em><code class="sig-name descname"><span class="pre">rollback</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.transaction.GinoTransaction.rollback" title="永久链接至目标">¶</a></dt>
 <dd><p>Only available in manual mode: manually rollback this transaction.</p>
 </dd></dl>
 

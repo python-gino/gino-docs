@@ -148,13 +148,13 @@
 <div class="section" id="installation">
 <h2>安装<a class="headerlink" href="#installation" title="永久链接至标题">¶</a></h2>
 <p>请在终端中执行以下命令以安装 GINO：</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> pip install gino
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>pip install gino
 </pre></div>
 </div>
 <p>以上就是安装 GINO 的推荐方式，因为这种方式始终会去安装最新的稳定版。</p>
 <p>如果您还没有安装过 <a class="reference external" href="https://pip.pypa.io">pip</a>，您可以参阅 <a class="reference external" href="http://docs.python-guide.org/en/latest/starting/installation/">Python 安装指南</a>。</p>
 <p>另外如果您在使用 <a class="reference external" href="https://python-poetry.org">Poetry</a> 进行项目依赖关系管理，那需要执行的则是：</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> poetry add gino
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>poetry add gino
 </pre></div>
 </div>
 </div>
@@ -199,7 +199,7 @@
 <div class="section" id="get-connected">
 <h2>建立连接<a class="headerlink" href="#get-connected" title="永久链接至标题">¶</a></h2>
 <p>前面的声明只是定义了映射关系，并非实际在数据库中创建了这些表结构。为了使用 GINO 来创建表，我们需要先与数据库建立连接。这里我们先为本指南创建一个 PostgreSQL 的数据库实例：</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> createdb gino
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>createdb gino
 </pre></div>
 </div>
 <p>然后，告诉我们的 <code class="docutils literal notranslate"><span class="pre">db</span></code> 对象去连接这个数据库：</p>
