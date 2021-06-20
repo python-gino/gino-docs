@@ -132,7 +132,7 @@
 <p>Alembic is a lightweight database migration tool for usage with the SQLAlchemy Database
 Toolkit for Python. It’s also possible to use with GINO.</p>
 <p>To add migrations to project first of all, add alembic as dependency:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> pip install --user alembic
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>pip install --user alembic
 </pre></div>
 </div>
 <p>When you need to set up alembic for your project.</p>
@@ -158,7 +158,7 @@ Toolkit for Python. It’s also possible to use with GINO.</p>
 <h2>Set up Alembic<a class="headerlink" href="#set-up-alembic" title="Permalink to this headline">¶</a></h2>
 <p>This will need to be done only once. Go to the main folder of your project
 <code class="docutils literal notranslate"><span class="pre">alembic_sample</span></code> and run:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> alembic init alembic
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>alembic init alembic
 </pre></div>
 </div>
 <p>Alembic will create a bunch of files and folders in your project directory. One of them
@@ -190,7 +190,7 @@ modules. This is a variable that links to your <code class="docutils literal not
 <h2>Create first migration revision<a class="headerlink" href="#create-first-migration-revision" title="Permalink to this headline">¶</a></h2>
 <p>Same commands you must run each time when you make some changes in DB Models and want to
 apply these changes to your DB Schema.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> alembic revision -m <span class="s2">&quot;first migration&quot;</span> --autogenerate --head head
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>alembic revision -m <span class="s2">&quot;first migration&quot;</span> --autogenerate --head head
 </pre></div>
 </div>
 <p>If you have any problems relative to package imports similar to this example:</p>
@@ -201,7 +201,7 @@ apply these changes to your DB Schema.</p>
 </div>
 <p>Either install your project locally with <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-e</span> <span class="pre">.</span></code>, <code class="docutils literal notranslate"><span class="pre">poetry</span> <span class="pre">install</span></code> or
 <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">develop</span></code>, or add you package to PYTHONPATH, like this:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nb">export</span> <span class="nv">PYTHONPATH</span><span class="o">=</span><span class="nv">$PYTHONPATH</span>:/full_path/to/alembic_sample
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">export</span> <span class="nv">PYTHONPATH</span><span class="o">=</span><span class="nv">$PYTHONPATH</span>:/full_path/to/alembic_sample
 </pre></div>
 </div>
 <p>After the successful run of <code class="docutils literal notranslate"><span class="pre">alembic</span> <span class="pre">revision</span></code> in folder <code class="docutils literal notranslate"><span class="pre">alembic/versions</span></code> you will
@@ -210,12 +210,12 @@ see a file with new migration.</p>
 <div class="section" id="apply-migration-on-db">
 <h2>Apply migration on DB<a class="headerlink" href="#apply-migration-on-db" title="Permalink to this headline">¶</a></h2>
 <p>Now time to apply migration to DB. It will create tables based on you DB Models.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> alembic upgrade head
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>alembic upgrade head
 </pre></div>
 </div>
 <p>Great. Now you apply your first migration. Congratulations!</p>
 <p>Next time, when you will make any changes in DB models just do:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> alembic revision -m <span class="s2">&quot;your migration description&quot;</span> --autogenerate --head head
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>alembic revision -m <span class="s2">&quot;your migration description&quot;</span> --autogenerate --head head
 </pre></div>
 </div>
 <p>And</p>

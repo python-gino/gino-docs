@@ -145,7 +145,7 @@
 <span id="gino-declarative-module"></span><h1>gino.declarative module<a class="headerlink" href="#module-gino.declarative" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt id="gino.declarative.ColumnAttribute">
-<em class="property">class </em><code class="sig-prename descclassname">gino.declarative.</code><code class="sig-name descname">ColumnAttribute</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">prop_name</span></em>, <em class="sig-param"><span class="n">column</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.declarative.ColumnAttribute" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">gino.declarative.</span></code><code class="sig-name descname"><span class="pre">ColumnAttribute</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prop_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.declarative.ColumnAttribute" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>The type of the column wrapper attributes on GINO models.</p>
 <p>This is the core utility to enable GINO models so that:</p>
@@ -158,13 +158,13 @@
 
 <dl class="py class">
 <dt id="gino.declarative.InvertDict">
-<em class="property">class </em><code class="sig-prename descclassname">gino.declarative.</code><code class="sig-name descname">InvertDict</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.declarative.InvertDict" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">gino.declarative.</span></code><code class="sig-name descname"><span class="pre">InvertDict</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.declarative.InvertDict" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a></p>
 <p>A custom <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a> that allows getting keys by values.</p>
 <p>Used internally by <a class="reference internal" href="#gino.declarative.Model" title="gino.declarative.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></a>.</p>
 <dl class="py method">
 <dt id="gino.declarative.InvertDict.invert_get">
-<code class="sig-name descname">invert_get</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em>, <em class="sig-param"><span class="n">default</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.declarative.InvertDict.invert_get" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">invert_get</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.declarative.InvertDict.invert_get" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get key by value.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -183,7 +183,7 @@
 
 <dl class="py class">
 <dt id="gino.declarative.Model">
-<em class="property">class </em><code class="sig-prename descclassname">gino.declarative.</code><code class="sig-name descname">Model</code><a class="headerlink" href="#gino.declarative.Model" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">gino.declarative.</span></code><code class="sig-name descname"><span class="pre">Model</span></code><a class="headerlink" href="#gino.declarative.Model" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>The base class of GINO models.</p>
 <p>This is not supposed to be sub-classed directly, <a class="reference internal" href="#gino.declarative.declarative_base" title="gino.declarative.declarative_base"><code class="xref py py-func docutils literal notranslate"><span class="pre">declarative_base()</span></code></a> should
@@ -259,7 +259,7 @@ instances. Accessing column attributes is equivalent to accessing <code class="d
 
 <dl class="py function">
 <dt id="gino.declarative.declarative_base">
-<code class="sig-prename descclassname">gino.declarative.</code><code class="sig-name descname">declarative_base</code><span class="sig-paren">(</span><em class="sig-param">metadata</em>, <em class="sig-param">model_classes=(&lt;class 'gino.declarative.Model'&gt;</em>, <em class="sig-param">)</em>, <em class="sig-param">name='Model'</em><span class="sig-paren">)</span><a class="headerlink" href="#gino.declarative.declarative_base" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">gino.declarative.</span></code><code class="sig-name descname"><span class="pre">declarative_base</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">metadata</span></em>, <em class="sig-param"><span class="pre">model_classes=(&lt;class</span> <span class="pre">'gino.declarative.Model'&gt;</span></em>, <em class="sig-param"><span class="pre">)</span></em>, <em class="sig-param"><span class="pre">name='Model'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.declarative.declarative_base" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a base GINO model class for declarative table definition.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -280,7 +280,7 @@ tables.</p></li>
 
 <dl class="py function">
 <dt id="gino.declarative.declared_attr">
-<code class="sig-prename descclassname">gino.declarative.</code><code class="sig-name descname">declared_attr</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">m</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">with_table</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.declarative.declared_attr" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">gino.declarative.</span></code><code class="sig-name descname"><span class="pre">declared_attr</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">with_table</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.declarative.declared_attr" title="Permalink to this definition">¶</a></dt>
 <dd><p>Mark a class-level method as a factory of attribute.</p>
 <p>This is intended to be used as decorators on class-level methods of a
 <a class="reference internal" href="#gino.declarative.Model" title="gino.declarative.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></a> class. When initializing the class as well as its

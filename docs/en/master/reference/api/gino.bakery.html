@@ -145,7 +145,7 @@
 <span id="gino-bakery-module"></span><h1>gino.bakery module<a class="headerlink" href="#module-gino.bakery" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt id="gino.bakery.BakedQuery">
-<em class="property">class </em><code class="sig-prename descclassname">gino.bakery.</code><code class="sig-name descname">BakedQuery</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">elem</span></em>, <em class="sig-param"><span class="n">metadata</span></em>, <em class="sig-param"><span class="n">hash_</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.bakery.BakedQuery" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">gino.bakery.</span></code><code class="sig-name descname"><span class="pre">BakedQuery</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">elem</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hash_</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.bakery.BakedQuery" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="gino.api.html#gino.api.GinoExecutor" title="gino.api.GinoExecutor"><code class="xref py py-class docutils literal notranslate"><span class="pre">gino.api.GinoExecutor</span></code></a></p>
 <p>Represents a pre-compiled and possibly prepared query for faster execution.</p>
 <p><a class="reference internal" href="#gino.bakery.BakedQuery" title="gino.bakery.BakedQuery"><code class="xref py py-class docutils literal notranslate"><span class="pre">BakedQuery</span></code></a> is created by <a class="reference internal" href="#gino.bakery.Bakery.bake" title="gino.bakery.Bakery.bake"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Bakery.bake()</span></code></a>, and can be executed by
@@ -157,19 +157,19 @@ is a proper bind in the baked query, contextual execution APIs inherited from
 </div>
 <dl class="py method">
 <dt id="gino.bakery.BakedQuery.bind">
-<em class="property">property </em><code class="sig-name descname">bind</code><a class="headerlink" href="#gino.bakery.BakedQuery.bind" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">bind</span></code><a class="headerlink" href="#gino.bakery.BakedQuery.bind" title="Permalink to this definition">¶</a></dt>
 <dd><p>Internal API to provide a proper bind if found.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="gino.bakery.BakedQuery.compiled_sql">
-<em class="property">property </em><code class="sig-name descname">compiled_sql</code><a class="headerlink" href="#gino.bakery.BakedQuery.compiled_sql" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">compiled_sql</span></code><a class="headerlink" href="#gino.bakery.BakedQuery.compiled_sql" title="Permalink to this definition">¶</a></dt>
 <dd><p>Internal API to get the SQLAlchemy compiled sql context.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="gino.bakery.BakedQuery.execution_options">
-<code class="sig-name descname">execution_options</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.bakery.BakedQuery.execution_options" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">execution_options</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.bakery.BakedQuery.execution_options" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set execution options on a shadow query of this baked query.</p>
 <p>The execution options set in this method won’t affect the execution options in
 the baked query.</p>
@@ -188,7 +188,7 @@ functions as a baked query.</p>
 
 <dl class="py method">
 <dt id="gino.bakery.BakedQuery.get">
-<code class="sig-name descname">get</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">_</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.bakery.BakedQuery.get" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">get</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.bakery.BakedQuery.get" title="Permalink to this definition">¶</a></dt>
 <dd><p>Internal API to get the <a class="reference internal" href="#gino.bakery.BakedQuery.compiled_sql" title="gino.bakery.BakedQuery.compiled_sql"><code class="xref py py-attr docutils literal notranslate"><span class="pre">compiled_sql</span></code></a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -199,13 +199,13 @@ functions as a baked query.</p>
 
 <dl class="py method">
 <dt id="gino.bakery.BakedQuery.query">
-<em class="property">property </em><code class="sig-name descname">query</code><a class="headerlink" href="#gino.bakery.BakedQuery.query" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">query</span></code><a class="headerlink" href="#gino.bakery.BakedQuery.query" title="Permalink to this definition">¶</a></dt>
 <dd><p>Internal API to get the query instance before compilation.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="gino.bakery.BakedQuery.sql">
-<em class="property">property </em><code class="sig-name descname">sql</code><a class="headerlink" href="#gino.bakery.BakedQuery.sql" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">sql</span></code><a class="headerlink" href="#gino.bakery.BakedQuery.sql" title="Permalink to this definition">¶</a></dt>
 <dd><p>Internal API to get the compiled raw SQL.</p>
 </dd></dl>
 
@@ -213,7 +213,7 @@ functions as a baked query.</p>
 
 <dl class="py class">
 <dt id="gino.bakery.Bakery">
-<em class="property">class </em><code class="sig-prename descclassname">gino.bakery.</code><code class="sig-name descname">Bakery</code><a class="headerlink" href="#gino.bakery.Bakery" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">gino.bakery.</span></code><code class="sig-name descname"><span class="pre">Bakery</span></code><a class="headerlink" href="#gino.bakery.Bakery" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Factory and warehouse of baked queries.</p>
 <p>You may provide a bakery to a <a class="reference internal" href="gino.engine.html#gino.engine.GinoEngine" title="gino.engine.GinoEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">GinoEngine</span></code></a> during creation as
@@ -227,7 +227,7 @@ it’s automatically given to the engine during <a class="reference internal" hr
 </div>
 <dl class="py method">
 <dt id="gino.bakery.Bakery.bake">
-<code class="sig-name descname">bake</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">func_or_elem</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">execution_options</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.bakery.Bakery.bake" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">bake</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func_or_elem</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">execution_options</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.bakery.Bakery.bake" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bake a query.</p>
 <p>You can bake raw SQL strings or SQLAlchemy Core query instances. This method
 adds the given query into a queue in the bakery, and bakes it only when the
@@ -252,8 +252,8 @@ query.</p></li>
 
 <dl class="py attribute">
 <dt id="gino.bakery.Bakery.query_cls">
-<code class="sig-name descname">query_cls</code><a class="headerlink" href="#gino.bakery.Bakery.query_cls" title="Permalink to this definition">¶</a></dt>
-<dd><p>alias of <a class="reference internal" href="#gino.bakery.BakedQuery" title="gino.bakery.BakedQuery"><code class="xref py py-class docutils literal notranslate"><span class="pre">BakedQuery</span></code></a></p>
+<code class="sig-name descname"><span class="pre">query_cls</span></code><a class="headerlink" href="#gino.bakery.Bakery.query_cls" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#gino.bakery.BakedQuery" title="gino.bakery.BakedQuery"><code class="xref py py-class docutils literal notranslate"><span class="pre">gino.bakery.BakedQuery</span></code></a></p>
 </dd></dl>
 
 </dd></dl>

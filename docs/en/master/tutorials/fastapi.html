@@ -142,10 +142,10 @@ The full functional example is available <a class="reference external" href="htt
 <p>Instead of pip, let’s use the shiny <a class="reference external" href="https://python-poetry.org/">Poetry</a> to manage our project. Follow the link to
 <a class="reference external" href="https://python-poetry.org/docs/#installation">install Poetry</a>, and create our new
 project in an empty directory:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> mkdir gino-fastapi-demo
-<span class="gp">$</span> <span class="nb">cd</span> gino-fastapi-demo
-<span class="gp">$</span> git init
-<span class="gp">$</span> poetry init
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>mkdir gino-fastapi-demo
+<span class="gp">$ </span><span class="nb">cd</span> gino-fastapi-demo
+<span class="gp">$ </span>git init
+<span class="gp">$ </span>poetry init
 </pre></div>
 </div>
 <p>Then follow the <a class="reference external" href="https://python-poetry.org/">Poetry</a> guide to finish the initialization - you may say “no” to the
@@ -157,22 +157,22 @@ remains <code class="docutils literal notranslate"><span class="pre">gino-fastap
 <h2>Add Dependencies<a class="headerlink" href="#add-dependencies" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://fastapi.tiangolo.com/">FastAPI</a> is built on top of the <a class="reference external" href="https://www.starlette.io/">Starlette</a> framework, so we shall use the <a class="reference external" href="https://github.com/python-gino/gino-starlette">GINO
 extension for Starlette</a>. Simply run:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> poetry add gino<span class="o">[</span>pg,starlette<span class="o">]</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>poetry add gino<span class="o">[</span>pg,starlette<span class="o">]</span>
 </pre></div>
 </div>
 <p>Then let’s add <a class="reference external" href="https://fastapi.tiangolo.com/">FastAPI</a>, together with the lightning-fast <a class="reference external" href="https://asgi.readthedocs.io/">ASGI</a> server <a class="reference external" href="https://www.uvicorn.org/">Uvicorn</a>, and
 <a class="reference external" href="https://gunicorn.org/">Gunicorn</a> as a production application server:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> poetry add fastapi uvicorn gunicorn
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>poetry add fastapi uvicorn gunicorn
 </pre></div>
 </div>
 <p>For database migration, we’ll use <a class="reference external" href="https://alembic.sqlalchemy.org/">Alembic</a>. Because it uses normal <a class="reference external" href="https://www.python.org/dev/peps/pep-0249/">DB-API</a>, we need
 <a class="reference external" href="https://www.psycopg.org/">psycopg</a> here too:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> poetry add alembic psycopg2
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>poetry add alembic psycopg2
 </pre></div>
 </div>
 <p>At last, let’s add <a class="reference external" href="https://docs.pytest.org/">pytest</a> in the development environment for testing. We also want to
 add the <a class="reference external" href="https://requests.readthedocs.io/">requests</a> library to use the <a class="reference external" href="https://www.starlette.io/">Starlette</a> <a class="reference external" href="https://www.starlette.io/testclient/"><code class="docutils literal notranslate"><span class="pre">TestClient</span></code></a>:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> poetry add -D pytest requests
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>poetry add -D pytest requests
 </pre></div>
 </div>
 <div class="admonition hint">
@@ -210,8 +210,8 @@ using this for the rest of the tutorial. But you’re free to create your own
 <img alt="../_images/gino-fastapi-poetry.svg" class="align-right" src="../_images/gino-fastapi-poetry.svg" /><p>And there’s also an auto-generated <code class="docutils literal notranslate"><span class="pre">poetry.lock</span></code> file with the frozen versions. The
 directory layout should look like the diagram on the right. Now let’s add the two files
 to the Git repository (we will skip showing these git operations in future steps):</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> git add pyproject.toml poetry.lock
-<span class="gp">$</span> git commit -m <span class="s1">&#39;add project dependencies&#39;</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>git add pyproject.toml poetry.lock
+<span class="gp">$ </span>git commit -m <span class="s1">&#39;add project dependencies&#39;</span>
 </pre></div>
 </div>
 </div>
@@ -242,14 +242,14 @@ will create two Python modules:</p>
 </div>
 <p>Then run <code class="docutils literal notranslate"><span class="pre">poetry</span> <span class="pre">install</span></code> to link our Python package into the <code class="docutils literal notranslate"><span class="pre">PYTHONPATH</span></code> in
 development mode. We’ll be able to start a Uvicorn development server after that:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> poetry install
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>poetry install
 <span class="go">Installing dependencies from lock file</span>
 
 <span class="go">No dependencies to install or update</span>
 
 <span class="go">  - Installing gino-fastapi-demo (0.1.0)</span>
 
-<span class="gp">$</span> poetry run uvicorn gino_fastapi_demo.asgi:app --reload
+<span class="gp">$ </span>poetry run uvicorn gino_fastapi_demo.asgi:app --reload
 <span class="go">INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)</span>
 <span class="go">INFO:     Started reloader process [53010]</span>
 <span class="go">INFO:     Started server process [53015]</span>
@@ -313,7 +313,7 @@ Add <code class="docutils literal notranslate"><span class="pre">src/gino_fastap
 file named <code class="docutils literal notranslate"><span class="pre">.env</span></code> from current path (usually the project root directory), and at last
 use the default value defined above. For example, you can either overwrite in CLI
 directly like this:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nv">DB_HOST</span><span class="o">=</span>localhost <span class="nv">DB_USER</span><span class="o">=</span>postgres poetry run uvicorn gino_fastapi_demo.asgi:app --reload
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nv">DB_HOST</span><span class="o">=</span>localhost <span class="nv">DB_USER</span><span class="o">=</span>postgres poetry run uvicorn gino_fastapi_demo.asgi:app --reload
 </pre></div>
 </div>
 <img alt="../_images/gino-fastapi-env.svg" class="align-right" src="../_images/gino-fastapi-env.svg" /><p>Or set them in the file <code class="docutils literal notranslate"><span class="pre">.env</span></code> (this file must not be committed into Git, remember to
@@ -476,7 +476,7 @@ because we still haven’t created the database tables.</p>
 <div class="section" id="integrate-with-alembic">
 <h2>Integrate with Alembic<a class="headerlink" href="#integrate-with-alembic" title="Permalink to this headline">¶</a></h2>
 <p>To get started with <a class="reference external" href="https://alembic.sqlalchemy.org/">Alembic</a>, run this command in the project root directory:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> poetry run alembic init migrations
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>poetry run alembic init migrations
 </pre></div>
 </div>
 <img alt="../_images/gino-fastapi-alembic.svg" class="align-right" src="../_images/gino-fastapi-alembic.svg" /><p>This will generate a new directory <code class="docutils literal notranslate"><span class="pre">migrations</span></code> where <a class="reference external" href="https://alembic.sqlalchemy.org/">Alembic</a> will store database
@@ -498,7 +498,7 @@ config), we need to modify <code class="docutils literal notranslate"><span clas
 </pre></div>
 </div>
 <p>Then create our first migration revision with:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> poetry run alembic revision --autogenerate -m <span class="s1">&#39;add users table&#39;</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>poetry run alembic revision --autogenerate -m <span class="s1">&#39;add users table&#39;</span>
 <span class="go">INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.</span>
 <span class="go">INFO  [alembic.runtime.migration] Will assume transactional DDL.</span>
 <span class="go">INFO  [alembic.autogenerate.compare] Detected added table &#39;users&#39;</span>
@@ -526,7 +526,7 @@ revisions to track the change. Remember to review the revision file - you may wa
 to adjust it.</p>
 </div>
 <p>Eventually, let’s apply this migration, by upgrading to the latest revision:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> poetry run alembic upgrade head
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>poetry run alembic upgrade head
 <span class="go">INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.</span>
 <span class="go">INFO  [alembic.runtime.migration] Will assume transactional DDL.</span>
 <span class="go">INFO  [alembic.runtime.migration] Running upgrade  -&gt; 32c0feba61ea, add users table</span>
@@ -604,7 +604,7 @@ clean environment for the next test.</p>
 </pre></div>
 </div>
 <p>Then run the test:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> poetry run pytest
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>poetry run pytest
 <span class="go">=========================== test session starts ===========================</span>
 <span class="go">platform darwin -- Python 3.8.2, pytest-5.4.1, py-1.8.1, pluggy-0.13.1</span>
 <span class="go">rootdir: gino-fastapi-demo</span>
