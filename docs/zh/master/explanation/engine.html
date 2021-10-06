@@ -235,7 +235,7 @@ of all the parameters listed in SQLAlchemy document (we are working on it!):</p>
 <li><p><a class="reference external" href="https://docs.sqlalchemy.org/en/latest/core/engines.html#sqlalchemy.create_engine.params.module">module</a></p></li>
 </ul>
 <p>In addition, keyword arguments for creating the underlying pool is accepted
-here. In the case of asyncpg, they are from <a class="reference external" href="https://magicstack.github.io/asyncpg/current/api/index.html#asyncpg.pool.create_pool" title="(在 asyncpg v0.23.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">create_pool()</span></code></a>.
+here. In the case of asyncpg, they are from <a class="reference external" href="https://magicstack.github.io/asyncpg/current/api/index.html#asyncpg.pool.create_pool" title="(在 asyncpg v0.24.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">create_pool()</span></code></a>.
 For example, we can create an engine without initial connections:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">e</span> <span class="o">=</span> <span class="k">await</span> <span class="n">gino</span><span class="o">.</span><span class="n">create_engine</span><span class="p">(</span><span class="s1">&#39;postgresql://...&#39;</span><span class="p">,</span> <span class="n">min_size</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
@@ -490,8 +490,8 @@ accepting the same parameters, calling the same underlying methods. The
 difference is how they treat the results:</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="../reference/api/gino.engine.html#gino.engine.GinoConnection.all" title="gino.engine.GinoConnection.all"><code class="xref py py-meth docutils literal notranslate"><span class="pre">all()</span></code></a> returns all results in a
-<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(在 Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a>, which may be empty when the query has no result, empty but
-still a <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(在 Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a>.</p></li>
+<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(在 Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a>, which may be empty when the query has no result, empty but
+still a <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(在 Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a>.</p></li>
 <li><p><a class="reference internal" href="../reference/api/gino.engine.html#gino.engine.GinoConnection.first" title="gino.engine.GinoConnection.first"><code class="xref py py-meth docutils literal notranslate"><span class="pre">first()</span></code></a> returns the first result directly,
 or <code class="docutils literal notranslate"><span class="pre">None</span></code> if there is no result at all. There is usually some optimization
 behind the scene to efficiently get only the first result, instead of loading
@@ -514,7 +514,7 @@ return the status without loading the results, so make your query generate
 nothing if you don't want any result.</p></li>
 </ul>
 <p>By &quot;result&quot;, I meant <code class="xref py py-class docutils literal notranslate"><span class="pre">RowProxy</span></code> of SQLAlchemy - an
-immutable row instance with both <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(在 Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a> and <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(在 Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a> interfaces.
+immutable row instance with both <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(在 Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a> and <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(在 Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a> interfaces.
 Database values are translated twice before they are eventually stored in a
 <code class="xref py py-class docutils literal notranslate"><span class="pre">RowProxy</span></code>: first by the database driver (dialect)
 from network payload to Python objects (see <a class="reference external" href="https://magicstack.github.io/asyncpg/current/usage.html#type-conversion">Type Conversion</a> of

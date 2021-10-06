@@ -396,7 +396,7 @@
 </div>
 <div class="admonition hint">
 <p class="admonition-title">提示</p>
-<p>还记得内存对象的事情吗？在最后一行的 <a class="reference external" href="https://docs.python.org/3/library/functions.html#print" title="(在 Python v3.9)"><code class="xref py py-func docutils literal notranslate"><span class="pre">print()</span></code></a> 中，尽管数据库中已经没有这一行数据了，但是 <code class="docutils literal notranslate"><span class="pre">user</span></code> 对象依然在内存中，它的值也都没有变化，所以这里仍然可以用 <code class="docutils literal notranslate"><span class="pre">user.id</span></code>。</p>
+<p>还记得内存对象的事情吗？在最后一行的 <a class="reference external" href="https://docs.python.org/3/library/functions.html#print" title="(在 Python v3.10)"><code class="xref py py-func docutils literal notranslate"><span class="pre">print()</span></code></a> 中，尽管数据库中已经没有这一行数据了，但是 <code class="docutils literal notranslate"><span class="pre">user</span></code> 对象依然在内存中，它的值也都没有变化，所以这里仍然可以用 <code class="docutils literal notranslate"><span class="pre">user.id</span></code>。</p>
 </div>
 <p>或者批量删除（千万不要忘记写 <code class="docutils literal notranslate"><span class="pre">where</span></code>！是不是整个表都不想要了？）：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">await</span> <span class="n">User</span><span class="o">.</span><span class="n">delete</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">User</span><span class="o">.</span><span class="n">id</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">gino</span><span class="o">.</span><span class="n">status</span><span class="p">()</span>

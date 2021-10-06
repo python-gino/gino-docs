@@ -157,7 +157,7 @@
 <p>Load the row by calling a specified function.</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
-<dd class="field-odd"><p><strong>func</strong> -- A <a class="reference external" href="https://docs.python.org/3/library/functions.html#callable" title="(在 Python v3.9)"><code class="xref py py-func docutils literal notranslate"><span class="pre">callable()</span></code></a> taking 2 positional arguments <code class="docutils literal notranslate"><span class="pre">(row,</span> <span class="pre">context)</span></code>
+<dd class="field-odd"><p><strong>func</strong> -- A <a class="reference external" href="https://docs.python.org/3/library/functions.html#callable" title="(在 Python v3.10)"><code class="xref py py-func docutils literal notranslate"><span class="pre">callable()</span></code></a> taking 2 positional arguments <code class="docutils literal notranslate"><span class="pre">(row,</span> <span class="pre">context)</span></code>
 that will be called in <a class="reference internal" href="#gino.loader.CallableLoader.do_load" title="gino.loader.CallableLoader.do_load"><code class="xref py py-meth docutils literal notranslate"><span class="pre">do_load()</span></code></a>, returning the loaded result.</p>
 </dd>
 </dl>
@@ -170,7 +170,7 @@ that will be called in <a class="reference internal" href="#gino.loader.Callable
 <dt class="field-odd">参数</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>row</strong> -- A <code class="xref py py-class docutils literal notranslate"><span class="pre">RowProxy</span></code> instance.</p></li>
-<li><p><strong>context</strong> -- A <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(在 Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a> that is reused across all loaders in one query.</p></li>
+<li><p><strong>context</strong> -- A <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(在 Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a> that is reused across all loaders in one query.</p></li>
 </ul>
 </dd>
 <dt class="field-even">返回</dt>
@@ -188,7 +188,7 @@ that will be called in <a class="reference internal" href="#gino.loader.Callable
 <p>Load a given column in the row.</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
-<dd class="field-odd"><p><strong>column</strong> -- The column name as <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, or a
+<dd class="field-odd"><p><strong>column</strong> -- The column name as <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, or a
 <a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/metadata.html#sqlalchemy.schema.Column" title="(在 SQLAlchemy v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Column</span></code></a> instance to avoid name conflict.</p>
 </dd>
 </dl>
@@ -214,7 +214,7 @@ that will be called in <a class="reference internal" href="#gino.loader.Callable
 <dl class="py class">
 <dt id="gino.loader.Loader">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">gino.loader.</span></code><code class="sig-name descname"><span class="pre">Loader</span></code><a class="headerlink" href="#gino.loader.Loader" title="永久链接至目标">¶</a></dt>
-<dd><p>基类：<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(在 Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>基类：<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(在 Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>The abstract base class of loaders.</p>
 <p>Loaders are used to load raw database rows into expected results.
 <a class="reference internal" href="gino.engine.html#gino.engine.GinoEngine" title="gino.engine.GinoEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">GinoEngine</span></code></a> will use the loader set on the <code class="docutils literal notranslate"><span class="pre">loader</span></code> value of
@@ -237,7 +237,7 @@ the <a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/s
 <dt class="field-odd">参数</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>row</strong> -- A <code class="xref py py-class docutils literal notranslate"><span class="pre">RowProxy</span></code> instance.</p></li>
-<li><p><strong>context</strong> -- A <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(在 Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a> that is reused across all loaders in one query.</p></li>
+<li><p><strong>context</strong> -- A <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(在 Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a> that is reused across all loaders in one query.</p></li>
 </ul>
 </dd>
 <dt class="field-even">返回</dt>
@@ -262,10 +262,10 @@ value indicating if the result is distinct.</p>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(在 Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(在 Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a></p></td>
 <td><p><a class="reference internal" href="#gino.loader.TupleLoader" title="gino.loader.TupleLoader"><code class="xref py py-class docutils literal notranslate"><span class="pre">TupleLoader</span></code></a></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#callable" title="(在 Python v3.9)"><code class="xref py py-func docutils literal notranslate"><span class="pre">callable()</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#callable" title="(在 Python v3.10)"><code class="xref py py-func docutils literal notranslate"><span class="pre">callable()</span></code></a></p></td>
 <td><p><a class="reference internal" href="#gino.loader.CallableLoader" title="gino.loader.CallableLoader"><code class="xref py py-class docutils literal notranslate"><span class="pre">CallableLoader</span></code></a></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/metadata.html#sqlalchemy.schema.Column" title="(在 SQLAlchemy v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Column</span></code></a>,
@@ -304,7 +304,7 @@ value indicating if the result is distinct.</p>
 <a class="reference internal" href="#gino.loader.Loader.query" title="gino.loader.Loader.query"><code class="xref py py-attr docutils literal notranslate"><span class="pre">query</span></code></a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">返回</dt>
-<dd class="field-odd"><p>A <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(在 Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a> of SQLAlchemy selectables.</p>
+<dd class="field-odd"><p>A <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(在 Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a> of SQLAlchemy selectables.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -348,7 +348,7 @@ with attributes according to the other given parameters:</p>
 <li><p>Load each column attribute listed in the given <code class="docutils literal notranslate"><span class="pre">columns</span></code> positional arguments.</p></li>
 <li><p>If <code class="docutils literal notranslate"><span class="pre">columns</span></code> is not given, all defined columns of the <code class="docutils literal notranslate"><span class="pre">model</span></code> will be loaded.</p></li>
 <li><p>For each keyword argument, its value will be used to generate a loader using
-<a class="reference internal" href="#gino.loader.Loader.get" title="gino.loader.Loader.get"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Loader.get()</span></code></a>, and the loaded value will be <a class="reference external" href="https://docs.python.org/3/library/functions.html#setattr" title="(在 Python v3.9)"><code class="xref py py-func docutils literal notranslate"><span class="pre">setattr()</span></code></a> to the model
+<a class="reference internal" href="#gino.loader.Loader.get" title="gino.loader.Loader.get"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Loader.get()</span></code></a>, and the loaded value will be <a class="reference external" href="https://docs.python.org/3/library/functions.html#setattr" title="(在 Python v3.10)"><code class="xref py py-func docutils literal notranslate"><span class="pre">setattr()</span></code></a> to the model
 instance under the name of the key.</p></li>
 </ul>
 <p>For example, the simplest select and load:</p>
@@ -385,12 +385,12 @@ of all returned <code class="docutils literal notranslate"><span class="pre">Use
 </div>
 <p>Likewise, <code class="docutils literal notranslate"><span class="pre">Company</span></code> is converted into a <a class="reference internal" href="#gino.loader.ModelLoader" title="gino.loader.ModelLoader"><code class="xref py py-class docutils literal notranslate"><span class="pre">ModelLoader</span></code></a> to load the
 <code class="docutils literal notranslate"><span class="pre">Company</span></code> columns from the joined result, and the <code class="docutils literal notranslate"><span class="pre">Company</span></code> instances are set to
-the <code class="docutils literal notranslate"><span class="pre">company</span></code> attribute of each <code class="docutils literal notranslate"><span class="pre">User</span></code> instance using <a class="reference external" href="https://docs.python.org/3/library/functions.html#setattr" title="(在 Python v3.9)"><code class="xref py py-func docutils literal notranslate"><span class="pre">setattr()</span></code></a>.</p>
+the <code class="docutils literal notranslate"><span class="pre">company</span></code> attribute of each <code class="docutils literal notranslate"><span class="pre">User</span></code> instance using <a class="reference external" href="https://docs.python.org/3/library/functions.html#setattr" title="(在 Python v3.10)"><code class="xref py py-func docutils literal notranslate"><span class="pre">setattr()</span></code></a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>model</strong> -- A subclass of <a class="reference internal" href="gino.declarative.html#gino.declarative.Model" title="gino.declarative.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></a> to instantiate.</p></li>
-<li><p><strong>columns</strong> -- A list of <a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/metadata.html#sqlalchemy.schema.Column" title="(在 SQLAlchemy v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Column</span></code></a> or <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a> to
+<li><p><strong>columns</strong> -- A list of <a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/metadata.html#sqlalchemy.schema.Column" title="(在 SQLAlchemy v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Column</span></code></a> or <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a> to
 load, default is all the columns in the model.</p></li>
 <li><p><strong>extras</strong> -- Additional attributes to load on the model instance.</p></li>
 </ul>
@@ -424,7 +424,7 @@ give columns.</p>
 <dt class="field-odd">参数</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>row</strong> -- A <code class="xref py py-class docutils literal notranslate"><span class="pre">RowProxy</span></code> instance.</p></li>
-<li><p><strong>context</strong> -- A <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(在 Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a> that is reused across all loaders in one query.</p></li>
+<li><p><strong>context</strong> -- A <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(在 Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a> that is reused across all loaders in one query.</p></li>
 </ul>
 </dd>
 <dt class="field-even">返回</dt>
@@ -442,7 +442,7 @@ result is distinct.</p>
 <code class="xref py py-attr docutils literal notranslate"><span class="pre">query</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">返回</dt>
-<dd class="field-odd"><p>A <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(在 Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a> of SQLAlchemy selectables.</p>
+<dd class="field-odd"><p>A <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(在 Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a> of SQLAlchemy selectables.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -519,7 +519,7 @@ possible, chaining with a <a class="reference internal" href="#gino.loader.Model
 <p>Load multiple values into a tuple.</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
-<dd class="field-odd"><p><strong>values</strong> -- A <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(在 Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a>, each item is converted into a loader with
+<dd class="field-odd"><p><strong>values</strong> -- A <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(在 Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a>, each item is converted into a loader with
 <a class="reference internal" href="#gino.loader.Loader.get" title="gino.loader.Loader.get"><code class="xref py py-func docutils literal notranslate"><span class="pre">Loader.get()</span></code></a>.</p>
 </dd>
 </dl>
@@ -532,11 +532,11 @@ possible, chaining with a <a class="reference internal" href="#gino.loader.Model
 <dt class="field-odd">参数</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>row</strong> -- A <code class="xref py py-class docutils literal notranslate"><span class="pre">RowProxy</span></code> instance.</p></li>
-<li><p><strong>context</strong> -- A <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(在 Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a> that is reused across all loaders in one query.</p></li>
+<li><p><strong>context</strong> -- A <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(在 Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a> that is reused across all loaders in one query.</p></li>
 </ul>
 </dd>
 <dt class="field-even">返回</dt>
-<dd class="field-even"><p>A <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(在 Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a> with loaded results from all sub-loaders, followed by
+<dd class="field-even"><p>A <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(在 Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a> with loaded results from all sub-loaders, followed by
 <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
 </dd>
 </dl>
