@@ -396,7 +396,7 @@ exit:</p>
 <dl class="py class">
 <dt id="gino.api.GinoExecutor">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">gino.api.</span></code><code class="sig-name descname"><span class="pre">GinoExecutor</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.GinoExecutor" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>The default <code class="docutils literal notranslate"><span class="pre">gino</span></code> extension on
 <a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/selectable.html#sqlalchemy.sql.expression.Executable" title="(in SQLAlchemy v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Executable</span></code></a> constructs for implicit
 execution.</p>
@@ -412,7 +412,7 @@ queries or clause elements), for example:</p>
 messing up with existing synchronous ones.
 Calling these asynchronous query APIs has the same restriction - the
 relevant metadata (the <a class="reference internal" href="#gino.api.Gino" title="gino.api.Gino"><code class="xref py py-class docutils literal notranslate"><span class="pre">Gino</span></code></a> instance) must be bound to an engine,
-or an <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#AttributeError" title="(in Python v3.9)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">AttributeError</span></code></a> will be raised.</p>
+or an <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#AttributeError" title="(in Python v3.10)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">AttributeError</span></code></a> will be raised.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Executable clause elements that are completely irrelevant with any
