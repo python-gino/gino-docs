@@ -88,14 +88,14 @@
     </div>
 
     <div id="sidenav" class="sidenav sidenav-fixed">
-        <p class="caption"><span class="caption-text">Tutorials</span></p>
+        <p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials.html">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/announcement.html">官宣：Python 异步编程再添一利器</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/tutorial.html">GINO Basics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/fastapi.html">Build a FastAPI Server</a></li>
 </ul>
-<p class="caption"><span class="caption-text">How-to Guides</span></p>
+<p class="caption" role="heading"><span class="caption-text">How-to Guides</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../how-to.html">How-to Guides</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../how-to/alembic.html">Use Alembic</a></li>
@@ -109,7 +109,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../how-to/schema.html">Schema Declaration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../how-to/transaction.html">Transaction</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Explanation</span></p>
+<p class="caption" role="heading"><span class="caption-text">Explanation</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../explanation.html">Explanation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../explanation/async.html">Asynchronous Programming 101</a></li>
@@ -117,7 +117,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../explanation/sa20.html">SQLAlchemy 2.0</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../explanation/why.html">Why Asynchronous ORM?</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Reference</span></p>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../../reference.html">Reference</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../api.html">API Reference</a></li>
@@ -141,51 +141,51 @@
         <div class="col s12 m9 body">
             <div id="main-content" role="main">
                 
-    <div class="section" id="module-gino.exceptions">
+    <section id="module-gino.exceptions">
 <span id="gino-exceptions-module"></span><h1>gino.exceptions module<a class="headerlink" href="#module-gino.exceptions" title="Permalink to this headline">¶</a></h1>
 <dl class="py exception">
-<dt id="gino.exceptions.GinoException">
-<em class="property"><span class="pre">exception</span> </em><code class="sig-prename descclassname"><span class="pre">gino.exceptions.</span></code><code class="sig-name descname"><span class="pre">GinoException</span></code><a class="headerlink" href="#gino.exceptions.GinoException" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.exceptions.GinoException">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gino.exceptions.</span></span><span class="sig-name descname"><span class="pre">GinoException</span></span><a class="headerlink" href="#gino.exceptions.GinoException" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#Exception" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></a></p>
 </dd></dl>
 
 <dl class="py exception">
-<dt id="gino.exceptions.InitializedError">
-<em class="property"><span class="pre">exception</span> </em><code class="sig-prename descclassname"><span class="pre">gino.exceptions.</span></code><code class="sig-name descname"><span class="pre">InitializedError</span></code><a class="headerlink" href="#gino.exceptions.InitializedError" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.exceptions.InitializedError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gino.exceptions.</span></span><span class="sig-name descname"><span class="pre">InitializedError</span></span><a class="headerlink" href="#gino.exceptions.InitializedError" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#gino.exceptions.GinoException" title="gino.exceptions.GinoException"><code class="xref py py-class docutils literal notranslate"><span class="pre">gino.exceptions.GinoException</span></code></a></p>
 </dd></dl>
 
 <dl class="py exception">
-<dt id="gino.exceptions.MultipleResultsFound">
-<em class="property"><span class="pre">exception</span> </em><code class="sig-prename descclassname"><span class="pre">gino.exceptions.</span></code><code class="sig-name descname"><span class="pre">MultipleResultsFound</span></code><a class="headerlink" href="#gino.exceptions.MultipleResultsFound" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.exceptions.MultipleResultsFound">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gino.exceptions.</span></span><span class="sig-name descname"><span class="pre">MultipleResultsFound</span></span><a class="headerlink" href="#gino.exceptions.MultipleResultsFound" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#gino.exceptions.GinoException" title="gino.exceptions.GinoException"><code class="xref py py-class docutils literal notranslate"><span class="pre">gino.exceptions.GinoException</span></code></a></p>
 </dd></dl>
 
 <dl class="py exception">
-<dt id="gino.exceptions.NoResultFound">
-<em class="property"><span class="pre">exception</span> </em><code class="sig-prename descclassname"><span class="pre">gino.exceptions.</span></code><code class="sig-name descname"><span class="pre">NoResultFound</span></code><a class="headerlink" href="#gino.exceptions.NoResultFound" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.exceptions.NoResultFound">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gino.exceptions.</span></span><span class="sig-name descname"><span class="pre">NoResultFound</span></span><a class="headerlink" href="#gino.exceptions.NoResultFound" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#gino.exceptions.GinoException" title="gino.exceptions.GinoException"><code class="xref py py-class docutils literal notranslate"><span class="pre">gino.exceptions.GinoException</span></code></a></p>
 </dd></dl>
 
 <dl class="py exception">
-<dt id="gino.exceptions.NoSuchRowError">
-<em class="property"><span class="pre">exception</span> </em><code class="sig-prename descclassname"><span class="pre">gino.exceptions.</span></code><code class="sig-name descname"><span class="pre">NoSuchRowError</span></code><a class="headerlink" href="#gino.exceptions.NoSuchRowError" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.exceptions.NoSuchRowError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gino.exceptions.</span></span><span class="sig-name descname"><span class="pre">NoSuchRowError</span></span><a class="headerlink" href="#gino.exceptions.NoSuchRowError" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#gino.exceptions.GinoException" title="gino.exceptions.GinoException"><code class="xref py py-class docutils literal notranslate"><span class="pre">gino.exceptions.GinoException</span></code></a></p>
 </dd></dl>
 
 <dl class="py exception">
-<dt id="gino.exceptions.UninitializedError">
-<em class="property"><span class="pre">exception</span> </em><code class="sig-prename descclassname"><span class="pre">gino.exceptions.</span></code><code class="sig-name descname"><span class="pre">UninitializedError</span></code><a class="headerlink" href="#gino.exceptions.UninitializedError" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.exceptions.UninitializedError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gino.exceptions.</span></span><span class="sig-name descname"><span class="pre">UninitializedError</span></span><a class="headerlink" href="#gino.exceptions.UninitializedError" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#gino.exceptions.GinoException" title="gino.exceptions.GinoException"><code class="xref py py-class docutils literal notranslate"><span class="pre">gino.exceptions.GinoException</span></code></a></p>
 </dd></dl>
 
 <dl class="py exception">
-<dt id="gino.exceptions.UnknownJSONPropertyError">
-<em class="property"><span class="pre">exception</span> </em><code class="sig-prename descclassname"><span class="pre">gino.exceptions.</span></code><code class="sig-name descname"><span class="pre">UnknownJSONPropertyError</span></code><a class="headerlink" href="#gino.exceptions.UnknownJSONPropertyError" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.exceptions.UnknownJSONPropertyError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gino.exceptions.</span></span><span class="sig-name descname"><span class="pre">UnknownJSONPropertyError</span></span><a class="headerlink" href="#gino.exceptions.UnknownJSONPropertyError" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#gino.exceptions.GinoException" title="gino.exceptions.GinoException"><code class="xref py py-class docutils literal notranslate"><span class="pre">gino.exceptions.GinoException</span></code></a></p>
 </dd></dl>
 
-</div>
+</section>
 
 
             </div>

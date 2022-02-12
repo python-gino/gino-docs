@@ -85,14 +85,14 @@
     </div>
 
     <div id="sidenav" class="sidenav sidenav-fixed">
-        <p class="caption"><span class="caption-text">Tutorials</span></p>
+        <p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials.html">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/announcement.html">官宣：Python 异步编程再添一利器</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/tutorial.html">GINO Basics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/fastapi.html">Build a FastAPI Server</a></li>
 </ul>
-<p class="caption"><span class="caption-text">How-to Guides</span></p>
+<p class="caption" role="heading"><span class="caption-text">How-to Guides</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../how-to.html">How-to Guides</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../how-to/alembic.html">Use Alembic</a></li>
@@ -106,7 +106,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../how-to/schema.html">Schema Declaration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../how-to/transaction.html">Transaction</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Explanation</span></p>
+<p class="caption" role="heading"><span class="caption-text">Explanation</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../explanation.html">Explanation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../explanation/async.html">Asynchronous Programming 101</a></li>
@@ -114,7 +114,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../explanation/sa20.html">SQLAlchemy 2.0</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../explanation/why.html">Why Asynchronous ORM?</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Reference</span></p>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../../reference.html">Reference</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../api.html">API Reference</a></li>
@@ -140,9 +140,9 @@
         <div class="col s12 m9 body">
             <div id="main-content" role="main">
                 
-    <div class="section" id="starlette-support">
+    <section id="starlette-support">
 <h1>Starlette Support<a class="headerlink" href="#starlette-support" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="work-with-starlette">
+<section id="work-with-starlette">
 <h2>Work with Starlette<a class="headerlink" href="#work-with-starlette" title="Permalink to this headline">¶</a></h2>
 <p>To use GINO with Starlette, the <a class="reference external" href="https://github.com/python-gino/gino-starlette">gino-starlette</a> package should
 be installed first:</p>
@@ -170,8 +170,8 @@ parameter.</p>
 <span class="n">db</span><span class="o">.</span><span class="n">init_app</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="configuration">
+</section>
+<section id="configuration">
 <h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
 <p>The config includes:</p>
 <table class="docutils align-default">
@@ -241,8 +241,8 @@ parameter.</p>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="lazy-connection">
+</section>
+<section id="lazy-connection">
 <h2>Lazy Connection<a class="headerlink" href="#lazy-connection" title="Permalink to this headline">¶</a></h2>
 <p>If <code class="docutils literal notranslate"><span class="pre">use_connection_for_request</span></code> is set to be True, then a lazy
 connection is available at <code class="docutils literal notranslate"><span class="pre">request['connection']</span></code>. By default, a
@@ -253,8 +253,8 @@ tasks, you can simply do this:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">await</span> <span class="n">request</span><span class="p">[</span><span class="s1">&#39;connection&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">release</span><span class="p">(</span><span class="n">permanent</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
             </div>

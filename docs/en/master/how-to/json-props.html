@@ -82,14 +82,14 @@
     </div>
 
     <div id="sidenav" class="sidenav sidenav-fixed">
-        <p class="caption"><span class="caption-text">Tutorials</span></p>
+        <p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/announcement.html">官宣：Python 异步编程再添一利器</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/tutorial.html">GINO Basics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/fastapi.html">Build a FastAPI Server</a></li>
 </ul>
-<p class="caption"><span class="caption-text">How-to Guides</span></p>
+<p class="caption" role="heading"><span class="caption-text">How-to Guides</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../how-to.html">How-to Guides</a></li>
 <li class="toctree-l1"><a class="reference internal" href="alembic.html">Use Alembic</a></li>
@@ -103,7 +103,7 @@
 <li class="toctree-l1"><a class="reference internal" href="schema.html">Schema Declaration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="transaction.html">Transaction</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Explanation</span></p>
+<p class="caption" role="heading"><span class="caption-text">Explanation</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../explanation.html">Explanation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../explanation/async.html">Asynchronous Programming 101</a></li>
@@ -111,7 +111,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../explanation/sa20.html">SQLAlchemy 2.0</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../explanation/why.html">Why Asynchronous ORM?</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Reference</span></p>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../reference.html">Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference/api.html">API Reference</a></li>
@@ -127,11 +127,11 @@
         <div class="col s12 m9 body">
             <div id="main-content" role="main">
                 
-    <div class="section" id="json-property">
+    <section id="json-property">
 <h1>JSON Property<a class="headerlink" href="#json-property" title="Permalink to this headline">¶</a></h1>
 <p>GINO provides additional support to leverage native JSON type in the database as
 flexible GINO model fields.</p>
-<div class="section" id="quick-start">
+<section id="quick-start">
 <h2>Quick Start<a class="headerlink" href="#quick-start" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gino</span> <span class="kn">import</span> <span class="n">Gino</span>
 <span class="kn">from</span> <span class="nn">sqlalchemy.dialects.postgresql</span> <span class="kn">import</span> <span class="n">JSONB</span>
@@ -172,9 +172,9 @@ explicitly:</p>
 </pre></div>
 </div>
 <p>This is simply translated into a native JSON query like this:</p>
-<div class="highlight-plpgsql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">users</span><span class="mf">.</span><span class="n">id</span><span class="p">,</span> <span class="n">users</span><span class="mf">.</span><span class="k">name</span><span class="p">,</span> <span class="n">users</span><span class="mf">.</span><span class="n">profile</span>
-<span class="k">FROM</span> <span class="n">users</span>
-<span class="k">WHERE</span> <span class="k">CAST</span><span class="p">((</span><span class="n">users</span><span class="mf">.</span><span class="n">profile</span> <span class="o">-&gt;&gt;</span> <span class="nv">$1</span><span class="p">)</span> <span class="k">AS</span> <span class="nb">INTEGER</span><span class="p">)</span> <span class="o">&gt;</span> <span class="nv">$2</span><span class="p">;</span>  <span class="c1">-- (&#39;age&#39;, 16)</span>
+<div class="highlight-plpgsql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">users</span><span class="mf">.</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">users</span><span class="mf">.</span><span class="k">name</span><span class="p">,</span><span class="w"> </span><span class="n">users</span><span class="mf">.</span><span class="n">profile</span><span class="w"></span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">users</span><span class="w"></span>
+<span class="k">WHERE</span><span class="w"> </span><span class="k">CAST</span><span class="p">((</span><span class="n">users</span><span class="mf">.</span><span class="n">profile</span><span class="w"> </span><span class="o">-&gt;&gt;</span><span class="w"> </span><span class="nv">$1</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="nb">INTEGER</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="nv">$2</span><span class="p">;</span><span class="w">  </span><span class="c1">-- (&#39;age&#39;, 16)</span>
 </pre></div>
 </div>
 <p>Datetime type is very much the same:</p>
@@ -184,9 +184,9 @@ explicitly:</p>
 </pre></div>
 </div>
 <p>And the generated SQL:</p>
-<div class="highlight-plpgsql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">users</span><span class="mf">.</span><span class="n">id</span><span class="p">,</span> <span class="n">users</span><span class="mf">.</span><span class="k">name</span><span class="p">,</span> <span class="n">users</span><span class="mf">.</span><span class="n">profile</span>
-<span class="k">FROM</span> <span class="n">users</span>
-<span class="k">WHERE</span> <span class="k">CAST</span><span class="p">((</span><span class="n">users</span><span class="mf">.</span><span class="n">profile</span> <span class="o">-&gt;&gt;</span> <span class="nv">$1</span><span class="p">)</span> <span class="k">AS</span> <span class="nb">TIMESTAMP</span> <span class="nb">WITHOUT TIME ZONE</span><span class="p">)</span> <span class="o">&gt;</span> <span class="nv">$2</span>
+<div class="highlight-plpgsql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">users</span><span class="mf">.</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">users</span><span class="mf">.</span><span class="k">name</span><span class="p">,</span><span class="w"> </span><span class="n">users</span><span class="mf">.</span><span class="n">profile</span><span class="w"></span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">users</span><span class="w"></span>
+<span class="k">WHERE</span><span class="w"> </span><span class="k">CAST</span><span class="p">((</span><span class="n">users</span><span class="mf">.</span><span class="n">profile</span><span class="w"> </span><span class="o">-&gt;&gt;</span><span class="w"> </span><span class="nv">$1</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="nb">TIMESTAMP</span><span class="w"> </span><span class="nb">WITHOUT TIME ZONE</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="nv">$2</span><span class="w"></span>
 <span class="c1">-- (&#39;birthday&#39;, datetime.datetime(1990, 1, 1, 0, 0))</span>
 </pre></div>
 </div>
@@ -238,8 +238,8 @@ explicitly:</p>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="hooks">
+</section>
+<section id="hooks">
 <h2>Hooks<a class="headerlink" href="#hooks" title="Permalink to this headline">¶</a></h2>
 <p>JSON property provides 2 instance-level hooks to customize the data:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">User</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
@@ -276,8 +276,8 @@ explicitly:</p>
         <span class="k">return</span> <span class="n">exp</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Float</span><span class="p">)</span>  <span class="c1"># CAST(profile -&gt; &#39;height&#39; AS FLOAT)</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="create-index-on-json-properties">
+</section>
+<section id="create-index-on-json-properties">
 <h2>Create Index on JSON Properties<a class="headerlink" href="#create-index-on-json-properties" title="Permalink to this headline">¶</a></h2>
 <p>We’ll need to use <a class="reference internal" href="../reference/api/gino.declarative.html#gino.declarative.declared_attr" title="gino.declarative.declared_attr"><code class="xref py py-meth docutils literal notranslate"><span class="pre">declared_attr()</span></code></a> to wait until the model class
 is initialized. The rest is very much the same as defining a usual index:</p>
@@ -295,7 +295,7 @@ is initialized. The rest is very much the same as defining a usual index:</p>
 </pre></div>
 </div>
 <p>This will lead to the SQL below executed if you run <code class="docutils literal notranslate"><span class="pre">db.gino.create_all()</span></code>:</p>
-<div class="highlight-plpgsql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">INDEX</span> <span class="n">age_idx</span> <span class="k">ON</span> <span class="n">users</span> <span class="p">(</span><span class="k">CAST</span><span class="p">(</span><span class="n">profile</span> <span class="o">-&gt;&gt;</span> <span class="s1">&#39;age&#39;</span> <span class="k">AS</span> <span class="nb">INTEGER</span><span class="p">));</span>
+<div class="highlight-plpgsql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">age_idx</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">users</span><span class="w"> </span><span class="p">(</span><span class="k">CAST</span><span class="p">(</span><span class="n">profile</span><span class="w"> </span><span class="o">-&gt;&gt;</span><span class="w"> </span><span class="s1">&#39;age&#39;</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="nb">INTEGER</span><span class="p">));</span><span class="w"></span>
 </pre></div>
 </div>
 <div class="admonition warning">
@@ -303,8 +303,8 @@ is initialized. The rest is very much the same as defining a usual index:</p>
 <p>Alembic doesn’t support auto-generating revisions for functional indexes yet. You’ll
 need to manually edit the revision. Please follow <a class="reference external" href="https://github.com/sqlalchemy/alembic/issues/676">this issue</a> for updates.</p>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
             </div>

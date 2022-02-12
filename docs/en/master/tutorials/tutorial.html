@@ -82,7 +82,7 @@
     </div>
 
     <div id="sidenav" class="sidenav sidenav-fixed">
-        <p class="caption"><span class="caption-text">Tutorials</span></p>
+        <p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../tutorials.html">Tutorials</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="announcement.html">官宣：Python 异步编程再添一利器</a></li>
@@ -94,7 +94,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">GINO Basics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="fastapi.html">Build a FastAPI Server</a></li>
 </ul>
-<p class="caption"><span class="caption-text">How-to Guides</span></p>
+<p class="caption" role="heading"><span class="caption-text">How-to Guides</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../how-to.html">How-to Guides</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../how-to/alembic.html">Use Alembic</a></li>
@@ -108,7 +108,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../how-to/schema.html">Schema Declaration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../how-to/transaction.html">Transaction</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Explanation</span></p>
+<p class="caption" role="heading"><span class="caption-text">Explanation</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../explanation.html">Explanation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../explanation/async.html">Asynchronous Programming 101</a></li>
@@ -116,7 +116,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../explanation/sa20.html">SQLAlchemy 2.0</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../explanation/why.html">Why Asynchronous ORM?</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Reference</span></p>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../reference.html">Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference/api.html">API Reference</a></li>
@@ -132,7 +132,7 @@
         <div class="col s12 m9 body">
             <div id="main-content" role="main">
                 
-    <div class="section" id="gino-basics">
+    <section id="gino-basics">
 <h1>GINO Basics<a class="headerlink" href="#gino-basics" title="Permalink to this headline">¶</a></h1>
 <p>This tutorial helps beginners to get started with the basic part of GINO.
 Target audiences of this tutorial should have basic knowledge of:</p>
@@ -141,7 +141,7 @@ Target audiences of this tutorial should have basic knowledge of:</p>
 <li><p><a class="reference external" href="https://realpython.com/async-io-python/">Asynchronous programming in Python</a></p></li>
 </ul>
 <p>Knowledge of <a class="reference external" href="https://www.sqlalchemy.org/">SQLAlchemy</a> is not required.</p>
-<div class="section" id="introduction">
+<section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
 <p>Simply speaking, GINO helps you write and execute raw SQL in your asynchronous
 application. Instead of interacting RDBMS directly with raw SQL, you can access
@@ -150,8 +150,8 @@ your data through friendly objective API.</p>
 it adds quite some complexity and risk to your stack, and it won’t make your
 code run faster, if not slower. Please read <a class="reference internal" href="../explanation/why.html"><span class="doc">Why Asynchronous ORM?</span></a> for more
 information.</p>
-</div>
-<div class="section" id="installation">
+</section>
+<section id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
 <p>To install GINO, run this command in your terminal:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>pip install gino
@@ -166,8 +166,8 @@ you may want to run:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>poetry add gino
 </pre></div>
 </div>
-</div>
-<div class="section" id="declare-models">
+</section>
+<section id="declare-models">
 <h2>Declare Models<a class="headerlink" href="#declare-models" title="Permalink to this headline">¶</a></h2>
 <p>First of all, we’ll need a <a class="reference internal" href="../reference/api/gino.api.html#gino.api.Gino" title="gino.api.Gino"><code class="xref py py-class docutils literal notranslate"><span class="pre">Gino</span></code></a> object, usually under the
 name of <code class="docutils literal notranslate"><span class="pre">db</span></code> as a global variable:</p>
@@ -234,8 +234,8 @@ through the <code class="xref py py-attr docutils literal notranslate"><span cla
 to e.g. define constraints in mixin classes,
 <a class="reference internal" href="../reference/api/gino.declarative.html#gino.declarative.declared_attr" title="gino.declarative.declared_attr"><code class="xref py py-func docutils literal notranslate"><span class="pre">declared_attr()</span></code></a> is required. Please feel free to read
 more about it in its API documentation.</p>
-</div>
-<div class="section" id="get-connected">
+</section>
+<section id="get-connected">
 <h2>Get Connected<a class="headerlink" href="#get-connected" title="Permalink to this headline">¶</a></h2>
 <p>The declaration only defined the mapping, it does not create the actual table
 in the database. To do that, we need to get connected first. Let’s create a
@@ -313,12 +313,12 @@ recommended, please see how to <a class="reference internal" href="../how-to/ale
 <span class="n">asyncio</span><span class="o">.</span><span class="n">get_event_loop</span><span class="p">()</span><span class="o">.</span><span class="n">run_until_complete</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="crud-operations">
+</section>
+<section id="crud-operations">
 <h2>CRUD Operations<a class="headerlink" href="#crud-operations" title="Permalink to this headline">¶</a></h2>
 <p>In order to operate on the database, one of GINO’s core features is to Create,
 Retrieve, Update or Delete model objects, also known as the CRUD operations.</p>
-<div class="section" id="create">
+<section id="create">
 <h3>Create<a class="headerlink" href="#create" title="Permalink to this headline">¶</a></h3>
 <p>Let’s start by creating a <code class="docutils literal notranslate"><span class="pre">User</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">user</span> <span class="o">=</span> <span class="k">await</span> <span class="n">User</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">nickname</span><span class="o">=</span><span class="s1">&#39;fantix&#39;</span><span class="p">)</span>
@@ -340,8 +340,8 @@ finally create it in the database:</p>
 <span class="k">await</span> <span class="n">user</span><span class="o">.</span><span class="n">create</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="retrieve">
+</section>
+<section id="retrieve">
 <h3>Retrieve<a class="headerlink" href="#retrieve" title="Permalink to this headline">¶</a></h3>
 <p>To retrieve a model object from database by primary key, you can use the class
 method <a class="reference internal" href="../reference/api/gino.crud.html#gino.crud.CRUDModel.get" title="gino.crud.CRUDModel.get"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get()</span></code></a> on the model class. Now let’s retrieve
@@ -420,8 +420,8 @@ of user with ID 1 for example. Then we can use the
 <span class="nb">print</span><span class="p">(</span><span class="n">population</span><span class="p">)</span>  <span class="c1"># 17 for example</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="update">
+</section>
+<section id="update">
 <h3>Update<a class="headerlink" href="#update" title="Permalink to this headline">¶</a></h3>
 <p>Then let’s try to make some modifications. In this example we’ll mixin some
 retrieve operations we just tried.</p>
@@ -491,8 +491,8 @@ bit difference:</p>
 SQLAlchemy clause, its
 <a class="reference external" href="https://docs.sqlalchemy.org/en/latest/core/dml.html">documentation</a> here for
 your reference.</p>
-</div>
-<div class="section" id="delete">
+</section>
+<section id="delete">
 <h3>Delete<a class="headerlink" href="#delete" title="Permalink to this headline">¶</a></h3>
 <p>At last. Deleting is similar to updating, but way simpler.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">user</span> <span class="o">=</span> <span class="k">await</span> <span class="n">User</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">nickname</span><span class="o">=</span><span class="s1">&#39;fantix&#39;</span><span class="p">)</span>
@@ -518,9 +518,9 @@ the whole table!!):</p>
 <p>With basic <a class="reference internal" href="../how-to/crud.html"><span class="doc">CRUD</span></a>, you can already make some amazing stuff with
 GINO. This tutorial ends here, please find out more in detail from the rest of
 this documentation, and have fun hacking!</p>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
             </div>

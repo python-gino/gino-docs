@@ -91,14 +91,14 @@
     </div>
 
     <div id="sidenav" class="sidenav sidenav-fixed">
-        <p class="caption"><span class="caption-text">Tutorials</span></p>
+        <p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials.html">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/announcement.html">官宣：Python 异步编程再添一利器</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/tutorial.html">GINO Basics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/fastapi.html">Build a FastAPI Server</a></li>
 </ul>
-<p class="caption"><span class="caption-text">How-to Guides</span></p>
+<p class="caption" role="heading"><span class="caption-text">How-to Guides</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../how-to.html">How-to Guides</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../how-to/alembic.html">Use Alembic</a></li>
@@ -112,7 +112,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../how-to/schema.html">Schema Declaration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../how-to/transaction.html">Transaction</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Explanation</span></p>
+<p class="caption" role="heading"><span class="caption-text">Explanation</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../explanation.html">Explanation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../explanation/async.html">Asynchronous Programming 101</a></li>
@@ -120,7 +120,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../explanation/sa20.html">SQLAlchemy 2.0</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../explanation/why.html">Why Asynchronous ORM?</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Reference</span></p>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../../reference.html">Reference</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../api.html">API Reference</a></li>
@@ -144,280 +144,280 @@
         <div class="col s12 m9 body">
             <div id="main-content" role="main">
                 
-    <div class="section" id="module-gino.dialects.base">
+    <section id="module-gino.dialects.base">
 <span id="gino-dialects-base-module"></span><h1>gino.dialects.base module<a class="headerlink" href="#module-gino.dialects.base" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
-<dt id="gino.dialects.base.AsyncDialectMixin">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">gino.dialects.base.</span></code><code class="sig-name descname"><span class="pre">AsyncDialectMixin</span></code><a class="headerlink" href="#gino.dialects.base.AsyncDialectMixin" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.dialects.base.AsyncDialectMixin">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gino.dialects.base.</span></span><span class="sig-name descname"><span class="pre">AsyncDialectMixin</span></span><a class="headerlink" href="#gino.dialects.base.AsyncDialectMixin" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <dl class="py method">
-<dt id="gino.dialects.base.AsyncDialectMixin.compile">
-<code class="sig-name descname"><span class="pre">compile</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">elem</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">multiparams</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.AsyncDialectMixin.compile" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.dialects.base.AsyncDialectMixin.compile">
+<span class="sig-name descname"><span class="pre">compile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">elem</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">multiparams</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.AsyncDialectMixin.compile" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt id="gino.dialects.base.AsyncDialectMixin.cursor_cls">
-<code class="sig-name descname"><span class="pre">cursor_cls</span></code><a class="headerlink" href="#gino.dialects.base.AsyncDialectMixin.cursor_cls" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.dialects.base.AsyncDialectMixin.cursor_cls">
+<span class="sig-name descname"><span class="pre">cursor_cls</span></span><a class="headerlink" href="#gino.dialects.base.AsyncDialectMixin.cursor_cls" title="Permalink to this definition">¶</a></dt>
 <dd><p>alias of <a class="reference internal" href="#gino.dialects.base.DBAPICursor" title="gino.dialects.base.DBAPICursor"><code class="xref py py-class docutils literal notranslate"><span class="pre">gino.dialects.base.DBAPICursor</span></code></a></p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="gino.dialects.base.AsyncDialectMixin.dbapi">
-<em class="property"><span class="pre">classmethod</span> </em><code class="sig-name descname"><span class="pre">dbapi</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.AsyncDialectMixin.dbapi" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.dialects.base.AsyncDialectMixin.dbapi">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dbapi</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.AsyncDialectMixin.dbapi" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt id="gino.dialects.base.AsyncDialectMixin.dbapi_class">
-<code class="sig-name descname"><span class="pre">dbapi_class</span></code><a class="headerlink" href="#gino.dialects.base.AsyncDialectMixin.dbapi_class" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.dialects.base.AsyncDialectMixin.dbapi_class">
+<span class="sig-name descname"><span class="pre">dbapi_class</span></span><a class="headerlink" href="#gino.dialects.base.AsyncDialectMixin.dbapi_class" title="Permalink to this definition">¶</a></dt>
 <dd><p>alias of <a class="reference internal" href="#gino.dialects.base.BaseDBAPI" title="gino.dialects.base.BaseDBAPI"><code class="xref py py-class docutils literal notranslate"><span class="pre">gino.dialects.base.BaseDBAPI</span></code></a></p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="gino.dialects.base.AsyncDialectMixin.init_pool">
-<em class="property"><span class="pre">async</span> </em><code class="sig-name descname"><span class="pre">init_pool</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loop</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pool_class</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.AsyncDialectMixin.init_pool" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.dialects.base.AsyncDialectMixin.init_pool">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">init_pool</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loop</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pool_class</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.AsyncDialectMixin.init_pool" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt id="gino.dialects.base.AsyncDialectMixin.support_prepare">
-<code class="sig-name descname"><span class="pre">support_prepare</span></code><em class="property"> <span class="pre">=</span> <span class="pre">True</span></em><a class="headerlink" href="#gino.dialects.base.AsyncDialectMixin.support_prepare" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.dialects.base.AsyncDialectMixin.support_prepare">
+<span class="sig-name descname"><span class="pre">support_prepare</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#gino.dialects.base.AsyncDialectMixin.support_prepare" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt id="gino.dialects.base.AsyncDialectMixin.support_returning">
-<code class="sig-name descname"><span class="pre">support_returning</span></code><em class="property"> <span class="pre">=</span> <span class="pre">True</span></em><a class="headerlink" href="#gino.dialects.base.AsyncDialectMixin.support_returning" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.dialects.base.AsyncDialectMixin.support_returning">
+<span class="sig-name descname"><span class="pre">support_returning</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#gino.dialects.base.AsyncDialectMixin.support_returning" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="gino.dialects.base.AsyncDialectMixin.transaction">
-<code class="sig-name descname"><span class="pre">transaction</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">raw_conn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.AsyncDialectMixin.transaction" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.dialects.base.AsyncDialectMixin.transaction">
+<span class="sig-name descname"><span class="pre">transaction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">raw_conn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.AsyncDialectMixin.transaction" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
-<dt id="gino.dialects.base.BaseDBAPI">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">gino.dialects.base.</span></code><code class="sig-name descname"><span class="pre">BaseDBAPI</span></code><a class="headerlink" href="#gino.dialects.base.BaseDBAPI" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.dialects.base.BaseDBAPI">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gino.dialects.base.</span></span><span class="sig-name descname"><span class="pre">BaseDBAPI</span></span><a class="headerlink" href="#gino.dialects.base.BaseDBAPI" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <dl class="py method">
-<dt id="gino.dialects.base.BaseDBAPI.Binary">
-<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">Binary</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.BaseDBAPI.Binary" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.dialects.base.BaseDBAPI.Binary">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Binary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.BaseDBAPI.Binary" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt id="gino.dialects.base.BaseDBAPI.Error">
-<code class="sig-name descname"><span class="pre">Error</span></code><a class="headerlink" href="#gino.dialects.base.BaseDBAPI.Error" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.dialects.base.BaseDBAPI.Error">
+<span class="sig-name descname"><span class="pre">Error</span></span><a class="headerlink" href="#gino.dialects.base.BaseDBAPI.Error" title="Permalink to this definition">¶</a></dt>
 <dd><p>alias of <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#Exception" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></a></p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="gino.dialects.base.BaseDBAPI.paramstyle">
-<code class="sig-name descname"><span class="pre">paramstyle</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'numeric'</span></em><a class="headerlink" href="#gino.dialects.base.BaseDBAPI.paramstyle" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.dialects.base.BaseDBAPI.paramstyle">
+<span class="sig-name descname"><span class="pre">paramstyle</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'numeric'</span></em><a class="headerlink" href="#gino.dialects.base.BaseDBAPI.paramstyle" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
-<dt id="gino.dialects.base.Cursor">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">gino.dialects.base.</span></code><code class="sig-name descname"><span class="pre">Cursor</span></code><a class="headerlink" href="#gino.dialects.base.Cursor" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.dialects.base.Cursor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gino.dialects.base.</span></span><span class="sig-name descname"><span class="pre">Cursor</span></span><a class="headerlink" href="#gino.dialects.base.Cursor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <dl class="py method">
-<dt id="gino.dialects.base.Cursor.forward">
-<em class="property"><span class="pre">async</span> </em><code class="sig-name descname"><span class="pre">forward</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">n</span></em>, <em class="sig-param"><span class="pre">*</span></em>, <em class="sig-param"><span class="pre">timeout=&lt;object</span> <span class="pre">object&gt;</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.Cursor.forward" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.dialects.base.Cursor.forward">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout=&lt;object</span> <span class="pre">object&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.Cursor.forward" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="gino.dialects.base.Cursor.many">
-<em class="property"><span class="pre">async</span> </em><code class="sig-name descname"><span class="pre">many</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">n</span></em>, <em class="sig-param"><span class="pre">*</span></em>, <em class="sig-param"><span class="pre">timeout=&lt;object</span> <span class="pre">object&gt;</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.Cursor.many" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.dialects.base.Cursor.many">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">many</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout=&lt;object</span> <span class="pre">object&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.Cursor.many" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="gino.dialects.base.Cursor.next">
-<em class="property"><span class="pre">async</span> </em><code class="sig-name descname"><span class="pre">next</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">*</span></em>, <em class="sig-param"><span class="pre">timeout=&lt;object</span> <span class="pre">object&gt;</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.Cursor.next" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.dialects.base.Cursor.next">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">next</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout=&lt;object</span> <span class="pre">object&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.Cursor.next" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
-<dt id="gino.dialects.base.DBAPICursor">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">gino.dialects.base.</span></code><code class="sig-name descname"><span class="pre">DBAPICursor</span></code><a class="headerlink" href="#gino.dialects.base.DBAPICursor" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.dialects.base.DBAPICursor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gino.dialects.base.</span></span><span class="sig-name descname"><span class="pre">DBAPICursor</span></span><a class="headerlink" href="#gino.dialects.base.DBAPICursor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <dl class="py method">
-<dt id="gino.dialects.base.DBAPICursor.async_execute">
-<em class="property"><span class="pre">async</span> </em><code class="sig-name descname"><span class="pre">async_execute</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">many</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.DBAPICursor.async_execute" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.dialects.base.DBAPICursor.async_execute">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">async_execute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">many</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.DBAPICursor.async_execute" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="gino.dialects.base.DBAPICursor.description">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">description</span></span><a class="headerlink" href="#gino.dialects.base.DBAPICursor.description" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="gino.dialects.base.DBAPICursor.description">
-<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">description</span></code><a class="headerlink" href="#gino.dialects.base.DBAPICursor.description" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.dialects.base.DBAPICursor.execute">
+<span class="sig-name descname"><span class="pre">execute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">statement</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.DBAPICursor.execute" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="gino.dialects.base.DBAPICursor.execute">
-<code class="sig-name descname"><span class="pre">execute</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">statement</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.DBAPICursor.execute" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.dialects.base.DBAPICursor.execute_baked">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">execute_baked</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">baked_query</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">one</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.DBAPICursor.execute_baked" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="gino.dialects.base.DBAPICursor.execute_baked">
-<em class="property"><span class="pre">async</span> </em><code class="sig-name descname"><span class="pre">execute_baked</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">baked_query</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">one</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.DBAPICursor.execute_baked" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.dialects.base.DBAPICursor.executemany">
+<span class="sig-name descname"><span class="pre">executemany</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">statement</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.DBAPICursor.executemany" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="gino.dialects.base.DBAPICursor.executemany">
-<code class="sig-name descname"><span class="pre">executemany</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">statement</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.DBAPICursor.executemany" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.dialects.base.DBAPICursor.get_statusmsg">
+<span class="sig-name descname"><span class="pre">get_statusmsg</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.DBAPICursor.get_statusmsg" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="gino.dialects.base.DBAPICursor.get_statusmsg">
-<code class="sig-name descname"><span class="pre">get_statusmsg</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.DBAPICursor.get_statusmsg" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt id="gino.dialects.base.DBAPICursor.prepare">
-<em class="property"><span class="pre">async</span> </em><code class="sig-name descname"><span class="pre">prepare</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clause</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.DBAPICursor.prepare" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.dialects.base.DBAPICursor.prepare">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">prepare</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clause</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.DBAPICursor.prepare" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
-<dt id="gino.dialects.base.ExecutionContextOverride">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">gino.dialects.base.</span></code><code class="sig-name descname"><span class="pre">ExecutionContextOverride</span></code><a class="headerlink" href="#gino.dialects.base.ExecutionContextOverride" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.dialects.base.ExecutionContextOverride">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gino.dialects.base.</span></span><span class="sig-name descname"><span class="pre">ExecutionContextOverride</span></span><a class="headerlink" href="#gino.dialects.base.ExecutionContextOverride" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <dl class="py attribute">
-<dt id="gino.dialects.base.ExecutionContextOverride.baked_query">
-<code class="sig-name descname"><span class="pre">baked_query</span></code><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#gino.dialects.base.ExecutionContextOverride.baked_query" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.dialects.base.ExecutionContextOverride.baked_query">
+<span class="sig-name descname"><span class="pre">baked_query</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#gino.dialects.base.ExecutionContextOverride.baked_query" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="gino.dialects.base.ExecutionContextOverride.get_affected_rows">
-<code class="sig-name descname"><span class="pre">get_affected_rows</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.ExecutionContextOverride.get_affected_rows" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.dialects.base.ExecutionContextOverride.get_affected_rows">
+<span class="sig-name descname"><span class="pre">get_affected_rows</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.ExecutionContextOverride.get_affected_rows" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="gino.dialects.base.ExecutionContextOverride.get_lastrowid">
-<code class="sig-name descname"><span class="pre">get_lastrowid</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.ExecutionContextOverride.get_lastrowid" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.dialects.base.ExecutionContextOverride.get_lastrowid">
+<span class="sig-name descname"><span class="pre">get_lastrowid</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.ExecutionContextOverride.get_lastrowid" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="gino.dialects.base.ExecutionContextOverride.get_result_proxy">
-<code class="sig-name descname"><span class="pre">get_result_proxy</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.ExecutionContextOverride.get_result_proxy" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt id="gino.dialects.base.ExecutionContextOverride.loader">
-<code class="sig-name descname"><span class="pre">loader</span></code><a class="headerlink" href="#gino.dialects.base.ExecutionContextOverride.loader" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.dialects.base.ExecutionContextOverride.get_result_proxy">
+<span class="sig-name descname"><span class="pre">get_result_proxy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.ExecutionContextOverride.get_result_proxy" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt id="gino.dialects.base.ExecutionContextOverride.model">
-<code class="sig-name descname"><span class="pre">model</span></code><a class="headerlink" href="#gino.dialects.base.ExecutionContextOverride.model" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt id="gino.dialects.base.ExecutionContextOverride.process_rows">
-<code class="sig-name descname"><span class="pre">process_rows</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rows</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.ExecutionContextOverride.process_rows" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.dialects.base.ExecutionContextOverride.loader">
+<span class="sig-name descname"><span class="pre">loader</span></span><a class="headerlink" href="#gino.dialects.base.ExecutionContextOverride.loader" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt id="gino.dialects.base.ExecutionContextOverride.return_model">
-<code class="sig-name descname"><span class="pre">return_model</span></code><a class="headerlink" href="#gino.dialects.base.ExecutionContextOverride.return_model" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.dialects.base.ExecutionContextOverride.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#gino.dialects.base.ExecutionContextOverride.model" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gino.dialects.base.ExecutionContextOverride.process_rows">
+<span class="sig-name descname"><span class="pre">process_rows</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rows</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.ExecutionContextOverride.process_rows" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt id="gino.dialects.base.ExecutionContextOverride.timeout">
-<code class="sig-name descname"><span class="pre">timeout</span></code><a class="headerlink" href="#gino.dialects.base.ExecutionContextOverride.timeout" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.dialects.base.ExecutionContextOverride.return_model">
+<span class="sig-name descname"><span class="pre">return_model</span></span><a class="headerlink" href="#gino.dialects.base.ExecutionContextOverride.return_model" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gino.dialects.base.ExecutionContextOverride.timeout">
+<span class="sig-name descname"><span class="pre">timeout</span></span><a class="headerlink" href="#gino.dialects.base.ExecutionContextOverride.timeout" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
-<dt id="gino.dialects.base.Pool">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">gino.dialects.base.</span></code><code class="sig-name descname"><span class="pre">Pool</span></code><a class="headerlink" href="#gino.dialects.base.Pool" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.dialects.base.Pool">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gino.dialects.base.</span></span><span class="sig-name descname"><span class="pre">Pool</span></span><a class="headerlink" href="#gino.dialects.base.Pool" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <dl class="py method">
-<dt id="gino.dialects.base.Pool.acquire">
-<em class="property"><span class="pre">async</span> </em><code class="sig-name descname"><span class="pre">acquire</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.Pool.acquire" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.dialects.base.Pool.acquire">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">acquire</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.Pool.acquire" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="gino.dialects.base.Pool.close">
-<em class="property"><span class="pre">async</span> </em><code class="sig-name descname"><span class="pre">close</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.Pool.close" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.dialects.base.Pool.close">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.Pool.close" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="gino.dialects.base.Pool.raw_pool">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">raw_pool</span></span><a class="headerlink" href="#gino.dialects.base.Pool.raw_pool" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="gino.dialects.base.Pool.raw_pool">
-<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">raw_pool</span></code><a class="headerlink" href="#gino.dialects.base.Pool.raw_pool" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.dialects.base.Pool.release">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">release</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">conn</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.Pool.release" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="gino.dialects.base.Pool.release">
-<em class="property"><span class="pre">async</span> </em><code class="sig-name descname"><span class="pre">release</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">conn</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.Pool.release" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt id="gino.dialects.base.Pool.repr">
-<code class="sig-name descname"><span class="pre">repr</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">color</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.Pool.repr" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.dialects.base.Pool.repr">
+<span class="sig-name descname"><span class="pre">repr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">color</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.Pool.repr" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
-<dt id="gino.dialects.base.PreparedStatement">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">gino.dialects.base.</span></code><code class="sig-name descname"><span class="pre">PreparedStatement</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clause</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.PreparedStatement" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.dialects.base.PreparedStatement">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gino.dialects.base.</span></span><span class="sig-name descname"><span class="pre">PreparedStatement</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clause</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.PreparedStatement" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <dl class="py method">
-<dt id="gino.dialects.base.PreparedStatement.all">
-<em class="property"><span class="pre">async</span> </em><code class="sig-name descname"><span class="pre">all</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">multiparams</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.PreparedStatement.all" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.dialects.base.PreparedStatement.all">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">multiparams</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.PreparedStatement.all" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="gino.dialects.base.PreparedStatement.first">
-<em class="property"><span class="pre">async</span> </em><code class="sig-name descname"><span class="pre">first</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">multiparams</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.PreparedStatement.first" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.dialects.base.PreparedStatement.first">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">first</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">multiparams</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.PreparedStatement.first" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="gino.dialects.base.PreparedStatement.iterate">
-<code class="sig-name descname"><span class="pre">iterate</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">params</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.PreparedStatement.iterate" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.dialects.base.PreparedStatement.iterate">
+<span class="sig-name descname"><span class="pre">iterate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">params</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.PreparedStatement.iterate" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="gino.dialects.base.PreparedStatement.scalar">
-<em class="property"><span class="pre">async</span> </em><code class="sig-name descname"><span class="pre">scalar</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">multiparams</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.PreparedStatement.scalar" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.dialects.base.PreparedStatement.scalar">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">scalar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">multiparams</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.PreparedStatement.scalar" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="gino.dialects.base.PreparedStatement.status">
-<em class="property"><span class="pre">async</span> </em><code class="sig-name descname"><span class="pre">status</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">multiparams</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.PreparedStatement.status" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.dialects.base.PreparedStatement.status">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">status</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">multiparams</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.PreparedStatement.status" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
-<dt id="gino.dialects.base.Transaction">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">gino.dialects.base.</span></code><code class="sig-name descname"><span class="pre">Transaction</span></code><a class="headerlink" href="#gino.dialects.base.Transaction" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.dialects.base.Transaction">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gino.dialects.base.</span></span><span class="sig-name descname"><span class="pre">Transaction</span></span><a class="headerlink" href="#gino.dialects.base.Transaction" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <dl class="py method">
-<dt id="gino.dialects.base.Transaction.begin">
-<em class="property"><span class="pre">async</span> </em><code class="sig-name descname"><span class="pre">begin</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.Transaction.begin" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.dialects.base.Transaction.begin">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">begin</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.Transaction.begin" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="gino.dialects.base.Transaction.commit">
-<em class="property"><span class="pre">async</span> </em><code class="sig-name descname"><span class="pre">commit</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.Transaction.commit" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.dialects.base.Transaction.commit">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">commit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.Transaction.commit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="gino.dialects.base.Transaction.raw_transaction">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">raw_transaction</span></span><a class="headerlink" href="#gino.dialects.base.Transaction.raw_transaction" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="gino.dialects.base.Transaction.raw_transaction">
-<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">raw_transaction</span></code><a class="headerlink" href="#gino.dialects.base.Transaction.raw_transaction" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt id="gino.dialects.base.Transaction.rollback">
-<em class="property"><span class="pre">async</span> </em><code class="sig-name descname"><span class="pre">rollback</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.Transaction.rollback" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.dialects.base.Transaction.rollback">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">rollback</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.dialects.base.Transaction.rollback" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
-</div>
+</section>
 
 
             </div>

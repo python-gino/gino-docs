@@ -82,14 +82,14 @@
     </div>
 
     <div id="sidenav" class="sidenav sidenav-fixed">
-        <p class="caption"><span class="caption-text">Tutorials</span></p>
+        <p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/announcement.html">官宣：Python 异步编程再添一利器</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/tutorial.html">GINO Basics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/fastapi.html">Build a FastAPI Server</a></li>
 </ul>
-<p class="caption"><span class="caption-text">How-to Guides</span></p>
+<p class="caption" role="heading"><span class="caption-text">How-to Guides</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../how-to.html">How-to Guides</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../how-to/alembic.html">Use Alembic</a></li>
@@ -103,7 +103,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../how-to/schema.html">Schema Declaration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../how-to/transaction.html">Transaction</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Explanation</span></p>
+<p class="caption" role="heading"><span class="caption-text">Explanation</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../explanation.html">Explanation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="async.html">Asynchronous Programming 101</a></li>
@@ -111,7 +111,7 @@
 <li class="toctree-l1"><a class="reference internal" href="sa20.html">SQLAlchemy 2.0</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Why Asynchronous ORM?</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Reference</span></p>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../reference.html">Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference/api.html">API Reference</a></li>
@@ -127,11 +127,11 @@
         <div class="col s12 m9 body">
             <div id="main-content" role="main">
                 
-    <div class="section" id="why-asynchronous-orm">
+    <section id="why-asynchronous-orm">
 <h1>Why Asynchronous ORM?<a class="headerlink" href="#why-asynchronous-orm" title="Permalink to this headline">¶</a></h1>
 <p>Conclusion first: in many cases, you don’t need to use an asynchronous ORM, or even
 asyncio itself. But when you do, it’s very important to get it done correctly.</p>
-<div class="section" id="when-asyncio-helps">
+<section id="when-asyncio-helps">
 <h2>When asyncio Helps<a class="headerlink" href="#when-asyncio-helps" title="Permalink to this headline">¶</a></h2>
 <p>As Mike Bayer - the author of SQLAlchemy - <a class="reference external" href="http://techspot.zzzeek.org/2015/02/15/asynchronous-python-and-databases/">pointed out</a>, even
 Python itself can be slower than the database operation in a stereotypical
@@ -169,8 +169,8 @@ are smarter ways to handle such situations than asyncio. Nevertheless, the datab
 could be the reason to use asyncio, depending on the actual case.</p>
 <p>In closing, there are scenarios when asyncio could help with concurrency issues. Now
 that we know we will write an asynchronous server, then the next question is:</p>
-</div>
-<div class="section" id="how-to-access-database">
+</section>
+<section id="how-to-access-database">
 <h2>How to Access Database<a class="headerlink" href="#how-to-access-database" title="Permalink to this headline">¶</a></h2>
 <p>The first thing to balance here is ORM - how much convenience would you like to
 sacrifice for execution performance. As we are talking about ORM, let’s assume we need
@@ -255,11 +255,11 @@ a task queue to e.g. send emails is a more reasonable approach. If you’re doin
 the opposite way, you may want to reconsider the design.</p>
 <p>In summary, other than using raw SQL, the existing typical ORMs could not serve
 asynchronous programming well enough. We need true asynchronous ORMs.</p>
-</div>
-<div class="section" id="asynchronous-orm-done-right">
+</section>
+<section id="asynchronous-orm-done-right">
 <h2>Asynchronous ORM Done Right<a class="headerlink" href="#asynchronous-orm-done-right" title="Permalink to this headline">¶</a></h2>
 <p>I would describe a proper asynchronous ORM as follows:</p>
-<div class="section" id="don-t-starve">
+<section id="don-t-starve">
 <h3>Don’t Starve.<a class="headerlink" href="#don-t-starve" title="Permalink to this headline">¶</a></h3>
 <p>The very basic requirement for an asynchronous ORM is to avoid resource starvation, at
 least avoid the part caused by the ORM design. The fix is actually pretty
@@ -292,8 +292,8 @@ especially when the database pool is the shortest stave.</p></li>
 transactions may keep certain database locks, leading to performance issues or even
 triggering a chain reaction of deadlocks.</p></li>
 </ol>
-</div>
-<div class="section" id="be-explicit">
+</section>
+<section id="be-explicit">
 <h3>Be explicit.<a class="headerlink" href="#be-explicit" title="Permalink to this headline">¶</a></h3>
 <p>With that said, it is especially important to make everything explicit - all the
 connection acquisition, transactions and executions. Anything that will block must be
@@ -315,8 +315,8 @@ guess or remember what an API means - for example, there’re more than one ways
 a many-to-one relationship, I’d prefer to write the query by myself rather than trying
 to remember what “join_without_n_plus_1()” means.</p></li>
 </ul>
-</div>
-<div class="section" id="be-productive">
+</section>
+<section id="be-productive">
 <h3>Be productive.<a class="headerlink" href="#be-productive" title="Permalink to this headline">¶</a></h3>
 <p>Explicitness and productivity are kind of like two sides of the same coin - more
 explicitness means less productive, and more convenience means less explicit. As we are
@@ -331,9 +331,9 @@ intuitive naming. This is mostly the idea behind GINO’s design.</p>
 productivity. People could use what they’ve learned directly, port what they wrote to
 the new platform with minimum effort. More importantly - reuse some of the tools from
 the ecosystem without having to reinvent the wheel again.</p>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
             </div>

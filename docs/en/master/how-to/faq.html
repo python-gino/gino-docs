@@ -82,14 +82,14 @@
     </div>
 
     <div id="sidenav" class="sidenav sidenav-fixed">
-        <p class="caption"><span class="caption-text">Tutorials</span></p>
+        <p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/announcement.html">官宣：Python 异步编程再添一利器</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/tutorial.html">GINO Basics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/fastapi.html">Build a FastAPI Server</a></li>
 </ul>
-<p class="caption"><span class="caption-text">How-to Guides</span></p>
+<p class="caption" role="heading"><span class="caption-text">How-to Guides</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../how-to.html">How-to Guides</a></li>
 <li class="toctree-l1"><a class="reference internal" href="alembic.html">Use Alembic</a></li>
@@ -103,7 +103,7 @@
 <li class="toctree-l1"><a class="reference internal" href="schema.html">Schema Declaration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="transaction.html">Transaction</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Explanation</span></p>
+<p class="caption" role="heading"><span class="caption-text">Explanation</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../explanation.html">Explanation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../explanation/async.html">Asynchronous Programming 101</a></li>
@@ -111,7 +111,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../explanation/sa20.html">SQLAlchemy 2.0</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../explanation/why.html">Why Asynchronous ORM?</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Reference</span></p>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../reference.html">Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference/api.html">API Reference</a></li>
@@ -127,9 +127,9 @@
         <div class="col s12 m9 body">
             <div id="main-content" role="main">
                 
-    <div class="section" id="frequently-asked-questions">
+    <section id="frequently-asked-questions">
 <h1>Frequently Asked Questions<a class="headerlink" href="#frequently-asked-questions" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="sqlalchemy-1-4-supports-asyncio-what-will-gino-be">
+<section id="sqlalchemy-1-4-supports-asyncio-what-will-gino-be">
 <h2>SQLAlchemy 1.4 supports asyncio, what will GINO be?<a class="headerlink" href="#sqlalchemy-1-4-supports-asyncio-what-will-gino-be" title="Permalink to this headline">¶</a></h2>
 <p>Starting from 1.4, SQLAlchemy will <a class="reference external" href="https://docs.sqlalchemy.org/en/14/changelog/migration_14.html#asynchronous-io-support-for-core-and-orm">support asyncio</a>.
 This is a great news to the SQLAlchemy-based ORMs including GINO, because the users will
@@ -155,8 +155,8 @@ compatible API. To list some of the different/future features:</p>
 1.4 support in GINO 2.0.0-alpha.x releases, while the current GINO 1.0.x and 1.1.x will
 remain on SQLAlchemy 1.3. GINO 1.x will receive bug fixes and security updates until
 both SQLAlchemy async support and GINO 2.x are stabilized.</p>
-</div>
-<div class="section" id="orm-or-not-orm">
+</section>
+<section id="orm-or-not-orm">
 <h2>ORM or not ORM?<a class="headerlink" href="#orm-or-not-orm" title="Permalink to this headline">¶</a></h2>
 <p>GINO does perform the Object-Relational Mapping work under the
 <a class="reference external" href="https://en.wikipedia.org/wiki/Data_mapper_pattern">Data Mapper Pattern</a>, but
@@ -169,8 +169,8 @@ executing them to make changes in database, or loading data from database and
 wrapping the results with Objects again. Objects are just row data containers,
 you are still dealing with SQL which is represented by Models and SQLAlchemy
 core grammars. Besides GINO can be used in a completely <a class="reference external" href="schema.html#gino-core">non-ORM way</a>.</p>
-</div>
-<div class="section" id="can-i-use-features-of-sqlalchemy-orm">
+</section>
+<section id="can-i-use-features-of-sqlalchemy-orm">
 <h2>Can I use features of SQLAlchemy ORM?<a class="headerlink" href="#can-i-use-features-of-sqlalchemy-orm" title="Permalink to this headline">¶</a></h2>
 <p>SQLAlchemy has <a class="reference external" href="https://docs.sqlalchemy.org/en/13/">two parts</a>:</p>
 <ul class="simple">
@@ -178,8 +178,8 @@ core grammars. Besides GINO can be used in a completely <a class="reference exte
 <li><p>SQLAlchemy ORM</p></li>
 </ul>
 <p>GINO is built on top of SQLAlchemy Core, so SQLAlchemy ORM won’t work in GINO.</p>
-</div>
-<div class="section" id="how-to-join">
+</section>
+<section id="how-to-join">
 <h2>How to join?<a class="headerlink" href="#how-to-join" title="Permalink to this headline">¶</a></h2>
 <p>GINO invented none about making up queries, everything for that is inherited
 from SQLAlchemy. Therefore you just need to know <a class="reference external" href="https://docs.sqlalchemy.org/en/latest/core/tutorial.html#using-joins">how to write join in
@@ -190,17 +190,17 @@ that you can use model classes directly as if they are tables in joining:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="k">await</span> <span class="n">User</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">Book</span><span class="p">)</span><span class="o">.</span><span class="n">select</span><span class="p">()</span><span class="o">.</span><span class="n">gino</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="how-to-connect-to-database-through-ssl">
+</section>
+<section id="how-to-connect-to-database-through-ssl">
 <h2>How to connect to database through SSL?<a class="headerlink" href="#how-to-connect-to-database-through-ssl" title="Permalink to this headline">¶</a></h2>
 <p>It depends on the dialect and database driver. For asyncpg, keyword arguments
-on <a class="reference external" href="https://magicstack.github.io/asyncpg/current/api/index.html#asyncpg.connection.connect" title="(in asyncpg v0.24.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">asyncpg.connect()</span></code></a> are directly
+on <a class="reference external" href="https://magicstack.github.io/asyncpg/current/api/index.html#asyncpg.connection.connect" title="(in asyncpg v0.25.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">asyncpg.connect()</span></code></a> are directly
 available on <a class="reference internal" href="../reference/api/gino.html#gino.create_engine" title="gino.create_engine"><code class="xref py py-func docutils literal notranslate"><span class="pre">create_engine()</span></code></a> or <a class="reference internal" href="../reference/api/gino.api.html#gino.api.Gino.set_bind" title="gino.api.Gino.set_bind"><code class="xref py py-meth docutils literal notranslate"><span class="pre">db.set_bind()</span></code></a>. Therefore, enabling SSL is rather easy:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">engine</span> <span class="o">=</span> <span class="k">await</span> <span class="n">gino</span><span class="o">.</span><span class="n">create_engine</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">ssl</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="what-is-aiocontextvars-and-what-does-it-do">
+</section>
+<section id="what-is-aiocontextvars-and-what-does-it-do">
 <h2>What is aiocontextvars and what does it do?<a class="headerlink" href="#what-is-aiocontextvars-and-what-does-it-do" title="Permalink to this headline">¶</a></h2>
 <p>It is a partial backport of the new built-in module <a class="reference external" href="https://docs.python.org/3.7/library/contextvars.html">contextvars</a> introduced in Python
 3.7. In Python 3.6, <code class="docutils literal notranslate"><span class="pre">aiocontextvars</span></code> patches <code class="docutils literal notranslate"><span class="pre">loop.create_task()</span></code>
@@ -213,14 +213,14 @@ is also under discussion in upstream backport project, please read more here:
 <p>This answer is for GINO 0.8 and later, please check earlier versions of
 this documentation if you are using GINO 0.7.</p>
 </div>
-</div>
-<div class="section" id="how-to-define-relationships">
+</section>
+<section id="how-to-define-relationships">
 <h2>How to define relationships?<a class="headerlink" href="#how-to-define-relationships" title="Permalink to this headline">¶</a></h2>
 <p>GINO 1.0 or lower doesn’t provide relationship definition feature found in typical ORMs.
 However, you could always manually define your tables, design your queries and load the
 results explicitly in GINO. Please see <a class="reference internal" href="loaders.html"><span class="doc">Loaders and Relationship</span></a> for more information.</p>
-</div>
-<div class="section" id="how-to-define-index-with-multiple-columns">
+</section>
+<section id="how-to-define-index-with-multiple-columns">
 <h2>How to define index with multiple columns?<a class="headerlink" href="#how-to-define-index-with-multiple-columns" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">User</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">__tablename__</span> <span class="o">=</span> <span class="s1">&#39;users&#39;</span>
@@ -232,12 +232,12 @@ results explicitly in GINO. Please see <a class="reference internal" href="loade
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">_name_idx</span></code> is not used.</p>
-</div>
-<div class="section" id="is-there-a-django-admin-interface-for-gino">
+</section>
+<section id="is-there-a-django-admin-interface-for-gino">
 <h2>Is there a django admin interface for GINO?<a class="headerlink" href="#is-there-a-django-admin-interface-for-gino" title="Permalink to this headline">¶</a></h2>
 <p>Not quite yet, please follow <a class="reference external" href="https://github.com/python-gino/gino/issues/260">this discussion</a>.</p>
-</div>
-<div class="section" id="how-to-use-multiple-databases-for-different-users-on-the-fly">
+</section>
+<section id="how-to-use-multiple-databases-for-different-users-on-the-fly">
 <h2>How to use multiple databases for different users on the fly?<a class="headerlink" href="#how-to-use-multiple-databases-for-different-users-on-the-fly" title="Permalink to this headline">¶</a></h2>
 <p>GINO models are linked to a <a class="reference internal" href="../reference/api/gino.api.html#gino.api.Gino" title="gino.api.Gino"><code class="xref py py-class docutils literal notranslate"><span class="pre">Gino</span></code></a> instance, while
 <a class="reference internal" href="../reference/api/gino.api.html#gino.api.Gino" title="gino.api.Gino"><code class="xref py py-class docutils literal notranslate"><span class="pre">Gino</span></code></a> has an optional property <code class="docutils literal notranslate"><span class="pre">bind</span></code> to hold a
@@ -302,8 +302,8 @@ lazy engine creation:</p>
     <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="n">dbname</span><span class="o">=</span><span class="k">await</span> <span class="n">db</span><span class="o">.</span><span class="n">scalar</span><span class="p">(</span><span class="s2">&quot;SELECT current_database()&quot;</span><span class="p">))</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="how-to-load-complex-query-results">
+</section>
+<section id="how-to-load-complex-query-results">
 <h2>How to load complex query results?<a class="headerlink" href="#how-to-load-complex-query-results" title="Permalink to this headline">¶</a></h2>
 <p>The API doc of <a class="reference internal" href="../reference/api/gino.loader.html#module-gino.loader" title="gino.loader"><code class="xref py py-mod docutils literal notranslate"><span class="pre">gino.loader</span></code></a> explains the available loaders, and there’re a few
 examples in <a class="reference internal" href="loaders.html"><span class="doc">Loaders and Relationship</span></a> too.</p>
@@ -365,8 +365,8 @@ same time, using a <a class="reference internal" href="../reference/api/gino.loa
 </pre></div>
 </div>
 <p>Be ware of the <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a> in <code class="docutils literal notranslate"><span class="pre">.gino.load((...))</span></code>.</p>
-</div>
-<div class="section" id="how-to-do-bulk-or-batch-insert-update">
+</section>
+<section id="how-to-do-bulk-or-batch-insert-update">
 <h2>How to do bulk or batch insert / update?<a class="headerlink" href="#how-to-do-bulk-or-batch-insert-update" title="Permalink to this headline">¶</a></h2>
 <p>For a simple example, take a model that has one field, “name.” In your application you
 have a list of names you would like to add to the database:</p>
@@ -383,26 +383,26 @@ have a list of names you would like to add to the database:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">await</span> <span class="n">User</span><span class="o">.</span><span class="n">insert</span><span class="p">()</span><span class="o">.</span><span class="n">gino</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">new_names_dict</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="how-to-print-the-executed-sql">
+</section>
+<section id="how-to-print-the-executed-sql">
 <h2>How to print the executed SQL?<a class="headerlink" href="#how-to-print-the-executed-sql" title="Permalink to this headline">¶</a></h2>
 <p>GINO uses the same approach from SQLAlchemy: <code class="docutils literal notranslate"><span class="pre">create_engine(...,</span> <span class="pre">echo=True)</span></code>.
 (Or <code class="docutils literal notranslate"><span class="pre">db.set_bind(...,</span> <span class="pre">echo=True)</span></code>) Please see also <a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/engines.html#sqlalchemy.create_engine.params.echo">here</a>.</p>
 <p>If you use any extension, you can also set that in config, by <cite>db_echo</cite> or <cite>DB_ECHO</cite>.</p>
-</div>
-<div class="section" id="how-to-run-exists-sql">
+</section>
+<section id="how-to-run-exists-sql">
 <h2>How to run <code class="docutils literal notranslate"><span class="pre">EXISTS</span></code> SQL?<a class="headerlink" href="#how-to-run-exists-sql" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">await</span> <span class="n">db</span><span class="o">.</span><span class="n">scalar</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">User</span><span class="o">.</span><span class="n">email</span> <span class="o">==</span> <span class="n">email</span><span class="p">)</span><span class="o">.</span><span class="n">select</span><span class="p">())</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="how-to-work-with-alembic">
+</section>
+<section id="how-to-work-with-alembic">
 <h2>How to work with Alembic?<a class="headerlink" href="#how-to-work-with-alembic" title="Permalink to this headline">¶</a></h2>
 <p>The fact that <a class="reference internal" href="../reference/api/gino.api.html#gino.api.Gino" title="gino.api.Gino"><code class="xref py py-class docutils literal notranslate"><span class="pre">Gino</span></code></a> is a <a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/metadata.html#sqlalchemy.schema.MetaData" title="(in SQLAlchemy v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetaData</span></code></a> is the
 key to use Alembic. Just import and set <code class="docutils literal notranslate"><span class="pre">target_metadata</span> <span class="pre">=</span> <span class="pre">db</span></code> in Alembic <code class="docutils literal notranslate"><span class="pre">env.py</span></code>
 will do. See <a class="reference internal" href="alembic.html"><span class="doc">Use Alembic</span></a> for more details.</p>
-</div>
-<div class="section" id="how-to-join-the-same-table-twice">
+</section>
+<section id="how-to-join-the-same-table-twice">
 <h2>How to join the same table twice?<a class="headerlink" href="#how-to-join-the-same-table-twice" title="Permalink to this headline">¶</a></h2>
 <p>This is the same pattern as described in SQLAlchemy <a class="reference external" href="https://docs.sqlalchemy.org/en/14/orm/self_referential.html#self-referential" title="(in SQLAlchemy v1.4)"><span>Adjacency List Relationships</span></a>, where you
 have a table with “a foreign key reference to itself”, or join the same table more than
@@ -419,8 +419,8 @@ once, “to represent hierarchical data in flat tables.” We’d need to use
 <span class="n">users</span> <span class="o">=</span> <span class="k">await</span> <span class="n">query</span><span class="o">.</span><span class="n">gino</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">User</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">Parent</span><span class="p">))</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="how-to-execute-raw-sql-with-parameters">
+</section>
+<section id="how-to-execute-raw-sql-with-parameters">
 <span id="raw-sql"></span><h2>How to execute raw SQL with parameters?<a class="headerlink" href="#how-to-execute-raw-sql-with-parameters" title="Permalink to this headline">¶</a></h2>
 <p>Wrap the SQL with <a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/sqlelement.html#sqlalchemy.sql.expression.text" title="(in SQLAlchemy v1.4)"><code class="xref py py-func docutils literal notranslate"><span class="pre">text()</span></code></a>, and use keyword arguments:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">query</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM users WHERE id = :id_val&#39;</span><span class="p">)</span>
@@ -432,8 +432,8 @@ once, “to represent hierarchical data in flat tables.” We’d need to use
 <span class="n">user</span> <span class="o">=</span> <span class="k">await</span> <span class="n">db</span><span class="o">.</span><span class="n">first</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">id_val</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="gino-engine-is-not-initialized">
+</section>
+<section id="gino-engine-is-not-initialized">
 <h2>Gino engine is not initialized?<a class="headerlink" href="#gino-engine-is-not-initialized" title="Permalink to this headline">¶</a></h2>
 <p>GINO models are linked to a <a class="reference internal" href="../reference/api/gino.api.html#gino.api.Gino" title="gino.api.Gino"><code class="xref py py-class docutils literal notranslate"><span class="pre">Gino</span></code></a> instance, while
 <a class="reference internal" href="../reference/api/gino.api.html#gino.api.Gino" title="gino.api.Gino"><code class="xref py py-class docutils literal notranslate"><span class="pre">Gino</span></code></a> has an optional property <code class="docutils literal notranslate"><span class="pre">bind</span></code> to hold a
@@ -460,8 +460,8 @@ start-up hook.</p></li>
 </div>
 </li>
 </ul>
-</div>
-<div class="section" id="how-can-i-do-sql-xxxx-in-gino">
+</section>
+<section id="how-can-i-do-sql-xxxx-in-gino">
 <h2>How can I do SQL xxxx in GINO?<a class="headerlink" href="#how-can-i-do-sql-xxxx-in-gino" title="Permalink to this headline">¶</a></h2>
 <p>GINO uses <a class="reference external" href="https://docs.sqlalchemy.org/en/13/core/">SQLAlchemy Core</a> queries, so
 please check its documentation on how to build queries. The GINO models are simply
@@ -469,8 +469,8 @@ wrappers of SQLAlchemy <a class="reference external" href="https://docs.sqlalche
 attributes on GINO model classes are just SQLAlchemy <a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/metadata.html#sqlalchemy.schema.Column" title="(in SQLAlchemy v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Column</span></code></a>
 instances, you can use them in building your SQLAlchemy Core queries.</p>
 <p>Alternatively, you could always execute the raw SQL directly, see <a class="reference internal" href="#raw-sql"><span class="std std-ref">How to execute raw SQL with parameters?</span></a> above.</p>
-</div>
-</div>
+</section>
+</section>
 
 
             </div>

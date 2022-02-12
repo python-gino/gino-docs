@@ -88,14 +88,14 @@
     </div>
 
     <div id="sidenav" class="sidenav sidenav-fixed">
-        <p class="caption"><span class="caption-text">Tutorials</span></p>
+        <p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials.html">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/announcement.html">官宣：Python 异步编程再添一利器</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/tutorial.html">GINO Basics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/fastapi.html">Build a FastAPI Server</a></li>
 </ul>
-<p class="caption"><span class="caption-text">How-to Guides</span></p>
+<p class="caption" role="heading"><span class="caption-text">How-to Guides</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../how-to.html">How-to Guides</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../how-to/alembic.html">Use Alembic</a></li>
@@ -109,7 +109,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../how-to/schema.html">Schema Declaration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../how-to/transaction.html">Transaction</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Explanation</span></p>
+<p class="caption" role="heading"><span class="caption-text">Explanation</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../explanation.html">Explanation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../explanation/async.html">Asynchronous Programming 101</a></li>
@@ -117,7 +117,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../explanation/sa20.html">SQLAlchemy 2.0</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../explanation/why.html">Why Asynchronous ORM?</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Reference</span></p>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../../reference.html">Reference</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../api.html">API Reference</a></li>
@@ -141,11 +141,11 @@
         <div class="col s12 m9 body">
             <div id="main-content" role="main">
                 
-    <div class="section" id="module-gino.transaction">
+    <section id="module-gino.transaction">
 <span id="gino-transaction-module"></span><h1>gino.transaction module<a class="headerlink" href="#module-gino.transaction" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
-<dt id="gino.transaction.GinoTransaction">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">gino.transaction.</span></code><code class="sig-name descname"><span class="pre">GinoTransaction</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">conn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.transaction.GinoTransaction" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.transaction.GinoTransaction">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gino.transaction.</span></span><span class="sig-name descname"><span class="pre">GinoTransaction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">conn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.transaction.GinoTransaction" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Represents an underlying database transaction and its connection, offering
 methods to manage this transaction.</p>
@@ -204,14 +204,14 @@ transaction was ever touched. For example:</p>
 normal <code class="docutils literal notranslate"><span class="pre">try</span> <span class="pre">...</span> <span class="pre">except</span> <span class="pre">Exception:</span></code> can’t trap the commit or rollback.</p>
 </div>
 <dl class="py method">
-<dt id="gino.transaction.GinoTransaction.commit">
-<em class="property"><span class="pre">async</span> </em><code class="sig-name descname"><span class="pre">commit</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.transaction.GinoTransaction.commit" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.transaction.GinoTransaction.commit">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">commit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.transaction.GinoTransaction.commit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Only available in manual mode: manually commit this transaction.</p>
 </dd></dl>
 
-<dl class="py method">
-<dt id="gino.transaction.GinoTransaction.connection">
-<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">connection</span></code><a class="headerlink" href="#gino.transaction.GinoTransaction.connection" title="Permalink to this definition">¶</a></dt>
+<dl class="py property">
+<dt class="sig sig-object py" id="gino.transaction.GinoTransaction.connection">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">connection</span></span><a class="headerlink" href="#gino.transaction.GinoTransaction.connection" title="Permalink to this definition">¶</a></dt>
 <dd><p>Accesses to the <a class="reference internal" href="gino.engine.html#gino.engine.GinoConnection" title="gino.engine.GinoConnection"><code class="xref py py-class docutils literal notranslate"><span class="pre">GinoConnection</span></code></a> of this
 transaction. This is useful if when the transaction is started from
 <code class="docutils literal notranslate"><span class="pre">db</span></code> or <code class="docutils literal notranslate"><span class="pre">engine</span></code> where the connection is implicitly acquired for
@@ -219,8 +219,8 @@ you together with the transaction.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="gino.transaction.GinoTransaction.raise_commit">
-<code class="sig-name descname"><span class="pre">raise_commit</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.transaction.GinoTransaction.raise_commit" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.transaction.GinoTransaction.raise_commit">
+<span class="sig-name descname"><span class="pre">raise_commit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.transaction.GinoTransaction.raise_commit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Only available in managed mode: skip rest of the code in this
 transaction and commit immediately by raising an internal exception,
 which will be caught and handled by the asynchronous context manager:</p>
@@ -235,8 +235,8 @@ which will be caught and handled by the asynchronous context manager:</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="gino.transaction.GinoTransaction.raise_rollback">
-<code class="sig-name descname"><span class="pre">raise_rollback</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.transaction.GinoTransaction.raise_rollback" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.transaction.GinoTransaction.raise_rollback">
+<span class="sig-name descname"><span class="pre">raise_rollback</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.transaction.GinoTransaction.raise_rollback" title="Permalink to this definition">¶</a></dt>
 <dd><p>Only available in managed mode: skip rest of the code in this
 transaction and rollback immediately by raising an internal exception,
 which will be caught and handled by the asynchronous context manager:</p>
@@ -252,22 +252,22 @@ which will be caught and handled by the asynchronous context manager:</p>
 </div>
 </dd></dl>
 
-<dl class="py method">
-<dt id="gino.transaction.GinoTransaction.raw_transaction">
-<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">raw_transaction</span></code><a class="headerlink" href="#gino.transaction.GinoTransaction.raw_transaction" title="Permalink to this definition">¶</a></dt>
+<dl class="py property">
+<dt class="sig sig-object py" id="gino.transaction.GinoTransaction.raw_transaction">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">raw_transaction</span></span><a class="headerlink" href="#gino.transaction.GinoTransaction.raw_transaction" title="Permalink to this definition">¶</a></dt>
 <dd><p>Accesses to the underlying transaction object, whose type depends on
 the dialect in use.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="gino.transaction.GinoTransaction.rollback">
-<em class="property"><span class="pre">async</span> </em><code class="sig-name descname"><span class="pre">rollback</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.transaction.GinoTransaction.rollback" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.transaction.GinoTransaction.rollback">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">rollback</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.transaction.GinoTransaction.rollback" title="Permalink to this definition">¶</a></dt>
 <dd><p>Only available in manual mode: manually rollback this transaction.</p>
 </dd></dl>
 
 </dd></dl>
 
-</div>
+</section>
 
 
             </div>

@@ -82,14 +82,14 @@
     </div>
 
     <div id="sidenav" class="sidenav sidenav-fixed">
-        <p class="caption"><span class="caption-text">Tutorials</span></p>
+        <p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/announcement.html">官宣：Python 异步编程再添一利器</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/tutorial.html">GINO Basics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/fastapi.html">Build a FastAPI Server</a></li>
 </ul>
-<p class="caption"><span class="caption-text">How-to Guides</span></p>
+<p class="caption" role="heading"><span class="caption-text">How-to Guides</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../how-to.html">How-to Guides</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../how-to/alembic.html">Use Alembic</a></li>
@@ -103,7 +103,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../how-to/schema.html">Schema Declaration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../how-to/transaction.html">Transaction</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Explanation</span></p>
+<p class="caption" role="heading"><span class="caption-text">Explanation</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../explanation.html">Explanation</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Asynchronous Programming 101</a></li>
@@ -111,7 +111,7 @@
 <li class="toctree-l1"><a class="reference internal" href="sa20.html">SQLAlchemy 2.0</a></li>
 <li class="toctree-l1"><a class="reference internal" href="why.html">Why Asynchronous ORM?</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Reference</span></p>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../reference.html">Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference/api.html">API Reference</a></li>
@@ -127,9 +127,9 @@
         <div class="col s12 m9 body">
             <div id="main-content" role="main">
                 
-    <div class="section" id="asynchronous-programming-101">
+    <section id="asynchronous-programming-101">
 <h1>Asynchronous Programming 101<a class="headerlink" href="#asynchronous-programming-101" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="the-story">
+<section id="the-story">
 <h2>The Story<a class="headerlink" href="#the-story" title="Permalink to this headline">¶</a></h2>
 <p>Let’s say we want to build a search engine. We’ll use a single core computer to
 build our index. To make things simpler, our tasks are to fetch web pages
@@ -192,8 +192,8 @@ go together. Here we will stick with coroutines for simplicity.</p>
 CPU cores. Though this is not real data, compared to OS threads coroutines
 do take much less time to context switch and have a lower memory footprint,
 thus making them an ideal option for the C10k problem.</p>
-</div>
-<div class="section" id="cooperative-multitasking">
+</section>
+<section id="cooperative-multitasking">
 <h2>Cooperative multitasking<a class="headerlink" href="#cooperative-multitasking" title="Permalink to this headline">¶</a></h2>
 <p>So what is a coroutine?</p>
 <p>In the last diagram above, you may have noticed a difference compared to the
@@ -268,8 +268,8 @@ the red bars are not interleaved like threads.</p>
 <p>In Python and asyncio, <code class="docutils literal notranslate"><span class="pre">async</span> <span class="pre">def</span></code> declares coroutines, <code class="docutils literal notranslate"><span class="pre">await</span></code> yields
 control to event loop (event manager).</p>
 </div>
-</div>
-<div class="section" id="pros-and-cons">
+</section>
+<section id="pros-and-cons">
 <h2>Pros and cons<a class="headerlink" href="#pros-and-cons" title="Permalink to this headline">¶</a></h2>
 <p>Asynchronous I/O may handle tens of thousands of concurrent I/O operations in
 the same thread. This can save a lot of CPU time from context switching, and
@@ -302,8 +302,8 @@ suggestion is to use asynchronous I/O carefully for I/O-bound high concurrency
 scenarios only. It’s not a drop-in that will provide a performance boost, but
 more like a sharp blade for concurrency with two edges. And if you are dealing with
 time-critical tasks, think again to be sure.</p>
-</div>
-</div>
+</section>
+</section>
 
 
             </div>

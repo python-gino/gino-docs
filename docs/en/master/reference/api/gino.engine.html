@@ -88,14 +88,14 @@
     </div>
 
     <div id="sidenav" class="sidenav sidenav-fixed">
-        <p class="caption"><span class="caption-text">Tutorials</span></p>
+        <p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials.html">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/announcement.html">官宣：Python 异步编程再添一利器</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/tutorial.html">GINO Basics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/fastapi.html">Build a FastAPI Server</a></li>
 </ul>
-<p class="caption"><span class="caption-text">How-to Guides</span></p>
+<p class="caption" role="heading"><span class="caption-text">How-to Guides</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../how-to.html">How-to Guides</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../how-to/alembic.html">Use Alembic</a></li>
@@ -109,7 +109,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../how-to/schema.html">Schema Declaration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../how-to/transaction.html">Transaction</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Explanation</span></p>
+<p class="caption" role="heading"><span class="caption-text">Explanation</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../explanation.html">Explanation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../explanation/async.html">Asynchronous Programming 101</a></li>
@@ -117,7 +117,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../explanation/sa20.html">SQLAlchemy 2.0</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../explanation/why.html">Why Asynchronous ORM?</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Reference</span></p>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../../reference.html">Reference</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../api.html">API Reference</a></li>
@@ -141,11 +141,11 @@
         <div class="col s12 m9 body">
             <div id="main-content" role="main">
                 
-    <div class="section" id="module-gino.engine">
+    <section id="module-gino.engine">
 <span id="gino-engine-module"></span><h1>gino.engine module<a class="headerlink" href="#module-gino.engine" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
-<dt id="gino.engine.GinoConnection">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">gino.engine.</span></code><code class="sig-name descname"><span class="pre">GinoConnection</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dialect</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sa_conn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stack</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.engine.GinoConnection" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.engine.GinoConnection">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gino.engine.</span></span><span class="sig-name descname"><span class="pre">GinoConnection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dialect</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sa_conn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stack</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.engine.GinoConnection" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Represents an actual database connection.</p>
 <p>This is the root of all query API like <a class="reference internal" href="#gino.engine.GinoConnection.all" title="gino.engine.GinoConnection.all"><code class="xref py py-meth docutils literal notranslate"><span class="pre">all()</span></code></a>, <a class="reference internal" href="#gino.engine.GinoConnection.first" title="gino.engine.GinoConnection.first"><code class="xref py py-meth docutils literal notranslate"><span class="pre">first()</span></code></a>,
@@ -169,8 +169,8 @@ in <a class="reference internal" href="#gino.engine.GinoEngine.acquire" title="g
 <p><a class="reference internal" href="../../explanation/engine.html"><span class="doc">Engine and Connection</span></a></p>
 </div>
 <dl class="py method">
-<dt id="gino.engine.GinoConnection.all">
-<em class="property"><span class="pre">async</span> </em><code class="sig-name descname"><span class="pre">all</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clause</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">multiparams</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.engine.GinoConnection.all" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.engine.GinoConnection.all">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clause</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">multiparams</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.engine.GinoConnection.all" title="Permalink to this definition">¶</a></dt>
 <dd><p>Runs the given query in database, returns all results as a list.</p>
 <p>This method accepts the same parameters taken by SQLAlchemy
 <code class="xref py py-meth docutils literal notranslate"><span class="pre">execute()</span></code>. You can pass in a raw
@@ -184,16 +184,16 @@ multiple rows in one call for example, the returning result from
 database will be discarded and this method will return <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
 </dd></dl>
 
-<dl class="py method">
-<dt id="gino.engine.GinoConnection.dialect">
-<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">dialect</span></code><a class="headerlink" href="#gino.engine.GinoConnection.dialect" title="Permalink to this definition">¶</a></dt>
+<dl class="py property">
+<dt class="sig sig-object py" id="gino.engine.GinoConnection.dialect">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dialect</span></span><a class="headerlink" href="#gino.engine.GinoConnection.dialect" title="Permalink to this definition">¶</a></dt>
 <dd><p>The <a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/internals.html#sqlalchemy.engine.Dialect" title="(in SQLAlchemy v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dialect</span></code></a> in use, inherited
 from the engine created this connection.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="gino.engine.GinoConnection.execution_options">
-<code class="sig-name descname"><span class="pre">execution_options</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">opt</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.engine.GinoConnection.execution_options" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.engine.GinoConnection.execution_options">
+<span class="sig-name descname"><span class="pre">execution_options</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">opt</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.engine.GinoConnection.execution_options" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set non-SQL options for the connection which take effect during
 execution.</p>
 <p>This method returns a copy of this <a class="reference internal" href="#gino.engine.GinoConnection" title="gino.engine.GinoConnection"><code class="xref py py-class docutils literal notranslate"><span class="pre">GinoConnection</span></code></a> which
@@ -250,16 +250,16 @@ whatever they are.</p></li>
 </dd></dl>
 
 <dl class="py method">
-<dt id="gino.engine.GinoConnection.first">
-<em class="property"><span class="pre">async</span> </em><code class="sig-name descname"><span class="pre">first</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clause</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">multiparams</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.engine.GinoConnection.first" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.engine.GinoConnection.first">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">first</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clause</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">multiparams</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.engine.GinoConnection.first" title="Permalink to this definition">¶</a></dt>
 <dd><p>Runs the given query in database, returns the first result.</p>
 <p>If the query returns no result, this method will return <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
 <p>See <a class="reference internal" href="#gino.engine.GinoConnection.all" title="gino.engine.GinoConnection.all"><code class="xref py py-meth docutils literal notranslate"><span class="pre">all()</span></code></a> for common query comments.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="gino.engine.GinoConnection.get_raw_connection">
-<em class="property"><span class="pre">async</span> </em><code class="sig-name descname"><span class="pre">get_raw_connection</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.engine.GinoConnection.get_raw_connection" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.engine.GinoConnection.get_raw_connection">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_raw_connection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.engine.GinoConnection.get_raw_connection" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the underlying database connection, acquire one if none present.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -276,8 +276,8 @@ dialect in use</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="gino.engine.GinoConnection.iterate">
-<code class="sig-name descname"><span class="pre">iterate</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clause</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">multiparams</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.engine.GinoConnection.iterate" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.engine.GinoConnection.iterate">
+<span class="sig-name descname"><span class="pre">iterate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clause</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">multiparams</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.engine.GinoConnection.iterate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates a server-side cursor in database for large query results.</p>
 <p>Cursors must work within transactions:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">with</span> <span class="n">conn</span><span class="o">.</span><span class="n">transaction</span><span class="p">():</span>
@@ -297,8 +297,8 @@ dialect in use</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="gino.engine.GinoConnection.one">
-<em class="property"><span class="pre">async</span> </em><code class="sig-name descname"><span class="pre">one</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clause</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">multiparams</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.engine.GinoConnection.one" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.engine.GinoConnection.one">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">one</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clause</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">multiparams</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.engine.GinoConnection.one" title="Permalink to this definition">¶</a></dt>
 <dd><p>Runs the given query in database, returns exactly one result.</p>
 <p>If the query returns no result, this method will raise
 <a class="reference internal" href="gino.exceptions.html#gino.exceptions.NoResultFound" title="gino.exceptions.NoResultFound"><code class="xref py py-class docutils literal notranslate"><span class="pre">NoResultFound</span></code></a>.
@@ -308,8 +308,8 @@ If the query returns multiple results, this method will raise
 </dd></dl>
 
 <dl class="py method">
-<dt id="gino.engine.GinoConnection.one_or_none">
-<em class="property"><span class="pre">async</span> </em><code class="sig-name descname"><span class="pre">one_or_none</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clause</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">multiparams</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.engine.GinoConnection.one_or_none" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.engine.GinoConnection.one_or_none">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">one_or_none</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clause</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">multiparams</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.engine.GinoConnection.one_or_none" title="Permalink to this definition">¶</a></dt>
 <dd><p>Runs the given query in database, returns at most one result.</p>
 <p>If the query returns no result, this method will return <code class="docutils literal notranslate"><span class="pre">None</span></code>.
 If the query returns multiple results, this method will raise
@@ -318,20 +318,20 @@ If the query returns multiple results, this method will raise
 </dd></dl>
 
 <dl class="py method">
-<dt id="gino.engine.GinoConnection.prepare">
-<em class="property"><span class="pre">async</span> </em><code class="sig-name descname"><span class="pre">prepare</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clause</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.engine.GinoConnection.prepare" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.engine.GinoConnection.prepare">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">prepare</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clause</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.engine.GinoConnection.prepare" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="py method">
-<dt id="gino.engine.GinoConnection.raw_connection">
-<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">raw_connection</span></code><a class="headerlink" href="#gino.engine.GinoConnection.raw_connection" title="Permalink to this definition">¶</a></dt>
+<dl class="py property">
+<dt class="sig sig-object py" id="gino.engine.GinoConnection.raw_connection">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">raw_connection</span></span><a class="headerlink" href="#gino.engine.GinoConnection.raw_connection" title="Permalink to this definition">¶</a></dt>
 <dd><p>The current underlying database connection instance, type depends on
 the dialect in use. May be <code class="docutils literal notranslate"><span class="pre">None</span></code> if self is a lazy connection.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="gino.engine.GinoConnection.release">
-<em class="property"><span class="pre">async</span> </em><code class="sig-name descname"><span class="pre">release</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">permanent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.engine.GinoConnection.release" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.engine.GinoConnection.release">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">release</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">permanent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.engine.GinoConnection.release" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the underlying database connection to its pool.</p>
 <p>If <code class="docutils literal notranslate"><span class="pre">permanent=False</span></code>, this connection will be set in lazy mode with
 underlying database connection returned, the next query on this
@@ -359,22 +359,22 @@ connections depends on the given <code class="docutils literal notranslate"><spa
 </dd></dl>
 
 <dl class="py method">
-<dt id="gino.engine.GinoConnection.scalar">
-<em class="property"><span class="pre">async</span> </em><code class="sig-name descname"><span class="pre">scalar</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clause</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">multiparams</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.engine.GinoConnection.scalar" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.engine.GinoConnection.scalar">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">scalar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clause</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">multiparams</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.engine.GinoConnection.scalar" title="Permalink to this definition">¶</a></dt>
 <dd><p>Runs the given query in database, returns the first result.</p>
 <p>If the query returns no result, this method will return <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
 <p>See <a class="reference internal" href="#gino.engine.GinoConnection.all" title="gino.engine.GinoConnection.all"><code class="xref py py-meth docutils literal notranslate"><span class="pre">all()</span></code></a> for common query comments.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="gino.engine.GinoConnection.schema_for_object">
-<code class="sig-name descname"><span class="pre">schema_for_object</span></code><em class="property"> <span class="pre">=</span> <span class="pre">&lt;sqlalchemy.sql.schema._SchemaTranslateMap</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#gino.engine.GinoConnection.schema_for_object" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.engine.GinoConnection.schema_for_object">
+<span class="sig-name descname"><span class="pre">schema_for_object</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;sqlalchemy.sql.schema._SchemaTranslateMap</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#gino.engine.GinoConnection.schema_for_object" title="Permalink to this definition">¶</a></dt>
 <dd><p>A SQLAlchemy compatibility attribute, don’t use it for now, it bites.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="gino.engine.GinoConnection.status">
-<em class="property"><span class="pre">async</span> </em><code class="sig-name descname"><span class="pre">status</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clause</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">multiparams</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.engine.GinoConnection.status" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.engine.GinoConnection.status">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">status</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clause</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">multiparams</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.engine.GinoConnection.status" title="Permalink to this definition">¶</a></dt>
 <dd><p>Runs the given query in database, returns the query status.</p>
 <p>The returning query status depends on underlying database and the
 dialect in use. For asyncpg it is a string, you can parse it like this:
@@ -382,8 +382,8 @@ dialect in use. For asyncpg it is a string, you can parse it like this:
 </dd></dl>
 
 <dl class="py method">
-<dt id="gino.engine.GinoConnection.transaction">
-<code class="sig-name descname"><span class="pre">transaction</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.engine.GinoConnection.transaction" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.engine.GinoConnection.transaction">
+<span class="sig-name descname"><span class="pre">transaction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.engine.GinoConnection.transaction" title="Permalink to this definition">¶</a></dt>
 <dd><p>Starts a database transaction.</p>
 <p>There are two ways using this method: <strong>managed</strong> as an asynchronous
 context manager:</p>
@@ -416,15 +416,15 @@ database connection acquired if none was present.</p>
 example in asyncpg, starting a second transaction on the same
 connection will create a save point in the database.</p>
 <p>For now, the parameters are directly passed to underlying database
-driver, read <a class="reference external" href="https://magicstack.github.io/asyncpg/current/api/index.html#asyncpg.connection.Connection.transaction" title="(in asyncpg v0.24.0)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">asyncpg.connection.Connection.transaction()</span></code></a> for
+driver, read <a class="reference external" href="https://magicstack.github.io/asyncpg/current/api/index.html#asyncpg.connection.Connection.transaction" title="(in asyncpg v0.25.0)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">asyncpg.connection.Connection.transaction()</span></code></a> for
 asyncpg.</p>
 </dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
-<dt id="gino.engine.GinoEngine">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">gino.engine.</span></code><code class="sig-name descname"><span class="pre">GinoEngine</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dialect</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loop</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logging_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">echo</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">execution_options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.engine.GinoEngine" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.engine.GinoEngine">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gino.engine.</span></span><span class="sig-name descname"><span class="pre">GinoEngine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dialect</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loop</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logging_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">echo</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">execution_options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.engine.GinoEngine" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Connects a <a class="reference internal" href="gino.dialects.base.html#gino.dialects.base.Pool" title="gino.dialects.base.Pool"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pool</span></code></a> and
 <a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/internals.html#sqlalchemy.engine.Dialect" title="(in SQLAlchemy v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dialect</span></code></a> together to provide a source
@@ -437,8 +437,8 @@ of database connectivity and behavior.</p>
 <p><a class="reference internal" href="../../explanation/engine.html"><span class="doc">Engine and Connection</span></a></p>
 </div>
 <dl class="py method">
-<dt id="gino.engine.GinoEngine.acquire">
-<code class="sig-name descname"><span class="pre">acquire</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reuse</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lazy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reusable</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.engine.GinoEngine.acquire" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.engine.GinoEngine.acquire">
+<span class="sig-name descname"><span class="pre">acquire</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reuse</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lazy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reusable</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.engine.GinoEngine.acquire" title="Permalink to this definition">¶</a></dt>
 <dd><p>Acquire a connection from the pool.</p>
 <p>There are two ways using this method - as an asynchronous context
 manager:</p>
@@ -501,8 +501,8 @@ connection which is only referenced once here.</p></li>
 </dd></dl>
 
 <dl class="py method">
-<dt id="gino.engine.GinoEngine.all">
-<em class="property"><span class="pre">async</span> </em><code class="sig-name descname"><span class="pre">all</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clause</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">multiparams</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.engine.GinoEngine.all" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.engine.GinoEngine.all">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clause</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">multiparams</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.engine.GinoEngine.all" title="Permalink to this definition">¶</a></dt>
 <dd><p>Acquires a connection with <code class="docutils literal notranslate"><span class="pre">reuse=True</span></code> and runs
 <a class="reference internal" href="#gino.engine.GinoConnection.all" title="gino.engine.GinoConnection.all"><code class="xref py py-meth docutils literal notranslate"><span class="pre">all()</span></code></a> on it. <code class="docutils literal notranslate"><span class="pre">reuse=True</span></code> means you can safely
 do this without borrowing more than one underlying connection:</p>
@@ -514,30 +514,30 @@ do this without borrowing more than one underlying connection:</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="gino.engine.GinoEngine.close">
-<em class="property"><span class="pre">async</span> </em><code class="sig-name descname"><span class="pre">close</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.engine.GinoEngine.close" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.engine.GinoEngine.close">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.engine.GinoEngine.close" title="Permalink to this definition">¶</a></dt>
 <dd><p>Close the engine, by closing the underlying pool.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="gino.engine.GinoEngine.compile">
-<code class="sig-name descname"><span class="pre">compile</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clause</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">multiparams</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.engine.GinoEngine.compile" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.engine.GinoEngine.compile">
+<span class="sig-name descname"><span class="pre">compile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clause</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">multiparams</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.engine.GinoEngine.compile" title="Permalink to this definition">¶</a></dt>
 <dd><p>A shortcut for <a class="reference internal" href="gino.dialects.base.html#gino.dialects.base.AsyncDialectMixin.compile" title="gino.dialects.base.AsyncDialectMixin.compile"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compile()</span></code></a> on
 the dialect, returns raw SQL string and parameters according to the
 rules of the dialect.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="gino.engine.GinoEngine.connection_cls">
-<code class="sig-name descname"><span class="pre">connection_cls</span></code><a class="headerlink" href="#gino.engine.GinoEngine.connection_cls" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.engine.GinoEngine.connection_cls">
+<span class="sig-name descname"><span class="pre">connection_cls</span></span><a class="headerlink" href="#gino.engine.GinoEngine.connection_cls" title="Permalink to this definition">¶</a></dt>
 <dd><p>Customizes the connection class to use, default is
 <a class="reference internal" href="#gino.engine.GinoConnection" title="gino.engine.GinoConnection"><code class="xref py py-class docutils literal notranslate"><span class="pre">GinoConnection</span></code></a>.</p>
 <p>alias of <a class="reference internal" href="#gino.engine.GinoConnection" title="gino.engine.GinoConnection"><code class="xref py py-class docutils literal notranslate"><span class="pre">gino.engine.GinoConnection</span></code></a></p>
 </dd></dl>
 
-<dl class="py method">
-<dt id="gino.engine.GinoEngine.current_connection">
-<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">current_connection</span></code><a class="headerlink" href="#gino.engine.GinoEngine.current_connection" title="Permalink to this definition">¶</a></dt>
+<dl class="py property">
+<dt class="sig sig-object py" id="gino.engine.GinoEngine.current_connection">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">current_connection</span></span><a class="headerlink" href="#gino.engine.GinoEngine.current_connection" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets the most recently acquired reusable connection in the context.
 <code class="docutils literal notranslate"><span class="pre">None</span></code> if there is no such connection.</p>
 <dl class="field-list simple">
@@ -547,22 +547,22 @@ rules of the dialect.</p>
 </dl>
 </dd></dl>
 
-<dl class="py method">
-<dt id="gino.engine.GinoEngine.dialect">
-<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">dialect</span></code><a class="headerlink" href="#gino.engine.GinoEngine.dialect" title="Permalink to this definition">¶</a></dt>
+<dl class="py property">
+<dt class="sig sig-object py" id="gino.engine.GinoEngine.dialect">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dialect</span></span><a class="headerlink" href="#gino.engine.GinoEngine.dialect" title="Permalink to this definition">¶</a></dt>
 <dd><p>Read-only property for the
 <a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/internals.html#sqlalchemy.engine.Dialect" title="(in SQLAlchemy v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dialect</span></code></a> of this engine.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="gino.engine.GinoEngine.first">
-<em class="property"><span class="pre">async</span> </em><code class="sig-name descname"><span class="pre">first</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clause</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">multiparams</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.engine.GinoEngine.first" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.engine.GinoEngine.first">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">first</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clause</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">multiparams</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.engine.GinoEngine.first" title="Permalink to this definition">¶</a></dt>
 <dd><p>Runs <a class="reference internal" href="#gino.engine.GinoConnection.first" title="gino.engine.GinoConnection.first"><code class="xref py py-meth docutils literal notranslate"><span class="pre">first()</span></code></a>, See <a class="reference internal" href="#gino.engine.GinoEngine.all" title="gino.engine.GinoEngine.all"><code class="xref py py-meth docutils literal notranslate"><span class="pre">all()</span></code></a>.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="gino.engine.GinoEngine.iterate">
-<code class="sig-name descname"><span class="pre">iterate</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clause</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">multiparams</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.engine.GinoEngine.iterate" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.engine.GinoEngine.iterate">
+<span class="sig-name descname"><span class="pre">iterate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clause</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">multiparams</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.engine.GinoEngine.iterate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates a server-side cursor in database for large query results.</p>
 <p>This requires that there is a reusable connection in the current
 context, and an active transaction is present. Then its
@@ -570,45 +570,45 @@ context, and an active transaction is present. Then its
 </dd></dl>
 
 <dl class="py method">
-<dt id="gino.engine.GinoEngine.one">
-<em class="property"><span class="pre">async</span> </em><code class="sig-name descname"><span class="pre">one</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clause</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">multiparams</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.engine.GinoEngine.one" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.engine.GinoEngine.one">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">one</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clause</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">multiparams</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.engine.GinoEngine.one" title="Permalink to this definition">¶</a></dt>
 <dd><p>Runs <a class="reference internal" href="#gino.engine.GinoConnection.one" title="gino.engine.GinoConnection.one"><code class="xref py py-meth docutils literal notranslate"><span class="pre">one()</span></code></a>, See <a class="reference internal" href="#gino.engine.GinoEngine.all" title="gino.engine.GinoEngine.all"><code class="xref py py-meth docutils literal notranslate"><span class="pre">all()</span></code></a>.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="gino.engine.GinoEngine.one_or_none">
-<em class="property"><span class="pre">async</span> </em><code class="sig-name descname"><span class="pre">one_or_none</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clause</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">multiparams</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.engine.GinoEngine.one_or_none" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.engine.GinoEngine.one_or_none">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">one_or_none</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clause</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">multiparams</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.engine.GinoEngine.one_or_none" title="Permalink to this definition">¶</a></dt>
 <dd><p>Runs <a class="reference internal" href="#gino.engine.GinoConnection.one_or_none" title="gino.engine.GinoConnection.one_or_none"><code class="xref py py-meth docutils literal notranslate"><span class="pre">one_or_none()</span></code></a>, See <a class="reference internal" href="#gino.engine.GinoEngine.all" title="gino.engine.GinoEngine.all"><code class="xref py py-meth docutils literal notranslate"><span class="pre">all()</span></code></a>.</p>
 </dd></dl>
 
-<dl class="py method">
-<dt id="gino.engine.GinoEngine.raw_pool">
-<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">raw_pool</span></code><a class="headerlink" href="#gino.engine.GinoEngine.raw_pool" title="Permalink to this definition">¶</a></dt>
+<dl class="py property">
+<dt class="sig sig-object py" id="gino.engine.GinoEngine.raw_pool">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">raw_pool</span></span><a class="headerlink" href="#gino.engine.GinoEngine.raw_pool" title="Permalink to this definition">¶</a></dt>
 <dd><p>Read-only access to the underlying database connection pool instance.
-This depends on the actual dialect in use, <a class="reference external" href="https://magicstack.github.io/asyncpg/current/api/index.html#asyncpg.pool.Pool" title="(in asyncpg v0.24.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pool</span></code></a>
+This depends on the actual dialect in use, <a class="reference external" href="https://magicstack.github.io/asyncpg/current/api/index.html#asyncpg.pool.Pool" title="(in asyncpg v0.25.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pool</span></code></a>
 of asyncpg for example.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="gino.engine.GinoEngine.repr">
-<code class="sig-name descname"><span class="pre">repr</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.engine.GinoEngine.repr" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.engine.GinoEngine.repr">
+<span class="sig-name descname"><span class="pre">repr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.engine.GinoEngine.repr" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="gino.engine.GinoEngine.scalar">
-<em class="property"><span class="pre">async</span> </em><code class="sig-name descname"><span class="pre">scalar</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clause</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">multiparams</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.engine.GinoEngine.scalar" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.engine.GinoEngine.scalar">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">scalar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clause</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">multiparams</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.engine.GinoEngine.scalar" title="Permalink to this definition">¶</a></dt>
 <dd><p>Runs <a class="reference internal" href="#gino.engine.GinoConnection.scalar" title="gino.engine.GinoConnection.scalar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">scalar()</span></code></a>, See <a class="reference internal" href="#gino.engine.GinoEngine.all" title="gino.engine.GinoEngine.all"><code class="xref py py-meth docutils literal notranslate"><span class="pre">all()</span></code></a>.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="gino.engine.GinoEngine.status">
-<em class="property"><span class="pre">async</span> </em><code class="sig-name descname"><span class="pre">status</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clause</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">multiparams</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.engine.GinoEngine.status" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.engine.GinoEngine.status">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">status</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clause</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">multiparams</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.engine.GinoEngine.status" title="Permalink to this definition">¶</a></dt>
 <dd><p>Runs <a class="reference internal" href="#gino.engine.GinoConnection.status" title="gino.engine.GinoConnection.status"><code class="xref py py-meth docutils literal notranslate"><span class="pre">status()</span></code></a>. See also <a class="reference internal" href="#gino.engine.GinoEngine.all" title="gino.engine.GinoEngine.all"><code class="xref py py-meth docutils literal notranslate"><span class="pre">all()</span></code></a>.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="gino.engine.GinoEngine.transaction">
-<code class="sig-name descname"><span class="pre">transaction</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reuse</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reusable</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.engine.GinoEngine.transaction" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.engine.GinoEngine.transaction">
+<span class="sig-name descname"><span class="pre">transaction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reuse</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reusable</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.engine.GinoEngine.transaction" title="Permalink to this definition">¶</a></dt>
 <dd><p>Borrows a new connection and starts a transaction with it.</p>
 <p>Different to <a class="reference internal" href="#gino.engine.GinoConnection.transaction" title="gino.engine.GinoConnection.transaction"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GinoConnection.transaction()</span></code></a>, transaction on engine
 level supports only managed usage:</p>
@@ -640,8 +640,8 @@ arguments.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="gino.engine.GinoEngine.update_execution_options">
-<code class="sig-name descname"><span class="pre">update_execution_options</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">opt</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.engine.GinoEngine.update_execution_options" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.engine.GinoEngine.update_execution_options">
+<span class="sig-name descname"><span class="pre">update_execution_options</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">opt</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.engine.GinoEngine.update_execution_options" title="Permalink to this definition">¶</a></dt>
 <dd><p>Update the default execution_options dictionary
 of this <a class="reference internal" href="#gino.engine.GinoEngine" title="gino.engine.GinoEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">GinoEngine</span></code></a>.</p>
 <div class="admonition seealso">
@@ -653,7 +653,7 @@ of this <a class="reference internal" href="#gino.engine.GinoEngine" title="gino
 
 </dd></dl>
 
-</div>
+</section>
 
 
             </div>

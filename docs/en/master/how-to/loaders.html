@@ -82,14 +82,14 @@
     </div>
 
     <div id="sidenav" class="sidenav sidenav-fixed">
-        <p class="caption"><span class="caption-text">Tutorials</span></p>
+        <p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/announcement.html">官宣：Python 异步编程再添一利器</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/tutorial.html">GINO Basics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/fastapi.html">Build a FastAPI Server</a></li>
 </ul>
-<p class="caption"><span class="caption-text">How-to Guides</span></p>
+<p class="caption" role="heading"><span class="caption-text">How-to Guides</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../how-to.html">How-to Guides</a></li>
 <li class="toctree-l1"><a class="reference internal" href="alembic.html">Use Alembic</a></li>
@@ -103,7 +103,7 @@
 <li class="toctree-l1"><a class="reference internal" href="schema.html">Schema Declaration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="transaction.html">Transaction</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Explanation</span></p>
+<p class="caption" role="heading"><span class="caption-text">Explanation</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../explanation.html">Explanation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../explanation/async.html">Asynchronous Programming 101</a></li>
@@ -111,7 +111,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../explanation/sa20.html">SQLAlchemy 2.0</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../explanation/why.html">Why Asynchronous ORM?</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Reference</span></p>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../reference.html">Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference/api.html">API Reference</a></li>
@@ -127,7 +127,7 @@
         <div class="col s12 m9 body">
             <div id="main-content" role="main">
                 
-    <div class="section" id="loaders-and-relationship">
+    <section id="loaders-and-relationship">
 <h1>Loaders and Relationship<a class="headerlink" href="#loaders-and-relationship" title="Permalink to this headline">¶</a></h1>
 <p>Loaders are used to load database row results into objects.</p>
 <p>GINO doesn’t support automated relationship. We insist explicit code style in
@@ -136,7 +136,7 @@ patterns. Instead, GINO provides a rich loader system to assist you with manual
 relationships through foreign keys or whatever magic. That means, you are
 responsible for writing the queries, and GINO could assemble objects for you
 from the database result with loaders you defined.</p>
-<div class="section" id="model-loader">
+<section id="model-loader">
 <h2>Model Loader<a class="headerlink" href="#model-loader" title="Permalink to this headline">¶</a></h2>
 <p>The Model Loader is the magic behind GINO CRUD to translate database rows into
 model objects. Through CRUD, Model Loaders are assembled internally for you,
@@ -183,8 +183,8 @@ Expression”.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">users</span> <span class="o">=</span> <span class="k">await</span> <span class="n">User</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">gino</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="loader-expression">
+</section>
+<section id="loader-expression">
 <h2>Loader Expression<a class="headerlink" href="#loader-expression" title="Permalink to this headline">¶</a></h2>
 <p>So Loaders are actually row post-processors, they define how the database rows
 should be processed and returned. Other than <a class="reference internal" href="../reference/api/gino.loader.html#gino.loader.ModelLoader" title="gino.loader.ModelLoader"><code class="xref py py-class docutils literal notranslate"><span class="pre">ModelLoader</span></code></a>,
@@ -243,8 +243,8 @@ contextual value provided by outer loader, we’ll get to that later. Similar to
 <p>At last, if none of the above types matches a Loader Expression, it will be
 treated as is. Like the <code class="docutils literal notranslate"><span class="pre">'|'</span></code> separator, it will show up as the third item
 in every result returned by the query.</p>
-</div>
-<div class="section" id="many-to-one-relationship">
+</section>
+<section id="many-to-one-relationship">
 <h2>Many-to-One Relationship<a class="headerlink" href="#many-to-one-relationship" title="Permalink to this headline">¶</a></h2>
 <p>A classic many-to-one relationship is also known as referencing - the model on
 the “many” end keeps a single reference to the model on the “one” end. Although
@@ -329,8 +329,8 @@ keys. You can also customize the <code class="docutils literal notranslate"><spa
 </div>
 <p>By now, GINO supports only loading many-to-one joined query. To modify a
 relationship, just modify the reference column values.</p>
-</div>
-<div class="section" id="self-referencing">
+</section>
+<section id="self-referencing">
 <h2>Self Referencing<a class="headerlink" href="#self-referencing" title="Permalink to this headline">¶</a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -359,17 +359,17 @@ relationship, just modify the reference column values.</p>
 </pre></div>
 </div>
 <p>The generated SQL looks like this:</p>
-<div class="highlight-SQL notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">categories</span><span class="p">.</span><span class="n">id</span><span class="p">,</span> <span class="n">categories</span><span class="p">.</span><span class="n">parent_id</span><span class="p">,</span> <span class="n">categories_1</span><span class="p">.</span><span class="n">id</span><span class="p">,</span> <span class="n">categories_1</span><span class="p">.</span><span class="n">parent_id</span>
-  <span class="k">FROM</span> <span class="n">categories</span> <span class="k">LEFT</span> <span class="k">OUTER</span> <span class="k">JOIN</span> <span class="n">categories</span> <span class="k">AS</span> <span class="n">categories_1</span>
-    <span class="k">ON</span> <span class="n">categories</span><span class="p">.</span><span class="n">parent_id</span> <span class="o">=</span> <span class="n">categories_1</span><span class="p">.</span><span class="n">id</span>
- <span class="k">WHERE</span> <span class="n">categories</span><span class="p">.</span><span class="n">id</span> <span class="k">NOT</span> <span class="k">IN</span> <span class="p">(</span>
-           <span class="k">SELECT</span> <span class="n">categories_2</span><span class="p">.</span><span class="n">parent_id</span>
-             <span class="k">FROM</span> <span class="n">categories</span> <span class="k">AS</span> <span class="n">categories_2</span>
-       <span class="p">)</span>
+<div class="highlight-SQL notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">categories</span><span class="p">.</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">categories</span><span class="p">.</span><span class="n">parent_id</span><span class="p">,</span><span class="w"> </span><span class="n">categories_1</span><span class="p">.</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">categories_1</span><span class="p">.</span><span class="n">parent_id</span><span class="w"></span>
+<span class="w">  </span><span class="k">FROM</span><span class="w"> </span><span class="n">categories</span><span class="w"> </span><span class="k">LEFT</span><span class="w"> </span><span class="k">OUTER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">categories</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">categories_1</span><span class="w"></span>
+<span class="w">    </span><span class="k">ON</span><span class="w"> </span><span class="n">categories</span><span class="p">.</span><span class="n">parent_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">categories_1</span><span class="p">.</span><span class="n">id</span><span class="w"></span>
+<span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">categories</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
+<span class="w">           </span><span class="k">SELECT</span><span class="w"> </span><span class="n">categories_2</span><span class="p">.</span><span class="n">parent_id</span><span class="w"></span>
+<span class="w">             </span><span class="k">FROM</span><span class="w"> </span><span class="n">categories</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">categories_2</span><span class="w"></span>
+<span class="w">       </span><span class="p">)</span><span class="w"></span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="other-relationships">
+</section>
+<section id="other-relationships">
 <h2>Other Relationships<a class="headerlink" href="#other-relationships" title="Permalink to this headline">¶</a></h2>
 <p>GINO 0.7.4 introduced an experimental distinct feature to reduce a result set
 with loaders, combining rows under specified conditions. This made it possible
@@ -491,8 +491,8 @@ the last child for each parent:</p>
 </div>
 <p>Likewise, there is for now no way to modify the relationships automatically,
 you’ll have to manually create, delete or modify <code class="docutils literal notranslate"><span class="pre">ParentXChild</span></code> instances.</p>
-</div>
-<div class="section" id="advanced-usage-of-loaders">
+</section>
+<section id="advanced-usage-of-loaders">
 <h2>Advanced Usage of Loaders<a class="headerlink" href="#advanced-usage-of-loaders" title="Permalink to this headline">¶</a></h2>
 <p>You could use combined loaders flexibly in complex queries - loading
 relationships is just one special use case. For <a class="reference external" href="https://github.com/python-gino/gino/issues/308">example</a>, you could load the count of
@@ -563,8 +563,8 @@ items - model loader for the user, and column loader for the count:</p>
 </div>
 <p>Potentially there could be a lot of different use cases of loaders. We’ll add
 more inspiration here in the future.</p>
-</div>
-</div>
+</section>
+</section>
 
 
             </div>

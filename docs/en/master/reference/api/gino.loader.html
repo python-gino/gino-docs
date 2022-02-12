@@ -88,14 +88,14 @@
     </div>
 
     <div id="sidenav" class="sidenav sidenav-fixed">
-        <p class="caption"><span class="caption-text">Tutorials</span></p>
+        <p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials.html">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/announcement.html">官宣：Python 异步编程再添一利器</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/tutorial.html">GINO Basics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/fastapi.html">Build a FastAPI Server</a></li>
 </ul>
-<p class="caption"><span class="caption-text">How-to Guides</span></p>
+<p class="caption" role="heading"><span class="caption-text">How-to Guides</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../how-to.html">How-to Guides</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../how-to/alembic.html">Use Alembic</a></li>
@@ -109,7 +109,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../how-to/schema.html">Schema Declaration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../how-to/transaction.html">Transaction</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Explanation</span></p>
+<p class="caption" role="heading"><span class="caption-text">Explanation</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../explanation.html">Explanation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../explanation/async.html">Asynchronous Programming 101</a></li>
@@ -117,7 +117,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../explanation/sa20.html">SQLAlchemy 2.0</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../explanation/why.html">Why Asynchronous ORM?</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Reference</span></p>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../../reference.html">Reference</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../api.html">API Reference</a></li>
@@ -141,18 +141,18 @@
         <div class="col s12 m9 body">
             <div id="main-content" role="main">
                 
-    <div class="section" id="module-gino.loader">
+    <section id="module-gino.loader">
 <span id="gino-loader-module"></span><h1>gino.loader module<a class="headerlink" href="#module-gino.loader" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
-<dt id="gino.loader.AliasLoader">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">gino.loader.</span></code><code class="sig-name descname"><span class="pre">AliasLoader</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alias</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">columns</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">extras</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.loader.AliasLoader" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.loader.AliasLoader">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gino.loader.</span></span><span class="sig-name descname"><span class="pre">AliasLoader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alias</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">columns</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">extras</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.loader.AliasLoader" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#gino.loader.ModelLoader" title="gino.loader.ModelLoader"><code class="xref py py-class docutils literal notranslate"><span class="pre">gino.loader.ModelLoader</span></code></a></p>
 <p>The same as <a class="reference internal" href="#gino.loader.ModelLoader" title="gino.loader.ModelLoader"><code class="xref py py-class docutils literal notranslate"><span class="pre">ModelLoader</span></code></a>, kept for compatibility.</p>
 </dd></dl>
 
 <dl class="py class">
-<dt id="gino.loader.CallableLoader">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">gino.loader.</span></code><code class="sig-name descname"><span class="pre">CallableLoader</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.loader.CallableLoader" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.loader.CallableLoader">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gino.loader.</span></span><span class="sig-name descname"><span class="pre">CallableLoader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.loader.CallableLoader" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#gino.loader.Loader" title="gino.loader.Loader"><code class="xref py py-class docutils literal notranslate"><span class="pre">gino.loader.Loader</span></code></a></p>
 <p>Load the row by calling a specified function.</p>
 <dl class="field-list simple">
@@ -162,8 +162,8 @@ that will be called in <a class="reference internal" href="#gino.loader.Callable
 </dd>
 </dl>
 <dl class="py method">
-<dt id="gino.loader.CallableLoader.do_load">
-<code class="sig-name descname"><span class="pre">do_load</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">row</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.loader.CallableLoader.do_load" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.loader.CallableLoader.do_load">
+<span class="sig-name descname"><span class="pre">do_load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">row</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.loader.CallableLoader.do_load" title="Permalink to this definition">¶</a></dt>
 <dd><p>Interface used by GINO to run the loader.</p>
 <p>The arguments are simply passed to the given function.</p>
 <dl class="field-list simple">
@@ -182,8 +182,8 @@ that will be called in <a class="reference internal" href="#gino.loader.Callable
 </dd></dl>
 
 <dl class="py class">
-<dt id="gino.loader.ColumnLoader">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">gino.loader.</span></code><code class="sig-name descname"><span class="pre">ColumnLoader</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.loader.ColumnLoader" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.loader.ColumnLoader">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gino.loader.</span></span><span class="sig-name descname"><span class="pre">ColumnLoader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.loader.ColumnLoader" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#gino.loader.Loader" title="gino.loader.Loader"><code class="xref py py-class docutils literal notranslate"><span class="pre">gino.loader.Loader</span></code></a></p>
 <p>Load a given column in the row.</p>
 <dl class="field-list simple">
@@ -193,8 +193,8 @@ that will be called in <a class="reference internal" href="#gino.loader.Callable
 </dd>
 </dl>
 <dl class="py method">
-<dt id="gino.loader.ColumnLoader.do_load">
-<code class="sig-name descname"><span class="pre">do_load</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">row</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.loader.ColumnLoader.do_load" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.loader.ColumnLoader.do_load">
+<span class="sig-name descname"><span class="pre">do_load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">row</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.loader.ColumnLoader.do_load" title="Permalink to this definition">¶</a></dt>
 <dd><p>Interface used by GINO to run the loader.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -212,8 +212,8 @@ that will be called in <a class="reference internal" href="#gino.loader.Callable
 </dd></dl>
 
 <dl class="py class">
-<dt id="gino.loader.Loader">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">gino.loader.</span></code><code class="sig-name descname"><span class="pre">Loader</span></code><a class="headerlink" href="#gino.loader.Loader" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.loader.Loader">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gino.loader.</span></span><span class="sig-name descname"><span class="pre">Loader</span></span><a class="headerlink" href="#gino.loader.Loader" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>The abstract base class of loaders.</p>
 <p>Loaders are used to load raw database rows into expected results.
@@ -229,8 +229,8 @@ the <a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/s
 </pre></div>
 </div>
 <dl class="py method">
-<dt id="gino.loader.Loader.do_load">
-<code class="sig-name descname"><span class="pre">do_load</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">row</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.loader.Loader.do_load" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.loader.Loader.do_load">
+<span class="sig-name descname"><span class="pre">do_load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">row</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.loader.Loader.do_load" title="Permalink to this definition">¶</a></dt>
 <dd><p>Interface used by GINO to run the loader.</p>
 <p>Must be implemented in subclasses.</p>
 <dl class="field-list simple">
@@ -248,8 +248,8 @@ value indicating if the result is distinct.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="gino.loader.Loader.get">
-<em class="property"><span class="pre">classmethod</span> </em><code class="sig-name descname"><span class="pre">get</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.loader.Loader.get" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.loader.Loader.get">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.loader.Loader.get" title="Permalink to this definition">¶</a></dt>
 <dd><p>Automatically create a loader based on the type of the given value.</p>
 <table class="docutils align-default">
 <colgroup>
@@ -297,8 +297,8 @@ value indicating if the result is distinct.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="gino.loader.Loader.get_columns">
-<code class="sig-name descname"><span class="pre">get_columns</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.loader.Loader.get_columns" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.loader.Loader.get_columns">
+<span class="sig-name descname"><span class="pre">get_columns</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.loader.Loader.get_columns" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate a list of selectables from this loader.</p>
 <p>This is an experimental feature, this method is supposed to be called by
 <a class="reference internal" href="#gino.loader.Loader.query" title="gino.loader.Loader.query"><code class="xref py py-attr docutils literal notranslate"><span class="pre">query</span></code></a>.</p>
@@ -310,8 +310,8 @@ value indicating if the result is distinct.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="gino.loader.Loader.get_from">
-<code class="sig-name descname"><span class="pre">get_from</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.loader.Loader.get_from" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.loader.Loader.get_from">
+<span class="sig-name descname"><span class="pre">get_from</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.loader.Loader.get_from" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate a clause to be used in
 <a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/selectable.html#sqlalchemy.sql.expression.Select.select_from" title="(in SQLAlchemy v1.4)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">select_from()</span></code></a> from this loader.</p>
 <p>This is an experimental feature, this method is supposed to be called by
@@ -323,9 +323,9 @@ value indicating if the result is distinct.</p>
 </dl>
 </dd></dl>
 
-<dl class="py method">
-<dt id="gino.loader.Loader.query">
-<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">query</span></code><a class="headerlink" href="#gino.loader.Loader.query" title="Permalink to this definition">¶</a></dt>
+<dl class="py property">
+<dt class="sig sig-object py" id="gino.loader.Loader.query">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">query</span></span><a class="headerlink" href="#gino.loader.Loader.query" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate a query from this loader.</p>
 <p>This is an experimental feature, not all loaders support this.</p>
 <dl class="field-list simple">
@@ -338,8 +338,8 @@ value indicating if the result is distinct.</p>
 </dd></dl>
 
 <dl class="py class">
-<dt id="gino.loader.ModelLoader">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">gino.loader.</span></code><code class="sig-name descname"><span class="pre">ModelLoader</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">columns</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">extras</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.loader.ModelLoader" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.loader.ModelLoader">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gino.loader.</span></span><span class="sig-name descname"><span class="pre">ModelLoader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">columns</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">extras</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.loader.ModelLoader" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#gino.loader.Loader" title="gino.loader.Loader"><code class="xref py py-class docutils literal notranslate"><span class="pre">gino.loader.Loader</span></code></a></p>
 <p>A loader that loads a row into a GINO model instance.</p>
 <p>This loader generates an instance of the given <code class="docutils literal notranslate"><span class="pre">model</span></code> type and fills the instance
@@ -396,14 +396,14 @@ load, default is all the columns in the model.</p></li>
 </ul>
 </dd>
 </dl>
-<dl class="py method">
-<dt id="gino.loader.ModelLoader.columns">
-<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">columns</span></code><a class="headerlink" href="#gino.loader.ModelLoader.columns" title="Permalink to this definition">¶</a></dt>
+<dl class="py property">
+<dt class="sig sig-object py" id="gino.loader.ModelLoader.columns">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">columns</span></span><a class="headerlink" href="#gino.loader.ModelLoader.columns" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="gino.loader.ModelLoader.distinct">
-<code class="sig-name descname"><span class="pre">distinct</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">columns</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.loader.ModelLoader.distinct" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.loader.ModelLoader.distinct">
+<span class="sig-name descname"><span class="pre">distinct</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">columns</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.loader.ModelLoader.distinct" title="Permalink to this definition">¶</a></dt>
 <dd><p>Configure this loader to reuse instances that have the same values of all the
 give columns.</p>
 <dl class="field-list simple">
@@ -417,8 +417,8 @@ give columns.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="gino.loader.ModelLoader.do_load">
-<code class="sig-name descname"><span class="pre">do_load</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">row</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.loader.ModelLoader.do_load" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.loader.ModelLoader.do_load">
+<span class="sig-name descname"><span class="pre">do_load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">row</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.loader.ModelLoader.do_load" title="Permalink to this definition">¶</a></dt>
 <dd><p>Interface used by GINO to run the loader.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -435,8 +435,8 @@ result is distinct.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="gino.loader.ModelLoader.get_columns">
-<code class="sig-name descname"><span class="pre">get_columns</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.loader.ModelLoader.get_columns" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.loader.ModelLoader.get_columns">
+<span class="sig-name descname"><span class="pre">get_columns</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.loader.ModelLoader.get_columns" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate a list of selectables from this loader.</p>
 <p>This is an experimental feature, this method is supposed to be called by
 <code class="xref py py-attr docutils literal notranslate"><span class="pre">query</span></code>.</p>
@@ -448,8 +448,8 @@ result is distinct.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="gino.loader.ModelLoader.get_from">
-<code class="sig-name descname"><span class="pre">get_from</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.loader.ModelLoader.get_from" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.loader.ModelLoader.get_from">
+<span class="sig-name descname"><span class="pre">get_from</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.loader.ModelLoader.get_from" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate a clause to be used in
 <a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/selectable.html#sqlalchemy.sql.expression.Select.select_from" title="(in SQLAlchemy v1.4)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">select_from()</span></code></a> from this loader.</p>
 <p>This is an experimental feature, this method is supposed to be called by
@@ -462,8 +462,8 @@ result is distinct.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="gino.loader.ModelLoader.load">
-<code class="sig-name descname"><span class="pre">load</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">columns</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">extras</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.loader.ModelLoader.load" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.loader.ModelLoader.load">
+<span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">columns</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">extras</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.loader.ModelLoader.load" title="Permalink to this definition">¶</a></dt>
 <dd><p>Update the loader with new rules.</p>
 <p>After initialization, the rules of this loader can still be updated. This is
 useful when using the model class as a shortcut of <a class="reference internal" href="#gino.loader.ModelLoader" title="gino.loader.ModelLoader"><code class="xref py py-class docutils literal notranslate"><span class="pre">ModelLoader</span></code></a> where
@@ -489,14 +489,14 @@ possible, chaining with a <a class="reference internal" href="#gino.loader.Model
 </dd></dl>
 
 <dl class="py method">
-<dt id="gino.loader.ModelLoader.none_as_none">
-<code class="sig-name descname"><span class="pre">none_as_none</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">enabled</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.loader.ModelLoader.none_as_none" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.loader.ModelLoader.none_as_none">
+<span class="sig-name descname"><span class="pre">none_as_none</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">enabled</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.loader.ModelLoader.none_as_none" title="Permalink to this definition">¶</a></dt>
 <dd><p>Deprecated method for compatibility, does nothing.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="gino.loader.ModelLoader.on">
-<code class="sig-name descname"><span class="pre">on</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">on_clause</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.loader.ModelLoader.on" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.loader.ModelLoader.on">
+<span class="sig-name descname"><span class="pre">on</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">on_clause</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.loader.ModelLoader.on" title="Permalink to this definition">¶</a></dt>
 <dd><p>Specify the <code class="docutils literal notranslate"><span class="pre">on_clause</span></code> for generating joined queries.</p>
 <p>This is an experimental feature, used by <a class="reference internal" href="#gino.loader.ModelLoader.get_from" title="gino.loader.ModelLoader.get_from"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_from()</span></code></a>.</p>
 <dl class="field-list simple">
@@ -513,8 +513,8 @@ possible, chaining with a <a class="reference internal" href="#gino.loader.Model
 </dd></dl>
 
 <dl class="py class">
-<dt id="gino.loader.TupleLoader">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">gino.loader.</span></code><code class="sig-name descname"><span class="pre">TupleLoader</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.loader.TupleLoader" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.loader.TupleLoader">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gino.loader.</span></span><span class="sig-name descname"><span class="pre">TupleLoader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.loader.TupleLoader" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#gino.loader.Loader" title="gino.loader.Loader"><code class="xref py py-class docutils literal notranslate"><span class="pre">gino.loader.Loader</span></code></a></p>
 <p>Load multiple values into a tuple.</p>
 <dl class="field-list simple">
@@ -524,8 +524,8 @@ possible, chaining with a <a class="reference internal" href="#gino.loader.Model
 </dd>
 </dl>
 <dl class="py method">
-<dt id="gino.loader.TupleLoader.do_load">
-<code class="sig-name descname"><span class="pre">do_load</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">row</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.loader.TupleLoader.do_load" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.loader.TupleLoader.do_load">
+<span class="sig-name descname"><span class="pre">do_load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">row</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.loader.TupleLoader.do_load" title="Permalink to this definition">¶</a></dt>
 <dd><p>Interface used by GINO to run the loader.</p>
 <p>The arguments are simply passed to sub-loaders.</p>
 <dl class="field-list simple">
@@ -545,8 +545,8 @@ possible, chaining with a <a class="reference internal" href="#gino.loader.Model
 </dd></dl>
 
 <dl class="py class">
-<dt id="gino.loader.ValueLoader">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">gino.loader.</span></code><code class="sig-name descname"><span class="pre">ValueLoader</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.loader.ValueLoader" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.loader.ValueLoader">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gino.loader.</span></span><span class="sig-name descname"><span class="pre">ValueLoader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.loader.ValueLoader" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#gino.loader.Loader" title="gino.loader.Loader"><code class="xref py py-class docutils literal notranslate"><span class="pre">gino.loader.Loader</span></code></a></p>
 <p>A loader that always return the specified value.</p>
 <dl class="field-list simple">
@@ -555,8 +555,8 @@ possible, chaining with a <a class="reference internal" href="#gino.loader.Model
 </dd>
 </dl>
 <dl class="py method">
-<dt id="gino.loader.ValueLoader.do_load">
-<code class="sig-name descname"><span class="pre">do_load</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">row</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.loader.ValueLoader.do_load" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gino.loader.ValueLoader.do_load">
+<span class="sig-name descname"><span class="pre">do_load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">row</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.loader.ValueLoader.do_load" title="Permalink to this definition">¶</a></dt>
 <dd><p>Interface used by GINO to run the loader.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -573,7 +573,7 @@ possible, chaining with a <a class="reference internal" href="#gino.loader.Model
 
 </dd></dl>
 
-</div>
+</section>
 
 
             </div>

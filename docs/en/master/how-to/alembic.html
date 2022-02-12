@@ -82,14 +82,14 @@
     </div>
 
     <div id="sidenav" class="sidenav sidenav-fixed">
-        <p class="caption"><span class="caption-text">Tutorials</span></p>
+        <p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/announcement.html">官宣：Python 异步编程再添一利器</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/tutorial.html">GINO Basics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/fastapi.html">Build a FastAPI Server</a></li>
 </ul>
-<p class="caption"><span class="caption-text">How-to Guides</span></p>
+<p class="caption" role="heading"><span class="caption-text">How-to Guides</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../how-to.html">How-to Guides</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Use Alembic</a></li>
@@ -103,7 +103,7 @@
 <li class="toctree-l1"><a class="reference internal" href="schema.html">Schema Declaration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="transaction.html">Transaction</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Explanation</span></p>
+<p class="caption" role="heading"><span class="caption-text">Explanation</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../explanation.html">Explanation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../explanation/async.html">Asynchronous Programming 101</a></li>
@@ -111,7 +111,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../explanation/sa20.html">SQLAlchemy 2.0</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../explanation/why.html">Why Asynchronous ORM?</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Reference</span></p>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../reference.html">Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference/api.html">API Reference</a></li>
@@ -127,7 +127,7 @@
         <div class="col s12 m9 body">
             <div id="main-content" role="main">
                 
-    <div class="section" id="use-alembic">
+    <section id="use-alembic">
 <h1>Use Alembic<a class="headerlink" href="#use-alembic" title="Permalink to this headline">¶</a></h1>
 <p>Alembic is a lightweight database migration tool for usage with the SQLAlchemy Database
 Toolkit for Python. It’s also possible to use with GINO.</p>
@@ -154,7 +154,7 @@ Toolkit for Python. It’s also possible to use with GINO.</p>
     <span class="n">nickname</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Unicode</span><span class="p">(),</span> <span class="n">default</span><span class="o">=</span><span class="s1">&#39;noname&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="section" id="set-up-alembic">
+<section id="set-up-alembic">
 <h2>Set up Alembic<a class="headerlink" href="#set-up-alembic" title="Permalink to this headline">¶</a></h2>
 <p>This will need to be done only once. Go to the main folder of your project
 <code class="docutils literal notranslate"><span class="pre">alembic_sample</span></code> and run:</p>
@@ -165,7 +165,7 @@ Toolkit for Python. It’s also possible to use with GINO.</p>
 will be <code class="docutils literal notranslate"><span class="pre">alembic.ini</span></code>. Open <code class="docutils literal notranslate"><span class="pre">alembic.ini</span></code> (you can find it in the main project
 folder <code class="docutils literal notranslate"><span class="pre">alembic_sample</span></code>). Now change property <code class="docutils literal notranslate"><span class="pre">sqlalchemy.url</span> <span class="pre">=</span></code>  with your DB
 credentials. Like this:</p>
-<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">sqlalchemy.url</span> <span class="o">=</span> <span class="s">postgres://{{username}}:{{password}}@{{address}}/{{db_name}}</span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">sqlalchemy.url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">postgres://{{username}}:{{password}}@{{address}}/{{db_name}}</span><span class="w"></span>
 </pre></div>
 </div>
 <p>Next go to folder <code class="docutils literal notranslate"><span class="pre">alembic/</span></code> and open <code class="docutils literal notranslate"><span class="pre">env.py</span></code> file. Inside the <code class="docutils literal notranslate"><span class="pre">env.py</span></code> file you
@@ -185,8 +185,8 @@ modules. This is a variable that links to your <code class="docutils literal not
 <p>All <code class="docutils literal notranslate"><span class="pre">alembic</span></code> commands must be run always from the folder that contains the
 <code class="docutils literal notranslate"><span class="pre">alembic.ini</span></code> file.</p>
 </div>
-</div>
-<div class="section" id="create-first-migration-revision">
+</section>
+<section id="create-first-migration-revision">
 <h2>Create first migration revision<a class="headerlink" href="#create-first-migration-revision" title="Permalink to this headline">¶</a></h2>
 <p>Same commands you must run each time when you make some changes in DB Models and want to
 apply these changes to your DB Schema.</p>
@@ -206,8 +206,8 @@ apply these changes to your DB Schema.</p>
 </div>
 <p>After the successful run of <code class="docutils literal notranslate"><span class="pre">alembic</span> <span class="pre">revision</span></code> in folder <code class="docutils literal notranslate"><span class="pre">alembic/versions</span></code> you will
 see a file with new migration.</p>
-</div>
-<div class="section" id="apply-migration-on-db">
+</section>
+<section id="apply-migration-on-db">
 <h2>Apply migration on DB<a class="headerlink" href="#apply-migration-on-db" title="Permalink to this headline">¶</a></h2>
 <p>Now time to apply migration to DB. It will create tables based on you DB Models.</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>alembic upgrade head
@@ -224,8 +224,8 @@ see a file with new migration.</p>
 </div>
 <p>Full documentation about how to work with Alembic migrations, downgrades and other
 things - you can find in official docs <a class="reference external" href="https://alembic.sqlalchemy.org">https://alembic.sqlalchemy.org</a></p>
-</div>
-</div>
+</section>
+</section>
 
 
             </div>

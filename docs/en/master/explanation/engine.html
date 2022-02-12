@@ -82,14 +82,14 @@
     </div>
 
     <div id="sidenav" class="sidenav sidenav-fixed">
-        <p class="caption"><span class="caption-text">Tutorials</span></p>
+        <p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/announcement.html">官宣：Python 异步编程再添一利器</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/tutorial.html">GINO Basics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/fastapi.html">Build a FastAPI Server</a></li>
 </ul>
-<p class="caption"><span class="caption-text">How-to Guides</span></p>
+<p class="caption" role="heading"><span class="caption-text">How-to Guides</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../how-to.html">How-to Guides</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../how-to/alembic.html">Use Alembic</a></li>
@@ -103,7 +103,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../how-to/schema.html">Schema Declaration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../how-to/transaction.html">Transaction</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Explanation</span></p>
+<p class="caption" role="heading"><span class="caption-text">Explanation</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../explanation.html">Explanation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="async.html">Asynchronous Programming 101</a></li>
@@ -111,7 +111,7 @@
 <li class="toctree-l1"><a class="reference internal" href="sa20.html">SQLAlchemy 2.0</a></li>
 <li class="toctree-l1"><a class="reference internal" href="why.html">Why Asynchronous ORM?</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Reference</span></p>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../reference.html">Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference/api.html">API Reference</a></li>
@@ -127,7 +127,7 @@
         <div class="col s12 m9 body">
             <div id="main-content" role="main">
                 
-    <div class="section" id="engine-and-connection">
+    <section id="engine-and-connection">
 <h1>Engine and Connection<a class="headerlink" href="#engine-and-connection" title="Permalink to this headline">¶</a></h1>
 <p><a class="reference internal" href="../reference/api/gino.engine.html#gino.engine.GinoEngine" title="gino.engine.GinoEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">GinoEngine</span></code></a> is the core of GINO. It acts like a pool of
 connections but also does the work of assembling everyone together:</p>
@@ -180,7 +180,7 @@ everything else to generate queries. The parent model class is connected to a
 <code class="docutils literal notranslate"><span class="pre">db</span></code> instance on creation, therefore the models can do implicit execution too
 if their <code class="docutils literal notranslate"><span class="pre">db</span></code> has a bind.</p>
 <p>Then let’s get to some details.</p>
-<div class="section" id="creating-engines">
+<section id="creating-engines">
 <h2>Creating Engines<a class="headerlink" href="#creating-engines" title="Permalink to this headline">¶</a></h2>
 <p>GINO reuses the strategy system SQLAlchemy provides to create engines. The name
 of GINO’s strategy to create asynchronous <a class="reference internal" href="../reference/api/gino.engine.html#gino.engine.GinoEngine" title="gino.engine.GinoEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">GinoEngine</span></code></a> is
@@ -235,7 +235,7 @@ of all the parameters listed in SQLAlchemy document (we are working on it!):</p>
 <li><p><a class="reference external" href="https://docs.sqlalchemy.org/en/latest/core/engines.html#sqlalchemy.create_engine.params.module">module</a></p></li>
 </ul>
 <p>In addition, keyword arguments for creating the underlying pool is accepted
-here. In the case of asyncpg, they are from <a class="reference external" href="https://magicstack.github.io/asyncpg/current/api/index.html#asyncpg.pool.create_pool" title="(in asyncpg v0.24.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">create_pool()</span></code></a>.
+here. In the case of asyncpg, they are from <a class="reference external" href="https://magicstack.github.io/asyncpg/current/api/index.html#asyncpg.pool.create_pool" title="(in asyncpg v0.25.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">create_pool()</span></code></a>.
 For example, we can create an engine without initial connections:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">e</span> <span class="o">=</span> <span class="k">await</span> <span class="n">gino</span><span class="o">.</span><span class="n">create_engine</span><span class="p">(</span><span class="s1">&#39;postgresql://...&#39;</span><span class="p">,</span> <span class="n">min_size</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
@@ -289,8 +289,8 @@ context manager:</p>
     <span class="c1"># your code here</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="managing-connections">
+</section>
+<section id="managing-connections">
 <h2>Managing Connections<a class="headerlink" href="#managing-connections" title="Permalink to this headline">¶</a></h2>
 <p>With a <a class="reference internal" href="../reference/api/gino.engine.html#gino.engine.GinoEngine" title="gino.engine.GinoEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">GinoEngine</span></code></a> at hand, you can acquire connections
 from the pool now:</p>
@@ -316,7 +316,7 @@ sequence the connections are created in this example. It is designed this way
 so that GINO could offer two features for connection management: <code class="docutils literal notranslate"><span class="pre">reuse</span></code> and
 <code class="docutils literal notranslate"><span class="pre">lazy</span></code>. They are keyword arguments on <a class="reference internal" href="../reference/api/gino.engine.html#gino.engine.GinoEngine.acquire" title="gino.engine.GinoEngine.acquire"><code class="xref py py-meth docutils literal notranslate"><span class="pre">acquire()</span></code></a>
 and by default switched off.</p>
-<div class="section" id="reuse">
+<section id="reuse">
 <h3>reuse<a class="headerlink" href="#reuse" title="Permalink to this headline">¶</a></h3>
 <p>When acquiring a <a class="reference internal" href="../reference/api/gino.engine.html#gino.engine.GinoConnection" title="gino.engine.GinoConnection"><code class="xref py py-class docutils literal notranslate"><span class="pre">GinoConnection</span></code></a> (2), GINO will borrow a
 raw connection (1) from the underlying pool first, and assign it to this
@@ -397,8 +397,8 @@ raw connection which is returned to the pool, any further execution will fail.
 For example, if (3) is released first, then (2) and (4) are still functional.
 But if (2) is released first, then (3) and (4) will be released implicitly and
 are no longer usable any more.</p>
-</div>
-<div class="section" id="lazy">
+</section>
+<section id="lazy">
 <h3>lazy<a class="headerlink" href="#lazy" title="Permalink to this headline">¶</a></h3>
 <p>As you may have found, <a class="reference internal" href="../reference/api/gino.engine.html#gino.engine.GinoConnection" title="gino.engine.GinoConnection"><code class="xref py py-class docutils literal notranslate"><span class="pre">GinoConnection</span></code></a> (5) does not have
 an underlying raw connection, even when it is reused by (6). This is because
@@ -436,8 +436,8 @@ is also worth noting that, if we set <code class="docutils literal notranslate">
 connection will be immediately borrowed on acquire, and shared between both (5)
 and (6). It’s been quite a while, let me post the same diagram again:</p>
 <img alt="../_images/connection.png" class="align-center" src="../_images/connection.png" />
-</div>
-<div class="section" id="reusable">
+</section>
+<section id="reusable">
 <h3>reusable<a class="headerlink" href="#reusable" title="Permalink to this headline">¶</a></h3>
 <p>Usually, you don’t have to worry about the two options <code class="docutils literal notranslate"><span class="pre">reuse</span></code> and <code class="docutils literal notranslate"><span class="pre">lazy</span></code>,
 using the default <a class="reference internal" href="../reference/api/gino.engine.html#gino.engine.GinoEngine.acquire" title="gino.engine.GinoEngine.acquire"><code class="xref py py-meth docutils literal notranslate"><span class="pre">acquire()</span></code></a> will always create
@@ -458,8 +458,8 @@ reuse a reusing connection, you only reuse a reusable connection in the stack.
 Making a reusing connection unreusable doesn’t make its related reusable
 connection unreusable. Hmm if this is getting more confusing, just don’t use
 <code class="docutils literal notranslate"><span class="pre">acquire(reuse=True,</span> <span class="pre">reusable=False)</span></code> unless you know what it does.</p>
-</div>
-<div class="section" id="current-connection">
+</section>
+<section id="current-connection">
 <h3>current_connection<a class="headerlink" href="#current-connection" title="Permalink to this headline">¶</a></h3>
 <p>Except for all scenarios supported by above three options, there is still one
 left out: we may want to acquire a reusing-only connection. There is no such
@@ -474,9 +474,9 @@ and <a class="reference internal" href="../reference/api/gino.engine.html#gino.e
 latter always produces a <a class="reference internal" href="../reference/api/gino.engine.html#gino.engine.GinoConnection" title="gino.engine.GinoConnection"><code class="xref py py-class docutils literal notranslate"><span class="pre">GinoConnection</span></code></a>, while the
 former may not.</p>
 </div>
-</div>
-</div>
-<div class="section" id="executing-queries">
+</section>
+</section>
+<section id="executing-queries">
 <h2>Executing Queries<a class="headerlink" href="#executing-queries" title="Permalink to this headline">¶</a></h2>
 <p>Once you have a <a class="reference internal" href="../reference/api/gino.engine.html#gino.engine.GinoConnection" title="gino.engine.GinoConnection"><code class="xref py py-class docutils literal notranslate"><span class="pre">GinoConnection</span></code></a> instance, you can start
 executing queries with it. There are 6 variants of the execute method:
@@ -545,8 +545,8 @@ traverse the query results progressively, instead of loading all the results at
 once. This method takes the same arguments as the other 4 execute methods do,
 and follows the same rule of data handling. For now with asyncpg, this creates
 a <a class="reference external" href="https://magicstack.github.io/asyncpg/current/api/index.html#cursors">server-side cursor</a>.</p>
-</div>
-<div class="section" id="id1">
+</section>
+<section id="id1">
 <h2>Implicit Execution<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>Acquire a <a class="reference internal" href="../reference/api/gino.engine.html#gino.engine.GinoConnection" title="gino.engine.GinoConnection"><code class="xref py py-class docutils literal notranslate"><span class="pre">GinoConnection</span></code></a> and execute queries on it, that
 is the most explicit way. You can also execute queries on a
@@ -602,8 +602,8 @@ at the creation of <a class="reference internal" href="../reference/api/gino.api
 <a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/selectable.html#sqlalchemy.sql.expression.Executable" title="(in SQLAlchemy v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Executable</span></code></a> object has the <code class="docutils literal notranslate"><span class="pre">gino</span></code>
 property for implicit execution. Similarly, the execution methods calls the
 corresponding ones on the <code class="docutils literal notranslate"><span class="pre">bind</span></code> of the <code class="docutils literal notranslate"><span class="pre">db</span></code> instance.</p>
-</div>
-</div>
+</section>
+</section>
 
 
             </div>
