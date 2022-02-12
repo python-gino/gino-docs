@@ -82,14 +82,14 @@
     </div>
 
     <div id="sidenav" class="sidenav sidenav-fixed">
-        <p class="caption"><span class="caption-text">上手教程</span></p>
+        <p class="caption" role="heading"><span class="caption-text">上手教程</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials.html">上手教程</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/announcement.html">官宣：Python 异步编程再添一利器</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/tutorial.html">GINO 基础教程</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/fastapi.html">搭建一个 FastAPI 服务器</a></li>
 </ul>
-<p class="caption"><span class="caption-text">进阶用法</span></p>
+<p class="caption" role="heading"><span class="caption-text">进阶用法</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../how-to.html">进阶用法</a></li>
 <li class="toctree-l1"><a class="reference internal" href="alembic.html">使用 Alembic</a></li>
@@ -103,7 +103,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">表结构定义</a></li>
 <li class="toctree-l1"><a class="reference internal" href="transaction.html">数据库事务</a></li>
 </ul>
-<p class="caption"><span class="caption-text">原理说明</span></p>
+<p class="caption" role="heading"><span class="caption-text">原理说明</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../explanation.html">原理说明</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../explanation/async.html">异步编程基础</a></li>
@@ -111,7 +111,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../explanation/sa20.html">SQLAlchemy 2.0</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../explanation/why.html">为什么要用异步 ORM？</a></li>
 </ul>
-<p class="caption"><span class="caption-text">参考手册</span></p>
+<p class="caption" role="heading"><span class="caption-text">参考手册</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../reference.html">参考手册</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference/api.html">API 参考</a></li>
@@ -127,12 +127,12 @@
         <div class="col s12 m9 body">
             <div id="main-content" role="main">
                 
-    <div class="section" id="schema-declaration">
+    <section id="schema-declaration">
 <h1>表结构定义<a class="headerlink" href="#schema-declaration" title="永久链接至标题">¶</a></h1>
 <p>There are 3 ways to declare your database schema to be used with GINO. Because
 GINO is built on top of SQLAlchemy core, either way you are actually declaring
 SQLAlchemy <a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/metadata.html#sqlalchemy.schema.Table" title="(在 SQLAlchemy v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Table</span></code></a>.</p>
-<div class="section" id="gino-engine">
+<section id="gino-engine">
 <h2>GINO Engine<a class="headerlink" href="#gino-engine" title="永久链接至标题">¶</a></h2>
 <p>This is the minimized way to use GINO - using only
 <a class="reference internal" href="../reference/api/gino.engine.html#gino.engine.GinoEngine" title="gino.engine.GinoEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">GinoEngine</span></code></a> (and <a class="reference internal" href="../reference/api/gino.engine.html#gino.engine.GinoConnection" title="gino.engine.GinoConnection"><code class="xref py py-class docutils literal notranslate"><span class="pre">GinoConnection</span></code></a>
@@ -212,8 +212,8 @@ but return a bit differently. There are also other similar query APIs:</p>
 which yields <code class="xref py py-class docutils literal notranslate"><span class="pre">RowProxy</span></code></p></li>
 </ul>
 <p>Please go to their API for more information.</p>
-</div>
-<div class="section" id="gino-core">
+</section>
+<section id="gino-core">
 <h2>GINO Core<a class="headerlink" href="#gino-core" title="永久链接至标题">¶</a></h2>
 <p>In previous scenario, <a class="reference internal" href="../reference/api/gino.engine.html#gino.engine.GinoEngine" title="gino.engine.GinoEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">GinoEngine</span></code></a> must not be set to
 <a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/metadata.html#sqlalchemy.schema.MetaData.bind" title="(在 SQLAlchemy v1.4)"><code class="xref py py-attr docutils literal notranslate"><span class="pre">metadata.bind</span></code></a> because it is not a
@@ -272,8 +272,8 @@ SQLAlchemy, it made SQLAlchemy work for asyncpg (GINO used to be in that
 way too because GINO is inspired by asyncpgsa). Either way works fine, it's
 just a matter of taste of whose API style to use, SQLAlchemy or asyncpg.</p>
 </div>
-</div>
-<div class="section" id="gino-orm">
+</section>
+<section id="gino-orm">
 <h2>GINO ORM<a class="headerlink" href="#gino-orm" title="永久链接至标题">¶</a></h2>
 <p>If you want to further reduce the length of code, and taking a bit risk of
 implicity, welcome to the ORM world. Even though GINO made itself not quite a
@@ -346,8 +346,8 @@ directly available as attributes on model instances. See also:
 <a class="reference internal" href="crud.html"><span class="doc">增删改查</span></a>.</p>
 <p>After all, <a class="reference internal" href="../reference/api/gino.engine.html#gino.engine.GinoEngine" title="gino.engine.GinoEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">GinoEngine</span></code></a> is always in use. Next let's dig
 more into it.</p>
-</div>
-</div>
+</section>
+</section>
 
 
             </div>

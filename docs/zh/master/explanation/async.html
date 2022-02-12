@@ -82,14 +82,14 @@
     </div>
 
     <div id="sidenav" class="sidenav sidenav-fixed">
-        <p class="caption"><span class="caption-text">上手教程</span></p>
+        <p class="caption" role="heading"><span class="caption-text">上手教程</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials.html">上手教程</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/announcement.html">官宣：Python 异步编程再添一利器</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/tutorial.html">GINO 基础教程</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/fastapi.html">搭建一个 FastAPI 服务器</a></li>
 </ul>
-<p class="caption"><span class="caption-text">进阶用法</span></p>
+<p class="caption" role="heading"><span class="caption-text">进阶用法</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../how-to.html">进阶用法</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../how-to/alembic.html">使用 Alembic</a></li>
@@ -103,7 +103,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../how-to/schema.html">表结构定义</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../how-to/transaction.html">数据库事务</a></li>
 </ul>
-<p class="caption"><span class="caption-text">原理说明</span></p>
+<p class="caption" role="heading"><span class="caption-text">原理说明</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../explanation.html">原理说明</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">异步编程基础</a></li>
@@ -111,7 +111,7 @@
 <li class="toctree-l1"><a class="reference internal" href="sa20.html">SQLAlchemy 2.0</a></li>
 <li class="toctree-l1"><a class="reference internal" href="why.html">为什么要用异步 ORM？</a></li>
 </ul>
-<p class="caption"><span class="caption-text">参考手册</span></p>
+<p class="caption" role="heading"><span class="caption-text">参考手册</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../reference.html">参考手册</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference/api.html">API 参考</a></li>
@@ -127,9 +127,9 @@
         <div class="col s12 m9 body">
             <div id="main-content" role="main">
                 
-    <div class="section" id="asynchronous-programming-101">
+    <section id="asynchronous-programming-101">
 <h1>异步编程基础<a class="headerlink" href="#asynchronous-programming-101" title="永久链接至标题">¶</a></h1>
-<div class="section" id="the-story">
+<section id="the-story">
 <h2>一个经典场景<a class="headerlink" href="#the-story" title="永久链接至标题">¶</a></h2>
 <p>假如现在我们想要去创建自己的搜索引擎，为了创建索引数据库，家境贫寒的我们使用了一台单核电脑去爬取网页（I/O型操作），然后再将这些网页内容进行处理（计算型操作）。这个过程如下图所示：</p>
 <img alt="../_images/why_single_task.png" class="align-center" src="../_images/why_single_task.png" />
@@ -154,8 +154,8 @@
 <p>需要注意的是，异步 I/O 和协程是两个概念，但是他们经常被一起提及。在这里，为了简单起见，我们将只讲协程。</p>
 </div>
 <p>看上去很奈斯嘛！现在的吞吐量是 3.7 任务/秒，已经快达到我们买不起的双核 CPU 机器的 4 任务/秒吞吐量了！虽然这些图都不是使用真是的数据，但是相比系统级别的线程而言，协程真的在上下文切换上开销更加少并且占用更少的内存，这也让协程成为解决 C10K 问题的理想选择，</p>
-</div>
-<div class="section" id="cooperative-multitasking">
+</section>
+<section id="cooperative-multitasking">
 <h2>协作式多任务处理<a class="headerlink" href="#cooperative-multitasking" title="永久链接至标题">¶</a></h2>
 <p>说了半天，协程到底是什么？</p>
 <p>在上一个图中，你可能已经注意到了它和之前一张图片不一样的地方：在同一条线程内，绿色的色块彼此重叠了。这正是因为我们在上图中使用了异步 I/O 编程，而之前的图片中我们使用的是阻塞式的 I/O 编程。顾名思义，阻塞式的 I/O 编程会在代码执行到进行 I/O 操作时等待 I/O 结果返回，从而阻塞当前线程。因此，每条线程中同时只可能执行一个阻塞式的 I/O 操作。为了能够在阻塞式的 I/O 编程中达到并发，要么使用多线程，要么就使用多进程。对比之下，异步 I/O 允许在一条线程中同时进行数千（甚至更多）次 I/O 并发操作，此时在同一线程内，每一次的 I/O 操作只会阻塞当前协程而不是整个线程。和多线程一样，协程可以完成 I/O 的并发，但它仅仅只发生在一条线程内。</p>
@@ -194,16 +194,16 @@ Event manager: Up to you :/
 <p class="admonition-title">小技巧</p>
 <p>在Python中，<code class="docutils literal notranslate"><span class="pre">async</span> <span class="pre">def</span></code> 用来声明协程，<code class="docutils literal notranslate"><span class="pre">await</span></code> 用来将协程加入一个事件循环（即上文提到的将控制权交给事件管家）。</p>
 </div>
-</div>
-<div class="section" id="pros-and-cons">
+</section>
+<section id="pros-and-cons">
 <h2>异步I/O的利弊<a class="headerlink" href="#pros-and-cons" title="永久链接至标题">¶</a></h2>
 <p>异步I/O能够在同一条线程里面完成成千上万次的并发I/O操作。这样就能够节省多线程带来的CPU上下文切换时间以及内存。因此，在面临I/O密集型的任务时，异步I/O能够有效地使用CPU和内存资源，以达到相对较高的吞吐量。</p>
 <p>并且，在Python中可以轻松自然地编写基于协程的代码。如果业务逻辑十分复杂，基于协程完成异步I/O的代码读起来也是行云流水。</p>
 <p>但是，对于一个任务来说，异步I/O也会降低吞吐量。比如，调用函数 <code class="docutils literal notranslate"><span class="pre">recv()</span></code> ，它仅仅只是阻塞地等待返回值。而如果想要它变为异步，则必须要注册读事件，等待事件循环，尝试调用 <a href="#id1"><span class="problematic" id="id2">``</span></a>recv()``函数，重复以上步骤，直到结果真正返回，然后再进行回调。所以用了协程之后，整个框架的开销实际上更大了。不过幸好有了像uvloop这样优秀的事件管理模块，上述的开销已经被极大地减少。即使是这样，和阻塞式的I/O相比，总提上开销还是大了些。</p>
 <p>想要去为异步I/O的程序计算耗时也是比较费劲的，由于协作的特性，程序的可预测性会变差。举个栗子，你可能希望当前的协程暂停1秒钟。但是此时如果另外一个协程得到了控制权，开始运行，结果计算太久，花费了2秒钟，当我们再次回到刚才的协程时，2秒钟已经实实在在地过了，这么来看，<code class="docutils literal notranslate"><span class="pre">sleep(1)</span></code> 这个操作已经不能理解为暂停1秒，而应该理解为至少暂停1秒。所以，你应该努力做到让那些不使用 <code class="docutils literal notranslate"><span class="pre">await</span></code> 进行调用、同步执行的代码尽可能快得执行，让协程真正得“合作”起来。但即使你真的做到了让同步代码快速执行，有时程序的运行候难免还是会不如你所愿，所以要时刻记住这种在执行时间上的不确定性，这样才能方便更好地排查问题。</p>
 <p>最后，异步编程其实是复杂的。要真正写好异步的代码比想象中的难很多，而且异步的代码比同步的代码更加难以调试。尤其是当整个团队都在处理同一段异步代码时，常常会遇到意想不到的问题。因此，这里给一个比较中肯的建议：仅仅在I/O密集型的高并发场景中谨慎使用异步I/O。不是说使用了异步I/O就能够给并发性能带来的巨大提升，它更像一把双刃剑。而且如果要处理一些对时间要求十分严格的任务，请考虑再三！</p>
-</div>
-</div>
+</section>
+</section>
 
 
             </div>

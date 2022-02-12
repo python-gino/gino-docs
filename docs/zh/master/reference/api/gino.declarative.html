@@ -88,14 +88,14 @@
     </div>
 
     <div id="sidenav" class="sidenav sidenav-fixed">
-        <p class="caption"><span class="caption-text">上手教程</span></p>
+        <p class="caption" role="heading"><span class="caption-text">上手教程</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials.html">上手教程</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/announcement.html">官宣：Python 异步编程再添一利器</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/tutorial.html">GINO 基础教程</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/fastapi.html">搭建一个 FastAPI 服务器</a></li>
 </ul>
-<p class="caption"><span class="caption-text">进阶用法</span></p>
+<p class="caption" role="heading"><span class="caption-text">进阶用法</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../how-to.html">进阶用法</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../how-to/alembic.html">使用 Alembic</a></li>
@@ -109,7 +109,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../how-to/schema.html">表结构定义</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../how-to/transaction.html">数据库事务</a></li>
 </ul>
-<p class="caption"><span class="caption-text">原理说明</span></p>
+<p class="caption" role="heading"><span class="caption-text">原理说明</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../explanation.html">原理说明</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../explanation/async.html">异步编程基础</a></li>
@@ -117,7 +117,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../explanation/sa20.html">SQLAlchemy 2.0</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../explanation/why.html">为什么要用异步 ORM？</a></li>
 </ul>
-<p class="caption"><span class="caption-text">参考手册</span></p>
+<p class="caption" role="heading"><span class="caption-text">参考手册</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../../reference.html">参考手册</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../api.html">API 参考</a></li>
@@ -141,11 +141,11 @@
         <div class="col s12 m9 body">
             <div id="main-content" role="main">
                 
-    <div class="section" id="module-gino.declarative">
+    <section id="module-gino.declarative">
 <span id="gino-declarative-module"></span><h1>gino.declarative module<a class="headerlink" href="#module-gino.declarative" title="永久链接至标题">¶</a></h1>
 <dl class="py class">
-<dt id="gino.declarative.ColumnAttribute">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">gino.declarative.</span></code><code class="sig-name descname"><span class="pre">ColumnAttribute</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prop_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.declarative.ColumnAttribute" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.declarative.ColumnAttribute">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gino.declarative.</span></span><span class="sig-name descname"><span class="pre">ColumnAttribute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prop_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.declarative.ColumnAttribute" title="永久链接至目标">¶</a></dt>
 <dd><p>基类：<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(在 Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>The type of the column wrapper attributes on GINO models.</p>
 <p>This is the core utility to enable GINO models so that:</p>
@@ -157,14 +157,14 @@
 </dd></dl>
 
 <dl class="py class">
-<dt id="gino.declarative.InvertDict">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">gino.declarative.</span></code><code class="sig-name descname"><span class="pre">InvertDict</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.declarative.InvertDict" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.declarative.InvertDict">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gino.declarative.</span></span><span class="sig-name descname"><span class="pre">InvertDict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.declarative.InvertDict" title="永久链接至目标">¶</a></dt>
 <dd><p>基类：<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(在 Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a></p>
 <p>A custom <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(在 Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a> that allows getting keys by values.</p>
 <p>Used internally by <a class="reference internal" href="#gino.declarative.Model" title="gino.declarative.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></a>.</p>
 <dl class="py method">
-<dt id="gino.declarative.InvertDict.invert_get">
-<code class="sig-name descname"><span class="pre">invert_get</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.declarative.InvertDict.invert_get" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.declarative.InvertDict.invert_get">
+<span class="sig-name descname"><span class="pre">invert_get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.declarative.InvertDict.invert_get" title="永久链接至目标">¶</a></dt>
 <dd><p>Get key by value.</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
@@ -182,8 +182,8 @@
 </dd></dl>
 
 <dl class="py class">
-<dt id="gino.declarative.Model">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">gino.declarative.</span></code><code class="sig-name descname"><span class="pre">Model</span></code><a class="headerlink" href="#gino.declarative.Model" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.declarative.Model">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gino.declarative.</span></span><span class="sig-name descname"><span class="pre">Model</span></span><a class="headerlink" href="#gino.declarative.Model" title="永久链接至目标">¶</a></dt>
 <dd><p>基类：<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(在 Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>The base class of GINO models.</p>
 <p>This is not supposed to be sub-classed directly, <a class="reference internal" href="#gino.declarative.declarative_base" title="gino.declarative.declarative_base"><code class="xref py py-func docutils literal notranslate"><span class="pre">declarative_base()</span></code></a> should
@@ -258,8 +258,8 @@ instances. Accessing column attributes is equivalent to accessing <code class="d
 </dd></dl>
 
 <dl class="py function">
-<dt id="gino.declarative.declarative_base">
-<code class="sig-prename descclassname"><span class="pre">gino.declarative.</span></code><code class="sig-name descname"><span class="pre">declarative_base</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">metadata</span></em>, <em class="sig-param"><span class="pre">model_classes=(&lt;class</span> <span class="pre">'gino.declarative.Model'&gt;</span></em>, <em class="sig-param"><span class="pre">)</span></em>, <em class="sig-param"><span class="pre">name='Model'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.declarative.declarative_base" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.declarative.declarative_base">
+<span class="sig-prename descclassname"><span class="pre">gino.declarative.</span></span><span class="sig-name descname"><span class="pre">declarative_base</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">metadata</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_classes=(&lt;class</span> <span class="pre">'gino.declarative.Model'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name='Model'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.declarative.declarative_base" title="永久链接至目标">¶</a></dt>
 <dd><p>Create a base GINO model class for declarative table definition.</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
@@ -279,8 +279,8 @@ tables.</p></li>
 </dd></dl>
 
 <dl class="py function">
-<dt id="gino.declarative.declared_attr">
-<code class="sig-prename descclassname"><span class="pre">gino.declarative.</span></code><code class="sig-name descname"><span class="pre">declared_attr</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">with_table</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.declarative.declared_attr" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.declarative.declared_attr">
+<span class="sig-prename descclassname"><span class="pre">gino.declarative.</span></span><span class="sig-name descname"><span class="pre">declared_attr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">with_table</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.declarative.declared_attr" title="永久链接至目标">¶</a></dt>
 <dd><p>Mark a class-level method as a factory of attribute.</p>
 <p>This is intended to be used as decorators on class-level methods of a
 <a class="reference internal" href="#gino.declarative.Model" title="gino.declarative.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></a> class. When initializing the class as well as its
@@ -336,7 +336,7 @@ class attributes):</p>
 </div>
 </dd></dl>
 
-</div>
+</section>
 
 
             </div>

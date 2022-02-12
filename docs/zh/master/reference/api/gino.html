@@ -85,14 +85,14 @@
     </div>
 
     <div id="sidenav" class="sidenav sidenav-fixed">
-        <p class="caption"><span class="caption-text">上手教程</span></p>
+        <p class="caption" role="heading"><span class="caption-text">上手教程</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials.html">上手教程</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/announcement.html">官宣：Python 异步编程再添一利器</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/tutorial.html">GINO 基础教程</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/fastapi.html">搭建一个 FastAPI 服务器</a></li>
 </ul>
-<p class="caption"><span class="caption-text">进阶用法</span></p>
+<p class="caption" role="heading"><span class="caption-text">进阶用法</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../how-to.html">进阶用法</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../how-to/alembic.html">使用 Alembic</a></li>
@@ -106,7 +106,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../how-to/schema.html">表结构定义</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../how-to/transaction.html">数据库事务</a></li>
 </ul>
-<p class="caption"><span class="caption-text">原理说明</span></p>
+<p class="caption" role="heading"><span class="caption-text">原理说明</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../explanation.html">原理说明</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../explanation/async.html">异步编程基础</a></li>
@@ -114,7 +114,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../explanation/sa20.html">SQLAlchemy 2.0</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../explanation/why.html">为什么要用异步 ORM？</a></li>
 </ul>
-<p class="caption"><span class="caption-text">参考手册</span></p>
+<p class="caption" role="heading"><span class="caption-text">参考手册</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../../reference.html">参考手册</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../api.html">API 参考</a></li>
@@ -138,9 +138,9 @@
         <div class="col s12 m9 body">
             <div id="main-content" role="main">
                 
-    <div class="section" id="gino-package">
+    <section id="gino-package">
 <h1>gino package<a class="headerlink" href="#gino-package" title="永久链接至标题">¶</a></h1>
-<div class="section" id="subpackages">
+<section id="subpackages">
 <h2>Subpackages<a class="headerlink" href="#subpackages" title="永久链接至标题">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
@@ -160,8 +160,8 @@
 </li>
 </ul>
 </div>
-</div>
-<div class="section" id="submodules">
+</section>
+<section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="永久链接至标题">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
@@ -179,12 +179,12 @@
 <li class="toctree-l1"><a class="reference internal" href="gino.transaction.html">gino.transaction module</a></li>
 </ul>
 </div>
-</div>
-<div class="section" id="module-gino">
+</section>
+<section id="module-gino">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-gino" title="永久链接至标题">¶</a></h2>
 <dl class="py function">
-<dt id="gino.create_engine">
-<code class="sig-prename descclassname"><span class="pre">gino.</span></code><code class="sig-name descname"><span class="pre">create_engine</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.create_engine" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.create_engine">
+<span class="sig-prename descclassname"><span class="pre">gino.</span></span><span class="sig-name descname"><span class="pre">create_engine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.create_engine" title="永久链接至目标">¶</a></dt>
 <dd><p>Shortcut for <a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/engines.html#sqlalchemy.create_engine" title="(在 SQLAlchemy v1.4)"><code class="xref py py-func docutils literal notranslate"><span class="pre">sqlalchemy.create_engine()</span></code></a> with <code class="docutils literal notranslate"><span class="pre">strategy=&quot;gino&quot;</span></code>.</p>
 <div class="versionchanged">
 <p><span class="versionmodified changed">在 1.1 版更改: </span>Added the <code class="docutils literal notranslate"><span class="pre">bakery</span></code> keyword argument, please see <a class="reference internal" href="gino.bakery.html#gino.bakery.Bakery" title="gino.bakery.Bakery"><code class="xref py py-class docutils literal notranslate"><span class="pre">Bakery</span></code></a>.</p>
@@ -202,13 +202,13 @@ time.</p></li>
 </dd></dl>
 
 <dl class="py function">
-<dt id="gino.get_version">
-<code class="sig-prename descclassname"><span class="pre">gino.</span></code><code class="sig-name descname"><span class="pre">get_version</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.get_version" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.get_version">
+<span class="sig-prename descclassname"><span class="pre">gino.</span></span><span class="sig-name descname"><span class="pre">get_version</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.get_version" title="永久链接至目标">¶</a></dt>
 <dd><p>Get current GINO version.</p>
 </dd></dl>
 
-</div>
-</div>
+</section>
+</section>
 
 
             </div>

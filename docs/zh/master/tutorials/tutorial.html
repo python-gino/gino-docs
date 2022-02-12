@@ -82,7 +82,7 @@
     </div>
 
     <div id="sidenav" class="sidenav sidenav-fixed">
-        <p class="caption"><span class="caption-text">上手教程</span></p>
+        <p class="caption" role="heading"><span class="caption-text">上手教程</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../tutorials.html">上手教程</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="announcement.html">官宣：Python 异步编程再添一利器</a></li>
@@ -94,7 +94,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">GINO 基础教程</a></li>
 <li class="toctree-l1"><a class="reference internal" href="fastapi.html">搭建一个 FastAPI 服务器</a></li>
 </ul>
-<p class="caption"><span class="caption-text">进阶用法</span></p>
+<p class="caption" role="heading"><span class="caption-text">进阶用法</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../how-to.html">进阶用法</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../how-to/alembic.html">使用 Alembic</a></li>
@@ -108,7 +108,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../how-to/schema.html">表结构定义</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../how-to/transaction.html">数据库事务</a></li>
 </ul>
-<p class="caption"><span class="caption-text">原理说明</span></p>
+<p class="caption" role="heading"><span class="caption-text">原理说明</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../explanation.html">原理说明</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../explanation/async.html">异步编程基础</a></li>
@@ -116,7 +116,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../explanation/sa20.html">SQLAlchemy 2.0</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../explanation/why.html">为什么要用异步 ORM？</a></li>
 </ul>
-<p class="caption"><span class="caption-text">参考手册</span></p>
+<p class="caption" role="heading"><span class="caption-text">参考手册</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../reference.html">参考手册</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference/api.html">API 参考</a></li>
@@ -132,7 +132,7 @@
         <div class="col s12 m9 body">
             <div id="main-content" role="main">
                 
-    <div class="section" id="gino-basics">
+    <section id="gino-basics">
 <h1>GINO 基础教程<a class="headerlink" href="#gino-basics" title="永久链接至标题">¶</a></h1>
 <p>这是一篇写给刚入坑同学的指南，将介绍 GINO 的基本部分。阅读之前，请先了解以下知识点：</p>
 <ul class="simple">
@@ -140,12 +140,12 @@
 <li><p><a class="reference external" href="https://realpython.com/async-io-python/">Python 异步编程</a></p></li>
 </ul>
 <p>您不需要对 <a class="reference external" href="https://www.sqlalchemy.org/">SQLAlchemy</a> 有所了解。</p>
-<div class="section" id="introduction">
+<section id="introduction">
 <h2>介绍<a class="headerlink" href="#introduction" title="永久链接至标题">¶</a></h2>
 <p>简单来说，GINO 可以在您的异步应用中帮助您完成 SQL 语句的生成及执行，您只需要通过友好的对象化 API 来操作您的数据即可，无需亲自编写 SQL 与数据库交互。</p>
 <p>因为异步编程并不会使您的程序变快——如果说不拖累的话——而且还会增加复杂度和风险，所以也许您并不需要 GINO 或者说是异步数据库连接。跳坑之前请先阅读<a class="reference internal" href="../explanation/why.html"><span class="doc">为什么要用异步 ORM？</span></a>。</p>
-</div>
-<div class="section" id="installation">
+</section>
+<section id="installation">
 <h2>安装<a class="headerlink" href="#installation" title="永久链接至标题">¶</a></h2>
 <p>请在终端中执行以下命令以安装 GINO：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>pip install gino
@@ -157,8 +157,8 @@
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>poetry add gino
 </pre></div>
 </div>
-</div>
-<div class="section" id="declare-models">
+</section>
+<section id="declare-models">
 <h2>声明模型<a class="headerlink" href="#declare-models" title="永久链接至标题">¶</a></h2>
 <p>开始之前，我们需要先创建一个 <a class="reference internal" href="../reference/api/gino.api.html#gino.api.Gino" title="gino.api.Gino"><code class="xref py py-class docutils literal notranslate"><span class="pre">Gino</span></code></a> 的全局实例，通常叫做 <code class="docutils literal notranslate"><span class="pre">db</span></code>：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gino</span> <span class="kn">import</span> <span class="n">Gino</span>
@@ -195,8 +195,8 @@
 </div>
 <p>另外如果有倾向性，您也可以在 model 类之外定义约束和索引，请参考 <a class="reference external" href="http://docs.sqlalchemy.org/en/latest/core/constraints.html">SQLAlchemy 文档</a>来了解更多细节。</p>
 <p>由于一些限制，目前不允许在父类中直接使用类属性的方式来单独定义数据库约束和索引，<code class="xref py py-attr docutils literal notranslate"><span class="pre">__table_args__</span></code> 也是一样的。GINO 提供了 <a class="reference internal" href="../reference/api/gino.declarative.html#gino.declarative.declared_attr" title="gino.declarative.declared_attr"><code class="xref py py-func docutils literal notranslate"><span class="pre">declared_attr()</span></code></a> 来实现比如 mixin 类这样的功能，更多信息请参阅其 API 文档。</p>
-</div>
-<div class="section" id="get-connected">
+</section>
+<section id="get-connected">
 <h2>建立连接<a class="headerlink" href="#get-connected" title="永久链接至标题">¶</a></h2>
 <p>前面的声明只是定义了映射关系，并非实际在数据库中创建了这些表结构。为了使用 GINO 来创建表，我们需要先与数据库建立连接。这里我们先为本指南创建一个 PostgreSQL 的数据库实例：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>createdb gino
@@ -255,11 +255,11 @@
 <span class="n">asyncio</span><span class="o">.</span><span class="n">get_event_loop</span><span class="p">()</span><span class="o">.</span><span class="n">run_until_complete</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="crud-operations">
+</section>
+<section id="crud-operations">
 <h2>增删改查<a class="headerlink" href="#crud-operations" title="永久链接至标题">¶</a></h2>
 <p>为了操作数据库中的数据，GINO 提供了基本的基于对象的增删改查功能。</p>
-<div class="section" id="create">
+<section id="create">
 <h3>增<a class="headerlink" href="#create" title="永久链接至标题">¶</a></h3>
 <p>让我们从创建一个 <code class="docutils literal notranslate"><span class="pre">User</span></code> 对象开始：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">user</span> <span class="o">=</span> <span class="k">await</span> <span class="n">User</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">nickname</span><span class="o">=</span><span class="s1">&#39;fantix&#39;</span><span class="p">)</span>
@@ -278,8 +278,8 @@
 <span class="k">await</span> <span class="n">user</span><span class="o">.</span><span class="n">create</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="retrieve">
+</section>
+<section id="retrieve">
 <h3>查<a class="headerlink" href="#retrieve" title="永久链接至标题">¶</a></h3>
 <p>想要通过主键来获取一个 model 对象，您可以使用 model 的类方法 <a class="reference internal" href="../reference/api/gino.crud.html#gino.crud.CRUDModel.get" title="gino.crud.CRUDModel.get"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get()</span></code></a>。比如，重新获取刚才插入的同一行数据：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">user</span> <span class="o">=</span> <span class="k">await</span> <span class="n">User</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
@@ -337,8 +337,8 @@
 <span class="nb">print</span><span class="p">(</span><span class="n">population</span><span class="p">)</span>  <span class="c1"># 17 for example</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="update">
+</section>
+<section id="update">
 <h3>改<a class="headerlink" href="#update" title="永久链接至标题">¶</a></h3>
 <p>接下来，让我们尝试对数据做一些修改，下面的例子会穿插一些前面用过的查询操作。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a new user</span>
@@ -383,8 +383,8 @@
 </pre></div>
 </div>
 <p>这里不再有 <a class="reference internal" href="../reference/api/gino.crud.html#gino.crud.UpdateRequest" title="gino.crud.UpdateRequest"><code class="xref py py-class docutils literal notranslate"><span class="pre">UpdateRequest</span></code></a> 了，所有的操作又回到了普通的 SQLAlchemy 用法，更多细节可以参考 <a class="reference external" href="https://docs.sqlalchemy.org/en/latest/core/dml.html">SQLAlchemy 的文档</a>。</p>
-</div>
-<div class="section" id="delete">
+</section>
+<section id="delete">
 <h3>删<a class="headerlink" href="#delete" title="永久链接至标题">¶</a></h3>
 <p>最后，删除一行数据与更新一行数据有些类似，但要简单很多：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">user</span> <span class="o">=</span> <span class="k">await</span> <span class="n">User</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">nickname</span><span class="o">=</span><span class="s1">&#39;fantix&#39;</span><span class="p">)</span>
@@ -405,9 +405,9 @@
 </pre></div>
 </div>
 <p>有了基本的 <a class="reference internal" href="../how-to/crud.html"><span class="doc">增删改查</span></a>，您应该已经可以用 GINO 做出一些不可思议的东西来了。这篇上手指南到此结束，要了解更多请继续阅读文档的剩余部分。祝编程愉快！</p>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
             </div>

@@ -88,14 +88,14 @@
     </div>
 
     <div id="sidenav" class="sidenav sidenav-fixed">
-        <p class="caption"><span class="caption-text">上手教程</span></p>
+        <p class="caption" role="heading"><span class="caption-text">上手教程</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials.html">上手教程</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/announcement.html">官宣：Python 异步编程再添一利器</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/tutorial.html">GINO 基础教程</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/fastapi.html">搭建一个 FastAPI 服务器</a></li>
 </ul>
-<p class="caption"><span class="caption-text">进阶用法</span></p>
+<p class="caption" role="heading"><span class="caption-text">进阶用法</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../how-to.html">进阶用法</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../how-to/alembic.html">使用 Alembic</a></li>
@@ -109,7 +109,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../how-to/schema.html">表结构定义</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../how-to/transaction.html">数据库事务</a></li>
 </ul>
-<p class="caption"><span class="caption-text">原理说明</span></p>
+<p class="caption" role="heading"><span class="caption-text">原理说明</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../explanation.html">原理说明</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../explanation/async.html">异步编程基础</a></li>
@@ -117,7 +117,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../explanation/sa20.html">SQLAlchemy 2.0</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../explanation/why.html">为什么要用异步 ORM？</a></li>
 </ul>
-<p class="caption"><span class="caption-text">参考手册</span></p>
+<p class="caption" role="heading"><span class="caption-text">参考手册</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../../reference.html">参考手册</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../api.html">API 参考</a></li>
@@ -141,17 +141,17 @@
         <div class="col s12 m9 body">
             <div id="main-content" role="main">
                 
-    <div class="section" id="module-gino.aiocontextvars">
+    <section id="module-gino.aiocontextvars">
 <span id="gino-aiocontextvars-module"></span><h1>gino.aiocontextvars module<a class="headerlink" href="#module-gino.aiocontextvars" title="永久链接至标题">¶</a></h1>
 <dl class="py function">
-<dt id="gino.aiocontextvars.patch_asyncio">
-<code class="sig-prename descclassname"><span class="pre">gino.aiocontextvars.</span></code><code class="sig-name descname"><span class="pre">patch_asyncio</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.aiocontextvars.patch_asyncio" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.aiocontextvars.patch_asyncio">
+<span class="sig-prename descclassname"><span class="pre">gino.aiocontextvars.</span></span><span class="sig-name descname"><span class="pre">patch_asyncio</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.aiocontextvars.patch_asyncio" title="永久链接至目标">¶</a></dt>
 <dd><p>Patches asyncio to support <a class="reference external" href="https://docs.python.org/3/library/contextvars.html#module-contextvars" title="(在 Python v3.10)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">contextvars</span></code></a>.</p>
 <p>This is automatically called when <a class="reference internal" href="gino.html#module-gino" title="gino"><code class="xref py py-mod docutils literal notranslate"><span class="pre">gino</span></code></a> is imported. If Python version is 3.7
 or greater, this function is a no-op.</p>
 </dd></dl>
 
-</div>
+</section>
 
 
             </div>

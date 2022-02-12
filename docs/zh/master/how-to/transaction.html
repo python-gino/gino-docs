@@ -82,14 +82,14 @@
     </div>
 
     <div id="sidenav" class="sidenav sidenav-fixed">
-        <p class="caption"><span class="caption-text">上手教程</span></p>
+        <p class="caption" role="heading"><span class="caption-text">上手教程</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials.html">上手教程</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/announcement.html">官宣：Python 异步编程再添一利器</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/tutorial.html">GINO 基础教程</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/fastapi.html">搭建一个 FastAPI 服务器</a></li>
 </ul>
-<p class="caption"><span class="caption-text">进阶用法</span></p>
+<p class="caption" role="heading"><span class="caption-text">进阶用法</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../how-to.html">进阶用法</a></li>
 <li class="toctree-l1"><a class="reference internal" href="alembic.html">使用 Alembic</a></li>
@@ -103,7 +103,7 @@
 <li class="toctree-l1"><a class="reference internal" href="schema.html">表结构定义</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">数据库事务</a></li>
 </ul>
-<p class="caption"><span class="caption-text">原理说明</span></p>
+<p class="caption" role="heading"><span class="caption-text">原理说明</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../explanation.html">原理说明</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../explanation/async.html">异步编程基础</a></li>
@@ -111,7 +111,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../explanation/sa20.html">SQLAlchemy 2.0</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../explanation/why.html">为什么要用异步 ORM？</a></li>
 </ul>
-<p class="caption"><span class="caption-text">参考手册</span></p>
+<p class="caption" role="heading"><span class="caption-text">参考手册</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../reference.html">参考手册</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference/api.html">API 参考</a></li>
@@ -127,13 +127,13 @@
         <div class="col s12 m9 body">
             <div id="main-content" role="main">
                 
-    <div class="section" id="transaction">
+    <section id="transaction">
 <h1>数据库事务<a class="headerlink" href="#transaction" title="永久链接至标题">¶</a></h1>
 <p>It is crucial to correctly manage transactions in an asynchronous program,
 because you never know how much time an <code class="docutils literal notranslate"><span class="pre">await</span></code> will actually wait for, it
 will cause disasters if transactions are on hold for too long. GINO enforces
 explicit transaction management to help dealing with it.</p>
-<div class="section" id="basic-usage">
+<section id="basic-usage">
 <h2>Basic usage<a class="headerlink" href="#basic-usage" title="永久链接至标题">¶</a></h2>
 <p>Transactions belong to <a class="reference internal" href="../reference/api/gino.engine.html#gino.engine.GinoConnection" title="gino.engine.GinoConnection"><code class="xref py py-class docutils literal notranslate"><span class="pre">GinoConnection</span></code></a>. The most common
 way to use transactions is through an <code class="docutils literal notranslate"><span class="pre">async</span> <span class="pre">with</span></code> statement:</p>
@@ -183,8 +183,8 @@ the same on it:</p>
     <span class="k">await</span> <span class="n">db</span><span class="o">.</span><span class="n">status</span><span class="p">(</span><span class="s1">&#39;INSERT INTO mytable VALUES(1, 2, 3)&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="nested-transactions">
+</section>
+<section id="nested-transactions">
 <h2>Nested Transactions<a class="headerlink" href="#nested-transactions" title="永久链接至标题">¶</a></h2>
 <p>Transactions can be nested, nested transaction will create a <a class="reference external" href="https://www.postgresql.org/docs/current/static/sql-savepoint.html">savepoint</a> as for
 now on asyncpg. A similar example from asyncpg doc:</p>
@@ -212,8 +212,8 @@ either commit or rollback, and lets the exception propagate.</p>
 <p>Because of the default reusing behavior, transactions on engine or <code class="docutils literal notranslate"><span class="pre">db</span></code>
 follows the same nesting rules. Please see
 <code class="xref py py-class docutils literal notranslate"><span class="pre">GinoTransaction</span></code> for more information.</p>
-</div>
-<div class="section" id="manual-control">
+</section>
+<section id="manual-control">
 <h2>Manual Control<a class="headerlink" href="#manual-control" title="永久链接至标题">¶</a></h2>
 <p>Other than using <code class="docutils literal notranslate"><span class="pre">async</span> <span class="pre">with</span></code>, you can also manually control the
 transaction:</p>
@@ -230,8 +230,8 @@ transaction:</p>
 <a class="reference internal" href="../reference/api/gino.transaction.html#gino.transaction.GinoTransaction.raise_rollback" title="gino.transaction.GinoTransaction.raise_rollback"><code class="xref py py-meth docutils literal notranslate"><span class="pre">raise_rollback()</span></code></a> here, similarly it is
 prohibited to use <a class="reference internal" href="../reference/api/gino.transaction.html#gino.transaction.GinoTransaction.commit" title="gino.transaction.GinoTransaction.commit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">commit()</span></code></a> and
 <a class="reference internal" href="../reference/api/gino.transaction.html#gino.transaction.GinoTransaction.rollback" title="gino.transaction.GinoTransaction.rollback"><code class="xref py py-meth docutils literal notranslate"><span class="pre">rollback()</span></code></a> in an <code class="docutils literal notranslate"><span class="pre">async</span> <span class="pre">with</span></code> block.</p>
-</div>
-</div>
+</section>
+</section>
 
 
             </div>

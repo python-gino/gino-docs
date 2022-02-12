@@ -88,14 +88,14 @@
     </div>
 
     <div id="sidenav" class="sidenav sidenav-fixed">
-        <p class="caption"><span class="caption-text">上手教程</span></p>
+        <p class="caption" role="heading"><span class="caption-text">上手教程</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials.html">上手教程</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/announcement.html">官宣：Python 异步编程再添一利器</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/tutorial.html">GINO 基础教程</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/fastapi.html">搭建一个 FastAPI 服务器</a></li>
 </ul>
-<p class="caption"><span class="caption-text">进阶用法</span></p>
+<p class="caption" role="heading"><span class="caption-text">进阶用法</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../how-to.html">进阶用法</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../how-to/alembic.html">使用 Alembic</a></li>
@@ -109,7 +109,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../how-to/schema.html">表结构定义</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../how-to/transaction.html">数据库事务</a></li>
 </ul>
-<p class="caption"><span class="caption-text">原理说明</span></p>
+<p class="caption" role="heading"><span class="caption-text">原理说明</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../explanation.html">原理说明</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../explanation/async.html">异步编程基础</a></li>
@@ -117,7 +117,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../explanation/sa20.html">SQLAlchemy 2.0</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../explanation/why.html">为什么要用异步 ORM？</a></li>
 </ul>
-<p class="caption"><span class="caption-text">参考手册</span></p>
+<p class="caption" role="heading"><span class="caption-text">参考手册</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../../reference.html">参考手册</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../api.html">API 参考</a></li>
@@ -141,129 +141,129 @@
         <div class="col s12 m9 body">
             <div id="main-content" role="main">
                 
-    <div class="section" id="module-gino.schema">
+    <section id="module-gino.schema">
 <span id="gino-schema-module"></span><h1>gino.schema module<a class="headerlink" href="#module-gino.schema" title="永久链接至标题">¶</a></h1>
 <dl class="py class">
-<dt id="gino.schema.AsyncSchemaDropper">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">gino.schema.</span></code><code class="sig-name descname"><span class="pre">AsyncSchemaDropper</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dialect</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">connection</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">checkfirst</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tables</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.schema.AsyncSchemaDropper" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.schema.AsyncSchemaDropper">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gino.schema.</span></span><span class="sig-name descname"><span class="pre">AsyncSchemaDropper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dialect</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">connection</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">checkfirst</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tables</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.schema.AsyncSchemaDropper" title="永久链接至目标">¶</a></dt>
 <dd><p>基类：<a class="reference internal" href="#gino.schema.AsyncVisitor" title="gino.schema.AsyncVisitor"><code class="xref py py-class docutils literal notranslate"><span class="pre">gino.schema.AsyncVisitor</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">sqlalchemy.sql.ddl.SchemaDropper</span></code></p>
 <dl class="py method">
-<dt id="gino.schema.AsyncSchemaDropper.visit_foreign_key_constraint">
-<em class="property"><span class="pre">async</span> </em><code class="sig-name descname"><span class="pre">visit_foreign_key_constraint</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">constraint</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.schema.AsyncSchemaDropper.visit_foreign_key_constraint" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.schema.AsyncSchemaDropper.visit_foreign_key_constraint">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">visit_foreign_key_constraint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">constraint</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.schema.AsyncSchemaDropper.visit_foreign_key_constraint" title="永久链接至目标">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="gino.schema.AsyncSchemaDropper.visit_index">
-<em class="property"><span class="pre">async</span> </em><code class="sig-name descname"><span class="pre">visit_index</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.schema.AsyncSchemaDropper.visit_index" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.schema.AsyncSchemaDropper.visit_index">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">visit_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.schema.AsyncSchemaDropper.visit_index" title="永久链接至目标">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="gino.schema.AsyncSchemaDropper.visit_metadata">
-<em class="property"><span class="pre">async</span> </em><code class="sig-name descname"><span class="pre">visit_metadata</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">metadata</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.schema.AsyncSchemaDropper.visit_metadata" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.schema.AsyncSchemaDropper.visit_metadata">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">visit_metadata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">metadata</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.schema.AsyncSchemaDropper.visit_metadata" title="永久链接至目标">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="gino.schema.AsyncSchemaDropper.visit_sequence">
-<em class="property"><span class="pre">async</span> </em><code class="sig-name descname"><span class="pre">visit_sequence</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sequence</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drop_ok</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.schema.AsyncSchemaDropper.visit_sequence" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.schema.AsyncSchemaDropper.visit_sequence">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">visit_sequence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sequence</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drop_ok</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.schema.AsyncSchemaDropper.visit_sequence" title="永久链接至目标">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="gino.schema.AsyncSchemaDropper.visit_table">
-<em class="property"><span class="pre">async</span> </em><code class="sig-name descname"><span class="pre">visit_table</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drop_ok</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_is_metadata_operation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.schema.AsyncSchemaDropper.visit_table" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.schema.AsyncSchemaDropper.visit_table">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">visit_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drop_ok</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_is_metadata_operation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.schema.AsyncSchemaDropper.visit_table" title="永久链接至目标">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
-<dt id="gino.schema.AsyncSchemaGenerator">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">gino.schema.</span></code><code class="sig-name descname"><span class="pre">AsyncSchemaGenerator</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dialect</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">connection</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">checkfirst</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tables</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.schema.AsyncSchemaGenerator" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.schema.AsyncSchemaGenerator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gino.schema.</span></span><span class="sig-name descname"><span class="pre">AsyncSchemaGenerator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dialect</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">connection</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">checkfirst</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tables</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.schema.AsyncSchemaGenerator" title="永久链接至目标">¶</a></dt>
 <dd><p>基类：<a class="reference internal" href="#gino.schema.AsyncVisitor" title="gino.schema.AsyncVisitor"><code class="xref py py-class docutils literal notranslate"><span class="pre">gino.schema.AsyncVisitor</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">sqlalchemy.sql.ddl.SchemaGenerator</span></code></p>
 <dl class="py method">
-<dt id="gino.schema.AsyncSchemaGenerator.visit_foreign_key_constraint">
-<em class="property"><span class="pre">async</span> </em><code class="sig-name descname"><span class="pre">visit_foreign_key_constraint</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">constraint</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.schema.AsyncSchemaGenerator.visit_foreign_key_constraint" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.schema.AsyncSchemaGenerator.visit_foreign_key_constraint">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">visit_foreign_key_constraint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">constraint</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.schema.AsyncSchemaGenerator.visit_foreign_key_constraint" title="永久链接至目标">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="gino.schema.AsyncSchemaGenerator.visit_index">
-<em class="property"><span class="pre">async</span> </em><code class="sig-name descname"><span class="pre">visit_index</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.schema.AsyncSchemaGenerator.visit_index" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.schema.AsyncSchemaGenerator.visit_index">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">visit_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.schema.AsyncSchemaGenerator.visit_index" title="永久链接至目标">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="gino.schema.AsyncSchemaGenerator.visit_metadata">
-<em class="property"><span class="pre">async</span> </em><code class="sig-name descname"><span class="pre">visit_metadata</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">metadata</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.schema.AsyncSchemaGenerator.visit_metadata" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.schema.AsyncSchemaGenerator.visit_metadata">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">visit_metadata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">metadata</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.schema.AsyncSchemaGenerator.visit_metadata" title="永久链接至目标">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="gino.schema.AsyncSchemaGenerator.visit_sequence">
-<em class="property"><span class="pre">async</span> </em><code class="sig-name descname"><span class="pre">visit_sequence</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sequence</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">create_ok</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.schema.AsyncSchemaGenerator.visit_sequence" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.schema.AsyncSchemaGenerator.visit_sequence">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">visit_sequence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sequence</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">create_ok</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.schema.AsyncSchemaGenerator.visit_sequence" title="永久链接至目标">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="gino.schema.AsyncSchemaGenerator.visit_table">
-<em class="property"><span class="pre">async</span> </em><code class="sig-name descname"><span class="pre">visit_table</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">create_ok</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_foreign_key_constraints</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_is_metadata_operation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.schema.AsyncSchemaGenerator.visit_table" title="永久链接至目标">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt id="gino.schema.AsyncSchemaTypeMixin">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">gino.schema.</span></code><code class="sig-name descname"><span class="pre">AsyncSchemaTypeMixin</span></code><a class="headerlink" href="#gino.schema.AsyncSchemaTypeMixin" title="永久链接至目标">¶</a></dt>
-<dd><p>基类：<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(在 Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
-<dl class="py method">
-<dt id="gino.schema.AsyncSchemaTypeMixin.create_async">
-<em class="property"><span class="pre">async</span> </em><code class="sig-name descname"><span class="pre">create_async</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bind</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">checkfirst</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.schema.AsyncSchemaTypeMixin.create_async" title="永久链接至目标">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt id="gino.schema.AsyncSchemaTypeMixin.drop_async">
-<em class="property"><span class="pre">async</span> </em><code class="sig-name descname"><span class="pre">drop_async</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bind</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">checkfirst</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.schema.AsyncSchemaTypeMixin.drop_async" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.schema.AsyncSchemaGenerator.visit_table">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">visit_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">create_ok</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_foreign_key_constraints</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_is_metadata_operation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.schema.AsyncSchemaGenerator.visit_table" title="永久链接至目标">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
-<dt id="gino.schema.AsyncVisitor">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">gino.schema.</span></code><code class="sig-name descname"><span class="pre">AsyncVisitor</span></code><a class="headerlink" href="#gino.schema.AsyncVisitor" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.schema.AsyncSchemaTypeMixin">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gino.schema.</span></span><span class="sig-name descname"><span class="pre">AsyncSchemaTypeMixin</span></span><a class="headerlink" href="#gino.schema.AsyncSchemaTypeMixin" title="永久链接至目标">¶</a></dt>
 <dd><p>基类：<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(在 Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <dl class="py method">
-<dt id="gino.schema.AsyncVisitor.traverse_single">
-<em class="property"><span class="pre">async</span> </em><code class="sig-name descname"><span class="pre">traverse_single</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kw</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.schema.AsyncVisitor.traverse_single" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.schema.AsyncSchemaTypeMixin.create_async">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">create_async</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bind</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">checkfirst</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.schema.AsyncSchemaTypeMixin.create_async" title="永久链接至目标">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gino.schema.AsyncSchemaTypeMixin.drop_async">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">drop_async</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bind</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">checkfirst</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.schema.AsyncSchemaTypeMixin.drop_async" title="永久链接至目标">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
-<dt id="gino.schema.GinoSchemaVisitor">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">gino.schema.</span></code><code class="sig-name descname"><span class="pre">GinoSchemaVisitor</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.schema.GinoSchemaVisitor" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.schema.AsyncVisitor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gino.schema.</span></span><span class="sig-name descname"><span class="pre">AsyncVisitor</span></span><a class="headerlink" href="#gino.schema.AsyncVisitor" title="永久链接至目标">¶</a></dt>
 <dd><p>基类：<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(在 Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <dl class="py method">
-<dt id="gino.schema.GinoSchemaVisitor.create">
-<em class="property"><span class="pre">async</span> </em><code class="sig-name descname"><span class="pre">create</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bind</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.schema.GinoSchemaVisitor.create" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.schema.AsyncVisitor.traverse_single">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">traverse_single</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kw</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.schema.AsyncVisitor.traverse_single" title="永久链接至目标">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="gino.schema.GinoSchemaVisitor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gino.schema.</span></span><span class="sig-name descname"><span class="pre">GinoSchemaVisitor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.schema.GinoSchemaVisitor" title="永久链接至目标">¶</a></dt>
+<dd><p>基类：<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(在 Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="gino.schema.GinoSchemaVisitor.create">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bind</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.schema.GinoSchemaVisitor.create" title="永久链接至目标">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="gino.schema.GinoSchemaVisitor.create_all">
-<em class="property"><span class="pre">async</span> </em><code class="sig-name descname"><span class="pre">create_all</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bind</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tables</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">checkfirst</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.schema.GinoSchemaVisitor.create_all" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.schema.GinoSchemaVisitor.create_all">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">create_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bind</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tables</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">checkfirst</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.schema.GinoSchemaVisitor.create_all" title="永久链接至目标">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="gino.schema.GinoSchemaVisitor.drop">
-<em class="property"><span class="pre">async</span> </em><code class="sig-name descname"><span class="pre">drop</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bind</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.schema.GinoSchemaVisitor.drop" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.schema.GinoSchemaVisitor.drop">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">drop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bind</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.schema.GinoSchemaVisitor.drop" title="永久链接至目标">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="gino.schema.GinoSchemaVisitor.drop_all">
-<em class="property"><span class="pre">async</span> </em><code class="sig-name descname"><span class="pre">drop_all</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bind</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tables</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">checkfirst</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.schema.GinoSchemaVisitor.drop_all" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.schema.GinoSchemaVisitor.drop_all">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">drop_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bind</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tables</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">checkfirst</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.schema.GinoSchemaVisitor.drop_all" title="永久链接至目标">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py function">
-<dt id="gino.schema.patch_schema">
-<code class="sig-prename descclassname"><span class="pre">gino.schema.</span></code><code class="sig-name descname"><span class="pre">patch_schema</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.schema.patch_schema" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.schema.patch_schema">
+<span class="sig-prename descclassname"><span class="pre">gino.schema.</span></span><span class="sig-name descname"><span class="pre">patch_schema</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.schema.patch_schema" title="永久链接至目标">¶</a></dt>
 <dd></dd></dl>
 
-</div>
+</section>
 
 
             </div>

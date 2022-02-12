@@ -88,14 +88,14 @@
     </div>
 
     <div id="sidenav" class="sidenav sidenav-fixed">
-        <p class="caption"><span class="caption-text">上手教程</span></p>
+        <p class="caption" role="heading"><span class="caption-text">上手教程</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials.html">上手教程</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/announcement.html">官宣：Python 异步编程再添一利器</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/tutorial.html">GINO 基础教程</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/fastapi.html">搭建一个 FastAPI 服务器</a></li>
 </ul>
-<p class="caption"><span class="caption-text">进阶用法</span></p>
+<p class="caption" role="heading"><span class="caption-text">进阶用法</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../how-to.html">进阶用法</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../how-to/alembic.html">使用 Alembic</a></li>
@@ -109,7 +109,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../how-to/schema.html">表结构定义</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../how-to/transaction.html">数据库事务</a></li>
 </ul>
-<p class="caption"><span class="caption-text">原理说明</span></p>
+<p class="caption" role="heading"><span class="caption-text">原理说明</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../explanation.html">原理说明</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../explanation/async.html">异步编程基础</a></li>
@@ -117,7 +117,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../explanation/sa20.html">SQLAlchemy 2.0</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../explanation/why.html">为什么要用异步 ORM？</a></li>
 </ul>
-<p class="caption"><span class="caption-text">参考手册</span></p>
+<p class="caption" role="heading"><span class="caption-text">参考手册</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../../reference.html">参考手册</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../api.html">API 参考</a></li>
@@ -141,11 +141,11 @@
         <div class="col s12 m9 body">
             <div id="main-content" role="main">
                 
-    <div class="section" id="module-gino.api">
+    <section id="module-gino.api">
 <span id="gino-api-module"></span><h1>gino.api module<a class="headerlink" href="#module-gino.api" title="永久链接至标题">¶</a></h1>
 <dl class="py class">
-<dt id="gino.api.Gino">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">gino.api.</span></code><code class="sig-name descname"><span class="pre">Gino</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bind</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_classes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query_ext</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">schema_ext</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ext</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.Gino" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.api.Gino">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gino.api.</span></span><span class="sig-name descname"><span class="pre">Gino</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bind</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_classes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query_ext</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">schema_ext</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ext</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.Gino" title="永久链接至目标">¶</a></dt>
 <dd><p>基类：<a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/metadata.html#sqlalchemy.schema.MetaData" title="(在 SQLAlchemy v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sqlalchemy.sql.schema.MetaData</span></code></a></p>
 <p>All-in-one API class of GINO, providing several shortcuts.</p>
 <p>This class is a subclass of SQLAlchemy
@@ -213,47 +213,47 @@ creating an engine requires <code class="docutils literal notranslate"><span cla
 </div>
 <p>At last, <a class="reference internal" href="#gino.api.Gino" title="gino.api.Gino"><code class="xref py py-class docutils literal notranslate"><span class="pre">Gino</span></code></a> delegates all query APIs on the bound
 <a class="reference internal" href="gino.engine.html#gino.engine.GinoEngine" title="gino.engine.GinoEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">GinoEngine</span></code></a>.</p>
-<dl class="py method">
-<dt id="gino.api.Gino.Model">
-<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">Model</span></code><a class="headerlink" href="#gino.api.Gino.Model" title="永久链接至目标">¶</a></dt>
+<dl class="py property">
+<dt class="sig sig-object py" id="gino.api.Gino.Model">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Model</span></span><a class="headerlink" href="#gino.api.Gino.Model" title="永久链接至目标">¶</a></dt>
 <dd><p>Declarative base class for models, subclass of
 <a class="reference internal" href="gino.declarative.html#gino.declarative.Model" title="gino.declarative.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">gino.declarative.Model</span></code></a>. Defining subclasses of this class will
 result new tables added to this <a class="reference internal" href="#gino.api.Gino" title="gino.api.Gino"><code class="xref py py-class docutils literal notranslate"><span class="pre">Gino</span></code></a> metadata.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="gino.api.Gino.acquire">
-<code class="sig-name descname"><span class="pre">acquire</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.Gino.acquire" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.api.Gino.acquire">
+<span class="sig-name descname"><span class="pre">acquire</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.Gino.acquire" title="永久链接至目标">¶</a></dt>
 <dd><p>A delegate of <a class="reference internal" href="gino.engine.html#gino.engine.GinoEngine.acquire" title="gino.engine.GinoEngine.acquire"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GinoEngine.acquire()</span></code></a>.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="gino.api.Gino.all">
-<em class="property"><span class="pre">async</span> </em><code class="sig-name descname"><span class="pre">all</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clause</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">multiparams</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.Gino.all" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.api.Gino.all">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clause</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">multiparams</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.Gino.all" title="永久链接至目标">¶</a></dt>
 <dd><p>A delegate of <a class="reference internal" href="gino.engine.html#gino.engine.GinoEngine.all" title="gino.engine.GinoEngine.all"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GinoEngine.all()</span></code></a>.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="gino.api.Gino.bake">
-<code class="sig-name descname"><span class="pre">bake</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func_or_elem</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">execution_options</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.Gino.bake" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.api.Gino.bake">
+<span class="sig-name descname"><span class="pre">bake</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func_or_elem</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">execution_options</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.Gino.bake" title="永久链接至目标">¶</a></dt>
 <dd><p>A delegate of <a class="reference internal" href="gino.bakery.html#gino.bakery.Bakery.bake" title="gino.bakery.Bakery.bake"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Bakery.bake()</span></code></a>.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">1.1 新版功能.</span></p>
 </div>
 </dd></dl>
 
-<dl class="py method">
-<dt id="gino.api.Gino.bakery">
-<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">bakery</span></code><a class="headerlink" href="#gino.api.Gino.bakery" title="永久链接至目标">¶</a></dt>
+<dl class="py property">
+<dt class="sig sig-object py" id="gino.api.Gino.bakery">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bakery</span></span><a class="headerlink" href="#gino.api.Gino.bakery" title="永久链接至目标">¶</a></dt>
 <dd><p>The bundled <a class="reference internal" href="gino.bakery.html#gino.bakery.Bakery" title="gino.bakery.Bakery"><code class="xref py py-class docutils literal notranslate"><span class="pre">Bakery</span></code></a> instance.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">1.1 新版功能.</span></p>
 </div>
 </dd></dl>
 
-<dl class="py method">
-<dt id="gino.api.Gino.bind">
-<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">bind</span></code><a class="headerlink" href="#gino.api.Gino.bind" title="永久链接至目标">¶</a></dt>
+<dl class="py property">
+<dt class="sig sig-object py" id="gino.api.Gino.bind">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bind</span></span><a class="headerlink" href="#gino.api.Gino.bind" title="永久链接至目标">¶</a></dt>
 <dd><p>An <a class="reference internal" href="gino.engine.html#gino.engine.GinoEngine" title="gino.engine.GinoEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">GinoEngine</span></code></a> to which this <a class="reference internal" href="#gino.api.Gino" title="gino.api.Gino"><code class="xref py py-class docutils literal notranslate"><span class="pre">Gino</span></code></a> is bound.</p>
 <p>This is a simple property with no getter or setter hook - what you set
 is what you get. To achieve the same result as it is in SQLAlchemy -
@@ -264,52 +264,52 @@ engine instance, use <a class="reference internal" href="#gino.api.Gino.set_bind
 </dd></dl>
 
 <dl class="py method">
-<dt id="gino.api.Gino.compile">
-<code class="sig-name descname"><span class="pre">compile</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">elem</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">multiparams</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.Gino.compile" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.api.Gino.compile">
+<span class="sig-name descname"><span class="pre">compile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">elem</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">multiparams</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.Gino.compile" title="永久链接至目标">¶</a></dt>
 <dd><p>A delegate of <a class="reference internal" href="gino.engine.html#gino.engine.GinoEngine.compile" title="gino.engine.GinoEngine.compile"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GinoEngine.compile()</span></code></a>.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="gino.api.Gino.first">
-<em class="property"><span class="pre">async</span> </em><code class="sig-name descname"><span class="pre">first</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clause</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">multiparams</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.Gino.first" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.api.Gino.first">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">first</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clause</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">multiparams</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.Gino.first" title="永久链接至目标">¶</a></dt>
 <dd><p>A delegate of <a class="reference internal" href="gino.engine.html#gino.engine.GinoEngine.first" title="gino.engine.GinoEngine.first"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GinoEngine.first()</span></code></a>.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="gino.api.Gino.iterate">
-<code class="sig-name descname"><span class="pre">iterate</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clause</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">multiparams</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.Gino.iterate" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.api.Gino.iterate">
+<span class="sig-name descname"><span class="pre">iterate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clause</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">multiparams</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.Gino.iterate" title="永久链接至目标">¶</a></dt>
 <dd><p>A delegate of <a class="reference internal" href="gino.engine.html#gino.engine.GinoEngine.iterate" title="gino.engine.GinoEngine.iterate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GinoEngine.iterate()</span></code></a>.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="gino.api.Gino.model_base_classes">
-<code class="sig-name descname"><span class="pre">model_base_classes</span></code><em class="property"> <span class="pre">=</span> <span class="pre">(&lt;class</span> <span class="pre">'gino.crud.CRUDModel'&gt;,)</span></em><a class="headerlink" href="#gino.api.Gino.model_base_classes" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.api.Gino.model_base_classes">
+<span class="sig-name descname"><span class="pre">model_base_classes</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(&lt;class</span> <span class="pre">'gino.crud.CRUDModel'&gt;,)</span></em><a class="headerlink" href="#gino.api.Gino.model_base_classes" title="永久链接至目标">¶</a></dt>
 <dd><p>Overridable default model classes to build the <a class="reference internal" href="#gino.api.Gino.Model" title="gino.api.Gino.Model"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Model</span></code></a>.</p>
 <p>Default is <a class="reference internal" href="gino.crud.html#gino.crud.CRUDModel" title="gino.crud.CRUDModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">(CRUDModel,</span> <span class="pre">)</span></code></a>.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="gino.api.Gino.no_delegate">
-<code class="sig-name descname"><span class="pre">no_delegate</span></code><em class="property"> <span class="pre">=</span> <span class="pre">{'create_engine',</span> <span class="pre">'engine_from_config'}</span></em><a class="headerlink" href="#gino.api.Gino.no_delegate" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.api.Gino.no_delegate">
+<span class="sig-name descname"><span class="pre">no_delegate</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'create_engine',</span> <span class="pre">'engine_from_config'}</span></em><a class="headerlink" href="#gino.api.Gino.no_delegate" title="永久链接至目标">¶</a></dt>
 <dd><p>A set of symbols from <code class="xref py py-mod docutils literal notranslate"><span class="pre">sqlalchemy</span></code> which is not delegated by
 <a class="reference internal" href="#gino.api.Gino" title="gino.api.Gino"><code class="xref py py-class docutils literal notranslate"><span class="pre">Gino</span></code></a>.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="gino.api.Gino.one">
-<em class="property"><span class="pre">async</span> </em><code class="sig-name descname"><span class="pre">one</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clause</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">multiparams</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.Gino.one" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.api.Gino.one">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">one</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clause</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">multiparams</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.Gino.one" title="永久链接至目标">¶</a></dt>
 <dd><p>A delegate of <a class="reference internal" href="gino.engine.html#gino.engine.GinoEngine.first" title="gino.engine.GinoEngine.first"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GinoEngine.one()</span></code></a>.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="gino.api.Gino.one_or_none">
-<em class="property"><span class="pre">async</span> </em><code class="sig-name descname"><span class="pre">one_or_none</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clause</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">multiparams</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.Gino.one_or_none" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.api.Gino.one_or_none">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">one_or_none</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clause</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">multiparams</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.Gino.one_or_none" title="永久链接至目标">¶</a></dt>
 <dd><p>A delegate of <a class="reference internal" href="gino.engine.html#gino.engine.GinoEngine.one_or_none" title="gino.engine.GinoEngine.one_or_none"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GinoEngine.one_or_none()</span></code></a>.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="gino.api.Gino.pop_bind">
-<code class="sig-name descname"><span class="pre">pop_bind</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.Gino.pop_bind" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.api.Gino.pop_bind">
+<span class="sig-name descname"><span class="pre">pop_bind</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.Gino.pop_bind" title="永久链接至目标">¶</a></dt>
 <dd><p>Unbind self, and return the bound engine.</p>
 <p>This is usually used in a chained call to close the engine:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">await</span> <span class="n">db</span><span class="o">.</span><span class="n">pop_bind</span><span class="p">()</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
@@ -323,8 +323,8 @@ engine instance, use <a class="reference internal" href="#gino.api.Gino.set_bind
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="gino.api.Gino.query_executor">
-<code class="sig-name descname"><span class="pre">query_executor</span></code><a class="headerlink" href="#gino.api.Gino.query_executor" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.api.Gino.query_executor">
+<span class="sig-name descname"><span class="pre">query_executor</span></span><a class="headerlink" href="#gino.api.Gino.query_executor" title="永久链接至目标">¶</a></dt>
 <dd><p>The overridable <code class="docutils literal notranslate"><span class="pre">gino</span></code> extension class on
 <a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/selectable.html#sqlalchemy.sql.expression.Executable" title="(在 SQLAlchemy v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Executable</span></code></a>.</p>
 <p>This class will be set as the getter method of the property <code class="docutils literal notranslate"><span class="pre">gino</span></code> on
@@ -335,20 +335,20 @@ engine instance, use <a class="reference internal" href="#gino.api.Gino.set_bind
 </dd></dl>
 
 <dl class="py method">
-<dt id="gino.api.Gino.scalar">
-<em class="property"><span class="pre">async</span> </em><code class="sig-name descname"><span class="pre">scalar</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clause</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">multiparams</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.Gino.scalar" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.api.Gino.scalar">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">scalar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clause</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">multiparams</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.Gino.scalar" title="永久链接至目标">¶</a></dt>
 <dd><p>A delegate of <a class="reference internal" href="gino.engine.html#gino.engine.GinoEngine.scalar" title="gino.engine.GinoEngine.scalar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GinoEngine.scalar()</span></code></a>.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="gino.api.Gino.schema_visitor">
-<code class="sig-name descname"><span class="pre">schema_visitor</span></code><a class="headerlink" href="#gino.api.Gino.schema_visitor" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.api.Gino.schema_visitor">
+<span class="sig-name descname"><span class="pre">schema_visitor</span></span><a class="headerlink" href="#gino.api.Gino.schema_visitor" title="永久链接至目标">¶</a></dt>
 <dd><p>alias of <a class="reference internal" href="gino.schema.html#gino.schema.GinoSchemaVisitor" title="gino.schema.GinoSchemaVisitor"><code class="xref py py-class docutils literal notranslate"><span class="pre">gino.schema.GinoSchemaVisitor</span></code></a></p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="gino.api.Gino.set_bind">
-<em class="property"><span class="pre">async</span> </em><code class="sig-name descname"><span class="pre">set_bind</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bind</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loop</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.Gino.set_bind" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.api.Gino.set_bind">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">set_bind</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bind</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loop</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.Gino.set_bind" title="永久链接至目标">¶</a></dt>
 <dd><p>Bind self to the given <a class="reference internal" href="gino.engine.html#gino.engine.GinoEngine" title="gino.engine.GinoEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">GinoEngine</span></code></a> and return it.</p>
 <p>If the given <code class="docutils literal notranslate"><span class="pre">bind</span></code> is a string or
 <a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/engines.html#sqlalchemy.engine.URL" title="(在 SQLAlchemy v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">URL</span></code></a>, all arguments will be sent to
@@ -361,20 +361,20 @@ engine instance, use <a class="reference internal" href="#gino.api.Gino.set_bind
 </dd></dl>
 
 <dl class="py method">
-<dt id="gino.api.Gino.status">
-<em class="property"><span class="pre">async</span> </em><code class="sig-name descname"><span class="pre">status</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clause</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">multiparams</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.Gino.status" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.api.Gino.status">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">status</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clause</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">multiparams</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.Gino.status" title="永久链接至目标">¶</a></dt>
 <dd><p>A delegate of <a class="reference internal" href="gino.engine.html#gino.engine.GinoEngine.status" title="gino.engine.GinoEngine.status"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GinoEngine.status()</span></code></a>.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="gino.api.Gino.transaction">
-<code class="sig-name descname"><span class="pre">transaction</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.Gino.transaction" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.api.Gino.transaction">
+<span class="sig-name descname"><span class="pre">transaction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.Gino.transaction" title="永久链接至目标">¶</a></dt>
 <dd><p>A delegate of <a class="reference internal" href="gino.engine.html#gino.engine.GinoEngine.transaction" title="gino.engine.GinoEngine.transaction"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GinoEngine.transaction()</span></code></a>.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="gino.api.Gino.with_bind">
-<code class="sig-name descname"><span class="pre">with_bind</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bind</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loop</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.Gino.with_bind" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.api.Gino.with_bind">
+<span class="sig-name descname"><span class="pre">with_bind</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bind</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loop</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.Gino.with_bind" title="永久链接至目标">¶</a></dt>
 <dd><p>Shortcut for <a class="reference internal" href="#gino.api.Gino.set_bind" title="gino.api.Gino.set_bind"><code class="xref py py-meth docutils literal notranslate"><span class="pre">set_bind()</span></code></a> and <a class="reference internal" href="#gino.api.Gino.pop_bind" title="gino.api.Gino.pop_bind"><code class="xref py py-meth docutils literal notranslate"><span class="pre">pop_bind()</span></code></a> plus closing engine.</p>
 <p>This method accepts the same arguments of
 <a class="reference internal" href="gino.html#gino.create_engine" title="gino.create_engine"><code class="xref py py-func docutils literal notranslate"><span class="pre">create_engine()</span></code></a>. This allows inline creating an engine and
@@ -394,8 +394,8 @@ exit:</p>
 </dd></dl>
 
 <dl class="py class">
-<dt id="gino.api.GinoExecutor">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">gino.api.</span></code><code class="sig-name descname"><span class="pre">GinoExecutor</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.GinoExecutor" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.api.GinoExecutor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gino.api.</span></span><span class="sig-name descname"><span class="pre">GinoExecutor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.GinoExecutor" title="永久链接至目标">¶</a></dt>
 <dd><p>基类：<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(在 Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>The default <code class="docutils literal notranslate"><span class="pre">gino</span></code> extension on
 <a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/selectable.html#sqlalchemy.sql.expression.Executable" title="(在 SQLAlchemy v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Executable</span></code></a> constructs for implicit
@@ -426,8 +426,8 @@ metadata, hence no engine. Therefore, this will always fail:</p>
 <a class="reference internal" href="#gino.api.Gino.scalar" title="gino.api.Gino.scalar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">db.scalar()</span></code></a> in this case.</p>
 </div>
 <dl class="py method">
-<dt id="gino.api.GinoExecutor.all">
-<em class="property"><span class="pre">async</span> </em><code class="sig-name descname"><span class="pre">all</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">multiparams</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.GinoExecutor.all" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.api.GinoExecutor.all">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">multiparams</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.GinoExecutor.all" title="永久链接至目标">¶</a></dt>
 <dd><p>Returns <a class="reference internal" href="gino.engine.html#gino.engine.GinoEngine.all" title="gino.engine.GinoEngine.all"><code class="xref py py-meth docutils literal notranslate"><span class="pre">engine.all()</span></code></a> with this query
 as the first argument, and other arguments followed, where <code class="docutils literal notranslate"><span class="pre">engine</span></code>
 is the <a class="reference internal" href="gino.engine.html#gino.engine.GinoEngine" title="gino.engine.GinoEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">GinoEngine</span></code></a> to which the metadata
@@ -435,8 +435,8 @@ is the <a class="reference internal" href="gino.engine.html#gino.engine.GinoEngi
 </dd></dl>
 
 <dl class="py method">
-<dt id="gino.api.GinoExecutor.execution_options">
-<code class="sig-name descname"><span class="pre">execution_options</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">options</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.GinoExecutor.execution_options" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.api.GinoExecutor.execution_options">
+<span class="sig-name descname"><span class="pre">execution_options</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">options</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.GinoExecutor.execution_options" title="永久链接至目标">¶</a></dt>
 <dd><p>Set execution options to this query in a chaining call.</p>
 <p>Read <a class="reference internal" href="gino.engine.html#gino.engine.GinoConnection.execution_options" title="gino.engine.GinoConnection.execution_options"><code class="xref py py-meth docutils literal notranslate"><span class="pre">execution_options()</span></code></a> for more
 information.</p>
@@ -451,8 +451,8 @@ information.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="gino.api.GinoExecutor.first">
-<em class="property"><span class="pre">async</span> </em><code class="sig-name descname"><span class="pre">first</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">multiparams</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.GinoExecutor.first" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.api.GinoExecutor.first">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">first</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">multiparams</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.GinoExecutor.first" title="永久链接至目标">¶</a></dt>
 <dd><p>Returns <a class="reference internal" href="gino.engine.html#gino.engine.GinoEngine.first" title="gino.engine.GinoEngine.first"><code class="xref py py-meth docutils literal notranslate"><span class="pre">engine.first()</span></code></a> with this
 query as the first argument, and other arguments followed, where
 <code class="docutils literal notranslate"><span class="pre">engine</span></code> is the <a class="reference internal" href="gino.engine.html#gino.engine.GinoEngine" title="gino.engine.GinoEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">GinoEngine</span></code></a> to which the metadata
@@ -460,8 +460,8 @@ query as the first argument, and other arguments followed, where
 </dd></dl>
 
 <dl class="py method">
-<dt id="gino.api.GinoExecutor.iterate">
-<code class="sig-name descname"><span class="pre">iterate</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">multiparams</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.GinoExecutor.iterate" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.api.GinoExecutor.iterate">
+<span class="sig-name descname"><span class="pre">iterate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">multiparams</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.GinoExecutor.iterate" title="永久链接至目标">¶</a></dt>
 <dd><p>Returns <a class="reference internal" href="gino.engine.html#gino.engine.GinoEngine.iterate" title="gino.engine.GinoEngine.iterate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">engine.iterate()</span></code></a> with this
 query as the first argument, and other arguments followed, where
 <code class="docutils literal notranslate"><span class="pre">engine</span></code> is the <a class="reference internal" href="gino.engine.html#gino.engine.GinoEngine" title="gino.engine.GinoEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">GinoEngine</span></code></a> to which the metadata
@@ -469,8 +469,8 @@ query as the first argument, and other arguments followed, where
 </dd></dl>
 
 <dl class="py method">
-<dt id="gino.api.GinoExecutor.load">
-<code class="sig-name descname"><span class="pre">load</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.GinoExecutor.load" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.api.GinoExecutor.load">
+<span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.GinoExecutor.load" title="永久链接至目标">¶</a></dt>
 <dd><p>Shortcut to set execution option <code class="docutils literal notranslate"><span class="pre">loader</span></code> in a chaining call.</p>
 <p>For example to load <code class="docutils literal notranslate"><span class="pre">Book</span></code> instances with their authors:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">query</span> <span class="o">=</span> <span class="n">Book</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">User</span><span class="p">)</span><span class="o">.</span><span class="n">select</span><span class="p">()</span>
@@ -482,16 +482,16 @@ information.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="gino.api.GinoExecutor.model">
-<code class="sig-name descname"><span class="pre">model</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.GinoExecutor.model" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.api.GinoExecutor.model">
+<span class="sig-name descname"><span class="pre">model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.GinoExecutor.model" title="永久链接至目标">¶</a></dt>
 <dd><p>Shortcut to set execution option <code class="docutils literal notranslate"><span class="pre">model</span></code> in a chaining call.</p>
 <p>Read <a class="reference internal" href="gino.engine.html#gino.engine.GinoConnection.execution_options" title="gino.engine.GinoConnection.execution_options"><code class="xref py py-meth docutils literal notranslate"><span class="pre">execution_options()</span></code></a> for more
 information.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="gino.api.GinoExecutor.one">
-<em class="property"><span class="pre">async</span> </em><code class="sig-name descname"><span class="pre">one</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">multiparams</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.GinoExecutor.one" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.api.GinoExecutor.one">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">one</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">multiparams</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.GinoExecutor.one" title="永久链接至目标">¶</a></dt>
 <dd><p>Returns <a class="reference internal" href="gino.engine.html#gino.engine.GinoEngine.one" title="gino.engine.GinoEngine.one"><code class="xref py py-meth docutils literal notranslate"><span class="pre">engine.one()</span></code></a> with this query
 as the first argument, and other arguments followed, where <code class="docutils literal notranslate"><span class="pre">engine</span></code>
 is the <a class="reference internal" href="gino.engine.html#gino.engine.GinoEngine" title="gino.engine.GinoEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">GinoEngine</span></code></a> to which the metadata
@@ -499,8 +499,8 @@ is the <a class="reference internal" href="gino.engine.html#gino.engine.GinoEngi
 </dd></dl>
 
 <dl class="py method">
-<dt id="gino.api.GinoExecutor.one_or_none">
-<em class="property"><span class="pre">async</span> </em><code class="sig-name descname"><span class="pre">one_or_none</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">multiparams</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.GinoExecutor.one_or_none" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.api.GinoExecutor.one_or_none">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">one_or_none</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">multiparams</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.GinoExecutor.one_or_none" title="永久链接至目标">¶</a></dt>
 <dd><p>Returns <a class="reference internal" href="gino.engine.html#gino.engine.GinoEngine.one_or_none" title="gino.engine.GinoEngine.one_or_none"><code class="xref py py-meth docutils literal notranslate"><span class="pre">engine.one_or_none()</span></code></a>
 with this query as the first argument, and other arguments followed,
 where <code class="docutils literal notranslate"><span class="pre">engine</span></code> is the <a class="reference internal" href="gino.engine.html#gino.engine.GinoEngine" title="gino.engine.GinoEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">GinoEngine</span></code></a> to which the
@@ -508,9 +508,9 @@ metadata (<a class="reference internal" href="#gino.api.Gino" title="gino.api.Gi
 query.</p>
 </dd></dl>
 
-<dl class="py method">
-<dt id="gino.api.GinoExecutor.query">
-<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">query</span></code><a class="headerlink" href="#gino.api.GinoExecutor.query" title="永久链接至目标">¶</a></dt>
+<dl class="py property">
+<dt class="sig sig-object py" id="gino.api.GinoExecutor.query">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">query</span></span><a class="headerlink" href="#gino.api.GinoExecutor.query" title="永久链接至目标">¶</a></dt>
 <dd><p>Get back the chained <a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/selectable.html#sqlalchemy.sql.expression.Executable" title="(在 SQLAlchemy v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Executable</span></code></a>.</p>
 <p>In a chained query calls, occasionally the previous query clause is
 needed after a <code class="docutils literal notranslate"><span class="pre">.gino.</span></code> chain, you can use <code class="docutils literal notranslate"><span class="pre">.query.</span></code> to resume the
@@ -521,16 +521,16 @@ chain back. For example:</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="gino.api.GinoExecutor.return_model">
-<code class="sig-name descname"><span class="pre">return_model</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">switch</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.GinoExecutor.return_model" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.api.GinoExecutor.return_model">
+<span class="sig-name descname"><span class="pre">return_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">switch</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.GinoExecutor.return_model" title="永久链接至目标">¶</a></dt>
 <dd><p>Shortcut to set execution option <code class="docutils literal notranslate"><span class="pre">return_model</span></code> in a chaining call.</p>
 <p>Read <a class="reference internal" href="gino.engine.html#gino.engine.GinoConnection.execution_options" title="gino.engine.GinoConnection.execution_options"><code class="xref py py-meth docutils literal notranslate"><span class="pre">execution_options()</span></code></a> for more
 information.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="gino.api.GinoExecutor.scalar">
-<em class="property"><span class="pre">async</span> </em><code class="sig-name descname"><span class="pre">scalar</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">multiparams</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.GinoExecutor.scalar" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.api.GinoExecutor.scalar">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">scalar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">multiparams</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.GinoExecutor.scalar" title="永久链接至目标">¶</a></dt>
 <dd><p>Returns <a class="reference internal" href="gino.engine.html#gino.engine.GinoEngine.scalar" title="gino.engine.GinoEngine.scalar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">engine.scalar()</span></code></a> with this
 query as the first argument, and other arguments followed, where
 <code class="docutils literal notranslate"><span class="pre">engine</span></code> is the <a class="reference internal" href="gino.engine.html#gino.engine.GinoEngine" title="gino.engine.GinoEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">GinoEngine</span></code></a> to which the metadata
@@ -538,8 +538,8 @@ query as the first argument, and other arguments followed, where
 </dd></dl>
 
 <dl class="py method">
-<dt id="gino.api.GinoExecutor.status">
-<em class="property"><span class="pre">async</span> </em><code class="sig-name descname"><span class="pre">status</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">multiparams</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.GinoExecutor.status" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.api.GinoExecutor.status">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">status</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">multiparams</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.GinoExecutor.status" title="永久链接至目标">¶</a></dt>
 <dd><p>Returns <a class="reference internal" href="gino.engine.html#gino.engine.GinoEngine.status" title="gino.engine.GinoEngine.status"><code class="xref py py-meth docutils literal notranslate"><span class="pre">engine.status()</span></code></a> with this
 query as the first argument, and other arguments followed, where
 <code class="docutils literal notranslate"><span class="pre">engine</span></code> is the <a class="reference internal" href="gino.engine.html#gino.engine.GinoEngine" title="gino.engine.GinoEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">GinoEngine</span></code></a> to which the metadata
@@ -547,8 +547,8 @@ query as the first argument, and other arguments followed, where
 </dd></dl>
 
 <dl class="py method">
-<dt id="gino.api.GinoExecutor.timeout">
-<code class="sig-name descname"><span class="pre">timeout</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeout</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.GinoExecutor.timeout" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.api.GinoExecutor.timeout">
+<span class="sig-name descname"><span class="pre">timeout</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeout</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.api.GinoExecutor.timeout" title="永久链接至目标">¶</a></dt>
 <dd><p>Shortcut to set execution option <code class="docutils literal notranslate"><span class="pre">timeout</span></code> in a chaining call.</p>
 <p>Read <a class="reference internal" href="gino.engine.html#gino.engine.GinoConnection.execution_options" title="gino.engine.GinoConnection.execution_options"><code class="xref py py-meth docutils literal notranslate"><span class="pre">execution_options()</span></code></a> for more
 information.</p>
@@ -556,7 +556,7 @@ information.</p>
 
 </dd></dl>
 
-</div>
+</section>
 
 
             </div>

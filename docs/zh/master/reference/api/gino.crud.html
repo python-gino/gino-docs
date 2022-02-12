@@ -88,14 +88,14 @@
     </div>
 
     <div id="sidenav" class="sidenav sidenav-fixed">
-        <p class="caption"><span class="caption-text">上手教程</span></p>
+        <p class="caption" role="heading"><span class="caption-text">上手教程</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials.html">上手教程</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/announcement.html">官宣：Python 异步编程再添一利器</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/tutorial.html">GINO 基础教程</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/fastapi.html">搭建一个 FastAPI 服务器</a></li>
 </ul>
-<p class="caption"><span class="caption-text">进阶用法</span></p>
+<p class="caption" role="heading"><span class="caption-text">进阶用法</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../how-to.html">进阶用法</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../how-to/alembic.html">使用 Alembic</a></li>
@@ -109,7 +109,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../how-to/schema.html">表结构定义</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../how-to/transaction.html">数据库事务</a></li>
 </ul>
-<p class="caption"><span class="caption-text">原理说明</span></p>
+<p class="caption" role="heading"><span class="caption-text">原理说明</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../explanation.html">原理说明</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../explanation/async.html">异步编程基础</a></li>
@@ -117,7 +117,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../explanation/sa20.html">SQLAlchemy 2.0</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../explanation/why.html">为什么要用异步 ORM？</a></li>
 </ul>
-<p class="caption"><span class="caption-text">参考手册</span></p>
+<p class="caption" role="heading"><span class="caption-text">参考手册</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../../reference.html">参考手册</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../api.html">API 参考</a></li>
@@ -141,46 +141,46 @@
         <div class="col s12 m9 body">
             <div id="main-content" role="main">
                 
-    <div class="section" id="module-gino.crud">
+    <section id="module-gino.crud">
 <span id="gino-crud-module"></span><h1>gino.crud module<a class="headerlink" href="#module-gino.crud" title="永久链接至标题">¶</a></h1>
 <dl class="py class">
-<dt id="gino.crud.Alias">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">gino.crud.</span></code><code class="sig-name descname"><span class="pre">Alias</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.crud.Alias" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.crud.Alias">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gino.crud.</span></span><span class="sig-name descname"><span class="pre">Alias</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.crud.Alias" title="永久链接至目标">¶</a></dt>
 <dd><p>基类：<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(在 Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Experimental proxy for table alias on model.</p>
 <dl class="py method">
-<dt id="gino.crud.Alias.distinct">
-<code class="sig-name descname"><span class="pre">distinct</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">columns</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.crud.Alias.distinct" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.crud.Alias.distinct">
+<span class="sig-name descname"><span class="pre">distinct</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">columns</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.crud.Alias.distinct" title="永久链接至目标">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="gino.crud.Alias.load">
-<code class="sig-name descname"><span class="pre">load</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">column_names</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">relationships</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.crud.Alias.load" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.crud.Alias.load">
+<span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">column_names</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">relationships</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.crud.Alias.load" title="永久链接至目标">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="gino.crud.Alias.on">
-<code class="sig-name descname"><span class="pre">on</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">on_clause</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.crud.Alias.on" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.crud.Alias.on">
+<span class="sig-name descname"><span class="pre">on</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">on_clause</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.crud.Alias.on" title="永久链接至目标">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
-<dt id="gino.crud.CRUDModel">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">gino.crud.</span></code><code class="sig-name descname"><span class="pre">CRUDModel</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.crud.CRUDModel" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.crud.CRUDModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gino.crud.</span></span><span class="sig-name descname"><span class="pre">CRUDModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.crud.CRUDModel" title="永久链接至目标">¶</a></dt>
 <dd><p>基类：<a class="reference internal" href="gino.declarative.html#gino.declarative.Model" title="gino.declarative.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">gino.declarative.Model</span></code></a></p>
 <p>The base class for models with CRUD support.</p>
 <p>Don't inherit from this class directly, because it has no metadata. Use
 <a class="reference internal" href="gino.api.html#gino.api.Gino.Model" title="gino.api.Gino.Model"><code class="xref py py-attr docutils literal notranslate"><span class="pre">db.Model</span></code></a> instead.</p>
 <dl class="py method">
-<dt id="gino.crud.CRUDModel.alias">
-<em class="property"><span class="pre">classmethod</span> </em><code class="sig-name descname"><span class="pre">alias</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.crud.CRUDModel.alias" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.crud.CRUDModel.alias">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">alias</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.crud.CRUDModel.alias" title="永久链接至目标">¶</a></dt>
 <dd><p>Experimental proxy for table alias on model.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="gino.crud.CRUDModel.append_where_primary_key">
-<code class="sig-name descname"><span class="pre">append_where_primary_key</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">q</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.crud.CRUDModel.append_where_primary_key" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.crud.CRUDModel.append_where_primary_key">
+<span class="sig-name descname"><span class="pre">append_where_primary_key</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">q</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.crud.CRUDModel.append_where_primary_key" title="永久链接至目标">¶</a></dt>
 <dd><p>Append where clause to locate this model instance by primary on the
 given query, and return the new query.</p>
 <p>This is mostly used internally in GINO, but also available for such
@@ -198,8 +198,8 @@ usage:</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="gino.crud.CRUDModel.create">
-<code class="sig-name descname"><span class="pre">create</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">bind=None</span></em>, <em class="sig-param"><span class="pre">timeout=&lt;object</span> <span class="pre">object&gt;</span></em>, <em class="sig-param"><span class="pre">**values</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.crud.CRUDModel.create" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.crud.CRUDModel.create">
+<span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bind=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout=&lt;object</span> <span class="pre">object&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**values</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.crud.CRUDModel.create" title="永久链接至目标">¶</a></dt>
 <dd><p>This <code class="docutils literal notranslate"><span class="pre">create</span></code> behaves a bit different on model classes compared to model
 instances.</p>
 <p>On model classes, <code class="docutils literal notranslate"><span class="pre">create</span></code> will create a new model instance and insert
@@ -234,8 +234,8 @@ initial values. Only available when called on a model class.</p></li>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="gino.crud.CRUDModel.delete">
-<code class="sig-name descname"><span class="pre">delete</span></code><a class="headerlink" href="#gino.crud.CRUDModel.delete" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.crud.CRUDModel.delete">
+<span class="sig-name descname"><span class="pre">delete</span></span><a class="headerlink" href="#gino.crud.CRUDModel.delete" title="永久链接至目标">¶</a></dt>
 <dd><p>Similar to <a class="reference internal" href="#gino.crud.UpdateRequest.update" title="gino.crud.UpdateRequest.update"><code class="xref py py-meth docutils literal notranslate"><span class="pre">update()</span></code></a>, this <code class="docutils literal notranslate"><span class="pre">delete</span></code> is also different on model
 classes than on model instances.</p>
 <p>On model classes <code class="docutils literal notranslate"><span class="pre">delete</span></code> is an attribute of type
@@ -272,15 +272,15 @@ execution option value if unspecified.</p></li>
 </dd></dl>
 
 <dl class="py method">
-<dt id="gino.crud.CRUDModel.distinct">
-<em class="property"><span class="pre">classmethod</span> </em><code class="sig-name descname"><span class="pre">distinct</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">columns</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.crud.CRUDModel.distinct" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.crud.CRUDModel.distinct">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">distinct</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">columns</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.crud.CRUDModel.distinct" title="永久链接至目标">¶</a></dt>
 <dd><p>Experimental loader feature to yield only distinct instances by given
 columns.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="gino.crud.CRUDModel.get">
-<em class="property"><span class="pre">async</span> <span class="pre">classmethod</span> </em><code class="sig-name descname"><span class="pre">get</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">ident</span></em>, <em class="sig-param"><span class="pre">bind=None</span></em>, <em class="sig-param"><span class="pre">timeout=&lt;object</span> <span class="pre">object&gt;</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.crud.CRUDModel.get" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.crud.CRUDModel.get">
+<em class="property"><span class="pre">async</span><span class="w"> </span><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ident</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bind=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout=&lt;object</span> <span class="pre">object&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.crud.CRUDModel.get" title="永久链接至目标">¶</a></dt>
 <dd><p>Get an instance of this model class by primary key.</p>
 <p>For example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">user</span> <span class="o">=</span> <span class="k">await</span> <span class="n">User</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;user_id&#39;</span><span class="p">))</span>
@@ -308,8 +308,8 @@ execution option value if unspecified.</p></li>
 </dd></dl>
 
 <dl class="py method">
-<dt id="gino.crud.CRUDModel.in_query">
-<em class="property"><span class="pre">classmethod</span> </em><code class="sig-name descname"><span class="pre">in_query</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.crud.CRUDModel.in_query" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.crud.CRUDModel.in_query">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">in_query</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.crud.CRUDModel.in_query" title="永久链接至目标">¶</a></dt>
 <dd><p>Convenient method to get a Model object when using subqueries.</p>
 <p>Though with filters and aggregations, subqueries often return same
 columns as the original table, but SQLAlchemy could not recognize them
@@ -327,8 +327,8 @@ being used in subqueries. For example:</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="gino.crud.CRUDModel.load">
-<em class="property"><span class="pre">classmethod</span> </em><code class="sig-name descname"><span class="pre">load</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">column_names</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">relationships</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.crud.CRUDModel.load" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.crud.CRUDModel.load">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">column_names</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">relationships</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.crud.CRUDModel.load" title="永久链接至目标">¶</a></dt>
 <dd><p>Populates a <a class="reference internal" href="gino.loader.html#gino.loader.Loader" title="gino.loader.Loader"><code class="xref py py-class docutils literal notranslate"><span class="pre">loader.Loader</span></code></a> instance to be used by the
 <code class="docutils literal notranslate"><span class="pre">loader</span></code> execution option in order to customize the loading behavior
 to load specified fields into instances of this model.</p>
@@ -391,8 +391,8 @@ in a chain, in whatever order suits you.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="gino.crud.CRUDModel.lookup">
-<code class="sig-name descname"><span class="pre">lookup</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.crud.CRUDModel.lookup" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.crud.CRUDModel.lookup">
+<span class="sig-name descname"><span class="pre">lookup</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.crud.CRUDModel.lookup" title="永久链接至目标">¶</a></dt>
 <dd><p>Generate where-clause expression to locate this model instance.</p>
 <p>By default this method uses current values of all primary keys, and you
 can override it to behave differently. Most instance-level CRUD
@@ -411,13 +411,13 @@ used in <a class="reference internal" href="#gino.crud.UpdateRequest.apply" titl
 </dd></dl>
 
 <dl class="py method">
-<dt id="gino.crud.CRUDModel.none_as_none">
-<em class="property"><span class="pre">classmethod</span> </em><code class="sig-name descname"><span class="pre">none_as_none</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">enabled</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.crud.CRUDModel.none_as_none" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.crud.CRUDModel.none_as_none">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">none_as_none</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">enabled</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.crud.CRUDModel.none_as_none" title="永久链接至目标">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="gino.crud.CRUDModel.on">
-<em class="property"><span class="pre">classmethod</span> </em><code class="sig-name descname"><span class="pre">on</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">on_clause</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.crud.CRUDModel.on" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.crud.CRUDModel.on">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">on</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">on_clause</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.crud.CRUDModel.on" title="永久链接至目标">¶</a></dt>
 <dd><p>Customize the on-clause for the auto-generated outer join query.</p>
 <div class="admonition note">
 <p class="admonition-title">注解</p>
@@ -431,8 +431,8 @@ for a given query.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="gino.crud.CRUDModel.query">
-<code class="sig-name descname"><span class="pre">query</span></code><a class="headerlink" href="#gino.crud.CRUDModel.query" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.crud.CRUDModel.query">
+<span class="sig-name descname"><span class="pre">query</span></span><a class="headerlink" href="#gino.crud.CRUDModel.query" title="永久链接至目标">¶</a></dt>
 <dd><p>Get a SQLAlchemy query clause of the table behind this model. This equals
 to <a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/selectable.html#sqlalchemy.sql.expression.select" title="(在 SQLAlchemy v1.4)"><code class="xref py py-func docutils literal notranslate"><span class="pre">sqlalchemy.select([self.__table__])</span></code></a>. If this attribute is retrieved on a
 model instance, then a where clause to locate this instance by its primary
@@ -442,8 +442,8 @@ query yields instances of this model instead of database rows.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="gino.crud.CRUDModel.select">
-<code class="sig-name descname"><span class="pre">select</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.crud.CRUDModel.select" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.crud.CRUDModel.select">
+<span class="sig-name descname"><span class="pre">select</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.crud.CRUDModel.select" title="永久链接至目标">¶</a></dt>
 <dd><p>Build a query to retrieve only specified columns from this table.</p>
 <p>This method accepts positional string arguments as names of attributes to
 retrieve, and returns a <a class="reference external" href="https://docs.sqlalchemy.org/en/14/core/selectable.html#sqlalchemy.sql.expression.Select" title="(在 SQLAlchemy v1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Select</span></code></a> for
@@ -473,8 +473,8 @@ field on current model instance from database:</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="gino.crud.CRUDModel.to_dict">
-<code class="sig-name descname"><span class="pre">to_dict</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.crud.CRUDModel.to_dict" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.crud.CRUDModel.to_dict">
+<span class="sig-name descname"><span class="pre">to_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gino.crud.CRUDModel.to_dict" title="永久链接至目标">¶</a></dt>
 <dd><p>Convenient method to generate a dict from this model instance.</p>
 <p>Keys will be attribute names, while values are loaded from memory (not
 from database). If there are <a class="reference internal" href="gino.json_support.html#gino.json_support.JSONProperty" title="gino.json_support.JSONProperty"><code class="xref py py-class docutils literal notranslate"><span class="pre">JSONProperty</span></code></a>
@@ -487,8 +487,8 @@ in the returning dict - instead the JSON attributes will be.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="gino.crud.CRUDModel.update">
-<code class="sig-name descname"><span class="pre">update</span></code><a class="headerlink" href="#gino.crud.CRUDModel.update" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.crud.CRUDModel.update">
+<span class="sig-name descname"><span class="pre">update</span></span><a class="headerlink" href="#gino.crud.CRUDModel.update" title="永久链接至目标">¶</a></dt>
 <dd><p>This <code class="docutils literal notranslate"><span class="pre">update</span></code> behaves quite different on model classes rather than model
 instances.</p>
 <p>On model classes, <code class="docutils literal notranslate"><span class="pre">update</span></code> is an attribute of type
@@ -518,15 +518,15 @@ changes in the memory, and collect all changes into an
 </dd></dl>
 
 <dl class="py class">
-<dt id="gino.crud.QueryModel">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">gino.crud.</span></code><code class="sig-name descname"><span class="pre">QueryModel</span></code><a class="headerlink" href="#gino.crud.QueryModel" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.crud.QueryModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gino.crud.</span></span><span class="sig-name descname"><span class="pre">QueryModel</span></span><a class="headerlink" href="#gino.crud.QueryModel" title="永久链接至目标">¶</a></dt>
 <dd><p>基类：<a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(在 Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">type</span></code></a></p>
 <p>Metaclass of Model classes used for subqueries.</p>
 </dd></dl>
 
 <dl class="py class">
-<dt id="gino.crud.UpdateRequest">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">gino.crud.</span></code><code class="sig-name descname"><span class="pre">UpdateRequest</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">instance</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#gino.crud.CRUDModel" title="gino.crud.CRUDModel"><span class="pre">gino.crud.CRUDModel</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.crud.UpdateRequest" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.crud.UpdateRequest">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gino.crud.</span></span><span class="sig-name descname"><span class="pre">UpdateRequest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">instance</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#gino.crud.CRUDModel" title="gino.crud.CRUDModel"><span class="pre">gino.crud.CRUDModel</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.crud.UpdateRequest" title="永久链接至目标">¶</a></dt>
 <dd><p>基类：<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(在 Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>A collection of attributes and their new values to update on one model
 instance.</p>
@@ -535,8 +535,8 @@ don't instantiate manually unless required. Every <a class="reference internal" 
 instance is bound to one model instance, all updates are for that one
 specific model instance and its database row.</p>
 <dl class="py method">
-<dt id="gino.crud.UpdateRequest.apply">
-<em class="property"><span class="pre">async</span> </em><code class="sig-name descname"><span class="pre">apply</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">bind=None</span></em>, <em class="sig-param"><span class="pre">timeout=&lt;object</span> <span class="pre">object&gt;</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.crud.UpdateRequest.apply" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.crud.UpdateRequest.apply">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">apply</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bind=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout=&lt;object</span> <span class="pre">object&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.crud.UpdateRequest.apply" title="永久链接至目标">¶</a></dt>
 <dd><p>Apply pending updates into database by executing an <code class="docutils literal notranslate"><span class="pre">UPDATE</span></code> SQL.</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
@@ -555,8 +555,8 @@ execution option value if unspecified.</p></li>
 </dd></dl>
 
 <dl class="py method">
-<dt id="gino.crud.UpdateRequest.update">
-<code class="sig-name descname"><span class="pre">update</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.crud.UpdateRequest.update" title="永久链接至目标">¶</a></dt>
+<dt class="sig sig-object py" id="gino.crud.UpdateRequest.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gino.crud.UpdateRequest.update" title="永久链接至目标">¶</a></dt>
 <dd><p>Set given attributes on the bound model instance, and add them into
 the update collections for <a class="reference internal" href="#gino.crud.UpdateRequest.apply" title="gino.crud.UpdateRequest.apply"><code class="xref py py-meth docutils literal notranslate"><span class="pre">apply()</span></code></a>.</p>
 <p>Given keyword-only arguments are pairs of attribute names and values to
@@ -588,7 +588,7 @@ value will be automatically reloaded from database with
 
 </dd></dl>
 
-</div>
+</section>
 
 
             </div>
